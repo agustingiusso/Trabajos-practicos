@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const path = window.location.pathname;
     const body = document.body;
     
-    // Si ya pusiste la clase manualmente en el HTML (ej: <body class="algoritmos-page">),
-    // no hacemos nada para evitar conflictos.
     if (body.classList.length > 0) return;
 
     // Lógica para detectar en qué sección estamos según el nombre del archivo o carpeta
