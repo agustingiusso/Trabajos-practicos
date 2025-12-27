@@ -1,20 +1,14 @@
 /* ===== FÍSICA (Tema Específico) ===== */
 body.fisica-page {
-    /* 1. Redefinición de Variables Maestras */
-    /* Todo lo que use --accent (botones, íconos, líneas) se vuelve verde automáticamente */
     --accent: var(--color-fisica);
     --button-hover-bg: var(--color-fisica-dark);
     --header-line-color: var(--color-fisica);
     --theme-color: var(--color-fisica);
 }
-
-/* 2. Efectos Específicos (Sombras y detalles visuales) */
 body.fisica-page .trabajo-card:hover {
     box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3); /* Sombra Verde */
     border-color: var(--color-fisica-dark);
 }
-
-/* Efecto Neón en Logo (Por consistencia con las otras páginas) */
 body.fisica-page .logo:hover {
     text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
 }

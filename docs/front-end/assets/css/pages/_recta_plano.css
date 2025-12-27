@@ -62,7 +62,7 @@
 .control-group span { color: var(--color-algebra-dark); font-family: monospace; }
 
 /* Input Range con color del tema */
-input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--color-algebra); }
+.algebra-container input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--color-algebra); }
 
 .info-box {
     margin-top: 1rem; padding: 0.8rem; background-color: var(--card-bg);

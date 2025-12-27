@@ -148,7 +148,7 @@
             
             <p>Despejando la aceleración para cada medición <i>i</i>:</p>
             
-            <div style="font-size: 1.3em; text-align: center; margin: 1rem 0;">
+            <div class="formula-responsive">
                 $$ a_i = \frac{v_2^2 - v_1^2}{2 \cdot D} $$
             </div>
 
@@ -168,43 +168,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>0,399</td>
-                        <td>-0,015</td>
-                        <td>0,0002</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>0,390</td>
-                        <td>-0,006</td>
-                        <td>0,0000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>0,366</td>
-                        <td>0,018</td>
-                        <td>0,0003</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>0,372</td>
-                        <td>0,012</td>
-                        <td>0,0001</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>0,393</td>
-                        <td>-0,009</td>
-                        <td>0,0001</td>
+                   <tr>
+                        <td>1</td><td>0,399</td><td>-0,015</td><td>0,0002</td>
                     </tr>
                     <tr class="table-summary">
-                        <td colspan="2">
-                            Promedio \( \bar{a} = 0,384 \)
-                        </td>
-                        <td colspan="2">
-                            \( \sum (\bar{a} - a_i)^2 = 0,0008 \)
-                        </td>
+                        <td colspan="2">Promedio \( \bar{a} = 0,384 \)</td>
+                        <td colspan="2">\( \sum (\bar{a} - a_i)^2 = 0,0008 \)</td>
                     </tr>
                 </tbody>
             </table>
@@ -214,7 +183,7 @@
             <div class="result-container">
                 <p><strong>Error Absoluto (Ea):</strong></p>
                 
-                <div style="font-size: 1.4em; margin: 1.5rem 0; text-align: center;">
+                <div class="formula-responsive">
                     $$ Ea = \pm \sqrt{ \frac{\sum (\bar{a} - a_i)^2}{n(n - 1)} } = \mathbf{0,006} \text{ m/s}^2 $$
                 </div>
 
@@ -223,7 +192,7 @@
                 </p>
 
                 <p><strong>Resultado Final:</strong></p>
-                <div class="final-result-box" style="font-size: 1.4em;">
+                <div class="final-result-box formula-responsive" style="border: 2px solid var(--color-fisica); border-radius: 10px;">
                     $$ a = (0,384 \pm 0,006) \text{ m/s}^2 $$
                 </div>
             </div>

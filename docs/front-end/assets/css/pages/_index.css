@@ -1,6 +1,5 @@
 /* ===== INDEX (Y páginas con estilo Index) ===== */
 body.index-page {
-    /* Variables */
     --header-line-color: var(--color-index);
     --header-bg: #000000;
     --header-text: #ffffff;
@@ -10,23 +9,22 @@ body[data-theme="dark"].index-page {
     --header-line-color: var(--color-index-dark);
 }
 
-/* --- ESTILOS DE BOTONES (Gris en lugar de Celeste) --- */
+/* --- ESTILOS DE BOTONES (Fondo Gris, Icono BLANCO) --- */
 
-/* 1. Estado Normal (Gris Oscuro) */
+/* 1. Estado Normal */
 body.index-page .theme-btn,
 body.index-page .btn-volver {
-    background: #333 !important; /* !important asegura que pise el color base */
-    color: #ffffff !important;
-    border: 1px solid transparent;
+    background: #333 !important;   /* Fondo Gris Oscuro */
+    color: #ffffff !important;     /* Icono Blanco Puro */
+    border: 1px solid transparent; /* Mantiene la forma original sin bordes raros */
 }
 
-/* 2. Estado Hover (Gris Claro) */
+/* 2. Estado Hover */
 body.index-page .theme-btn:hover,
 body.index-page .btn-volver:hover {
-    /* Aquí cambiamos el "celeste" por un gris más claro */
-    background: #555 !important; 
+    background: #555 !important;   /* Fondo Gris más claro al pasar el mouse */
     border-color: #666;
-    transform: translateY(-2px); /* Pequeña animación opcional */
+    transform: translateY(-2px);   /* Mantiene la animación de elevación */
 }
 
 /* Logo */

@@ -1,6 +1,6 @@
 /* ===== Estilos del Header ===== */
 .header {
-    background: #000000 !important;
+    background: var(--header-bg);
     width: 100%;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
     z-index: 100;
     box-shadow: var(--shadow);
     position: relative;
-    color: #ffffff !important;
+    color: var(--header-text);
     border-bottom: var(--header-line-width) solid var(--header-line-color);
 }
 
@@ -42,7 +42,7 @@
     transform: translateX(-50%);
     margin: 0;
     font-size: 1.5rem;
-    color: #ffffff !important;
+    color: var(--header-text);
     font-weight: 700;
     white-space: nowrap;
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);

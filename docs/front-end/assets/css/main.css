@@ -1,9 +1,12 @@
 /* ===== Importación de módulos ===== */
 
+/* ===== BASE ===== */
+
 @import url('base/_variables.css');
 @import url('base/_reset.css');
 @import url('base/_typography.css');
-@import url('base/_landing.css');
+
+/* ===== COMPONENTS ===== */
 
 @import url('components/_buttons.css');
 @import url('components/_cards.css');
@@ -11,8 +14,12 @@
 @import url('components/_code.css');
 @import url('components/_tables.css');
 
+/* ===== LAYOUT ===== */
+
 @import url('layout/_grid.css');
 @import url('layout/_navigation.css');
+
+/* ===== PAGES ===== */
 
 @import url('pages/_algebra.css');
 @import url('pages/_algoritmos.css');
@@ -26,8 +33,8 @@
 @import url('pages/_procesos.css');
 @import url('pages/_producto_mixto.css');
 @import url('pages/_recta_plano.css');
+@import url('pages/_landing.css');
 
-@import url('themes/_dark-light.css');
+/* ===== UTILITIES ===== */
 
 @import url('utilities/_animations.css');
-@import url('utilities/_responsive.css');

@@ -1,15 +1,11 @@
 /* ===== ALGORITMOS (Tema Específico) ===== */
 body.algoritmos-page,
 body.tp1-algoritmos-page {
-    /* 1. Redefinición de Variables Maestras */
-    /* Al cambiar esto, botones, títulos, contadores y líneas se vuelven rojos automágicamente */
     --accent: var(--color-algoritmos);
     --button-hover-bg: var(--color-algoritmos-dark);
     --header-line-color: var(--color-algoritmos);
     --theme-color: var(--color-algoritmos);
 }
-
-/* 2. Efectos Específicos (Sombras y detalles que no usan variables globales) */
 body.algoritmos-page .trabajo-card:hover,
 body.tp1-algoritmos-page .trabajo-card:hover {
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); /* Sombra Roja */

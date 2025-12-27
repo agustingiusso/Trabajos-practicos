@@ -312,3 +312,23 @@
 .tp-container .label-d {
     position: absolute; top: 40%; left: 5px; color: #e74c3c; font-weight: bold; font-style: italic;
 }
+
+/* Contenedor responsivo para fórmulas MathJax */
+.formula-responsive {
+    width: 100%;
+    overflow-x: auto;       /* Habilita scroll horizontal si es necesario */
+    overflow-y: hidden;
+    text-align: center;
+    padding: 10px 0;
+    margin: 1.5rem 0;
+    /* Ajusta la fuente: mínimo 1.1rem, preferido 4vw, máximo 1.5rem */
+    font-size: clamp(1.1rem, 4vw, 1.5rem); 
+}
+
+.formula-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+.formula-responsive::-webkit-scrollbar-thumb {
+    background-color: var(--accent, #ccc);
+    border-radius: 4px;
+}

@@ -1,15 +1,11 @@
 /* ===== ÁLGEBRA (Tema Específico) ===== */
 body.algebra-page {
-    /* 1. Reasignamos las variables maestras al color de Álgebra */
     --accent: var(--color-algebra);
     --button-hover-bg: var(--color-algebra-dark);
     --header-line-color: var(--color-algebra);
-    
-    /* 2. Variables extra para bordes específicos */
     --theme-color: var(--color-algebra);
 }
 
-/* Efectos visuales específicos que no cubren las variables estándar */
 body.algebra-page .trabajo-card:hover {
     box-shadow: 0 10px 20px rgba(241, 196, 15, 0.3); /* Sombra dorada */
     border-color: var(--color-algebra);
