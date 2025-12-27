@@ -54,3 +54,26 @@ sub { vertical-align: sub; font-size: 0.8em; }
 }
 .variable { font-style: italic; color: var(--formula-text); }
 .value { font-weight: bold; color: var(--formula-secondary-text); }
+
+/* --- RESPONSIVE TABLES & DIAGRAMS --- */
+
+/* Contenedor para hacer scroll horizontal en tablas y gráficos */
+.scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
+    margin-bottom: 1.5rem;
+    padding-bottom: 5px; /* Espacio para la barra de scroll */
+}
+
+/* Forzar que las tablas mantengan su forma y no se aplasten */
+.data-table {
+    min-width: 600px; /* Asegura que la tabla no se deforme en móviles */
+}
+
+/* Personalización de la barra de scroll */
+.scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--table-border-color);
+    border-radius: 4px;
+}

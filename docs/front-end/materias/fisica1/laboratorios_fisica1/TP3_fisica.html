@@ -6,28 +6,34 @@
     <title>TP - 3</title>
     
     <link rel="stylesheet" href="../../../assets/css/main.css">
-
+    
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
 </head>
 
 <body class="fisica-page"> 
     
     <header class="header">
-        <nav class="container">
-            <a href="../laboratorio_fisica.html" class="btn-volver">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-            </a>
-            
-            <h1 class="logo">TP Nº 3: Física I</h1>
-            
-            <button class="theme-btn" id="theme-toggle">
-                <svg aria-hidden="true" class="sun" width="18" height="18" viewBox="0 0 24 24">
-                    <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
-                </svg>
-            </button>
-        </nav>
+        <div class="header-container">
+            <nav class="container">
+                <a href="../laboratorio_fisica.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <h1 class="logo">TP Nº 3: Física I</h1>
+                
+                <button class="theme-btn" id="theme-toggle">
+                    </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
     </header>
 
     <main class="tp-container">
@@ -39,31 +45,30 @@
             
             <h2>1. Objetivos</h2>
             <p>Aplicar la teoría del movimiento oscilatorio y la Ley de Hooke en un hecho experimental para determinar la constante elástica \(k\) de un resorte.</p>
-            
         </div>
 
         <div class="punto-card">
-
             <h2>2. Equipo a Ensayar</h2>
             <p>Resorte Helicoidal.</p>
+            
+            <div class="scroll-wrapper">
+                <div class="resorte-container">
+                    <div class="resorte-title">Sistema Masa-Resorte</div>
+                    
+                    <div class="soporte-base"></div>
+                    <div class="soporte-barra"></div>
+                    <div class="soporte-brazo"></div>
 
-            <div class="resorte-container">
-                <div class="resorte-title">Sistema Masa-Resorte</div>
-                
-                <div class="soporte-base"></div>
-                <div class="soporte-barra"></div>
-                <div class="soporte-brazo"></div>
+                    <div class="resorte-coil"></div>
 
-                <div class="resorte-coil"></div>
+                    <div class="resorte-masa">
+                        <span>m</span>
+                    </div>
 
-                <div class="resorte-masa">
-                    <span>m</span>
+                    <div class="flecha-fuerza-abajo"></div>
+                    <div class="label-fuerza">P = m·g</div>
                 </div>
-
-                <div class="flecha-fuerza-abajo"></div>
-                <div class="label-fuerza">P = m·g</div>
             </div>
-
         </div>
 
         <div class="punto-card">
@@ -81,127 +86,73 @@
             <h2>4. Método Estático (Ley de Hooke)</h2>
             <p>Se aplica una fuerza \(\vec{F}\) (peso) al resorte, produciendo un alargamiento \(x\). La fuerza recuperadora es \(F = -kx\). Despejando la constante:</p>
             
-            <div class="formula-box" style="border:none; background:transparent;">
+            <div class="formula-responsive">
                 $$ k = \frac{F}{x} $$
             </div>
             
             <p>Considerando que \(\Delta F \approx 0\), el error relativo es: \(\frac{\Delta k}{k} = \frac{\Delta x}{x}\).</p>
 
             <h4 class="table-label">Tabla I: Datos Experimentales (Estático)</h4>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>n</th>
-                        <th>m [g]</th>
-                        <th>F [dinas]</th>
-                        <th>x [cm]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>10</td>
-                        <td>9800</td>
-                        <td>0,8</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>20</td>
-                        <td>19600</td>
-                        <td>1,8</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>30</td>
-                        <td>29400</td>
-                        <td>2,8</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>40</td>
-                        <td>39200</td>
-                        <td>3,7</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>50</td>
-                        <td>49000</td>
-                        <td>4,7</td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="scroll-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>n</th>
+                            <th>m [g]</th>
+                            <th>F [dinas]</th>
+                            <th>x [cm]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>10</td><td>9800</td><td>0,8</td></tr>
+                        <tr><td>2</td><td>20</td><td>19600</td><td>1,8</td></tr>
+                        <tr><td>3</td><td>30</td><td>29400</td><td>2,8</td></tr>
+                        <tr><td>4</td><td>40</td><td>39200</td><td>3,7</td></tr>
+                        <tr><td>5</td><td>50</td><td>49000</td><td>4,7</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h4 class="table-label">Tabla II: Cálculo de k (Estático)</h4>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>n</th>
-                        <th>\(k\) [dina/cm]</th>
-                        <th>\(\frac{\Delta k}{k} = \frac{\Delta x}{x}\)</th>
-                        <th>\(\Delta k = k \frac{\Delta x}{x}\)</th>
-                        <th>\((\Delta k)^2\)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>12250</td>
-                        <td>0,125</td>
-                        <td>1531</td>
-                        <td>2344727</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>10889</td>
-                        <td>0,056</td>
-                        <td>605</td>
-                        <td>365958</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>10500</td>
-                        <td>0,036</td>
-                        <td>375</td>
-                        <td>140625</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>10595</td>
-                        <td>0,027</td>
-                        <td>286</td>
-                        <td>81997</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>10426</td>
-                        <td>0,021</td>
-                        <td>222</td>
-                        <td>49208</td>
-                    </tr>
-                    <tr class="table-summary">
-                        <td></td>
-                        <td>
-                            \(\bar{k} = 10931\)
-                        </td>
-                        <td>
-                            \(\bar{R} = 0,053\)
-                        </td>
-                        <td></td>
-                        <td>
-                            \(\sum (\Delta k)^2 = 2982515\)
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="scroll-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>n</th>
+                            <th>\(k\) [dina/cm]</th>
+                            <th>\(\frac{\Delta k}{k} = \frac{\Delta x}{x}\)</th>
+                            <th>\(\Delta k = k \frac{\Delta x}{x}\)</th>
+                            <th>\((\Delta k)^2\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>12250</td><td>0,125</td><td>1531</td><td>2344727</td></tr>
+                        <tr><td>2</td><td>10889</td><td>0,056</td><td>605</td><td>365958</td></tr>
+                        <tr><td>3</td><td>10500</td><td>0,036</td><td>375</td><td>140625</td></tr>
+                        <tr><td>4</td><td>10595</td><td>0,027</td><td>286</td><td>81997</td></tr>
+                        <tr><td>5</td><td>10426</td><td>0,021</td><td>222</td><td>49208</td></tr>
+                        <tr class="table-summary">
+                            <td></td>
+                            <td>\(\bar{k} = 10931\)</td>
+                            <td>\(\bar{R} = 0,053\)</td>
+                            <td></td>
+                            <td>\(\sum (\Delta k)^2 = 2982515\)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <p><strong>Resultado Estático:</strong></p>
             <div class="result-container">
                 <p><strong>Error del Valor Medio (Ek):</strong></p>
-                <div style="font-size: 1.4em; margin: 1.5rem 0; text-align: center;">
+                
+                <div class="formula-responsive">
                     $$ Ek = \pm \sqrt{ \frac{\sum (\Delta k)^2}{n(n - 1)} } = \mathbf{386} \text{ dina/cm} $$
                 </div>
 
-                <div class="final-result-box">
+                <div class="final-result-box formula-responsive" style="border: 2px solid var(--color-fisica); border-radius: 10px;">
                     $$ k = (10931 \pm 386) \text{ dina/cm} $$
                 </div>
             </div>
@@ -211,99 +162,71 @@
             <h2>5. Método Dinámico (Oscilaciones)</h2>
             <p>El sistema oscila con Movimiento Armónico Simple (MAS). El periodo \(T\) está dado por:</p>
             
-            <div class="formula-box" style="border:none; background:transparent; font-size: 1.2em;">
+            <div class="formula-responsive">
                 $$ T = 2\pi \sqrt{\frac{m + \frac{m_R}{3}}{k}} $$
             </div>
             <p>Donde \(m\) es la masa suspendida y \(m_R\) la masa del resorte (corrección).</p>
 
             <h4 class="table-label">Tabla III: Datos del Sistema</h4>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Masa Oscilante m [g]</th>
-                        <th>Masa Resorte \(m_R\) [g]</th>
-                        <th>Condición: \(m_R < \frac{3}{5}mR\)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>61,8</td>
-                        <td>30,3</td>
-                        <td>No cumple (30,3 > 1,96)</td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="scroll-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Masa Oscilante m [g]</th>
+                            <th>Masa Resorte \(m_R\) [g]</th>
+                            <th>Condición: \(m_R < \frac{3}{5}mR\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>61,8</td>
+                            <td>30,3</td>
+                            <td>No cumple (30,3 > 1,96)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h4 class="table-label">Tabla IV: Cálculo de k (Dinámico)</h4>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>n</th>
-                        <th>nT [s]</th>
-                        <th>T [s]</th>
-                        <th>\(k_i\) [dina/cm]</th>
-                        <th>\(e = \bar{k} - k_i\)</th>
-                        <th>\(e^2 = (\bar{k} - k_i)^2\)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2,83</td>
-                        <td>0,56</td>
-                        <td>9051</td>
-                        <td>2933</td>
-                        <td>8600881</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2,37</td>
-                        <td>0,47</td>
-                        <td>12850</td>
-                        <td>-866</td>
-                        <td>749330</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2,44</td>
-                        <td>0,48</td>
-                        <td>12320</td>
-                        <td>-336</td>
-                        <td>112769</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2,38</td>
-                        <td>0,47</td>
-                        <td>12850</td>
-                        <td>-866</td>
-                        <td>749330</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2,37</td>
-                        <td>0,47</td>
-                        <td>12850</td>
-                        <td>-866</td>
-                        <td>749330</td>
-                    </tr>
-                    <tr class="table-summary">
-                        <td></td>
-                        <td colspan="2"></td>
-                        <td>\(\bar{k} = 11984\)</td>    
-                        <td colspan="2">\(\sum e^2 = 10961640\)</td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="scroll-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>n</th>
+                            <th>nT [s]</th>
+                            <th>T [s]</th>
+                            <th>\(k_i\) [dina/cm]</th>
+                            <th>\(e = \bar{k} - k_i\)</th>
+                            <th>\(e^2 = (\bar{k} - k_i)^2\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>2,83</td><td>0,56</td><td>9051</td><td>2933</td><td>8600881</td></tr>
+                        <tr><td>2</td><td>2,37</td><td>0,47</td><td>12850</td><td>-866</td><td>749330</td></tr>
+                        <tr><td>3</td><td>2,44</td><td>0,48</td><td>12320</td><td>-336</td><td>112769</td></tr>
+                        <tr><td>4</td><td>2,38</td><td>0,47</td><td>12850</td><td>-866</td><td>749330</td></tr>
+                        <tr><td>5</td><td>2,37</td><td>0,47</td><td>12850</td><td>-866</td><td>749330</td></tr>
+                        <tr class="table-summary">
+                            <td></td>
+                            <td colspan="2"></td>
+                            <td>\(\bar{k} = 11984\)</td>    
+                            <td colspan="2">\(\sum e^2 = 10961640\)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <p><strong>Resultado Dinámico:</strong></p>
             <div class="result-container">
                 <p><strong>Error del Valor Medio (Ek):</strong></p>
-                <div style="font-size: 1.4em; margin: 1.5rem 0; text-align: center;">
+                
+                <div class="formula-responsive">
                     $$ Ek = \pm \sqrt{ \frac{\sum e^2}{n(n - 1)} } = \mathbf{740} \text{ dina/cm} $$
                 </div>
 
-                <div class="final-result-box">
+                <div class="final-result-box formula-responsive" style="border: 2px solid var(--color-fisica); border-radius: 10px;">
                     $$ k = (11984 \pm 740) \text{ dina/cm} $$
                 </div>
             </div>
@@ -326,7 +249,7 @@
     </main>
 
     <script src="../../../assets/js/theme.js"></script>
-    <script src="../../../assets/js/formulas_mat.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </body>
 </html>
