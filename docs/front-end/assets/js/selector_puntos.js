@@ -1,64 +1,62 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const navPoints = document.querySelectorAll('.nav-point');
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias DOM
+    const navContainer = document.querySelector('.nav-points'); // Contenedor para delegación
+    const points = document.querySelectorAll('.nav-point');
     const slides = document.querySelectorAll('.slide');
-    const currentPunto = document.getElementById('current-punto');
-    const totalPuntos = navPoints.length;
+    const counter = document.getElementById('current-punto');
+    
+    // Estado interno: índice actual (empieza en 0 para coincidir con Arrays)
+    let activeIndex = 0;
 
-    // Función mejorada para cambiar de punto
-    function goToPoint(pointNumber) {
-        // Validación de rango
-        pointNumber = Math.max(1, Math.min(pointNumber, totalPuntos));
-        
-        // Ocultar todos los slides excepto el activo
-        slides.forEach((slide, index) => {
-            if (index === pointNumber - 1) {
-                slide.classList.add('active');
-                slide.style.display = 'block';
-            } else {
-                slide.classList.remove('active');
-                slide.style.display = 'none';
-            }
+    // Función optimizada: Solo toca los elementos necesarios
+    const setActive = (index) => {
+        // 1. Validar límites
+        if (index < 0 || index >= points.length) return;
+
+        // 2. Apagar el elemento que estaba activo antes
+        points[activeIndex].classList.remove('active');
+        slides[activeIndex].classList.remove('active');
+
+        // 3. Actualizar índice
+        activeIndex = index;
+
+        // 4. Encender el nuevo elemento
+        points[activeIndex].classList.add('active');
+        slides[activeIndex].classList.add('active');
+
+        // 5. Actualizar contador visual (+1 porque el array es base 0)
+        if (counter) counter.textContent = activeIndex + 1;
+
+        // 6. Scroll suave en el menú (UX móvil)
+        points[activeIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
         });
+    };
 
-        // Actualizar contador
-        currentPunto.textContent = pointNumber;
-        
-        // Actualizar puntos de navegación - VERSIÓN CORREGIDA
-        navPoints.forEach(point => {
-            const pointValue = parseInt(point.getAttribute('data-point'));
-            point.classList.remove('active');
-            
-            if (pointValue === pointNumber) {
-                point.classList.add('active');
-                
-                // Scroll suave para móviles
-                point.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'center'
-                });
-            }
+    // Event Listener 1: Clics (Delegación de eventos)
+    if (navContainer) {
+        navContainer.addEventListener('click', (e) => {
+            // Detectar si el clic fue en un botón o dentro de uno
+            const btn = e.target.closest('.nav-point');
+            if (!btn) return;
+
+            // Leer el número del atributo data-point y restar 1 para obtener índice
+            const newIndex = parseInt(btn.dataset.point) - 1;
+            setActive(newIndex);
         });
     }
 
-    // Event listeners mejorados
-    navPoints.forEach(point => {
-        point.addEventListener('click', function() {
-            const pointNumber = parseInt(this.getAttribute('data-point'));
-            goToPoint(pointNumber);
-        });
-    });
-
-    // Inicialización
-    goToPoint(1);
-
-    // Navegación con teclado
+    // Event Listener 2: Teclado (Flechas)
     document.addEventListener('keydown', (e) => {
-        const current = parseInt(currentPunto.textContent);
-        if (e.key === 'ArrowLeft' && current > 1) {
-            goToPoint(current - 1);
-        } else if (e.key === 'ArrowRight' && current < slides.length) {
-            goToPoint(current + 1);
-        }
+        if (e.key === 'ArrowLeft') setActive(activeIndex - 1);
+        if (e.key === 'ArrowRight') setActive(activeIndex + 1);
     });
+
+    // Inicialización: Asegurar que el primero esté activo
+    // (Opcional: Si el HTML ya tiene la clase 'active' en el primero, esto no hace falta, pero previene errores)
+    if (points.length > 0) {
+        setActive(0);
+    }
 });

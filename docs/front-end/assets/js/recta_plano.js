@@ -1,34 +1,35 @@
 /**
  * Archivo: recta_plano.js
- * Lógica para Rectas y Planos (Aislada, Renombrada e Interactiva)
- * CORRECCIÓN: Renderizado dinámico de MathJax.
+ * Optimización: Rendimiento con requestAnimationFrame y MathJax asíncrono.
  */
 
 (function() {
-    // Variables locales con prefijo 'rp_' para evitar conflictos
-    let rpChart2DInstance = null;
-    
+    // Variables locales
+    let rpChart2D = null;
+    let rpColors = {}; // Caché de colores para no consultar el DOM a cada rato
+    let isUpdating = false; // Bandera para rendimiento (Throttle)
+
     document.addEventListener('DOMContentLoaded', () => {
-        // Verificar existencia de contenedores
-        const rpCanvas2D = document.getElementById('grafico2D');
-        const rpContainer3D = document.getElementById('grafico3D');
+        const canvas2D = document.getElementById('grafico2D');
+        const container3D = document.getElementById('grafico3D');
 
-        if (!rpCanvas2D || !rpContainer3D) return; 
+        // Si no existen los contenedores, salimos (evita errores en otras páginas)
+        if (!canvas2D || !container3D) return;
 
-        // Inicializar
         initRPApp();
     });
 
     function initRPApp() {
+        // Referencias UI
         const ui = {
+            // 2D Controls
             sliderM: document.getElementById('slider-m'),
             sliderD: document.getElementById('slider-d'),
             valM: document.getElementById('val-m'),
             valD: document.getElementById('val-d'),
-            
-            // Elemento para el cálculo matemático dinámico
             calculoBox: document.getElementById('calculo-2d'),
 
+            // 3D Controls
             sliderA: document.getElementById('slider-A'),
             sliderB: document.getElementById('slider-B'),
             sliderDelta: document.getElementById('slider-delta'),
@@ -37,139 +38,141 @@
             valDelta: document.getElementById('val-delta')
         };
 
-        // Listeners 2D
-        if (ui.sliderM && ui.sliderD) {
-            [ui.sliderM, ui.sliderD].forEach(el => {
-                el.addEventListener('input', () => updateRPChart2D(ui));
-            });
-        }
+        // 1. Cargar colores iniciales
+        updateRPThemeColors();
 
-        // Listeners 3D
-        if (ui.sliderA && ui.sliderB && ui.sliderDelta) {
-            [ui.sliderA, ui.sliderB, ui.sliderDelta].forEach(el => {
-                el.addEventListener('input', () => updateRPChart3D(ui));
-            });
-        }
+        // 2. Función maestra de actualización (Optimizada)
+        const requestUpdate = () => {
+            if (!isUpdating) {
+                isUpdating = true;
+                requestAnimationFrame(() => {
+                    updateRPChart2D(ui);
+                    updateRPChart3D(ui);
+                    isUpdating = false;
+                });
+            }
+        };
 
-        // Renderizado Inicial
-        updateRPChart2D(ui);
-        
-        setTimeout(() => {
-            updateRPChart3D(ui);
-        }, 100);
+        // 3. Listeners (Unificados)
+        const inputs = [
+            ui.sliderM, ui.sliderD, 
+            ui.sliderA, ui.sliderB, ui.sliderDelta
+        ];
 
+        inputs.forEach(input => {
+            if(input) input.addEventListener('input', requestUpdate);
+        });
+
+        // 4. Render inicial
+        requestUpdate();
+
+        // 5. Responsive y Tema
         window.addEventListener('resize', () => {
             const container3D = document.getElementById('grafico3D');
             if(container3D && window.Plotly) Plotly.Plots.resize(container3D);
         });
 
+        // Observador de cambio de tema (Claro/Oscuro)
         new MutationObserver(() => {
-            setTimeout(() => {
-                updateRPChart2D(ui);
-                updateRPChart3D(ui);
-            }, 200);
+            updateRPThemeColors();
+            requestUpdate(); // Redibujar con nuevos colores
         }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     }
 
-    function getRPThemeColors() {
+    // --- GESTIÓN DE COLORES (Caché) ---
+    function updateRPThemeColors() {
         const style = getComputedStyle(document.body);
-        return {
-            accent: style.getPropertyValue('--color-algebra') || '#f1c40f',
-            text: style.getPropertyValue('--text-color') || '#333',
-            grid: style.getPropertyValue('--table-border-color') || '#ccc',
-            fill: (style.getPropertyValue('--color-algebra') || '#f1c40f') + '33'
+        rpColors = {
+            accent: style.getPropertyValue('--color-algebra').trim() || '#f1c40f',
+            text: style.getPropertyValue('--text-color').trim() || '#333',
+            grid: style.getPropertyValue('--table-border-color').trim() || '#ccc',
+            // Versión transparente del color de acento
+            fill: (style.getPropertyValue('--color-algebra').trim() || '#f1c40f') + '33' 
         };
     }
 
-    // --- LÓGICA GRÁFICO 2D Y CÁLCULO ---
+    // --- GRÁFICO 2D Y FÓRMULAS ---
     function updateRPChart2D(ui) {
-        if (!ui.sliderM || !document.getElementById('grafico2D')) return;
+        if (!ui.sliderM) return;
 
         const m = parseFloat(ui.sliderM.value);
         const d = parseFloat(ui.sliderD.value);
 
+        // Actualizar textos de valores
         if(ui.valM) ui.valM.textContent = m.toFixed(1);
         if(ui.valD) ui.valD.textContent = d.toFixed(0);
 
-        // --- AQUÍ ESTÁ EL CAMBIO CLAVE PARA MATHJAX ---
+        // --- MATHJAX (Fórmula Dinámica) ---
         if (ui.calculoBox) {
             const T_limit = 10;
-            let resultado = (T_limit - d) / m;
-            let textoResultado;
+            let res = (T_limit - d) / m;
+            let txtRes = (res < 0) ? "\\text{Imposible}" : (!isFinite(res) ? "\\infty" : `${res.toFixed(1)}`);
             
-            if (resultado < 0) {
-                textoResultado = "\\text{Imposible (T} > 10\\text{s)}";
-            } else if (!isFinite(resultado)) {
-                textoResultado = "\\text{Indefinido}";
-            } else {
-                textoResultado = `${resultado.toFixed(1)} \\; \\text{usuarios}`;
-            }
-
-            const latexFormula = `$$ x = \\frac{10 - ${d}}{${m}} = \\mathbf{${textoResultado}} $$`;
+            // Construir LaTeX
+            const latex = `$$ x = \\frac{10 - ${d}}{${m}} = \\mathbf{${txtRes}} $$`;
             
-            // 1. Insertamos el nuevo texto
-            ui.calculoBox.innerHTML = latexFormula;
-
-            // 2. Forzamos a MathJax a renderizarlo de nuevo
-            if (window.MathJax) {
-                // Limpiamos el estado anterior del elemento (importante para evitar conflictos)
-                if(MathJax.typesetClear) MathJax.typesetClear([ui.calculoBox]);
+            // Renderizado seguro (Solo si el contenido cambió)
+            if (ui.calculoBox.getAttribute('data-last-latex') !== latex) {
+                ui.calculoBox.innerHTML = latex;
+                ui.calculoBox.setAttribute('data-last-latex', latex);
                 
-                // Renderizamos
-                if(MathJax.typesetPromise) {
-                    MathJax.typesetPromise([ui.calculoBox]).catch((err) => console.log('MathJax error:', err));
+                if (window.MathJax && MathJax.typesetPromise) {
+                    MathJax.typesetPromise([ui.calculoBox]).catch(() => {});
                 }
             }
         }
-        // ----------------------------------------------
 
-        const colors = getRPThemeColors();
+        // --- CHART.JS (Gráfico) ---
         const xVals = [0, 10, 20, 30, 40, 50];
         const yVals = xVals.map(x => m * x + d);
-
         const ctx = document.getElementById('grafico2D').getContext('2d');
 
-        if (rpChart2DInstance) {
-            rpChart2DInstance.data.datasets[0].data = yVals;
-            rpChart2DInstance.data.datasets[0].label = `T = ${m.toFixed(1)}x + ${d}`;
-            rpChart2DInstance.data.datasets[0].borderColor = colors.accent;
-            rpChart2DInstance.data.datasets[0].backgroundColor = colors.fill;
-            rpChart2DInstance.options.scales.x.ticks.color = colors.text;
-            rpChart2DInstance.options.scales.y.ticks.color = colors.text;
-            rpChart2DInstance.options.scales.x.grid.color = colors.grid;
-            rpChart2DInstance.options.scales.y.grid.color = colors.grid;
-            rpChart2DInstance.update();
+        if (rpChart2D) {
+            // Actualización eficiente (sin recrear el gráfico)
+            rpChart2D.data.datasets[0].data = yVals;
+            rpChart2D.data.datasets[0].label = `T = ${m.toFixed(1)}x + ${d}`;
+            rpChart2D.data.datasets[0].borderColor = rpColors.accent;
+            rpChart2D.data.datasets[0].backgroundColor = rpColors.fill;
+            
+            // Actualizar colores de ejes si cambió el tema
+            rpChart2D.options.scales.x.ticks.color = rpColors.text;
+            rpChart2D.options.scales.y.ticks.color = rpColors.text;
+            rpChart2D.options.scales.x.grid.color = rpColors.grid;
+            rpChart2D.options.scales.y.grid.color = rpColors.grid;
+            rpChart2D.update('none'); // 'none' para animación fluida en sliders
         } else {
-            rpChart2DInstance = new Chart(ctx, {
+            // Creación inicial
+            rpChart2D = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: xVals,
                     datasets: [{
                         label: `T = ${m}x + ${d}`,
                         data: yVals,
-                        borderColor: colors.accent,
-                        backgroundColor: colors.fill,
+                        borderColor: rpColors.accent,
+                        backgroundColor: rpColors.fill,
                         fill: true,
-                        tension: 0.1
+                        tension: 0.3
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: { duration: 0 }, // Desactivar animación pesada al crear
                     scales: {
-                        x: { title: { display: true, text: 'Usuarios (x)', color: colors.text }, ticks: { color: colors.text }, grid: { color: colors.grid } },
-                        y: { title: { display: true, text: 'Tiempo (T)', color: colors.text }, ticks: { color: colors.text }, grid: { color: colors.grid }, beginAtZero: true }
+                        x: { title: { display: true, text: 'Usuarios (x)', color: rpColors.text }, ticks: { color: rpColors.text }, grid: { color: rpColors.grid } },
+                        y: { title: { display: true, text: 'Tiempo (T)', color: rpColors.text }, ticks: { color: rpColors.text }, grid: { color: rpColors.grid }, beginAtZero: true }
                     },
-                    plugins: { legend: { labels: { color: colors.text } } }
+                    plugins: { legend: { labels: { color: rpColors.text } } }
                 }
             });
         }
     }
 
-    // --- LÓGICA GRÁFICO 3D ---
+    // --- GRÁFICO 3D (PLOTLY) ---
     function updateRPChart3D(ui) {
         const container = document.getElementById('grafico3D');
-        if (!container || !ui.sliderA) return;
+        if (!container || !ui.sliderA || !window.Plotly) return;
 
         const A = parseFloat(ui.sliderA.value);
         const B = parseFloat(ui.sliderB.value);
@@ -179,44 +182,32 @@
         if(ui.valB) ui.valB.textContent = B.toFixed(1);
         if(ui.valDelta) ui.valDelta.textContent = delta.toFixed(0);
 
+        // Generar datos de superficie
         const xVals = [0, 10, 20, 30, 40, 50];
         const yVals = [0, 20, 40, 60, 80, 100];
-        const zVals = [];
+        const zVals = yVals.map(y => xVals.map(x => A * x + B * y + delta));
 
-        for (let i = 0; i < yVals.length; i++) {
-            let row = [];
-            for (let j = 0; j < xVals.length; j++) {
-                row.push(A * xVals[j] + B * yVals[i] + delta);
-            }
-            zVals.push(row);
-        }
-
-        const colors = getRPThemeColors();
-
-        const trace = {
+        const data = [{
             type: 'surface',
             x: xVals, y: yVals, z: zVals,
             colorscale: 'Viridis', showscale: false, opacity: 0.9,
             contours: { z: { show: true, usecolormap: true, highlightcolor: "#42f462", project: { z: true } } }
-        };
+        }];
 
         const layout = {
-            title: { text: `z = ${A}x + ${B}y + ${delta}`, font: { color: colors.text } },
+            title: { text: `z = ${A}x + ${B}y + ${delta}`, font: { color: rpColors.text } },
             autosize: true,
             margin: { l: 0, r: 0, b: 0, t: 30 },
-            paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+            paper_bgcolor: 'transparent', 
+            plot_bgcolor: 'transparent',
             scene: {
-                xaxis: { title: 'Usuarios (x)', color: colors.text, tickcolor: colors.text },
-                yaxis: { title: 'Archivos (y)', color: colors.text, tickcolor: colors.text },
-                zaxis: { title: 'Tiempo (z)', color: colors.text, tickcolor: colors.text }
+                xaxis: { title: 'Usuarios', color: rpColors.text, tickcolor: rpColors.text },
+                yaxis: { title: 'Archivos', color: rpColors.text, tickcolor: rpColors.text },
+                zaxis: { title: 'Tiempo', color: rpColors.text, tickcolor: rpColors.text }
             }
         };
 
-        const config = { responsive: true, displayModeBar: false };
-
-        if (window.Plotly) {
-            Plotly.react(container, [trace], layout, config);
-        }
+        Plotly.react(container, data, layout, { responsive: true, displayModeBar: false });
     }
 
 })();

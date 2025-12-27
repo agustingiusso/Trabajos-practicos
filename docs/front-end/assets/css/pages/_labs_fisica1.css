@@ -1,818 +1,314 @@
 /* ============================================================
-   ESTILOS GENERALES PARA TODOS LOS LABORATORIOS DE FÍSICA 1
+   ESTILOS GENERALES: LABORATORIOS DE FÍSICA 1
    ============================================================ */
 
+/* --- Layout Principal --- */
 .tp-container {
-    max-width: var(--max-width, 1200px);
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
+    display: flex; flex-direction: column; gap: 2rem;
+    
+    /* Variables Locales para dibujos */
+    --wood-color: #8B4513;
+    --metal-light: #ccc;
+    --metal-dark: #555;
+    --sensor-bg: #2c3e50;
 }
 
-/* Alineación forzada a la izquierda para textos SOLAMENTE dentro de este TP */
-.tp-container .punto-card {
-    text-align: left;
-}
+/* Textos y Títulos */
+.tp-container .punto-card { text-align: left; }
 
-/* Títulos (Limitados al contenedor tp-container) */
 .tp-container .main-title {
-    color: var(--color-fisica, #2ecc71);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
+    color: var(--color-fisica, #2ecc71); font-size: 1.8rem; font-weight: 700; margin: 0;
 }
-
 .tp-container .main-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-muted, #94a3b8);
-    margin-top: 0.5rem;
-    color: var(--color-fisica-dark);
+    font-size: 1.1rem; color: var(--color-fisica-dark); margin-top: 0.5rem;
 }
-
 .tp-container .card-divider {
-    border: 0;
-    height: 1px;
-    background: var(--table-border-color);
-    margin: 1.5rem 0;
+    border: 0; height: 1px; background: var(--table-border-color); margin: 1.5rem 0;
 }
 
-/* Listas */
-.tp-container .componentes-list {
-    list-style-position: inside;
-    padding-left: 0;
-}
-.tp-container .componentes-list li {
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
+/* Listas y Tablas */
+.tp-container .componentes-list { list-style-position: inside; padding-left: 0; }
+.tp-container .componentes-list li { margin-bottom: 0.5rem; color: var(--text-color); }
 
-/* Tablas */
 .tp-container .table-label {
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-fisica);
-    font-weight: 600;
+    margin: 2rem 0 0.5rem; color: var(--color-fisica); font-weight: 600;
 }
-
 .tp-container .table-summary td {
-    background-color: var(--formula-bg);
-    font-weight: bold;
-    color: var(--formula-text);
+    background-color: var(--formula-bg); font-weight: bold; color: var(--formula-text);
 }
 
-/* Fórmulas Simples (Fracciones) */
-.tp-container .formula-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--formula-bg);
-    border: 1px solid var(--formula-border);
-    padding: 1rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-    font-family: "Times New Roman", serif;
-    font-size: 1.4rem;
-    color: var(--formula-text);
-}
-
-.tp-container .fraction {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 0.5rem;
-    vertical-align: middle;
-}
-
-.tp-container .fraction .num {
-    border-bottom: 2px solid var(--color-fisica);
-    padding: 0 0.5rem;
-}
-
-.tp-container .fraction .den {
-    padding: 0 0.5rem;
-}
-
-/* Fórmula de Error (Estilo Bhaskara adaptado) */
-/* Al poner .tp-container delante, esto NO afectará a la fórmula de Álgebra */
-.tp-container .formula-bhaskara {
-    background: var(--formula-bg);
-    border: 1px solid var(--formula-border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Times New Roman", serif;
-    color: var(--formula-text);
-    overflow-x: auto;
-}
-
-.tp-container .formula-bhaskara .numerator {
-    border-top: 1px solid var(--text-color) !important; /* Línea de la raíz */
-    border-bottom: 2px solid var(--color-fisica) !important; /* Línea fracción */
-    padding: 2px 5px;
-}
-
-/* Resultado Final */
-.tp-container .final-result-box {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 1.5rem;
-    border: 2px solid var(--color-fisica);
-    border-radius: 10px;
-    background: var(--card-bg);
-    margin-top: 1rem;
-    color: var(--color-fisica-dark);
-}
-
-.tp-container .placeholder-val {
-    color: var(--text-muted);
-    border-bottom: 1px dashed var(--text-muted);
-    padding: 0 5px;
-}
-
-/* Textarea Conclusiones */
+/* --- UI: Inputs y Resultados --- */
 .tp-container .conclusiones-input, 
 .tp-container .conclusion-text {
-    width: 100%;
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--table-border-color);
-    background: var(--card-hover);
-    color: var(--text-color);
-    font-family: inherit;
-    resize: vertical;
-    text-align: justify;
-    line-height: 1.6;
+    width: 100%; margin-top: 1rem; padding: 1rem;
+    border-radius: 8px; border: 1px solid var(--table-border-color);
+    background: var(--card-hover); color: var(--text-color);
+    font-family: inherit; resize: vertical; text-align: justify; line-height: 1.6;
+}
+
+.tp-container .final-result-box {
+    text-align: center; font-size: 1.5rem; font-weight: bold; padding: 1.5rem;
+    border: 2px solid var(--color-fisica); border-radius: 10px;
+    background: var(--card-bg); margin-top: 1rem; color: var(--color-fisica-dark);
+}
+.tp-container .placeholder-val {
+    color: var(--text-muted); border-bottom: 1px dashed var(--text-muted); padding: 0 5px;
 }
 
 /* ============================================================
-   ESQUEMA TP1 y TP2: Carril con Poleas y Masa-Resorte
+   FÓRMULAS MATEMÁTICAS
    ============================================================ */
+.tp-container .formula-box,
+.tp-container .formula-bhaskara {
+    background: var(--formula-bg); border: 1px solid var(--formula-border);
+    border-radius: 8px; margin: 1rem 0; color: var(--formula-text);
+    font-family: "Times New Roman", serif; display: flex; 
+    justify-content: center; align-items: center;
+}
 
-/* --- CONTENEDOR PRINCIPAL (El Lienzo) --- */
-.tp-container .carril-container {
-    position: relative;
-    width: 100%;
-    max-width: 750px;
-    height: 350px; /* Altura total del dibujo */
-    margin: 2rem auto;
+.tp-container .formula-box { padding: 1rem; font-size: 1.4rem; }
+.tp-container .formula-bhaskara { padding: 1.5rem; overflow-x: auto; }
+
+/* Estructura de Fracciones */
+.tp-container .fraction {
+    display: inline-flex; flex-direction: column; align-items: center; 
+    margin: 0 0.5rem; vertical-align: middle;
+}
+.tp-container .fraction .num {
+    border-bottom: 2px solid var(--color-fisica); padding: 0 0.5rem;
+}
+.tp-container .formula-bhaskara .numerator {
+    border-top: 1px solid var(--text-color) !important;
+    border-bottom: 2px solid var(--color-fisica) !important;
+    padding: 2px 5px;
+}
+.tp-container .fraction .den { padding: 0 0.5rem; }
+
+
+/* ============================================================
+   CLASES UTILITARIAS PARA DIBUJOS (CANVAS)
+   ============================================================ */
+/* Contenedor base para todos los esquemas (TP1, 3, 4, 5) */
+.tp-container .carril-container,
+.tp-container .resorte-container,
+.tp-container .pendulo-container,
+.tp-container .aro-container {
+    position: relative; margin: 2rem auto;
     background-color: var(--card-bg);
     border: 1px solid var(--table-border-color);
-    border-radius: 8px;
-    box-sizing: border-box;
-    overflow: hidden;
+    border-radius: 8px; box-sizing: border-box; overflow: hidden;
 }
 
-.tp-container .carril-title {
-    text-align: center;
-    color: var(--text-muted);
-    margin-top: 10px;
-    font-style: italic;
+/* Títulos de gráficos */
+.tp-container .carril-title, .tp-container .resorte-title, 
+.tp-container .pendulo-title, .tp-container .aro-title {
+    text-align: center; color: var(--text-muted); margin-top: 10px;
+    font-style: italic; font-size: 0.9rem;
 }
+
+/* Regla Maestra: Todo elemento interno es absoluto */
+.tp-container [class*="elemento-"], 
+.tp-container [class^="cable-"],
+.tp-container [class^="soporte-"] {
+    position: absolute;
+}
+
 
 /* ============================================================
-   1. LA MESA (Soporte)
+   ESQUEMA TP1 y TP2: Carril con Poleas
    ============================================================ */
+.tp-container .carril-container { width: 100%; max-width: 750px; height: 350px; }
 
-/* Tapa de la mesa */
+/* Mesa y Soportes */
 .tp-container .elemento-mesa-tapa {
-    position: absolute;
-    /* CAMBIAR ESTOS VALORES PARA MOVER LA TABLA */
-    top: 130px;      
-    left: 50px;
-    right: 50px;
-    height: 15px;
-    background-color: #8B4513; /* Color Marrón */
-    border-radius: 3px;
-    z-index: 1;
+    top: 130px; left: 50px; right: 50px; height: 15px;
+    background-color: var(--wood-color); border-radius: 3px; z-index: 1;
 }
-
-/* Pata Izquierda */
-.tp-container .elemento-mesa-pata-izq {
-    position: absolute;
-    top: 145px; /* Justo debajo de la tapa */
-    left: 80px;
-    width: 15px;
-    height: 180px; /* Largo de la pata */
-    background-color: #A0522D;
+.tp-container .elemento-mesa-pata-izq, .tp-container .elemento-mesa-pata-der {
+    top: 145px; width: 15px; height: 180px; background-color: #A0522D;
 }
+.tp-container .elemento-mesa-pata-izq { left: 80px; }
+.tp-container .elemento-mesa-pata-der { right: 80px; }
 
-/* Pata Derecha */
-.tp-container .elemento-mesa-pata-der {
-    position: absolute;
-    top: 145px;
-    right: 80px;
-    width: 15px;
-    height: 180px;
-    background-color: #A0522D;
-}
-
-/* ============================================================
-   2. EL RIEL (Base gris)
-   ============================================================ */
+/* Riel y Poleas */
 .tp-container .elemento-riel {
-    position: absolute;
-    /* POSICIÓN DEL RIEL */
-    top: 120px;  /* 10px arriba de la mesa */
-    left: 50px;
-    right: 50px;
-    height: 10px;
-    background: #555;
-    border-radius: 2px;
-    z-index: 2;
+    top: 120px; left: 50px; right: 50px; height: 10px;
+    background: var(--metal-dark); z-index: 2;
 }
 
-/* ============================================================
-   3. LAS POLEAS (Circunferencias en los extremos)
-   ============================================================ */
-/* Estilo común para ambas */
-.tp-container .elemento-polea-izq,
-.tp-container .elemento-polea-der {
-    position: absolute;
-    width: 30px;  /* Tamaño */
-    height: 30px; /* Tamaño */
-    border-radius: 50%;
-    background: #ccc;
-    border: 3px solid #333;
-    z-index: 3;
+.tp-container .elemento-polea-izq, .tp-container .elemento-polea-der {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--metal-light); border: 3px solid #333; z-index: 3; top: 100px;
 }
+.tp-container .elemento-polea-izq { left: 35px; }
+.tp-container .elemento-polea-der { right: 35px; }
 
-/* Posición Polea Izquierda */
-.tp-container .elemento-polea-izq {
-    top: 100px;  /* Debe coincidir para que la cuerda salga recta */
-    left: 35px;  /* Sobresaliendo un poco del riel */
-}
-
-/* Posición Polea Derecha */
-.tp-container .elemento-polea-der {
-    top: 100px;
-    right: 35px;
-}
-
-/* ============================================================
-   4. EL CARRO (Masa M)
-   ============================================================ */
+/* Carro y Masas */
 .tp-container .elemento-carro {
-    position: absolute;
-    /* POSICIÓN DEL CARRO */
-    top: 90px;   /* Apoyado en el riel (riel en 120 - 30 alto carro = 90) */
-    left: 45%;   /* Centrado horizontalmente (ajustar % para mover) */
-    width: 80px;
-    height: 30px;
-    background: var(--color-fisica);
-    border: 2px solid var(--color-fisica-dark);
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 4;
+    top: 90px; left: 45%; width: 80px; height: 30px;
+    background: var(--color-fisica); border: 2px solid var(--color-fisica-dark);
+    border-radius: 4px; display: flex; justify-content: center; align-items: center; z-index: 4;
 }
-
 .tp-container .carro-texto { color: white; font-weight: bold; }
 
-/* ============================================================
-   5. LOS SENSORES (S1 y S2)
-   ============================================================ */
-/* Estilo común */
-.tp-container .elemento-sensor-1,
-.tp-container .elemento-sensor-2 {
-    position: absolute;
-    width: 15px;
-    height: 35px;
-    background: #2c3e50;
-    border: 1px solid #999;
-    z-index: 5; /* Encima de todo */
+.tp-container .elemento-masa-1, .tp-container .elemento-masa-2 {
+    width: 25px; height: 30px; background: #444; color: white;
+    font-size: 0.8em; display: flex; justify-content: center; align-items: center; z-index: 3;
 }
-.tp-container .elemento-sensor-1 span,
-.tp-container .elemento-sensor-2 span {
-    position: absolute;
-    top: -20px; left: -2px; font-size: 0.8em; color: #666;
+.tp-container .elemento-masa-1 { top: 220px; left: 25px; }
+.tp-container .elemento-masa-2 { top: 200px; right: 25px; }
+
+/* Sensores */
+.tp-container .elemento-sensor-1, .tp-container .elemento-sensor-2 {
+    top: 90px; width: 15px; height: 35px; background: var(--sensor-bg);
+    border: 1px solid #999; z-index: 5;
+}
+.tp-container .elemento-sensor-1 { left: 25%; }
+.tp-container .elemento-sensor-2 { left: 75%; }
+.tp-container .elemento-sensor-1 span, .tp-container .elemento-sensor-2 span {
+    position: absolute; top: -20px; left: -2px; font-size: 0.8em; color: #666;
 }
 
-/* Ubicación Sensor 1 */
-.tp-container .elemento-sensor-1 {
-    top: 90px;  /* Alineado con el carro */
-    left: 25%;  /* Posición horizontal */
-}
+/* Cables */
+.tp-container div[class^="cable-"] { background-color: black; z-index: 2; }
+.tp-container .cable-horiz-izq { top: 100px; left: 50px; height: 2px; width: calc(45% - 50px); }
+.tp-container .cable-horiz-der { top: 100px; right: 50px; height: 2px; width: calc(100% - (45% + 80px) - 50px); }
+.tp-container .cable-vert-izq { top: 115px; left: 35px; width: 2px; height: 105px; }
+.tp-container .cable-vert-der { top: 115px; right: 35px; width: 2px; height: 85px; }
 
-/* Ubicación Sensor 2 */
-.tp-container .elemento-sensor-2 {
-    top: 90px; 
-    left: 75%;
-}
 
 /* ============================================================
-   6. LAS MASAS COLGANTES (m1 y m2)
+   ESQUEMA TP3: Masa-Resorte
    ============================================================ */
-.tp-container .elemento-masa-1,
-.tp-container .elemento-masa-2 {
-    position: absolute;
-    width: 25px;
-    height: 30px;
-    background: #444;
-    color: white;
-    font-size: 0.8em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    z-index: 3;
-}
+.tp-container .resorte-container { max-width: 300px; height: 400px; }
 
-/* Masa 1 (Izquierda) */
-.tp-container .elemento-masa-1 {
-    top: 220px;  /* Qué tan abajo cuelga */
-    left: 25px;  /* Alineado verticalmente con la polea izq */
-}
+.tp-container .soporte-base { bottom: 20px; left: 20px; width: 80px; height: 10px; background: var(--metal-dark); }
+.tp-container .soporte-barra { bottom: 30px; left: 50px; width: 8px; height: 320px; background: #777; }
+.tp-container .soporte-brazo { top: 50px; left: 54px; width: 100px; height: 8px; background: #777; }
 
-/* Masa 2 (Derecha) */
-.tp-container .elemento-masa-2 {
-    top: 200px;  /* Qué tan abajo cuelga */
-    right: 25px; /* Alineado verticalmente con la polea der */
-}
-
-/* ============================================================
-   7. LOS CABLES (Líneas negras)
-   ============================================================ */
-/* Estilo base de cable */
-.tp-container div[class^="cable-"] {
-    background-color: black;
-    position: absolute;
-    z-index: 2;
-}
-
-/* --- CABLE HORIZONTAL IZQUIERDO --- */
-.tp-container .cable-horiz-izq {
-    height: 2px;
-    top: 100px;  /* Alineado con la parte superior de la polea */
-    left: 50px;  /* Desde la polea */
-    width: calc(45% - 50px); /* Hasta el carro (45% es el left del carro) */
-}
-
-/* --- CABLE HORIZONTAL DERECHO --- */
-.tp-container .cable-horiz-der {
-    height: 2px;
-    top: 100px;
-    right: 50px; /* Desde la polea derecha */
-    /* Calculo complejo: 100% - (left del carro + ancho del carro) - margen der */
-    width: calc(100% - (45% + 80px) - 50px); 
-}
-
-/* --- CABLE VERTICAL IZQUIERDO --- */
-.tp-container .cable-vert-izq {
-    width: 2px;
-    top: 115px;  /* Centro de la polea */
-    left: 35px;  /* Borde externo de la polea */
-    height: 105px; /* Llega hasta la masa 1 (top masa - top cable) */
-}
-
-/* --- CABLE VERTICAL DERECHO --- */
-.tp-container .cable-vert-der {
-    width: 2px;
-    top: 115px;
-    right: 35px;
-    height: 85px; /* Llega hasta la masa 2 */
-}
-
-/* ============================================================
-   ESQUEMA TP3: SISTEMA MASA-RESORTE
-   ============================================================ */
-
-.tp-container .resorte-container {
-    position: relative;
-    width: 100%;
-    max-width: 300px; /* Más angosto porque es vertical */
-    height: 400px;
-    margin: 2rem auto;
-    background-color: var(--card-bg);
-    border: 1px solid var(--table-border-color);
-    border-radius: 8px;
-    padding: 10px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.tp-container .resorte-title {
-    text-align: center;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-/* --- EL SOPORTE --- */
-.tp-container .soporte-base {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 80px;
-    height: 10px;
-    background: #555;
-    border-radius: 2px;
-}
-
-.tp-container .soporte-barra {
-    position: absolute;
-    bottom: 30px; /* Sobre la base */
-    left: 50px;   /* Centro de la base */
-    width: 8px;
-    height: 320px;
-    background: #777;
-}
-
-.tp-container .soporte-brazo {
-    position: absolute;
-    top: 50px;
-    left: 54px; /* Pegado a la barra */
-    width: 100px;
-    height: 8px;
-    background: #777;
-}
-
-/* --- EL RESORTE (Dibujado con gradientes CSS) --- */
+/* Efecto Zig-Zag CSS */
 .tp-container .resorte-coil {
-    position: absolute;
-    top: 58px; /* Debajo del brazo */
-    left: 130px; /* Cuelga del final del brazo */
-    width: 20px;
-    height: 150px; /* Largo del resorte */
-    /* Truco para hacer el zig-zag del resorte */
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 5px,
-        #333 5px,
-        #333 7px
-    );
-    border-left: 2px solid rgba(0,0,0,0.1); /* Sombra sutil */
-    border-right: 2px solid rgba(0,0,0,0.1);
-    box-sizing: border-box;
+    position: absolute; top: 58px; left: 130px; width: 20px; height: 150px;
+    background: repeating-linear-gradient(45deg, transparent, transparent 5px, #333 5px, #333 7px);
+    border-left: 2px solid rgba(0,0,0,0.1); border-right: 2px solid rgba(0,0,0,0.1);
 }
+.tp-container .resorte-coil::before, .tp-container .resorte-coil::after {
+    content: ''; position: absolute; left: 8px; width: 2px; height: 10px; background: #333;
+}
+.tp-container .resorte-coil::before { top: -10px; }
+.tp-container .resorte-coil::after { bottom: -10px; }
 
-/* Gancho pequeño arriba y abajo del resorte */
-.tp-container .resorte-coil::before {
-    content: '';
-    position: absolute;
-    top: -10px; left: 8px;
-    width: 2px; height: 10px;
-    background: #333;
-}
-.tp-container .resorte-coil::after {
-    content: '';
-    position: absolute;
-    bottom: -10px; left: 8px;
-    width: 2px; height: 10px;
-    background: #333;
-}
-
-/* --- LA MASA --- */
 .tp-container .resorte-masa {
-    position: absolute;
-    top: 218px; /* (top resorte + height resorte + gancho) */
-    left: 115px; /* Centrado respecto al resorte (130 + 10 - 25) */
-    width: 50px;
-    height: 50px;
-    background: var(--color-fisica); /* Verde */
-    border: 2px solid var(--color-fisica-dark);
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute; top: 218px; left: 115px; width: 50px; height: 50px;
+    background: var(--color-fisica); border: 2px solid var(--color-fisica-dark);
+    border-radius: 4px; display: flex; justify-content: center; align-items: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
+.tp-container .resorte-masa span { color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
-.tp-container .resorte-masa span {
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-}
-
-/* --- VECTORES DE FUERZA --- */
+/* Flechas Fuerza */
 .tp-container .flecha-fuerza-abajo {
-    position: absolute;
-    top: 270px; /* Debajo de la masa */
-    left: 139px; /* Centro */
-    width: 2px;
-    height: 40px;
-    background: #e74c3c; /* Rojo */
+    position: absolute; top: 270px; left: 139px; width: 2px; height: 40px; background: #e74c3c;
 }
 .tp-container .flecha-fuerza-abajo::after {
-    content: '';
-    position: absolute;
-    bottom: -5px; left: -4px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid #e74c3c; /* Punta flecha */
+    content: ''; position: absolute; bottom: -5px; left: -4px;
+    border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid #e74c3c;
 }
+.tp-container .label-fuerza { position: absolute; top: 280px; left: 150px; font-size: 0.8em; color: #e74c3c; font-weight: bold; }
 
-.tp-container .label-fuerza {
-    position: absolute;
-    top: 280px;
-    left: 150px;
-    font-size: 0.8em;
-    color: #e74c3c;
-    font-weight: bold;
-}
 
 /* ============================================================
-   ESQUEMA TP4: PÉNDULO FÍSICO (Estilo Realista)
+   ESQUEMA TP4: Péndulo Físico
    ============================================================ */
+.tp-container .pendulo-container { max-width: 400px; height: 450px; }
 
-.tp-container .pendulo-container {
-    position: relative;
-    width: 100%;
-    max-width: 400px; /* Ancho contenido */
-    height: 450px;    /* Altura suficiente */
-    margin: 2rem auto;
-    background-color: var(--card-bg);
-    border: 1px solid var(--table-border-color);
-    border-radius: 8px;
-    box-sizing: border-box;
-    overflow: hidden;
+/* Soportes con degradado */
+.tp-container .soporte-base-pendulo {
+    bottom: 30px; left: 50px; width: 100px; height: 15px; background: #5d4037; z-index: 1;
 }
-
-.tp-container .pendulo-title {
-    text-align: center;
-    color: var(--text-muted);
-    margin-top: 15px;
-    font-style: italic;
-    font-size: 0.9rem;
+.tp-container .soporte-varilla-pendulo {
+    bottom: 45px; left: 90px; width: 12px; height: 360px;
+    background: linear-gradient(to right, #999, #eee, #777); z-index: 1;
 }
-
-/* --- EL SOPORTE (Hardware) --- */
-.tp-container .soporte-base {
-    position: absolute;
-    bottom: 30px;
-    left: 50px;
-    width: 100px;
-    height: 15px;
-    background: #5d4037; /* Color madera oscura */
-    border-radius: 2px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    z-index: 1;
-}
-
-.tp-container .soporte-varilla {
-    position: absolute;
-    bottom: 45px; /* Sobre la base */
-    left: 90px;   /* Centrado en la base aprox */
-    width: 12px;
-    height: 360px;
-    /* Gradiente metálico cilíndrico */
-    background: linear-gradient(to right, #999, #eee, #777);
-    border-radius: 2px;
-    z-index: 1;
-}
-
 .tp-container .soporte-brazo-pendulo {
-    position: absolute;
-    top: 60px;
-    left: 101px; /* Desde la varilla hacia la derecha */
-    width: 140px;
-    height: 12px;
-    background: linear-gradient(to bottom, #888, #ccc, #666);
-    border-radius: 2px;
-    z-index: 1;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    top: 60px; left: 101px; width: 140px; height: 12px;
+    background: linear-gradient(to bottom, #888, #ccc, #666); z-index: 1;
 }
-
-/* Puno de sujeción (donde ata el hilo) */
 .tp-container .soporte-brazo-pendulo::after {
-    content: '';
-    position: absolute;
-    right: 10px; /* Cerca del final del brazo */
-    bottom: -6px;
-    width: 6px;
-    height: 8px;
-    background: #333;
+    content: ''; position: absolute; right: 10px; bottom: -6px; width: 6px; height: 8px; background: #333;
 }
 
-/* --- LÍNEA DE REFERENCIA (Vertical pura) --- */
+/* Dibujo Péndulo */
 .tp-container .linea-referencia {
-    position: absolute;
-    top: 72px; /* Justo debajo del brazo */
-    left: 228px; /* (95 varilla + 140 brazo - 10 margen) + ajuste fino */
-    height: 280px;
-    border-left: 1px dashed #bbb;
-    z-index: 0;
+    position: absolute; top: 72px; left: 228px; height: 280px; border-left: 1px dashed #bbb;
 }
-
-/* --- PÉNDULO OSCILANTE (Rotado) --- */
 .tp-container .pendulo-rotado {
-    position: absolute;
-    top: 72px;  /* Punto de pivote (bajo el brazo) */
-    left: 228px; /* Punto de pivote (alineado con referencia) */
-    width: 0;
-    height: 0;
-    /* Rotación para simular el apartamiento theta */
-    transform: rotate(15deg); 
-    transform-origin: top center;
-    z-index: 2;
+    position: absolute; top: 72px; left: 228px; width: 0; height: 0;
+    transform: rotate(15deg); transform-origin: top center; z-index: 2;
 }
-
-.tp-container .hilo {
-    position: absolute;
-    top: 0;
-    left: -1px; /* Centrado */
-    width: 2px;
-    height: 250px; /* Largo L visual */
-    background-color: #000;
-}
-
+.tp-container .hilo { position: absolute; top: 0; left: -1px; width: 2px; height: 250px; background: #000; }
 .tp-container .esfera {
-    position: absolute;
-    top: 250px; /* Final del hilo */
-    left: -15px; /* Centrado (-radio) */
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    /* Gradiente dorado metálico (Latón) */
+    position: absolute; top: 250px; left: -15px; width: 30px; height: 30px; border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #f1c40f, #b7950b, #5e4503);
     box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
 }
 
-/* --- ANOTACIONES --- */
-
-/* Arco del ángulo */
+/* Anotaciones (Ángulos y Cotas) */
 .tp-container .arco-angulo {
-    position: absolute;
-    top: 72px;
-    left: 228px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border-bottom: 2px solid var(--color-fisica); /* Verde del tema */
-    border-right: 2px solid transparent; 
-    border-left: 2px solid transparent;
-    border-top: 2px solid transparent;
-    transform: translateX(-50%) rotate(75deg); /* Posiciona el arco entre vertical y péndulo */
-    opacity: 0.7;
+    position: absolute; top: 72px; left: 228px; width: 80px; height: 80px; border-radius: 50%;
+    border-bottom: 2px solid var(--color-fisica); border-color: transparent transparent var(--color-fisica) transparent;
+    transform: translateX(-50%) rotate(75deg); opacity: 0.7;
 }
+.tp-container .texto-angulo { position: absolute; top: 125px; left: 245px; color: var(--color-fisica); font-weight: bold; }
 
-.tp-container .texto-angulo {
-    position: absolute;
-    top: 125px;
-    left: 245px;
-    color: var(--color-fisica);
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-/* Cota de Largo L */
 .tp-container .cota-largo {
-    position: absolute;
-    top: 72px;      /* Inicio hilo */
-    left: 280px;    /* A la derecha del péndulo */
-    height: 250px;  /* Mismo largo que el hilo */
-    width: 10px;
-    border-left: 1px solid #777;
+    position: absolute; top: 72px; left: 280px; height: 250px; width: 10px; border-left: 1px solid #777;
 }
-/* Marcas superior e inferior de la cota */
-.tp-container .cota-largo::before {
-    content: ''; position: absolute; top: 0; left: -4px; width: 8px; height: 1px; background: #777;
+.tp-container .cota-largo::before, .tp-container .cota-largo::after {
+    content: ''; position: absolute; left: -4px; width: 8px; height: 1px; background: #777;
 }
-.tp-container .cota-largo::after {
-    content: ''; position: absolute; bottom: 0; left: -4px; width: 8px; height: 1px; background: #777;
+.tp-container .cota-largo::before { top: 0; }
+.tp-container .cota-largo::after { bottom: 0; }
+.tp-container .texto-largo {
+    position: absolute; top: 50%; left: 290px; transform: translateY(-50%); color: #666; font-style: italic; font-weight: bold;
 }
 
-.tp-container .texto-largo {
-    position: absolute;
-    top: 50%;
-    left: 290px;
-    transform: translateY(-50%);
-    color: #666;
-    font-style: italic;
-    font-weight: bold;
-}
 
 /* ============================================================
-   ESQUEMA TP5: ARO (PÉNDULO FÍSICO)
+   ESQUEMA TP5: Aro (Péndulo Físico)
    ============================================================ */
+.tp-container .aro-container { max-width: 350px; height: 350px; }
 
-.tp-container .aro-container {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    height: 350px;
-    margin: 2rem auto;
-    background-color: var(--card-bg);
-    border: 1px solid var(--table-border-color);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.tp-container .aro-title {
-    text-align: center;
-    color: var(--text-muted);
-    margin-top: 15px;
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-/* Soporte superior */
 .tp-container .soporte-techo {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 8px;
-    background: #555;
-    border-radius: 2px;
-    z-index: 2;
+    top: 40px; left: 50%; transform: translateX(-50%); width: 100px; height: 8px;
+    background: var(--metal-dark); z-index: 2;
 }
-
-/* El Pivote (Cuchilla) */
 .tp-container .pivote {
-    position: absolute;
-    top: 48px; /* Debajo del techo */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0; 
-    height: 0; 
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 10px solid #333; /* Triángulo invertido */
-    z-index: 3;
+    top: 48px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
+    border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid #333; z-index: 3;
 }
-
-/* El Aro Metálico */
 .tp-container .aro-metalico {
-    position: absolute;
-    /* El aro cuelga del pivote desde su borde interno */
-    /* Si el aro mide 200px de alto, y el borde mide 20px */
-    top: 55px; 
-    left: 50%;
-    transform: translateX(-50%) rotate(5deg); /* Leve inclinación para realismo */
-    transform-origin: top center; /* Pivota desde arriba */
-    
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    
-    /* Simulamos el grosor del aro con un borde grueso */
-    border: 20px solid #95a5a6; /* Gris metálico */
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
-    z-index: 1;
+    position: absolute; top: 55px; left: 50%; width: 200px; height: 200px; border-radius: 50%;
+    border: 20px solid #95a5a6; box-shadow: 4px 4px 10px rgba(0,0,0,0.2); z-index: 1;
+    transform: translateX(-50%) rotate(5deg); transform-origin: top center;
 }
-
-/* Centro de Masa (CM) */
 .tp-container .centro-masa {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-fisica); /* Verde */
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute; top: 50%; left: 50%; width: 6px; height: 6px;
+    background-color: var(--color-fisica); border-radius: 50%; transform: translate(-50%, -50%);
 }
-
 .tp-container .label-cm {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(10px, -50%);
-    font-size: 0.8em;
-    font-weight: bold;
-    color: var(--color-fisica-dark);
+    position: absolute; top: 50%; left: 50%; transform: translate(10px, -50%);
+    font-size: 0.8em; font-weight: bold; color: var(--color-fisica-dark);
 }
 
-/* Cota de Distancia d (Del pivote al CM) */
 .tp-container .cota-d {
-    position: absolute;
-    left: 50%;
-    top: 55px; /* Altura del pivote */
-    height: 100px; /* Hasta el centro del aro (aprox 200/2) */
-    width: 1px;
-    background-color: #e74c3c; /* Línea roja para destacar */
-    transform: translateX(-2px) rotate(5deg); /* Misma rotación que el aro */
-    transform-origin: top center;
-    z-index: 4;
+    position: absolute; left: 50%; top: 55px; height: 100px; width: 1px; background-color: #e74c3c;
+    transform: translateX(-2px) rotate(5deg); transform-origin: top center; z-index: 4;
 }
-
-/* Marca de fin de cota */
 .tp-container .cota-d::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -3px;
-    width: 7px;
-    height: 1px;
-    background: #e74c3c;
+    content: ''; position: absolute; bottom: 0; left: -3px; width: 7px; height: 1px; background: #e74c3c;
 }
-
 .tp-container .label-d {
-    position: absolute;
-    top: 40%;
-    left: 5px;
-    color: #e74c3c;
-    font-weight: bold;
-    font-style: italic;
+    position: absolute; top: 40%; left: 5px; color: #e74c3c; font-weight: bold; font-style: italic;
 }

@@ -1,116 +1,56 @@
 /* ===== ESTILOS PARA TABLAS ===== */
 .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0;
-    color: var(--table-text-color);
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    width: 100%; border-collapse: collapse; margin: 15px 0; overflow: hidden;
+    color: var(--table-text-color); background-color: var(--card-bg);
+    border-radius: var(--border-radius); box-shadow: var(--shadow);
 }
 
-.data-table th, 
-.data-table td {
-    padding: 12px 15px;
-    text-align: center;
+.data-table th, .data-table td {
+    padding: 12px 15px; text-align: center;
     border: 1px solid var(--table-border-color);
 }
 
 .data-table th {
-    background-color: var(--table-header-bg);
-    font-weight: 600;
-    color: var(--header-text);
+    background-color: var(--table-header-bg); font-weight: 600; color: var(--header-text);
 }
 
-.data-table tr:nth-child(even) {
-    background-color: var(--table-row-even);
-}
-
-.data-table tr:nth-child(odd) {
-    background-color: var(--table-row-odd);
-}
+.data-table tr:nth-child(even) { background-color: var(--table-row-even); }
+.data-table tr:nth-child(odd) { background-color: var(--table-row-odd); }
 
 /* ===== ESTILOS PARA FÓRMULAS ===== */
 .formula-container {
-    margin: 20px 0;
-    padding: 20px;
-    background-color: var(--formula-bg);
-    border-radius: var(--border-radius);
+    margin: 20px 0; padding: 20px; text-align: center;
+    background-color: var(--formula-bg); border-radius: var(--border-radius);
     font-family: "Courier New", monospace;
-    text-align: center;
-    box-shadow: var(--shadow);
-    border: var(--card-border);
+    box-shadow: var(--shadow); border: var(--card-border);
 }
 
 .formula-text {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    color: var(--formula-text);
-    font-weight: 500;
+    margin-bottom: 15px; font-size: 1.1em; font-weight: 500; color: var(--formula-text);
 }
 
-/* Notación vectorial (v con barra superior) */
+/* Notación Matemática */
 .vector {
-    text-decoration: overline;
-    font-weight: bold;
-    font-style: italic;
-    color: var(--formula-text);
+    text-decoration: overline; font-weight: bold; font-style: italic; color: var(--formula-text);
 }
+sub { vertical-align: sub; font-size: 0.8em; }
 
-/* Contenedor de fracción */
+/* Fracciones */
 .fraction {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    margin: 0 8px;
+    display: inline-block; vertical-align: middle; text-align: center;
+    margin: 0 8px; font-size: 1.2em;
 }
 
-/* Numerador */
-.numerator {
-    border-bottom: 2px solid var(--formula-border);
-    padding: 0 10px;
-    display: block;
-    color: var(--formula-text);
-    font-weight: bold;
+.numerator, .denominator {
+    display: block; padding: 0 10px; color: var(--formula-text); font-weight: bold;
 }
+.numerator { border-bottom: 2px solid var(--formula-border); }
+.denominator { padding-top: 5px; }
 
-/* Denominador */
-.denominator {
-    display: block;
-    padding: 5px 10px 0;
-    color: var(--formula-text);
-    font-weight: bold;
-}
-
-/* Explicación de variables */
+/* Explicación de Variables */
 .calculation {
-    margin-top: 20px;
-    font-style: italic;
-    text-align: left;
-    color: var(--formula-secondary-text);
-    padding: 0 10px;
+    margin-top: 20px; padding: 0 10px; text-align: left;
+    font-style: italic; color: var(--formula-secondary-text);
 }
-
-/* Variables en la explicación */
-.variable {
-    font-style: italic;
-    color: var(--formula-text);
-}
-
-/* Valores en la explicación */
-.value {
-    font-weight: bold;
-    color: var(--formula-secondary-text);
-}
-
-/* Subíndices */
-sub {
-    vertical-align: sub;
-    font-size: 0.8em;
-}
-
-/* Mejora para la legibilidad de las fórmulas */
-.formula-container .fraction {
-    font-size: 1.2em;
-}
+.variable { font-style: italic; color: var(--formula-text); }
+.value { font-weight: bold; color: var(--formula-secondary-text); }

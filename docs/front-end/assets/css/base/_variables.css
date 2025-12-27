@@ -1,114 +1,73 @@
-/* ===== VARIABLES GLOBALES ===== */
+/* ===== VARIABLES GLOBALES (Base & Defaults) ===== */
 :root {
-    /* Colores base */
-    --color-white: #ffffff;
-    --color-black: #000000;
-    
-    /* Colores temáticos */
-    --color-algoritmos: #e74c3c;
-    --color-algoritmos-dark: #c0392b;
-    --color-fisica: #2ecc71;
-    --color-fisica-dark: #27ae60;
-    --color-procesos: #b84dff;
-    --color-procesos-dark: #9b3dde;
-    --color-algebra: #F1C40F;
-    --color-algebra-dark: #D4AC0D;
-    --color-index: #4a5568;
-    --color-index-dark: #ffffff;
-    --color-arquitectura: #3498db;
-    --color-arquitectura-dark: #2980b9;
-    --color-logica: #ff6b9e;
-    --color-logica-dark: #e8437a;
-    
-    /* Variables de diseño */
-    --bg-color: #1a1a1a;
-    --text-color: #e0e0e0;
-    --header-bg: #000000;
-    --header-text: #ffffff;
-    --card-bg: #2d3748;
-    --card-hover: #4a5568;
-    --accent: #60a5fa;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --button-hover-bg: #4f8fdf;
-    --code-bg: #1e1e1e;
-    --code-text: #d4d4d4;
-    --text-muted: #94a3b8;
-    --card-border: none;
-    --header-border: none;
-    --code-border: none;
-    --border-radius: 0.5rem;
-    --header-height: 80px;
-    --max-width: 1200px;
-    --spacing: 1rem;
-    --header-line-width: 2px;
-    --header-line-color: var(--accent);
-    --header-line-color-index: #4a5568;
-    --header-line-color-index-dark: #ffffff;
+    /* Colores Base & Temáticos */
+    --color-white: #fff; --color-black: #000;
+    --color-algoritmos: #e74c3c; --color-algoritmos-dark: #c0392b;
+    --color-fisica: #2ecc71; --color-fisica-dark: #27ae60;
+    --color-procesos: #b84dff; --color-procesos-dark: #9b3dde;
+    --color-algebra: #F1C40F; --color-algebra-dark: #D4AC0D;
+    --color-index: #4a5568; --color-index-dark: #ffffff;
+    --color-arquitectura: #3498db; --color-arquitectura-dark: #2980b9;
+    --color-logica: #ff6b9e; --color-logica-dark: #e8437a;
+
+    /* Diseño UI (Default/Darkish) */
+    --bg-color: #1a1a1a; --text-color: #e0e0e0;
+    --header-bg: #000; --header-text: #fff;
+    --card-bg: #2d3748; --card-hover: #4a5568; --card-border: none;
+    --accent: #60a5fa; --shadow: 0 4px 6px rgba(0,0,0,0.3);
+    --button-hover-bg: #4f8fdf; --text-muted: #94a3b8;
+    --code-bg: #1e1e1e; --code-text: #d4d4d4; --code-border: none;
+
+    /* Dimensiones & Líneas */
+    --border-radius: 0.5rem; --header-height: 80px; --max-width: 1200px; --spacing: 1rem;
+    --header-border: none; --header-line-width: 2px; --header-line-color: var(--accent);
+    --header-line-color-index: #4a5568; --header-line-color-index-dark: #fff;
     --header-line-color-algoritmos: var(--color-algoritmos);
 
-    /* Variables específicas para tablas y fórmulas */
-    --table-border-color: #4a5568;
-    --table-header-bg: #2d3748;
-    --table-text-color: #e0e0e0;
-    --table-row-even: #2d3748;
-    --table-row-odd: #1a202c;
-    --formula-bg: #2d3748;
-    --formula-text: var(--color-fisica);
-    --formula-border: var(--color-fisica);
-    --formula-secondary-text: #e0e0e0;
+    /* Tablas & Fórmulas (Default) */
+    --table-border-color: #4a5568; --table-header-bg: #2d3748; --table-text-color: #e0e0e0;
+    --table-row-even: #2d3748; --table-row-odd: #1a202c;
+    --formula-bg: #2d3748; --formula-text: var(--color-fisica);
+    --formula-border: var(--color-fisica); --formula-secondary-text: #e0e0e0;
 }
 
-/* ===== TEMA CLARO ===== */
+/* ===== TEMA CLARO (Overrides) ===== */
 :root[data-theme="light"] {
-    --bg-color: var(--color-white);
-    --text-color: #1a202c;
-    --header-bg: #000000;
-    --header-text: #ffffff;
-    --card-bg: #efefef;
-    --card-hover: #e2e8f0;
-    --accent: #1d4ed8;
-    --shadow: 0 2px 8px rgba(30, 41, 59, 0.1);
-    --button-hover-bg: #1e40af;
-    --code-bg: #ddd;
-    --code-text: #0f172a;
-    --text-muted: #475569;
-    --card-border: 1px solid #cbd5e1;
-    --header-border: 1px solid #333;
-    --code-border: 1px solid #94a3b8;
+    --bg-color: var(--color-white); --text-color: #1a202c;
+    --header-bg: #000; --header-text: #fff; --header-border: 1px solid #333;
+    --card-bg: #efefef; --card-hover: #e2e8f0; --card-border: 1px solid #cbd5e1;
+    --accent: #1d4ed8; --shadow: 0 2px 8px rgba(30,41,59,0.1);
+    --button-hover-bg: #1e40af; --text-muted: #475569;
+    --code-bg: #ddd; --code-text: #0f172a; --code-border: 1px solid #94a3b8;
     
-    /* Variables específicas para tablas y fórmulas (modo claro) */
-    --table-border-color: #cbd5e1;
-    --table-header-bg: #e2e8f0;
-    --table-text-color: #1a202c;
-    --table-row-even: #f8fafc;
-    --table-row-odd: #ffffff;
-    --formula-bg: #f1f5f9;
-    --formula-text: #1a202c;
-    --formula-border: #1a202c;
-    --formula-secondary-text: #475569;
+    /* Tablas & Fórmulas Light */
+    --table-border-color: #cbd5e1; --table-header-bg: #e2e8f0; --table-text-color: #1a202c;
+    --table-row-even: #f8fafc; --table-row-odd: #fff;
+    --formula-bg: #f1f5f9; --formula-text: #1a202c;
+    --formula-border: #1a202c; --formula-secondary-text: #475569;
 }
 
-/* ===== TEMA OSCURO ===== */
+/* ===== TEMA OSCURO (Ajustes Específicos) ===== */
 [data-theme="dark"] {
-    --color-fisica: #1e8449;
-    --color-fisica-dark: #145a32;
-    --color-algebra: #F39C12;
-    --color-algebra-dark: #D68910;
-    --color-logica: #ff85b3;
-    --color-logica-dark: #e8437a;
+    /* Ajustes Materias */
+    --color-fisica: #1e8449; --color-fisica-dark: #145a32;
+    --color-algebra: #F39C12; --color-algebra-dark: #D68910;
+    --color-logica: #ff85b3; --color-logica-dark: #e8437a;
     --color-index: var(--color-index-dark);
-    --header-bg: #0f172a;
-    --header-text: #e2e8f0;
-    --header-line-color-index: #ffffff;
     
-    /* Variables específicas para tablas y fórmulas (modo oscuro) */
-    --table-border-color: #4a5568;
-    --table-header-bg: #1e293b;
-    --table-text-color: #e0e0e0;
-    --table-row-even: #2d3748;
-    --table-row-odd: #1a202c;
-    --formula-bg: #1e293b;
-    --formula-text: #e0e0e0;
-    --formula-border: #e0e0e0;
-    --formula-secondary-text: #e0e0e0;
+    /* Ajustes UI */
+    --header-bg: #0f172a; --header-text: #e2e8f0; --header-line-color-index: #fff;
+    --table-header-bg: #1e293b; --formula-bg: #1e293b; 
+    --formula-text: #e0e0e0; --formula-border: #e0e0e0;
+}
+
+/* ===== Contenedor Principal Centrado ===== */
+.main-container {
+    width: 100%;
+    /* Define un ancho máximo para que no se estire de punta a punta en monitores grandes */
+    max-width: 900px; 
+    /* LA CLAVE: margin auto a los costados centra el bloque */
+    margin: 0 auto;   
+    padding: 0 1rem;  /* Un poco de aire a los costados para celulares */
+    position: relative;
 }

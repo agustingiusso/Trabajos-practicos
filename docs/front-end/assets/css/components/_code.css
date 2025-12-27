@@ -1,88 +1,65 @@
 /* ===== Bloques de Código ===== */
-.code-box {
+.code-box, .code-container {
     background: var(--code-bg);
-    border-radius: 8px;
-    margin: 2rem auto;
-    width: 100%;
-    position: relative;
-    box-shadow: var(--shadow);
     border: var(--code-border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin: 2rem auto;
+    position: relative;
     overflow: hidden;
+}
+
+/* Header opcional dentro del bloque */
+.code-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.2); /* Fondo sutilmente más oscuro */
+    color: var(--code-text);
 }
 
 pre {
-    padding: 2rem;
-    overflow-x: auto;
+    padding: 2rem; overflow-x: auto; margin: 0;
     color: var(--code-text);
     font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    tab-size: 4;
-    margin: 0;
-    max-height: 100%;
+    font-size: 0.95rem; line-height: 1.5; tab-size: 4;
 }
 
-/* TP Container y menú lateral */
+/* ===== Layout TP (Menú Lateral) ===== */
 .tp-container {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 2rem;
-    padding: 1rem;
+    display: grid; grid-template-columns: 250px 1fr;
+    gap: 2rem; padding: 1rem;
 }
 
 .puntos-menu {
-    background: #f5f5f5;
-    padding: 1rem;
-    border-radius: 8px;
+    background: var(--card-bg); /* Se adapta al tema */
+    padding: 1rem; border-radius: 8px;
+    height: fit-content;
 }
 
-.puntos-list {
-    list-style: none;
-    padding: 0;
-}
-.puntos-list li {
-    margin: 0.5rem 0;
-}
+.puntos-list { list-style: none; padding: 0; margin: 0; }
+.puntos-list li { margin: 0.5rem 0; }
+
 .punto-link {
-    display: block;
-    padding: 0.5rem;
-    color: #2c3e50;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.2s;
+    display: block; padding: 0.5rem; border-radius: 4px;
+    color: var(--text-color);
+    text-decoration: none; transition: all 0.2s ease;
 }
+
 .punto-link:hover, .punto-link.active {
-    background: #3498db;
-    color: white;
+    background: var(--accent); color: white;
 }
 
-/* Contenedor de código con encabezado */
-.code-container {
-    background: #282c34;
-    border-radius: 8px;
-    overflow: hidden;
-}
-.code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background: #1e2127;
-    color: white;
-}
+/* ===== Botones y Utilidades ===== */
 .copy-btn {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
+    background: var(--accent); color: white; border: none;
+    padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;
+    transition: background 0.3s;
 }
-.copy-btn:hover {
-    background: #2980b9;
-}
+.copy-btn:hover { background: var(--button-hover-bg); }
 
-/* Ocultar slides no activos inicialmente */
-.slide:not(.active) {
-    display: none;
+.slide:not(.active) { display: none; }
+
+/* Ajuste Móvil */
+@media (max-width: 768px) {
+    .tp-container { grid-template-columns: 1fr; }
 }

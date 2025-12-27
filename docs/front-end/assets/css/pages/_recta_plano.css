@@ -1,143 +1,89 @@
-/* * Estilos específicos para Rectas y Planos (Álgebra)
- */
+/* ===== Estilos: Rectas y Planos (Álgebra) ===== */
 
-/* --- CONTENEDOR PRINCIPAL (Renombrado) --- */
+/* --- Contenedor Principal --- */
 .algebra-container {
-    max-width: var(--max-width, 1200px);
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
+    display: flex; flex-direction: column; gap: 2rem;
 }
 
-/* --- ESTILOS DE TARJETA --- */
+/* --- Tarjetas Generales --- */
 .algebra-container .punto-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    border: var(--card-border);
+    background: var(--card-bg); border-radius: var(--border-radius);
+    padding: 1.5rem; box-shadow: var(--shadow); border: var(--card-border);
     text-align: left;
 }
 
-/* Títulos con color de Álgebra (AMARILLO) */
-.algebra-container .main-title {
+/* --- Tipografía y Colores (Tema Álgebra) --- */
+/* Agrupamos títulos para asignar el color amarillo una sola vez */
+.algebra-container .main-title, 
+.algebra-container h2 {
     color: var(--color-algebra, #f1c40f);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
 }
 
-.algebra-container .main-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
-    color: var(--color-algebra-dark, #d4ac0d);
+.algebra-container .main-title { font-size: 1.8rem; font-weight: 700; margin: 0; }
+.algebra-container .main-subtitle { 
+    font-size: 1.1rem; color: var(--color-algebra-dark, #d4ac0d); margin-top: 0.5rem; 
 }
 
 .algebra-container h2 {
-    color: var(--color-algebra, #f1c40f);
     border-bottom: 1px solid var(--table-border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    padding-bottom: 0.5rem; margin-bottom: 1rem;
 }
-
 .algebra-container .card-divider {
-    border: 0;
-    height: 1px;
-    background: var(--table-border-color);
-    margin: 1.5rem 0;
+    border: 0; height: 1px; background: var(--table-border-color); margin: 1.5rem 0;
 }
 
-/* --- LAYOUT SIMULADOR --- */
+/* --- Layout del Simulador --- */
 .simulador-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
-    margin-top: 1.5rem;
-    align-items: start;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 20px;
+    margin-top: 1.5rem; align-items: start;
 }
-
 @media (max-width: 768px) {
-    .simulador-layout {
-        grid-template-columns: 1fr;
-    }
+    .simulador-layout { grid-template-columns: 1fr; }
 }
 
-/* Columnas de Teoría */
+/* Columna de Teoría */
 .teoria-col {
-    background-color: var(--card-hover);
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 3px solid var(--color-algebra);
+    background-color: var(--card-hover); padding: 1rem;
+    border-radius: 8px; border-left: 3px solid var(--color-algebra);
 }
 
-/* --- CONTROLES --- */
+/* --- Controles y Sliders --- */
 .chart-controls {
-    padding: 1.5rem;
-    background-color: var(--formula-bg);
-    border-radius: 8px;
-    border: 1px solid var(--table-border-color);
+    padding: 1.5rem; background-color: var(--formula-bg);
+    border-radius: 8px; border: 1px solid var(--table-border-color);
 }
 
-.control-group {
-    margin-bottom: 1.2rem;
-}
-
+.control-group { margin-bottom: 1.2rem; }
 .control-group label {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
+    display: flex; justify-content: space-between; font-weight: bold;
+    margin-bottom: 0.5rem; color: var(--text-color);
 }
+.control-group span { color: var(--color-algebra-dark); font-family: monospace; }
 
-.control-group span {
-    color: var(--color-algebra-dark);
-    font-family: monospace;
-}
-
-/* Sliders estilizados con color Álgebra */
-input[type="range"] {
-    width: 100%;
-    cursor: pointer;
-    accent-color: var(--color-algebra);
-}
+/* Input Range con color del tema */
+input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--color-algebra); }
 
 .info-box {
-    margin-top: 1rem;
-    padding: 0.8rem;
-    background-color: var(--card-bg);
-    border-radius: 4px;
-    border-left: 2px solid var(--text-muted);
+    margin-top: 1rem; padding: 0.8rem; background-color: var(--card-bg);
+    border-radius: 4px; border-left: 2px solid var(--text-muted);
     color: var(--text-muted);
 }
 
-/* --- GRÁFICOS --- */
-.chart-container-2d,
-.chart-container-3d {
-    background-color: var(--bg-color);
-    border-radius: 8px;
-    padding: 10px;
-    border: 1px solid var(--table-border-color);
-    height: 400px;
-    position: relative;
-    overflow: hidden;
+/* --- Gráficos (Canvas) --- */
+.chart-container-2d, .chart-container-3d {
+    background-color: var(--bg-color); border-radius: 8px; padding: 10px;
+    border: 1px solid var(--table-border-color); height: 400px;
+    position: relative; overflow: hidden;
 }
 
 #grafico3D, canvas {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 4px;
-    display: block;
+    width: 100% !important; height: 100% !important;
+    border-radius: 4px; display: block;
 }
 
-/* Fórmulas */
+/* Fórmulas (Fondo transparente en este caso) */
 .algebra-container .formula-box {
-    text-align: center;
-    font-size: 1.3rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    background: transparent;
+    text-align: center; font-size: 1.3rem; padding: 0.5rem;
+    margin: 0.5rem 0; background: transparent;
 }

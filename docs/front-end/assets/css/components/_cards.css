@@ -1,197 +1,104 @@
-/* ===== Tarjetas de Materias ===== */
-.materias-grid {
-    display: grid;
-    gap: 2rem;
-    padding: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: var(--max-width);
-    margin: 2rem auto;
+/* ===== Grillas (Contenedores) ===== */
+.materias-grid, .trabajos-grid {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 2rem; padding: 2rem;
+    max-width: var(--max-width); margin: 2rem auto;
 }
 
-.materia-card {
+/* ===== Tarjetas Base (Estilos Compartidos) ===== */
+.materia-card, .trabajo-card, .punto-card {
     background: var(--card-bg);
     border-radius: var(--border-radius);
     padding: 1.5rem;
     box-shadow: var(--shadow);
-    text-align: center;
     border: var(--card-border);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
     position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Tarjetas Interactivas */
+.materia-card, .trabajo-card {
+    text-align: center; text-decoration: none; color: inherit;
     overflow: hidden;
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+.materia-card:hover, .trabajo-card:hover {
+    transform: translateY(-5px); background: var(--card-hover);
+}
+
+/* --- Específicos: Materia / Año --- */
+.materia-card {
+    flex: 1 1 300px; max-width: 400px; min-height: 200px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     animation: fadeInUp 0.5s ease-out;
 }
 
-.materia-card:hover {
-    transform: translateY(-5px);
-    background: var(--card-hover);
+/* --- Específicos: Trabajo Práctico --- */
+.trabajo-card {
+    flex: 0 1 350px; border-left: 4px solid var(--theme-color, #ccc);
 }
+.trabajo-card:only-child { flex: 1 0 auto; max-width: 100%; }
 
-/* Línea base animada (Común) */
-.materia-card::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
+/* Línea Inferior Animada */
+.materia-card::after, .trabajo-card::after {
+    content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+    transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease;
 }
-.materia-card:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+.materia-card:hover::after, .trabajo-card:hover::after {
+    transform: scaleX(1); transform-origin: left;
 }
+.trabajo-card::after { background: var(--accent); }
 
-/* Iconos (Base) */
+/* Iconos */
 .materia-card .materia-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1rem;
-    display: block;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: all 0.3s ease;
+    width: 80px; height: 80px; margin: 0 auto 1rem; display: block;
+    stroke-linecap: round; stroke-linejoin: round; transition: all 0.3s ease;
 }
 .materia-card:hover .materia-icon {
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.2)); transform: scale(1.05);
 }
 
-/* --- COLORES ESPECÍFICOS POR CLASE --- */
+/* ===== CONFIGURACIÓN DE COLORES (Unificada) ===== */
+/* Definición de la variable local por clase */
+.card-anio-1 { --local-color: #3498db; }
+.card-anio-2 { --local-color: #2ecc71; }
+.card-anio-3 { --local-color: #f1c40f; }
+.card-anio-4 { --local-color: #e67e22; }
+.card-anio-5 { --local-color: #9b59b6; }
+.card-algoritmos { --local-color: #e74c3c; }
+.card-fisica { --local-color: #2ecc71; }
+.card-algebra { --local-color: #F1C40F; }
 
-/* 1. Algoritmos (Rojo) */
-.card-algoritmos:hover {
-    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
-}
-.card-algoritmos::after {
-    background: #e74c3c;
-}
-.card-algoritmos:hover .materia-icon {
-    filter: drop-shadow(0 0 8px rgba(231, 76, 60, 0.4));
-}
+/* Aplicación de colores */
+.materia-card[class*="card-"]::after { background: var(--local-color); }
+.materia-card[class*="card-"] .anio-number { color: var(--local-color); }
 
-/* 2. Física (Verde) */
-.card-fisica:hover {
-    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+/* Hover Effects con color dinámico */
+.materia-card[class*="card-"]:hover {
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--local-color), transparent 70%);
 }
-.card-fisica::after {
-    background: #2ecc71;
-}
-.card-fisica:hover .materia-icon {
-    filter: drop-shadow(0 0 8px rgba(46, 204, 113, 0.4));
-}
-
-/* 3. Álgebra (Amarillo/Dorado) */
-.card-algebra:hover {
-    box-shadow: 0 10px 20px rgba(241, 196, 15, 0.3);
-}
-.card-algebra::after {
-    background: #F1C40F;
-}
-.card-algebra:hover .materia-icon {
-    filter: drop-shadow(0 0 8px rgba(241, 196, 15, 0.4));
+.materia-card[class*="card-"]:hover .materia-icon {
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--local-color), transparent 60%));
 }
 
-/* Optimización modo oscuro */
-[data-theme="dark"] .materia-card .materia-icon {
-    stroke-width: 3.2;
+/* Estilos de Número de Año */
+.anio-number {
+    font-size: 4rem; font-weight: 800; line-height: 1; margin-bottom: 1rem;
+    opacity: 0.9; font-family: 'Segoe UI', sans-serif; transition: transform 0.3s ease;
 }
-[data-theme="dark"] .card-algoritmos .materia-icon {
-    filter: brightness(1.3);
-}
+.materia-card:hover .anio-number { transform: scale(1.1); }
 
-/* ===== Tarjetas de Trabajos (TPs) ===== */
-.trabajos-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: var(--max-width);
-    margin: 2rem auto;
-}
+/* Ajustes Modo Oscuro */
+[data-theme="dark"] .materia-card .materia-icon { stroke-width: 3.2; }
+[data-theme="dark"] .card-algoritmos .materia-icon { filter: brightness(1.3); }
 
-.trabajo-card {
-    flex: 0 1 350px; 
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    text-align: center;
-    border: var(--card-border);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid var(--theme-color, #ccc);
-}
-
-.trabajo-card:only-child {
-    flex: 1 0 auto; 
-    max-width: 100%; 
-}
-
-.trabajo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    background: var(--card-hover);
-}
-
-.trabajo-card::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
-
-.trabajo-card:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* === Estilos para las tarjetas de puntos/exercises === */
-.punto-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    max-width: var(--max-width);
-    box-shadow: var(--shadow);
-    border: var(--card-border);
-}
+/* ===== Tarjetas de Descripción / Ejercicios ===== */
+.punto-card { max-width: var(--max-width); }
 
 .exercise-description {
-    background: var(--code-bg);
-    color: var(--code-text);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    background: var(--code-bg); color: var(--code-text);
+    padding: 2rem; border-radius: 8px; margin-bottom: 2rem;
+    font-family: 'Consolas', monospace; font-size: 0.95rem; line-height: 1.5;
     border: var(--code-border);
 }
-
-.exercise-description h3 {
-    color: var(--accent);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.exercise-description p {
-    white-space: pre-line;
-    margin-bottom: 0;
-}
+.exercise-description h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.3rem; }
+.exercise-description p { white-space: pre-line; margin: 0; }

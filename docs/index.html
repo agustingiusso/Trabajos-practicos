@@ -3,81 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Materias</title>
-
+    <meta name="description" content="Portafolio de Ingeniería en Sistemas de Agustín Giusso. Proyectos académicos, algoritmos, física y álgebra.">
+    <title>Portafolio Ingeniería de Sistemas | Agustín Giusso</title>
+    
     <link rel="stylesheet" href="front-end/assets/css/main.css">
-
+    <link rel="stylesheet" href="front-end/assets/css/_landing.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body class="index-page">
+    
     <header class="header">
         <div class="header-container">
             <nav class="container">
-                <h1 class="logo">Mis Materias</h1>
-                <button class="theme-btn" id="theme-toggle">
-                    <svg aria-hidden="true" class="sun" width="18" height="18" viewBox="0 0 24 24">
-                        <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
-                    </svg>
-                </button>
+                <h1 class="logo">DevPortfolio</h1>
+                
+                <div class="nav-controls">
+                    <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
+                        <svg aria-hidden="true" class="sun" width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                        </svg>
+                    </button>
+                </div>
             </nav>
             <div class="header-line"></div> 
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="materias-grid">
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="hero-badge">Ingeniería en Sistemas</span>
+            <h1 class="hero-title">Portafolio Interactivo de <br> <span class="text-gradient">Trabajos Prácticos</span></h1>
+            <p class="hero-subtitle">
+                Una plataforma web modular desarrollada para centralizar, visualizar y entregar 
+                proyectos académicos con arquitectura escalable.
+            </p>
+            <div class="hero-actions">
+                <a href="#mapa-curricular" class="btn-primary">Ver Carrera</a>
+                <a href="https://github.com/agustingiusso/Trabajos-practicos" target="_blank" class="btn-secondary">
+                    <i class="fab fa-github"></i> Repositorio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-code"></i></div>
+                    <h3>Arquitectura Modular</h3>
+                    <p>Código organizado por capas (base, components, layout) sin plantillas genéricas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cube"></i></div>
+                    <h3>Visualización 3D</h3>
+                    <p>Integración de Three.js y Plotly para representar vectores y planos interactivos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Optimización</h3>
+                    <p>Uso de SVGs vectoriales y modo oscuro/claro nativo para máxima performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="mapa-curricular" class="main-content">
+        <div class="section-header">
+            <h2>Mapa Curricular</h2>
+            <p>Explora los proyectos desarrollados en cada etapa de la carrera</p>
+        </div>
+
+        <div class="materias-grid"> 
             
-            <a href="front-end/materias/algoritmos.html" class="materia-card card-algoritmos">
+            <a href="front-end/años/primer_año.html" class="materia-card card-anio card-anio-1">
                 <div class="card-content">
-                    <svg class="materia-icon" viewBox="0 0 100 100" fill="none" stroke="#e74c3c" stroke-width="3">
-                        <polygon points="50,10 85,30 85,70 50,90 15,70 15,30" stroke-linejoin="round" fill="none" />
-                        <path d="M60,35 C50,30 35,35 35,50 C35,65 50,70 60,65" stroke-linecap="round" fill="none" />
-                    </svg>
-                    <h2>Algoritmos y Estructura de Datos</h2>
-                    <p class="descripcion-materia">Trabajos prácticos de algoritmos</p>
+                    <div class="anio-number">1°</div>
+                    <h2>Primer Año</h2>
                 </div>
             </a>
 
-            <a href="front-end/materias/fisica1.html" class="materia-card card-fisica">
+            <a href="front-end/años/segundo_año.html" class="materia-card card-anio card-anio-2">
                 <div class="card-content">
-                    <svg class="materia-icon" viewBox="0 0 100 100" fill="none" stroke="#2ecc71" stroke-width="3">
-                        <circle cx="50" cy="50" r="8" fill="#2ecc71" stroke="none" />
-                        <circle cx="50" cy="50" r="25" fill="none" stroke-dasharray="4,4" />
-                        <circle cx="50" cy="50" r="40" fill="none" />
-                        <circle cx="75" cy="50" r="3" fill="#2ecc71" stroke="none" />
-                        <circle cx="35" cy="65" r="3" fill="#2ecc71" stroke="none" />
-                        <circle cx="50" cy="15" r="3" fill="#2ecc71" stroke="none" />
-                        <circle cx="25" cy="35" r="3" fill="#2ecc71" stroke="none" />
-                        <path d="M50 70 L50 80 M46 75 L54 75" stroke="#2ecc71" stroke-linecap="round" />
-                    </svg>
-                    <h2>Física I</h2>
-                    <p class="descripcion-materia">Laboratorios</p>
+                    <div class="anio-number">2°</div>
+                    <h2>Segundo Año</h2>
                 </div>
             </a>
 
-            <a href="front-end/materias/algebra.html" class="materia-card card-algebra">
+            <a href="front-end/años/tercer_año.html" class="materia-card card-anio card-anio-3">
                 <div class="card-content">
-                    <svg class="materia-icon" viewBox="0 0 100 100" fill="none" stroke="#F1C40F" stroke-width="3">
-                        <line x1="10" y1="50" x2="90" y2="50" stroke-linecap="round" />
-                        <line x1="50" y1="10" x2="50" y2="90" stroke-linecap="round" />
-                        <line x1="85" y1="45" x2="90" y2="50" stroke-linecap="round" />
-                        <line x1="85" y1="55" x2="90" y2="50" stroke-linecap="round" />
-                        <line x1="45" y1="15" x2="50" y2="10" stroke-linecap="round" />
-                        <line x1="55" y1="15" x2="50" y2="10" stroke-linecap="round" />
-                        <path d="M30 80 Q50 30 70 80" stroke-linecap="round" fill="none" />
-                        <text x="85" y="35" fill="#F1C40F" font-size="14" font-family="Arial">x</text>
-                        <text x="60" y="20" fill="#F1C40F" font-size="14" font-family="Arial">y</text>
-                    </svg>
-                    <h2>Álgebra y Geometría Analítica</h2>
-                    <p class="descripcion-materia">Vectores, matrices y sistemas de ecuaciones</p>
+                    <div class="anio-number">3°</div>
+                    <h2>Tercer Año</h2>
                 </div>
             </a>
-            
+
+            <a href="front-end/años/cuarto_año.html" class="materia-card card-anio card-anio-4">
+                <div class="card-content">
+                    <div class="anio-number">4°</div>
+                    <h2>Cuarto Año</h2>
+                </div>
+            </a>
+
+            <a href="front-end/años/quinto_año.html" class="materia-card card-anio card-anio-5">
+                <div class="card-content">
+                    <div class="anio-number">5°</div>
+                    <h2>Quinto Año</h2>
+                </div>
+            </a>
+
         </div>
     </main>
 
+    <section class="tech-stack-section">
+        <div class="container">
+            <h3>Stack Tecnológico Utilizado</h3>
+            <div class="stack-grid">
+                <span class="stack-badge html"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="stack-badge css"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="stack-badge js"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="stack-badge three"><i class="fas fa-cube"></i> Three.js</span>
+                <span class="stack-badge chart"><i class="fas fa-chart-line"></i> Chart.js</span>
+                <span class="stack-badge c"><i class="fas fa-terminal"></i> Lenguaje C</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+        <div class="footer-container container">
+            <div class="footer-info">
+                <p>&copy; 2026 <strong>Agustín Giusso</strong></p>
+                <p class="footer-role">Estudiante de Ingeniería en Sistemas</p>
+            </div>
+            
+            <div class="footer-contact">
+                <a href="mailto:agustingiusso@gmail.com" class="contact-link email">
+                    <i class="fas fa-envelope"></i> agustingiusso@gmail.com
+                </a>
+                <a href="https://github.com/agustingiusso/Trabajos-practicos" target="_blank" class="contact-link github">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <script src="front-end/assets/js/index.js"></script>
     <script src="front-end/assets/js/color_theme.js"></script>
-    
 </body>
 </html>

@@ -1,45 +1,59 @@
-# 📂 Portafolio Interactivo de Trabajos Prácticos
+# 📂 Portafolio Interactivo de Ingeniería en Sistemas
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
 
-Este repositorio aloja una **Plataforma Web Modular** desarrollada para presentar, centralizar y entregar trabajos prácticos de diversas asignaturas académicas. El proyecto funciona como un portafolio interactivo que permite visualizar trabajos prácticos que son entregables en la carrera que estoy cursando (Ingeniería en Sistemas)
+Este repositorio aloja una **Plataforma Web Modular** desarrollada desde cero para centralizar, visualizar y entregar los trabajos prácticos correspondientes a la carrera de **Ingeniería en Sistemas**.
+
+El proyecto va más allá de un simple repositorio de archivos: es una aplicación web interactiva que implementa simulación 3D, renderizado matemático en tiempo real y una arquitectura de software escalable.
 
 ---
 
-## 🌟 Características Técnicas y Funcionalidades
+## 🚀 Características Técnicas Destacadas
 
-### 1. Arquitectura Frontend Escalable
+### 1. Arquitectura Frontend Modular
 
-El sitio no utiliza plantillas genéricas, sino una estructura de código organizada profesionalmente:
+El desarrollo evita el uso de plantillas genéricas, optando por una estructura profesional y mantenible:
 
-- **CSS Modular:** Estilos divididos por capas (`base`, `components`, `layout`, `themes`) para facilitar el mantenimiento.
-- **JS Funcional:** Lógica separada en módulos específicos para cada materia o utilidad.
-- **UX/UI:** Implementación de Modo Oscuro/Claro (`theme.js`) y diseño totalmente responsivo.
+- **CSS por Capas:** Estilos desacoplados (`base`, `components`, `layout`) que permiten la reutilización de código y fácil escalabilidad.
+- **JavaScript Modular:** Lógica de negocio separada por dominios (simulaciones, UI, utilidades), evitando el "Spaghetti code".
+- **Sistema de Temas Nativo:** Implementación de _Dark/Light Mode_ persistente (LocalStorage) con paletas de colores optimizadas (Soft UI).
 
-### 2. Implementaciones Específicas por Materia
+### 2. Módulos Académicos Interactivos
 
-- **Álgebra (Visualización 3D y Gráficos):**
-  - Uso de **Three.js** para la representación interactiva del _Producto Mixto_ en un espacio tridimensional.
-  - Integración de **Plotly.js / Chart.js** para graficar problemas de _Recta y Plano_.
-- **Física y Laboratorios:**
-  - Visualización de vectores y esquemas utilizando **SVG (Gráficos Vectoriales)** para garantizar la máxima nitidez al hacer zoom, sin pérdida de calidad.
-- **Algoritmos y Programación:**
-  - Presentación de código fuente en C con funcionalidad de copiado al portapapeles (`copy.js`) para facilitar la prueba de los ejercicios.
+#### 📐 Álgebra y Geometría Analítica
+
+Implementación de librerías gráficas para la comprensión visual de conceptos abstractos:
+
+- **Simulación 3D (Three.js):** Visualización interactiva de vectores y volúmenes (_Producto Mixto_) con controles de cámara orbital.
+- **Gráficos Dinámicos:** Integración de **Chart.js** y **Plotly** para el análisis de rectas y planos en tiempo real.
+- **Tipografía Matemática:** Uso de **MathJax** para el renderizado de fórmulas LaTeX de alta fidelidad directamente en el navegador.
+
+#### 🔭 Física I
+
+- **Vectores SVG:** Uso de gráficos vectoriales escalables para diagramas de fuerzas y esquemas, garantizando nitidez absoluta en cualquier nivel de zoom.
+- **Interfaz Limpia:** Diseño orientado a la lectura y análisis de laboratorios.
+
+#### 💻 Algoritmos y Estructura de Datos
+
+- **Visor de Código C:** Bloques de código con resaltado de sintaxis.
+- **Funcionalidad UX:** Botones de copiado rápido (`copy-to-clipboard`) y feedback visual para agilizar la prueba de ejercicios en IDEs externos.
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-| Capa             | Tecnologías                                                      |
-| :--------------- | :--------------------------------------------------------------- |
-| **Estructura**   | HTML5 Semántico                                                  |
-| **Estilos**      | CSS3 (Variables, Flexbox, Grid, Animaciones)                     |
-| **Lógica**       | JavaScript (ES6+)                                                |
-| **Librerías**    | Three.js (3D), Plotly.js/Chart.js (Gráficos), MathJax (Fórmulas) |
-| **Backend/Core** | Lenguaje C (Ejercicios de lógica)                                |
+| Dominio            | Tecnologías Implementadas                                |
+| :----------------- | :------------------------------------------------------- |
+| **Core**           | HTML5 Semántico, CSS3 Moderno (Variables, Flexbox, Grid) |
+| **Lógica**         | JavaScript (ES6+), Vanilla JS (Sin frameworks pesados)   |
+| **Gráficos 3D**    | **Three.js** (WebGL), **Plotly.js**                      |
+| **Matemáticas**    | **MathJax** (Renderizado LaTeX)                          |
+| **Backend/Lógica** | **Lenguaje C** (Resolución de ejercicios algorítmicos)   |
+| **Herramientas**   | Git, GitHub Pages (Despliegue)                           |
 
 ---
 

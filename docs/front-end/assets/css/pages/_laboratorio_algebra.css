@@ -1,97 +1,57 @@
-/* * Estilos específicos para Laboratorio IA (Álgebra)
- * Scoped to .lab-algebra-container para evitar conflictos
- */
+/* ===== Estilos Laboratorio IA (Álgebra) ===== */
 
-/* --- CONTENEDOR PRINCIPAL --- */
+/* --- Contenedor Principal --- */
 .lab-algebra-container {
-    max-width: var(--max-width, 1200px);
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
+    display: flex; flex-direction: column; gap: 2rem;
 }
 
-/* --- ESTILOS DE TARJETA --- */
+/* --- Tarjeta Específica --- */
 .lab-algebra-container .punto-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    border: var(--card-border);
+    background: var(--card-bg); border-radius: var(--border-radius);
+    padding: 1.5rem; box-shadow: var(--shadow); border: var(--card-border);
     text-align: left;
 }
 
-/* Títulos con color de Álgebra (AMARILLO) */
-.lab-algebra-container .main-title {
+/* --- Tipografía y Colores (Álgebra) --- */
+/* Agrupamos todo lo que lleva el color principal */
+.lab-algebra-container .main-title, 
+.lab-algebra-container h2,
+.lab-algebra-container .bhaskara-steps h3 {
     color: var(--color-algebra, #f1c40f);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
 }
 
-.lab-algebra-container .main-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
-    color: var(--color-algebra-dark, #d4ac0d);
+.lab-algebra-container .main-title { font-size: 1.8rem; font-weight: 700; margin: 0; }
+.lab-algebra-container .main-subtitle { 
+    font-size: 1.1rem; color: var(--color-algebra-dark, #d4ac0d); margin-top: 0.5rem; 
 }
 
 .lab-algebra-container h2 {
-    color: var(--color-algebra, #f1c40f);
     border-bottom: 1px solid var(--table-border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    padding-bottom: 0.5rem; margin-bottom: 1rem;
 }
 
-.lab-algebra-container h3 {
-    color: var(--text-color);
-    margin-top: 1.5rem;
-    font-size: 1.2rem;
+.lab-algebra-container h3 { 
+    color: var(--text-color); margin-top: 1.5rem; font-size: 1.2rem; 
 }
 
+/* --- Elementos de UI (Listas, Líneas, Fórmulas) --- */
 .lab-algebra-container .card-divider {
-    border: 0;
-    height: 1px;
-    background: var(--table-border-color);
-    margin: 1.5rem 0;
+    border: 0; height: 1px; background: var(--table-border-color); margin: 1.5rem 0;
 }
 
-/* --- LISTAS --- */
 .lab-algebra-container .integrantes-list {
-    list-style-position: inside;
-    padding-left: 0;
-    margin-top: 1rem;
+    list-style-position: inside; padding-left: 0; margin-top: 1rem;
 }
-
 .lab-algebra-container .integrantes-list li {
-    font-size: 1.1em;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--text-muted);
+    font-size: 1.1em; font-weight: 500; margin-bottom: 0.5rem; color: var(--text-muted);
 }
 
-/* --- FÓRMULAS --- */
 .lab-algebra-container .formula-box {
-    text-align: center;
-    font-size: 1.3rem;
-    padding: 1rem;
-    margin: 1rem 0;
-    background: var(--formula-bg);
-    border-radius: 8px;
-    color: var(--text-color);
+    text-align: center; font-size: 1.3rem; padding: 1rem; margin: 1rem 0;
+    background: var(--formula-bg); border-radius: 8px; color: var(--text-color);
 }
 
-/* --- PASOS BHASKARA --- */
-.lab-algebra-container .bhaskara-steps {
-    margin-top: 1.5rem;
-}
-
-.lab-algebra-container .bhaskara-steps h3 {
-    color: var(--color-algebra);
-    margin-bottom: 1rem;
-}
-
-.lab-algebra-container .bhaskara-steps p {
-    margin-bottom: 0.5rem;
-}
+/* --- Pasos Bhaskara --- */
+.lab-algebra-container .bhaskara-steps { margin-top: 1.5rem; }
+.lab-algebra-container .bhaskara-steps p { margin-bottom: 0.5rem; }

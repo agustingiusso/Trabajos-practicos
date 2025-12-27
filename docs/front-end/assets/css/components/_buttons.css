@@ -1,117 +1,64 @@
-/* ===== Botón Tema ===== */
-.theme-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    right: 30px;
-    top: 20px;
-    z-index: 1000;
-    display: grid;
-    place-items: center;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-.theme-btn:hover {
-    transform: scale(1.05);
-    background: var(--button-hover-bg);
-}
-
-/* ===== Botón Volver ===== */
-.btn-volver {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    background: var(--accent);
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    border: 2px solid transparent;
-    box-shadow: var(--shadow);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-.btn-volver:hover {
-    transform: translateY(-2px);
-    background: var(--button-hover-bg);
-    border-color: var(--accent);
-}
-.btn-volver svg {
-    width: 24px;
-    height: 24px;
-    stroke: currentColor;
-    stroke-width: 2;
-}
-
-/* ===== Botones de Navegación ===== */
-.nav-btn {
+/* ===== Botones Globales (Estilos compartidos) ===== */
+.theme-btn, .btn-volver, .nav-btn, .btn-copy {
     background: var(--accent);
     color: white !important;
-    border: none;
-    padding: 0.8rem 3.5rem;
-    margin: 0 1.5rem;
-    border-radius: 6px;
     cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border: none;
     transition: all 0.3s ease;
-}
-.nav-btn:hover:not(.disabled) {
-    transform: translateY(-2px);
-    background: var(--button-hover-bg);
-}
-.nav-btn.disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-    opacity: 0.7;
 }
 
-/* ===== Botón Copiar ===== */
-.btn-copy {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-.btn-copy:hover {
+/* Hover Global: Cambio de fondo */
+.theme-btn:hover, .btn-volver:hover, .nav-btn:hover:not(.disabled), .btn-copy:hover {
     background: var(--button-hover-bg);
+}
+
+/* Hover Global: Efecto de elevación (menos theme-btn) */
+.btn-volver:hover, .nav-btn:hover:not(.disabled), .btn-copy:hover {
     transform: translateY(-2px);
 }
-.btn-copy .fa-copy, 
-.btn-copy .fa-check {
-    font-size: 1rem;
-    transition: all 0.3s ease;
+
+/* ===== Estilos Específicos ===== */
+.theme-btn {
+    width: 40px; height: 40px; padding: 0.5rem; border-radius: 50%;
+    position: absolute; right: 30px; top: 20px; z-index: 1000;
+    display: grid; place-items: center; box-shadow: var(--shadow);
 }
+.theme-btn:hover { transform: scale(1.05); }
+
+.btn-volver {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none;
+    border: 2px solid transparent; box-shadow: var(--shadow);
+    font-weight: 600; letter-spacing: 0.5px;
+}
+.btn-volver:hover { border-color: var(--accent); }
+.btn-volver svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; }
+
+.nav-btn {
+    padding: 0.8rem 3.5rem; margin: 0 1.5rem; border-radius: 6px;
+    font-size: 1.1rem; font-weight: 600;
+}
+.nav-btn.disabled { background-color: #cccccc; cursor: not-allowed; opacity: 0.7; }
+
+.btn-copy {
+    position: absolute; right: 20px; bottom: 20px; z-index: 10;
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.2rem; border-radius: 4px;
+}
+.btn-copy .fa-copy, .btn-copy .fa-check { font-size: 1rem; transition: all 0.3s ease; }
+
+/* Estados de copiado */
+.btn-copy.copied .fa-copy { display: none !important; }
 .btn-copy.copied .fa-check {
-    display: inline-block !important;
-    opacity: 1 !important;
-    transform: scale(1) !important;
+    display: inline-block !important; opacity: 1 !important;
+    transform: scale(1) !important; animation: checkPop 0.3s ease;
 }
-.btn-copy.copied .fa-copy {
-    display: none !important;
-}
+
 @keyframes checkPop {
-    0% { transform: scale(0); }
-    80% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% { transform: scale(0); } 80% { transform: scale(1.1); } 100% { transform: scale(1); }
 }
-.btn-copy.copied .fa-check {
-    animation: checkPop 0.3s ease;
+
+.btn-copy.error {
+    background-color: var(--color-boton-eliminar) !important; /* Rojo */
+    color: white;
 }

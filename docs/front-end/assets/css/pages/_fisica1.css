@@ -1,25 +1,20 @@
-/* ===== FÍSICA ===== */
+/* ===== FÍSICA (Tema Específico) ===== */
 body.fisica-page {
-    --header-line-color: var(--color-fisica);
+    /* 1. Redefinición de Variables Maestras */
+    /* Todo lo que use --accent (botones, íconos, líneas) se vuelve verde automáticamente */
     --accent: var(--color-fisica);
+    --button-hover-bg: var(--color-fisica-dark);
+    --header-line-color: var(--color-fisica);
     --theme-color: var(--color-fisica);
-    --theme-color-dark: var(--color-fisica-dark);
 }
 
-body.fisica-page .btn-volver,
-body.fisica-page .nav-btn,
-body.fisica-page .theme-btn {
-    background: var(--color-fisica);
-}
-body.fisica-page .btn-volver:hover,
-body.fisica-page .nav-btn:hover,
-body.fisica-page .theme-btn:hover {
-    background: var(--color-fisica-dark);
-}
-body.fisica-page .trabajo-card {
-    border-left: 4px solid var(--color-fisica);
-}
+/* 2. Efectos Específicos (Sombras y detalles visuales) */
 body.fisica-page .trabajo-card:hover {
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3); /* Sombra Verde */
     border-color: var(--color-fisica-dark);
-    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* Efecto Neón en Logo (Por consistencia con las otras páginas) */
+body.fisica-page .logo:hover {
+    text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
 }

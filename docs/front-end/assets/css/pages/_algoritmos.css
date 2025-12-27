@@ -1,44 +1,27 @@
-/* ===== ALGORITMOS ===== */
+/* ===== ALGORITMOS (Tema Específico) ===== */
 body.algoritmos-page,
 body.tp1-algoritmos-page {
-    --header-line-color: var(--color-algoritmos);
+    /* 1. Redefinición de Variables Maestras */
+    /* Al cambiar esto, botones, títulos, contadores y líneas se vuelven rojos automágicamente */
     --accent: var(--color-algoritmos);
+    --button-hover-bg: var(--color-algoritmos-dark);
+    --header-line-color: var(--color-algoritmos);
     --theme-color: var(--color-algoritmos);
-    --theme-color-dark: var(--color-algoritmos-dark);
 }
 
-body.algoritmos-page .btn-volver,
-body.tp1-algoritmos-page .btn-volver,
-body.algoritmos-page .nav-btn,
-body.tp1-algoritmos-page .nav-btn,
-body.algoritmos-page .theme-btn,
-body.tp1-algoritmos-page .theme-btn {
-    background: var(--color-algoritmos);
-}
-
-body.algoritmos-page .btn-volver:hover,
-body.tp1-algoritmos-page .btn-volver:hover,
-body.algoritmos-page .nav-btn:hover,
-body.tp1-algoritmos-page .nav-btn:hover,
-body.algoritmos-page .theme-btn:hover,
-body.tp1-algoritmos-page .theme-btn:hover {
-    background: var(--color-algoritmos-dark);
-}
-
-body.algoritmos-page .trabajo-card,
-body.tp1-algoritmos-page .trabajo-card {
-    border-left: 4px solid var(--color-algoritmos);
-}
+/* 2. Efectos Específicos (Sombras y detalles que no usan variables globales) */
 body.algoritmos-page .trabajo-card:hover,
 body.tp1-algoritmos-page .trabajo-card:hover {
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); /* Sombra Roja */
     border-color: var(--color-algoritmos-dark);
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
 }
+
 body.algoritmos-page .trabajo-card:hover::after,
 body.tp1-algoritmos-page .trabajo-card:hover::after {
     background: var(--color-algoritmos) !important;
 }
 
+/* Efecto Neón en Logo */
 body.algoritmos-page .logo,
 body.tp1-algoritmos-page .logo {
     color: #ffffff !important;
@@ -46,11 +29,4 @@ body.tp1-algoritmos-page .logo {
 body.algoritmos-page .logo:hover,
 body.tp1-algoritmos-page .logo:hover {
     text-shadow: 0 1px 5px rgba(0,0,0,0.7), 0 0 15px rgba(231, 76, 60, 0.7);
-}
-
-body.algoritmos-page .punto-counter,
-body.tp1-algoritmos-page .punto-counter,
-body.algoritmos-page .exercise-description h3,
-body.tp1-algoritmos-page .exercise-description h3 {
-    color: var(--color-algoritmos);
 }

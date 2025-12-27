@@ -1,176 +1,141 @@
-/* ----- Controles de navegación ----- */
+/* ----- Controles de Navegación ----- */
 .slide-controls {
-    position: sticky;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg-color);
-    border-radius: 50px;
-    padding: 8px 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid var(--border-color);
+    /* CAMBIO IMPORTANTE: */
+    position: relative; /* Ya no es sticky, ahora se queda en su sitio */
+    /* top: 90px; <-- ELIMINADO (Ya no es necesario) */
     z-index: 10;
+    
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     gap: 8px;
+    
+    background: var(--bg-color); 
     backdrop-filter: blur(10px);
-    width: fit-content;
-    margin: 0 auto 30px;
+    
+    border: 1px solid var(--table-border-color); 
+    border-radius: 50px;
+    padding: 8px 15px; 
+    width: fit-content; 
+    
+    /* Ajustamos márgenes para que quede bien posicionado en el flujo */
+    margin: 30px auto; 
+    
+    box-shadow: var(--shadow);
     max-width: 95%;
 }
 
-/* ----- Puntos de navegación ----- */
+/* Lista de Puntos (Estática) */
 .nav-points {
-    display: flex;
-    gap: 6px;
-    list-style: none;
-    padding: 5px;
+    display: flex; 
+    gap: 6px; 
+    list-style: none; 
+    padding: 0; 
     margin: 0;
-    scroll-behavior: smooth;
+    justify-content: center; 
+    flex-wrap: wrap; 
 }
 
+/* Botón Individual */
 .nav-point {
-    position: relative;
-    padding: 10px 16px;
+    position: relative; 
+    padding: 10px 16px; 
+    border-radius: 50px; 
     cursor: pointer;
-    font-size: 0.92rem;
-    font-weight: 500;
+    font-size: 0.92rem; 
+    font-weight: 500; 
     color: var(--text-muted);
-    border-radius: 50px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    white-space: nowrap;
-    border: 1px solid transparent;
-    flex-shrink: 0;
+    border: 1px solid transparent; 
+    transition: all 0.3s ease;
 }
 
+/* Hover */
 .nav-point:hover {
-    background: var(--hover-color);
-    color: var(--primary-color);
+    background: var(--card-bg); 
+    color: var(--accent);
     transform: translateY(-1px);
-    border-color: rgba(var(--primary-rgb), 0.2);
 }
 
+/* Activo */
 .nav-point.active {
-    background: var(--primary-color);
-    color: white;
+    background: var(--accent); 
+    color: white; 
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.25);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
     transform: translateY(-2px);
-    border-color: transparent;
 }
 
-/* Indicador de punto activo mejorado */
+/* Animación Burbuja */
 .nav-point.active::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
+    content: ''; 
+    position: absolute; 
+    bottom: -10px; 
     left: 50%;
+    width: 6px; 
+    height: 6px; 
+    background: var(--accent);
+    border-radius: 50%; 
     transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    opacity: 0;
-    animation: bubble 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+    animation: bubble 0.4s forwards;
 }
 
-@keyframes bubble {
-    to {
-        opacity: 1;
-        bottom: -10px;
-        width: 8px;
-        height: 8px;
-    }
+@keyframes bubble { 
+    from { opacity: 0; bottom: -6px; } 
+    to { opacity: 1; bottom: -10px; } 
 }
 
-/* ----- Contador de puntos ----- */
+/* ----- Contador ----- */
 .punto-counter {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    background-color: rgba(var(--primary-rgb), 0.1);
-    padding: 5px 10px;
-    border-radius: 50px;
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    display: flex; 
+    align-items: center; 
+    gap: 4px; 
     flex-shrink: 0;
+    font-size: 0.82rem; 
+    font-weight: 600; 
+    color: var(--accent);
+    background: var(--card-bg); 
+    padding: 5px 10px;
+    border-radius: 50px; 
+    margin-left: 8px;
 }
-
 .punto-counter::before {
-    content: 'Punto';
-    font-weight: 400;
-    color: var(--text-muted);
+    content: 'Punto'; 
+    font-weight: 400; 
+    color: var(--text-muted); 
     font-size: 0.75rem;
 }
 
-/* ----- Transiciones para slides ----- */
+/* ----- Slides ----- */
 .slide {
-    transition: opacity 0.35s ease-out, transform 0.4s ease-out;
-    will-change: opacity, transform;
+    transition: opacity 0.35s ease, transform 0.4s ease;
 }
-
 .slide:not(.active) {
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
+    opacity: 0; 
+    height: 0; 
+    overflow: hidden; 
     position: absolute;
-    transform: translateY(5px);
+    transform: translateY(10px); 
     pointer-events: none;
 }
-
 .slide.active {
-    opacity: 1;
-    height: auto;
-    position: relative;
-    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+    opacity: 1; 
+    height: auto; 
+    position: relative; 
+    transform: translateY(0);
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(8px);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-/* ----- Responsive Design Mejorado ----- */
+/* ----- Responsive ----- */
 @media (max-width: 768px) {
-    .slide-controls {
-        top: 10px;
-        padding: 6px 12px;
+    .slide-controls { 
+        /* top: 15px; <-- ELIMINADO */
         margin-bottom: 20px;
-        width: auto;
-        max-width: calc(100% - 20px);
+        padding: 6px 10px; 
     }
-    
-    .nav-points {
-        overflow-x: auto;
-        scroll-snap-type: x proximity;
-        padding-bottom: 8px;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
+    .nav-point { 
+        padding: 8px 12px; 
+        font-size: 0.85rem; 
     }
-    
-    .nav-points::-webkit-scrollbar {
-        display: none;
+    .punto-counter { 
+        display: none; 
     }
-    
-    .nav-point {
-        padding: 8px 14px;
-        font-size: 0.85rem;
-        scroll-snap-align: center;
-    }
-    
-    .punto-counter {
-        font-size: 0.78rem;
-        padding: 4px 8px;
-    }
-}
-
-/* Efecto de foco para accesibilidad */
-.nav-point:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
 }
