@@ -1,10 +1,10 @@
 # 📂 Portafolio Interactivo de Ingeniería en Sistemas
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![HTML5]
+![CSS3]
+![JavaScript]
+![Three.js]
+![C]
 
 Este repositorio aloja una **Plataforma Web Modular** desarrollada desde cero para centralizar, visualizar y entregar los trabajos prácticos correspondientes a la carrera de **Ingeniería en Sistemas**.
 
