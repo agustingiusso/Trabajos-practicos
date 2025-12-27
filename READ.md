@@ -57,101 +57,105 @@ Implementación de librerías gráficas para la comprensión visual de conceptos
 
 ---
 
-## 📂 Organización del Proyecto
+## 📂 Estructura del Proyecto
 
-El repositorio separa claramente el código fuente de los ejercicios (Backend/C) de la interfaz de visualización (Frontend/Web):
+A continuación se detalla la organización de carpetas del repositorio, separando la lógica frontend de los archivos fuente en C:
 
+```
 Directory structure:
 └── agustingiusso-trabajos-practicos/
-    ├── READ.md
-    ├── docs/
-    │   ├── index.html
-    │   ├── .nojekyll
-    │   └── front-end/
-    │       ├── assets/
-    │       │   ├── css/
-    │       │   │   ├── main.css
-    │       │   │   ├── base/
-    │       │   │   │   ├── \_reset.css
-    │       │   │   │   ├── \_typography.css
-    │       │   │   │   └── \_variables.css
-    │       │   │   ├── components/
-    │       │   │   │   ├── \_buttons.css
-    │       │   │   │   ├── \_cards.css
-    │       │   │   │   ├── \_code.css
-    │       │   │   │   ├── \_header.css
-    │       │   │   │   └── \_tables.css
-    │       │   │   ├── layout/
-    │       │   │   │   ├── \_grid.css
-    │       │   │   │   └── \_navigation.css
-    │       │   │   ├── pages/
-    │       │   │   │   ├── \_algebra.css
-    │       │   │   │   ├── \_algoritmos.css
-    │       │   │   │   ├── \_fisica1.css
-    │       │   │   │   ├── \_index.css
-    │       │   │   │   ├── \_laboratorio_algebra.css
-    │       │   │   │   ├── \_labs_fisica1.css
-    │       │   │   │   ├── \_producto_mixto.css
-    │       │   │   │   └── \_recta_plano.css
-    │       │   │   ├── themes/
-    │       │   │   │   └── \_dark-light.css
-    │       │   │   └── utilities/
-    │       │   │       ├── \_animations.css
-    │       │   │       └── \_responsive.css
-    │       │   └── js/
-    │       │       ├── color_theme.js
-    │       │       ├── copy.js
-    │       │       ├── formulas_mat.js
-    │       │       ├── index.js
-    │       │       ├── producto_mixto.js
-    │       │       ├── recta_plano.js
-    │       │       ├── selector_puntos.js
-    │       │       └── theme.js
-    │       └── materias/
-    │           ├── algebra.html
-    │           ├── algoritmos.html
-    │           ├── fisica1.html
-    │           ├── wip algoritmos.html
-    │           ├── algebra/
-    │           │   ├── laboratorio_algebra.html
-    │           │   ├── tp_grupal_algebra.html
-    │           │   └── tp_grupal_algebra2.html
-    │           ├── algoritmos/
-    │           │   ├── tp1_algoritmos.html
-    │           │   ├── tp2_algoritmos.html
-    │           │   └── tp3_algoritmos.html
-    │           └── fisica1/
-    │               ├── laboratorio_fisica.html
-    │               └── laboratorios_fisica1/
-    │                   ├── TP1_fisica.html
-    │                   ├── TP2_fisica.html
-    │                   ├── TP3_fisica.html
-    │                   ├── TP4_fisica.html
-    │                   └── TP5_fisica.html
-    ├── TP1/
-    │   ├── tp1_punto1.c
-    │   ├── tp1_punto10.c
-    │   ├── tp1_punto11.c
-    │   ├── tp1_punto11_v.2.c
-    │   ├── tp1_punto12.c
-    │   ├── tp1_punto13.c
-    │   ├── tp1_punto14.c
-    │   ├── tp1_punto15.c
-    │   ├── tp1_punto16.c
-    │   ├── tp1_punto17.c
-    │   ├── tp1_punto18.c
-    │   ├── tp1_punto2.c
-    │   ├── tp1_punto3.c
-    │   ├── tp1_punto4.c
-    │   ├── tp1_punto5.c
-    │   ├── tp1_punto6.c
-    │   ├── tp1_punto7.c
-    │   ├── tp1_punto8.c
-    │   └── tp1_punto9.c
-    └── TP2/
-        ├── punto1.c
-        ├── punto2.c
-        ├── punto3.c
-        ├── punto4.c
-        ├── punto5.c
-        └── punto6.c
+    ├── READ.md
+    ├── docs/
+    │   ├── index.html
+    │   ├── .nojekyll
+    │   └── front-end/
+    │       ├── assets/
+    │       │   ├── css/
+    │       │   │   ├── main.css
+    │       │   │   ├── base/
+    │       │   │   │   ├── _landing.css
+    │       │   │   │   ├── _reset.css
+    │       │   │   │   ├── _typography.css
+    │       │   │   │   └── _variables.css
+    │       │   │   ├── components/
+    │       │   │   │   ├── _buttons.css
+    │       │   │   │   ├── _cards.css
+    │       │   │   │   ├── _code.css
+    │       │   │   │   ├── _header.css
+    │       │   │   │   └── _tables.css
+    │       │   │   ├── layout/
+    │       │   │   │   ├── _grid.css
+    │       │   │   │   └── _navigation.css
+    │       │   │   ├── pages/
+    │       │   │   │   ├── _algebra.css
+    │       │   │   │   ├── _algoritmos.css
+    │       │   │   │   ├── _fisica1.css
+    │       │   │   │   ├── _index.css
+    │       │   │   │   ├── _laboratorio_algebra.css
+    │       │   │   │   ├── _labs_fisica1.css
+    │       │   │   │   ├── _producto_mixto.css
+    │       │   │   │   └── _recta_plano.css
+    │       │   │   ├── themes/
+    │       │   │   │   └── _dark-light.css
+    │       │   │   └── utilities/
+    │       │   │   │   ├── _animations.css
+    │       │   │   │   └── _responsive.css
+    │       │   └── js/
+    │       │       ├── color_theme.js
+    │       │       ├── copy.js
+    │       │       ├── formulas_mat.js
+    │       │       ├── index.js
+    │       │       ├── producto_mixto.js
+    │       │       ├── recta_plano.js
+    │       │       ├── selector_puntos.js
+    │       │       └── theme.js
+    │       ├── años/
+    │       │   └── primer_año.html
+    │       └── materias/
+    │           ├── algebra.html
+    │           ├── algoritmos.html
+    │           ├── fisica1.html
+    │           ├── algebra/
+    │           │   ├── laboratorio_algebra.html
+    │           │   ├── tp_grupal_algebra.html
+    │           │   └── tp_grupal_algebra2.html
+    │           ├── algoritmos/
+    │           │   ├── tp1_algoritmos.html
+    │           │   ├── tp2_algoritmos.html
+    │           │   └── tp3_algoritmos.html
+    │           └── fisica1/
+    │               ├── laboratorio_fisica.html
+    │               └── laboratorios_fisica1/
+    │                   ├── TP1_fisica.html
+    │                   ├── TP2_fisica.html
+    │                   ├── TP3_fisica.html
+    │                   ├── TP4_fisica.html
+    │                   └── TP5_fisica.html
+    ├── TP1/
+    │   ├── tp1_punto1.c
+    │   ├── tp1_punto10.c
+    │   ├── tp1_punto11.c
+    │   ├── tp1_punto11_v.2.c
+    │   ├── tp1_punto12.c
+    │   ├── tp1_punto13.c
+    │   ├── tp1_punto14.c
+    │   ├── tp1_punto15.c
+    │   ├── tp1_punto16.c
+    │   ├── tp1_punto17.c
+    │   ├── tp1_punto18.c
+    │   ├── tp1_punto2.c
+    │   ├── tp1_punto3.c
+    │   ├── tp1_punto4.c
+    │   ├── tp1_punto5.c
+    │   ├── tp1_punto6.c
+    │   ├── tp1_punto7.c
+    │   ├── tp1_punto8.c
+    │   └── tp1_punto9.c
+    └── TP2/
+        ├── punto1.c
+        ├── punto2.c
+        ├── punto3.c
+        ├── punto4.c
+        ├── punto5.c
+        └── punto6.c
+```
