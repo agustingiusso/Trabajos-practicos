@@ -21,6 +21,7 @@ El desarrollo evita el uso de plantillas genéricas, optando por una estructura 
 - **CSS por Capas:** Estilos desacoplados (`base`, `components`, `layout`) que permiten la reutilización de código y fácil escalabilidad.
 - **JavaScript Modular:** Lógica de negocio separada por dominios (simulaciones, UI, utilidades), evitando el "Spaghetti code".
 - **Sistema de Temas Nativo:** Implementación de _Dark/Light Mode_ persistente (LocalStorage) con paletas de colores optimizadas (Soft UI).
+- **Diseño Completamente Responsive:** Interfaz fluida y adaptable construida con estrategias _Mobile First_ y _Media Queries_ personalizadas, garantizando una experiencia de usuario consistente en celulares, tablets y pc.
 
 ### 2. Módulos Académicos Interactivos
 
