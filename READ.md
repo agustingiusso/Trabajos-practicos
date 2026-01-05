@@ -5,10 +5,11 @@
 ![JavaScript]
 ![Three.js]
 ![C]
+![Chart.js]
 
 Este repositorio aloja una **Plataforma Web Modular** desarrollada desde cero para centralizar, visualizar y entregar los trabajos prácticos correspondientes a la carrera de **Ingeniería en Sistemas**.
 
-El proyecto va más allá de un simple repositorio de archivos: es una aplicación web interactiva que implementa simulación 3D, renderizado matemático en tiempo real y una arquitectura de software escalable.
+El proyecto no es un repositorio de archivos: es una aplicación web interactiva que implementa simulación 3D, renderizado matemático en tiempo real y una arquitectura de software escalable.
 
 ---
 
@@ -52,8 +53,8 @@ Implementación de librerías gráficas para la comprensión visual de conceptos
 | **Core**           | HTML5 Semántico, CSS3 Moderno (Variables, Flexbox, Grid) |
 | **Lógica**         | JavaScript (ES6+), Vanilla JS (Sin frameworks pesados)   |
 | **Gráficos 3D**    | **Three.js** (WebGL), **Plotly.js**                      |
-| **Matemáticas**    | **MathJax** (Renderizado LaTeX)                          |
-| **Backend/Lógica** | **Lenguaje C** (Resolución de ejercicios algorítmicos)   |
+| **Álgebra**        | **MathJax** (Renderizado LaTeX)                          |
+| **Backend/Lógica** | **Lenguaje C** (Resolución de ejercicios de algoritmos)  |
 | **Herramientas**   | Git, GitHub Pages (Despliegue)                           |
 
 ---

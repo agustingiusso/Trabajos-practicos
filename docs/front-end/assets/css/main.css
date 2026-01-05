@@ -4,36 +4,30 @@
 
 @import url('base/_variables.css');
 @import url('base/_reset.css');
-@import url('base/_typography.css');
 
 /* ===== COMPONENTS ===== */
 
 @import url('components/_buttons.css');
 @import url('components/_cards.css');
-@import url('components/_header.css');
 @import url('components/_code.css');
+@import url('components/_header.css');
 @import url('components/_tables.css');
 
 /* ===== LAYOUT ===== */
 
-@import url('layout/_grid.css');
 @import url('layout/_navigation.css');
 
 /* ===== PAGES ===== */
 
 @import url('pages/_algebra.css');
 @import url('pages/_algoritmos.css');
-@import url('pages/_arquitectura.css');
-@import url('pages/_colores_pages.css');
 @import url('pages/_fisica1.css');
 @import url('pages/_index.css');
 @import url('pages/_laboratorio_algebra.css');
 @import url('pages/_labs_fisica1.css');
-@import url('pages/_logica.css');
-@import url('pages/_procesos.css');
+@import url('pages/_landing.css');
 @import url('pages/_producto_mixto.css');
 @import url('pages/_recta_plano.css');
-@import url('pages/_landing.css');
 
 /* ===== UTILITIES ===== */
 
