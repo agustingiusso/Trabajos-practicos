@@ -6,6 +6,23 @@
     <title>Producto Mixto - Álgebra</title>
 
     <link rel="stylesheet" href="../../assets/css/main.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            startup: {
+                typeset: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body class="algebra-page">
 
@@ -83,7 +100,7 @@
         
         <div class="pm-card">
             <h2 class="pm-section-title">3. Desarrollo del Cálculo</h2>
-            <div class="pm-formula-box">
+            <div class="formula-responsive">
                 $$ \text{Volumen} = | \vec{a} \cdot (\vec{b} \times \vec{c}) | $$
             </div>
             
@@ -96,7 +113,7 @@
             
             <h3>Definición Formal</h3>
             <p>El <strong>producto mixto</strong> (o triple producto escalar) de tres vectores en ℝ³ combina el producto vectorial y escalar:</p>
-            <div class="pm-formula-box">
+            <div class="formula-responsive">
                 $$ \vec{a} \cdot (\vec{b} \times \vec{c}) $$
             </div>
             
@@ -104,15 +121,15 @@
             <div class="pm-props-grid">
                 <div class="pm-prop-item">
                     <h4>Permutación Cíclica</h4>
-                    <div class="pm-mini-formula">$$ |\vec{a}\cdot(\vec{b}\times \vec{c})| = |\vec{b}\cdot(\vec{c}\times \vec{a})| $$</div>
+                    <div class="formula-responsive">$$ |\vec{a}\cdot(\vec{b}\times \vec{c})| = |\vec{b}\cdot(\vec{c}\times \vec{a})| $$</div>
                 </div>
                 <div class="pm-prop-item">
                     <h4>Anticonmutatividad</h4>
-                    <div class="pm-mini-formula">$$ \vec{a}\cdot(\vec{b}\times \vec{c}) = -\vec{a}\cdot(\vec{c}\times \vec{b}) $$</div>
+                    <div class="formula-responsive">$$ \vec{a}\cdot(\vec{b}\times \vec{c}) = -\vec{a}\cdot(\vec{c}\times \vec{b}) $$</div>
                 </div>
                 <div class="pm-prop-item">
                     <h4>Coplanaridad</h4>
-                    <div class="pm-mini-formula">$$ \vec{a}\cdot(\vec{b}\times \vec{c}) = 0 $$</div>
+                    <div class="formula-responsive">$$ \vec{a}\cdot(\vec{b}\times \vec{c}) = 0 $$</div>
                 </div>
             </div>
             
@@ -120,7 +137,7 @@
 
             <h3>Cálculo mediante Determinante</h3>
             <p>Analíticamente, el producto mixto se calcula como el determinante de la matriz formada por las componentes de los tres vectores:</p>
-            <div class="pm-formula-box">
+            <div class="formula-responsive">
                 $$ 
                 \vec{a} \cdot (\vec{b} \times \vec{c}) = 
                 \begin{vmatrix} a_x & a_y & a_z \\ b_x & b_y & b_z \\ c_x & c_y & c_z \end{vmatrix} = 
@@ -140,10 +157,9 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
- 
     <script src="../../assets/js/theme.js"></script>
+ 
     <script src="../../assets/js/producto_mixto.js"></script>
-    <script src="../../assets/js/formulas_mat.js"></script>
     
 </body>
 </html>

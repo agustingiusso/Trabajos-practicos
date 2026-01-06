@@ -1,11 +1,3 @@
-/**
- * Archivo: theme.js (Unificado)
- * Funciones:
- * 1. Control del Tema (Oscuro/Claro) - Previene parpadeo (FOUC).
- * 2. Detección de Sección (Asigna clases al body según la URL).
- * 3. Animaciones del Index (Si corresponde).
- */
-
 (function() {
     // --- 1. LÓGICA CRÍTICA (Se ejecuta inmediatamente) ---
     const STORAGE_KEY = 'tp-theme';
