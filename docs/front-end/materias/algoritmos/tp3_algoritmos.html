@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 - 6 Puntos</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="tp1-algoritmos-page">
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../algoritmos.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+        <!-- Menú lateral de navegación -->
+        <div class="slide-controls">
+            <ul class="nav-points">
+                <li class="nav-point" data-point="1">01</li>
+                <li class="nav-point" data-point="2">02</li>
+                <li class="nav-point" data-point="3">03</li>
+                <li class="nav-point" data-point="4">04</li>
+                <li class="nav-point" data-point="5">05</li>
+                <li class="nav-point" data-point="6">06</li>
+            </ul>
+        </div>
+
+    <main class="main-container">
+
+        <div class="slides-container">
+            <!-- Punto 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1:  Análisis de pares de compuestos en experimento químico</h3>
+                        <p>En un experimento químico se obtuvieron un conjunto de pares de valores de compuestos (C1, C2) y se requiere que desarrolle un programa que determine e imprima:
+
+a. Cuantos pares (C1,C2) tienen el mismo valor de C1 que el primer par (C1,C2) de la lista.
+b. Primer valor de C1 mayor que C2
+c. En cuantos pares (C1, C2) se cumple que C1 es el triple de C2</p>
+                    </div>
+                    
+                    <div class="code-box">
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float c1 = 0, c2 = 0, primer_c1 = 0, primv = 0;
+    int check = 0, cont = -1, check_primv = 0, cont3 = 0;
+
+    printf("Ingrese los valores de los compuestos, si desea dejar de ingresar pongale 0 a ambos \n");
+    do
+    {
+        printf("Ingrese el valor de C1: ");
+        scanf(" %f", &c1);
+        printf("Ingrese el valor de C2: ");
+        scanf(" %f", &c2);
+
+        if (c1 == 0 && c2 == 0)
+        {
+            break;
+        }
+
+        if (check != 1) /* Punto a) */
+        {
+            primer_c1 = c1;
+            check = 1;
+        }
+
+        if (primer_c1 == c1)
+        {
+            cont++;
+        }
+
+        if (check_primv != 1) /* Punto b) */
+        {
+            if (c1 > c2)
+            {
+                primv = c1;
+                check_primv = 1;
+            }
+        }
+
+        if (c1 == 3 * c2) /* Punto c) */
+        {
+            cont3++;
+        }
+
+    } while (c1 != 0 || c2 != 0);
+
+    printf("\nResultados:\n");
+
+    printf("Los pares que tienen el mismo valor del primer C1 son: %d\n", cont);
+
+    if (check_primv == 0)
+    {
+        printf("No se encontro ningun valor de C1 mayor a C2\n");
+    }
+    else
+    {
+        printf("El primer valor de C1 mayor a C2 es:  %.2f\n", primv);
+    }
+
+    printf("En %d pares se cumple que C1 es el triple de C2\n", cont3);
+
+    return 0;
+}</code></pre>
+                        <button class="btn-copy">
+                            <i class="fas fa-copy copy-icon"></i>
+                            <i class="fas fa-check check-icon" style="display: none;"></i>
+                            <span>Copiar</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Punto 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Cálculo de porcentajes y totales de egresados por carrera y facultad</h3>
+                        <p>La UTN quiere recoger información respecto a 3 carreras: SIS, MEC y QUI. Diseñe un algoritmo que permita conocer por Facultad el porcentaje de alumnos de estas 3 carreras sobre el total de egresados. Informando al final el total de alumnos por carrera de todas las facultades y el total general.</p>
+                    </div>
+                    
+                    <div class="code-box">
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int carrera = 0, egresados = 0, tot_general = 0, sis = 0, tot_sis = 0, mec = 0, tot_mec = 0, qui = 0, tot_qui = 0, i = 0, facus = 0;
+    float porc_sis = 0, porc_mec = 0, porc_qui = 0;
+
+    printf("Ingrese la cantidad de facultades: ");
+    scanf(" %d", &facus);
+
+    for (i = 1; i <= facus; i++)
+
+    {
+        printf("Ingrese codigo de carrera (1 = SIS, 2 = MEC, 3 = QUI): ");
+        scanf(" %d", &carrera);
+
+        printf("Ingrese la cantidad de egresados: ");
+        scanf(" %d", &egresados);
+
+        switch (carrera)
+        {
+        case 1:
+            sis = egresados;
+            break;
+
+        case 2:
+            mec = egresados;
+            break;
+
+        case 3:
+            qui = egresados;
+            break;
+        }
+
+        tot_sis = tot_sis + sis;
+        tot_mec = tot_mec + mec;
+        tot_qui = tot_qui + qui;
+    }
+
+    tot_general = tot_sis + tot_mec + tot_qui;
+
+    porc_sis = (float)(tot_sis * 100) / tot_general;
+    porc_mec = (float)(tot_mec * 100) / tot_general;
+    porc_qui = (float)(tot_qui * 100) / tot_general;
+
+    printf("\nPorcentajes: \n");
+    printf("Porcentaje de alumnos de Sistemas: %.2f%%\n", porc_sis);
+    printf("Porcentaje de alumnos de Mecanica: %.2f%%\n", porc_mec);
+    printf("Porcentaje de alumnos de Quimica: %.2f%%\n", porc_qui);
+
+    if (tot_general > 0)
+    {
+        printf("\nTotales: \n");
+        printf("Total general de alumnos: %d\n", tot_general);
+        printf("Total de alumnos de Sistemas: %d\n", tot_sis);
+        printf("Total de alumnos de Mecanica: %d\n", tot_mec);
+        printf("Total de alumnos de Quimica: %d\n", tot_qui);
+    }
+    else
+    {
+        printf("No se ingresaron alumnos");
+    }
+
+    return 0;
+}</code></pre>
+                        <button class="btn-copy">
+                            <i class="fas fa-copy copy-icon"></i>
+                            <i class="fas fa-check check-icon" style="display: none;"></i>
+                            <span>Copiar</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Punto 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Producto de dos enteros usando sólo sumas</h3>
+                        <p>Elabore un algoritmo que calcule el producto de dos enteros A y B empleando sólo la operación suma.</p>
+                    </div>
+                    
+                    <div class="code-box">
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int num1 = 0, num2 = 0, i = 0, multi = 0;
+
+    printf("\n Ingrese dos numeros para multiplicarlos: \n");
+
+    printf("Primer numero: ");
+    scanf(" %d", &num1);
+
+    printf("Segundo numero: ");
+    scanf(" %d", &num2);
+
+    for (i = 1; i <= num2; i++)
+    {
+        multi += num1;
+    }
+
+    printf("El numero resultante de la multiplicacion es: %d\n", multi);
+
+    return 0;
+}</code></pre>
+                        <button class="btn-copy">
+                            <i class="fas fa-copy copy-icon"></i>
+                            <i class="fas fa-check check-icon" style="display: none;"></i>
+                            <span>Copiar</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Punto 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Cálculo de factura con validación de valores unitarios</h3>
+                        <p>Escriba un algoritmo para calcular cada renglón de una factura (valor unitario * cantidad vendida) y el total de la misma, suponiendo que el número de renglones es variable. Emitir un mensaje de error si el valor unitario es <= 0.</p>
+                    </div>
+                    
+                    <div class="code-box">
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i = 0, cant_vendida = 0, renglones = 0;
+    float subtotal = 0, valor_unitario = 0, total = 0;
+
+    printf("Ingrese el numero de renglones: ");
+    scanf("%d", &renglones);
+
+    for (i = 1; i <= renglones; i++)
+    {
+        printf("\n--- Renglon %d ---\n", i);
+
+        do
+        {
+            printf("Ingrese el valor unitario del renglon %d: ", i);
+            scanf("%f", &valor_unitario);
+
+            if (valor_unitario <= 0)
+            {
+                printf("\n \\ERROR\\: El valor unitario debe ser mayor que cero.\n");
+            }
+        } while (valor_unitario <= 0);
+
+        printf("Ingrese la cantidad vendida del renglon %d: ", i);
+        scanf("%d", &cant_vendida);
+
+        subtotal = valor_unitario * cant_vendida;
+        total += subtotal;
+
+        printf("Subtotal del renglon %d: %.2f\n", i, subtotal);
+    }
+
+    printf("\n =========================== \n");
+    printf("Total de la factura: %.2f\n", total);
+
+    return 0;
+}</code></pre>
+                        <button class="btn-copy">
+                            <i class="fas fa-copy copy-icon"></i>
+                            <i class="fas fa-check check-icon" style="display: none;"></i>
+                            <span>Copiar</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Punto 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Cálculo de impuesto y plan de cuotas según importe</h3>
+                        <p>Escribir un algoritmo que, dado un importe, permita calcular e informar cuanto corresponde pagar por un impuesto, en cuantas cuotas y el valor de las mismas. Tener en cuenta los siguientes datos:
+                            
+IMPUESTO = 15% del importe dado.
+Los importes mayores que $3000 y menor o igual que $10000 se pagan en dos cuotas.
+Los mayores de $10000 en tres cuotas.
+El algoritmo debe permitir tratar varios importes finalizando cuando se ingresa 9999 como importe.</p>
+                    </div>
+                    
+                    <div class="code-box">
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float importe = 0, valor_cuotas = 0, importe_con_impuesto = 0;
+    int cuotas = 2;
+
+    printf("\n--- Ingrese 9999 si desea dejar de ingresar datos ---\n");
+
+    do
+    {
+        printf("Ingrese el valor del importe: ");
+        scanf(" %f", &importe);
+
+        if (importe < 0)
+        {
+            printf("\n--- Usted ha ingresado un valor no valido, intente de nuevo ---\n");
+            continue;
+        }
+
+        importe_con_impuesto = importe * 1.15;
+
+        printf("\n--- Su importe con impuestos es %.2f ---\n", importe_con_impuesto);
+
+        if (importe > 3000 && importe <= 10000)
+        {
+            cuotas = 2;
+            valor_cuotas = importe_con_impuesto / 2;
+        }
+        else if (importe_con_impuesto > 10000)
+        {
+            cuotas = 3;
+            valor_cuotas = importe_con_impuesto / 3;
+        }
+
+        if (importe <= 3000)
+        {
+            printf("\n--- Usted no puede pagar con cuotas ya que su importe es menor o igual a 3000$ ---\n");
+        }
+        else
+        {
+            printf("\n--- Usted puede pagar en %d cuotas, las cuales tienen un valor de %.2f$ c/u ---\n", cuotas, valor_cuotas);
+        }
+
+    } while (importe != 9999);
+
+    printf("\n--- Gracias por usar nuestros servicios ---\n");
+
+    return 0;
+}</code></pre>
+                        <button class="btn-copy">
+                            <i class="fas fa-copy copy-icon"></i>
+                            <i class="fas fa-check check-icon" style="display: none;"></i>
+                            <span>Copiar</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Punto 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Desglose de billetes para una suma de dinero</h3>
+                        <p>Escriba un algoritmo que acepte un número entero que representa una suma de dinero e indique cuantos billetes de cada denominación necesita, suponiendo que solo existen billetes de 1000, 500, 200, 100 Y 50 pesos.</p>
+                    </div>
+                    
+                    <div class="code-box">
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int dinero = 0, mil = 0, quinientos = 0, doscientos = 0, cien = 0, cincuenta = 0;
+    do
+    {
+        printf("Ingrese una cantidad de dinero entera en pesos: ");
+        scanf("%d", &dinero);
+
+        if (dinero <= 0)
+        {
+            printf("\n---  La cantidad ingresada no es valida. Debe ser un numero positivo y mayor a 0, intente de nuevo. ---\n");
+        }
+    } while (dinero <= 0);
+
+    mil = dinero / 1000;
+    dinero = dinero % 1000;
+
+    quinientos = dinero / 500;
+    dinero = dinero % 500;
+
+    doscientos = dinero / 200;
+    dinero = dinero % 200;
+
+    cien = dinero / 100;
+    dinero = dinero % 100;
+
+    cincuenta = dinero / 50;
+    dinero = dinero % 50;
+
+    printf("\n--- Billetes necesarios: ---\n");
+    if (mil > 0)
+    {
+        printf("1000: %d\n", mil);
+    }
+
+    if (quinientos > 0)
+    {
+        printf("500 : %d\n", quinientos);
+    }
+
+    if (doscientos > 0)
+    {
+        printf("200 : %d\n", doscientos);
+    }
+
+    if (cien > 0)
+    {
+        printf("100 : %d\n", cien);
+    }
+
+    if (cincuenta > 0)
+    {
+        printf("50  : %d\n", cincuenta);
+    }
+
+    if (dinero > 0)
+    {
+        printf("\nSobrante que no puede representarse en billetes: %d pesos\n", dinero);
+    }
+
+    return 0;
+}</code></pre>
+                        <button class="btn-copy">
+                            <i class="fas fa-copy copy-icon"></i>
+                            <i class="fas fa-check check-icon" style="display: none;"></i>
+                            <span>Copiar</span>
+                        </button>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/copy.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script>
+    </script>
+</body>
+</html>
