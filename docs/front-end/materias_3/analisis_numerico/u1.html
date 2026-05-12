@@ -1,1 +1,565 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1 - Análisis Numérico</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="numerico-page">
+
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Unidad 1</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Parte 1</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../analisis_numerico.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+            
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Dadas las siguientes funciones determinar si son funciones periódicas o no. En caso de que sí lo sean determinar el período fundamental.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $f(x) = \sqrt{5}\ sen (3\pi x) + 2\cos(4\pi x)$</li>
+                            <li><strong>b)</strong> $g(x) = 2\ sen (4x) - 6\cos(\pi x)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) $f(x) = \sqrt{5}\ sen (3\pi x) + 2\cos(4\pi x)$</strong></p>
+                        <p>Comparando el primer y segundo término de la función $f(x)$ con la expresión general de las funciones trigonométricas $A_1 \ sen (\omega_1 x + \phi_1)$ y $A_2 \cos(\omega_2 x + \phi_2)$ respectivamente, es posible escribir:</p>
+                        
+                        <div class="formula-responsive">
+                            $$ \omega_1 = 3\pi = \frac{2\pi}{T_1} \implies T_1 = \frac{2\pi}{3\pi} = \frac{2}{3} $$
+                            $$ \omega_2 = 4\pi = \frac{2\pi}{T_2} \implies T_2 = \frac{2\pi}{4\pi} = \frac{1}{2} $$
+                        </div>
+                        
+                        <p style="margin-top: 1rem;">Luego, la suma de dos funciones periódicas de períodos $T_1$ y $T_2$ da como resultado una función periódica únicamente si el cociente de los períodos es un número racional:</p>
+                        
+                        <div class="formula-responsive">
+                            $$ \frac{T_1}{T_2} = \frac{2/3}{1/2} = \frac{4}{3} \in \mathbb{Q} $$
+                        </div>
+                        <p>Dado que en este caso sí es un número racional, por lo tanto, $f(x)$ <strong>es una función periódica</strong>.</p>
+                        
+                        <p style="margin-top: 1rem;">Calculemos ahora su período fundamental, el cual es el valor de $T$ más pequeño tal que existan números enteros positivos $m$ y $n$ de manera que:</p>
+                        <div class="formula-responsive">
+                            $$ 3\pi(x+T) = 3\pi x + 3\pi T = 3\pi x + m2\pi \implies 3\pi T = m2\pi \implies T = \frac{2m}{3} $$
+                            $$ 4\pi(x+T) = 4\pi x + 4\pi T = 4\pi x + n2\pi \implies 4\pi T = n2\pi \implies T = \frac{2n}{4} = \frac{n}{2} $$
+                        </div>
+                        <p>Igualando las dos expresiones para $T$, resulta: $\frac{2m}{3} = \frac{n}{2} \implies \frac{m}{n} = \frac{3}{4}$.</p>
+                        <p>Por lo tanto, los enteros positivos $m$ y $n$ más pequeños para los que se cumple la igualdad anterior son $m=3$ y $n=4$, obteniendo para esos valores: $\mathbf{T = 2}$.</p>
+
+                        <p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px dashed var(--table-border-color);"><strong>b) $g(x) = 2\ sen (4x) - 6\cos(\pi x)$</strong></p>
+                        <p>Repitiendo el mismo procedimiento realizado en la parte a), se obtiene:</p>
+                        <div class="formula-responsive">
+                            $$ \omega_1 = 4 = \frac{2\pi}{T_1} \implies T_1 = \frac{2\pi}{4} = \frac{\pi}{2} $$
+                            $$ \omega_2 = \pi = \frac{2\pi}{T_2} \implies T_2 = \frac{2\pi}{\pi} = 2 $$
+                        </div>
+                        <p>Luego, el cociente de ambos períodos resulta:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{T_1}{T_2} = \frac{\pi/2}{2} = \frac{\pi}{4} \notin \mathbb{Q} $$
+                        </div>
+                        <p>Dado que en este caso no es un número racional, por lo tanto, $g(x)$ <strong>no es una función periódica</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Obtener las series de Fourier de las siguientes funciones y graficar las primeras tres sumas parciales en el intervalo [-2, 2]. Indicar a qué valor convergen las series de Fourier en $x=0$, $x=1$, $x=3/2$ y $x=2$.</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>$f(x) = \begin{cases} 1, & 0 \le x \le 1 \\ -1, & -1 < x \le 0 \end{cases}$ </li>
+                            <li>$f(x) = \begin{cases} 1, & |x| \le \frac{1}{2} \\ 0, & \frac{1}{2} < |x| \le 1 \end{cases}$</li>
+                            <li>$f(x) = x, \quad |x| \le 1$</li>
+                            <li>$f(x) = x - 1, \quad |x| \le 1$</li>
+                            <li>$f(x) = |x|, \quad |x| \le 1$</li>
+                            <li>$f(x) = x^2, \quad |x| \le 1$</li>
+                            <li>$f(x) = 3x - 2x^2, \quad |x| \le 1$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Observación inicial:</strong> Aunque se solicita graficar las funciones en el intervalo $[-2, 2]$, sus definiciones base abarcan un ancho de $2$ unidades. Por lo tanto, para todas las funciones de este ejercicio, el período fundamental es $\mathbf{T = 2}$, lo que implica que $\mathbf{L = 1}$ y la frecuencia fundamental es $\mathbf{\omega_0 = \frac{n\pi}{L} = n\pi}$.</p>
+                        
+                        <div style="background-color: rgba(128, 128, 128, 0.05); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border-left: 4px solid var(--accent);">
+                            <h5 style="margin-top: 0; margin-bottom: 1rem; color: var(--accent); font-size: 1.05rem;">Repaso Teórico: Serie de Fourier Trigonométrica</h5>
+                            <p style="margin-bottom: 0.5rem; color: var(--text-color);">La expresión general para desarrollar una función periódica en Serie de Fourier es:</p>
+                            <div class="formula-responsive" style="margin: 0.5rem 0;">
+                                $$ f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[ a_n \cos\left(\frac{n\pi x}{L}\right) + b_n\ sen \left(\frac{n\pi x}{L}\right) \right] $$
+                            </div>
+                            
+                            <p style="margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--text-color);"><strong>Cálculo de los coeficientes:</strong></p>
+                            <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; color: var(--text-color);">
+                                <li>
+                                    <strong>Término independiente $\left(\frac{a_0}{2}\right)$:</strong> Representa el valor medio (o componente de continua) de la función en un período. Se calcula integrando la función original:
+                                    <div class="formula-responsive" style="margin: 0.2rem 0;">$$ a_0 = \frac{1}{L} \int_{-L}^{L} f(x) dx $$</div>
+                                </li>
+                                <li>
+                                    <strong>Coeficientes de los cosenos ($a_n$):</strong> Determinan la amplitud de las componentes pares de la señal.
+                                    <div class="formula-responsive" style="margin: 0.2rem 0;">$$ a_n = \frac{1}{L} \int_{-L}^{L} f(x) \cos\left(\frac{n\pi x}{L}\right) dx $$</div>
+                                </li>
+                                <li>
+                                    <strong>Coeficientes de los senos ($b_n$):</strong> Determinan la amplitud de las componentes impares de la señal.
+                                    <div class="formula-responsive" style="margin: 0.2rem 0;">$$ b_n = \frac{1}{L} \int_{-L}^{L} f(x)\ sen \left(\frac{n\pi x}{L}\right) dx $$</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">a) Onda Cuadrada</p>
+                        <p>Dado que $f(x)$ tiene simetría impar ($f(-x) = -f(x)$), entonces: $a_0 = 0$, $a_n = 0$. Calculamos $b_n$ integrando en la mitad del período y multiplicando por $\frac{4}{T}$:</p>
+                        <div class="formula-responsive">
+                            $$b_n = \frac{2}{1} \int_0^1 1 \cdot \ sen (n\pi x) dx = 2 \left[ -\frac{\cos(n\pi x)}{n\pi} \right]_0^1$$
+                            $$b_n = \frac{-2}{n\pi} [\cos(n\pi) - \cos(0)] = \frac{-2}{n\pi} [(-1)^n - 1] = \frac{2}{n\pi} [1 - (-1)^n]$$
+                        </div>
+                        <p>Por lo tanto, la Serie de Fourier presenta únicamente senos. La expresión completa es:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = \sum_{n=1}^\infty \frac{2}{n\pi} [1 - (-1)^n]\ sen (n\pi x)$$
+                        </div>
+                        <p>Las primeras tres sumas parciales no nulas (para $n=1, 3, 5$) son:</p>
+                        <div class="formula-responsive">
+                            $$S_1 = \frac{4}{\pi}\ sen (\pi x) \quad ; \quad S_2 = \frac{4}{\pi}\ sen (\pi x) + \frac{4}{3\pi}\ sen (3\pi x) \quad ; \quad S_3 = S_2 + \frac{4}{5\pi}\ sen (5\pi x)$$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Pulso Rectangular</p>
+                        <p>Dado que $f(x)$ tiene simetría par ($f(-x) = f(x)$), entonces: $b_n = 0$. Las integrales para los coeficientes $a_n$ se evalúan entre $0$ y $1/2$ ya que la función vale $0$ para $x > 1/2$.</p>
+                        <div class="formula-responsive">
+                            $$a_0 = \frac{2}{1} \int_0^{1/2} 1 dx = 2 [x]_0^{1/2} = 1$$
+                            $$a_n = 2 \int_0^{1/2} 1 \cdot \cos(n\pi x) dx = 2 \left[ \frac{\ sen (n\pi x)}{n\pi} \right]_0^{1/2} = \frac{2}{n\pi}\ sen \left(\frac{n\pi}{2}\right)$$
+                        </div>
+                        <p>Su Serie de Fourier es:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = \frac{1}{2} + \sum_{n=1}^\infty \frac{2}{n\pi}\ sen \left(\frac{n\pi}{2}\right) \cos(n\pi x)$$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) Función $f(x) = x$</p>
+                        <p>Por simetría impar: $a_0 = 0$, $a_n = 0$. Calculamos $b_n$ (integración por partes):</p>
+                        <div class="formula-responsive">
+                            $$b_n = 2 \int_0^1 x\ sen (n\pi x) dx = 2 \left[ \frac{-x}{n\pi}\cos(n\pi x) \right]_0^1 + 2 \int_0^1 \frac{1}{n\pi}\cos(n\pi x) dx$$
+                            $$b_n = 2 \left[ \frac{-1}{n\pi}\cos(n\pi) \right] + \frac{2}{(n\pi)^2}[\ sen (n\pi) -\ sen (0)] = \frac{-2}{n\pi}(-1)^n = \frac{2(-1)^{n+1}}{n\pi}$$
+                        </div>
+                        <p>Su Serie de Fourier es:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = \sum_{n=1}^\infty \frac{2(-1)^{n+1}}{n\pi}\ sen (n\pi x)$$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">d) Función $f(x) = x - 1$</p>
+                        <p>Esta función no presenta simetría pura, por lo que resolvemos las integrales en el intervalo completo $[-1, 1]$. Sin embargo, podemos separar la integral por linealidad sabiendo que $x$ es impar y $-1$ es par:</p>
+                        <div class="formula-responsive">
+                            $$a_0 = \int_{-1}^1 (x-1) dx = \left[ \frac{x^2}{2} - x \right]_{-1}^1 = -2$$
+                            $$a_n = \int_{-1}^1 (x-1) \cos(n\pi x) dx = \int_{-1}^1 x \cos(n\pi x) dx - \int_{-1}^1 \cos(n\pi x) dx = 0 - 0 = 0$$
+                        </div>
+                        <p>Para $b_n$, la integral de $-\ sen(n\pi x)$ en un período simétrico es cero, quedando solo la integral de $x\ sen(n\pi x)$ que calculamos en el inciso c:</p>
+                        <div class="formula-responsive">
+                            $$b_n = \int_{-1}^1 (x-1)\ sen (n\pi x) dx = 2 \int_0^1 x\ sen (n\pi x) dx = \frac{2(-1)^{n+1}}{n\pi}$$
+                        </div>
+                        <p>Su Serie de Fourier es:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = -1 + \sum_{n=1}^\infty \frac{2(-1)^{n+1}}{n\pi}\ sen (n\pi x)$$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">e) Función $f(x) = |x|$</p>
+                        <p>Al aplicar el valor absoluto, la función adquiere simetría par ($f(-x) = f(x)$). Por lo tanto: $b_n = 0$.</p>
+                        <div class="formula-responsive">
+                            $$a_0 = 2 \int_0^1 x dx = 2 \left[ \frac{x^2}{2} \right]_0^1 = 1$$
+                            $$a_n = 2 \int_0^1 x \cos(n\pi x) dx = 2 \left[ \frac{x\ sen (n\pi x)}{n\pi} + \frac{\cos(n\pi x)}{(n\pi)^2} \right]_0^1$$
+                            $$a_n = 2 \left[ 0 + \frac{\cos(n\pi)}{(n\pi)^2} - \left( 0 + \frac{\cos(0)}{(n\pi)^2} \right) \right] = \frac{2}{(n\pi)^2}[(-1)^n - 1]$$
+                        </div>
+                        <p>Su Serie de Fourier es:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = \frac{1}{2} + \sum_{n=1}^\infty \frac{2}{(n\pi)^2}[(-1)^n - 1] \cos(n\pi x)$$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">f) Función $f(x) = x^2$</p>
+                        <p>Por simetría par: $b_n = 0$. Se integra por partes de forma iterada:</p>
+                        <div class="formula-responsive">
+                            $$a_0 = 2 \int_0^1 x^2 dx = \frac{2}{3} \quad ; \quad a_n = 2 \int_0^1 x^2 \cos(n\pi x) dx = \frac{4(-1)^n}{(n\pi)^2}$$
+                        </div>
+                        <p>Su Serie de Fourier (recordando dividir $a_0$ por 2) es:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = \frac{1}{3} + \sum_{n=1}^\infty \frac{4(-1)^n}{(n\pi)^2} \cos(n\pi x)$$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">g) Función $f(x) = 3x - 2x^2$</p>
+                        <p>Como indica la pista, aplicamos la propiedad de linealidad de las Series de Fourier. Sabiendo que la serie de una combinación lineal es la combinación lineal de las series individuales, usamos los resultados de los incisos c ($x$) y f ($x^2$):</p>
+                        <div class="formula-responsive">
+                            $$a_0 = 3(a_0 \text{ de } x) - 2(a_0 \text{ de } x^2) = 3(0) - 2\left(\frac{2}{3}\right) = -\frac{4}{3}$$
+                            $$a_n = 3(0) - 2 \left( \frac{4(-1)^n}{(n\pi)^2} \right) = \frac{-8(-1)^n}{(n\pi)^2}$$
+                            $$b_n = 3 \left( \frac{2(-1)^{n+1}}{n\pi} \right) - 2(0) = \frac{6(-1)^{n+1}}{n\pi}$$
+                        </div>
+                        <p>Su Serie de Fourier completa queda expresada como:</p>
+                        <div class="formula-responsive">
+                            $$f(x) = -\frac{2}{3} + \sum_{n=1}^\infty \left[ \frac{-8(-1)^n}{(n\pi)^2} \cos(n\pi x) + \frac{6(-1)^{n+1}}{n\pi}\ sen (n\pi x) \right]$$
+                        </div>
+
+                        <h4 style="margin-top: 2.5rem; border-top: 1px dashed var(--table-border-color); padding-top: 1rem;">Convergencia (Teorema de Dirichlet):</h4>
+                        <div class="scroll-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Función</th>
+                                        <th>$x = 0$</th>
+                                        <th>$x = 1$</th>
+                                        <th>$x = 3/2 \equiv -1/2$</th>
+                                        <th>$x = 2 \equiv 0$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>a)</strong> $1$ y $-1$</td><td>$\frac{1+(-1)}{2} = 0$</td><td>$\frac{1+(-1)}{2} = 0$</td><td>$-1$</td><td>$0$</td></tr>
+                                    <tr><td><strong>b)</strong> Pulso</td><td>$1$</td><td>$0$</td><td>$\frac{1+0}{2} = \frac{1}{2}$</td><td>$1$</td></tr>
+                                    <tr><td><strong>c)</strong> $x$</td><td>$0$</td><td>$\frac{1+(-1)}{2} = 0$</td><td>$-\frac{1}{2}$</td><td>$0$</td></tr>
+                                    <tr><td><strong>d)</strong> $x-1$</td><td>$-1$</td><td>$\frac{0+(-2)}{2} = -1$</td><td>$-\frac{3}{2}$</td><td>$-1$</td></tr>
+                                    <tr><td><strong>e)</strong> $|x|$</td><td>$0$</td><td>$1$</td><td>$\frac{1}{2}$</td><td>$0$</td></tr>
+                                    <tr><td><strong>f)</strong> $x^2$</td><td>$0$</td><td>$1$</td><td>$\frac{1}{4}$</td><td>$0$</td></tr>
+                                    <tr><td><strong>g)</strong> $3x - 2x^2$</td><td>$0$</td><td>$\frac{1+(-5)}{2} = -2$</td><td>$-2$</td><td>$0$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 style="margin-top: 2rem;">Gráficos de las Sumas Parciales (S1, S2, S3):</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; margin-top: 1.5rem;" id="graficos-fourier-container">
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-a" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>a)</strong> Onda Cuadrada</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-b" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>b)</strong> Pulso Rectangular</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-c" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>c)</strong> $f(x) = x$</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-d" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>d)</strong> $f(x) = x - 1$</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-e" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>e)</strong> $f(x) = |x|$</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-f" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>f)</strong> $f(x) = x^2$</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                                <canvas id="canvas-f-g" width="280" height="180" style="display: block; border: 1px solid var(--table-border-color); border-radius: 8px; background: var(--card-bg);"></canvas>
+                                <span style="font-size: 0.95rem; color: var(--text-color);"><strong>g)</strong> $f(x) = 3x - 2x^2$</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Encontrar los coeficientes de la serie de Fourier de la siguiente función:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = 4 + 2\cos(3\pi x/L) - 6\ sen (2\pi x/L) $$
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La expresión dada ya es un desarrollo en Serie de Fourier trigonométrica finito. Comparando la función $f(x)$ con la expresión general de la Serie de Fourier:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n\cos\left(\frac{n\pi x}{L}\right) + b_n\ sen \left(\frac{n\pi x}{L}\right) \right) $$
+                        </div>
+                        <p>Igualando término a término, es posible escribir de manera directa los coeficientes:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>Término independiente: $\frac{a_0}{2} = 4 \implies \mathbf{a_0 = 8}$</li>
+                            <li>Para el coseno con $n=3$: $\mathbf{a_3 = 2}$</li>
+                            <li>Para el seno con $n=2$: $\mathbf{b_2 = -6}$</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Todos los demás coeficientes ($a_n$ para $n \neq 0, 3$ y $b_n$ para $n \neq 2$) son nulos.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>A partir de los siguientes gráficos hallar la función $f(x)$.</p>
+                        
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0;">
+                            
+                            <div style="text-align: center; width: 100%; max-width: 320px;">
+                                <svg viewBox="0 0 300 200" style="width: 100%; height: auto;">
+                                    <line x1="40" y1="20" x2="40" y2="160" stroke="var(--text-color)" stroke-width="1.5" />
+                                    <line x1="30" y1="150" x2="280" y2="150" stroke="var(--text-color)" stroke-width="1.5" />
+                                    <text x="25" y="15" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">a<tspan dy="3" font-size="0.75em">n</tspan></text>
+                                    <text x="285" y="165" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">n</text>
+                                    
+                                    <text x="32" y="125" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.1</text>
+                                    <text x="32" y="100" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.2</text>
+                                    <text x="32" y="75" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.3</text>
+                                    <text x="32" y="50" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.4</text>
+                                    
+                                    <text x="90" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">2</text>
+                                    <text x="140" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">4</text>
+                                    <text x="190" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">6</text>
+                                    <text x="240" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">8</text>
+                                    
+                                    <rect x="37" y="121" width="6" height="29" fill="var(--accent)" />
+                                    <rect x="62" y="30" width="6" height="120" fill="var(--accent)" />
+                                    <rect x="87" y="112" width="6" height="38" fill="var(--accent)" />
+                                </svg>
+                            </div>
+
+                            <div style="text-align: center; width: 100%; max-width: 320px;">
+                                <svg viewBox="0 0 300 200" style="width: 100%; height: auto;">
+                                    <line x1="40" y1="20" x2="40" y2="160" stroke="var(--text-color)" stroke-width="1.5" />
+                                    <line x1="30" y1="150" x2="280" y2="150" stroke="var(--text-color)" stroke-width="1.5" />
+                                    <text x="25" y="15" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">b<tspan dy="3" font-size="0.75em">n</tspan></text>
+                                    <text x="285" y="165" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">n</text>
+                                    
+                                    <text x="32" y="125" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.1</text>
+                                    <text x="32" y="100" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.2</text>
+                                    <text x="32" y="75" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.3</text>
+                                    <text x="32" y="50" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="end">0.4</text>
+                                    
+                                    <text x="90" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">2</text>
+                                    <text x="140" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">4</text>
+                                    <text x="190" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">6</text>
+                                    <text x="240" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">8</text>
+                                    
+                                    <rect x="137" y="115" width="6" height="35" fill="var(--accent)" />
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>A partir de la inspección de los espectros de amplitudes discretos presentados, identificamos los coeficientes no nulos:</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>En el espectro de cosenos: Para $n=0$ la barra está en $0.1$ ($\implies a_0 = 0.1$), para $n=1$ en $0.5$ ($\implies a_1 = 0.5$), y para $n=2$ en $0.15$ ($\implies a_2 = 0.15$).</li>
+                            <li>En el espectro de senos: Para $n=4$ la barra se ubica en $0.15$ ($\implies b_4 = 0.15$).</li>
+                        </ul>
+
+                        <p style="margin-top: 1rem;">Sabiendo que el término constante de la Serie de Fourier está dado por $a_0/2$, su valor será $0.1 / 2 = 0.05$. Reemplazando los coeficientes hallados en la fórmula general (asumiendo $\omega_0 = 1$), obtenemos la función buscada:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = 0.05 + 0.5\cos(x) + 0.15\cos(2x) + 0.15\ sen (4x) $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Hallar el desarrollo en serie de Fourier de medio rango en (i) cosenos y (ii) senos, en el intervalo [0, 1], de las siguientes funciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>$f(x) = 1$</li>
+                            <li>$f(x) = x$</li>
+                            <li>$f(x) = x^2$</li>
+                            <li>Indicar a qué valor convergen los desarrollos anteriores en $x=0$ y $x=1$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El intervalo dado es $[0, 1]$. Para la expansión de medio rango forzamos $L=1$, siendo el período total $T = 2L = 2$.</p>
+                        
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">(i) Desarrollos en Cosenos (Expansión Par):</p>
+                        <p>A partir de las condiciones de simetría de una función par se tiene: $b_n=0$. Las integrales se calculan en $[0, L]$ multiplicadas por $2/L$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a) $f(x)=1$:</strong> $a_0 = \frac{2}{1} \int_0^1 1 dx = 2$. $a_n = 2 \int_0^1 \cos(n\pi x) dx = 0$. $\implies f(x) = 1$.</li>
+                            <li><strong>b) $f(x)=x$:</strong> $a_0 = 2 \int_0^1 x dx = 1$. <br>$a_n = 2 \int_0^1 x \cos(n\pi x) dx = 2 \left[ \frac{x}{n\pi}\ sen (n\pi x) + \frac{1}{(n\pi)^2}\cos(n\pi x) \right]_0^1 = \frac{2}{(n\pi)^2}[(-1)^n - 1]$.</li>
+                            <li><strong>c) $f(x)=x^2$:</strong> $a_0 = 2 \int_0^1 x^2 dx = \frac{2}{3}$. <br>$a_n = 2 \int_0^1 x^2 \cos(n\pi x) dx = \frac{4(-1)^n}{(n\pi)^2}$ (integración por partes doble).</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">(ii) Desarrollos en Senos (Expansión Impar):</p>
+                        <p>A partir de las condiciones de simetría impar se tiene: $a_0=0$ y $a_n=0$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a) $f(x)=1$:</strong> $b_n = 2 \int_0^1 1 \ sen (n\pi x) dx = 2 \left[ -\frac{\cos(n\pi x)}{n\pi} \right]_0^1 = \frac{2}{n\pi}[1 - (-1)^n]$.</li>
+                            <li><strong>b) $f(x)=x$:</strong> $b_n = 2 \int_0^1 x \ sen (n\pi x) dx = \frac{2(-1)^{n+1}}{n\pi}$.</li>
+                            <li><strong>c) $f(x)=x^2$:</strong> $b_n = 2 \int_0^1 x^2 \ sen (n\pi x) dx = \frac{2(-1)^{n+1}}{n\pi} + \frac{4[(-1)^n-1]}{(n\pi)^3}$.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">d) Convergencia en los extremos ($x=0$ y $x=1$):</h4>
+                        <p>Al aplicar la expansión de medio rango, la función par obliga a que los límites laterales en los extremos coincidan, dando convergencia continua. En la expansión impar, hay un salto artificial en los extremos si $f(x) \neq 0$, convergiendo siempre a $0$.</p>
+                        
+                        <div class="scroll-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Función</th>
+                                        <th>Exp. Par (Cos) en $x=0$</th>
+                                        <th>Exp. Par (Cos) en $x=1$</th>
+                                        <th>Exp. Impar (Sen) en $x=0$</th>
+                                        <th>Exp. Impar (Sen) en $x=1$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>a)</strong> $f(x)=1$</td><td>$1$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr>
+                                    <tr><td><strong>b)</strong> $f(x)=x$</td><td>$0$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr>
+                                    <tr><td><strong>c)</strong> $f(x)=x^2$</td><td>$0$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>Obtener la forma compleja de la serie de Fourier de la función periódica $f(x)$ siguiente, de período $T=2\pi$: 
+                                <br><br>
+                                <span style="display: block; text-align: center;">$f(x) = e^x, \quad |x| \le \pi \quad \text{con} \quad f(x) = f(x+2\pi)$</span>
+                            </li>
+                            <li>Graficar el espectro en amplitud de $f(x)$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Forma compleja:</strong></p>
+                        <p>Para el cálculo de los coeficientes complejos de Fourier utilizo el intervalo de integración entre $-\pi$ y $\pi$ (período $T=2\pi$):</p>
+                        <div class="formula-responsive">
+                            $$ c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^x e^{-inx} dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{x(1-in)} dx $$
+                        </div>
+                        <p>Resolviendo la integral evaluada en los extremos:</p>
+                        <div class="formula-responsive">
+                            $$ c_n = \frac{1}{2\pi(1-in)} \left[ e^{x(1-in)} \right]_{-\pi}^{\pi} = \frac{1}{2\pi(1-in)} [e^{\pi}e^{-in\pi} - e^{-\pi}e^{in\pi}] $$
+                        </div>
+                        <p>Utilizando las fórmulas de Euler: $e^{ix} = \cos(x) + i \ sen (x)$ y $e^{-ix} = \cos(x) - i \ sen (x)$, sabemos que:</p>
+                        <div class="formula-responsive">
+                            $$ e^{in\pi} = \cos(n\pi) + i\ sen (n\pi) = \cos(n\pi) = (-1)^n $$
+                            $$ e^{-in\pi} = \cos(n\pi) - i\ sen (n\pi) = \cos(n\pi) = (-1)^n $$
+                        </div>
+                        <p>Reemplazando en $c_n$ y utilizando la definición de seno hiperbólico ($e^\pi - e^{-\pi} = 2\ sen h(\pi)$):</p>
+                        <div class="formula-responsive">
+                            $$ c_n = \frac{(-1)^n}{2\pi(1-in)} (e^{\pi} - e^{-\pi}) = \frac{(-1)^n \ sen h(\pi)}{\pi(1-in)} $$
+                        </div>
+                        <p>Multiplicando por el complejo conjugado $(1+in)$ para racionalizar el denominador, la forma compleja de la serie es:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = \frac{\ sen h(\pi)}{\pi} \sum_{n=-\infty}^{\infty} (-1)^n \frac{1+in}{1+n^2} e^{inx} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Espectro en Amplitud de $f(x)$:</strong></p>
+                        <p>Calculando el módulo $|c_n|$ obtenemos la amplitud de cada armónico:</p>
+                        <div class="formula-responsive">
+                            $$ |c_n| = \frac{\ sen h(\pi)}{\pi \sqrt{1^2 + n^2}} = \frac{\ sen h(\pi)}{\pi \sqrt{1+n^2}} $$
+                        </div>
+                        <p>Se puede observar que el armónico fundamental decae con la forma $1/\sqrt{n^2}$, y el mayor valor se encuentra en $n=0$ (término continuo).</p>
+
+                        <div style="text-align: center; width: 100%; max-width: 400px; margin: 2rem auto;">
+                            <svg viewBox="0 0 400 200" style="width: 100%; height: auto;">
+                                <line x1="200" y1="20" x2="200" y2="160" stroke="var(--text-color)" stroke-width="1.5" />
+                                <line x1="20" y1="150" x2="380" y2="150" stroke="var(--text-color)" stroke-width="1.5" />
+                                <text x="180" y="15" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">|c<tspan dy="3" font-size="0.75em">n</tspan>|</text>
+                                <text x="385" y="165" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">n</text>
+                                
+                                <text x="200" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">0</text>
+                                <text x="240" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">1</text>
+                                <text x="280" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">2</text>
+                                <text x="320" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">3</text>
+                                <text x="160" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">-1</text>
+                                <text x="120" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">-2</text>
+                                <text x="80" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="10" text-anchor="middle">-3</text>
+                                
+                                <rect x="197" y="30" width="6" height="120" fill="var(--accent)" />
+                                <rect x="237" y="65" width="6" height="85" fill="var(--accent)" />
+                                <rect x="157" y="65" width="6" height="85" fill="var(--accent)" />
+                                <rect x="277" y="96" width="6" height="54" fill="var(--accent)" />
+                                <rect x="117" y="96" width="6" height="54" fill="var(--accent)" />
+                                <rect x="317" y="112" width="6" height="38" fill="var(--accent)" />
+                                <rect x="77" y="112" width="6" height="38" fill="var(--accent)" />
+                            </svg>
+                        </div>
+                </section>
+            </article>
+
+        </div> <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+            
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Próximamente</h3>
+                        <p>WIP</p>
+                    </div>
+                </section>
+            </article>
+
+        </div> 
+    
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/graficos_fourier.js"></script>
+
+</body>
+</html>

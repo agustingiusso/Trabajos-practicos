@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - Probabilidad y Estadística</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="probabilidad-page">
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../proba_estad.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div class="slides-container">
+            
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Se arrojan dos dados equilibrados.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Describir el espacio muestral y asignar probabilidades a cada resultado, suponiendo que son equiprobables.</li>
+                            <li><strong>b)</strong> 
+                                Sea $A$ el evento: la suma de ambos resultados es 4.<br>
+                                Sea $B$ el evento: al menos uno de sus resultados es 3.<br><br>
+                                <strong>Calcular:</strong>
+                                <ul style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: lower-roman;">
+                                    <li>$P(A)$</li>
+                                    <li>$P(B)$</li>
+                                    <li>$P(A \cap B)$</li>
+                                    <li>$P(A \cup B)$</li>
+                                    <li>$P(A^c \cap B^c)$</li>
+                                    <li>$P(A^c \cap B)$</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Espacio Muestral:</strong></p>
+                        <p>El espacio muestral $\Omega$ está compuesto por los 36 pares ordenados posibles al lanzar dos dados de seis caras:</p>
+                        <div class="formula-responsive">
+                            $$ \Omega = \{(1,1), (1,2), \dots, (6,5), (6,6)\} $$
+                        </div>
+                        <p>Como los dados son equilibrados, todos los resultados son equiprobables. La probabilidad asignada a cada par es $P(x,y) = \frac{1}{36}$.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>b) Cálculo de Probabilidades:</strong></p>
+                        <p><strong>Definimos los conjuntos que cumplen los eventos:</strong><br>
+                        $A = \{(1,3), (2,2), (3,1)\}$ $\rightarrow$ (3 elementos).<br>
+                        $B = \{(1,3), (2,3), (3,3), (4,3), (5,3), (6,3), (3,1), (3,2), (3,4), (3,5), (3,6)\}$ $\rightarrow$ (11 elementos).</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-color); display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>i. $P(A)$</strong> = $\frac{3}{36} = \frac{1}{12} \approx 0.0833$</li>
+                            <li><strong>ii. $P(B)$</strong> = $\frac{11}{36} \approx 0.3056$</li>
+                            <li><strong>iii. $P(A \cap B)$</strong>: La intersección es $\{(1,3), (3,1)\}$ (2 elementos).<br> $P(A \cap B) = \frac{2}{36} = \frac{1}{18} \approx 0.0556$</li>
+                            <li><strong>iv. $P(A \cup B)$</strong> = $P(A) + P(B) - P(A \cap B) = \frac{3}{36} + \frac{11}{36} - \frac{2}{36} = \frac{12}{36} = \frac{1}{3} \approx 0.3333$</li>
+                            <li><strong>v. $P(A^c \cap B^c)$</strong>: Por Leyes de De Morgan, esto equivale a $P((A \cup B)^c)$.<br> $P((A \cup B)^c) = 1 - P(A \cup B) = 1 - \frac{1}{3} = \frac{2}{3} \approx 0.6667$</li>
+                            <li><strong>vi. $P(A^c \cap B)$</strong>: Equivale a "Pasa B pero NO pasa A" (Diferencia de conjuntos).<br> $P(B) - P(A \cap B) = \frac{11}{36} - \frac{2}{36} = \frac{9}{36} = \frac{1}{4} = 0.25$</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Dado:<br>
+                        $S=\{0,1,2,3,4,5,6,7,8,9,10,11\}$<br>
+                        $A=\{2,3,4,5,6\}$<br>
+                        $B=\{6,7,8,9\}$<br><br>
+                        <strong>Calcular:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-roman;">
+                            <li>$P(A)$</li>
+                            <li>$P(B)$</li>
+                            <li>$P(A \cap B)$</li>
+                            <li>$P(A \mid B)$</li>
+                            <li>$P(B \mid A)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Cantidades de elementos:</strong><br>
+                        $|S| = 12$ elementos totales.<br>
+                        $|A| = 5$ elementos.<br>
+                        $|B| = 4$ elementos.<br>
+                        $A \cap B = \{6\} \rightarrow |A \cap B| = 1$ elemento.</p>
+                        
+                        <p style="margin-top: 1rem;">Aplicando Laplace y probabilidad condicional ($P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$):</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-color); display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>i. $P(A)$</strong> = $\frac{5}{12} \approx 0.4167$</li>
+                            <li><strong>ii. $P(B)$</strong> = $\frac{4}{12} = \frac{1}{3} \approx 0.3333$</li>
+                            <li><strong>iii. $P(A \cap B)$</strong> = $\frac{1}{12} \approx 0.0833$</li>
+                            <li><strong>iv. $P(A \mid B)$</strong> = $\frac{P(A \cap B)}{P(B)} = \frac{1/12}{4/12} = \frac{1}{4} = 0.25$</li>
+                            <li><strong>v. $P(B \mid A)$</strong> = $\frac{P(A \cap B)}{P(A)} = \frac{1/12}{5/12} = \frac{1}{5} = 0.20$</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Se analizaron dos tipos de premios para otorgar en una empresa: al mejor compañero y a la mejor asistencia. La probabilidad de ser elegido mejor compañero es 0,25; la de ser elegido la mejor asistencia es 0,20 y la de no ser elegido a ninguno de estos premios es 0,60.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Elaborar un cuadro de clasificación cruzada asignando sus probabilidades.</li>
+                            <li><strong>b)</strong> Verificar si los eventos mejor compañero y mejor asistencia son: 1) excluyentes, 2) independientes.</li>
+                            <li><strong>c)</strong> Calcular la probabilidad de: 1) ganar un solo premio, 2) ganar al menos un premio, 3) ganar el premio a la asistencia si no ganó el premio al mejor compañero.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Definimos eventos:</strong><br>
+                        $C$ = Ganar premio Mejor Compañero.<br>
+                        $A$ = Ganar premio Mejor Asistencia.</p>
+                        
+                        <p style="margin-top: 0.5rem;"><strong>Datos dados:</strong><br>
+                        $P(C) = 0.25$<br>
+                        $P(A) = 0.20$<br>
+                        $P(C^c \cap A^c) = 0.60$</p>
+                        
+                        <p style="margin-top: 1rem;">Para llenar la tabla, necesitamos $P(C \cap A)$.<br>
+                        Por Morgan: $P(C^c \cap A^c) = 1 - P(C \cup A)$. Por ende, $P(C \cup A) = 1 - 0.60 = 0.40$.<br>
+                        Por regla de la suma: $P(C \cap A) = P(C) + P(A) - P(C \cup A) = 0.25 + 0.20 - 0.40 = 0.05$.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>a) Cuadro de clasificación cruzada:</strong></p>
+                        <table class="data-table">
+                            <tr>
+                                <th></th>
+                                <th>$A$</th>
+                                <th>$A^c$</th>
+                                <th>Total</th>
+                            </tr>
+                            <tr>
+                                <th>$C$</th>
+                                <td>0.05</td>
+                                <td>0.20</td>
+                                <td><strong>0.25</strong></td>
+                            </tr>
+                            <tr>
+                                <th>$C^c$</th>
+                                <td>0.15</td>
+                                <td>0.60</td>
+                                <td><strong>0.75</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td><strong>0.20</strong></td>
+                                <td><strong>0.80</strong></td>
+                                <td><strong>1.00</strong></td>
+                            </tr>
+                        </table>
+
+                        <p style="margin-top: 1rem;"><strong>b) Análisis de Eventos:</strong></p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li><strong>1) Excluyentes:</strong> Dos eventos son excluyentes si $P(C \cap A) = 0$. Como $0.05 \neq 0$, <strong>NO</strong> son mutuamente excluyentes.</li>
+                            <li><strong>2) Independientes:</strong> Son independientes si $P(C \cap A) = P(C) \cdot P(A)$.<br> Calculamos: $0.25 \cdot 0.20 = 0.05$. Como la igualdad se cumple ($0.05 = 0.05$), <strong>SÍ</strong> son estadísticamente independientes.</li>
+                        </ul>
+
+                        <p style="margin-top: 1rem;"><strong>c) Cálculo de Probabilidades solicitadas:</strong></p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li><strong>1) Ganar un solo premio:</strong> Corresponde a ganar C y no A, o ganar A y no C.<br> $P(\text{Un solo premio}) = P(C \cap A^c) + P(C^c \cap A) = 0.20 + 0.15 = 0.35$</li>
+                            <li><strong>2) Ganar al menos un premio:</strong> Corresponde a la unión de los eventos.<br> $P(C \cup A) = 0.40$</li>
+                            <li><strong>3) $P(A \mid C^c)$:</strong> <br> $P(A \mid C^c) = \frac{P(A \cap C^c)}{P(C^c)} = \frac{0.15}{0.75} = \frac{1}{5} = 0.20$</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Una bodega tiene dos proveedores de envases de vidrío. El proveedor A suministra el 20% de los envases con un 4% de defectuosos. El resto de los envases los suministra el proveedor B, con un 2% de defectuosos.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Representar por un diagrama de árbol y asignar probabilidades a sus ramas.</li>
+                            <li><strong>b)</strong> Si se selecciona un envase al azar. ¿Cuál es la probabilidad de que el envase no sea defectuoso?</li>
+                            <li><strong>c)</strong> Si el envase seleccionado es defectuoso. ¿Cuál es la probabilidad que provenga del proveedor A?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Sean los eventos:</strong><br>
+                        $A$ = Proveedor A<br>
+                        $B$ = Proveedor B<br>
+                        $D$ = Envase defectuoso<br>
+                        $D^c$ = Envase NO defectuoso</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>a) Diagrama de Árbol:</strong></p>
+                        
+                        <svg viewBox="0 0 500 280" style="width: 100%; max-width: 500px; margin: 1.5rem auto; display: block;">
+                            <path class="tree-line" d="M 50 140 L 200 65" />
+                            <path class="tree-line" d="M 50 140 L 200 215" />
+                            <path class="tree-line" d="M 200 65 L 350 25" />
+                            <path class="tree-line" d="M 200 65 L 350 105" />
+                            <path class="tree-line" d="M 200 215 L 350 175" />
+                            <path class="tree-line" d="M 200 215 L 350 255" />
+
+                            <text x="115" y="90" class="tree-edge-label">0.20</text>
+                            <text x="265" y="35" class="tree-edge-label">0.04</text>
+                            <text x="265" y="185" class="tree-edge-label">0.02</text>
+                            
+                            <text x="115" y="195" class="tree-edge-label">0.80</text>
+                            <text x="265" y="105" class="tree-edge-label">0.96</text>
+                            <text x="265" y="255" class="tree-edge-label">0.98</text>
+
+                            <circle cx="50" cy="140" r="25" class="tree-node" />
+                            <text x="50" y="142" class="tree-text" font-size="13">Inicio</text>
+                            
+                            <circle cx="200" cy="65" r="30" class="tree-node" />
+                            <text x="200" y="67" class="tree-text" font-size="12">Prov A</text>
+                            
+                            <circle cx="200" cy="215" r="30" class="tree-node" />
+                            <text x="200" y="217" class="tree-text" font-size="12">Prov B</text>
+
+                            <circle cx="350" cy="25" r="20" class="tree-node" />
+                            <text x="350" y="27" class="tree-text">D</text>
+                            
+                            <circle cx="350" cy="105" r="20" class="tree-node" />
+                            <text x="350" y="107" class="tree-text">D<tspan baseline-shift="super" font-size="0.75em">c</tspan></text>
+
+                            <circle cx="350" cy="175" r="20" class="tree-node" />
+                            <text x="350" y="177" class="tree-text">D</text>
+                            
+                            <circle cx="350" cy="255" r="20" class="tree-node" />
+                            <text x="350" y="257" class="tree-text">D<tspan baseline-shift="super" font-size="0.75em">c</tspan></text>
+                            
+                            <text x="380" y="27" class="tree-edge-label" style="text-anchor: start; opacity: 0.8;">(Defectuoso)</text>
+                            <text x="380" y="107" class="tree-edge-label" style="text-anchor: start; opacity: 0.8;">(Sano)</text>
+                            <text x="380" y="177" class="tree-edge-label" style="text-anchor: start; opacity: 0.8;">(Defectuoso)</text>
+                            <text x="380" y="257" class="tree-edge-label" style="text-anchor: start; opacity: 0.8;">(Sano)</text>
+                        </svg>
+
+                        <p><strong>b) Probabilidad de NO ser defectuoso $P(D^c)$ (Probabilidad Total):</strong></p>
+                        <div class="formula-responsive">
+                            $$ P(D^c) = P(D^c|A)P(A) + P(D^c|B)P(B) $$
+                            $$ P(D^c) = (0.96 \times 0.20) + (0.98 \times 0.80) = 0.192 + 0.784 = 0.976 $$
+                        </div>
+
+                        <p><strong>c) Probabilidad de provenir de A dado que es defectuoso $P(A|D)$ (Teorema de Bayes):</strong></p>
+                        <p>Primero, calculamos la probabilidad total de que sea defectuoso $P(D) = 1 - P(D^c) = 1 - 0.976 = 0.024$. Luego aplicamos Bayes:</p>
+                        <div class="formula-responsive">
+                            $$ P(A|D) = \frac{P(D|A) \cdot P(A)}{P(D)} = \frac{0.04 \times 0.20}{0.024} = \frac{0.008}{0.024} = \frac{1}{3} \approx 0.3333 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Una compañía de seguros clasifica a los conductores en buenos, de riesgo medio y malos. Los conductores que solicitan seguro conforman el 30%, 50% y 20%, de cada grupo respectivamente. La probabilidad de que un buen conductor tenga un accidente es de 0,01; la probabilidad de un conductor de riesgo medio es de 0,03; y la probabilidad de que un mal conductor tenga un accidente es de 0,10.<br><br>
+                        <strong>Calcular:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular la probabilidad de que el asegurado tenga un accidente.</li>
+                            <li><strong>b)</strong> Si ocurrió un accidente, ¿Cuál es la probabilidad de que el cliente sea un buen conductor?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Eventos:</strong><br>
+                        $B$ = Buen conductor<br>
+                        $M$ = Riesgo medio<br>
+                        $P$ = Peor/Mal conductor<br>
+                        $A$ = Tiene un accidente</p>
+                        
+                        <p style="margin-top: 0.5rem;"><strong>Probabilidades a priori:</strong><br>
+                        $P(B)=0.30 \quad P(M)=0.50 \quad P(P)=0.20$</p>
+                        
+                        <p style="margin-top: 0.5rem;"><strong>Probabilidades condicionales:</strong><br>
+                        $P(A|B)=0.01 \quad P(A|M)=0.03 \quad P(A|P)=0.10$</p>
+
+                        <p style="margin-top: 1rem;"><strong>a) Probabilidad Total de Accidente $P(A)$:</strong></p>
+                        <div class="formula-responsive">
+                            $$ P(A) = P(A|B)P(B) + P(A|M)P(M) + P(A|P)P(P) $$
+                            $$ P(A) = (0.01 \times 0.30) + (0.03 \times 0.50) + (0.10 \times 0.20) $$
+                            $$ P(A) = 0.003 + 0.015 + 0.020 = 0.038 $$
+                        </div>
+
+                        <p><strong>b) Aplicación Teorema de Bayes para $P(B|A)$:</strong></p>
+                        <div class="formula-responsive">
+                            $$ P(B|A) = \frac{P(A|B) \cdot P(B)}{P(A)} = \frac{0.003}{0.038} = \frac{3}{38} \approx 0.0789 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>El gerente de un servicio de mensajería, está preocupado por la posibilidad de una huelga por parte de algunos empleados. Sabe que la probabilidad de una huelga de pilotos es de 0,75 y la probabilidad de una huelga de choferes es de 0,65. Más aún sabe que si los choferes hacen huelga, existe una probabilidad de 0,90 que los pilotos hagan huelga.<br><br>
+                        <strong>Calcular:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> ¿Cuál es la probabilidad de que ambos grupos hagan huelga?</li>
+                            <li><strong>b)</strong> Si los pilotos hacen huelga. ¿Cuál es la probabilidad de que los choferes hagan huelga?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Eventos:</strong><br>
+                        $P$ = Huelga de pilotos<br>
+                        $C$ = Huelga de choferes</p>
+                        
+                        <p style="margin-top: 0.5rem;"><strong>Datos:</strong><br>
+                        $P(P) = 0.75$<br>
+                        $P(C) = 0.65$<br>
+                        $P(P|C) = 0.90$</p>
+
+                        <p style="margin-top: 1rem;"><strong>a) Probabilidad de la intersección $P(P \cap C)$:</strong></p>
+                        <p>Se aplica la regla general de la multiplicación:</p>
+                        <div class="formula-responsive">
+                            $$ P(P \cap C) = P(C) \cdot P(P|C) = 0.65 \times 0.90 = 0.585 $$
+                        </div>
+
+                        <p><strong>b) Probabilidad Condicional $P(C|P)$:</strong></p>
+                        <p>Se busca la probabilidad de que los choferes hagan huelga dado que ya se sabe que los pilotos la hicieron:</p>
+                        <div class="formula-responsive">
+                            $$ P(C|P) = \frac{P(P \cap C)}{P(P)} = \frac{0.585}{0.75} = 0.78 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+</body>
+</html>

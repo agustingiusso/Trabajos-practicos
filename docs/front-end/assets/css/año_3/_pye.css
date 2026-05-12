@@ -1,0 +1,22 @@
+/* ===== PROBABILIDAD Y ESTADÍSTICA (Tema Marrón) ===== */
+body.probabilidad-page {
+    --accent: var(--color-probabilidad);
+    --button-hover-bg: var(--color-probabilidad-dark);
+    --header-line-color: var(--color-probabilidad);
+    --theme-color: var(--color-probabilidad);
+}
+body.probabilidad-page .trabajo-card:hover {
+    box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3); /* Sombra marrón */
+    border-color: var(--color-probabilidad);
+}
+body.probabilidad-page .logo:hover {
+    text-shadow: 0 0 15px rgba(139, 69, 19, 0.7);
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA PROBABILIDAD ===== */
+/* Sobreescribe la fuente tipo "código" por una fuente de texto normal */
+body.probabilidad-page .exercise-description {
+    font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}

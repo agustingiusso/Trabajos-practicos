@@ -1,4 +1,3 @@
-/* ===== Bloques de Código ===== */
 .code-box, .code-container {
     background: var(--code-bg);
     border: var(--code-border);
@@ -8,8 +7,6 @@
     position: relative;
     overflow: hidden;
 }
-
-/* Header opcional dentro del bloque */
 .code-header {
     display: flex; justify-content: space-between; align-items: center;
     padding: 0.5rem 1rem;
@@ -24,14 +21,13 @@ pre {
     font-size: 0.95rem; line-height: 1.5; tab-size: 4;
 }
 
-/* ===== Layout TP (Menú Lateral) ===== */
 .tp-container {
     display: grid; grid-template-columns: 250px 1fr;
     gap: 2rem; padding: 1rem;
 }
 
 .puntos-menu {
-    background: var(--card-bg); /* Se adapta al tema */
+    background: var(--card-bg);
     padding: 1rem; border-radius: 8px;
     height: fit-content;
 }
@@ -47,19 +43,4 @@ pre {
 
 .punto-link:hover, .punto-link.active {
     background: var(--accent); color: white;
-}
-
-/* ===== Botones y Utilidades ===== */
-.copy-btn {
-    background: var(--accent); color: white; border: none;
-    padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;
-    transition: background 0.3s;
-}
-.copy-btn:hover { background: var(--button-hover-bg); }
-
-.slide:not(.active) { display: none; }
-
-/* Ajuste Móvil */
-@media (max-width: 768px) {
-    .tp-container { grid-template-columns: 1fr; }
 }

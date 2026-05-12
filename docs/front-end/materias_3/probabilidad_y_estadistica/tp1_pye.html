@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1 - Probabilidad y Estadística</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+
+<body class="probabilidad-page">
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../proba_estad.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div class="slides-container">
+            
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Considerar los siguientes experimentos aleatorios, en cada caso explicite los resultados que componen el espacio muestral, y clasifíquelo en finito, infinito numerable e infinito no numerable:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a-</strong> De una urna que contiene bolillas rojas y blancas, se extrae una bolilla y se anota el color.</li>
+                            <li><strong>b-</strong> De una urna que contiene bolillas rojas y blancas, se extrae una bolilla y se anota el color. Luego de reponerla en la urna, se extrae una bolilla y se anota nuevamente su color.</li>
+                            <li><strong>c-</strong> Se lanza una moneda equilibrada cuatro veces y se cuenta el número total de caras obtenidas.</li>
+                            <li><strong>d-</strong> De una urna que contiene bolillas rojas y blancas, se extraen bolillas con reposición hasta obtener una blanca, y se anota el número de extracciones realizadas.</li>
+                            <li><strong>e-</strong> De una urna que contiene bolillas rojas y blancas, se extraen bolillas sin reposición hasta obtener una blanca, y se anota el número de extracciones realizadas si el número de bolillas rojas es n.</li>
+                            <li><strong>f-</strong> Se pone en funcionamiento un componente electrónico y se anota el tiempo hasta que deje de funcionar.</li>
+                            <li><strong>g-</strong> Se visita en orden aleatorio las ciudades A, B, C, D.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem; color: var(--text-color);">
+                            <li><strong>a)</strong> $\Omega = \{R, B\}$. Clasificación: <strong>Finito</strong> (solo 2 resultados posibles).</li>
+                            <li><strong>b)</strong> $\Omega = \{(R,R), (R,B), (B,R), (B,B)\}$. Clasificación: <strong>Finito</strong> (4 resultados posibles).</li>
+                            <li><strong>c)</strong> $\Omega = \{0, 1, 2, 3, 4\}$. Clasificación: <strong>Finito</strong> (5 resultados posibles).</li>
+                            <li><strong>d)</strong> Al ser con reposición, podríamos teóricamente extraer bolillas rojas infinitamente. $\Omega = \{1, 2, 3, 4, \dots\} = \mathbb{N}$. Clasificación: <strong>Infinito numerable</strong>.</li>
+                            <li><strong>e)</strong> Al ser sin reposición y haber $n$ bolillas rojas, el peor de los casos es sacar todas las $n$ rojas y recién a la extracción $n+1$ sacar la blanca. $\Omega = \{1, 2, 3, \dots, n+1\}$. Clasificación: <strong>Finito</strong>.</li>
+                            <li><strong>f)</strong> El tiempo es una variable continua. $\Omega = \{t \in \mathbb{R} \mid t \ge 0\}$. Clasificación: <strong>Infinito no numerable</strong>.</li>
+                            <li><strong>g)</strong> Son las permutaciones posibles de 4 elementos ($4! = 24$). $\Omega = \{(A,B,C,D), (A,B,D,C), \dots \}$. Clasificación: <strong>Finito</strong>.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Un experimento aleatorio consiste en medir el tiempo que tarda en fraguar un cemento especial.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a-</strong> Describir el espacio muestral. ¿Es posible en este caso contar el número de elementos que integran S?</li>
+                            <li><strong>b-</strong> Si definimos los eventos A y B de la siguiente manera: $A=\{t \mid 50 \le t \le 100\}$ y $B=\{t \mid 70 \le t \le 150\}$ describir.
+                                <ul style="margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: lower-roman;">
+                                    <li>$A \cap B$</li>
+                                    <li>$A \cup B$</li>
+                                    <li>$A^c \cap B$</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Espacio Muestral:</strong></p>
+                        <p>Dado que el tiempo es una variable continua, el espacio muestral incluye cualquier valor real positivo (o mayor a un tiempo mínimo de fraguado).<br>
+                        $S = \{t \in \mathbb{R} \mid t > 0\}$.<br>
+                        <strong>No es posible contar</strong> el número de elementos que lo integran porque es un conjunto <strong>infinito no numerable</strong>.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>b) Operaciones con conjuntos (intervalos de tiempo):</strong></p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li><strong>i. Intersección ($A \cap B$):</strong> Son los tiempos que cumplen simultáneamente las condiciones de A y B.<br>
+                            $A \cap B = \{t \mid 70 \le t \le 100\} = [70, 100]$</li>
+                            <li style="margin-top: 0.5rem;"><strong>ii. Unión ($A \cup B$):</strong> Son los tiempos que están en A, en B, o en ambos.<br>
+                            $A \cup B = \{t \mid 50 \le t \le 150\} = [50, 150]$</li>
+                            <li style="margin-top: 0.5rem;"><strong>iii. Intersección con el complemento ($A^c \cap B$):</strong> Son los tiempos que están en B, pero <strong>NO</strong> están en A. Como A va hasta 100, los valores de B que no están en A son los mayores a 100.<br>
+                            $A^c \cap B = \{t \mid 100 < t \le 150\} = (100, 150]$</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Con las letras a, b, c, d. ¿Cuántas claves de cuatro letras se pueden escribir si:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a-</strong> Ninguna letra se puede repetir?</li>
+                            <li><strong>b-</strong> Cualquier letra se puede repetir varias veces?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Sin repetición:</strong></p>
+                        <p>Como tenemos 4 lugares y 4 letras distintas sin poder repetir, se trata de una <strong>Permutación</strong> de 4 elementos. Importa el orden.</p>
+                        <div class="formula-responsive">
+                            $$ P_4 = 4! = 4 \times 3 \times 2 \times 1 = 24 \text{ claves posibles} $$
+                        </div>
+                        
+                        <p style="margin-top: 1rem;"><strong>b) Con repetición:</strong></p>
+                        <p>Al permitir repeticiones, para cada una de las 4 posiciones de la clave tenemos 4 opciones posibles (a, b, c, d). Esto se resuelve mediante <strong>Variaciones con repetición</strong>.</p>
+                        <div class="formula-responsive">
+                            $$ VR_{4,4} = 4^4 = 4 \times 4 \times 4 \times 4 = 256 \text{ claves posibles} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>De un grupo de 10 operarios; se selecciona tres. ¿Cuántos grupos distintos se podrían formar?</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>En este caso estamos formando grupos donde <strong>no importa el orden</strong> de selección (el grupo conformado por los operarios A, B y C es el mismo que el grupo B, A y C). Por lo tanto, utilizamos <strong>Combinaciones sin repetición</strong>.</p>
+                        <p>La fórmula a utilizar es $C_{n,k} = \binom{n}{k} = \frac{n!}{k!(n-k)!}$, donde $n=10$ y $k=3$.</p>
+                        <div class="formula-responsive">
+                            $$ C_{10,3} = \frac{10!}{3!(10-3)!} = \frac{10 \times 9 \times 8 \times 7!}{3 \times 2 \times 1 \times 7!} = \frac{720}{6} = 120 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> Se pueden formar 120 grupos distintos.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Un departamento tiene 8 especialistas en sistemas y 5 en mecánica. Se desea formar un grupo de 4 con 2 especialistas de cada rama. ¿Cuántos grupos distintos se podrán formar?</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El problema se divide en dos selecciones independientes (combinaciones) que luego deben multiplicarse (Regla del Producto):</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li><strong>Paso 1:</strong> Seleccionar 2 especialistas en sistemas de un total de 8.<br>
+                            $C_{8,2} = \binom{8}{2} = \frac{8 \times 7}{2 \times 1} = 28$ formas.</li>
+                            <li style="margin-top: 0.5rem;"><strong>Paso 2:</strong> Seleccionar 2 especialistas en mecánica de un total de 5.<br>
+                            $C_{5,2} = \binom{5}{2} = \frac{5 \times 4}{2 \times 1} = 10$ formas.</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Para obtener el total de grupos posibles, multiplicamos ambas combinaciones:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Total} = C_{8,2} \times C_{5,2} = 28 \times 10 = 280 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> Se podrán formar 280 grupos distintos.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>De una flota de 10 vehículos, 4 tienen algún problema. Si se seleccionan 2 al azar, calcular la probabilidad de que 1 tenga algún problema.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para calcular la probabilidad utilizamos la <strong>Regla de Laplace</strong>: $P = \frac{\text{Casos Favorables}}{\text{Casos Posibles}}$.</p>
+                        
+                        <p><strong>1. Casos Posibles (Espacio Muestral Total):</strong><br>
+                        Es la cantidad de formas de seleccionar 2 vehículos de un total de 10, sin importar el orden.</p>
+                        <div class="formula-responsive">
+                            $$ \text{Posibles} = C_{10,2} = \binom{10}{2} = \frac{10 \times 9}{2} = 45 $$
+                        </div>
+                        
+                        <p><strong>2. Casos Favorables (Exactamente 1 con problema):</strong><br>
+                        Si queremos que exactamente 1 tenga problema, significa que debemos seleccionar 1 de los 4 defectuosos <strong>y</strong> 1 de los 6 que están en buen estado (10 totales - 4 defectuosos = 6 sanos).</p>
+                        <div class="formula-responsive">
+                            $$ \text{Favorables} = C_{4,1} \times C_{6,1} = \binom{4}{1} \times \binom{6}{1} = 4 \times 6 = 24 $$
+                        </div>
+                        
+                        <p><strong>3. Probabilidad:</strong></p>
+                        <div class="formula-responsive">
+                            $$ P = \frac{24}{45} = \frac{8}{15} \approx 0.5333 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> La probabilidad de que exactamente 1 vehículo tenga problemas es del 53.33%.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+</body>
+</html>

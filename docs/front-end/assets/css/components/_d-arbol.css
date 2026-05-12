@@ -1,0 +1,23 @@
+.tree-line { 
+    stroke: var(--table-border-color); 
+    stroke-width: 2; 
+    fill: none; 
+}
+.tree-node { 
+    fill: var(--card-bg); 
+    stroke: var(--accent); 
+    stroke-width: 2; 
+}
+.tree-text { 
+    fill: var(--text-color); 
+    font-weight: bold; 
+    font-family: 'Segoe UI', system-ui, sans-serif; 
+    text-anchor: middle; 
+    dominant-baseline: middle; 
+}
+.tree-edge-label { 
+    fill: var(--text-color); 
+    font-size: 0.85rem; 
+    font-family: 'Segoe UI', system-ui, sans-serif; 
+    text-anchor: middle; 
+}

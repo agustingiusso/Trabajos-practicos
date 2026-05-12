@@ -1,5 +1,25 @@
 /* ===== Importación de módulos ===== */
 
+/* ===== AÑO_1 ===== */
+
+@import url('año_1/_algebra.css');
+@import url('año_1/_algoritmos.css');
+@import url('año_1/_fisica1.css');
+@import url('año_1/_laboratorio_algebra.css');
+@import url('año_1/_labs_fisica1.css');
+@import url('año_1/_producto_mixto.css');
+@import url('año_1/_recta_plano.css');
+
+/* ===== AÑO_2 ===== */
+
+@import url('año_2/_fisicaII.css');
+@import url('año_2/_iys.css');
+@import url('año_2/_ssl.css');
+
+/* ===== AÑO_3 ===== */
+@import url('año_3/_análisis_n.css');
+@import url('año_3/_pye.css');
+
 /* ===== BASE ===== */
 
 @import url('base/_variables.css');
@@ -10,7 +30,10 @@
 @import url('components/_buttons.css');
 @import url('components/_cards.css');
 @import url('components/_code.css');
+@import url('components/_d-arbol.css');
+@import url('components/_formulas.css');
 @import url('components/_header.css');
+@import url('components/_side-menu.css');
 @import url('components/_tables.css');
 
 /* ===== LAYOUT ===== */
@@ -19,15 +42,9 @@
 
 /* ===== PAGES ===== */
 
-@import url('pages/_algebra.css');
-@import url('pages/_algoritmos.css');
-@import url('pages/_fisica1.css');
-@import url('pages/_index.css');
-@import url('pages/_laboratorio_algebra.css');
-@import url('pages/_labs_fisica1.css');
-@import url('pages/_landing.css');
-@import url('pages/_producto_mixto.css');
-@import url('pages/_recta_plano.css');
+@import url('index-landing/_index.css');
+@import url('index-landing/_landing.css');
+
 
 /* ===== UTILITIES ===== */
 

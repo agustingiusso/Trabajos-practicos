@@ -1,4 +1,3 @@
-/* ===== Botones Globales (Estilos compartidos) ===== */
 .theme-btn, .btn-volver, .nav-btn, .btn-copy {
     background: var(--accent);
     color: white !important;
@@ -7,17 +6,14 @@
     transition: all 0.3s ease;
 }
 
-/* Hover Global: Cambio de fondo */
 .theme-btn:hover, .btn-volver:hover, .nav-btn:hover:not(.disabled), .btn-copy:hover {
     background: var(--button-hover-bg);
 }
 
-/* Hover Global: Efecto de elevación (menos theme-btn) */
 .btn-volver:hover, .nav-btn:hover:not(.disabled), .btn-copy:hover {
     transform: translateY(-2px);
 }
 
-/* ===== Estilos Específicos ===== */
 .theme-btn {
     width: 40px; height: 40px; padding: 0.5rem; border-radius: 50%;
     position: absolute; right: 30px; top: 20px; z-index: 1000;
@@ -47,7 +43,6 @@
 }
 .btn-copy .fa-copy, .btn-copy .fa-check { font-size: 1rem; transition: all 0.3s ease; }
 
-/* Estados de copiado */
 .btn-copy.copied .fa-copy { display: none !important; }
 .btn-copy.copied .fa-check {
     display: inline-block !important; opacity: 1 !important;
@@ -61,4 +56,18 @@
 .btn-copy.error {
     background-color: var(--color-boton-eliminar) !important; /* Rojo */
     color: white;
+}
+
+.copy-btn {
+    background: var(--accent); color: white; border: none;
+    padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;
+    transition: background 0.3s;
+}
+.copy-btn:hover { background: var(--button-hover-bg); }
+
+.slide:not(.active) { display: none; }
+
+/* Ajuste Móvil */
+@media (max-width: 768px) {
+    .tp-container { grid-template-columns: 1fr; }
 }

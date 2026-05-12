@@ -1,5 +1,5 @@
 /* ============================================================
-   ESTILOS GENERALES: LABORATORIOS DE FÍSICA 1
+   ESTILOS DE LABORATORIOS DE FÍSICA 1
    ============================================================ */
 
 /* --- Layout Principal --- */
@@ -87,7 +87,7 @@
 
 
 /* ============================================================
-   CLASES UTILITARIAS PARA DIBUJOS (CANVAS)
+   CLASES ÚTILES PARA DIBUJOS (CANVAS)
    ============================================================ */
 /* Contenedor base para todos los esquemas (TP1, 3, 4, 5) */
 .tp-container .carril-container,
@@ -313,22 +313,23 @@
     position: absolute; top: 40%; left: 5px; color: #e74c3c; font-weight: bold; font-style: italic;
 }
 
-/* Contenedor responsivo para fórmulas MathJax */
-.formula-responsive {
-    width: 100%;
-    overflow-x: auto;       /* Habilita scroll horizontal si es necesario */
-    overflow-y: hidden;
-    text-align: center;
-    padding: 10px 0;
-    margin: 1.5rem 0;
-    /* Ajusta la fuente: mínimo 1.1rem, preferido 4vw, máximo 1.5rem */
-    font-size: clamp(1.1rem, 4vw, 1.5rem); 
+/* ===== CONTENEDOR DE INFORMES Y LABORATORIOS ===== */
+/* Aplica para tp-container (Física) y lab-algebra-container (Álgebra) */
+.tp-container, 
+.lab-algebra-container,
+.pm-main-container {
+    display: flex !important;
+    flex-direction: column !important; /* Fuerza a que se apilen verticalmente */
+    gap: 2rem;
+    max-width: 900px; /* Un ancho ideal para leer textos largos sin cansar la vista */
+    margin: 2rem auto; /* Centrado en la pantalla */
+    padding: 0 1rem;
 }
 
-.formula-responsive::-webkit-scrollbar {
-    height: 6px;
-}
-.formula-responsive::-webkit-scrollbar-thumb {
-    background-color: var(--accent, #ccc);
-    border-radius: 4px;
+/* Forzar que las tarjetas dentro del informe ocupen todo el ancho disponible */
+.tp-container .punto-card,
+.lab-algebra-container .punto-card,
+.pm-main-container .punto-card {
+    width: 100% !important;
+    max-width: none !important; /* Anula cualquier límite que tuvieran antes */
 }

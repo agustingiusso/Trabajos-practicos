@@ -1,0 +1,117 @@
+.side-menu-container {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.side-menu-drawer {
+    background-color: var(--card-bg);
+    border: 1px solid var(--accent);
+    border-left: none;
+    border-radius: 0 15px 15px 0;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    width: max-content;
+    
+    /* Lógica de ocultamiento */
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+}
+
+.side-menu-container.open .side-menu-drawer {
+    position: relative;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.side-menu-btn {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    width: 35px;
+    height: 70px;
+    border-radius: 0 35px 35px 0;
+    cursor: pointer;
+    box-shadow: 3px 0 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: filter 0.2s ease;
+    z-index: 1001;
+}
+
+.side-menu-btn:hover {
+    filter: brightness(1.15);
+}
+
+.side-menu-btn i {
+    transition: transform 0.4s ease;
+}
+.side-menu-container.open .side-menu-btn i {
+    transform: rotate(180deg);
+}
+
+.side-menu-title {
+    color: var(--text-color);
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+.side-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.side-menu-list li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid var(--table-border-color);
+    border-radius: var(--border-radius, 8px);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 500;
+}
+
+.side-menu-list li a:hover {
+    border-color: var(--accent);
+    background-color: rgba(128, 128, 128, 0.05);
+}
+
+/* Botón de la parte actual activa */
+.side-menu-list li a.active {
+    background-color: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+}
+
+.part-section {
+    width: 100%;
+}
+
+.part-section.active {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

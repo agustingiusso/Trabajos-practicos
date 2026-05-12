@@ -1,0 +1,14 @@
+/* ===== SINTAXIS Y SEMÁNTICA (Tema Específico) ===== */
+body.sintaxis-page {
+    --accent: var(--color-sintaxis);
+    --button-hover-bg: var(--color-sintaxis-dark);
+    --header-line-color: var(--color-sintaxis);
+    --theme-color: var(--color-sintaxis);
+}
+body.sintaxis-page .trabajo-card:hover {
+    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3); /* Sombra naranja */
+    border-color: var(--color-sintaxis);
+}
+body.sintaxis-page .logo:hover {
+    text-shadow: 0 0 15px rgba(230, 126, 34, 0.7);
+}

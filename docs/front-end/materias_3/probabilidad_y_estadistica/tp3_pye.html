@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3 - Probabilidad y Estadística</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="probabilidad-page">
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../proba_estad.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div class="slides-container">
+            
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>De un gran lote de artículos se extraen al azar, con reposición, tres artículos. Se sabe que un 10% del lote contiene artículos defectuosos.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a-</strong> Determine el espacio muestral por extensión.</li>
+                            <li><strong>b-</strong> Construya un diagrama de árbol asignando probabilidades.</li>
+                            <li><strong>c-</strong> Si se define la variable X: número de artículos con defecto en la muestra, determine su dominio y sus respectivas probabilidades. Y verifique que es una función de probabilidad.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Espacio Muestral:</strong></p>
+                        <p>Sea $B$ un artículo Bueno y $D$ un artículo Defectuoso. Al extraer 3 artículos con reposición, el espacio muestral consta de $2^3 = 8$ posibles resultados:</p>
+                        <div class="formula-responsive">
+                            $$ S = \{(B,B,B), (B,B,D), (B,D,B), (D,B,B), (B,D,D), (D,B,D), (D,D,B), (D,D,D)\} $$
+                        </div>
+                        
+                        <p style="margin-top: 1rem;"><strong>b) Diagrama de Árbol:</strong></p>
+                        
+                        <svg viewBox="0 0 700 500" style="width: 100%; max-width: 700px; margin: 1.5rem auto; display: block;">
+                            <path class="tree-line" d="M 50 250 L 200 130" />
+                            <path class="tree-line" d="M 50 250 L 200 370" />
+                            <text x="120" y="180" class="tree-edge-label">0.1</text>
+                            <text x="120" y="330" class="tree-edge-label">0.9</text>
+
+                            <path class="tree-line" d="M 200 130 L 400 70" />
+                            <path class="tree-line" d="M 200 130 L 400 190" />
+                            <text x="300" y="90" class="tree-edge-label">0.1</text>
+                            <text x="300" y="180" class="tree-edge-label">0.9</text>
+
+                            <path class="tree-line" d="M 200 370 L 400 310" />
+                            <path class="tree-line" d="M 200 370 L 400 430" />
+                            <text x="300" y="330" class="tree-edge-label">0.1</text>
+                            <text x="300" y="420" class="tree-edge-label">0.9</text>
+
+                            <path class="tree-line" d="M 400 70 L 600 40" />
+                            <path class="tree-line" d="M 400 70 L 600 100" />
+                            <text x="500" y="45" class="tree-edge-label">0.1</text>
+                            <text x="500" y="105" class="tree-edge-label">0.9</text>
+                            
+                            <path class="tree-line" d="M 400 190 L 600 160" />
+                            <path class="tree-line" d="M 400 190 L 600 220" />
+                            <text x="500" y="165" class="tree-edge-label">0.1</text>
+                            <text x="500" y="225" class="tree-edge-label">0.9</text>
+
+                            <path class="tree-line" d="M 400 310 L 600 280" />
+                            <path class="tree-line" d="M 400 310 L 600 340" />
+                            <text x="500" y="285" class="tree-edge-label">0.1</text>
+                            <text x="500" y="345" class="tree-edge-label">0.9</text>
+
+                            <path class="tree-line" d="M 400 430 L 600 400" />
+                            <path class="tree-line" d="M 400 430 L 600 460" />
+                            <text x="500" y="405" class="tree-edge-label">0.1</text>
+                            <text x="500" y="465" class="tree-edge-label">0.9</text>
+
+                            <circle cx="50" cy="250" r="25" class="tree-node" />
+                            <text x="50" y="252" class="tree-text" font-size="12">Inicio</text>
+                            
+                            <circle cx="200" cy="130" r="20" class="tree-node" />
+                            <text x="200" y="132" class="tree-text">D</text>
+                            <circle cx="200" cy="370" r="20" class="tree-node" />
+                            <text x="200" y="372" class="tree-text">B</text>
+
+                            <circle cx="400" cy="70" r="20" class="tree-node" />
+                            <text x="400" y="72" class="tree-text">D</text>
+                            <circle cx="400" cy="190" r="20" class="tree-node" />
+                            <text x="400" y="192" class="tree-text">B</text>
+                            <circle cx="400" cy="310" r="20" class="tree-node" />
+                            <text x="400" y="312" class="tree-text">D</text>
+                            <circle cx="400" cy="430" r="20" class="tree-node" />
+                            <text x="400" y="432" class="tree-text">B</text>
+
+                            <circle cx="600" cy="40" r="15" class="tree-node" />
+                            <text x="600" y="42" class="tree-text">D</text>
+                            <text x="625" y="42" class="tree-edge-label" style="text-anchor: start;">(D,D,D)</text>
+
+                            <circle cx="600" cy="100" r="15" class="tree-node" />
+                            <text x="600" y="102" class="tree-text">B</text>
+                            <text x="625" y="102" class="tree-edge-label" style="text-anchor: start;">(D,D,B)</text>
+
+                            <circle cx="600" cy="160" r="15" class="tree-node" />
+                            <text x="600" y="162" class="tree-text">D</text>
+                            <text x="625" y="162" class="tree-edge-label" style="text-anchor: start;">(D,B,D)</text>
+
+                            <circle cx="600" cy="220" r="15" class="tree-node" />
+                            <text x="600" y="222" class="tree-text">B</text>
+                            <text x="625" y="222" class="tree-edge-label" style="text-anchor: start;">(D,B,B)</text>
+
+                            <circle cx="600" cy="280" r="15" class="tree-node" />
+                            <text x="600" y="282" class="tree-text">D</text>
+                            <text x="625" y="282" class="tree-edge-label" style="text-anchor: start;">(B,D,D)</text>
+
+                            <circle cx="600" cy="340" r="15" class="tree-node" />
+                            <text x="600" y="342" class="tree-text">B</text>
+                            <text x="625" y="342" class="tree-edge-label" style="text-anchor: start;">(B,D,B)</text>
+
+                            <circle cx="600" cy="400" r="15" class="tree-node" />
+                            <text x="600" y="402" class="tree-text">D</text>
+                            <text x="625" y="402" class="tree-edge-label" style="text-anchor: start;">(B,B,D)</text>
+
+                            <circle cx="600" cy="460" r="15" class="tree-node" />
+                            <text x="600" y="462" class="tree-text">B</text>
+                            <text x="625" y="462" class="tree-edge-label" style="text-anchor: start;">(B,B,B)</text>
+                        </svg>
+
+                        <p style="margin-top: 1rem;"><strong>c) Variable Aleatoria X (N° de artículos defectuosos):</strong></p>
+                        <p>El dominio de $X$ es $\{0, 1, 2, 3\}$. Sus probabilidades son:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-color);">
+                            <li>$P(X=0) = P(B,B,B) = 0.9 \times 0.9 \times 0.9 = 0.729$</li>
+                            <li>$P(X=1) = 3 \times (0.9^2 \times 0.1) = 3 \times 0.081 = 0.243$</li>
+                            <li>$P(X=2) = 3 \times (0.9 \times 0.1^2) = 3 \times 0.009 = 0.027$</li>
+                            <li>$P(X=3) = P(D,D,D) = 0.1 \times 0.1 \times 0.1 = 0.001$</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Verificación:</strong> Para ser una función de probabilidad, la suma debe ser igual a 1.</p>
+                        <div class="formula-responsive">
+                            $$ \sum P(x) = 0.729 + 0.243 + 0.027 + 0.001 = 1 \quad \checkmark $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>En una fábrica de ladrillos de molde se observó que el 7% de la producción de cada lote tenía fallas por la temperatura del horno, y el 10% tenía fallas por defectos en el molde. Y un 5% tenía ambos tipos de fallas.</p>
+                        <p>Se define la variable aleatoria X como el número de tipos de falla que puede tener un ladrillo. Construir su función de probabilidad por medio de una tabla.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Definimos los eventos:<br>
+                        $T$ = Fallas por Temperatura $\rightarrow P(T) = 0.07$<br>
+                        $M$ = Fallas por Molde $\rightarrow P(M) = 0.10$<br>
+                        Ambas fallas $\rightarrow P(T \cap M) = 0.05$</p>
+
+                        <p style="margin-top: 1rem;">Calculamos las probabilidades puras:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li><strong>Solo T (1 falla):</strong> $P(T) - P(T \cap M) = 0.07 - 0.05 = 0.02$</li>
+                            <li><strong>Solo M (1 falla):</strong> $P(M) - P(T \cap M) = 0.10 - 0.05 = 0.05$</li>
+                            <li><strong>Ninguna falla (0 fallas):</strong> $1 - P(T \cup M) = 1 - (0.07 + 0.10 - 0.05) = 1 - 0.12 = 0.88$</li>
+                        </ul>
+
+                        <p style="margin-top: 1rem;">La variable $X$ puede tomar valores $\{0, 1, 2\}$. La probabilidad de tener 1 falla es la suma de "Solo T" y "Solo M" (0.02 + 0.05 = 0.07). La tabla queda:</p>
+                        
+                        <div class="scroll-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>$x$ (N° Fallas)</th>
+                                        <th>0</th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>$P(X=x)$</strong></td>
+                                        <td>0.88</td>
+                                        <td>0.07</td>
+                                        <td>0.05</td>
+                                        <td><strong>1.00</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>El historial de una máquina indica la siguiente distribución de la probabilidad del número de averías registradas en el mes.</p>
+                        
+                        <div class="scroll-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Número Averías</th>
+                                        <th>0</th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Probabilidad</strong></td>
+                                        <td>0,10</td>
+                                        <td>0,26</td>
+                                        <td>0,42</td>
+                                        <td>0,16</td>
+                                        <td>0,06</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a-</strong> Hallar la Esperanza y la Varianza del número de averías mensuales.</li>
+                            <li><strong>b-</strong> Si para reparar la máquina se tiene un costo fijo de \$400 más \$1500 por cada avería, hallar la Esperanza y el Desvío Estándar del costo mensual de las averías de la máquina.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Esperanza $E(X)$ y Varianza $V(X)$</strong></p>
+                        <div class="formula-responsive">
+                            $$ E(X) = \sum x \cdot P(x) = 0(0.10) + 1(0.26) + 2(0.42) + 3(0.16) + 4(0.06) $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ E(X) = 0 + 0.26 + 0.84 + 0.48 + 0.24 = 1.82 \text{ averías} $$
+                        </div>
+
+                        <p style="margin-top: 1rem;">Para la Varianza, calculamos primero $E(X^2)$:</p>
+                        <div class="formula-responsive">
+                            $$ E(X^2) = \sum x^2 \cdot P(x) = 0(0.10) + 1(0.26) + 4(0.42) + 9(0.16) + 16(0.06) = 4.34 $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ V(X) = E(X^2) - [E(X)]^2 = 4.34 - (1.82)^2 = 4.34 - 3.3124 = 1.0276 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>b) Esperanza y Desvío del Costo</strong></p>
+                        <p>La función de Costo es una transformación lineal: $C = 400 + 1500X$. Aplicamos propiedades de la Esperanza y la Varianza:</p>
+                        <div class="formula-responsive">
+                            $$ E(C) = E(400 + 1500X) = 400 + 1500 \cdot E(X) = 400 + 1500(1.82) = \$3130 $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ V(C) = V(400 + 1500X) = 1500^2 \cdot V(X) = 2250000 \times 1.0276 = 2312100 $$
+                        </div>
+                        <p style="text-align: center; color: var(--text-color);">Desvío Estándar $\sigma_C = \sqrt{V(C)} = \sqrt{2312100} \approx \$1520.56$</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>La distancia promedio diaria que recorre una flota de remis es de 300 km con un desvío estándar de 45 km, desconociendo su distribución de probabilidad. ¿Entre qué valores deberán caer al menos el 75% de los kilometrajes de acuerdo al teorema de Chebyshev?</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Datos poblacionales: $\mu = 300 \text{ km}$, $\sigma = 45 \text{ km}$.</p>
+                        <p>El teorema de Chebyshev establece que la proporción de datos que caen dentro de $k$ desviaciones estándar de la media es al menos $1 - \frac{1}{k^2}$.</p>
+                        
+                        <div class="formula-responsive">
+                            $$ P(\mu - k\sigma \lt X \lt \mu + k\sigma) \ge 1 - \frac{1}{k^2} $$
+                        </div>
+
+                        <p style="margin-top: 1rem;">Igualamos la probabilidad dada al límite del teorema para despejar $k$:</p>
+                        <div class="formula-responsive">
+                            $$ 1 - \frac{1}{k^2} = 0.75 \implies \frac{1}{k^2} = 0.25 \implies k^2 = 4 \implies k = 2 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;">Por lo tanto, al menos el 75% de los kilometrajes caen a 2 desvíos estándar de la media:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Límite inferior: $\mu - 2\sigma = 300 - 2(45) = 300 - 90 = 210 \text{ km}$</li>
+                            <li>Límite superior: $\mu + 2\sigma = 300 + 2(45) = 300 + 90 = 390 \text{ km}$</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>Respuesta:</strong> Deberán caer entre 210 y 390 kilómetros.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Una variable aleatoria tiene Esperanza igual a 10 y Varianza igual a 4. Utilizando el teorema de Chebyshev, acotar: </p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>$P(|X-10|\ge3)$ </li>
+                            <li>$P(5 \lt X \lt 15)$ </li>
+                            <li>$P(|X-10|\ge C) \lt 0,04$ </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Datos: $\mu = 10$, $\sigma^2 = 4 \implies \sigma = 2$.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>a) Acotar $P(|X-10|\ge3)$</strong></p>
+                        <p>Usamos la forma de la desigualdad para el complemento: $P(|X-\mu| \ge a) \le \frac{\sigma^2}{a^2}$.<br>
+                        Aquí, $a = 3$ y $\sigma^2 = 4$.</p>
+                        <div class="formula-responsive">
+                            $$ P(|X-10| \ge 3) \le \frac{4}{3^2} = \frac{4}{9} \approx 0.4444 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>b) Acotar $P(5 \lt X \lt 15)$</strong></p>
+                        <p>Este intervalo representa la distancia desde la media ($\mu=10$) hasta los extremos. Es decir, $|X-10| \lt 5$. La distancia es $k\sigma = 5$. Como $\sigma=2$, entonces $2k = 5 \implies k = 2.5$.</p>
+                        <div class="formula-responsive">
+                            $$ P(|X-10| \lt 5) \ge 1 - \frac{1}{2.5^2} = 1 - \frac{1}{6.25} = 1 - 0.16 = 0.84 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>c) Hallar $C$ si $P(|X-10| \ge C) \lt 0.04$</strong></p>
+                        <p>Sabemos que $P(|X-\mu| \ge k\sigma) \le \frac{1}{k^2}$. Igualamos la cota máxima a 0.04.</p>
+                        <div class="formula-responsive">
+                            $$ \frac{1}{k^2} = 0.04 \implies k^2 = 25 \implies k = 5 $$
+                        </div>
+                        <p>Como $C$ representa la distancia $k\sigma$, entonces $C = 5 \times 2 = 10$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Dada la siguiente función de densidad de probabilidad:</p>
+                        <div class="formula-responsive">
+                            $$ f(x)=\begin{cases} K(x-2) & \text{si } 2 \le x \le 4 \\ 0 & \text{si } x \lt 2; x > 4 \end{cases} $$
+                        </div>
+                        <p style="font-size: 0.8rem; text-align: center; color: var(--text-color);"></p>
+
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a-</strong> Hallar la constante K</li>
+                            <li><strong>b-</strong> Hallar la función de distribución acumulativa $F(x)$</li>
+                            <li><strong>c-</strong> Calcular su Esperanza y Varianza</li>
+                            <li><strong>d-</strong> Calcular $P(2,2 \le X \le 3)$; $P(X \ge 3,5)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Hallar constante $k$:</strong> Para que sea una f.d.p válida, el área bajo la curva debe ser 1.</p>
+                        <div class="formula-responsive">
+                            $$ \int_2^4 k(x-2) \,dx = k \left[ \frac{x^2}{2} - 2x \right]_2^4 = k \left[ \left(\frac{16}{2}-8\right) - \left(\frac{4}{2}-4\right) \right] = 1 $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ k [ (8-8) - (2-4) ] = k[2] = 1 \implies k = \frac{1}{2} $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>b) Función Acumulada $F(x)$:</strong></p>
+                        <div class="formula-responsive">
+                            $$ F(x) = \int_2^x \frac{1}{2}(t-2) \,dt = \frac{1}{2} \left[ \frac{t^2}{2} - 2t \right]_2^x = \frac{1}{2} \left[ \frac{x^2}{2} - 2x - (2-4) \right] $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ F(x) = \frac{x^2}{4} - x + 1 = \frac{(x-2)^2}{4} \quad \text{para } 2 \le x \le 4 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>c) Esperanza y Varianza:</strong></p>
+                        <p>Cálculo de la Esperanza (se omiten pasos aritméticos intermedios):</p>
+                        <div class="formula-responsive">
+                            $$ E(X) = \int_2^4 x \cdot \frac{1}{2}(x-2) \,dx = \frac{1}{2} \left[ \frac{x^3}{3} - x^2 \right]_2^4 = \frac{10}{3} \approx 3.33 $$
+                        </div>
+                        <p>Cálculo de la Varianza:</p>
+                        <div class="formula-responsive">
+                            $$ E(X^2) = \int_2^4 x^2 \cdot \frac{1}{2}(x-2) \,dx = \frac{1}{2} \left[ \frac{x^4}{4} - \frac{2x^3}{3} \right]_2^4 = \frac{34}{3} $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ V(X) = E(X^2) - [E(X)]^2 = \frac{34}{3} - \left(\frac{10}{3}\right)^2 = \frac{102 - 100}{9} = \frac{2}{9} \approx 0.222 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>d) Cálculo de probabilidades usando $F(x)$:</strong></p>
+                        <div class="formula-responsive">
+                            $$ P(2.2 \le X \le 3) = F(3) - F(2.2) = \frac{1^2}{4} - \frac{0.2^2}{4} = 0.25 - 0.01 = 0.24 $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ P(X \ge 3.5) = 1 - F(3.5) = 1 - \frac{(1.5)^2}{4} = 1 - 0.5625 = 0.4375 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>La función de distribución acumulada de una variable aleatoria X es:</p>
+                        <div class="formula-responsive">
+                            $$ F(X) = \begin{cases} 0 & \text{si } x \lt 0 \\ \frac{1}{27}x^3 & \text{si } 0 \le x \lt 3 \\ 1 & \text{si } x \ge 3 \end{cases} $$
+                        </div>
+                        <p style="font-size: 0.8rem; text-align: center; color: var(--text-color);"></p>
+                        <p>Calcular la esperanza y la varianza de X.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Primero derivamos $F(x)$ para obtener la función de densidad de probabilidad $f(x)$:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = \frac{d}{dx} \left( \frac{1}{27}x^3 \right) = \frac{3}{27}x^2 = \frac{1}{9}x^2 \quad \text{para } 0 \le x \lt 3 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>1. Esperanza $E(X)$:</strong></p>
+                        <div class="formula-responsive">
+                            $$ E(X) = \int_0^3 x \left( \frac{1}{9}x^2 \right) dx = \frac{1}{9} \int_0^3 x^3 \,dx = \frac{1}{9} \left[ \frac{x^4}{4} \right]_0^3 = \frac{1}{9} \left( \frac{81}{4} \right) = \frac{9}{4} = 2.25 $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>2. Varianza $V(X)$:</strong></p>
+                        <p>Calculamos $E(X^2)$:</p>
+                        <div class="formula-responsive">
+                            $$ E(X^2) = \int_0^3 x^2 \left( \frac{1}{9}x^2 \right) dx = \frac{1}{9} \int_0^3 x^4 \,dx = \frac{1}{9} \left[ \frac{x^5}{5} \right]_0^3 = \frac{1}{9} \left( \frac{243}{5} \right) = \frac{27}{5} = 5.4 $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ V(X) = E(X^2) - [E(X)]^2 = 5.4 - (2.25)^2 = 5.4 - 5.0625 = 0.3375 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+</body>
+</html>

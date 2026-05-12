@@ -102,3 +102,34 @@
 }
 .exercise-description h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.3rem; }
 .exercise-description p { white-space: pre-line; margin: 0; }
+
+/* ===== COLORES SEGUNDO AÑO ===== */
+:root {
+    --color-fisica2: #3498db;   /* Azul eléctrico */
+    --color-sociedad: #9b59b6;  /* Púrpura */
+    --color-sintaxis: #e67e22;  /* Naranja */
+    
+    /* Variantes más oscuras para el hover/sombras */
+    --color-fisica2-dark: #2980b9;
+    --color-sociedad-dark: #8e44ad;
+    --color-sintaxis-dark: #d35400;
+}
+
+/* Asignación de variables locales para el hover de las cards */
+.card-fisica2 { --local-color: var(--color-fisica2); }
+.card-sociedad { --local-color: var(--color-sociedad); }
+.card-sintaxis { --local-color: var(--color-sintaxis); }
+
+/* ===== COLORES TERCER AÑO ===== */
+:root {
+    --color-probabilidad: #8B4513;   /* Marrón (SaddleBrown) */
+    --color-numerico: #E83E8C;       /* Rosa Vibrante */
+    
+    /* Variantes oscuras para sombreados y botones */
+    --color-probabilidad-dark: #5C2E0B;
+    --color-numerico-dark: #B82E6B;
+}
+
+/* Mapeo local para el efecto hover dinámico */
+.card-probabilidad { --local-color: var(--color-probabilidad); }
+.card-numerico { --local-color: var(--color-numerico); }
