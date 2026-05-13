@@ -1,16 +1,6 @@
-/* ===== ÁLGEBRA (Tema Específico) ===== */
 body.algebra-page {
     --accent: var(--color-algebra);
     --button-hover-bg: var(--color-algebra-dark);
     --header-line-color: var(--color-algebra);
     --theme-color: var(--color-algebra);
-}
-
-body.algebra-page .trabajo-card:hover {
-    box-shadow: 0 10px 20px rgba(241, 196, 15, 0.3); /* Sombra dorada */
-    border-color: var(--color-algebra);
-}
-
-body.algebra-page .logo:hover {
-    text-shadow: 0 0 15px rgba(241, 196, 15, 0.7); /* Brillo dorado */
 }

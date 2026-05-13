@@ -1,14 +1,6 @@
-/* ===== FÍSICA II (Tema Específico) ===== */
-body.fisica2-page {
-    --accent: var(--color-fisica2);
-    --button-hover-bg: var(--color-fisica2-dark);
-    --header-line-color: var(--color-fisica2);
-    --theme-color: var(--color-fisica2);
-}
-body.fisica2-page .trabajo-card:hover {
-    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); /* Sombra azul */
-    border-color: var(--color-fisica2);
-}
-body.fisica2-page .logo:hover {
-    text-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
+body.fisicaII-page {
+    --accent: var(--color-fisicaII);
+    --button-hover-bg: var(--color-fisicaII-dark);
+    --header-line-color: var(--color-fisicaII);
+    --theme-color: var(--color-fisicaII);
 }

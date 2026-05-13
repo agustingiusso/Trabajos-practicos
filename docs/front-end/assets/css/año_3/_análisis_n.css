@@ -1,18 +1,9 @@
-/* ===== ANÁLISIS NUMÉRICO (Tema Rosa) ===== */
 body.numerico-page {
     --accent: var(--color-numerico);
     --button-hover-bg: var(--color-numerico-dark);
     --header-line-color: var(--color-numerico);
     --theme-color: var(--color-numerico);
 }
-body.numerico-page .trabajo-card:hover {
-    box-shadow: 0 10px 20px rgba(232, 62, 140, 0.3); /* Sombra rosa */
-    border-color: var(--color-numerico);
-}
-body.numerico-page .logo:hover {
-    text-shadow: 0 0 15px rgba(232, 62, 140, 0.7);
-}
-
 /* ===== AJUSTES ESPECÍFICOS PARA ANÁLISIS NUMÉRICO ===== */
 /* Sobreescribe la fuente tipo "código" por una fuente de texto normal */
 body.numerico-page .exercise-description {

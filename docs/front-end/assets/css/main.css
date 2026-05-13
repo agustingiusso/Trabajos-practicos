@@ -15,6 +15,7 @@
 @import url('año_2/_fisicaII.css');
 @import url('año_2/_iys.css');
 @import url('año_2/_ssl.css');
+@import url('año_2/_so.css');
 
 /* ===== AÑO_3 ===== */
 @import url('año_3/_análisis_n.css');
@@ -30,10 +31,10 @@
 @import url('components/_buttons.css');
 @import url('components/_cards.css');
 @import url('components/_code.css');
-@import url('components/_d-arbol.css');
+@import url('components/_d_arbol.css');
 @import url('components/_formulas.css');
 @import url('components/_header.css');
-@import url('components/_side-menu.css');
+@import url('components/_side_menu.css');
 @import url('components/_tables.css');
 
 /* ===== LAYOUT ===== */

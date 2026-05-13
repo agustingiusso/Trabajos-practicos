@@ -1,26 +1,18 @@
 /* ----- Controles de Navegación ----- */
 .slide-controls {
-    /* CAMBIO IMPORTANTE: */
-    position: relative; /* Ya no es sticky, ahora se queda en su sitio */
-    /* top: 90px; <-- ELIMINADO (Ya no es necesario) */
+    position: relative;
     z-index: 10;
-    
     display: flex; 
     justify-content: center; 
     align-items: center; 
     gap: 8px;
-    
     background: var(--bg-color); 
     backdrop-filter: blur(10px);
-    
     border: 1px solid var(--table-border-color); 
     border-radius: 50px;
     padding: 8px 15px; 
     width: fit-content; 
-    
-    /* Ajustamos márgenes para que quede bien posicionado en el flujo */
     margin: 30px auto; 
-    
     box-shadow: var(--shadow);
     max-width: 95%;
 }

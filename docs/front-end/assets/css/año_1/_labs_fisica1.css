@@ -1,8 +1,3 @@
-/* ============================================================
-   ESTILOS DE LABORATORIOS DE FÍSICA 1
-   ============================================================ */
-
-/* --- Layout Principal --- */
 .tp-container {
     max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
     display: flex; flex-direction: column; gap: 2rem;
@@ -14,7 +9,6 @@
     --sensor-bg: #2c3e50;
 }
 
-/* Textos y Títulos */
 .tp-container .punto-card { text-align: left; }
 
 .tp-container .main-title {
@@ -27,7 +21,6 @@
     border: 0; height: 1px; background: var(--table-border-color); margin: 1.5rem 0;
 }
 
-/* Listas y Tablas */
 .tp-container .componentes-list { list-style-position: inside; padding-left: 0; }
 .tp-container .componentes-list li { margin-bottom: 0.5rem; color: var(--text-color); }
 
@@ -38,7 +31,6 @@
     background-color: var(--formula-bg); font-weight: bold; color: var(--formula-text);
 }
 
-/* --- UI: Inputs y Resultados --- */
 .tp-container .conclusiones-input, 
 .tp-container .conclusion-text {
     width: 100%; margin-top: 1rem; padding: 1rem;

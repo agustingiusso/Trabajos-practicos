@@ -1,0 +1,6 @@
+body.so-page {
+    --accent: var(--color-so);
+    --button-hover-bg: var(--color-so-dark);
+    --header-line-color: var(--color-so);
+    --theme-color: var(--color-so);
+}

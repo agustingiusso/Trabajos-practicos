@@ -46,3 +46,7 @@
     white-space: nowrap;
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
+
+body .logo:hover {
+    text-shadow: 0 0 15px color-mix(in srgb, var(--accent), transparent 30%);
+}

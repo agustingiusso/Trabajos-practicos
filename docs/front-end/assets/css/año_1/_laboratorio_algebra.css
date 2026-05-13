@@ -1,19 +1,14 @@
-/* ===== Estilos Laboratorio IA (Álgebra) ===== */
-
-/* --- Contenedor Principal --- */
 .lab-algebra-container {
     max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
     display: flex; flex-direction: column; gap: 2rem;
 }
 
-/* --- Tarjeta Específica --- */
 .lab-algebra-container .punto-card {
     background: var(--card-bg); border-radius: var(--border-radius);
     padding: 1.5rem; box-shadow: var(--shadow); border: var(--card-border);
     text-align: left;
 }
 
-/* --- Tipografía y Colores (Álgebra) --- */
 .lab-algebra-container .main-title, 
 .lab-algebra-container h2,
 .lab-algebra-container .bhaskara-steps h3 {

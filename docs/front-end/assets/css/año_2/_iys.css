@@ -1,14 +1,6 @@
-/* ===== INGENIERÍA Y SOCIEDAD (Tema Específico) ===== */
 body.sociedad-page {
     --accent: var(--color-sociedad);
     --button-hover-bg: var(--color-sociedad-dark);
     --header-line-color: var(--color-sociedad);
     --theme-color: var(--color-sociedad);
-}
-body.sociedad-page .trabajo-card:hover {
-    box-shadow: 0 10px 20px rgba(155, 89, 182, 0.3); /* Sombra púrpura */
-    border-color: var(--color-sociedad);
-}
-body.sociedad-page .logo:hover {
-    text-shadow: 0 0 15px rgba(155, 89, 182, 0.7);
 }

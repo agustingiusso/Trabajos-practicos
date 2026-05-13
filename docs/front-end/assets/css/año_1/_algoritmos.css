@@ -1,28 +1,7 @@
-/* ===== ALGORITMOS (Tema Específico) ===== */
 body.algoritmos-page,
 body.tp1-algoritmos-page {
     --accent: var(--color-algoritmos);
     --button-hover-bg: var(--color-algoritmos-dark);
     --header-line-color: var(--color-algoritmos);
     --theme-color: var(--color-algoritmos);
-}
-body.algoritmos-page .trabajo-card:hover,
-body.tp1-algoritmos-page .trabajo-card:hover {
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); /* Sombra Roja */
-    border-color: var(--color-algoritmos-dark);
-}
-
-body.algoritmos-page .trabajo-card:hover::after,
-body.tp1-algoritmos-page .trabajo-card:hover::after {
-    background: var(--color-algoritmos) !important;
-}
-
-/* Efecto Neón en Logo */
-body.algoritmos-page .logo,
-body.tp1-algoritmos-page .logo {
-    color: #ffffff !important;
-}
-body.algoritmos-page .logo:hover,
-body.tp1-algoritmos-page .logo:hover {
-    text-shadow: 0 1px 5px rgba(0,0,0,0.7), 0 0 15px rgba(231, 76, 60, 0.7);
 }

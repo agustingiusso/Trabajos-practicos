@@ -1,8 +1,12 @@
 /* ===== Grillas (Contenedores) ===== */
 .materias-grid, .trabajos-grid {
-    display: flex; flex-wrap: wrap; justify-content: center;
-    gap: 2rem; padding: 2rem;
-    max-width: var(--max-width); margin: 2rem auto;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 2rem; 
+    padding: 2rem;
+    max-width: var(--max-width); 
+    margin: 2rem auto;
 }
 
 /* ===== Tarjetas Base (Estilos Compartidos) ===== */
@@ -18,47 +22,69 @@
 
 /* Tarjetas Interactivas */
 .materia-card, .trabajo-card {
-    text-align: center; text-decoration: none; color: inherit;
+    text-align: center; 
+    text-decoration: none; 
+    color: inherit;
     overflow: hidden;
 }
 .materia-card:hover, .trabajo-card:hover {
-    transform: translateY(-5px); background: var(--card-hover);
+    transform: translateY(-5px); 
+    background: var(--card-hover);
 }
 
 /* --- Específicos: Materia / Año --- */
 .materia-card {
-    flex: 1 1 300px; max-width: 400px; min-height: 200px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    flex: 1 1 300px; 
+    max-width: 400px; 
+    min-height: 200px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
     animation: fadeInUp 0.5s ease-out;
 }
 
 /* --- Específicos: Trabajo Práctico --- */
 .trabajo-card {
-    flex: 0 1 350px; border-left: 4px solid var(--theme-color, #ccc);
+    flex: 0 1 350px; 
+    border-left: 4px solid var(--theme-color, #ccc);
 }
 .trabajo-card:only-child { flex: 1 0 auto; max-width: 100%; }
 
 /* Línea Inferior Animada */
 .materia-card::after, .trabajo-card::after {
-    content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
-    transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease;
+    content: ""; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 3px;
+    transform: scaleX(0); 
+    transform-origin: right; 
+    transition: transform 0.3s ease;
 }
 .materia-card:hover::after, .trabajo-card:hover::after {
-    transform: scaleX(1); transform-origin: left;
+    transform: scaleX(1); 
+    transform-origin: left;
 }
 .trabajo-card::after { background: var(--accent); }
 
 /* Iconos */
 .materia-card .materia-icon {
-    width: 80px; height: 80px; margin: 0 auto 1rem; display: block;
-    stroke-linecap: round; stroke-linejoin: round; transition: all 0.3s ease;
+    width: 80px; 
+    height: 80px; 
+    margin: 0 auto 1rem; 
+    display: block;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+    transition: all 0.3s ease;
 }
 .materia-card:hover .materia-icon {
-    filter: drop-shadow(0 0 8px rgba(0,0,0,0.2)); transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.2)); 
+    transform: scale(1.05);
 }
 
 /* ===== CONFIGURACIÓN DE COLORES (Unificada) ===== */
-/* Definición de la variable local por clase */
 .card-anio-1 { --local-color: #3498db; }
 .card-anio-2 { --local-color: #2ecc71; }
 .card-anio-3 { --local-color: #f1c40f; }
@@ -82,8 +108,13 @@
 
 /* Estilos de Número de Año */
 .anio-number {
-    font-size: 4rem; font-weight: 800; line-height: 1; margin-bottom: 1rem;
-    opacity: 0.9; font-family: 'Segoe UI', sans-serif; transition: transform 0.3s ease;
+    font-size: 4rem; 
+    font-weight: 800; 
+    line-height: 1; 
+    margin-bottom: 1rem;
+    opacity: 0.9; 
+    font-family: 'Segoe UI', sans-serif; 
+    transition: transform 0.3s ease;
 }
 .materia-card:hover .anio-number { transform: scale(1.1); }
 
@@ -95,41 +126,45 @@
 .punto-card { max-width: var(--max-width); }
 
 .exercise-description {
-    background: var(--code-bg); color: var(--code-text);
-    padding: 2rem; border-radius: 8px; margin-bottom: 2rem;
-    font-family: 'Consolas', monospace; font-size: 0.95rem; line-height: 1.5;
+    background: var(--code-bg); 
+    color: var(--code-text);
+    padding: 2rem; 
+    border-radius: 8px; 
+    margin-bottom: 2rem;
+    font-family: 'Consolas', monospace; 
+    font-size: 0.95rem; 
+    line-height: 1.5;
     border: var(--code-border);
 }
 .exercise-description h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.3rem; }
 .exercise-description p { white-space: pre-line; margin: 0; }
 
-/* ===== COLORES SEGUNDO AÑO ===== */
-:root {
-    --color-fisica2: #3498db;   /* Azul eléctrico */
-    --color-sociedad: #9b59b6;  /* Púrpura */
-    --color-sintaxis: #e67e22;  /* Naranja */
-    
-    /* Variantes más oscuras para el hover/sombras */
-    --color-fisica2-dark: #2980b9;
-    --color-sociedad-dark: #8e44ad;
-    --color-sintaxis-dark: #d35400;
-}
-
-/* Asignación de variables locales para el hover de las cards */
-.card-fisica2 { --local-color: var(--color-fisica2); }
+/* ========================================================= */
+/* ===== MAPEOS DE MATERIAS (Personalizados) =============== */
+/* ========================================================= */
+.card-fisicaII { --local-color: var(--color-fisicaII); }
 .card-sociedad { --local-color: var(--color-sociedad); }
 .card-sintaxis { --local-color: var(--color-sintaxis); }
-
-/* ===== COLORES TERCER AÑO ===== */
-:root {
-    --color-probabilidad: #8B4513;   /* Marrón (SaddleBrown) */
-    --color-numerico: #E83E8C;       /* Rosa Vibrante */
-    
-    /* Variantes oscuras para sombreados y botones */
-    --color-probabilidad-dark: #5C2E0B;
-    --color-numerico-dark: #B82E6B;
-}
-
-/* Mapeo local para el efecto hover dinámico */
 .card-probabilidad { --local-color: var(--color-probabilidad); }
 .card-numerico { --local-color: var(--color-numerico); }
+
+/* Mapeo Especial para Sistemas Operativos (Terminal Matrix) */
+.card-so { 
+    --local-color: var(--color-so); /* Tu verde oscuro */
+}
+.card-so:hover { 
+    --local-color: var(--color-so-dark); /* Tu verde neón */
+}
+
+/* CORRECCIÓN: Se agrega 'color' para que el 'currentColor' del SVG cambie */
+.card-so .materia-icon { 
+    stroke: var(--local-color); 
+    color: var(--local-color); 
+    transition: all 0.3s ease;
+}
+
+/* ===== HOVERS GLOBALES PARA TRABAJOS PRÁCTICOS ===== */
+body .trabajo-card:hover {
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--accent), transparent 70%); 
+    border-color: var(--accent);
+}

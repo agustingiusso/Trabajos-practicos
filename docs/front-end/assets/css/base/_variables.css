@@ -3,23 +3,38 @@
    ====================================================== */
 
 :root {
-    /* 1. COLORES DE MATERIAS (Constantes) */
+    /* COLORES PRIMER AÑO */
     --color-white: #fff; 
     --color-black: #000;
-    
     --color-algoritmos: #e74c3c; 
     --color-algoritmos-dark: #c0392b;
-    
     --color-fisica: #2ecc71; 
     --color-fisica-dark: #27ae60;
-    
     --color-algebra: #F1C40F; 
     --color-algebra-dark: #D4AC0D;
-    
     --color-index: #4a5568; 
     --color-index-dark: #ffffff;
 
-    /* 2. DIMENSIONES & CONFIGURACIÓN */
+    /* ===== COLORES SEGUNDO AÑO ===== */
+
+    --color-fisicaII: #3498db;
+    --color-fisicaII-dark: #2980b9;
+    --color-sociedad: #9b59b6;
+    --color-sociedad-dark: #8e44ad;  
+    --color-sintaxis: #e67e22;
+    --color-sintaxis-dark: #d35400;
+    --color-so: #41af01;
+    --color-so-dark: #2bff00;
+
+    /* ===== COLORES TERCER AÑO ===== */
+
+    --color-probabilidad: #8B4513;
+    --color-probabilidad-dark: #5C2E0B;
+    --color-numerico: #E83E8C;
+    --color-numerico-dark: #B82E6B;
+
+
+    /* DIMENSIONES & CONFIGURACIÓN */
     --max-width: 1200px;
     --header-height: 80px;
     --border-radius: 0.5rem;
@@ -33,11 +48,11 @@
     --header-line-color-algoritmos: var(--color-algoritmos);
 
     /* ==================================================
-       3. TEMA CLARO (Default / Soft UI)
+        TEMA CLARO (Default / Soft UI)
        ================================================== */
     
     /* Fondo y Textos */
-    --bg-color: #f8fafc;          /* Gris azulado muy suave */
+    --bg-color: #f2f6fa;          /* Gris azulado muy suave */
     --text-color: #1e293b;        /* Gris oscuro profesional */
     --text-muted: #475569;        /* Gris medio para subtítulos */
 
@@ -77,7 +92,7 @@
 }
 
 /* ======================================================
-   4. TEMA OSCURO (Overrides)
+   TEMA OSCURO (Overrides)
    ====================================================== */
 [data-theme="dark"] {
     /* Ajustes Materias (Más oscuros para contraste) */
@@ -122,12 +137,4 @@
     --code-bg: #1e1e1e;
     --code-text: #d4d4d4;
     --code-border: 1px solid #333;
-}
-
-.main-container {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    position: relative;
 }

@@ -1,4 +1,3 @@
-/* --- HERO SECTION --- */
 .hero-section {
     text-align: center;
     padding: 6rem 1rem 4rem;
@@ -24,7 +23,6 @@
     color: var(--text-color);
 }
 
-/* CORRECCIÓN AQUÍ: Se agregan propiedades estándar y fallback */
 .text-gradient {
     background: linear-gradient(90deg, #F1C40F, #e74c3c);
     -webkit-background-clip: text;

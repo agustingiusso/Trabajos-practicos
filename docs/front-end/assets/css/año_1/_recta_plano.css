@@ -1,20 +1,14 @@
-/* ===== Estilos: Rectas y Planos (Álgebra) ===== */
-
-/* --- Contenedor Principal --- */
 .algebra-container {
     max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
     display: flex; flex-direction: column; gap: 2rem;
 }
 
-/* --- Tarjetas Generales --- */
 .algebra-container .punto-card {
     background: var(--card-bg); border-radius: var(--border-radius);
     padding: 1.5rem; box-shadow: var(--shadow); border: var(--card-border);
     text-align: left;
 }
 
-/* --- Tipografía y Colores (Tema Álgebra) --- */
-/* Agrupamos títulos para asignar el color amarillo una sola vez */
 .algebra-container .main-title, 
 .algebra-container h2 {
     color: var(--color-algebra, #f1c40f);
