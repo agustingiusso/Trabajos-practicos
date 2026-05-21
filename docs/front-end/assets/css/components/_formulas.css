@@ -1,44 +1,66 @@
-/* ========================================================= */
-/* ===== FÓRMULAS MATEMÁTICAS RESPONSIVE =================== */
-/* ========================================================= */
-
-.formula-responsive {
-    display: block;
+.punto-card {
     width: 100%;
-    max-width: 100%; /* Fundamental: Evita que estire la tarjeta */
-    overflow-x: auto; /* Permite scroll horizontal */
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch; /* Scroll suave en pantallas táctiles */
-    text-align: center;
-    padding: 10px 0 15px 0; /* Espacio extra abajo para que no pise la barra */
-    margin: 1.5rem 0;
-    
-    /* Achica la fuente proporcionalmente a la pantalla */
-    font-size: clamp(0.6rem, 2.2vw, 1.1rem); 
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden; 
 }
 
-/* Barra de scroll estilizada (antes estaba oculta) */
-.formula-responsive::-webkit-scrollbar {
-    height: 6px;
-}
-.formula-responsive::-webkit-scrollbar-thumb {
-    background-color: var(--table-border-color);
-    border-radius: 4px;
-}
-.formula-responsive::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-/* ========================================================= */
-/* ===== FIX RESPONSIVE: TEXTOS LARGOS ===================== */
-/* ========================================================= */
-
-/* Forzar a que los textos largos (párrafos normales) se rompan y no desborden */
 .punto-card p, 
+.punto-card li,
 .exercise-description p,
-.card-content p {
+.exercise-description li,
+.resolucion-container p,
+.resolucion-container li {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    hyphens: auto;
+    word-break: break-word;
     max-width: 100%;
+}
+
+.formula-responsive,
+mjx-container[display="true"],
+.MathJax_Display,
+.katex-display {
+    display: block !important;
+    width: 100%;
+    max-width: 100% !important;
+    overflow-x: auto !important; 
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+}
+
+.list-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+}
+
+.formula-responsive::-webkit-scrollbar,
+mjx-container[display="true"]::-webkit-scrollbar,
+.MathJax_Display::-webkit-scrollbar,
+.katex-display::-webkit-scrollbar,
+.list-scroll::-webkit-scrollbar,
+.scroll-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.formula-responsive::-webkit-scrollbar-track,
+mjx-container[display="true"]::-webkit-scrollbar-track,
+.MathJax_Display::-webkit-scrollbar-track,
+.katex-display::-webkit-scrollbar-track,
+.list-scroll::-webkit-scrollbar-track,
+.scroll-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.formula-responsive::-webkit-scrollbar-thumb,
+mjx-container[display="true"]::-webkit-scrollbar-thumb,
+.MathJax_Display::-webkit-scrollbar-thumb,
+.katex-display::-webkit-scrollbar-thumb,
+.list-scroll::-webkit-scrollbar-thumb,
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--table-border-color);
+    border-radius: 10px;
 }

@@ -1,133 +1,104 @@
-/* ----- Controles de Navegación ----- */
+/* ----- Controles de Navegación (La Pastilla) ----- */
 .slide-controls {
     position: relative;
     z-index: 10;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 8px;
-    background: var(--bg-color); 
+    background: var(--bg-color);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--table-border-color); 
+    border: 1px solid var(--table-border-color);
     border-radius: 50px;
-    padding: 8px 15px; 
-    width: fit-content; 
-    margin: 30px auto; 
+    padding: 6px 16px;
     box-shadow: var(--shadow);
-    max-width: 95%;
+    
+    /* NUEVO: sin scroll horizontal interno */
+    overflow-x: visible;
+    
+    /* Layout centrado y adaptable */
+    display: flex;
+    justify-content: center;
+    width: fit-content;      /* Se ajusta al contenido */
+    max-width: 95vw;         /* No sobresale en móvil */
+    margin: 30px auto;
 }
 
-/* Lista de Puntos (Estática) */
+/* Ya no se necesita ocultar scrollbar, eliminamos esos estilos */
+
+/* Lista de Puntos (La pista interior) */
 .nav-points {
-    display: flex; 
-    gap: 6px; 
-    list-style: none; 
-    padding: 0; 
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
     margin: 0;
-    justify-content: center; 
-    flex-wrap: wrap; 
+    
+    /* PERMITE que los puntos bajen de línea */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Botón Individual */
 .nav-point {
-    position: relative; 
-    padding: 10px 16px; 
-    border-radius: 50px; 
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 0.92rem; 
-    font-weight: 500; 
+    font-size: 0.9rem;
     color: var(--text-muted);
-    border: 1px solid transparent; 
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    
+    /* Necesario para que el indicador (burbuja) se posicione relativo al botón */
+    position: relative;
 }
 
-/* Hover */
 .nav-point:hover {
-    background: var(--card-bg); 
     color: var(--accent);
-    transform: translateY(-1px);
+    background: var(--card-hover);
 }
 
-/* Activo */
 .nav-point.active {
-    background: var(--accent); 
-    color: white; 
+    color: var(--accent);
+    background: var(--card-bg);
+    border-color: var(--table-border-color);
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-    transform: translateY(-2px);
 }
 
-/* Animación Burbuja */
 .nav-point.active::after {
-    content: ''; 
-    position: absolute; 
-    bottom: -10px; 
+    content: '';
+    position: absolute;
+    bottom: -10px;
     left: 50%;
-    width: 6px; 
-    height: 6px; 
+    width: 6px;
+    height: 6px;
     background: var(--accent);
-    border-radius: 50%; 
+    border-radius: 50%;
     transform: translateX(-50%);
     animation: bubble 0.4s forwards;
 }
 
-@keyframes bubble { 
-    from { opacity: 0; bottom: -6px; } 
-    to { opacity: 1; bottom: -10px; } 
+@keyframes bubble {
+    from { opacity: 0; bottom: -6px; }
+    to { opacity: 1; bottom: -10px; }
 }
 
-/* ----- Contador ----- */
-.punto-counter {
-    display: flex; 
-    align-items: center; 
-    gap: 4px; 
-    flex-shrink: 0;
-    font-size: 0.82rem; 
-    font-weight: 600; 
-    color: var(--accent);
-    background: var(--card-bg); 
-    padding: 5px 10px;
-    border-radius: 50px; 
-    margin-left: 8px;
-}
-.punto-counter::before {
-    content: 'Punto'; 
-    font-weight: 400; 
-    color: var(--text-muted); 
-    font-size: 0.75rem;
-}
-
-/* ----- Slides ----- */
-.slide {
-    transition: opacity 0.35s ease, transform 0.4s ease;
-}
-.slide:not(.active) {
-    opacity: 0; 
-    height: 0; 
-    overflow: hidden; 
-    position: absolute;
-    transform: translateY(10px); 
-    pointer-events: none;
-}
-.slide.active {
-    opacity: 1; 
-    height: auto; 
-    position: relative; 
-    transform: translateY(0);
-}
-
-/* ----- Responsive ----- */
+/* ----- Ajustes específicos para móvil (como en la captura) ----- */
 @media (max-width: 768px) {
-    .slide-controls { 
-        /* top: 15px; <-- ELIMINADO */
-        margin-bottom: 20px;
-        padding: 6px 10px; 
+    .slide-controls {
+        padding: 10px 16px;       /* Más espacio vertical */
+        border-radius: 30px;      /* Pastilla más suave */
     }
-    .nav-point { 
-        padding: 8px 12px; 
-        font-size: 0.85rem; 
+    
+    .nav-points {
+        gap: 10px;                /* Mayor separación para dedos */
     }
-    .punto-counter { 
-        display: none; 
+    
+    .nav-point {
+        padding: 10px 16px;       /* Área táctil más grande */
+        font-size: 0.85rem;
+    }
+    
+    /* Opcional: si los números son muchos, reducir padding extremo */
+    .nav-point {
+        padding-left: 12px;
+        padding-right: 12px;
     }
 }
