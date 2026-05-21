@@ -1,20 +1,44 @@
+/* ========================================================= */
+/* ===== FÓRMULAS MATEMÁTICAS RESPONSIVE =================== */
+/* ========================================================= */
+
 .formula-responsive {
     display: block;
     width: 100%;
-    overflow-x: auto;
+    max-width: 100%; /* Fundamental: Evita que estire la tarjeta */
+    overflow-x: auto; /* Permite scroll horizontal */
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en pantallas táctiles */
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0 15px 0; /* Espacio extra abajo para que no pise la barra */
     margin: 1.5rem 0;
     
     /* Achica la fuente proporcionalmente a la pantalla */
     font-size: clamp(0.6rem, 2.2vw, 1.1rem); 
 }
 
-/* Magia para ocultar la barra de scroll en TODOS los navegadores */
+/* Barra de scroll estilizada (antes estaba oculta) */
 .formula-responsive::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    height: 6px;
 }
-.formula-responsive {
-    -ms-overflow-style: none;  /* IE y Edge antiguo */
-    scrollbar-width: none;  /* Firefox */
+.formula-responsive::-webkit-scrollbar-thumb {
+    background-color: var(--table-border-color);
+    border-radius: 4px;
+}
+.formula-responsive::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* ========================================================= */
+/* ===== FIX RESPONSIVE: TEXTOS LARGOS ===================== */
+/* ========================================================= */
+
+/* Forzar a que los textos largos (párrafos normales) se rompan y no desborden */
+.punto-card p, 
+.exercise-description p,
+.card-content p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
 }
