@@ -18,7 +18,7 @@ int main()
     float monto_remunerativo, obra_social, ley_19032, jubilacion, total_retenciones;
     float total_no_remunerativo, sueldo_neto;
 
-    // 1. Ingreso de datos
+    // Ingreso de datos
     printf("--- Sistema de Liquidacion de Sueldos ---\n");
     printf("Ingrese el nombre del empleado: ");
     scanf("%49s", nombre);
@@ -43,7 +43,7 @@ int main()
     printf("Ingrese el monto a descontar por cada dia de ausencia: $");
     scanf("%f", &descuento_por_dia);
 
-    // 2. Cálculos principales
+    // Cálculos
     // Se descuenta el ausentismo del básico para obtener el total remunerativo
     total_descuento_ausencias = dias_ausentes * descuento_por_dia;
     monto_remunerativo = sueldo_basico - total_descuento_ausencias;
@@ -60,7 +60,7 @@ int main()
     // Cálculo final del sueldo de bolsillo (neto)
     sueldo_neto = monto_remunerativo - total_retenciones + total_no_remunerativo;
 
-    // 3. Impresión del recibo
+    // Impresión del recibo
     printf("\n========================================\n");
     printf("          RECIBO DE SUELDO\n");
     printf("========================================\n");
