@@ -89,9 +89,15 @@
                             <li><strong>i. $P(A)$</strong> = $\frac{3}{36} = \frac{1}{12} \approx 0.0833$</li>
                             <li><strong>ii. $P(B)$</strong> = $\frac{11}{36} \approx 0.3056$</li>
                             <li><strong>iii. $P(A \cap B)$</strong>: La intersección es $\{(1,3), (3,1)\}$ (2 elementos).<br> $P(A \cap B) = \frac{2}{36} = \frac{1}{18} \approx 0.0556$</li>
+                            <div class="list-scroll">
                             <li><strong>iv. $P(A \cup B)$</strong> = $P(A) + P(B) - P(A \cap B) = \frac{3}{36} + \frac{11}{36} - \frac{2}{36} = \frac{12}{36} = \frac{1}{3} \approx 0.3333$</li>
+                            </div>
+                            <div class="list-scroll">
                             <li><strong>v. $P(A^c \cap B^c)$</strong>: Por Leyes de De Morgan, esto equivale a $P((A \cup B)^c)$.<br> $P((A \cup B)^c) = 1 - P(A \cup B) = 1 - \frac{1}{3} = \frac{2}{3} \approx 0.6667$</li>
+                            </div>
+                            <div class="list-scroll">
                             <li><strong>vi. $P(A^c \cap B)$</strong>: Equivale a "Pasa B pero NO pasa A" (Diferencia de conjuntos).<br> $P(B) - P(A \cap B) = \frac{11}{36} - \frac{2}{36} = \frac{9}{36} = \frac{1}{4} = 0.25$</li>
+                            </div>
                         </ul>
                     </div>
                 </section>
@@ -122,7 +128,7 @@
                         $|A| = 5$ elementos.<br>
                         $|B| = 4$ elementos.<br>
                         $A \cap B = \{6\} \rightarrow |A \cap B| = 1$ elemento.</p>
-                        
+            
                         <p style="margin-top: 1rem;">Aplicando Laplace y probabilidad condicional ($P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$):</p>
                         <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-color); display: flex; flex-direction: column; gap: 0.5rem;">
                             <li><strong>i. $P(A)$</strong> = $\frac{5}{12} \approx 0.4167$</li>
@@ -158,11 +164,14 @@
                         $P(A) = 0.20$<br>
                         $P(C^c \cap A^c) = 0.60$</p>
                         
+                        <div class="formula-responsive">
                         <p style="margin-top: 1rem;">Para llenar la tabla, necesitamos $P(C \cap A)$.<br>
                         Por Morgan: $P(C^c \cap A^c) = 1 - P(C \cup A)$. Por ende, $P(C \cup A) = 1 - 0.60 = 0.40$.<br>
                         Por regla de la suma: $P(C \cap A) = P(C) + P(A) - P(C \cup A) = 0.25 + 0.20 - 0.40 = 0.05$.</p>
+                        </div>
                         
                         <p style="margin-top: 1rem;"><strong>a) Cuadro de clasificación cruzada:</strong></p>
+                        <div class="scroll-wrapper">
                         <table class="data-table">
                             <tr>
                                 <th></th>
@@ -189,6 +198,7 @@
                                 <td><strong>1.00</strong></td>
                             </tr>
                         </table>
+                        </div>
 
                         <p style="margin-top: 1rem;"><strong>b) Análisis de Eventos:</strong></p>
                         <ul style="margin-left: 1.5rem; color: var(--text-color);">
