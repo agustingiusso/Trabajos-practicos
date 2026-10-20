@@ -4,3 +4,9 @@ body.fisicaII-page {
     --header-line-color: var(--color-fisicaII);
     --theme-color: var(--color-fisicaII);
 }
+
+body.fisicaII-page .exercise-description {
+    font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}

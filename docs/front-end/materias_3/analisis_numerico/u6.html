@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3 - Análisis Numérico</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="numerico-page">
+
+    <!-- MENÚ LATERAL DE PARTES -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">TP 3</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Principales</a></li>
+                <li><a href="#" class="part-link" data-part="2">Extras</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../analisis_numerico.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <h1 class="logo">TP 3: Sistemas de Ecuaciones Lineales</h1>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        
+        <!-- ==================== PARTE 1: PRINCIPALES ==================== -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 1</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ 3x + y + z = 4 $$
+                            $$ 2x + 5y + z = -1 $$
+                            $$ -x + y + 3z = 4 $$
+                        </div>
+                        <p>Verificar la convergencia y realizar 3 iteraciones:</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Por el método de Jacobi con $\vec{x}^{(0)} = [0, 0, 0]^T$</li>
+                            <li><strong>b)</strong> Por el método de Gauss-Seidel con $\vec{x}^{(0)} = [4/3, -1/5, 4/3]^T$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Verificación de Convergencia:</p>
+                        <p>Para aplicar un método iterativo, verifico si la matriz de coeficientes es estrictamente diagonal dominante (condición suficiente). Evaluando cada fila ($|a_{ii}| > \sum_{j \ne i} |a_{ij}|$):</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Fila 1: $|3| > |1| + |1| \rightarrow 3 > 2$ (Cumple)</li>
+                            <li>Fila 2: $|5| > |2| + |1| \rightarrow 5 > 3$ (Cumple)</li>
+                            <li>Fila 3: $|3| > |-1| + |1| \rightarrow 3 > 2$ (Cumple)</li>
+                        </ul>
+                        <p>Como todas las filas cumplen, el sistema es diagonalmente dominante y se garantiza la convergencia.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">a) Método de Jacobi (3 iteraciones):</p>
+                        <p>Despejo las incógnitas de la diagonal principal para formar las ecuaciones de recurrencia, donde cada valor nuevo depende exclusivamente del vector de la iteración anterior ($k-1$):</p>
+                        <div class="formula-responsive">
+                            $$ x^{(k)} = \frac{4 - (y^{(k-1)} + z^{(k-1)})}{3} \quad;\quad y^{(k)} = \frac{-1 - (2x^{(k-1)} + z^{(k-1)})}{5} \quad;\quad z^{(k)} = \frac{4 - (-x^{(k-1)} + y^{(k-1)})}{3} $$
+                        </div>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr><th>$k$</th><th>$x^{(k)}$</th><th>$y^{(k)}$</th><th>$z^{(k)}$</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>1</td><td>1.3333</td><td>-0.2000</td><td>1.3333</td></tr>
+                                    <tr><td>2</td><td>0.9555</td><td>-1.0000</td><td>1.8444</td></tr>
+                                    <tr><td>3</td><td>1.0518</td><td>-0.9511</td><td>1.9851</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Método de Gauss-Seidel (3 iteraciones):</p>
+                        <p>Gauss-Seidel acelera la convergencia inyectando los valores de la misma iteración apenas se calculan. Parto del vector semilla dado $\vec{x}^{(0)}$:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr><th>$k$</th><th>$x^{(k)}$</th><th>$y^{(k)}$</th><th>$z^{(k)}$</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0</td><td>1.3333</td><td>-0.2000</td><td>1.3333</td></tr>
+                                    <tr><td>1</td><td>0.9555</td><td>-0.8488</td><td>1.9348</td></tr>
+                                    <tr><td>2</td><td>0.9713</td><td>-0.9754</td><td>1.9822</td></tr>
+                                    <tr><td>3</td><td>0.9977</td><td>-0.9955</td><td>1.9977</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 2</h3>
+                        <p>Dada la matriz $A$ y el vector $\vec{b}$:</p>
+                        <div class="formula-responsive">
+                            $$ A = \begin{pmatrix} 4 & -1 & -1 & 0 \\ -1 & 4 & 0 & -1 \\ -1 & 0 & 4 & -1 \\ 0 & -1 & -1 & 4 \end{pmatrix} \quad;\quad \vec{b} = \begin{pmatrix} 1 \\ 2 \\ 0 \\ 1 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Verificar la convergencia.</li>
+                            <li><strong>b)</strong> Realizar 4 iteraciones para resolver $A\vec{x}=\vec{b}$ por Jacobi ($\vec{x}^{(0)} = \vec{0}$).</li>
+                            <li><strong>c)</strong> Realizar 3 iteraciones para resolver $A\vec{x}=\vec{b}$ por Gauss-Seidel ($\vec{x}^{(0)} = \vec{0}$).</li>
+                            <li><strong>d)</strong> Calcular la cota de error absoluto sabiendo que la solución exacta es $\vec{x} = [0.75, 0.75, 0.25, 0.5]^T$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Verificación de Convergencia:</p>
+                        <p>Analizo si la matriz $A$ es diagonalmente dominante:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Fila 1: $|4| > |-1| + |-1| + |0| \rightarrow 4 > 2$ (Cumple)</li>
+                            <li>Fila 2: $|4| > |-1| + |0| + |-1| \rightarrow 4 > 2$ (Cumple)</li>
+                            <li>Fila 3: $|4| > |-1| + |0| + |-1| \rightarrow 4 > 2$ (Cumple)</li>
+                            <li>Fila 4: $|4| > |0| + |-1| + |-1| \rightarrow 4 > 2$ (Cumple)</li>
+                        </ul>
+                        <p>Al ser estrictamente diagonal dominante, la convergencia está garantizada para ambos métodos iterativos independientemente del vector inicial.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) y c) Iteraciones (Jacobi y Gauss-Seidel):</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th colspan="4">Jacobi ($x_1, x_2, x_3, x_4$)</th>
+                                        <th colspan="4">Gauss-Seidel ($x_1, x_2, x_3, x_4$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>0</strong></td>
+                                        <td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td>
+                                        <td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>1</strong></td>
+                                        <td>0.2500</td><td>0.5000</td><td>0.0000</td><td>0.2500</td>
+                                        <td>0.2500</td><td>0.5625</td><td>0.0625</td><td>0.4062</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>2</strong></td>
+                                        <td>0.3750</td><td>0.6250</td><td>0.1250</td><td>0.3750</td>
+                                        <td>0.4062</td><td>0.7031</td><td>0.2031</td><td>0.4765</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>3</strong></td>
+                                        <td>0.4375</td><td>0.6875</td><td>0.1875</td><td>0.4375</td>
+                                        <td>0.4765</td><td>0.7382</td><td>0.2382</td><td>0.4941</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>4</strong></td>
+                                        <td>0.4687</td><td>0.7187</td><td>0.2187</td><td>0.4687</td>
+                                        <td colspan="4" style="color: var(--text-muted);">---</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">d) Cota del Error Absoluto ($\Delta = |\vec{x}_{exacto} - \vec{x}^{(k)}|$):</p>
+                        <p>Calculo el error absoluto individual para cada variable restando la iteración final (J_4 y GS_3) de la solución exacta dada $\vec{x}_{ex} = [0.75, 0.75, 0.25, 0.5]^T$:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Método</th>
+                                        <th>$\Delta(x_1)$</th>
+                                        <th>$\Delta(x_2)$</th>
+                                        <th>$\Delta(x_3)$</th>
+                                        <th>$\Delta(x_4)$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Jacobi (Iter. 4)</strong></td>
+                                        <td>0.2813</td>
+                                        <td>0.0313</td>
+                                        <td>0.0313</td>
+                                        <td>0.0313</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Gauss-Seidel (Iter. 3)</strong></td>
+                                        <td>0.2735</td>
+                                        <td>0.0117</td>
+                                        <td>0.0117</td>
+                                        <td>0.0058</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 3</h3>
+                        <p>Estudiar la convergencia de los métodos de Jacobi y Gauss-Seidel para los siguientes sistemas. ¿Existe alguna forma de garantizar que sean convergentes?</p>
+                        
+                        <div class="formula-responsive">
+                            <strong>Caso a)</strong>
+                            $$ 3x + 12y - z = -2 $$
+                            $$ 11x - 4y + 3z = -3 $$
+                            $$ -3x - 2y - 12z = -2 $$
+                        </div>
+                        <div class="formula-responsive">
+                            <strong>Caso b)</strong>
+                            $$ 4x_1 + x_2 + x_3 = -1 $$
+                            $$ 3x_1 - 2x_2 + 9x_3 = 6 $$
+                            $$ 2x_1 + 8x_2 - 3x_3 = -3 $$
+                        </div>
+                        <div class="formula-responsive">
+                            <strong>Caso c)</strong>
+                            $$ 4x_1 - 2x_2 + 3x_3 = 4 $$
+                            $$ -2x_1 - 8x_2 + x_3 = 6 $$
+                            $$ 3x_1 + 10x_2 + 2x_3 = -3 $$
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Caso a)</p>
+                        <p>El sistema en su forma original no es diagonalmente dominante (Fila 1: $|3| \ngtr 12+1$). Sin embargo, la teoría establece que se pueden reordenar las ecuaciones (permutar filas) para forzar la dominancia de la matriz.</p>
+                        <p><strong>Reordenamiento:</strong></p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Eq 2 pasa a la Fila 1: $|11| > |-4| + |3| \rightarrow 11 > 7$ (Cumple)</li>
+                            <li>Eq 1 pasa a la Fila 2: $|12| > |3| + |-1| \rightarrow 12 > 4$ (Cumple)</li>
+                            <li>Eq 3 queda en la Fila 3: $|-12| > |-3| + |-2| \rightarrow 12 > 5$ (Cumple)</li>
+                        </ul>
+                        <p>Al reordenar el sistema, queda estrictamente diagonal dominante y <strong>se garantiza su convergencia.</strong></p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Caso b)</p>
+                        <p>El sistema original no converge (Fila 2: $|-2| \ngtr 3+9$). Analizo los coeficientes mayores de cada ecuación para armar una nueva diagonal fuerte.</p>
+                        <p><strong>Reordenamiento:</strong></p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Eq 1 queda en Fila 1: $|4| > |1| + |1| \rightarrow 4 > 2$ (Cumple)</li>
+                            <li>Eq 3 pasa a la Fila 2: $|8| > |2| + |-3| \rightarrow 8 > 5$ (Cumple)</li>
+                            <li>Eq 2 pasa a la Fila 3: $|9| > |3| + |-2| \rightarrow 9 > 5$ (Cumple)</li>
+                        </ul>
+                        <p>Al intercambiar las filas 2 y 3, el sistema se vuelve diagonalmente dominante y <strong>se garantiza su convergencia.</strong></p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Caso c)</p>
+                        <p>El sistema original no converge (Fila 1: $4 \ngtr 5$; Fila 3: $2 \ngtr 13$). Intento buscar los coeficientes absolutos máximos para rearmar el sistema:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>La Eq 2 domina claramente en la columna 2 ($|-8| > 2+1$).</li>
+                            <li>Sin embargo, ninguna de las otras dos ecuaciones logra dominar en sus respectivas columnas. La Eq 1 tiene un máximo de $4$, pero la suma del resto es $5$. La Eq 3 tiene un máximo de $10$, pero pertenece a la columna 2 (que ya está cubierta y choca con la Eq 2).</li>
+                        </ul>
+                        <p>Como no es posible reordenar las filas para formar una diagonal principal donde $|a_{ii}| > \sum |a_{ij}|$, <strong>no existe forma de garantizar la convergencia</strong> mediante este criterio suficiente.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 4</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ 2x + 12y + z - 4w = 13 $$
+                            $$ 2x + y - 3z + 9w = 31 $$
+                            $$ 13x + 5y - 3z + w = 18 $$
+                            $$ 3x - 4y + 10z + w = 20 $$
+                        </div>
+                        <p>Con $\vec{x}^{(0)} = [0, 0, 0, 0]^T$, aplicar Gauss-Seidel para hallar la solución en 4 iteraciones.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Estática:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">1. Reordenamiento Crítico:</p>
+                        <p>El sistema proporcionado no es diagonalmente dominante en su orden original, por lo que Gauss-Seidel divergiría (rompería). Para garantizar la convergencia, reorganizo las filas según el coeficiente de mayor peso:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Eq 3 } (x) \rightarrow 13x + 5y - 3z + w = 18 $$
+                            $$ \text{Eq 1 } (y) \rightarrow 2x + 12y + z - 4w = 13 $$
+                            $$ \text{Eq 4 } (z) \rightarrow 3x - 4y + 10z + w = 20 $$
+                            $$ \text{Eq 2 } (w) \rightarrow 2x + y - 3z + 9w = 31 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">2. Ecuaciones de Recurrencia (Gauss-Seidel):</p>
+                        <p>Despejo la diagonal principal del nuevo sistema, insertando en tiempo real las variables calculadas de la iteración en curso:</p>
+                        <div class="formula-responsive">
+                            $$ x^{(k)} = \frac{18 - 5y^{(k-1)} + 3z^{(k-1)} - w^{(k-1)}}{13} $$<br>
+                            $$ y^{(k)} = \frac{13 - 2x^{(k)} - z^{(k-1)} + 4w^{(k-1)}}{12} $$<br>
+                            $$ z^{(k)} = \frac{20 - 3x^{(k)} + 4y^{(k)} - w^{(k-1)}}{10} $$<br>
+                            $$ w^{(k)} = \frac{31 - 2x^{(k)} - y^{(k)} + 3z^{(k)}}{9} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">3. Iteraciones Computadas:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th>$x^{(k)}$</th>
+                                        <th>$y^{(k)}$</th>
+                                        <th>$z^{(k)}$</th>
+                                        <th>$w^{(k)}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>1</td><td>1.3846</td><td>0.8525</td><td>1.9256</td><td>3.6839</td></tr>
+                                    <tr><td>2</td><td>1.2177</td><td>1.9478</td><td>2.0454</td><td>3.6392</td></tr>
+                                    <tr><td>3</td><td>0.8275</td><td>1.9880</td><td>2.1830</td><td>3.7673</td></tr>
+                                    <tr><td>4</td><td>0.8339</td><td>2.0181</td><td>2.1803</td><td>3.7616</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta:</strong> En 4 iteraciones, el vector aproximado se asienta en $[0.8339, 2.0181, 2.1803, 3.7616]^T$.</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Gauss-Seidel)</h4>
+                        
+                        <div class="simulador-sistemas" data-metodo="gs" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">Sistema Reordenado P4:</label>
+                                        <select class="sim-funcion" style="visibility: hidden; position: absolute;"><option value="p4" data-iter="15"></option></select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">Tol:</label><input type="number" class="sim-tol" value="0.0001" step="0.0001" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" value="15" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 5</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ 3x + y + z = 4 $$
+                            $$ 2x + 5y + z = -1 $$
+                            $$ -x + y + 3z = 4 $$
+                        </div>
+                        <p>Con $\vec{x}^{(0)} = [0, 0, 0]^T$, aplicar relajación para hallar la solución en 6 iteraciones.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Planteo del Método de Relajación:</p>
+                        <p>Primero, verifico que la matriz es estrictamente diagonal dominante (ya demostrado en el Problema 1). Divido cada ecuación por su coeficiente de la diagonal cambiado de signo ($-a_{ii}$) e igualo todo a cero para formar las ecuaciones de los <strong>Residuos</strong>:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color); font-family: monospace;">
+                            <li>$R_1 \rightarrow -x - 0.3333y - 0.3333z + 1.3333 = 0$</li>
+                            <li>$R_2 \rightarrow -0.4x - y - 0.2z - 0.2 = 0$</li>
+                            <li>$R_3 \rightarrow 0.3333x - 0.3333y - z + 1.3333 = 0$</li>
+                        </ul>
+                        
+                        <p>El método iterativo consiste en calcular los residuos con el vector de la iteración actual, seleccionar el <strong>mayor residuo en valor absoluto ($Max|R_i|$)</strong>, sumarle ese valor con su signo a la variable correspondiente, y anular dicho residuo para el ciclo siguiente.</p>
+
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th>$x$</th><th>$R_1$</th>
+                                        <th>$y$</th><th>$R_2$</th>
+                                        <th>$z$</th><th>$R_3$</th>
+                                        <th>Impacto ($x_i + Max|R_i|$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>0.0000</td><td><strong style="color:var(--accent);">1.3333</strong></td>
+                                        <td>0.0000</td><td>-0.2000</td>
+                                        <td>0.0000</td><td>1.3333</td>
+                                        <td>$x^{(1)} = 0 + 1.3333 = 1.3333$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1.3333</td><td>0.0000</td>
+                                        <td>0.0000</td><td>-0.7333</td>
+                                        <td>0.0000</td><td><strong style="color:var(--accent);">1.7777</strong></td>
+                                        <td>$z^{(2)} = 0 + 1.7777 = 1.7777$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>1.3333</td><td>-0.5925</td>
+                                        <td>0.0000</td><td><strong style="color:var(--accent);">-1.0888</strong></td>
+                                        <td>1.7777</td><td>0.0000</td>
+                                        <td>$y^{(3)} = 0 - 1.0888 = -1.0888$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>1.3333</td><td>-0.2296</td>
+                                        <td>-1.0888</td><td>0.0000</td>
+                                        <td>1.7777</td><td><strong style="color:var(--accent);">0.3629</strong></td>
+                                        <td>$z^{(4)} = 1.7777 + 0.3629 = 2.1407$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>1.3333</td><td><strong style="color:var(--accent);">-0.3506</strong></td>
+                                        <td>-1.0888</td><td>-0.0725</td>
+                                        <td>2.1407</td><td>0.0000</td>
+                                        <td>$x^{(5)} = 1.3333 - 0.3506 = 0.9827$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>0.9827</td><td>0.0000</td>
+                                        <td>-1.0888</td><td>0.0677</td>
+                                        <td>2.1407</td><td><strong style="color:var(--accent);">-0.1168</strong></td>
+                                        <td>$z^{(6)} = 2.1407 - 0.1168 = 2.0238$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta:</strong> Tras las 6 iteraciones el vector es $\vec{x}^{(6)} \approx [0.9827, -1.0888, 2.0238]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 6</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 4 & -1 & 0 & -1 & 0 \\ -1 & 4 & -1 & 0 & -1 \\ 0 & -1 & 4 & 0 & -1 \\ -1 & 0 & 0 & 4 & -1 \\ 0 & -1 & -1 & -1 & 4 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} $$
+                        </div>
+                        <p>Con $\vec{x}^{(0)} = [0, 0, 0, 0, 0]^T$, aplicar relajación para hallar la solución en 5 iteraciones.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Al igual que en el Problema 5, la matriz de 5x5 cumple con la condición de dominancia diagonal. Extraigo las ecuaciones residuales dividiendo cada fila por el inverso aditivo de la diagonal ($-4$):</p>
+                        
+                        <ul style="margin-left: 1.5rem; color: var(--text-color); font-family: monospace;">
+                            <li>$R_1 \rightarrow -x_1 + 0.25x_2 + 0.25x_4 + 0.25 = 0$</li>
+                            <li>$R_2 \rightarrow 0.25x_1 - x_2 + 0.25x_3 + 0.25x_5 + 0.25 = 0$</li>
+                            <li>$R_3 \rightarrow 0.25x_2 - x_3 + 0.25x_5 + 0.25 = 0$</li>
+                            <li>$R_4 \rightarrow 0.25x_1 - x_4 + 0.25x_5 + 0.25 = 0$</li>
+                            <li>$R_5 \rightarrow 0.25x_2 + 0.25x_3 + 0.25x_4 - x_5 + 0.25 = 0$</li>
+                        </ul>
+
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th>$x_1$</th>
+                                        <th>$x_2$</th>
+                                        <th>$x_3$</th>
+                                        <th>$x_4$</th>
+                                        <th>$x_5$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>1</td><td><strong>0.2500</strong></td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>2</td><td>0.2500</td><td><strong>0.3125</strong></td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>3</td><td>0.2500</td><td>0.3125</td><td><strong>0.3281</strong></td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>4</td><td>0.2500</td><td>0.3125</td><td>0.3281</td><td>0.0000</td><td><strong>0.4101</strong></td></tr>
+                                    <tr><td>5</td><td>0.2500</td><td>0.3125</td><td>0.3281</td><td><strong>0.4150</strong></td><td>0.4101</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta:</strong> Vector resultante en 5 iteraciones $\vec{x}^{(5)} = [0.250, 0.3125, 0.3281, 0.4150, 0.4101]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 7</h3>
+                        <p>Dado el sistema $A\vec{x}=\vec{b}$ con:</p>
+                        <div class="formula-responsive">
+                            $$ A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 4 & 9 & 16 \\ 1 & 8 & 27 & 64 \\ 1 & 16 & 81 & 256 \end{pmatrix} \quad;\quad \vec{b} = \begin{pmatrix} 2 \\ 10 \\ 44 \\ 190 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Factorizar la matriz A en $L \cdot U_1$; y calcular el determinante de A.</li>
+                            <li><strong>b)</strong> Resolver el sistema.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Factorización de Crout ($L \cdot U_1$):</p>
+                        <p>La matriz de Crout exige descomponer $A$ en una matriz Triangular Inferior ($L$) multiplicada por una Triangular Superior con la diagonal fijada en "1" ($U_1$). Operando algorítmicamente columna por fila obtenemos:</p>
+                        <div class="formula-responsive">
+                            $$ L = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 1 & 2 & 0 & 0 \\ 1 & 6 & 12 & 0 \\ 1 & 14 & 54 & 72 \end{pmatrix} \quad \times \quad U_1 = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 3 & 6 \\ 0 & 0 & 1 & 4 \\ 0 & 0 & 0 & 1 \end{pmatrix} $$
+                        </div>
+                        <p><strong>Cálculo del Determinante:</strong> La teoría enuncia que si $A = L \cdot U_1$, entonces el $Det(A) = Det(L) \times Det(U_1)$. Como en matrices triangulares el determinante equivale al producto directo de los componentes de la diagonal principal:</p>
+                        <div class="formula-responsive">
+                            $$ Det(A) = (1 \times 2 \times 12 \times 72) \times (1 \times 1 \times 1 \times 1) = 1728 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Resolución del Sistema Exacto ($A\vec{x} = \vec{b}$):</p>
+                        <p>Planteo la división matricial del método de Crout en dos sub-sistemas de resolución directa (Descendente y Ascendente).</p>
+                        
+                        <p><strong>Paso 1: Solución directa descendente ($L\vec{y} = \vec{b}$)</strong></p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 1 & 0 & 0 & 0 \\ 1 & 2 & 0 & 0 \\ 1 & 6 & 12 & 0 \\ 1 & 14 & 54 & 72 \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ y_3 \\ y_4 \end{pmatrix} = \begin{pmatrix} 2 \\ 10 \\ 44 \\ 190 \end{pmatrix} \quad \rightarrow \quad \vec{y} = \begin{pmatrix} 2 \\ 4 \\ 1.5 \\ 0.666 \end{pmatrix} $$
+                        </div>
+
+                        <p><strong>Paso 2: Solución directa ascendente ($U_1\vec{x} = \vec{y}$)</strong></p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 3 & 6 \\ 0 & 0 & 1 & 4 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \\ 1.5 \\ 0.666 \end{pmatrix} \quad \rightarrow \quad \vec{x} = \begin{pmatrix} -1 \\ 1 \\ -1 \\ 1 \end{pmatrix} $$
+                        </div>
+                        <p><strong>Respuesta:</strong> La solución exacta del sistema es $\vec{x} = [-1, 1, -1, 1]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 8</h3>
+                        <p>Dado el sistema del Problema Nº 1:</p>
+                        <div class="formula-responsive">
+                            $$ 3x + y + z = 4 $$
+                            $$ 2x + 5y + z = -1 $$
+                            $$ -x + y + 3z = 4 $$
+                        </div>
+                        <p>Realizar la factorización de $A = L \cdot U_1$, y resolver el sistema.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Factorización de Crout:</p>
+                        <p>Operando matricialmente sobre los coeficientes originales del Problema 1 obtenemos:</p>
+                        <div class="formula-responsive">
+                            $$ L = \begin{pmatrix} 3 & 0 & 0 \\ 2 & 4.333 & 0 \\ -1 & 1.333 & 3.230 \end{pmatrix} \quad \times \quad U_1 = \begin{pmatrix} 1 & 0.333 & 0.333 \\ 0 & 1 & 0.0769 \\ 0 & 0 & 1 \end{pmatrix} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Resolución Escalonada:</p>
+                        <p><strong>Paso 1: Solución directa descendente ($L\vec{y} = \vec{b}$)</strong></p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 3 & 0 & 0 \\ 2 & 4.333 & 0 \\ -1 & 1.333 & 3.230 \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix} = \begin{pmatrix} 4 \\ -1 \\ 4 \end{pmatrix} \quad \rightarrow \quad \vec{y} = \begin{pmatrix} 1.333 \\ -0.846 \\ 2 \end{pmatrix} $$
+                        </div>
+
+                        <p><strong>Paso 2: Solución directa ascendente ($U_1\vec{x} = \vec{y}$)</strong></p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 1 & 0.333 & 0.333 \\ 0 & 1 & 0.0769 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 1.333 \\ -0.846 \\ 2 \end{pmatrix} \quad \rightarrow \quad \vec{x} = \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} $$
+                        </div>
+                        <p><strong>Respuesta:</strong> Comprobado por método exacto, el vector solución para el Problema 1 es $\vec{x} = [1, -1, 2]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 9</h3>
+                        <p>Dada la matriz:</p>
+                        <div class="formula-responsive">
+                            $$ A = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & -1 \\ -1 & 1 & 1 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular sus autovalores.</li>
+                            <li><strong>b)</strong> Calcular el vector asociado a $\lambda_1 = 1$.</li>
+                            <li><strong>c)</strong> Analizar la Convergencia (Radio Espectral).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Autovalores:</p>
+                        <p>Los autovalores se consiguen resolviendo el Polinomio Característico $Det(A - \lambda \cdot I) = 0$:</p>
+                        <div class="formula-responsive">
+                            $$ \begin{vmatrix} 1-\lambda & 0 & 2 \\ 0 & 1-\lambda & -1 \\ -1 & 1 & 1-\lambda \end{vmatrix} = (1-\lambda)[(1-\lambda)^2 + 3] = 0 $$
+                        </div>
+                        <p>De esta ecuación se desprenden las 3 raíces (una real y un par complejo conjugado):</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>$\lambda_1 = 1$</li>
+                            <li>$\lambda_{2,3} = 1 \pm \sqrt{3}i$</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Autovector para $\lambda_1 = 1$:</p>
+                        <p>Anulo el autovalor restando $1$ a la diagonal de $A$ y busco el vector $\vec{x}$ que iguale la matriz a cero:</p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 0 & 0 & 2 \\ 0 & 0 & -1 \\ -1 & 1 & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} $$
+                        </div>
+                        <p>Del sistema se deduce que $2x_3 = 0 \rightarrow x_3 = 0$, y que $-x_1 + x_2 = 0 \rightarrow x_1 = x_2$. Si parametrizamos y asignamos $x_1 = 2$ obtenemos el autovector $\vec{V}_{\lambda=1} = [2, 2, 0]^T$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) Radio Espectral $\rho(A)$:</p>
+                        <p>El radio espectral se define como el máximo valor absoluto entre todos los autovalores $\rho(A) = Max|\lambda_i|$. Para los números complejos, uso su módulo $\sqrt{a^2+b^2}$:</p>
+                        <div class="formula-responsive">
+                            $$ |\lambda_1| = 1 \quad;\quad |\lambda_{2,3}| = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{4} = 2 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> $\rho(A) = 2$. Como el radio espectral es estrictamente mayor que 1 ($\rho(A) \nless 1$), el sistema iterativo montado sobre esta matriz base <strong>NO converge</strong> (está fuera del margen de convergencia).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 10</h3>
+                        <p>Dada la matriz de JACOBI, definida por $J = [I - D^{-1} \cdot A]$. Donde:</p>
+                        <div class="formula-responsive">
+                            $$ A = \begin{pmatrix} 1 & 2 & -2 \\ 1 & 1 & 1 \\ 2 & 2 & 1 \end{pmatrix} \quad;\quad D = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular los autovalores de J.</li>
+                            <li><strong>b)</strong> Analizar la Convergencia de J. (Radio Espectral)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Autovalores de la Matriz Generadora:</p>
+                        <p>Como la matriz original carece de dominancia diagonal, analizamos matemáticamente si converge. Al ser la matriz diagonal D una identidad, su inversa $D^{-1}$ es igual a la identidad $I$. La matriz de Jacobi $J$ resulta simplemente en anular la diagonal principal e invertir el signo del resto:</p>
+                        <div class="formula-responsive">
+                            $$ J = \begin{pmatrix} 0 & -2 & 2 \\ -1 & 0 & -1 \\ -2 & -2 & 0 \end{pmatrix} $$
+                        </div>
+                        <p>Planteo el determinante $Det(J - \lambda \cdot I) = 0$ para encontrar los autovalores:</p>
+                        <div class="formula-responsive">
+                            $$ -\lambda^3 = 0 $$
+                        </div>
+                        <p><strong>Respuesta a):</strong> Las raíces del polinomio son $\lambda_{1,2,3} = 0$ (raíz triple).</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Análisis de Convergencia $\rho(J)$:</p>
+                        <p><strong>Respuesta b):</strong> El radio espectral $\rho(J) = Max|0| = 0$. Como $0 < 1$, se garantiza matemáticamente que el método iterativo de Jacobi converge en este sistema, a pesar de que fallara la comprobación primaria visual de las diagonales en $A$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 11</h3>
+                        <p>Dada la matriz de Gauss-Seidel, definida por $G = (D - E)^{-1} \cdot F$. Donde:</p>
+                        <div class="formula-responsive">
+                            $$ (D - E)^{-1} = \begin{pmatrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -2 & 1 \end{pmatrix} \quad;\quad F = \begin{pmatrix} 0 & -2 & 2 \\ 0 & 0 & -1 \\ 0 & 0 & 0 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular los autovalores de G.</li>
+                            <li><strong>b)</strong> Analizar la Convergencia de G. (Radio Espectral)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Autovalores de G:</p>
+                        <p>Multiplico las dos matrices componentes para formar la Matriz general del método de Gauss-Seidel ($G$):</p>
+                        <div class="formula-responsive">
+                            $$ G = \begin{pmatrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -2 & 1 \end{pmatrix} \times \begin{pmatrix} 0 & -2 & 2 \\ 0 & 0 & -1 \\ 0 & 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & -2 & 2 \\ 0 & 2 & -3 \\ 0 & 0 & 2 \end{pmatrix} $$
+                        </div>
+                        <p>Como $G$ es de estructura triangular superior (los elementos debajo de la diagonal son cero), no hace falta resolver un polinomio extenso: los autovalores coinciden directamente con los valores estáticos presentes en su diagonal principal.</p>
+                        <p><strong>Respuesta a):</strong> $\lambda_1 = 0 \quad;\quad \lambda_{2,3} = 2$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Análisis de Convergencia $\rho(G)$:</p>
+                        <p><strong>Respuesta b):</strong> Extraemos el radio espectral evaluando el módulo máximo: $\rho(G) = Max|0, 2| = 2$. Como el radio espectral sobrepasa la unidad ($2 \nless 1$), el método iterativo de Gauss-Seidel diverge para este problema.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+        <!-- ==================== PARTE 2: EXTRAS (OPCIONALES) ==================== -->
+        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+            
+            <!-- OPCIONAL 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Opcional Nº 1</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ 3x_1 - 0.2x_2 - 0.5x_3 = 8 $$
+                            $$ 0.1x_1 + 7x_2 + 0.4x_3 = -19.5 $$
+                            $$ 0.4x_1 - 0.1x_2 + 10x_3 = 72.4 $$
+                        </div>
+                        <p>Con $\vec{x}^{(0)} = [0, 0, 0]^T$, verificar la convergencia y realizar 2 iteraciones por Gauss-Seidel.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Verificación de Convergencia:</p>
+                        <p>Evalúo la dominancia en cada fila original del sistema ($|a_{ii}| > \sum_{j \ne i} |a_{ij}|$):</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Fila 1: $|3| > |-0.2| + |-0.5| \rightarrow 3 > 0.7$ (Cumple)</li>
+                            <li>Fila 2: $|7| > |0.1| + |0.4| \rightarrow 7 > 0.5$ (Cumple)</li>
+                            <li>Fila 3: $|10| > |0.4| + |-0.1| \rightarrow 10 > 0.5$ (Cumple)</li>
+                        </ul>
+                        <p>La matriz es estrictamente diagonal dominante, por ende el método de Gauss-Seidel converge con cualquier vector inicial.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Iteraciones por Gauss-Seidel:</p>
+                        <p>Armo las ecuaciones de recurrencia despejando la diagonal:</p>
+                        <div class="formula-responsive">
+                            $$ x_1^{(k)} = \frac{8 + 0.2x_2^{(k-1)} + 0.5x_3^{(k-1)}}{3} $$<br>
+                            $$ x_2^{(k)} = \frac{-19.5 - 0.1x_1^{(k)} - 0.4x_3^{(k-1)}}{7} $$<br>
+                            $$ x_3^{(k)} = \frac{72.4 - 0.4x_1^{(k)} + 0.1x_2^{(k)}}{10} $$
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th>$x_1^{(k)}$</th>
+                                        <th>$x_2^{(k)}$</th>
+                                        <th>$x_3^{(k)}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                                    <tr><td>1</td><td>2.6667</td><td>-2.8238</td><td>7.1051</td></tr>
+                                    <tr><td>2</td><td>3.6626</td><td>-3.2440</td><td>7.0611</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta:</strong> Al finalizar la segunda iteración, el vector aproximado es $\vec{x}^{(2)} = [3.6626, -3.2440, 7.0611]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- OPCIONAL 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Opcional Nº 2</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ 10x_1 + 3x_2 + x_3 = 7 $$
+                            $$ 2x_1 + 15x_2 + 4x_3 = -16 $$
+                            $$ x_1 + 2x_2 + 20x_3 = 57 $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Verificar la convergencia y realizar 4 iteraciones por Jacobi con $\vec{x}^{(0)} = [0.8, -1.7, 2.5]^T$</li>
+                            <li><strong>b)</strong> Si sabemos que la solución exacta es $\vec{x} = [1, -2, 3]^T$, ¿Cuál es la cota de error absoluto cometida por el método para la cantidad de iteraciones pedidas?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Verificación y Tabla de Jacobi:</p>
+                        <p>Evaluación de la matriz: $|10|>4$, $|15|>6$, $|20|>3$. El sistema es diagonalmente dominante y converge. Despejo y tabulo las 4 iteraciones del método de Jacobi, evaluando todos los términos con las variables de la iteración en $k-1$:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th>$x_1^{(k)}$</th>
+                                        <th>$x_2^{(k)}$</th>
+                                        <th>$x_3^{(k)}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0</td><td>0.8000</td><td>-1.7000</td><td>2.5000</td></tr>
+                                    <tr><td>1</td><td>0.9600</td><td>-1.8400</td><td>2.9800</td></tr>
+                                    <tr><td>2</td><td>0.9540</td><td>-1.9893</td><td>2.9860</td></tr>
+                                    <tr><td>3</td><td>0.9982</td><td>-1.9901</td><td>3.0012</td></tr>
+                                    <tr><td>4</td><td>0.9969</td><td>-2.0001</td><td>2.9991</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Cota de Error Absoluto en $k=4$:</p>
+                        <p>Resto término a término el vector de la iteración 4 a la solución exacta del enunciado:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$\Delta(x_1) = |1 - x_1^{(4)}|$</th>
+                                        <th>$\Delta(x_2) = |-2 - x_2^{(4)}|$</th>
+                                        <th>$\Delta(x_3) = |3 - x_3^{(4)}|$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0.0031</td>
+                                        <td>0.0001</td>
+                                        <td>0.0009</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- OPCIONAL 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Opcional Nº 3</h3>
+                        <p>Dado el sistema:</p>
+                        <div class="formula-responsive">
+                            $$ 10x_1 + 3x_2 + x_3 = 7 $$
+                            $$ 2x_1 + 15x_2 + 4x_3 = -16 $$
+                            $$ x_1 + 2x_2 + 20x_3 = 57 $$
+                        </div>
+                        <p>Realizar 4 iteraciones por el Método de Relajación con $\vec{x}^{(0)} = [0.8, -1.7, 2.5]^T$.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Planteo de Residuos:</p>
+                        <p>Llevo la diagonal principal a $-1$ dividiendo cada ecuación y luego igualo a $0$:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color); font-family: monospace;">
+                            <li>$R_1 \rightarrow -x_1 - 0.3x_2 - 0.1x_3 + 0.7 = 0$</li>
+                            <li>$R_2 \rightarrow -0.1333x_1 - x_2 - 0.2666x_3 - 1.0666 = 0$</li>
+                            <li>$R_3 \rightarrow -0.05x_1 - 0.1x_2 - x_3 + 2.85 = 0$</li>
+                        </ul>
+                        
+                        <p>Ejecutamos las 4 iteraciones modificando únicamente la variable asociada al mayor residuo:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$k$</th>
+                                        <th>$x_1$</th><th>$R_1$</th>
+                                        <th>$x_2$</th><th>$R_2$</th>
+                                        <th>$x_3$</th><th>$R_3$</th>
+                                        <th>Impacto ($x_i + Max|R_i|$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>0.8000</td><td>0.1600</td>
+                                        <td>-1.7000</td><td>-0.1374</td>
+                                        <td>2.5000</td><td><strong style="color:var(--accent);">0.4800</strong></td>
+                                        <td>$x_3^{(1)} = 2.5 + 0.48 = 2.9800$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>0.8000</td><td>0.1120</td>
+                                        <td>-1.7000</td><td><strong style="color:var(--accent);">-0.2651</strong></td>
+                                        <td>2.9800</td><td>0.0000</td>
+                                        <td>$x_2^{(2)} = -1.7 - 0.2651 = -1.9651$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>0.8000</td><td><strong style="color:var(--accent);">0.1915</strong></td>
+                                        <td>-1.9651</td><td>0.0000</td>
+                                        <td>2.9800</td><td>0.0265</td>
+                                        <td>$x_1^{(3)} = 0.8 + 0.1915 = 0.9915$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>0.9915</td><td>0.0000</td>
+                                        <td>-1.9651</td><td><strong style="color:var(--accent);">-0.0255</strong></td>
+                                        <td>2.9800</td><td>0.0169</td>
+                                        <td>$x_2^{(4)} = -1.9651 - 0.0255 = -1.9906$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta:</strong> Tras la 4ta iteración, el vector aproximado es $[0.9915, -1.9906, 2.9800]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- OPCIONAL 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Opcional Nº 4</h3>
+                        <p>Dada la matriz de JACOBI, definida por $J = [I - D^{-1} \cdot A]$. Donde:</p>
+                        <div class="formula-responsive">
+                            $$ A = \begin{pmatrix} 2 & -1 & 1 \\ 2 & 2 & 2 \\ -1 & -1 & 2 \end{pmatrix} \quad;\quad D^{-1} = \begin{pmatrix} 1/2 & 0 & 0 \\ 0 & 1/2 & 0 \\ 0 & 0 & 1/2 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular los autovalores de J.</li>
+                            <li><strong>b)</strong> Analizar la Convergencia de J.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Autovalores de J:</p>
+                        <p>Multiplico primero $D^{-1}$ por $A$ (que en este caso equivale a dividir $A$ a la mitad) y se lo resto a la matriz Identidad $I$ para obtener $J$:</p>
+                        <div class="formula-responsive">
+                            $$ J = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} - \begin{pmatrix} 1 & -0.5 & 0.5 \\ 1 & 1 & 1 \\ -0.5 & -0.5 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0.5 & -0.5 \\ -1 & 0 & -1 \\ 0.5 & 0.5 & 0 \end{pmatrix} $$
+                        </div>
+                        <p>Calculo el polinomio característico $Det(J - \lambda \cdot I) = 0$:</p>
+                        <div class="formula-responsive">
+                            $$ -\lambda(\lambda^2 + 1.25) = 0 $$
+                        </div>
+                        <p><strong>Respuesta a):</strong> Las raíces son $\lambda_1 = 0$ y dos raíces imaginarias puras $\lambda_{2,3} = \pm \sqrt{1.25}i$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Análisis de Convergencia $\rho(J)$:</p>
+                        <p>Calculo el módulo del autovalor imaginario para obtener el radio espectral:</p>
+                        <div class="formula-responsive">
+                            $$ |\lambda_{2,3}| = \sqrt{0^2 + (\sqrt{1.25})^2} = \sqrt{1.25} \approx 1.118 $$
+                        </div>
+                        <p><strong>Respuesta b):</strong> El radio espectral $\rho(J) = 1.118$. Como sobrepasa el límite ($\rho(J) > 1$), el método de Jacobi <strong>NO converge</strong> para este sistema.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- OPCIONAL 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Opcional Nº 5</h3>
+                        <p>Dada la matriz de GAUSS-SEIDEL, definida por:</p>
+                        <div class="formula-responsive">
+                            $$ G = \begin{pmatrix} 0 & 0.5 & -0.5 \\ 0 & -0.5 & -0.5 \\ 0 & 0 & -0.5 \end{pmatrix} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular los autovalores de G.</li>
+                            <li><strong>b)</strong> Calcular el vector asociado a $\lambda_3 = -0.5$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Autovalores de G:</p>
+                        <p>Como la matriz $G$ es puramente triangular superior, su polinomio característico ya está factorizado. Los autovalores son directamente los elementos que yacen en su diagonal principal.</p>
+                        <p><strong>Respuesta a):</strong> $\lambda_1 = 0 \quad;\quad \lambda_{2} = -0.5 \quad;\quad \lambda_3 = -0.5$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Autovector para $\lambda_3 = -0.5$:</p>
+                        <p>Resto el autovalor $\lambda_3$ a la diagonal de $G$ ($G - (-0.5)I$) e igualo el sistema a cero para hallar el autovector $\vec{x}:$</p>
+                        <div class="formula-responsive">
+                            $$ \begin{pmatrix} 0.5 & 0.5 & -0.5 \\ 0 & 0 & -0.5 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} $$
+                        </div>
+                        <p>Analizando las ecuaciones resultantes:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>De la 2da fila: $-0.5x_3 = 0 \Rightarrow x_3 = 0$.</li>
+                            <li>De la 1ra fila (sabiendo $x_3=0$): $0.5x_1 + 0.5x_2 = 0 \Rightarrow 0.5x_1 = -0.5x_2 \Rightarrow x_1 = -x_2$.</li>
+                        </ul>
+                        <p><strong>Respuesta b):</strong> Si parametrizamos eligiendo $x_1 = 1$, el autovector resultante asociado a $\lambda_3 = -0.5$ es $\vec{V} = [1, -1, 0]^T$.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+    <script src="../../assets/js/sistemas_ecuaciones.js"></script>
+
+</body>
+</html>

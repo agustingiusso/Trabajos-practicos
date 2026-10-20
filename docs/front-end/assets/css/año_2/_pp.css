@@ -1,0 +1,209 @@
+body.paradigmas-page {
+    --accent: var(--color-paradigmas);
+    --button-hover-bg: var(--color-paradigmas-dark);
+    --header-line-color: var(--color-paradigmas);
+    --theme-color: var(--color-paradigmas);
+}
+
+.card-paradigmas { --local-color: var(--color-paradigmas); }
+
+/* =========================================
+   SIMULADOR PARADIGMAS (SPLIT SCREEN)
+   ========================================= */
+
+.section-title {
+    color: var(--color-paradigmas);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* DIAGRAMA UML ESTÁTICO */
+.uml-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--table-border-color);
+}
+
+.uml-class {
+    background: var(--bg-color);
+    border: 2px solid var(--color-paradigmas);
+    border-radius: 6px;
+    padding: 1rem;
+    min-width: 250px;
+    box-shadow: var(--shadow);
+}
+
+.uml-class h3 { text-align: center; margin-bottom: 0.5rem; }
+.uml-class hr { border: 1px solid var(--table-border-color); margin: 0.5rem 0; }
+.uml-class p { font-family: monospace; font-size: 0.9rem; margin: 2px 0; }
+.uml-class .method { color: var(--color-paradigmas); font-weight: bold; }
+
+.abstract-class { border-style: dashed; }
+.uml-arrow { margin: 10px 0; font-weight: bold; color: var(--text-muted); }
+.uml-branches { display: flex; gap: 3rem; margin-top: 1rem; }
+.uml-branch { display: flex; flex-direction: column; align-items: center; }
+.uml-arrow-up { font-size: 1.5rem; margin-bottom: 5px; color: var(--text-muted); }
+
+/* LAYOUT SPLIT SCREEN */
+.split-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .split-screen { grid-template-columns: 1fr; }
+}
+
+/* COLUMNA CÓDIGO */
+.code-column { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.control-panel { display: flex; justify-content: flex-end; }
+
+.sim-btn {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--table-border-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.sim-btn.action { background: var(--color-paradigmas); color: white; border: none; }
+.sim-btn.action:hover { background: var(--color-paradigmas-dark); transform: scale(1.05); }
+
+.code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-header {
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.code-block pre { padding: 15px; margin: 0; background: transparent; }
+.code-block .highlight { color: #f1c40f; font-weight: bold; }
+.explanation { padding: 10px 15px; font-size: 0.9rem; color: var(--text-muted); border-top: 1px dashed var(--table-border-color); margin: 0; }
+
+/* COLUMNA MEMORIA VISUAL */
+.memory-container {
+    background: var(--card-bg);
+    border: 2px dashed var(--table-border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    min-height: 500px;
+}
+
+.collection-title {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-paradigmas);
+    padding-bottom: 5px;
+}
+.collection-title span { color: var(--color-paradigmas); }
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* OBJETOS EN MEMORIA (TARJETAS) */
+.mem-object {
+    background: var(--bg-color);
+    border-radius: 6px;
+    border-left: 4px solid #777;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mem-object.peli { border-color: #e74c3c; } /* Rojo para Peli */
+.mem-object.serie { border-color: #3498db; } /* Azul para Serie */
+
+.obj-header { font-weight: bold; font-family: monospace; margin-bottom: 8px; border-bottom: 1px solid var(--table-border-color); padding-bottom: 4px;}
+.obj-body { font-size: 0.85rem; font-family: monospace; }
+.attr { margin-bottom: 4px; }
+.attr span { color: var(--text-muted); }
+
+.poly-tooltip {
+    position: absolute; bottom: -30px; left: 0; width: 100%;
+    background: var(--color-paradigmas); color: white;
+    text-align: center; font-size: 0.75rem; padding: 4px;
+    font-weight: bold; transition: bottom 0.3s ease;
+}
+
+/* ESTADOS DE ANIMACIÓN */
+
+/* 1. Select: Apagar los que no cumplen */
+.mem-object.dimmed {
+    opacity: 0.2;
+    transform: scale(0.9);
+    filter: grayscale(100%);
+}
+.mem-object.highlighted {
+    transform: scale(1.05);
+    border-width: 6px;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+.mem-object.highlighted .calif-target {
+    background: rgba(241, 196, 15, 0.2);
+    font-weight: bold;
+}
+
+/* 2. Collect: Colapsar a solo Strings */
+.mem-object.collected {
+    border-left-width: 0;
+    border-top: 4px solid var(--color-paradigmas);
+    align-items: center;
+    justify-content: center;
+}
+.mem-object.collected .obj-header { display: none; }
+.mem-object.collected .obj-body .attr:not(.genre-target) { display: none; }
+.mem-object.collected .genre-target span { display: none; } /* Oculta "genero:" */
+.mem-object.collected .genre-target {
+    font-size: 1.2rem;
+    color: var(--color-paradigmas);
+    font-weight: bold;
+}
+
+/* 3. Polimorfismo */
+.mem-object.poly-true, .mem-object.poly-false {
+    padding-bottom: 30px; /* Hace espacio para el tooltip */
+}
+.mem-object.poly-true .poly-tooltip { bottom: 0; background: #2ecc71; }
+.mem-object.poly-false .poly-tooltip { bottom: 0; background: #e74c3c; }
+.mem-object.poly-false { opacity: 0.4; }
+
+/* Estado extra para el iterador REJECT */
+.mem-object.highlighted-danger {
+    transform: scale(1.05);
+    border-width: 6px;
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
+}
+.mem-object.highlighted-danger .disp-target {
+    background: rgba(231, 76, 60, 0.2);
+    font-weight: bold;
+}

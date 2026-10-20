@@ -168,3 +168,137 @@ body .trabajo-card:hover {
     box-shadow: 0 10px 20px color-mix(in srgb, var(--accent), transparent 70%); 
     border-color: var(--accent);
 }
+
+/* =========================================
+   TARJETAS DE DOCUMENTACIÓN (PDFs ACORDEÓN)
+   ========================================= */
+
+/* Estilos del contenedor principal (Acordeón) */
+.doc-accordion {
+    max-width: var(--max-width);
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+    background: var(--card-bg); /* Fondo de tarjeta para cada unidad */
+    border: var(--card-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+/* El título donde se hace clic */
+.doc-accordion summary {
+    list-style: none; /* Oculta la flechita nativa del navegador */
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+/* Oculta la flecha nativa en WebKit (Chrome/Safari) */
+.doc-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.doc-accordion summary:hover {
+    color: var(--accent);
+}
+
+/* Icono de la flecha que agregamos nosotros */
+.accordion-icon {
+    font-size: 1.2rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+/* Rota la flecha cuando el acordeón está abierto */
+.doc-accordion[open] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* Separador cuando está abierto */
+.doc-accordion[open] summary {
+    border-bottom: 1px solid var(--table-border-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Grilla responsive para los PDFs */
+.pdf-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    /* Animación suave al abrir */
+    animation: fadeInAccordion 0.4s ease-out;
+}
+
+@keyframes fadeInAccordion {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjeta individual del PDF */
+.pdf-card {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.pdf-card:hover {
+    transform: translateY(-5px);
+    color: var(--accent);
+}
+
+/* El rectángulo estilo boceto */
+.pdf-icon {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 3px solid var(--text-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    background-color: transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pdf-card:hover .pdf-icon {
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--accent), transparent 80%);
+}
+
+.pdf-icon i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.pdf-icon span {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Texto del nombre del archivo */
+.pdf-name {
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+/* Separar el primer acordeón del borde superior del header */
+.doc-accordion:first-of-type {
+    margin-top: 2.5rem;
+}

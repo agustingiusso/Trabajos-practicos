@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>En base a la definición de campo electrostático y teniendo en cuenta la factibilidad de medir el campo en sentido práctico, analice las siguientes afirmaciones, justifíquelas e ilustre con ejemplos.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Resulta práctico que el objeto cargado, que se va a utilizarse como testeador del campo electrostático, sea una partícula. En este modelo "la partícula de prueba cargada" debe ser de dimensiones muy pequeñas comparadas con elemento que genera el campo electrostático.</li>
+                            <li>La carga residente en la partícula de prueba debe ser de magnitud tan pequeña como sea posible.</li>
+                            <li>Es conveniente (aunque no imprescindible) que la carga residente en la partícula de prueba sea positiva.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Dimensiones de la carga de prueba:</strong> Para medir el campo en un punto específico del espacio con precisión, la partícula testeador debe poder aproximarse al modelo de una carga puntual. Si tuviera un tamaño considerable, mediría un promedio del campo sobre su volumen en lugar del valor exacto en un punto concreto.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>b) Magnitud de la carga:</strong> Al introducir una carga en el espacio, su propio campo eléctrico interfiere con el sistema original, pudiendo alterar la distribución de las cargas que generan el campo que deseamos medir. Matemáticamente, el campo se define como el límite cuando la carga de prueba tiende a cero: $\vec{E} = \lim_{q \to 0} \frac{\vec{F}}{q}$, para asegurar que el sistema original no sea perturbado.</p>
+
+                        <p style="margin-top: 1rem;"><strong>c) Signo de la carga:</strong> Por convención histórica y para simplificar el análisis vectorial, se utiliza una carga de prueba positiva. Esto permite que la dirección de la fuerza eléctrica experimentada por la partícula coincida exactamente con la dirección del vector campo electrostático en ese punto ($\vec{F} = +q\vec{E}$).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Evalúe si las siguientes afirmaciones son verdaderas o falsas. Justifique sus respuestas.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem; list-style-type: lower-alpha;">
+                            <li><strong>El campo electrostático en el interior de un conductor macizo es siempre cero.</strong><br>
+                            <em>Verdadero.</em> En condiciones electrostáticas, las cargas libres se redistribuyen en la superficie hasta anular cualquier campo interno; si existiera un campo distinto de cero, las cargas se moverían y dejaría de ser un estado electrostático.</li>
+                            
+                            <li><strong>El campo electrostático en el interior de una corteza conductora esférica uniformemente cargada es cero.</strong><br>
+                            <em>Verdadero.</em> Según la Ley de Gauss o el Teorema de Faraday (jaula de Faraday), al trazar una superficie gaussiana interna no se encierra carga neta, por ende, el campo en esa cavidad libre de cargas es nulo.</li>
+                            
+                            <li><strong>Si no existe ninguna carga en una región del espacio, el campo electrostático debe ser cero.</strong><br>
+                            <em>Falso.</em> El campo electrostático se propaga por el espacio. Una región sin cargas puede ser atravesada por líneas de campo generadas por cargas lejanas situadas fuera de esa región.</li>
+                            
+                            <li><strong>Si la carga neta de un conductor es cero, la densidad de carga debe ser cero en todos los puntos de la superficie.</strong><br>
+                            <em>Falso.</em> Un conductor neutro puede ser polarizado por un campo eléctrico externo (inducción electrostática). En este caso, tendrá densidad de carga positiva en un extremo y negativa en el otro, manteniendo una carga neta total de cero.</li>
+                            
+                            <li><strong>El campo electrostático puede llegar a anularse en la vecindad de dos partículas cargadas idénticas.</strong><br>
+                            <em>Verdadero.</em> Justo en el punto medio del segmento que une ambas cargas, los vectores campo eléctrico tienen la misma magnitud pero sentidos opuestos, anulándose mutuamente.</li>
+                            
+                            <li><strong>El campo electrostático puede llegar a anularse en la vecindad de dos partículas cargadas, con igual modulo pero diferente signo.</strong><br>
+                            <em>Falso.</em> Las líneas de campo de un dipolo salen de la carga positiva y entran a la negativa. Entre ellas, los vectores de ambas contribuciones apuntan en la misma dirección, por lo que se suman y nunca se anulan.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Dos partículas con cargas de $5 \mu\text{C}$ y $-10 \mu\text{C}$, están rígidamente sostenidas con una separación $1\text{ m}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine el campo electrostático en un punto situado a $0,6\text{ m}$ de la primera partícula y a $0,8\text{ m}$ de la segunda.</li>
+                            <li>¿En qué punto resultará nulo el campo electrostático debido a estas partículas?</li>
+                            <li>Determine el punto sobre la línea que une ambas partículas donde las partículas contribuyen con campos exactamente iguales.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Campo en el punto a 0,6m y 0,8m:</strong></p>
+                        <p>Al notar que $0,6^2 + 0,8^2 = 0,36 + 0,64 = 1^2$, deducimos que las cargas y el punto de medición forman un triángulo rectángulo. El campo total se obtiene por superposición calculando la magnitud del campo de cada carga:</p>
+                        <div class="formula-responsive">
+                            $$ E_1 = k \frac{q_1}{r_1^2} = 9 \times 10^9 \frac{5 \times 10^{-6}}{(0,6)^2} = 1,25 \times 10^5 \text{ N/C} $$
+                            $$ E_2 = k \frac{|q_2|}{r_2^2} = 9 \times 10^9 \frac{10 \times 10^{-6}}{(0,8)^2} = 1,4 \times 10^5 \text{ N/C} $$
+                        </div>
+                        <p>Dada la ortogonalidad en el punto, se proyectan las componentes en un sistema de ejes obteniéndose el vector campo resultante.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Punto donde el campo es nulo:</strong></p>
+                        <p>El punto debe encontrarse sobre la línea que las une, por **fuera** del segmento entre ellas y del lado de la carga de menor magnitud absoluta (la de $5 \mu\text{C}$), para que los campos tengan direcciones opuestas y magnitudes iguales. Sea $x$ la distancia desde la carga positiva hacia afuera:</p>
+                        <div class="formula-responsive">
+                            $$ k \frac{5 \mu\text{C}}{x^2} = k \frac{10 \mu\text{C}}{(1 + x)^2} \implies \frac{1}{x^2} = \frac{2}{(1+x)^2} \implies 1+x = \sqrt{2}x $$
+                            $$ x = \frac{1}{\sqrt{2}-1} \approx 2,41 \text{ m} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Punto con contribuciones de campos iguales:</strong></p>
+                        <p>Para que ambas cargas contribuyan con el mismo campo en módulo sobre la línea que las une y en el segmento entre ellas (donde los vectores se suman), sea $y$ la distancia desde la carga positiva:</p>
+                        <div class="formula-responsive">
+                            $$ k \frac{5 \mu\text{C}}{y^2} = k \frac{10 \mu\text{C}}{(1-y)^2} \implies \frac{1}{y} = \frac{\sqrt{2}}{1-y} \implies 1-y = \sqrt{2}y $$
+                            $$ y = \frac{1}{1+\sqrt{2}} \approx 0,41 \text{ m} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Compare las fuerzas que actuarían sobre un electrón y un protón libres y en reposo en un dado Sistema de Referencia, bajo la acción de un mismo campo electrostático. Compare las correspondientes aceleraciones.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>Fuerzas:</strong></p>
+                        <p>La fuerza que ejerce un campo eléctrico uniforme $\vec{E}$ sobre una carga $q$ es $\vec{F} = q\vec{E}$. El electrón y el protón poseen exactamente la misma carga en magnitud pero de signos opuestos ($|q| = e = 1,6 \times 10^{-19} \text{ C}$).</p>
+                        <div class="formula-responsive">
+                            $$ \vec{F}_p = +e\vec{E} \quad \text{y} \quad \vec{F}_e = -e\vec{E} $$
+                        </div>
+                        <p>Por lo tanto, la <strong>magnitud de la fuerza es idéntica</strong> para ambas partículas, pero actúan en <strong>direcciones exactamente opuestas</strong> (el protón es acelerado a favor del campo y el electrón en contra).</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>Aceleraciones:</strong></p>
+                        <p>Según la Segunda Ley de Newton, $\vec{a} = \frac{\vec{F}}{m}$. Dado que la masa del protón ($m_p \approx 1,67 \times 10^{-27} \text{ kg}$) es unas 1836 veces mayor que la masa del electrón ($m_e \approx 9,11 \times 10^{-31} \text{ kg}$), las aceleraciones diferirán drásticamente en magnitud.</p>
+                        <div class="formula-responsive">
+                            $$ a_e = \frac{eE}{m_e} \quad \gg \quad a_p = \frac{eE}{m_p} $$
+                        </div>
+                        <p>El electrón experimentará una <strong>aceleración aproximadamente 1836 veces mayor</strong> que el protón.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Cada una de las partículas que componen un dipolo eléctrico tienen un valor absoluto de $0,5\text{ nC}$, se encuentran separadas de $1\text{ mm}$. Calcule el campo electrostático en un punto del plano de simetría del dipolo, situado a $10\text{ cm}$ de su centro.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para un punto ubicado en el plano bisector (plano de simetría) a una distancia $r$ del centro de un dipolo, cuando la distancia $r$ es mucho mayor que la separación $a$ de las cargas ($r \gg a$), la magnitud del campo eléctrico se aproxima mediante:</p>
+                        <div class="formula-responsive">
+                            $$ E = k \frac{p}{r^3} $$
+                        </div>
+                        <p>Donde el momento dipolar es $p = q \cdot a$. Los datos del problema son:</p>
+                        <ul class="componentes-list">
+                            <li>$q = 0,5 \times 10^{-9} \text{ C}$</li>
+                            <li>$a = 1 \times 10^{-3} \text{ m}$</li>
+                            <li>$r = 0,1 \text{ m}$</li>
+                        </ul>
+                        <div class="formula-responsive">
+                            $$ p = (0,5 \times 10^{-9} \text{ C}) \cdot (1 \times 10^{-3} \text{ m}) = 5 \times 10^{-13} \text{ C}\cdot\text{m} $$
+                        </div>
+                        <p>Calculamos el campo reemplazando el momento dipolar:</p>
+                        <div class="formula-responsive">
+                            $$ E = 9 \times 10^9 \frac{\text{N}\cdot\text{m}^2}{\text{C}^2} \cdot \frac{5 \times 10^{-13} \text{ C}\cdot\text{m}}{(0,1 \text{ m})^3} = \frac{4,5 \times 10^{-3}}{10^{-3}} = 4,5 \text{ N/C} $$
+                        </div>
+                        <p>El vector campo apunta paralelo al eje del dipolo, en dirección contraria al momento dipolar $\vec{p}$ (es decir, desde la carga positiva hacia la negativa).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Un ión de cloro de carga $e$ se sitúa frente a una molécula de agua, cuyo momento dipolar eléctrico apunta exactamente al ión. La distancia entre ambas partículas es de $5 \times 10^{-8}\text{ m}$. El módulo del momento dipolar eléctrico de la molécula de agua es $6,17 \times 10^{-30}\text{ C m}$. Encuentre la fuerza eléctrica ejercida por la molécula sobre el ión. ¿Es una fuerza atractiva o repulsiva?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La magnitud del campo eléctrico generado por un dipolo en un punto situado sobre su eje (línea colineal al momento dipolar), asumiendo $r \gg a$, es:</p>
+                        <div class="formula-responsive">
+                            $$ E = 2 k \frac{p}{r^3} $$
+                        </div>
+                        <p>La fuerza ejercida sobre el ión de cloro de carga $q = e = 1,6 \times 10^{-19} \text{ C}$ será $F = qE$. Reemplazamos los valores dados:</p>
+                        <div class="formula-responsive">
+                            $$ E = 2 \cdot (9 \times 10^9) \frac{6,17 \times 10^{-30}}{(5 \times 10^{-8})^3} = \frac{1,11 \times 10^{-19}}{1,25 \times 10^{-22}} = 8,88 \times 10^2 \text{ N/C} $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ F = (1,6 \times 10^{-19} \text{ C}) \cdot (8,88 \times 10^2 \text{ N/C}) \approx 1,42 \times 10^{-16} \text{ N} $$
+                        </div>
+                        <p><strong>Naturaleza de la fuerza:</strong> El dipolo apunta de la carga negativa a la positiva de la molécula de agua. Si apunta hacia el ión, el lado positivo del agua está más cerca del ión de cloro (que tiene carga elemental negativa $Cl^-$ en su forma iónica típica, aunque el enunciado menciona "carga e"). Asumiendo que es negativo, será atraído por el polo positivo del agua, generando una <strong>fuerza atractiva</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Dibuje las líneas de campo para las siguientes distribuciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Dipolo eléctrico.</li>
+                            <li>Dos partículas idénticas cargadas negativamente.</li>
+                            <li>Dos partículas cargadas con distinto signo tales que el valor absoluto de una de ellas es cinco veces mayor que el de la otra.</li>
+                            <li>Cuatro partículas idénticas cargadas positivamente situadas en los vértices de un cuadrado.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <p>Las propiedades fundamentales de las líneas de campo son: salen de las cargas positivas, entran en las cargas negativas, la densidad de líneas es proporcional a la magnitud de la carga y nunca se cruzan.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem; list-style-type: lower-alpha;">
+                            <li><strong>Dipolo eléctrico:</strong> Las líneas nacen en la carga positiva y convergen hacia la negativa. En la zona intermedia entre ambas, el campo se refuerza, generando arcos simétricos que conectan ambas cargas.</li>
+                            <li><strong>Dos cargas idénticas negativas:</strong> Todas las líneas entran hacia las cargas provenientes del infinito. En la región intermedia, las líneas se curvan alejándose unas de otras (repulsión) formando una asíntota central donde el campo neto es cero.</li>
+                            <li><strong>Dos cargas de distinto signo ($+5q$ y $-q$):</strong> Las líneas nacen en $+5q$ y van hacia $-q$. Sin embargo, dado que la carga positiva es cinco veces mayor, emitirá cinco veces más líneas de campo. Sólo un quinto de estas líneas terminará en la carga negativa $-q$; el resto se extenderá hacia el infinito.</li>
+                            <li><strong>Cuatro cargas positivas idénticas en un cuadrado:</strong> Las líneas emergen radialmente de todas las cargas. Hacia el centro del cuadrado, las líneas se rechazan fuertemente, curveándose hacia el exterior y dejando el centro exacto del cuadrado como un punto de campo nulo.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Una partícula cargada se coloca en un punto del espacio donde existe un campo electrostático. ¿Coincidirá la trayectoria de la partícula con una línea de campo? Analice los siguientes casos y discuta similitudes y diferencias:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Cuando el campo es producido por una partícula cargada.</li>
+                            <li>Cuando el campo es producido por un dipolo eléctrico.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p>En general, la trayectoria de una partícula <strong>no coincide</strong> con las líneas de campo, salvo bajo condiciones muy particulares. La línea de campo es tangente al vector de <em>fuerza</em> o <em>aceleración</em> en un instante dado, pero la inercia (velocidad adquirida) altera la trayectoria temporal. Para que coincidan, la línea de campo debe ser recta y la partícula debe partir del reposo o moverse colinealmente a dicha línea.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>a) Campo producido por una partícula:</strong></p>
+                        <p>El campo es estrictamente radial. Las líneas de campo son rectas. Si la carga de prueba se deja en reposo, o se lanza con velocidad en la misma dirección radial, su trayectoria sí será rectilínea y <strong>coincidirá</strong> perfectamente con la línea de campo en todo momento.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Campo producido por un dipolo:</strong></p>
+                        <p>Salvo en el eje colineal exacto que une ambas partículas, las líneas de campo del dipolo son <strong>curvas</strong>. Si una partícula de prueba es liberada en reposo en este campo, inicialmente se acelerará tangencialmente a la línea de campo, pero a medida que gane velocidad, su inercia hará que su trayectoria se "abra" o desvíe de la línea de campo curva original. Por tanto, en un dipolo, la trayectoria <strong>no coincide</strong> con las líneas de campo (excepto en el eje rectilíneo).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Cuando se aborda la resolución de un problema de electrostática es importante detenerse a analizar la distribución de cargas presentes. Teniendo en cuenta esto, plantee una expresión que le permita calcular el campo electrostático generado por las distribuciones planteadas en cada uno de los siguientes casos...</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución: Expresiones Analíticas</h4>
+                        
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; list-style-type: lower-alpha;">
+                            <li>
+                                <strong>a) Hilo de longitud $L$ en su mediatriz (distancia $y$):</strong>
+                                <div class="formula-responsive" style="margin-top: 0.5rem;">
+                                    $$ E_y = \frac{k \lambda}{y} (\cos\theta_1 - \cos\theta_2) $$
+                                </div>
+                                <p style="font-size: 0.95rem; margin-top: 0.5rem;">O en términos geométricos: $E_y = \frac{2k\lambda}{y} \sin\theta_0$, donde $\sin\theta_0 = \frac{L/2}{\sqrt{y^2 + (L/2)^2}}$.</p>
+                            </li>
+                            
+                            <li>
+                                <strong>b) Hilo de longitud infinita:</strong>
+                                <p style="font-size: 0.95rem;">Haciendo que la longitud $L \to \infty$, los ángulos $\theta \to \pi/2$ (o los cosenos cubren el tramo $-1$ a $1$), reduciéndose por simetría cilíndrica a:</p>
+                                <div class="formula-responsive" style="margin-top: 0.5rem;">
+                                    $$ E = \frac{2k\lambda}{y} = \frac{\lambda}{2\pi\epsilon_0 y} $$
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>c) Anillo de radio $R$ sobre su eje $y$:</strong>
+                                <p style="font-size: 0.95rem;">Calculado por integración de los diferenciales de arco a una distancia $y$ constante del plano del anillo:</p>
+                                <div class="formula-responsive" style="margin-top: 0.5rem;">
+                                    $$ E_y = \frac{k Q y}{(R^2 + y^2)^{3/2}} $$
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>d) Disco de radio $R$ sobre su eje $y$:</strong>
+                                <p style="font-size: 0.95rem;">Integrando anillos concéntricos desde $r=0$ hasta $R$ con densidad superficial $\sigma$:</p>
+                                <div class="formula-responsive" style="margin-top: 0.5rem;">
+                                    $$ E_y = 2\pi k \sigma \left( 1 - \frac{y}{\sqrt{R^2 + y^2}} \right) $$
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>e) Plano infinito:</strong>
+                                <p style="font-size: 0.95rem;">Tomando el límite cuando $R \to \infty$ en el disco, el campo se vuelve uniforme y no depende de la distancia $y$:</p>
+                                <div class="formula-responsive" style="margin-top: 0.5rem;">
+                                    $$ E_y = 2\pi k \sigma = \frac{\sigma}{2\epsilon_0} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>Modelando las caras de las placas como láminas no conductoras infinitas y aplicando el principio de superposición calcule el campo eléctrico en todo punto del espacio, generado por:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>una placa conductora cargada negativamente.</li>
+                            <li>dos placas conductoras cargadas con cargas $q$ y $-q$, separadas una distancia $d$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Una placa conductora cargada:</strong></p>
+                        <p>Un conductor macizo distribuye su carga neta en sus dos superficies exteriores. Si se modelan como dos láminas infinitas de densidad $\sigma/2$, por principio de superposición, en el interior del metal los campos son opuestos y se anulan ($E_{int} = 0$). En el exterior, se suman constructivamente:</p>
+                        <div class="formula-responsive">
+                            $$ E_{ext} = \frac{\sigma/2}{2\epsilon_0} + \frac{\sigma/2}{2\epsilon_0} = \frac{\sigma}{2\epsilon_0} $$
+                        </div>
+                        <p>Al ser negativa, las líneas de campo apuntarán perpendicularmente hacia la placa en todo el espacio exterior.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Dos placas paralelas ($+q$ y $-q$):</strong></p>
+                        <p>Este es el modelo básico de un condensador (capacitor). Tenemos dos láminas infinitas con densidades $+\sigma$ y $-\sigma$. En el espacio <strong>exterior</strong> a ambas placas, los campos apuntan en direcciones opuestas y, al tener la misma magnitud $\sigma/2\epsilon_0$, se anulan entre sí: $E_{ext} = 0$.</p>
+                        <p>En el espacio <strong>interior</strong> (la distancia $d$ entre ellas), el campo originado por la placa positiva empuja hacia la placa negativa, y el campo originado por la negativa atrae en la misma dirección. Por lo tanto, los campos se suman constructivamente:</p>
+                        <div class="formula-responsive">
+                            $$ E_{int} = E_{+} + E_{-} = \frac{\sigma}{2\epsilon_0} + \frac{\sigma}{2\epsilon_0} = \frac{\sigma}{\epsilon_0} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>Una carga lineal uniforme se extiende desde $x=-2,5\text{ cm}$ a $x=+2,5\text{ cm}$ y posee una densidad de carga lineal $\lambda = 4,5\text{ nC/m}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Halle la carga total y el campo electrostático en $(4,0)$ y en $(0,4)$.</li>
+                            <li>Se coloca, ahora, una carga puntual de $10\mu\text{C}$ en el punto $(0,8)$, calcule el valor del campo electrostático en el punto $(4,0)$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Carga total y campo en posiciones dadas:</strong></p>
+                        <p>La longitud del hilo es $L = 0,025 - (-0,025) = 0,05\text{ m}$. La carga total es simplemente el producto de la densidad por la longitud:</p>
+                        <div class="formula-responsive">
+                            $$ Q = \lambda \cdot L = (4,5 \times 10^{-9} \text{ C/m}) \cdot 0,05 \text{ m} = 2,25 \times 10^{-10} \text{ C} $$
+                        </div>
+                        <p>El campo electrostático en posiciones arbitrarias de un hilo finito requiere integración directa sobre los diferenciales $dE$ de la barra. Para el punto $(4,0)$, en el mismo eje $x$, el campo solo tiene componente horizontal y se calcula integrando a lo largo del hilo. Para el punto $(0,4)$, en la mediatriz de la varilla, se anula la componente $x$ y solo sobrevive el empuje vertical en $y$. Las integrales arrojan:</p>
+                        <div class="formula-responsive" style="margin-top: 0.5rem;">
+                            $$ E_x(4,0) = 2.076,92 \text{ N/C} \quad \text{y} \quad E_y(0,4) = 951,75 \text{ N/C} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Superposición con una nueva carga puntual:</strong></p>
+                        <p>Se agrega un $q = 10 \mu\text{C}$ en el punto $(0,8)$. Deseamos el nuevo campo neto en $(4,0)$. Según el Principio de Superposición, debemos sumar vectorialmente el campo que generaba la varilla originalmente en $(4,0)$ con el campo nuevo provocado por esta carga puntual en ese mismo punto.</p>
+                        <p>La contribución de la carga puntual en el punto $(4,0)$ se descompone trigonométricamente evaluando la distancia que los separa ($d = \sqrt{4^2 + (-8)^2}$), y el campo total resulta en la suma vectorial de ambas fuentes.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12</h3>
+                        <p>Con una velocidad $v_0 = 10^7\text{ m/s}$ se lanza un electrón, en una región confinado por dos placas paralelas, donde existe un campo eléctrico vertical hacia abajo, tal como se indica en la figura. Halle la intensidad del campo eléctrico sabiendo que el electrón ingresa por un punto situado a igual distancia de las placas y pasa justamente por el borde de la lámina superior cuando egresa de dicha región.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Datos de la figura: Largo de las placas $L = 2\text{ cm}$. Distancia entre placas $d = 1\text{ cm}$.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Estamos ante un clásico problema de tiro parabólico gobernado por fuerzas eléctricas. El campo eléctrico $\vec{E}$ apunta hacia abajo, por ende la fuerza sobre el electrón (carga negativa) apuntará en sentido opuesto, empujándolo hacia arriba con una aceleración constante $a = \frac{eE}{m_e}$.</p>
+
+                        <p style="margin-top: 1rem;"><strong>Análisis Cinemático:</strong></p>
+                        <p>El electrón no sufre fuerzas en el eje horizontal ($x$), por lo que viaja a velocidad constante $v_0$. El tiempo que tarda en recorrer la longitud $L = 0,02\text{ m}$ de las placas es:</p>
+                        <div class="formula-responsive">
+                            $$ t = \frac{L}{v_0} = \frac{0,02 \text{ m}}{10^7 \text{ m/s}} = 2 \times 10^{-9} \text{ s} $$
+                        </div>
+                        <p>En ese lapso de tiempo, el electrón se desvía en el eje vertical ($y$) debido a la aceleración. Entra por el medio (distancia a la placa de $d/2 = 0,005\text{ m}$) y sale rasando el borde. Utilizando la ecuación cinemática para el desplazamiento vertical:</p>
+                        <div class="formula-responsive">
+                            $$ y = \frac{1}{2} a t^2 = \frac{1}{2} \left( \frac{eE}{m_e} \right) t^2 $$
+                        </div>
+                        <p>Despejamos el campo eléctrico $E$ que produce este desvío de $y = 0,005\text{ m}$:</p>
+                        <div class="formula-responsive">
+                            $$ E = \frac{2 y \cdot m_e}{e \cdot t^2} = \frac{2 \cdot (0,005 \text{ m}) \cdot (9,11 \times 10^{-31} \text{ kg})}{(1,6 \times 10^{-19} \text{ C}) \cdot (2 \times 10^{-9} \text{ s})^2} $$
+                        </div>
+                        <div class="formula-responsive" style="margin-top: 0.5rem;">
+                            $$ E = \frac{9,11 \times 10^{-33}}{6,4 \times 10^{-37}} \approx 3.554 \text{ N/C} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+
+</body>
+
+</html>

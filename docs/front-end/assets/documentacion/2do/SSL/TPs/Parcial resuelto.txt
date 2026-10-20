@@ -1,0 +1,472 @@
+# ==========================================
+# Parcial 1
+# ==========================================
+
+Una clínica veterinaria desea informatizar el manejo de su equipo de veterinarios. De cada veterinario se debe registrar la siguiente información:
+
+Nombre, Apellido, Nro matrícula profesional, Sueldo, Cantidad de pacientes activos (animales asignados) y Cantidad de años de experiencia profesional     a) Implementar el método recuperarVeterinario, indicar a que TAD corresponde
+                                                
+b) En aplicación, sabiendo que se cuenta con los TADs TADClinica y TADVeterinario:
+
+1. Cargar veterinarios a la clínica (uno o varios).
+2. Aumentar el sueldo en un % dado a los veterinarios con más de 8 años de experiencia. 
+3. Eliminar del sistema a los veterinarios que tengan solo un paciente activo.
+4. A partir de un valor dado de experiencia, listar nombre, apellido y sueldo de todos los veterinarios que superen esa experiencia.
+
+a)
+#TADClinica
+def recuperarVeterinario(clinica, i):
+	return clinica [i]
+b) i)
+import TADVeterinario
+import TADClinica
+clinica = crearClinica()
+flag = True
+
+while flag:
+
+nombre = input("Ingrese el nombre del Veterinario: ")
+apellido = input("Ingrese el apellido del Veterinario: ")
+nroMatricula = int(input("Ingrese nro de Matricula: "))
+sueldo = float(input("Ingrese el sueldo del Veterinario: "))
+cantClientesA = int(input ("Cantidad de clientes activos:  "))
+cantAniosExp = int (input("Cantidad de años de experiencia: "))
+
+vet = crearVeterinario()
+
+cargarVeterinario(vet, nombre, apellido, nroMatricula, sueldo, cantClientesA, cantAniosExp)
+agregarVeterinario(clinica, vet)
+condicion = input("Ingrese 1 para cargar más Veterinarios o cualquier caracter para salir: ")
+
+if condicion != "1":
+flag = False
+
+ii)
+porcen= float (input("Ingrese el porcentaje a aumentar: "))
+i = 0
+while i < tamanio (clinica):
+vet = recuperarVeterinario (clinica, i)
+if verCantAnioExp(vet) > 8:
+mod= verSueldo(vet)*(1+ porcen/100)
+modificarSueldo(vet, mod)
+i += 1
+
+iii)
+i = 0
+
+while i < tamanio(clinica):
+recup = recuperarVeterinario(clinica, i)
+if verCantPacientesA(recup) == 1:
+	eliminarVeterinario (clinica, i)
+else:
+	i += 1
+
+iv)
+valor = int(input("ingrese cantidad de años de experiencia: "))
+i = 0
+while i < tamanio(clinica):
+	vet = recuperarVeterinario(clinica, i)
+	if verCantAnioExp(vet) > valor:
+		print(f"El nombre:{verNombre(vet)}")
+		print(f"El apellido:{verApellido(vet)}")
+		print(f"El sueldo:{verSueldo(vet)}")
+i += 1
+
+# ==========================================
+# Parcial 2
+# ==========================================
+
+La facultad tiene un listado de docentes. De cada profesor se conoce: Nombre, Apellido, Legajo, Antigüedad, Cantidad de materias a cargo y Sueldo.
+a) Implementar la operación agregarDocente en el Tad correspondiente
+
+En Aplicacion:
+
+b) Cargar todos los docentes a la facultad
+c) Incrementar el sueldo en un 20% a los docentes con antigüedad mayor a 20 años
+d) Eliminar todos los docentes de una carrera dada
+e) Listar Nombre, Apellido y Sueldo de los docentes que tienen más de 3 materias a cargo
+
+a)
+#TADFacultad
+def agregarDocente(facultad, docente):
+    facultad.append(docente)
+
+b)
+import TADFacultad
+importTADDocente
+facultad = crearFacultad
+flag = True
+while flag:
+    nombre = input("Ingrese el nombre: ")
+    apellido = input("Ingrese el apellido: ")
+    legajo = int(input("Ingrese legajo: "))
+    antiguedad = int(input("Ingrese años de antigüedad: "))
+    materias = int(input("Ingrese cantidad de materias a cargo: "))
+    sueldo = float(input("Ingrese sueldo: "))
+    carrera = input("Ingrese la carrera: ")
+
+    doc = crearDocente(nombre, apellido, legajo, antiguedad, materias, sueldo, carrera)
+    agregarDocente(facultad, doc)
+
+    condicion = input("Ingrese 1 para cargar otro docente, o cualquier tecla para salir: ")
+    if condicion != "1":
+        flag = False
+
+c)
+i = 0
+while i < tamanio(facultad):
+    doc = recuperarDocente(facultad, i)
+    if verAntiguedad(doc) > 20:
+        nuevo_sueldo = verSueldo(doc) * 1.20
+        modificarSueldo(doc, nuevo_sueldo)
+    i += 1 
+
+d)
+carrera_buscada = input("Ingrese la carrera de los docentes a eliminar: ")
+i = 0
+while i < tamanio(facultad):
+    doc = recuperarDocente(facultad, i)
+    # Comparamos ignorando mayúsculas/minúsculas por precaución
+    if verCarrera(doc).lower() == carrera_buscada.lower():
+        eliminarDocente(facultad, i)
+        # OJO ACÁ: NO hacemos i += 1 porque al borrar, el próximo elemento cae en esta misma posición 'i'
+    else:
+        i += 1
+
+e)
+i = 0
+while i < tamanio(facultad):
+    doc = recuperarDocente(facultad, i)
+    if verMaterias(doc) > 3:
+        print(f"Nombre: {verNombre(doc)}")
+        print(f"Apellido: {verApellido(doc)}")
+        print(f"Sueldo: ${verSueldo(doc)}")
+    i += 1 
+
+# ==========================================
+# Parcial 3
+# ==========================================
+
+Un estudio juridico de La Plata solicita que desarrolles un sistema para poder gestionar los expedientes de sus casos De cada expediente se conoce abogado titular, tipo (A, B o C), fecha, estado ("En curso", "Finalizado", "Archivado") y DNI del cliente
+
+a- Implementar la operación asignarExpediente. Indicar a qué TAD pertenece.
+
+b-Resolver en aplicación los siguientes puntos utilizando las operaciones de los TAD, suponiendo que los TAD están creados (tener en cuenta TAD Simple, Compuesto y Pila):
+
+i. Agregar expediente al estudio.
+ii. Cambiar todos los expedientes del mes 6 en estado "Finalizado" a "Archivado".
+iii. Asumiendo una pila de expedientes creada, eliminar de la pila los expedientes a cargo de Speratti.
+iv. Listar todos los datos de los expedientes con un tipo dado.
+
+a)
+#TADEstudio
+def asignarExpediente(estudio, expediente):
+    estudio.append(expediente)
+
+b)
+import TADExpediente
+import TADEstudio
+import TADPila
+import TADFecha
+
+i)
+estudio = crearEstudio()
+ 
+flag = True
+while flag:
+    abogado = input("Ingrese el abogado titular: ")
+    tipo = input("Ingrese el tipo (A, B o C): ")
+    mes = int(input("Ingrese mes de inicio (1-12): "))
+    anio = int(input("Ingrese año: "))
+    fecha = crearFecha(mes, anio) 
+    estado = input("Ingrese estado ('En curso', 'Finalizado', 'Archivado'): ")
+    dni = int(input("Ingrese DNI del cliente: "))
+
+    exp = crearExpediente(abogado, tipo, fecha, estado, dni)
+    asignarExpediente(estudio, exp)
+
+    condicion = input("Ingrese 1 para cargar otro expediente, o cualquier tecla para salir: ")
+    if condicion != "1":
+        flag = False
+
+ii)
+i = 0
+while i < tamanio(estudio):
+    exp = recuperarExpediente(estudio, i)
+    fecha_exp = verFecha(exp)
+    
+    if verMes(fecha_exp) == 6 and verEstado(exp) == "Finalizado":
+        modificarEstado(exp, "Archivado")
+    
+    i += 1
+
+iii)
+pila_aux = crearPila()
+
+while not pilaVacia(pila_expedientes):
+    exp_actual = desapilar(pila_expedientes)
+    
+    if verAbogado(exp_actual).lower() != "speratti":
+        apilar(pila_aux, exp_actual)
+
+while not pilaVacia(pila_aux):
+    exp_salvado = desapilar(pila_aux)
+    apilar(pila_expedientes, exp_salvado)
+
+iii)
+cola_aux = crearCola()
+
+while not colaVacia(cola_expedientes):
+    exp_actual = desencolar(cola_expedientes)
+    
+    if verAbogado(exp_actual).lower() != "speratti":
+        encolar(cola_aux, exp_actual)
+
+while not colaVacia(cola_aux):
+    exp_salvado = desencolar(cola_aux)
+    encolar(cola_expedientes, exp_salvado)
+
+iv)
+tipo_buscado = input("Ingrese el tipo de expediente a listar (A, B o C): ")
+
+i = 0
+while i < tamanio(estudio):
+    exp = recuperarExpediente(estudio, i)
+    
+    if verTipo(exp).lower() == tipo_buscado.lower():
+        print(f"Abogado: {verAbogado(exp)}")
+        print(f"Estado: {verEstado(exp)}")
+        print(f"DNI: {verDni(exp)}")
+        
+    i += 1
+
+# ==========================================
+# Parcial 4
+# ==========================================
+
+Un club deportivo desea informatizar la gestión de su plantel de entrenadores. De cada entrenador se debe registrar la siguiente información: Nombre, Apellido, Número de legajo, deporte, Sueldo, Cantidad de deportistas a cargo, Años de experiencia
+
+Implementar el método CopiarCola del TAD correspondiente.
+
+En la aplicación, sabiendo que se cuenta con los TADS TADClub, TADEntrenador, TADColaFutbol:
+
+1. Cargar entrenadores al club "Everton"
+2. Crear cola: con los entrenadores con menos de 1 año de experiencia. Una vez encolados, mostrar los datos que se encolaron (sin importar que se pierdan los datos)
+3. Premiar con bono: aumentar el sueldo en un valor dado, a los entrenadores que tienen más de 10 deportistas a cargo.
+4. Reasignar entrenador: transferir todos los deportistas de un entrenador a otro (ambos identificados por legajo) y eliminar al entrenador original del sistema.
+5. Se desea generar otro club "Everton Futbol Club" con los entrenadores de deporte "Futbol" que se encuentran en el club "Everton", quitarlos del mismo
+
+a)
+# TAD ColaFutbol
+def copiarCola(cola_original):
+    cola_nueva = crearCola()
+    for elemento in cola_original:
+        cola_nueva.append(elemento)
+    return cola_nueva
+
+import TADClub
+import TADEntrenador
+import TADColaFutbol
+
+club_everton = crearClub()
+
+1) Cargar entrenadores al club "Everton"
+
+flag = True
+while flag:
+    nom = input("Nombre: ")
+    ape = input("Apellido: ")
+    leg = int(input("Número de legajo: "))
+    dep = input("Deporte: ")
+    sueldo = float(input("Sueldo: $"))
+    dep_cargo = int(input("Deportistas a cargo: "))
+    exp = int(input("Años de experiencia: "))
+
+    ent = crearEntrenador(nom, ape, leg, dep, sueldo, dep_cargo, exp)
+    agregarEntrenador(club_everton, ent)
+
+    condicion = input("Ingrese 1 para cargar otro, o cualquier tecla para salir: ")
+    if condicion != "1":
+        flag = False
+
+2) Crear cola con entrenadores < 1 año exp. y vaciarla mostrándolos
+
+cola_novatos = crearCola()
+i = 0
+while i < tamanio(club_everton):
+    ent = recuperarEntrenador(club_everton, i)
+    if verExperiencia(ent) < 1:
+        encolar(cola_novatos, ent)
+    i += 1
+
+while not colaVacia(cola_novatos):
+    ent_novato = desencolar(cola_novatos)
+    print(f"Legajo {verLegajo(ent_novato)}: {verNombre(ent_novato)} {verApellido(ent_novato)}")
+
+3) Premiar con bono a entrenadores con > 10 deportistas
+
+bono = float(input("Ingrese el valor del bono a otorgar: $"))
+i = 0
+while i < tamanio(club_everton):
+    ent = recuperarEntrenador(club_everton, i)
+    if verDeportistas(ent) > 10:
+        sueldo_actual = verSueldo(ent)
+        modificarSueldo(ent, sueldo_actual + bono)
+    i += 1
+
+4) Reasignar entrenador (transferir deportistas y eliminar al original)
+
+leg_origen = int(input("\nIngrese legajo del entrenador a eliminar (el que cede): "))
+leg_destino = int(input("Ingrese legajo del entrenador destino (el que recibe): "))
+
+i = 0
+pos_origen = -1
+pos_destino = -1
+
+while i < tamanio(club_everton):
+    ent = recuperarEntrenador(club_everton, i)
+    if verLegajo(ent) == leg_origen:
+        pos_origen = i
+    elif verLegajo(ent) == leg_destino:
+        pos_destino = i
+    i += 1
+
+if pos_origen != -1 and pos_destino != -1:
+    ent_origen = recuperarEntrenador(club_everton, pos_origen)
+    ent_destino = recuperarEntrenador(club_everton, pos_destino)
+    
+    deportistas_transferidos = verDeportistas(ent_origen)
+    total_nuevos = verDeportistas(ent_destino) + deportistas_transferidos
+    modificarDeportistas(ent_destino, total_nuevos)
+    
+    eliminarEntrenador(club_everton, pos_origen)
+
+
+5) Generar "Everton Futbol Club", mover a los de fútbol y quitarlos del original
+
+everton_futbol = crearClub()
+
+i = 0
+while i < tamanio(club_everton):
+    ent = recuperarEntrenador(club_everton, i)
+    
+    if verDeporte(ent).lower() == "futbol":
+        agregarEntrenador(everton_futbol, ent)
+        eliminarEntrenador(club_everton, i)
+    else:
+        i += 1                  
+
+# ==========================================
+# Parcial 5
+# ==========================================
+
+Una clínica veterinaria desea informatizar el manejo de su equipo de veterinarios. De cada veterinario se debe registrar la siguiente información: Nombre, Apellido, Nro matrícula profesional, Sueldo, Cantidad de pacientes activos (animales asignados) y Cantidad de años de experiencia profesional
+
+a) Implementar el método recuperar Veterinario, indicar a que TAD corresponde
+
+b) En aplicación, sabiendo que se cuenta con los TADs TADClinica y TADVeterinario, TADColaVete:
+
+1. Cargar veterinarios a la clínica inicial (uno o varios).
+2. Se desea generar otra clínica con los veterinarios de antigüedad menor a 2 años, quitarlos de la clínica inicial
+3. Aumentar el sueldo en un % dado a los veterinarios con más de 5 pacientes activos (se debe realizar en las 2 clinicas).
+4. Eliminar de la clínica inicial a los veterinarios que tengan solo un paciente activo. 
+5. Generar una cola con los veterinarios de la clínica inicial, que no tengan pacientes asignados. Luego de armar la cola, imprimir los datos de la misma (sin importar que se pierdan los datos)
+
+a)
+
+# TADClinica
+# Pertenece al TAD Clínica (TAD Compuesto)
+
+def recuperarVeterinario(clinica, i):
+    return clinica[i]
+
+import TADClinica
+import TADVeterinario
+import TADColaVete
+
+clinica_inicial = crearClinica()
+
+1) Cargar veterinarios a la clínica inicial
+
+flag = True
+while flag:
+    nom = input("Nombre: ")
+    ape = input("Apellido: ")
+    mat = int(input("Número de matrícula: "))
+    sueldo = float(input("Sueldo: $"))
+    pacientes = int(input("Pacientes activos: "))
+    exp = int(input("Años de experiencia: "))
+
+    vet = crearVeterinario(nom, ape, mat, sueldo, pacientes, exp)
+    agregarVeterinario(clinica_inicial, vet)
+
+    condicion = input("Ingrese 1 para cargar otro, o cualquier tecla para salir: ")
+    if condicion != "1":
+        flag = False
+
+
+2) Generar otra clínica con vet. de antigüedad < 2 años y quitarlos de la inicial
+
+clinica_nueva = crearClinica()
+
+i = 0
+while i < tamanio(clinica_inicial):
+    vet = recuperarVeterinario(clinica_inicial, i)
+    
+    if verExperiencia(vet) < 2:
+        agregarVeterinario(clinica_nueva, vet)
+        eliminarVeterinario(clinica_inicial, i)
+    else:
+        i += 1
+
+
+3) Aumentar el sueldo en un % dado a los veterinarios con > 5 pacientes en LAS 2 CLÍNICAS
+
+porcentaje = float(input("Ingrese el % de aumento salarial: "))
+factor = 1 + (porcentaje / 100)
+
+i = 0
+while i < tamanio(clinica_inicial):
+    vet = recuperarVeterinario(clinica_inicial, i)
+    if verPacientes(vet) > 5:
+        nuevo_sueldo = verSueldo(vet) * factor
+        modificarSueldo(vet, nuevo_sueldo)
+    i += 1
+
+j = 0
+while j < tamanio(clinica_nueva):
+    vet = recuperarVeterinario(clinica_nueva, j)
+    if verPacientes(vet) > 5:
+        nuevo_sueldo = verSueldo(vet) * factor
+        modificarSueldo(vet, nuevo_sueldo)
+    j += 1 
+
+
+4) Eliminar de la clínica inicial a los veterinarios con solo 1 paciente activo
+
+i = 0
+while i < tamanio(clinica_inicial):
+    vet = recuperarVeterinario(clinica_inicial, i)
+    
+    if verPacientes(vet) == 1:
+        eliminarVeterinario(clinica_inicial, i)
+    else:
+        i += 1
+
+
+5) Generar cola con vet de la clínica inicial con 0 pacientes, y luego vaciarla mostrando datos
+
+cola_sin_pacientes = crearCola()
+
+i = 0
+while i < tamanio(clinica_inicial):
+    vet = recuperarVeterinario(clinica_inicial, i)
+    if verPacientes(vet) == 0:
+        encolar(cola_sin_pacientes, vet)
+    i += 1
+
+while not colaVacia(cola_sin_pacientes):
+    vet_desencolado = desencolar(cola_sin_pacientes)
+    print(f"Matrícula: {verMatricula(vet_desencolado)}")
+    print(f"Nombre: {verNombre(vet_desencolado)} {verApellido(vet_desencolado)}")
+                           

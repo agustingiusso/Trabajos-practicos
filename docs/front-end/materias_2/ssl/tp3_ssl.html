@@ -1,1 +1,457 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3 - Autómatas Finitos Determinísticos - SSL</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="sintaxis-page">
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../ssl.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">Ej 1</li>
+            <li class="nav-point" data-point="2">Ej 2</li>
+            <li class="nav-point" data-point="3">Ej 3</li>
+            <li class="nav-point" data-point="4">Ej 4</li>
+            <li class="nav-point" data-point="5">Ej 5</li>
+            <li class="nav-point" data-point="6">Eq.</li>
+            <li class="nav-point" data-point="7">Min.</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div class="slides-container">
+            
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Primera Parte - Ejercicio 1</h3>
+                        <p>Dado el alfabeto $\Sigma=\{a,b\}$, construir un AFD que acepte el lenguaje formado por las palabras que tienen un $n^{\circ}$ impar de ocurrencias de la subcadena <strong>'ab'</strong>.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Diagrama de Transiciones:</h4>
+                        
+                        <div class="formula-responsive">
+                            <svg class="afd-svg" viewBox="0 0 400 250">
+                                <defs>
+                                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+                                    </marker>
+                                </defs>
+                                
+                                <line x1="10" y1="60" x2="40" y2="60" marker-end="url(#arrow)" />
+                                <circle cx="60" cy="60" r="20" />
+                                <text x="50" y="65">q0</text>
+                                
+                                <circle cx="200" cy="60" r="20" />
+                                <text x="190" y="65">q1</text>
+                                
+                                <circle cx="340" cy="60" r="20" />
+                                <circle cx="340" cy="60" r="15" />
+                                <text x="330" y="65">q2</text>
+                                
+                                <circle cx="340" cy="180" r="20" />
+                                <circle cx="340" cy="180" r="15" />
+                                <text x="330" y="185">q3</text>
+
+                                <path d="M 50 43 C 30 10, 90 10, 70 43" marker-end="url(#arrow)" />
+                                <text x="55" y="15">b</text>
+                                
+                                <path d="M 80 60 L 175 60" marker-end="url(#arrow)" />
+                                <text x="120" y="50">a</text>
+                                
+                                <path d="M 190 43 C 170 10, 230 10, 210 43" marker-end="url(#arrow)" />
+                                <text x="195" y="15">a</text>
+                                
+                                <path d="M 220 60 L 315 60" marker-end="url(#arrow)" />
+                                <text x="260" y="50">b</text>
+                                
+                                <path d="M 330 43 C 310 10, 370 10, 350 43" marker-end="url(#arrow)" />
+                                <text x="335" y="15">b</text>
+                                
+                                <path d="M 340 80 L 340 155" marker-end="url(#arrow)" />
+                                <text x="345" y="125">a</text>
+
+                                <path d="M 357 170 C 390 150, 390 210, 357 190" marker-end="url(#arrow)" />
+                                <text x="385" y="185">a</text>
+
+                                <path d="M 320 180 L 60 180 L 60 85" marker-end="url(#arrow)" fill="none"/>
+                                <text x="190" y="170">b</text>
+                            </svg>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem;">Definición Formal:</h4>
+                        <p>$M = (Q, \Sigma, \delta, q_0, F)$ donde:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-color);">
+                            <li>$Q = \{q_0, q_1, q_2, q_3\}$</li>
+                            <li>$\Sigma = \{a, b\}$</li>
+                            <li>$q_0 = q_0$ (Estado inicial: cantidad par de 'ab', último no fue 'a')</li>
+                            <li>$F = \{q_2, q_3\}$ (Estados finales: cantidad impar de 'ab')</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Primera Parte - Ejercicio 2</h3>
+                        <p>Diseñar un AFD que acepte el lenguaje $L=\{w \mid w \text{ termina con la cadena '01'} \}$ sobre el alfabeto $\Sigma=\{0,1,2\}$.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Diagrama de Transiciones:</h4>
+                        
+                        <div class="formula-responsive">
+                            <svg class="afd-svg" viewBox="0 0 350 150">
+                                <defs>
+                                    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+                                    </marker>
+                                </defs>
+                                
+                                <line x1="10" y1="75" x2="40" y2="75" marker-end="url(#arrow2)" />
+                                <circle cx="60" cy="75" r="20" />
+                                <text x="50" y="80">q0</text>
+                                
+                                <circle cx="180" cy="75" r="20" />
+                                <text x="170" y="80">q1</text>
+                                
+                                <circle cx="300" cy="75" r="20" />
+                                <circle cx="300" cy="75" r="15" />
+                                <text x="290" y="80">q2</text>
+                                
+                                <path d="M 50 58 C 30 25, 90 25, 70 58" marker-end="url(#arrow2)" />
+                                <text x="45" y="20">1, 2</text>
+                                
+                                <path d="M 80 65 Q 120 40 162 65" marker-end="url(#arrow2)" />
+                                <text x="115" y="45">0</text>
+                                
+                                <path d="M 170 58 C 150 25, 210 25, 190 58" marker-end="url(#arrow2)" />
+                                <text x="175" y="20">0</text>
+                                
+                                <path d="M 200 65 Q 240 40 282 65" marker-end="url(#arrow2)" />
+                                <text x="235" y="45">1</text>
+
+                                <path d="M 165 88 Q 120 110 75 88" marker-end="url(#arrow2)" />
+                                <text x="115" y="115">2</text>
+
+                                <path d="M 285 88 Q 240 110 195 88" marker-end="url(#arrow2)" />
+                                <text x="235" y="115">0</text>
+
+                                <path d="M 290 92 Q 175 160 65 92" marker-end="url(#arrow2)" />
+                                <text x="165" y="145">1, 2</text>
+                            </svg>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem;">Definición Formal:</h4>
+                        <div class="scroll-wrapper">
+                            <table class="data-table" style="max-width: 400px; margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>$\delta$</th>
+                                        <th>0</th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>$\rightarrow q_0$</td><td>$q_1$</td><td>$q_0$</td><td>$q_0$</td></tr>
+                                    <tr><td>$q_1$</td><td>$q_1$</td><td>$q_2$</td><td>$q_0$</td></tr>
+                                    <tr><td>$*q_2$</td><td>$q_1$</td><td>$q_0$</td><td>$q_0$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Primera Parte - Ejercicio 3</h3>
+                        <p>Diseñar un AFD que acepte el lenguaje $L=\{w \mid \text{no hay dos 'a' consecutivas en w y acepta la palabra vacía} \}$ sobre $\Sigma=\{a,b\}$.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="formula-responsive">
+                            <svg class="afd-svg" viewBox="0 0 350 150">
+                                <defs>
+                                    <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+                                    </marker>
+                                </defs>
+                                
+                                <line x1="10" y1="75" x2="35" y2="75" marker-end="url(#arrow3)" />
+                                <circle cx="60" cy="75" r="20" />
+                                <circle cx="60" cy="75" r="15" />
+                                <text x="50" y="80">q0</text>
+                                
+                                <circle cx="180" cy="75" r="20" />
+                                <circle cx="180" cy="75" r="15" />
+                                <text x="170" y="80">q1</text>
+                                
+                                <circle cx="300" cy="75" r="20" />
+                                <text x="290" y="80">q2</text>
+                                
+                                <path d="M 50 58 C 30 25, 90 25, 70 58" marker-end="url(#arrow3)" />
+                                <text x="55" y="20">b</text>
+                                
+                                <path d="M 80 65 Q 120 40 162 65" marker-end="url(#arrow3)" />
+                                <text x="115" y="45">a</text>
+
+                                <path d="M 165 88 Q 120 110 75 88" marker-end="url(#arrow3)" />
+                                <text x="115" y="115">b</text>
+                                
+                                <path d="M 200 75 L 275 75" marker-end="url(#arrow3)" />
+                                <text x="235" y="65">a</text>
+
+                                <path d="M 290 58 C 270 25, 330 25, 310 58" marker-end="url(#arrow3)" />
+                                <text x="285" y="20">a, b</text>
+                            </svg>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 1rem;">* $q_0$ es estado inicial y de aceptación (para aceptar la palabra vacía $\lambda$). El estado $q_2$ actúa como sumidero (trampa) al detectar 'aa'.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Primera Parte - Ejercicio 4</h3>
+                        <p>Diseñar el AFD que acepta el lenguaje $L=\{a^n c b^m \mid n>0 \text{ y } m\ge0\}$ sobre el alfabeto $\Sigma=\{a,b,c\}$.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="formula-responsive">
+                            <svg class="afd-svg" viewBox="0 0 450 180">
+                                <defs>
+                                    <marker id="arrow4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+                                    </marker>
+                                </defs>
+                                
+                                <line x1="10" y1="50" x2="40" y2="50" marker-end="url(#arrow4)" />
+                                <circle cx="60" cy="50" r="20" />
+                                <text x="50" y="55">q0</text>
+                                
+                                <circle cx="180" cy="50" r="20" />
+                                <text x="170" y="55">q1</text>
+
+                                <circle cx="300" cy="50" r="20" />
+                                <circle cx="300" cy="50" r="15" />
+                                <text x="290" y="55">q2</text>
+                                
+                                <circle cx="180" cy="140" r="20" />
+                                <text x="170" y="145">q3</text>
+                                
+                                <path d="M 80 50 L 155 50" marker-end="url(#arrow4)" />
+                                <text x="115" y="40">a</text>
+
+                                <path d="M 70 67 L 163 130" marker-end="url(#arrow4)" />
+                                <text x="90" y="115">b, c</text>
+
+                                <path d="M 170 33 C 150 0, 210 0, 190 33" marker-end="url(#arrow4)" />
+                                <text x="175" y="10">a</text>
+
+                                <path d="M 200 50 L 275 50" marker-end="url(#arrow4)" />
+                                <text x="235" y="40">c</text>
+
+                                <path d="M 180 70 L 180 115" marker-end="url(#arrow4)" />
+                                <text x="165" y="100">b</text>
+
+                                <path d="M 290 33 C 270 0, 330 0, 310 33" marker-end="url(#arrow4)" />
+                                <text x="295" y="10">b</text>
+
+                                <path d="M 288 65 L 197 132" marker-end="url(#arrow4)" />
+                                <text x="250" y="115">a, c</text>
+
+                                <path d="M 197 140 C 230 120, 230 180, 197 160" marker-end="url(#arrow4)" />
+                                <text x="220" y="155">a,b,c</text>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Primera Parte - Ejercicio 5</h3>
+                        <p>Diseñar el AFD que acepta el lenguaje $L=\{w \mid |w|=3 \text{ y terminan con la letra 'a'} \}$ sobre $\Sigma=\{a,b,c\}$.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="formula-responsive">
+                            <svg class="afd-svg" viewBox="0 0 450 180">
+                                <defs>
+                                    <marker id="arrow5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+                                    </marker>
+                                </defs>
+                                
+                                <line x1="0" y1="50" x2="20" y2="50" marker-end="url(#arrow5)" />
+                                <circle cx="40" cy="50" r="20" />
+                                <text x="30" y="55">q0</text>
+                                
+                                <circle cx="140" cy="50" r="20" />
+                                <text x="130" y="55">q1</text>
+
+                                <circle cx="240" cy="50" r="20" />
+                                <text x="230" y="55">q2</text>
+
+                                <circle cx="340" cy="50" r="20" />
+                                <circle cx="340" cy="50" r="15" />
+                                <text x="330" y="55">q3</text>
+
+                                <circle cx="240" cy="140" r="20" />
+                                <text x="230" y="145">qT</text>
+
+                                <path d="M 60 50 L 115 50" marker-end="url(#arrow5)" />
+                                <text x="75" y="40">a,b,c</text>
+
+                                <path d="M 160 50 L 215 50" marker-end="url(#arrow5)" />
+                                <text x="170" y="40">a,b,c</text>
+
+                                <path d="M 260 50 L 315 50" marker-end="url(#arrow5)" />
+                                <text x="280" y="40">a</text>
+
+                                <path d="M 240 70 L 240 115" marker-end="url(#arrow5)" />
+                                <text x="245" y="100">b, c</text>
+
+                                <path d="M 330 67 L 255 125" marker-end="url(#arrow5)" />
+                                <text x="295" y="115">a,b,c</text>
+
+                                <path d="M 257 150 C 290 130, 290 190, 257 170" marker-end="url(#arrow5)" />
+                                <text x="280" y="165">a,b,c</text>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Segunda Parte - Equivalencia de AFD</h3>
+                        <p>Determinar si los AFD son equivalentes construyendo el árbol de comparación.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución del Ejercicio A:</h4>
+                        <p>Evaluamos si los estados iniciales <strong>(q0, A)</strong> son equivalentes. Un par es equivalente si ambos son finales o ambos no lo son, y sus transiciones derivan a pares equivalentes.</p>
+                        
+                        <div class="scroll-wrapper" style="margin-top: 1rem;">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Pares Evaluados</th>
+                                        <th>Condición (Ambos F o No-F)</th>
+                                        <th>Transición con 0</th>
+                                        <th>Transición con 1</th>
+                                        <th>Conclusión</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>(q0, A)</td>
+                                        <td>✅ Ambos NO Finales</td>
+                                        <td><strong>(q1, B)</strong></td>
+                                        <td>-</td>
+                                        <td>Depende de (q1, B)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-boton-eliminar); font-weight: bold;">(q1, B)</td>
+                                        <td style="color: var(--color-boton-eliminar); font-weight: bold;">❌ q1 es Final, B es NO Final</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td style="color: var(--color-boton-eliminar); font-weight: bold;">NO Equivalentes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 1rem;"><strong>Conclusión:</strong> Al encontrar un conflicto en el par derivado $(q_1, B)$ en la primera transición con 0, podemos afirmar inmediatamente que <strong>los autómatas AF1 y AF2 NO son equivalentes</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Segunda Parte - Minimización de AFD</h3>
+                        <p>Obtener los AFD mínimos (Ejercicio C).</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Proceso de Particiones Equivalentes ($\Pi$):</h4>
+                        <p>Estados: $\{1, 2, 3, 4, 5\}$. Finales: $\{2, 3, 4, 5\}$. No Finales: $\{1\}$.</p>
+                        
+                        <div class="scroll-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Iteración</th>
+                                        <th>Partición ($\Pi_k$)</th>
+                                        <th>Análisis de Transiciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>$\Pi_0$</td>
+                                        <td>$P_1 = \{1\}$, $P_2 = \{2, 3, 4, 5\}$</td>
+                                        <td>Agrupamos Finales y No Finales separados.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$\Pi_1$</td>
+                                        <td>$\{1\} \{2\} \{3, 4, 5\}$</td>
+                                        <td>Evaluando $P_2$: El estado 2 con 'b' va al 1 (que está en $P_1$). Los estados 3, 4 y 5 con 'b' van a estados dentro del mismo grupo $P_2$. Por ende, el estado 2 se separa.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$\Pi_2$</td>
+                                        <td>$\{1\} \{2\} \{3, 4, 5\}$</td>
+                                        <td>Se vuelve a evaluar $\{3, 4, 5\}$. Todos con 'a' van al estado 4, y con 'b' van a los estados 3 o 4 (mismo grupo). No hay más divisiones.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p style="margin-top: 1rem;"><strong>Autómata Mínimo Resultante:</strong> Se fusionan los estados 3, 4 y 5 en un solo super-estado equivalente $[345]$. El autómata mínimo tiene 3 estados en total: $\{[1], [2], [345]\}$.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+</body>
+</html>

@@ -1,0 +1,960 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+PARCIALES
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Realizar un script que reciba un directorio por parametro y lo recorra haciendo lo siguiente:
+A los archivos que tengan mas de 10 lineas debe dejar solo las primeras 10 lineas en un archivo nuevo llamado "nombre_archivo_recortado"
+(por ejemplo si el archivo se llama script_ejemplo.sh el nombre del archivo recortado deberia ser script_ejemplo.sh_recortado),
+finalmente debe informar la cantidad de archivos que se recortaron, y el promedio de lineas que tienen los archivos originales (o sea antes de ser recortados).
+
+#!/bin/bash
+
+# Validamos que se haya pasado exactamente 1 parámetro y que sea un directorio válido
+if [ $# -ne 1 ] || [ ! -d "$1" ]; then
+  echo "Error: Debe ingresar un directorio válido como parámetro."
+  exit 1
+fi
+
+# Inicializamos los contadores
+archivos_recortados=0
+total_lineas=0
+total_archivos=0
+
+# Recorremos los elementos del directorio
+for arch in "$1"/*; do
+  
+  # Verificamos que sea un archivo ordinario (común)
+  if [ -f "$arch" ]; then
+    
+    # Contamos la cantidad de líneas del archivo original
+    lineas=$(wc -l < "$arch")
+    
+    # Sumamos a los totales generales para el cálculo del promedio
+    total_lineas=$((total_lineas + lineas))
+    total_archivos=$((total_archivos + 1))
+    
+    # Si el archivo tiene más de 10 líneas, procedemos a recortarlo
+    if [ "$lineas" -gt 10 ]; then
+      # Extraemos las primeras 10 líneas y las guardamos en el nuevo archivo
+      head -n 10 "$arch" > "${arch}_recortado"
+      
+      # Incrementamos el contador de archivos que fueron recortados
+      archivos_recortados=$((archivos_recortados + 1))
+    fi
+  fi
+done
+
+# Mostramos la cantidad de archivos que se recortaron
+echo "Cantidad de archivos que se recortaron: $archivos_recortados"
+
+# Calculamos y mostramos el promedio de líneas de los archivos originales
+if [ "$total_archivos" -gt 0 ]; then
+  promedio=$((total_lineas / total_archivos))
+  echo "El promedio de líneas de los archivos originales es: $promedio"
+else
+  echo "No se encontraron archivos ordinarios para analizar."
+fi
+
+2. Realizar un script que reciba un directorio por parametro y lo recorra haciendo lo siguiente:
+A los archivos que tengan mas de 20 lineas, enviarlos a un directorio llamado "archivos_extensos", luego comprimir y empaquetar dicho directorio,
+informar cuantos archivos se encontraron con mas de 20 lineas, cual es su tamaño sumado total,
+y el porcentaje de archivos que era con respecto a la cantidad de archivos que existen en el directorio pasado por parametro.
+
+#!/bin/bash
+
+# 1. Validamos que se reciba exactamente 1 parámetro y que sea un directorio
+if [ $# -ne 1 ] || [ ! -d "$1" ]; then
+  echo "Error: Debe ingresar un directorio válido como parámetro."
+  exit 1
+fi
+
+# 2. Inicializamos variables y creamos el directorio de destino
+dir_origen="$1"
+dir_destino="archivos_extensos"
+
+mkdir -p "$dir_destino"
+
+total_archivos=0
+archivos_extensos=0
+tamano_total=0
+
+# 3. Recorremos los elementos del directorio
+for arch in "$dir_origen"/*; do
+  
+  # Verificamos que el elemento sea un archivo ordinario (común)
+  if [ -f "$arch" ]; then
+    total_archivos=$((total_archivos + 1))
+    
+    # Contamos la cantidad de líneas del archivo
+    lineas=$(wc -l < "$arch")
+    
+    # Si tiene más de 20 líneas, lo procesamos
+    if [ "$lineas" -gt 20 ]; then
+      
+      # Obtenemos su tamaño en bytes antes de moverlo
+      tamano=$(stat -c %s "$arch")
+      
+      # Sumamos al acumulador de tamaño y al contador de archivos extensos
+      tamano_total=$((tamano_total + tamano))
+      archivos_extensos=$((archivos_extensos + 1))
+      
+      # Movemos el archivo al nuevo directorio
+      mv "$arch" "$dir_destino/"
+    fi
+  fi
+done
+
+# 4. Comprimimos y empaquetamos el directorio
+# Solo lo hacemos si realmente se encontró y movió algún archivo
+if [ "$archivos_extensos" -gt 0 ]; then
+  tar -czf "${dir_destino}.tar.gz" "$dir_destino"
+  echo "Directorio comprimido en '${dir_destino}.tar.gz'."
+else
+  echo "No se encontraron archivos con más de 20 líneas. No se generó el empaquetado."
+fi
+
+# 5. Calculamos el porcentaje
+if [ "$total_archivos" -gt 0 ]; then
+  # Multiplicamos por 100 primero para que la división entera de Bash funcione como porcentaje
+  porcentaje=$(( (archivos_extensos * 100) / total_archivos ))
+else
+  porcentaje=0
+fi
+
+# 6. Informe final por pantalla
+echo "======================================================"
+echo "                   INFORME FINAL                      "
+echo "======================================================"
+echo "Archivos con más de 20 líneas encontrados : $archivos_extensos"
+echo "Tamaño total sumado de esos archivos      : $tamano_total bytes"
+echo "Total de archivos analizados              : $total_archivos"
+echo "Porcentaje respecto al total              : $porcentaje%"
+echo "======================================================"
+
+3. Hacer un script al cual se le pase como parámetro un nombre de usuario y un número que representa un tamaño en bytes.
+El script debe imprimir la cantidad de ficheros que hay dentro (recursivamente) del home del usuario pasado como argumento, que tengan un tamaño en bytes mayor al número pasado como 2do argumento.
+En caso de no encontrar ningún usuario en el sistema cuyo nombre sea exactamente igual al primer parámetro, imprimir el mensaje de error "usuario no encontrado".
+
+#!/bin/bash
+
+# 1. Validamos que se hayan pasado exactamente 2 parámetros
+if [ $# -ne 2 ]; then
+  echo "Error: Debe pasar exactamente 2 parámetros."
+  echo "Uso: $0 <nombre_usuario> <tamaño_en_bytes>"
+  exit 1
+fi
+
+usuario="$1"
+tamano="$2"
+
+# 2. Verificamos si el usuario existe exactamente en el sistema
+# Buscamos en /etc/passwd la línea que empiece exactamente con el nombre de usuario
+linea_usuario=$(grep "^$usuario:" /etc/passwd)
+
+if [ -z "$linea_usuario" ]; then
+  # Si la variable está vacía, el usuario no existe
+  echo "usuario no encontrado"
+  exit 1
+fi
+
+# 3. Extraemos la ruta del directorio home del usuario
+# El home se encuentra en el 6to campo del archivo /etc/passwd separado por ':'
+home_usuario=$(echo "$linea_usuario" | cut -d':' -f6)
+
+# Verificamos por seguridad que el directorio home realmente exista
+if [ ! -d "$home_usuario" ]; then
+  echo "Error: El directorio home del usuario ($home_usuario) no existe."
+  exit 1
+fi
+
+# 4. Buscamos recursivamente los archivos y los contamos
+# Usamos find con -type f (solo archivos) y -size +Nc (mayor a N bytes)
+# Los errores (ej. carpetas sin permiso de lectura) se mandan a /dev/null
+cantidad=$(find "$home_usuario" -type f -size +${tamano}c 2>/dev/null | wc -l)
+
+# 5. Imprimimos el resultado final
+echo "Cantidad de ficheros en $home_usuario mayores a $tamano bytes: $cantidad"
+
+4.a) Realice un script que reciba como parametro un directorio y copie en una carpeta llamada bk los archivos de ese directorio que fueron modificados en el año 2023.
+También informar por pantalla la cantidad de archivos que fueron copiados.
+b) Realice un script que reciba como parametro un directorio y guarde en un archivo llamado permisos.txt los nombres de los archivos que tienen permiso de escritura para el grupo y fueron modificados en los ultimos 10 días.
+Tener en cuenta los subdirectorios.
+
+#!/bin/bash
+
+# Validaciones pertinentes
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "Error: El parámetro '$1' no es un directorio válido."
+  exit 1
+fi
+
+# Creamos la carpeta bk (si no existe)
+mkdir -p bk
+
+cantidad_copiados=0
+
+# Recorremos los archivos del directorio (sin subdirectorios)
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    # Extraemos el año de modificación del archivo
+    anio_mod=$(stat -c %y "$arch" | cut -d'-' -f1)
+    
+    # Comparamos si es del 2023
+    if [ "$anio_mod" == "2023" ]; then
+      cp "$arch" bk/
+      cantidad_copiados=$((cantidad_copiados + 1))
+    fi
+  fi
+done
+
+echo "Proceso finalizado. Cantidad de archivos copiados: $cantidad_copiados"
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+#!/bin/bash
+
+# Validaciones pertinentes
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "Error: El parámetro '$1' no es un directorio válido."
+  exit 1
+fi
+
+# Usamos find para buscar de forma recursiva (incluyendo subdirectorios)
+# -type f : solo archivos ordinarios
+# -perm -g=w : permiso de escritura para el grupo
+# -mtime -10 : modificados en los últimos 10 días
+# -exec basename {} \; : extrae solo el nombre del archivo (sin la ruta)
+find "$1" -type f -perm -g=w -mtime -10 -exec basename {} \; > permisos.txt
+
+echo "Nombres de archivos guardados exitosamente en 'permisos.txt'."
+
+5. Hacer un script que visualice un menú de dos opciones:
+a) La primera llamada "Directorio" debe pedir un directorio por consola y devolver (en caso de que exista) el tamaño del archivo que más tamaño ocupa.
+También se debe contabilizar la cantidad de archivos que terminen en .txt
+b) La segunda llamada "Archivo" debe pedir un archivo por consola y realizar las siguientes tareas:
+Informar si el archivo es ejecutable
+Informar cuantas lineas tiene
+Borrar las ultimas 5 lineas del archivo y guardar la salida en un archivo llamado igual que el original con el agregado al final del nombre "-mod".
+
+#!/bin/bash
+
+# Bucle infinito para mostrar el menú hasta que el usuario decida salir
+while true; do
+  echo "=============== MENÚ ==============="
+  echo "a) Directorio"
+  echo "b) Archivo"
+  echo "s) Salir"
+  echo "===================================="
+  read -p "Seleccione una opción: " opcion
+
+  case $opcion in
+    a|A)
+      # OPCIÓN A: DIRECTORIO
+      read -p "Ingrese la ruta de un directorio: " dir
+      
+      # Verificamos que el directorio exista
+      if [ -d "$dir" ]; then
+        max_tamano=0
+        cant_txt=0
+        
+        # Recorremos los elementos dentro del directorio
+        for arch in "$dir"/*; do
+          
+          # Solo procesamos si es un archivo ordinario
+          if [ -f "$arch" ]; then
+            
+            # 1. Calculamos y guardamos el tamaño máximo
+            tamano=$(stat -c %s "$arch")
+            if [ "$tamano" -gt "$max_tamano" ]; then
+              max_tamano=$tamano
+            fi
+            
+            # 2. Contabilizamos si termina en .txt
+            case "$arch" in
+              *.txt) cant_txt=$((cant_txt + 1)) ;;
+            esac
+            
+          fi
+        done
+        
+        echo "--> El tamaño del archivo más grande es: $max_tamano bytes."
+        echo "--> Cantidad de archivos terminados en .txt: $cant_txt."
+      else
+        echo "Error: El directorio '$dir' no existe."
+      fi
+      ;;
+      
+    b|B)
+      # OPCIÓN B: ARCHIVO
+      read -p "Ingrese la ruta de un archivo: " arch
+      
+      # Verificamos que el archivo exista y sea ordinario
+      if [ -f "$arch" ]; then
+        
+        # 1. Informar si es ejecutable
+        if [ -x "$arch" ]; then
+          echo "--> El archivo ES ejecutable."
+        else
+          echo "--> El archivo NO es ejecutable."
+        fi
+        
+        # 2. Informar cuántas líneas tiene
+        lineas=$(wc -l < "$arch")
+        echo "--> El archivo tiene $lineas líneas."
+        
+        # 3. Borrar las últimas 5 líneas y guardar en "nombre-mod"
+        limite=$((lineas - 5))
+        
+        if [ "$limite" -gt 0 ]; then
+          # Si tiene más de 5 líneas, tomamos todas menos las últimas 5
+          head -n "$limite" "$arch" > "${arch}-mod"
+        else
+          # Si tiene 5 líneas o menos, el archivo resultante queda vacío
+          > "${arch}-mod"
+        fi
+        
+        echo "--> Se generó el archivo sin las últimas 5 líneas en: ${arch}-mod"
+        
+      else
+        echo "Error: El archivo '$arch' no existe."
+      fi
+      ;;
+      
+    s|S)
+      # SALIR DEL SCRIPT
+      echo "Saliendo del programa..."
+      exit 0
+      ;;
+      
+    *)
+      # VALIDACIÓN DE OPCIÓN INCORRECTA
+      echo "Opción inválida. Por favor, intente nuevamente."
+      ;;
+  esac
+  
+  echo "" # Imprime una línea en blanco por prolijidad visual
+done
+
+// OPCIÓN 2 //
+
+#!/bin/bash
+
+# Inicializamos la variable vacía para que el bucle pueda arrancar
+opcion=""
+
+# El bucle se repetirá MIENTRAS la opción sea distinta de "s" Y distinta de "S"
+while [ "$opcion" != "s" ] && [ "$opcion" != "S" ]; do
+  
+  echo "=============== MENÚ ==============="
+  echo "a) Directorio"
+  echo "b) Archivo"
+  echo "s) Salir"
+  echo "===================================="
+  read -p "Seleccione una opción: " opcion
+
+  case $opcion in
+    a|A)
+      # ------------------------------------
+      # OPCIÓN A: DIRECTORIO
+      # ------------------------------------
+      read -p "Ingrese la ruta de un directorio: " dir
+      
+      if [ -d "$dir" ]; then
+        max_tamano=0
+        cant_txt=0
+        
+        for arch in "$dir"/*; do
+          if [ -f "$arch" ]; then
+            
+            # 1. Calculamos y guardamos el tamaño máximo
+            tamano=$(stat -c %s "$arch")
+            if [ "$tamano" -gt "$max_tamano" ]; then
+              max_tamano=$tamano
+            fi
+            
+            # 2. Contabilizamos si termina en .txt
+            case "$arch" in
+              *.txt) cant_txt=$((cant_txt + 1)) ;;
+            esac
+            
+          fi
+        done
+        
+        echo "--> El tamaño del archivo más grande es: $max_tamano bytes."
+        echo "--> Cantidad de archivos terminados en .txt: $cant_txt."
+      else
+        echo "Error: El directorio '$dir' no existe."
+      fi
+      ;;
+      
+    b|B)
+      # ------------------------------------
+      # OPCIÓN B: ARCHIVO
+      # ------------------------------------
+      read -p "Ingrese la ruta de un archivo: " arch
+      
+      if [ -f "$arch" ]; then
+        
+        # 1. Informar si es ejecutable
+        if [ -x "$arch" ]; then
+          echo "--> El archivo ES ejecutable."
+        else
+          echo "--> El archivo NO es ejecutable."
+        fi
+        
+        # 2. Informar cuántas líneas tiene
+        lineas=$(wc -l < "$arch")
+        echo "--> El archivo tiene $lineas líneas."
+        
+        # 3. Borrar las últimas 5 líneas y guardar en "nombre-mod"
+        limite=$((lineas - 5))
+        
+        if [ "$limite" -gt 0 ]; then
+          head -n "$limite" "$arch" > "${arch}-mod"
+        else
+          > "${arch}-mod"
+        fi
+        
+        echo "--> Se generó el archivo sin las últimas 5 líneas en: ${arch}-mod"
+        
+      else
+        echo "Error: El archivo '$arch' no existe."
+      fi
+      ;;
+      
+    s|S)
+      # ------------------------------------
+      # SALIR DEL SCRIPT
+      # ------------------------------------
+      echo "Saliendo del programa..."
+      # No usamos "exit 0" ni "break". Simplemente dejamos que termine el case.
+      # Al volver al inicio del while, la condición fallará y el script terminará.
+      ;;
+      
+    *)
+      # ------------------------------------
+      # OPCIÓN INCORRECTA
+      # ------------------------------------
+      echo "Opción inválida. Por favor, intente nuevamente."
+      ;;
+  esac
+  
+  echo "" # Imprime una línea en blanco por prolijidad visual antes de repetir el menú
+done
+
+# Esta línea solo se ejecutará cuando el bucle while se rompa (es decir, cuando ingreses 's')
+echo "Script finalizado correctamente."
+
+6. Hacer un script que visualice un menú de dos opciones:
+a) La primera llamada "Directorio" debe pedir un directorio por consula y devolver
+(en caso de que exista) el tamaño del archivo más chico en Kb.
+También se debe contabilizar la cantidad de archivos que terminen permisos 644
+b) La segunda llamada "Archivo" debe pedir un archivo por consola y realizar las siguientes tareas:
+Cambiar los permisos del archivo para que solo pueda ser ejecutado por el dueño
+Copiar el archivo a un nuevo archivo con el nombre "archivo-copiado"
+Borrar las últimas 5 líneas del archivo y guardar la salida en un archivo
+llamado que el original con el agregado al final del nombre "-mod"
+
+#!/bin/bash
+
+# Inicializamos la variable vacía para que el bucle arranque
+opcion=""
+
+# Bucle estructurado: se repite MIENTRAS la opción sea distinta de "s" y "S"
+while [ "$opcion" != "s" ] && [ "$opcion" != "S" ]; do
+  
+  echo "=============== MENÚ ==============="
+  echo "a) Directorio"
+  echo "b) Archivo"
+  echo "s) Salir"
+  echo "===================================="
+  read -p "Seleccione una opción: " opcion
+
+  case $opcion in
+    a|A)
+      # ------------------------------------
+      # OPCIÓN A: DIRECTORIO
+      # ------------------------------------
+      read -p "Ingrese la ruta de un directorio: " dir
+      
+      # Verificamos que el directorio exista
+      if [ -d "$dir" ]; then
+        min_tamano=-1
+        cant_644=0
+        
+        # Recorremos los elementos dentro del directorio
+        for arch in "$dir"/*; do
+          
+          # Solo procesamos si es un archivo ordinario
+          if [ -f "$arch" ]; then
+            
+            # 1. Calculamos el tamaño en Kb (1 Kb = 1024 bytes)
+            tam_bytes=$(stat -c %s "$arch")
+            tam_kb=$((tam_bytes / 1024))
+            
+            # Si es el primer archivo (min_tamano=-1) o si es más chico que el mínimo actual
+            if [ "$min_tamano" -eq -1 ] || [ "$tam_kb" -lt "$min_tamano" ]; then
+              min_tamano=$tam_kb
+            fi
+            
+            # 2. Contabilizamos si tiene permisos 644
+            permisos=$(stat -c %a "$arch")
+            if [ "$permisos" == "644" ]; then
+              cant_644=$((cant_644 + 1))
+            fi
+            
+          fi
+        done
+        
+        # Mostrar los resultados si se encontraron archivos
+        if [ "$min_tamano" -ne -1 ]; then
+          echo "--> El tamaño del archivo más chico es: $min_tamano Kb."
+        else
+          echo "--> No se encontraron archivos ordinarios en el directorio."
+        fi
+        echo "--> Cantidad de archivos con permisos 644: $cant_644."
+        
+      else
+        echo "Error: El directorio '$dir' no existe."
+      fi
+      ;;
+      
+    b|B)
+      # ------------------------------------
+      # OPCIÓN B: ARCHIVO
+      # ------------------------------------
+      read -p "Ingrese la ruta de un archivo: " arch
+      
+      # Verificamos que el archivo exista y sea ordinario
+      if [ -f "$arch" ]; then
+        
+        # 1. Cambiar permisos para que SOLO el dueño pueda ejecutarlo
+        # u+x otorga ejecución al usuario. go-x quita ejecución al grupo y a otros.
+        chmod u+x,go-x "$arch"
+        echo "--> Se actualizaron los permisos (solo el dueño puede ejecutarlo)."
+        
+        # 2. Copiar a un nuevo archivo llamado "archivo-copiado"
+        cp "$arch" "archivo-copiado"
+        echo "--> Se copió el archivo como 'archivo-copiado'."
+        
+        # 3. Borrar las últimas 5 líneas y guardar en "nombre-mod"
+        lineas=$(wc -l < "$arch")
+        limite=$((lineas - 5))
+        
+        if [ "$limite" -gt 0 ]; then
+          # Si tiene más de 5 líneas, extraemos hasta el límite
+          head -n "$limite" "$arch" > "${arch}-mod"
+        else
+          # Si tiene 5 líneas o menos, el archivo resultante queda vacío
+          > "${arch}-mod"
+        fi
+        
+        echo "--> Se generó el archivo sin las últimas 5 líneas en: ${arch}-mod"
+        
+      else
+        echo "Error: El archivo '$arch' no existe."
+      fi
+      ;;
+      
+    s|S)
+      # SALIR DEL SCRIPT
+      echo "Saliendo del programa..."
+      ;;
+      
+    *)
+      # OPCIÓN INCORRECTA
+      echo "Opción inválida. Por favor, intente nuevamente."
+      ;;
+  esac
+  
+  echo "" # Imprime una línea en blanco por prolijidad
+done
+
+7. a) Realice un script que reciba un archivo y si este tiene más de 4 líneas le
+modifique todas las coincidencias de la palabra bash por Linux en las lineas de la 1 a la 4.
+
+b) Realice un script que reciba como parametro un directorio y guarde en un archivo llamado pto2
+los nombres de los archivos que tienen permiso de ejecución para el grupo y fueron modificados
+en los últimos 2 días. Tener en cuenta los subdirectorios.
+
+#!/bin/bash
+
+# Validaciones pertinentes
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+archivo="$1"
+
+if [ ! -f "$archivo" ]; then
+  echo "Error: El parámetro '$archivo' no existe o no es un archivo ordinario."
+  exit 1
+fi
+
+# Contamos la cantidad de líneas del archivo
+lineas=$(wc -l < "$archivo")
+
+# Verificamos si tiene más de 4 líneas
+if [ "$lineas" -gt 4 ]; then
+  
+  # Modificamos de la línea 1 a la 4, cambiando 'bash' por 'Linux' globalmente (g)
+  sed -i '1,4s/bash/Linux/g' "$archivo"
+  
+  echo "El archivo tiene más de 4 líneas. Se reemplazó 'bash' por 'Linux' en las primeras 4 líneas."
+else
+  echo "El archivo tiene 4 líneas o menos. No se realizaron modificaciones."
+fi
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+#!/bin/bash
+
+# Validaciones pertinentes
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+directorio="$1"
+
+if [ ! -d "$directorio" ]; then
+  echo "Error: El parámetro '$directorio' no es un directorio válido."
+  exit 1
+fi
+
+# Usamos find para buscar recursivamente
+# -type f : Solo archivos ordinarios
+# -perm -g=x : Permiso de ejecución para el grupo
+# -mtime -2 : Modificados en los últimos 2 días
+# -printf "%f\n" : Imprime solo el nombre del archivo sin la ruta larga
+find "$directorio" -type f -perm -g=x -mtime -2 -printf "%f\n" > pto2
+
+echo "Búsqueda finalizada. Los nombres de los archivos se guardaron en 'pto2'."
+
+8. a) Realizar un script que reciba dos archivos por parametro, y que muestre por pantalla
+el nombre del archivo de mayor tamaño y su nombre. Y si son iguales mostrar el mensaje
+"son iguales"
+
+b) Realizar un script que reciba un directorio como parametro copie a un directorio
+llamado nuevo todos los archivos que contengan en su interior la palabra bash
+
+#!/bin/bash
+
+# 1. Validaciones pertinentes
+# Verificamos que se hayan pasado exactamente 2 parámetros
+if [ $# -ne 2 ]; then
+  echo "Error: Debe ingresar exactamente dos parámetros."
+  exit 1
+fi
+
+# Verificamos que AMBOS parámetros sean archivos ordinarios válidos
+if [ ! -f "$1" ] || [ ! -f "$2" ]; then
+  echo "Error: Ambos parámetros deben ser archivos ordinarios válidos."
+  exit 1
+fi
+
+# 2. Obtenemos los tamaños en bytes
+tam1=$(stat -c %s "$1")
+tam2=$(stat -c %s "$2")
+
+# 3. Comparamos los tamaños
+if [ "$tam1" -gt "$tam2" ]; then
+  echo "El archivo de mayor tamaño es: $1 (Tamaño: $tam1 bytes)"
+elif [ "$tam2" -gt "$tam1" ]; then
+  echo "El archivo de mayor tamaño es: $2 (Tamaño: $tam2 bytes)"
+else
+  echo "son iguales"
+fi
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+#!/bin/bash
+
+# 1. Validaciones pertinentes
+# Verificamos que se haya pasado exactamente 1 parámetro
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+dir_origen="$1"
+
+# Verificamos que el parámetro sea un directorio válido
+if [ ! -d "$dir_origen" ]; then
+  echo "Error: El parámetro '$dir_origen' no es un directorio válido."
+  exit 1
+fi
+
+# 2. Creamos el directorio destino llamado "nuevo"
+mkdir -p nuevo
+
+cant_copiados=0
+
+# 3. Recorremos los elementos del directorio
+for arch in "$dir_origen"/*; do
+  
+  # Nos aseguramos de procesar solo archivos ordinarios
+  if [ -f "$arch" ]; then
+    
+    # Buscamos de forma silenciosa la palabra "bash" en el interior del archivo
+    if grep -q "bash" "$arch"; then
+      
+      # Si la encuentra (grep devuelve verdadero), copiamos el archivo
+      cp "$arch" nuevo/
+      cant_copiados=$((cant_copiados + 1))
+      
+    fi
+  fi
+done
+
+echo "Proceso finalizado. Se copiaron $cant_copiados archivos a la carpeta 'nuevo'."
+
+9. a) Dado un directorio pasado por parametro buscar todos los archivos .txt con tamaño menores a 10k copiar la primera linea de cada uno en un archivo llamado 1ralinea.
+Luego informar la cantidad de archivos encontrados
+
+b) Realice un script que reciba un directorio y realice lo siguiente:
+A los archivos ordinarios que contengan el texto "/bin/bash" guardar su nombre en un archivo pr.txt
+Los que no tengan ese texto guardar el archivo en un directorio llamado bks y luego elimine la 5ta linea
+Al final empaquetar y eliminar el directorio bks e informar el porcentaje de los que tenian
+el texto "/bin/bash"
+
+#!/bin/bash
+
+# 1. Validaciones pertinentes
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "Error: El parámetro '$1' no es un directorio válido."
+  exit 1
+fi
+
+# Creamos o vaciamos el archivo destino
+> 1ralinea
+
+cantidad=0
+
+# 2. Usamos find para buscar los archivos .txt menores a 10k
+# Lo recorremos con un for (asumiendo nombres de archivo sin espacios raros)
+for arch in $(find "$1" -type f -name "*.txt" -size -10k); do
+  
+  # Extraemos la primera línea y la anexamos al archivo
+  head -n 1 "$arch" >> 1ralinea
+  
+  # Incrementamos el contador
+  cantidad=$((cantidad + 1))
+  
+done
+
+# 3. Informamos la cantidad encontrada
+echo "Proceso finalizado. Se encontraron $cantidad archivos."
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+#!/bin/bash
+
+# 1. Validaciones pertinentes
+if [ $# -ne 1 ]; then
+  echo "Error: Debe ingresar exactamente un parámetro."
+  exit 1
+fi
+
+dir_origen="$1"
+
+if [ ! -d "$dir_origen" ]; then
+  echo "Error: El parámetro '$dir_origen' no es un directorio válido."
+  exit 1
+fi
+
+# 2. Preparación de entorno
+mkdir -p bks
+> pr.txt
+
+total_archivos=0
+cant_bash=0
+
+# 3. Recorremos los archivos ordinarios del directorio
+for arch in "$dir_origen"/*; do
+  
+  if [ -f "$arch" ]; then
+    total_archivos=$((total_archivos + 1))
+    
+    # Verificamos si contiene el texto exacto "/bin/bash" en su interior
+    if grep -q "/bin/bash" "$arch"; then
+      
+      # CASO A: Contiene "/bin/bash" -> Guardamos su nombre en pr.txt
+      basename "$arch" >> pr.txt
+      cant_bash=$((cant_bash + 1))
+      
+    else
+      
+      # CASO B: NO contiene "/bin/bash" -> Copiamos a "bks" y borramos su 5ta línea
+      cp "$arch" bks/
+      
+      # Obtenemos solo el nombre para saber cómo se llama el archivo copiado dentro de bks
+      nom=$(basename "$arch")
+      
+      # Borramos la línea 5 del archivo ya copiado (con la letra 'd' de delete)
+      sed -i '5d' "bks/$nom"
+      
+    fi
+  fi
+done
+
+# 4. Empaquetar y eliminar el directorio bks
+tar -czf bks.tar.gz bks/
+rm -r bks/
+
+# 5. Cálculo del porcentaje
+if [ "$total_archivos" -gt 0 ]; then
+  porcentaje=$(( (cant_bash * 100) / total_archivos ))
+else
+  porcentaje=0
+fi
+
+# 6. Informe final
+echo "Empaquetado 'bks.tar.gz' generado y directorio 'bks' eliminado."
+echo "Porcentaje de archivos que contenían '/bin/bash': $porcentaje%"
+
+10. Dado el directorio "directo1" que debe ser pasado como parametro, calcular la cantidad
+de lineas que tiene cada uno de los archivos ordinarios ubicados en el primer nivel del
+directorio. Dejar en el arrchivo de nombre "informe" el nombre del mismo con su
+correspondiente cantidad de lineas, y al final del mismo dejar la cantidad de archivos
+procesados.
+Chequear que se pase el parametro y que el mismo sea un directorio.
+
+Ejemplo del contenido del archivo informe:
+Cantidad de lineas del archivo xxxx = 20
+Cantidad de lineas del archivo yyyy = 5
+Cantidad total de archivos ordinarios procesados = 100
+
+#!/bin/bash
+
+# 1. Validaciones pertinentes (Cantidad de parámetros y si es directorio)
+if [ $# -ne 1 ]; then
+  echo "Error: Debe pasar exactamente un parámetro."
+  exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "Error: El parámetro '$1' no es un directorio válido."
+  exit 1
+fi
+
+dir_origen="$1"
+archivo_salida="informe"
+
+# 2. Inicializamos el archivo informe vacío y el contador de archivos
+> "$archivo_salida"
+archivos_procesados=0
+
+# 3. Recorremos los elementos en el PRIMER NIVEL del directorio
+# Al usar el asterisco /* sin comandos recursivos como find, 
+# nos aseguramos de no entrar a subcarpetas.
+for arch in "$dir_origen"/*; do
+  
+  # Verificamos que sea un archivo ordinario
+  if [ -f "$arch" ]; then
+    
+    # Extraemos solo el nombre del archivo (para que no imprima toda la ruta)
+    nombre=$(basename "$arch")
+    
+    # Contamos la cantidad de líneas del archivo
+    lineas=$(wc -l < "$arch")
+    
+    # Imprimimos la línea con el formato pedido y la enviamos al archivo "informe"
+    echo "Cantidad de lineas del archivo $nombre = $lineas" >> "$archivo_salida"
+    
+    # Incrementamos el contador de archivos procesados
+    archivos_procesados=$((archivos_procesados + 1))
+    
+  fi
+done
+
+# 4. Agregamos el pie del archivo con las líneas separadoras y el total
+echo "------------------------------------------" >> "$archivo_salida"
+echo "------------------------------------------" >> "$archivo_salida"
+echo "" >> "$archivo_salida"
+echo "Cantidad total de archivos ordinarios procesados = $archivos_procesados" >> "$archivo_salida"
+
+echo "Proceso finalizado. El informe se generó correctamente en el archivo '$archivo_salida'."
+
+11. Hacer un script que realice los siguientes pasos:
+
+Copiar el archivo passwd a su home de trabajo con nombre user
+Limpiar la pantalla
+Del archivo user sacar todos los usuarios de la comisión 64 y mandarlos al archivo solo64
+Del archivo solo64 cortar nombre de usuario, UID, GID y Shell y guardarlo en el archivo sindescrip
+Cambiar los permisos de los tres archivos para que pueda ser modificado por grupo y otros
+Comprimir y empaquetar el archivo solo64, sindescrip y user como usu64.tar.gz
+
+#!/bin/bash
+
+# Nos posicionamos en el directorio home del usuario actual
+cd "$HOME" || exit 1
+
+# 1. Copiar el archivo passwd a su home de trabajo con nombre user
+cp /etc/passwd user
+
+# 2. Limpiar la pantalla
+clear
+
+# 3. Del archivo user sacar todos los usuarios de la comisión 64 y mandarlos a solo64
+grep "64" user > solo64
+
+# 4. Del archivo solo64 cortar nombre, UID, GID y Shell y guardarlo en sindescrip
+# Formato de /etc/passwd -> 1:usuario | 2:pwd | 3:UID | 4:GID | 5:descripción | 6:home | 7:shell
+cut -d':' -f1,3,4,7 solo64 > sindescrip
+
+# 5. Cambiar los permisos de los tres archivos para ser modificados por grupo y otros
+# g=grupo, o=otros, +w=agregar permiso de escritura (modificar)
+chmod go+w user solo64 sindescrip
+
+# 6. Comprimir y empaquetar los archivos en usu64.tar.gz
+tar -czf usu64.tar.gz solo64 sindescrip user
+
+# (Opcional) Mensaje para confirmar que el script terminó con éxito
+echo "Proceso finalizado. El archivo 'usu64.tar.gz' ha sido creado en su directorio home."
+
+12. Hacer un script que realice los siguientes pasos:
+
+Crear un archivo de nombre process (usando comando de creación de archivos).
+En el archivo process agregar todos los procesos que se están ejecutando en el sistema
+Del archivo process cortar el nombre usuario y PID y mandarlos al archivo solousu
+Cambiar el permiso de process y solousu para que otros no lo pueda ver.
+Comprimir y empaquetar el archivo process y solousu como proce2012.tar.gz
+
+#!/bin/bash
+
+# 1. Crear un archivo de nombre 'process' (usando comando de creación de archivos)
+touch process
+
+# 2. Agregar todos los procesos que se están ejecutando en el sistema
+ps aux > process
+
+# 3. Cortar el nombre de usuario y PID y mandarlos al archivo 'solousu'
+# La salida de 'ps aux' tiene al Usuario en la columna 1 y el PID en la columna 2.
+awk '{print $1, $2}' process > solousu
+
+# 4. Cambiar el permiso de 'process' y 'solousu' para que otros no lo puedan ver
+# o=otros, -r=quitar permiso de lectura (ver)
+chmod o-r process solousu
+
+# 5. Comprimir y empaquetar los archivos como 'proce2012.tar.gz'
+tar -czf proce2012.tar.gz process solousu
+
+# (Opcional) Mensaje para el usuario
+echo "Script finalizado. Se ha generado el archivo 'proce2012.tar.gz' exitosamente."

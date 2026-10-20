@@ -1,0 +1,705 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 1:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+En los puntos 1) y 2), indicar la o las opciones correctas.
+
+1) La máquina de Turing acepta una secuencia:
+
+	a) cuando llega a uno de todos sus estados finales y se terminó de analizar la secuencia
+	b) cuando llega al estado halt
+	c) cuando se termina de analizar la secuencia
+
+RESPUESTA: b)
+Justificación: El único criterio para que la palabra de entrada sea aceptada es que se alcance el estado especial de "halt" o parada, sin importar el contenido restante de la cinta.
+
+2) En el proceso de minimización de un AF:
+
+	a) Se aplica el método de conversión por conjunto de estados
+	b) Se aplica el teorema de Moore
+	c) Se arma una tabla para buscar estados incompatibles
+	d) Se arma una tabla para buscar estados redundantes
+
+RESPUESTA: c) Se arma una tabla para buscar estados incompatibles (distinguibles).
+
+Justificación: Tras eliminar los estados inaccesibles, se construye una tabla de pares de estados para encontrar cuáles son distinguibles/incompatibles, marcando primero las combinaciones de (estado final, estado no final).
+
+3) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas F.
+
+	a) En un autómata finito de pila todos los caracteres que son leídos deben almacenarse en la pila.
+
+RESPUESTA: FALSO. No todos los caracteres se almacenan. La pila se utiliza según convenga para resolver el problema (por ejemplo, para balanceo de paréntesis, se apila al abrir y se desapila al cerrar, sin almacenar otros caracteres del lenguaje).
+
+	b) En un Autómata Finito un estado inicial puede ser también estado final y significa que admite la cadena vacía.
+
+RESPUESTA: VERDADERO.
+
+	c) Una gramática usualmente se expresa en UML (Lenguaje unificado de modelado).
+
+RESPUESTA: FALSO. Las gramáticas formales usualmente se expresan mediante notaciones como BNF (Backus-Naur Form) o formalmente mediante una cuádrupla G={T, NT, S, P}. UML se utiliza para el diseño orientado a objetos.
+
+4) Completar las siguientes oraciones:
+
+	a) La mayoría de los lenguajes de programación son lenguajes ............
+
+libres de contexto
+
+	b) El lenguaje binario es un lenguaje ..............
+
+regular
+
+	c) Dos autómatas finitos son ............ si aceptan las mismas palabras, es decir el mismo lenguaje.
+
+equivalentes
+
+5) Dado el siguiente lenguaje L= {w/ w termina con 1}, sobre el alfabeto ∑={0,1}, es correcto el siguiente AFD? Justificar.
+
+AFD que tiene q0 como estado inicial, un rulo con '0' hacia q0, una flecha (transición) con '1' hacia q1, q1 es un estado final, el cual hace un rulo con una flecha con '1' hacia q1 y tiene una flecha con '0' hacia q0
+
+RESPUESTA: SÍ, ES CORRECTO.
+Justificación: El autómata es completamente determinista. Si la entrada termina con un '1', la máquina transita o se mantiene en 'q1', el cual es un estado final. Si luego del '1' llega un '0', vuelve a 'q0' (estado de rechazo) y deberá esperar otro '1' para volver a un estado de aceptación. Por ende, toda cadena que se detenga estando en 'q1' obligatoriamente acaba de procesar un '1'.
+
+6) Describir cómo es el proceso de traducción de un programa. ¿En qué parte de este proceso intervienen las gramáticas?
+
+RESPUESTA: El proceso de traducción (compilación) abarca dos grandes fases: el Análisis (front-end) y la Síntesis (back-end). La fase de análisis se subdivide en análisis léxico (identificación de tokens), análisis sintáctico (verificación de la estructura lógica de la oración) y análisis semántico (verificación del significado e inferencia de tipos). Las gramáticas intervienen activamente en el Análisis Sintáctico mediante las Gramáticas Libres de Contexto (GLC) para construir árboles de derivación, y en el Análisis Semántico mediante el uso de gramáticas atribuidas.
+
+7) ¿Qué es el ocultamiento de información? Mencionar un lenguaje que provea ocultamiento.
+
+RESPUESTA: El ocultamiento de información (abstracción) es la capacidad de encapsular un Tipo de Dato Abstracto (TAD), exponiendo únicamente su interfaz de uso (operaciones) y ocultando tanto su representación interna como los detalles de implementación de esas operaciones. Lenguajes que proveen ocultamiento: ADA (mediante 'packages' divididos en especificación y cuerpo), Python, Java o C++.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 2:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) Completar las siguientes oraciones:
+
+	a) La mayoría de los lenguajes de programación son.......
+
+	libres de contexto
+	
+	b) En un AFD con la 1º trayectoria que rechaza la palabra, se puede decir que la palabra es..........
+
+	inválida	
+
+	c) Si una gramática tiene más de un árbol de derivación, la gramática es.........
+
+	ambigua
+
+2) Indicar si la siguiente regla se corresponde con una gramática regular o libre de contexto. Justificar.
+
+A -> 11B
+
+RESPUESTA: Gramática Regular.
+Justificación: Corresponde a una regla de gramática regular extendida o lineal por la derecha (un no terminal produce una cadena de terminales seguida de, a lo sumo, un no terminal al final). Si la convención de la cátedra exige de manera estricta que haya un solo terminal por regla (A -> aB), esta regla se puede convertir sin problemas en A -> 1C y C -> 1B, demostrando que en el fondo el lenguaje que genera es regular.
+
+3) Explicar qué características tiene la máquina de Turing. ¿En qué casos se utiliza?
+
+RESPUESTA: La Máquina de Turing (MT) es el autómata de mayor poder computacional. Consta de una cinta infinita de celdas y una cabeza de lectura/escritura que puede moverse bidireccionalmente (izquierda, derecha o quedarse quieta). A diferencia de otros autómatas, no está obligada a consumir toda la palabra secuencialmente; acepta la entrada si logra alcanzar un estado de parada especial denominado 'halt'. Se utiliza para reconocer lenguajes recursivamente enumerables (Tipo 0 en la jerarquía de Chomsky) y para resolver los problemas de mayor complejidad algorítmica y teórica.
+
+4) Describir el proceso de minimización de autómatas finitos.
+
+RESPUESTA: Es el proceso de reducción de un AFD a su forma con el mínimo número de estados posibles sin alterar el lenguaje que reconoce. Primero, se suprimen todos los estados inaccesibles (aquellos a los que no se puede llegar desde el estado inicial mediante ninguna secuencia de transiciones). Segundo, se aplica el método tabular para encontrar y unificar estados equivalentes (redundantes). Para ello, se construye una tabla de pares de estados donde se marcan inicialmente las combinaciones incompatibles directas (un estado final y otro no final) y luego, por propagación, se marcan los pares cuyos estados transicionan hacia combinaciones ya marcadas. Los casilleros que permanecen vacíos al terminar el análisis representan estados indistinguibles, los cuales se fusionan en un único estado.
+
+En los puntos 5) y 6), indicar la o las opciones correctas.
+5) La pila de un autómata de pila está formada por:
+
+	a) todos los caracteres del alfabeto de entrada
+	b) todos caracteres diferentes a los del alfabeto de entrada
+	c) solamente por números
+	d) un alfabeto propio para la pila
+
+RESPUESTA: d) Un alfabeto propio para la pila. (Llamado comúnmente Γ, que puede incluir o no los mismos caracteres del alfabeto de entrada, más símbolos especiales).
+
+6) Un AFD puede tener:
+
+	a) varios estados iniciales y varios estados finales
+	b) un estado inicial y varios estados finales
+	c) varios estados iniciales y un estado final
+	d) un estado inicial, varios finales y uno ficticio
+
+RESPUESTA: b) un estado inicial y varios estados finales. (A diferencia de los AFN, donde también hay un solo inicial normalmente, pero se requieren características estrictas en las transiciones).
+
+7) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas F.
+
+	a) En un autómata finito, un estado inicial puede ser también estado final y significa que admite la cadena que se esté analizando.
+
+RESPUESTA: FALSO. Significa específicamente que el autómata acepta la cadena vacía (Epsilon / Lambda).
+
+	b) En una gramática, un terminal es un símbolo del lenguaje que no debe definirse en una regla de producción.
+
+RESPUESTA: VERDADERO. (Son las hojas del árbol de derivación, no pueden reescribirse).
+
+	c) En un autómata finito, dos estados son distinguibles si los dos son finales o los dos no lo son.
+
+RESPUESTA: FALSO. Si dos estados son ambos finales o ambos no finales se denominan "estados compatibles". Dos estados son "distinguibles" cuando uno es final y el otro no lo es (o derivan a estados distinguibles).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 3:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) Describir cómo es el proceso de traducción de un programa. ¿En qué parte de este proceso intervienen las gramáticas?
+
+RESPUESTA: (Ver respuesta en Parcial 1 - Pregunta 6). Las gramáticas intervienen en el Análisis Sintáctico (GLC) y Análisis Semántico.
+
+2) ¿Qué es el ocultamiento de información? Mencionar un lenguaje que provea ocultamiento.
+
+RESPUESTA: (Ver respuesta en Parcial 1 - Pregunta 7). Es el aislamiento del diseño interno y la representación de los datos. Ej: ADA, Python.
+
+3) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas F.
+
+	a) En un AFP todos los caracteres de la pila son los mismos que los de la secuencia de entrada.
+
+RESPUESTA: FALSO. El AFP posee un alfabeto propio para la pila (Γ) que no necesariamente coincide con los caracteres del alfabeto de entrada.
+
+	b) Una gramática usualmente se expresa en UML (Lenguaje unificado de modelado).
+
+RESPUESTA: FALSO. Se expresa formalmente con la cuádrupla G={NT, T, P, S} o usando la notación BNF.
+
+	c) En un Autómata Finito un estado inicial puede ser también estado final y significa que admite la cadena vacía.
+
+RESPUESTA: VERDADERO.
+
+4) Completar las siguientes oraciones:
+
+	a) El lenguaje binario es un lenguaje......
+
+regular
+
+	b) Dos autómatas finitos son .......... si aceptan las mismas palabras, es decir el mismo lenguaje
+
+equivalentes
+
+	c) La mayoría de los lenguajes de programación son lenguajes.........
+
+libres de contexto
+
+En los puntos 5) y 6), indicar la o las opciones correctas.
+
+5) La máquina de Turing acepta una secuencia:
+
+	a) cuando llega a uno de todos sus estados finales y se terminó de analizar la secuencia
+	b) cuando se termina de analizar la secuencia
+	c) cuando llega al estado halt
+
+RESPUESTA: c) cuando llega al estado halt
+
+6) En el proceso de minimización de un AF:
+
+	a) Se aplica el método de conversión por conjunto de estados
+	b) Se aplica el teorema de Moore
+	c) Se arma una tabla para buscar estados incompatibles
+	d) Se arma una tabla para buscar estados redundantes
+
+RESPUESTA: c) Se arma una tabla para buscar estados incompatibles (distinguibles).
+
+7) Dado el siguiente lenguaje L= {w/ w termina con 1), sobre el alfabeto ∑={0,1}, es correcto el siguiente AFD? Justificar.
+
+AFD que tiene q0 como estado inicial, un rulo con '0' hacia q0, una flecha (transición) con '1' hacia q1, q1 es un estado final, el cual hace un rulo con una flecha con '1' hacia q1 y tiene una flecha con '0' hacia q0
+
+RESPUESTA: SÍ, ES CORRECTO. (Ver justificación detallada en Parcial 1 - Pregunta 5).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 4:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+En los puntos 1) y 2), indicar la o las opciones correctas.
+
+1) La pila de un autómata de pila está formada por:
+
+	a) todos los caracteres del alfabeto de entrada
+	b) todos caracteres diferentes a los del alfabeto de entrada
+	c) solamente por números
+	d) un alfabeto propio para la pila
+
+RESPUESTA: d) un alfabeto propio para la pila.
+
+2) Un AFD puede tener:
+
+	a) varios estados iniciales y varios estados finales
+	b) un estado inicial y varios estados finales
+	c) varios estados iniciales y un estado final
+	d) un estado inicial, varios finales y uno ficticio
+
+RESPUESTA: b) un estado inicial y varios estados finales.
+
+3) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas F.
+
+	a) En un autómata finito, un estado inicial puede ser también estado final y significa que admite la cadena que se esté analizando.
+
+RESPUESTA: FALSO. Significa que admite la cadena vacía.
+
+	b) En una gramática, un terminal es un símbolo del lenguaje que no debe definirse en una regla de producción.
+
+RESPUESTA: VERDADERO.
+
+	c) En un autómata finito, dos estados son distinguibles si los dos son finales o los dos no lo son.
+
+RESPUESTA: FALSO. Si cumplen esa condición son estados compatibles.
+
+4) Completar las siguientes oraciones:
+
+	a) La mayoría de los lenguajes de programación son........
+
+libres de contexto
+
+	b) En un AFD con la 1° trayectoria que rechaza la palabra, se puede decir que la palabra es........
+
+inválida
+
+	c) Si una gramática tiene más de un árbol de derivación, la gramática es.......
+
+ambigua
+
+5) Indicar si la siguiente regla se corresponde con una gramática regular o libre de contexto. Justificar.
+
+A -> 11B
+
+RESPUESTA: Gramática Regular (lineal por la derecha). (Ver justificación en Parcial 2 - Pregunta 2).
+
+6) Explicar qué características tiene la máquina de Turing. ¿En qué casos se utiliza?
+
+RESPUESTA: (Ver respuesta Parcial 2 - Pregunta 3). Cinta infinita, cabezal bidireccional, detención en halt, se usa para problemas algorítmicamente complejos y lenguajes recursivamente enumerables.
+
+7) Describir el proceso de minimización de autómatas finitos.
+
+RESPUESTA: (Ver respuesta Parcial 2 - Pregunta 4). Se eliminan estados inaccesibles y se agrupan estados compatibles y no distinguibles mediante una tabla tabular.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 5: 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) En un autómata finito determinístico (AFD) cada transición admite:
+
+	a) un símbolo del alfabeto.
+	b) una cadena de símbolos del alfabeto.
+	c) un símbolo del alfabeto o una cadena de símbolos del alfabeto.
+
+RESPUESTA: a) un símbolo del alfabeto.
+
+Justificación: En un AFD (a diferencia de un AFN) las transiciones son estrictas, cada flecha debe estar etiquetada con un (y solo un) símbolo del alfabeto. No admite cadenas ni la palabra vacía.
+
+2) Una de las formas de describir la semántica de un lenguaje de programación es:
+
+	a) Backus Naurn Form (BNF).
+	b) Lenguaje de modelado unificado (UML).
+	c) Gramáticas con atributos.
+
+RESPUESTA: c) Gramáticas con atributos.
+Justificación: BNF y UML se usan para la sintaxis y el modelado respectivamente. Las gramáticas atribuidas son las que permiten definir reglas para validar el significado lógico (tipos, valores) en la fase de análisis semántico.
+
+3) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas Falsas.
+
+	a) La MT (Máquina de Turing) cuenta con sólo un alfabeto.
+
+FALSO. La Máquina de Turing utiliza dos alfabetos: el alfabeto de entrada ∑ que no incluye el espacio en blanco, y el alfabeto de la cinta Γ que incluye todos los caracteres de entrada más el espacio en blanco y posibles símbolos auxiliares.
+
+	b) Una MT puede tener varios estados finales.
+
+FALSO. A diferencia de los Autómatas Finitos, la Máquina de Turing no clasifica sus estados en "finales" para aceptar. Posee un único estado especial de detención llamado halt h.
+
+	d) En la MT, una secuencia es aceptada cuando la misma se termina de analizar y se llegó al estado halt.
+
+FALSO. El único criterio de aceptación de una MT es que alcance el estado halt. No está obligada a consumir (terminar de analizar) toda la secuencia de entrada para aceptarla.
+
+4) Completar las siguientes oraciones:
+
+¿Cómo se comportan los diferentes lenguajes de programación, con respecto al encapsulamiento y ocultamiento de la información en TADs?
+
+a) Python tiene:
+
+Mecanismos para simular el encapsulamiento utilizando módulos. Sin embargo, no logra un ocultamiento real, ya que al importar el módulo el programador aún puede acceder directamente a la estructura interna de los datos.
+
+b) Pascal tiene:
+
+Constructores para definir tipos por el usuario (como los record), pero no provee ningún mecanismo formal de encapsulamiento ni ocultamiento; la representación interna queda totalmente visible y accesible.
+
+c) Ada tiene:
+
+Un encapsulamiento y ocultamiento real y estricto mediante la utilización de packages (paquetes). Permite separar la especificación pública del cuerpo privado (body), definiendo tipos private que vuelven a la estructura interna totalmente inaccesible desde la aplicación.
+
+5) Dado el TAD alumno, se puede hacer esto en una aplicación? Justificar su respuesta 
+
+	al=crearAlu()
+	cargar (al, "luis", 12365478,5623)	/*carga con nombre, dni y legajo*/
+	al[0]= "martín"
+
+RESPUESTA: No se debe hacer.
+
+Justificación: Al asignar directamente "martín" en la posición al[0], se está violando el principio fundamental de ocultamiento de información de los Tipos de Datos Abstractos. En un TAD correcto, la aplicación nunca debe conocer ni manipular la estructura interna (en este caso, la lista). Para cambiar el nombre, se debería haber invocado una operación elemental pública provista por la interfaz del TAD (por ejemplo, modiNom(al, "martín")).
+
+6) Dado el siguiente lenguaje L= {w/ w termina con 1), sobre el alfabeto ∑={0,1}, es correcto el siguiente AFD? Justificar. ∑
+
+AFD que tiene q0 como estado inicial, un rulo con '0' hacia q0, una flecha (transición) con '1' hacia q1, q1 es un estado final, el cual hace un rulo con una flecha con '1' y '0' hacia q1
+
+RESPUESTA: Incorrecto.
+
+Justificación: Al tener el estado final q1 un rulo con el carácter 0, el autómata aceptará secuencias que terminen en cero. Por ejemplo, si ingresa la palabra "10", transiciona a q1 con el '1', y luego el '0' lo mantiene en q1 (estado de aceptación). Para que sea correcto, la transición con '0' estando en q1 debería devolver el flujo al estado de rechazo q0 a la espera de un nuevo '1'.
+
+7) Detallar las características de un Autómata finito de pila. Indicar algún caso de uso.
+
+Características: Es un autómata al que se le incorpora una memoria auxiliar de tipo LIFO (Pila). Posee un alfabeto propio para esta pila Γ que incluye un símbolo especial para marcar el fondo ('z').
+En sus transiciones debe especificar tres acciones: qué carácter lee de la entrada, qué carácter desapila y qué carácter apila. Para que una palabra sea aceptada, debe consumir toda la entrada, llegar a un estado final y dejar la pila vacía.
+
+Caso de uso: Se utiliza para reconocer Lenguajes Libres de Contexto (LLC), como validar el balanceo de paréntesis en expresiones o detectar palabras palíndromas.
+
+8) Describir cómo es el proceso de interpretación de un programa. ¿Qué ventajas tiene con respecto a traducción?
+
+La interpretación es un proceso donde el código fuente se traduce línea por línea y se ejecuta directamente en ese mismo momento, sin generar ni guardar un código objeto o archivo compilado. Si una instrucción se repite, el intérprete debe volver a decodificarla.
+
+Ventajas: Al no requerir la compilación completa de todo el código fuente previamente para generar un ejecutable, la interpretación permite una ejecución inmediata, facilitando la prueba y depuración (debugging) del código paso a paso y la rápida corrección de errores en tiempo de desarrollo.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 6
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) En un autómata finito no deterministico (AFN)
+
+	a) puede faltar alguna flecha o transición correspondiente a algún símbolo del alfabeto.
+	b) puede haber más de una flecha con el mismo símbolo del alfabeto.
+	c) puede haber una flecha que tenga como etiqueta palabras de varias letras o la palabra vacía.
+
+RESPUESTA: En este caso, las tres opciones (a, b y c) son correctas y describen perfectamente las libertades que tiene un AFN frente a un AFD.
+
+Justificación: En un AFN pueden faltar flechas, puede haber múltiples caminos (varias flechas) con la misma etiqueta desde un mismo nodo, y las flechas pueden estar etiquetadas con cadenas completas o con la transición vacía (ε / λ).
+
+2) En una gramática regular, el lado derecho de una regla de producción está formado por:
+
+	a) un simbolo terminal.
+	b) un simbolo terminal y un no terminal.
+	c) un simbolo terminal y varios no terminales.
+
+RESPUESTA: Las opciones correctas son a) y b).
+
+Justificación: La restricción fundamental de las gramáticas regulares (lineales por la derecha) es que del lado derecho pueden producir un único símbolo terminal (opción a), o un símbolo terminal acompañado de, a lo sumo, un único símbolo no terminal (opción b). Nunca pueden tener varios no terminales juntos del lado derecho (la opción c es incorrecta).
+
+3) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas Falsas.
+
+	a) En un AFP la cabeza lectora puede moverse a izquierda, a derecha y puede escribir sobre la cinta.
+
+FALSO. Esa es la descripción de una Máquina de Turing. Un Autómata Finito de Pila (AFP) lee una secuencia de entrada (de izquierda a derecha sin retroceder) y utiliza una Pila (memoria LIFO) como estructura auxiliar donde apila y desapila caracteres, no una cinta bidireccional de escritura.
+
+	b) En Python se provee el ocultamiento de un TAD a través de un módulo.
+
+FALSO. Python solo permite simular el encapsulamiento a través de módulos. Sin embargo, no logra un ocultamiento completo ni real, ya que al importar el módulo el usuario o programa de aplicación aún puede acceder a la estructura interna del TAD directamente.
+Esta seguramente con poner verdadero pase porque es medio ambigua
+
+	c) La MT acepta una secuencia cuando se llega al estado halt, aunque la secuencia no haya terminado.
+
+VERDADERO. (El único criterio es alcanzar halt, el resto de la cinta no importa).
+
+4) Completar las siguientes oraciones:
+
+	a) En un autómata finito dos estados son ......... si ambos son estados finales o ambos son no finales.
+
+compatibles
+
+	b) En un automata finito dos estados son ...... si uno es finales y el otro no.
+
+incompatibles/distinguibles
+
+	c) Todos los estados ........ de un AF, pueden ser eliminados sin que afecte el comportamiento del mismo.
+
+inaccesibles
+
+5) Dado el TAD Curso de alumnos, se puede hacer esto en una aplicación? Justificar su respuesta.
+
+	for i in range (0, tamanio(cur),1):
+	alu=cur[i]
+	print (vernombre(alu))
+
+RESPUESTA: No se debe hacer.
+
+Justificación: Al acceder a la posición específica con corchetes cur[i], la aplicación está manipulando directamente la representación interna del TAD Curso (tratándolo explícitamente como una lista). Esto viola el principio fundamental de ocultamiento de la información. Para obtener el alumno sin romper la abstracción, se debería invocar a una operación pública provista por la interfaz del TAD (por ejemplo, algo como alu = obtenerAlumno(cur, i)).
+
+6) Dado el siguiente lenguaje L= (w/ w empieza con a), sobre el alfabeto ∑=(a,b), es correcto el siguiente AFD? Justificar.
+
+AFD que tiene q0 como estado inicial, un rulo con 'b' hacia q0, una flecha (transición) con 'a' hacia q1, q1 es un estado final, el cual hace un rulo con una flecha con 'a' y 'b' hacia q1
+
+RESPUESTA: Incorrecto.
+
+Justificación: El lenguaje exige que la palabra empiece obligatoriamente con la letra 'a'. Sin embargo, al tener un rulo con 'b' en el estado inicial q0, el autómata permite procesar cadenas que empiecen con 'b' (las retiene en q0) y, si luego viene una 'a' (por ejemplo, la palabra "ba"), transiciona al estado final q1 y la acepta. Para que sea correcto, la transición con 'b' desde q0 debe dirigir obligatoriamente hacia un "estado pozo" o de error (un estado no final del que no salgan más caminos hacia un estado de aceptación), de modo que la secuencia quede inválida al instante.
+
+7) Describir las características de las gramáticas libres de contexto. ¿En qué casos se utilizan?
+
+Características: Las Gramáticas Libres de Contexto (GLC) se caracterizan estrictamente por tener un único símbolo No Terminal del lado izquierdo de sus reglas de producción. Del lado derecho pueden producir cualquier combinación de símbolos terminales y no terminales. Las derivaciones (sustituciones) se realizan directamente sobre el símbolo sin importar los caracteres que lo rodean (su contexto).
+Usos: Se utilizan ampliamente para describir y validar la sintaxis de los lenguajes de programación y para lenguajes de marcado como HTML o XML. Su aplicación principal es la construcción de los árboles de derivación durante la etapa de compilación.
+
+8) Describir cómo es el proceso de traducción de un programa. ¿En qué parte de este proceso intervienen los autómatas finitos?
+
+Proceso: La traducción (o compilación) es el proceso mediante el cual todas las instrucciones escritas en código fuente de alto nivel se traducen a lenguaje de máquina (generando un código objeto guardado). Se divide en dos grandes bloques: la etapa de Análisis (Front-end), conformada por el análisis Léxico, Sintáctico y Semántico; y la etapa de Síntesis (Back-end).
+
+Intervención de los AF: Los autómatas finitos (específicamente los AFD) intervienen en la primerísima fase: el Análisis Léxico. Su función es leer el código fuente carácter por carácter para identificar y agrupar los componentes formando los "tokens" válidos del lenguaje (variables, operadores, palabras reservadas).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 7
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+En el diseño de un Tipo de Dato Abstracto (TAD), ¿qué aspectos deben quedar ocultos para la unidad de programa o usuario que lo utiliza? (Inventado, no se ve un carajo en la foto xd)
+
+	a) Su implementación y estructura interna
+	b) Su especificación y estructura interna
+	c) Su especificación
+	d) Su implementación
+	e) Su estructura interna
+
+RESPUESTA: a) Su implementación y estructura interna.
+
+Justificación: La definición formal de un TAD establece que su objetivo es ocultar tanto la representación interna del nuevo tipo de dato como los detalles de la implementación de sus operaciones, dejando visible únicamente su especificación (la interfaz pública).
+
+2) En un autómata finito determinístico (AFD)
+
+	a) puede haber más de una flecha con el mismo símbolo del alfabeto.
+	b) tiene que tener la misma cantidad de flechas que símbolos del alfabeto.
+	c) puede haber una flecha o transición que tenga como etiqueta palabras de varias letras.
+
+RESPUESTA: b) tiene que tener la misma cantidad de flechas que símbolos del alfabeto.
+
+Justificación: La teoría especifica explícitamente que un autómata es determinístico si el número de transiciones (flechas) que salen de cada estado coincide exactamente con la cantidad de caracteres del alfabeto dado. Las opciones a y c describen libertades que solo posee un Autómata Finito No Determinístico (AFN).
+
+3) Responder las siguientes preguntas, escribiendo V o F según corresponda. Justificar las respuestas Falsas.
+
+	a) Para describir la semántica de un lenguaje de programación se utiliza (UML).
+
+FALSO. UML es un lenguaje de modelado unificado utilizado para el diseño de sistemas. Para describir y analizar la semántica de un lenguaje de programación se utilizan las Gramáticas con atributos (o Gramáticas Atribuidas).
+
+	b) La ventaja del proceso de interpretación es que utiliza menos memoria que el proceso de traducción.
+
+VERDADERO. La teoría señala que la interpretación demanda menos espacio de memoria y es más flexible a la hora de corregir, ya que traduce línea a línea y ejecuta directamente sin guardar la traducción generada.
+
+	c) La semántica de un lenguaje de programación describe la forma correcta en la cual las sentencias, expresiones y unidades de programa deben escribirse.
+
+FALSO. Esa es la definición exacta de Sintaxis. La Semántica es la encargada de establecer el significado lógico o el efecto que tiene cada palabra o sentencia válida del lenguaje durante su ejecución.
+
+4) Completar las siguientes oraciones:
+
+	a) Cuando una gramática tiene dos árboles de derivación la gramática es .........
+
+ambigua
+
+	b) Si un autómata acepta menos palabras que las esperadas se dice que es ..........
+
+incompleto
+
+	c) Si un autómata acepta más palabras que las esperadas se dice que es ...........
+
+incorrecto
+
+5) Dado el TAD Curso de alumnos, se puede hacer esto en una aplicación? Justificar su respuesta.
+
+	for i in range (0, tamanio(cur), 1):
+	alu=cur[i]
+	print (verlegajo(alu))
+
+RESPUESTA: No se debe hacer.
+
+Justificación: Al utilizar el formato de indexación con corchetes cur[i], el usuario está accediendo y manipulando directamente la representación interna del TAD (tratándolo como una lista o arreglo). Esto rompe el principio fundamental de ocultamiento de la información, ya que para consultar o recuperar un dato se deberían utilizar únicamente las operaciones provistas por la interfaz pública del TAD.
+
+6) Dado el siguiente autómata, sobre el alfabeto ∑={a,b}. Qué secuencias acepta? Justificar 
+
+AFD que tiene q0 como estado inicial, un rulo con 'b' hacia q0, una flecha (transición) con 'a' hacia q1, q1 es un estado final, el cual hace un rulo con una flecha con 'a' y' b' hacia q1
+
+Respuesta: Acepta todas las secuencias que contengan al menos una letra 'a'.
+
+Justificación: Estando en el estado inicial q0, la llegada de cualquier cantidad de letras 'b' lo mantiene en un estado de rechazo. El autómata solo puede transicionar al estado de aceptación q1 en el momento en que ingresa una letra 'a'. Una vez que alcanza q1, los rulos indican que cualquier combinación posterior de letras 'a' o 'b' lo mantendrá en ese estado final indefinidamente, haciendo válida la secuencia.
+
+7) Explicar qué características tiene la máquina de Turing. ¿En qué casos se utiliza?
+
+Características: Es el modelo de autómata más poderoso. A diferencia de los modelos finitos, posee una cinta infinita de almacenamiento y un cabezal de lectura/escritura que puede moverse en ambas direcciones (izquierda y derecha). No acepta la palabra por consumir toda la entrada hacia un estado final, sino que la acepta en el instante en que transiciona a un estado especial de detención denominado halt (h).
+
+Casos de uso: Se utiliza para modelar traducciones o funciones lógicas complejas (como invertir un número o calcular el sucesor) y para reconocer la clase de lenguajes más amplia (los lenguajes Recursivamente Enumerables o Tipo 0).
+
+8) ¿Qué es un autómata finito? ¿Cómo se representa gráficamente? ¿Cuál es su relación con compiladores?
+
+Definición y representación: Es un modelo de máquina de estados abstracta que se representa gráficamente mediante un grafo dirigido. En este grafo, los nodos representan los estados (excluyentes entre sí) y las líneas o flechas representan las transiciones o eventos que marcan el cambio de un estado a otro.
+
+Relación con compiladores: Los autómatas finitos se utilizan en la primerísima fase del procesamiento de lenguajes, el Análisis Léxico. Actúan como máquinas reconocedoras que leen el código fuente carácter por carácter para agruparlos y validar la formación de los componentes léxicos o "tokens" (identificadores, operadores, palabras clave).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RESUMEN DE TODOS LOS TEMAS
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Tipos de Datos Abstractos (TAD) y Encapsulamiento
+¿Qué es un TAD y qué características tienen? 
+
+Un Tipo Abstracto de Datos (TAD) es una colección de datos acompañada de un conjunto de operaciones para manipularlos
+. Su objetivo es aislar y ocultar tanto la representación interna de los datos como la implementación funcional para el usuario que lo utiliza
+. Las características principales de un TAD son:
+
+Ocultamiento de la información: Mecanismo mediante el cual el lenguaje hace inaccesible la estructura interna y la implementación de las operaciones
+
+Encapsulamiento: Mecanismo que permite codificar y guardar juntas, en el lenguaje de programación, la representación interna y las operaciones
+
+Generalización: Capacidad de definir un TAD cuyos elementos a almacenar sean de tipos genéricos (por ejemplo, una pila genérica que sirva tanto para enteros como para libros)
+
+Encapsulamiento y Ocultamiento en distintos lenguajes (PASCAL, ADA, PYTHON)
+Python: En Python, los TAD se implementan usando módulos
+. Un módulo permite encapsular (guardar junto) el código, pero no logra un ocultamiento completo, ya que al importar un módulo en Python el usuario todavía puede acceder a la estructura interna. Python solo permite "simular" este ocultamiento a menos que se utilicen clases en POO
+ADA: El lenguaje ADA provee un ocultamiento y encapsulamiento real y eficiente a través de los packages (paquetes)
+. Separa la parte pública (especificación) de la parte privada (cuerpo o body), permitiendo definir tipos private o limited private donde la estructura interna es totalmente inaccesible desde la aplicación
+. ADA también es el lenguaje mencionado que provee generalización (TADs genéricos)
+Pascal: (Nota: El material proporcionado no detalla cómo se implementa el encapsulamiento en Pascal, solo lo menciona de pasada en la clase7 para mostrar un ejemplo de gramática de un record)
+
+¿Qué tipos de TAD existen? Existen TADs simples, que manejan un solo elemento base, y TADs compuestos, que en su estructura interna utilizan uno o más TADs ya existentes
+. Por ejemplo, un TAD "Curso" es un TAD compuesto porque internamente contiene una colección de un TAD "Alumno" previamente diseñado
+
+Estructura interna: ¿Se puede usar una lista o pila en un TAD? Sí, es completamente válido. Al diseñar la "Representación Interna" de un TAD, el programador elige la estructura de datos disponible en el lenguaje que más se adecúe
+
+. Por ejemplo, en Python se utiliza comúnmente una lista (alumno=["","",""]) para simular la estructura de un registro
+. También se utilizan arrays (arreglos) internamente para implementar un TAD Pila
+
+¿Qué hace el eliminar de una pila? Según el código expuesto en ADA para una pila genérica, la operación se llama desapilar (p: in out pila; e: in out elemento)
+. Esta operación recupera el elemento del tope pasándolo por parámetro (e) y, al mismo tiempo, lo elimina lógicamente bajando el índice del tope de la pila.
+
+--------------------------------------------------------------------------------
+2. Autómatas Finitos (AF)
+Determinísticos (AFD) y No Determinísticos (AFN) Los autómatas finitos son máquinas de estados abstractas usadas para reconocer secuencias válidas de un lenguaje
+
+AFD (Determinístico): De cada estado sale exactamente la misma cantidad de transiciones que la cantidad de caracteres del alfabeto
+. Cada transición lleva a un único estado destino
+
+AFN (No Determinístico): Permiten mayor flexibilidad. De cada nodo pueden salir más, menos o ninguna flecha por carácter. Admiten flechas etiquetadas con palabras enteras o con la palabra vacía (λ o ϵ)
+
+Problema de los AF y AFN: Los AF regulares no tienen memoria suficiente para validar lenguajes complejos, como paréntesis balanceados
+. Por otro lado, el problema específico de los AFN es que presentan ambigüedad: ante una palabra, hay múltiples "caminos" posibles y no se sabe de antemano cuál tomar, obligando a usar algoritmos exhaustivos e ineficientes para probar todas las rutas
+. Es por esto que los compiladores usan AFD y no AFN para el análisis sintáctico
+
+Trayectorias y Aceptación:
+Una trayectoria es el camino recorrido en el grafo por una palabra, desde el estado inicial y pasando de estado en estado mediante los eventos (caracteres)
+
+Una palabra es aceptada (válida) si se consume por completo y la trayectoria termina en un estado de aceptación (estado final, dibujado con doble círculo)
+
+¿Cuándo un autómata es correcto, incorrecto o incompleto? Un AFD es correcto si tiene un único estado inicial, y si de cada nodo sale una (y solo una) transición obligatoria por cada símbolo del alfabeto
+. Si a un nodo le falta la flecha para un carácter del alfabeto, el autómata está incompleto/incorrecto (falla estructural)
+
+Equivalencia y Minimización:
+Equivalentes: Dos autómatas son equivalentes si aceptan exactamente las mismas palabras, es decir, generan el mismo lenguaje
+
+Minimización: Es un proceso mecánico para encontrar la expresión más simple de un AFD
+. Consiste en agrupar estados redundantes (equivalentes) y sustituirlos por un único estado
+
+El proceso (Tabla): 
+. 1) Se eliminan nodos inaccesibles
+. 2) Se arma una tabla cruzando estados
+. 3) Se tachan los pares distinguibles directos (estado final cruzado con estado no final)
+. 4) Se evalúan las transiciones de las celdas vacías; si el destino de ambos lleva a una celda ya tachada, ese par también se tacha (es distinguible)
+. 5) Los que quedan sin tachar al final son indistinguibles (redundantes) y se fusionan
+
+Tipos de relaciones entre estados:
+Compatibles: Dos estados son compatibles a priori si ambos son finales o ambos son no finales
+
+Incompatibles / Distinguibles: Si un estado es final y el otro no lo es
+
+Indistinguibles: Si tras evaluarlos en la tabla no se los puede diferenciar porque actúan exactamente igual frente a los mismos estímulos
+
+--------------------------------------------------------------------------------
+3. Gramáticas, Lenguajes y Procesamiento
+Lenguajes Regulares (Ejemplos): Son los lenguajes Tipo 3 en la jerarquía de Chomsky, los más restrictivos.
+Ejemplos: el lenguaje binario (L={0,1, 01,11,10, …}) o lenguajes de patrones de repetición fija como L={ab,abab,ababab,…}
+
+Gramáticas Regulares (Componentes y Formación): Son las que validan los Lenguajes Regulares. Se definen formalmente mediante una cuádrupla G={S, NT, T, RP}
+
+Cuádrupla:
+T (Terminales): Símbolos finales en minúsculas/números que forman las palabras
+NT (No terminales): Símbolos en mayúscula que sirven como reglas en proceso de derivación
+S (Start symbol): El símbolo no terminal inicial por el cual empieza toda evaluación
+RP (Reglas de Producción): Son las leyes de sustitución
+
+Restricciones: Su formación exige que del lado izquierdo de la regla haya un único símbolo No Terminal. Del lado derecho, debe haber un único Terminal, o un Terminal acompañado de a lo sumo un No Terminal (ej. A -> a o A -> aB)
+
+Árbol de Derivación y Ambigüedad: El árbol de derivación es el desglose gráfico (remplazando terminales y no terminales) que verifica cómo una palabra es conformada por la gramática
+
+Ambigua: Una palabra/gramática es ambigua si existe más de un árbol de derivación válido para estructurar exactamente la misma palabra
+
+Sintaxis, Semántica y sus validaciones (Errores):
+
+Sintaxis: Es el conjunto de reglas formales que establecen cómo se combinan los símbolos permitidos para escribir oraciones correctas
+. Se valida mediante Gramáticas Libres de Contexto que construyen el árbol de derivación sintáctico
+
+Semántica: Define el significado lógico de esas oraciones
+. Se valida usando Gramáticas Atribuidas (reglas que analizan atributos y restricciones)
+
+Errores semánticos: Problemas de lógica como incompatibilidad de tipos (sumar un número con una letra), variables no inicializadas, arreglos fuera de límite, o división por cero
+
+¿En qué momento aparecen los AF y las Gramáticas en el Procesamiento?
+
+En un compilador, el procesamiento tiene fases:
+
+Análisis Léxico: Se usa el Autómata Finito (AFD) para leer carácter a carácter e identificar los "tokens" válidos (variables, operadores)
+
+Análisis Sintáctico y Semántico: Aquí se aplican las Gramáticas para generar el árbol de derivación que valida la estructura y la lógica del programa
+
+Metalenguajes y Herramientas de Modelado
+BNF (Backus-Naur Form):
+Es un metalenguaje, es decir, un lenguaje formal que se utiliza para describir la sintaxis de otro lenguaje (en este caso, de los lenguajes de programación). Su función principal en los compiladores es expresar de forma estricta y estandarizada las Reglas de Producción de las Gramáticas Libres de Contexto (GLC).
+
+La notación BNF utiliza un conjunto cerrado de metasímbolos con significados operativos específicos:
+
+< > (Corchetes angulares): Se utilizan para delimitar y representar un símbolo No Terminal (un elemento compuesto que requiere ser definido por reglas analíticas).
+
+::= (Símbolo de definición): Se lee textualmente como "se define como" y separa el símbolo de la izquierda de su desglose formal.
+
+| (Barra vertical): Funciona como el operador lógico de alternativa ("or"), permitiendo bifurcar múltiples producciones válidas para un mismo componente.
+
+Yuxtaposición (Símbolos contiguos): La escritura de un símbolo inmediatamente seguido de otro (ej. <A><B>) se lee de forma secuencial como "A seguido de B".
+
+UML (Unified Modeling Language / Lenguaje de Modelado Unificado):
+Es un lenguaje de modelado estándar de tipo visual que se utiliza exclusivamente en el paradigma de la ingeniería de software para especificar, visualizar, construir y documentar los artefactos de un sistema de información, principalmente bajo el enfoque Orientado a Objetos.
+UML no es una herramienta sintáctica ni un formalismo gramatical. Es un error conceptual común afirmar que las gramáticas se expresan en UML; las gramáticas formales se definen mediante cuádruplas algebraicas o mediante el metalenguaje BNF. UML interviene en etapas previas de abstracción y arquitectura (como el diseño lógico de clases o dependencias de un sistema), pero carece del poder analítico para la verificación léxica o sintáctica de hileras de caracteres dentro de un procesador de lenguajes.
+
+Existen dos alternativas principales para procesar un lenguaje de alto nivel:
+
+Traducción (o Compilación):
+Es el proceso donde se traducen todas las instrucciones a lenguaje de máquina (muy bajo nivel) y se guarda el programa compilado o código objeto resultante.
+
+Ventajas: Es un proceso mucho más rápido durante la ejecución; al almacenarse la traducción, si una instrucción vuelve a aparecer, no necesita ser decodificada nuevamente.
+
+Desventajas: Ocupa más espacio de memoria.
+
+Interpretación:
+En este proceso se traduce el código fuente línea a línea y se ejecuta directamente en ese instante, si+n guardar la traducción ni generar un programa objeto.
+
+Ventajas: Demanda menos espacio de memoria y es mucho más flexible a la hora de corregir errores.
+
+Desventajas: Es más lento durante la ejecución porque si la misma instrucción aparece varias veces repetida, el intérprete debe volver a decodificarla y traducirla cada vez.
+
+¿Cómo se relaciona la Traducción con los Autómatas y las Gramáticas?
+
+El proceso de traducción (compilación) abarca dos grandes etapas: la Síntesis (back-end) y el Análisis (front-end). Es en esta última etapa de Análisis donde las máquinas de estado y las gramáticas son las protagonistas absolutas:
+
+Intervención de los Autómatas Finitos (Análisis Léxico):
+Actúan en la primerísima fase del compilador. El analizador léxico utiliza Autómatas Finitos para leer el programa fuente carácter por carácter e identificar y validar los componentes léxicos básicos.
+Su trabajo es agrupar estos caracteres para conformar los "tokens" válidos del lenguaje (identificadores, operadores, palabras reservadas, números) ignorando los comentarios y descartando secuencias inválidas.
+Intervención de las Gramáticas (Análisis Sintáctico y Semántico):
+
+En el Análisis Sintáctico: Una vez que se tienen los "tokens", el analizador utiliza Gramáticas (Libres de Contexto) para comprobar que las combinaciones de esos tokens formen sentencias sintácticamente correctas. Verifica que respeten las reglas del lenguaje y construye el árbol de derivación.
+
+En el Análisis Semántico: Finalmente, sobre ese árbol se aplican Gramáticas con atributos (o atribuidas). Estas asocian propiedades a los símbolos para validar el significado y la lógica de las sentencias (por ejemplo, comprobación de tipos de variables, límites de arreglos o divisiones por cero).
+
+Autómata Finito de Pila (AFP): 
+. Surgen para lenguajes más complejos (como los Libres de Contexto) donde hay que contar y recordar, por ejemplo, paréntesis balanceados
+. Le agregan al AF una memoria auxiliar tipo LIFO ("Pila")
+. Tienen su propio alfabeto de pila (incluyendo una z que marca el fondo)
+. Se ingresa la palabra, y en la transición se especifica qué leer, qué sacar de la pila y qué poner en ella
+. Para que sea válida, al terminar, el autómata debe estar en un estado final, y la pila debe quedar vacía
+
+Máquina de Turing (MT):
+. Es un autómata más poderoso, abstracto y con salida
+. Posee una cinta infinita de almacenamiento con una cabeza lectora bidireccional (Left/Right) que lee y escribe sobre ella
+. A diferencia de los AF, no posee estados finales, sino que procesa y modifica la cinta hasta transicionar a un estado de detención llamado halt (h), momento en el que la palabra queda aceptada y el procesamiento culmina
+. Se utiliza para modelar traducciones lógicas (ej. invertir un número o sacar el sucesor)

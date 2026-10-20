@@ -1,62 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Referencias DOM
-    const navContainer = document.querySelector('.nav-points'); // Contenedor para delegación
-    const points = document.querySelectorAll('.nav-point');
-    const slides = document.querySelectorAll('.slide');
+    const navContainer = document.querySelector('.nav-points'); 
     const counter = document.getElementById('current-punto');
     
-    // Estado interno: índice actual (empieza en 0 para coincidir con Arrays)
     let activeIndex = 0;
 
-    // Función optimizada: Solo toca los elementos necesarios
-    const setActive = (index) => {
-        // 1. Validar límites
-        if (index < 0 || index >= points.length) return;
+    window.setActive = function(index) {
+        // 1. Identificar la sección actual visible o usar el contenedor general si no hay partes
+        const activeSection = document.querySelector('.part-section.active') || document.querySelector('.slides-container');
+        if (!activeSection) return;
 
-        // 2. Apagar el elemento que estaba activo antes
-        points[activeIndex].classList.remove('active');
-        slides[activeIndex].classList.remove('active');
+        // 2. Obtener SOLO los slides de la sección actual
+        const currentSlides = activeSection.querySelectorAll('article.slide');
+        
+        // 3. Obtener SOLO los puntos de navegación que están VISIBLES
+        // Array.from permite usar filter() en un NodeList
+        const visiblePoints = Array.from(document.querySelectorAll('.nav-point')).filter(p => p.style.display !== 'none');
 
-        // 3. Actualizar índice
+        // 4. Validar límites
+        if (index < 0 || index >= currentSlides.length || index >= visiblePoints.length) return;
+
+        // 5. Apagar el punto que estaba activo
+        const currentActivePoint = document.querySelector('.nav-point.active');
+        if (currentActivePoint) currentActivePoint.classList.remove('active');
+        
+        // Apagar el slide que estaba activo
+        const currentActiveSlide = activeSection.querySelector('article.slide.active');
+        if (currentActiveSlide) currentActiveSlide.classList.remove('active');
+
+        // 6. Actualizar y encender el nuevo
         activeIndex = index;
+        visiblePoints[activeIndex].classList.add('active');
+        currentSlides[activeIndex].classList.add('active');
 
-        // 4. Encender el nuevo elemento
-        points[activeIndex].classList.add('active');
-        slides[activeIndex].classList.add('active');
-
-        // 5. Actualizar contador visual (+1 porque el array es base 0)
+        // 7. Actualizar contador visual si existe
         if (counter) counter.textContent = activeIndex + 1;
 
-        // 6. Scroll suave en el menú (UX móvil)
-        points[activeIndex].scrollIntoView({
+        // 8. Scroll suave
+        visiblePoints[activeIndex].scrollIntoView({
             behavior: 'smooth',
             block: 'nearest',
             inline: 'center'
         });
     };
 
-    // Event Listener 1: Clics (Delegación de eventos)
+    // Event Listener 1: Clics 
     if (navContainer) {
         navContainer.addEventListener('click', (e) => {
-            // Detectar si el clic fue en un botón o dentro de uno
             const btn = e.target.closest('.nav-point');
             if (!btn) return;
-
-            // Leer el número del atributo data-point y restar 1 para obtener índice
+            
             const newIndex = parseInt(btn.dataset.point) - 1;
-            setActive(newIndex);
+            
+            // Solo cambia si se tocó un punto distinto al actual
+            if (newIndex !== activeIndex) {
+                window.setActive(newIndex);
+            }
         });
     }
 
     // Event Listener 2: Teclado (Flechas)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') setActive(activeIndex - 1);
-        if (e.key === 'ArrowRight') setActive(activeIndex + 1);
+        if (e.key === 'ArrowLeft') window.setActive(activeIndex - 1);
+        else if (e.key === 'ArrowRight') window.setActive(activeIndex + 1);
     });
 
-    // Inicialización: Asegurar que el primero esté activo
-    // (Opcional: Si el HTML ya tiene la clase 'active' en el primero, esto no hace falta, pero previene errores)
-    if (points.length > 0) {
-        setActive(0);
-    }
+    // Inicialización: Esperar un pequeño delay para que side-menu oculte los puntos si es necesario
+    setTimeout(() => {
+        window.setActive(0);
+    }, 10);
 });

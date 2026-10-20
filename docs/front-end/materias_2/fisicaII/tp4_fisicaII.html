@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 4 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+            <li class="nav-point" data-point="13">13</li>
+            <li class="nav-point" data-point="14">14</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>En cierta región del espacio existe un campo electrostático uniforme de módulo $E_0 = 24,6 \text{ N/C}$. Un marco cuadrado de 10 cm de lado se encuentra en dicha región, orientado de modo que la normal al plano que lo contiene forma un ángulo de 33° con la dirección del campo. Determine el flujo del campo electrostático a través de una superficie cualquiera delimitada por el marco.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El flujo del campo electrostático a través de una superficie plana inmersa en un campo uniforme se define mediante el producto escalar entre el vector campo eléctrico $\vec{E}$ y el vector de área $\vec{A}$:</p>
+                        <div class="formula-responsive">
+                            $$ \Phi_E = \vec{E} \cdot \vec{A} = E \cdot A \cdot \cos(\theta) $$
+                        </div>
+                        <p>Calculamos el área del marco cuadrado en metros cuadrados ($L = 0,1 \text{ m}$):</p>
+                        <div class="formula-responsive">
+                            $$ A = (0,1 \text{ m})^2 = 0,01 \text{ m}^2 $$
+                        </div>
+                        <p>Reemplazando los datos en la expresión del flujo:</p>
+                        <div class="formula-responsive">
+                            $$ \Phi_E = (24,6 \text{ N/C}) \cdot (0,01 \text{ m}^2) \cdot \cos(33^\circ) $$
+                            $$ \Phi_E = 0,246 \cdot 0,8386 \approx 0,206 \text{ N}\cdot\text{m}^2/\text{C} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Enuncie la ley de Gauss y explique el significado de las relaciones que en ella se establecen. ¿Es útil la ley de Gauss para calcular el campo electrostático debido a tres partículas cargadas idénticas situadas en los vértices de un triángulo equilátero? Explique.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>Enunciado de la Ley de Gauss:</strong></p>
+                        <p>El flujo eléctrico total a través de cualquier superficie cerrada (superficie gaussiana) es igual a la carga eléctrica neta encerrada por dicha superficie dividida por la permitividad del vacío $\epsilon_0$.</p>
+                        <div class="formula-responsive">
+                            $$ \Phi_E = \oint_S \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0} $$
+                        </div>
+                        <p>Esta relación establece que las fuentes del campo electrostático son las cargas eléctricas. Las líneas de campo nacen en cargas positivas y mueren en cargas negativas. El flujo neto solo depende de la cantidad total de carga que reside dentro del volumen limitado por la superficie.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>Utilidad en el caso del triángulo equilátero:</strong></p>
+                        <p><strong>No es útil</strong> para el cálculo analítico del campo $\vec{E}$. Aunque la ley de Gauss es universalmente válida, su utilidad práctica para despejar el campo eléctrico requiere distribuciones de carga con una altísima simetría (esférica, cilíndrica o plana). Tres cargas en un triángulo no poseen una simetría tal que permita trazar una superficie gaussiana donde la magnitud de $\vec{E}$ sea constante y estrictamente paralela o perpendicular al vector de área $d\vec{A}$ en todos los puntos de la superficie.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Considere una esfera conductora de radio $R$ y carga $Q$ en condiciones electrostáticas. Sea $S$ una superficie esférica imaginaria de radio $3R$, situada concéntricamente con la primera. Determine el flujo de campo electrostático a través de $S$ y estime si se observarán cambios de flujo en los siguientes casos (si la respuesta es afirmativa recalcule el flujo).</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Si el radio de $S$ se reduce a $2R$.</li>
+                            <li>Si $S$ adquiere una forma irregular manteniéndose exterior a la esfera conductora.</li>
+                            <li>Si $S$ mantiene su radio original, pero su centro se desplaza una distancia $R$.</li>
+                            <li>La misma situación pero con distancia $5R$.</li>
+                            <li>Si se agrega una segunda esfera idéntica fuera, a $5R$.</li>
+                            <li>Si se reemplaza por una esfera no conductora.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El flujo inicial a través de la superficie $S$ de radio $3R$ que encierra completamente a la esfera de carga $Q$ es:</p>
+                        <div class="formula-responsive">
+                            $$ \Phi_E = \frac{Q_{enc}}{\epsilon_0} = \frac{Q}{\epsilon_0} $$
+                        </div>
+                        
+                        <p style="margin-top: 1rem;"><strong>Análisis de los casos:</strong></p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a) Radio a $2R$:</strong> No hay cambio. La carga encerrada sigue siendo toda la esfera $Q$.</li>
+                            <li><strong>b) Forma irregular:</strong> No hay cambio. La ley de Gauss es independiente de la forma de la superficie mientras encierre la misma carga neta.</li>
+                            <li><strong>c) Desplazamiento de $R$:</strong> No hay cambio. El radio es $3R$, y al mover el centro en $R$, la esfera conductora original (de radio $R$) sigue quedando completamente dentro de la superficie gaussiana.</li>
+                            <li><strong>d) Desplazamiento de $5R$:</strong> <strong>Sí hay cambio.</strong> Al desplazar el centro en $5R$, la esfera conductora original queda completamente fuera de la superficie gaussiana. El flujo será $\Phi_E = 0$.</li>
+                            <li><strong>e) Se agrega segunda esfera a $5R$:</strong> No hay cambio. La segunda esfera se ubica fuera del volumen encerrado por la superficie $S$ original, por ende $Q_{enc}$ sigue siendo $Q$.</li>
+                            <li><strong>f) Reemplazo por no conductora:</strong> No hay cambio. Mientras la carga total siga siendo $Q$ y se ubique dentro de $S$, el flujo total permanece idéntico.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Considere una pirámide imaginaria de base cuadrada de lado $L$ y altura $L/2$. Suponga que una partícula de carga $Q$ se halla rígidamente emplazada en la cúspide de la pirámide. Determine el flujo del campo electrostático a través de la base y de cada cara lateral de la pirámide.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para utilizar argumentos de simetría y la Ley de Gauss, podemos imaginar que encerramos la carga $Q$ en el centro de un <strong>cubo imaginario</strong> de arista $L$. El centro exacto de un cubo de lado $L$ se encuentra a una distancia de $L/2$ de cualquiera de sus seis caras.</p>
+                        
+                        <p style="margin-top: 1rem;">Nuestra pirámide de base $L \times L$ y altura $L/2$ coincide exactamente con la pirámide que se forma trazando líneas desde el centro del cubo hacia los cuatro vértices de una de sus caras.</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <li><strong>Flujo a través de la base de la pirámide:</strong> Al ser la carga el centro del cubo y estar rodeada por 6 caras cuadradas idénticas, el flujo total $\Phi = Q/\epsilon_0$ se reparte equitativamente. La base de nuestra pirámide corresponde a una de estas caras, por lo que el flujo a través de ella es:
+                                <div class="formula-responsive">
+                                    $$ \Phi_{base} = \frac{1}{6} \frac{Q}{\epsilon_0} $$
+                                </div>
+                            </li>
+                            <li><strong>Flujo a través de las caras laterales de la pirámide:</strong> Las caras laterales de la pirámide confluyen en la cúspide, justo donde se encuentra la carga $Q$. Las líneas de campo emitidas por la carga puntual "rozan" estas caras, es decir, el vector campo eléctrico es <em>paralelo</em> al plano de cada cara lateral. Por consiguiente, el producto escalar $\vec{E} \cdot d\vec{A}$ es cero.
+                                <div class="formula-responsive">
+                                    $$ \Phi_{lateral} = 0 $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>En cierta región del espacio existe un campo electrostático dado por:</p>
+                        <div class="formula-responsive">
+                            $$ \vec{E}(x) = \begin{cases} -300 \text{ N/C} \, \hat{i} & \text{si } x < 0 \\ 300 \text{ N/C} \, \hat{i} & \text{si } x > 0 \end{cases} $$
+                        </div>
+                        <p>Considere en esa región, una superficie cerrada imaginaria en forma de cilindro con tapas de longitud 10 cm, radio de 4 cm, su centro coincide con el origen de coordenadas y su eje de simetría es el eje X.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine el flujo del campo electrostático que atraviesa cada tapa del cilindro y la superficie curvada del mismo.</li>
+                            <li>¿Cuál será el flujo total a través de la superficie cerrada?</li>
+                            <li>¿Cuál será la carga neta en el interior del cilindro?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Flujo individual por caras:</strong></p>
+                        <p>El área de las tapas circulares es $A = \pi R^2 = \pi (0,04 \text{ m})^2 \approx 0,005 \text{ m}^2$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>Tapa derecha ($x > 0$):</strong> El vector área $\vec{A}$ apunta hacia $+\hat{i}$. El campo es $300 \hat{i}$. El flujo es $\Phi_{der} = \vec{E} \cdot \vec{A} = (300)(0,005) \approx 1,5 \text{ Nm}^2/\text{C}$.</li>
+                            <li><strong>Tapa izquierda ($x < 0$):</strong> El vector área $\vec{A}$ (saliente) apunta hacia $-\hat{i}$. El campo es $-300 \hat{i}$. $\Phi_{izq} = \vec{E} \cdot \vec{A} = (-300 \hat{i}) \cdot (-A \hat{i}) \approx 1,5 \text{ Nm}^2/\text{C}$.</li>
+                            <li><strong>Superficie lateral curvada:</strong> El vector área es perpendicular al eje X, pero el campo solo tiene componente en el eje X. Por ende, son ortogonales y $\Phi_{lat} = 0$.</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Flujo total:</strong></p>
+                        <p>La suma de las contribuciones arrojadas nos da el flujo neto que atraviesa el cilindro completo:</p>
+                        <div class="formula-responsive">
+                            $$ \Phi_{tot} = \Phi_{der} + \Phi_{izq} + \Phi_{lat} = 1,5 + 1,5 + 0 = 3,0 \text{ Nm}^2/\text{C} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Carga neta interior:</strong></p>
+                        <p>Aplicando la Ley de Gauss, extraemos la carga encerrada:</p>
+                        <div class="formula-responsive">
+                            $$ Q_{enc} = \epsilon_0 \Phi_{tot} = (8,85 \times 10^{-12} \text{ C}^2/\text{Nm}^2) \cdot (3,0 \text{ Nm}^2/\text{C}) $$
+                            $$ Q_{enc} = 26,55 \times 10^{-12} \text{ C} \approx 2,6 \times 10^{-11} \text{ C} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Un disco circular no conductor posee una densidad superficial de carga $2 \times 10^{-10} \text{ C/m}^2$. Dicho disco está rodeado por una esfera de radio 1 m. Si el flujo a través de la esfera es $5,2 \times 10^{-2} \text{ Nm}^2/\text{C}$, calcule el diámetro del disco.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Por Ley de Gauss, el flujo total a través de la superficie esférica cerrada permite despejar inmediatamente la carga total del disco alojada en su interior:</p>
+                        <div class="formula-responsive">
+                            $$ Q = \epsilon_0 \Phi = (8,854 \times 10^{-12}) \cdot (5,2 \times 10^{-2}) \approx 4,6 \times 10^{-13} \text{ C} $$
+                        </div>
+                        <p>Sabiendo que la carga total en el disco no conductor se relaciona con su área mediante la densidad superficial $\sigma = \frac{Q}{A}$, y que el área es $A = \pi \frac{D^2}{4}$, podemos despejar el diámetro $D$:</p>
+                        <div class="formula-responsive">
+                            $$ Q = \sigma \cdot \pi \left(\frac{D}{2}\right)^2 \implies D = 2 \sqrt{\frac{Q}{\pi \sigma}} $$
+                        </div>
+                        <p>Sustituyendo la expresión exacta de la carga ($Q = \epsilon_0 \Phi$) para evitar arrastrar errores de redondeo:</p>
+                        <div class="formula-responsive">
+                            $$ D = 2 \sqrt{\frac{\epsilon_0 \Phi}{\pi \sigma}} = 2 \sqrt{\frac{4,604 \times 10^{-13}}{\pi (2 \times 10^{-10})}} $$
+                            $$ D = 2 \sqrt{\frac{4,604 \times 10^{-13}}{6,283 \times 10^{-10}}} = 2 \sqrt{7,32 \times 10^{-4}} \approx 2 \cdot 0,027 = 0,054 \text{ m} $$
+                        </div>
+                        <p>Convertido a centímetros, el diámetro resulta ser de aproximadamente $5,4 \text{ cm}$ (o $5,5 \text{ cm}$ por arrastre en la tolerancia teórica de la guía).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Evalúe si las siguientes afirmaciones son verdaderas o falsas y justifique sus respuestas.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem; list-style-type: lower-alpha;">
+                            <li><strong>La Ley de Gauss es válida sólo en el caso de distribuciones de cargas simétricas.</strong><br>
+                            <em>Falso.</em> La ley en sí (el teorema integral) es universalmente válida para cualquier distribución. Sin embargo, su <em>utilidad práctica</em> para calcular la magnitud del campo $\vec{E}$ sí se limita a arreglos simétricos.</li>
+                            
+                            <li><strong>El campo electrostático involucrado en el flujo calculado mediante la Ley de Gauss es debido exclusivamente a las partículas cargadas que se encuentran dentro de la superficie gaussiana.</strong><br>
+                            <em>Falso.</em> El vector campo eléctrico $\vec{E}$ presente en la integral de la ley representa el campo <strong>neto</strong> en ese punto, ocasionado por la superposición de <em>todas</em> las cargas del universo, tanto internas como externas.</li>
+                            
+                            <li><strong>Si en el interior de cierta superficie cerrada S, no hay partículas cargadas, entonces el campo electrostático es nulo en todos los puntos de la superficie S.</strong><br>
+                            <em>Falso.</em> Puede existir un campo neto generado por fuentes externas cruzando la superficie. El flujo total será cero (lo que entra es igual a lo que sale), pero $\vec{E}$ individualmente no tiene por qué ser nulo.</li>
+                            
+                            <li><strong>Si el flujo del campo electrostático a través de una superficie cerrada S es nulo, entonces el campo electrostático es nulo en todos los puntos de S.</strong><br>
+                            <em>Falso.</em> Idem caso anterior. Que la sumatoria integral del producto escalar se cancele a lo largo de toda el área no obliga a que el vector en cada diferencial de área sea un vector nulo.</li>
+                            
+                            <li><strong>Si el flujo del campo electrostático a través de una superficie cerrada S es nulo, entonces no hay partículas cargadas distribuidas en el volumen interior a S.</strong><br>
+                            <em>Falso.</em> Puede haber un dipolo (carga $+q$ y carga $-q$) encerrado por la superficie. Habrá múltiples partículas, pero al sumarse algebraicamente se produce una carga encerrada <strong>neta</strong> de cero.</li>
+                            
+                            <li><strong>Alcanza con conocer la carga total dentro de una superficie para aplicar la Ley de Gauss a la determinación del campo eléctrico.</strong><br>
+                            <em>Falso.</em> Para determinar o despejar analíticamente el campo eléctrico $\vec{E}$ se requiere obligatoriamente conocer también la <strong>distribución espacial</strong> de dicha carga para poder justificar matemáticamente la extracción del campo fuera de la integral basándose en la simetría.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Una partícula cargada negativa está situada en el centro de una corteza conductora esférica hueca que inicialmente se encuentra descargada. ¿En cuál de los diagramas de la figura están correctamente representadas las líneas de campo electrostático?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <p>Al situar una carga negativa en la cavidad, se induce un reordenamiento de cargas en la corteza conductora que la envuelve. Por repulsión y atracción electrostática, las cargas positivas del conductor migrarán a la pared interna de la cavidad para "terminar" las líneas de campo que la carga negativa demanda, y un número igual de cargas negativas será empujado a la pared exterior del cascarón esférico.</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>El campo electrostático en la "carne" o espesor del metal del conductor es rigurosamente <strong>cero</strong>, por lo tanto, no deben dibujarse líneas atravesando el espesor de la corteza.</li>
+                            <li>En la cavidad interior, las líneas de campo deben apuntar radicalmente <strong>hacia adentro</strong> (terminan en la carga central negativa).</li>
+                            <li>En el espacio exterior a la corteza, la distribución superficial negativa induce líneas que provienen del infinito y penetran perpendicularmente hacia la superficie exterior del conductor.</li>
+                        </ul>
+
+                        <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                            <svg viewBox="0 0 200 200" style="width: 250px; height: auto;">
+                                <!-- Líneas exteriores entrando -->
+                                <line x1="20" y1="20" x2="40" y2="40" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="100" y1="10" x2="100" y2="35" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="180" y1="20" x2="160" y2="40" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="10" y1="100" x2="35" y2="100" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="190" y1="100" x2="165" y2="100" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="20" y1="180" x2="40" y2="160" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="100" y1="190" x2="100" y2="165" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="180" y1="180" x2="160" y2="160" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                
+                                <!-- Cascarón Conductor -->
+                                <circle cx="100" cy="100" r="60" fill="none" stroke="var(--text-muted)" stroke-width="10"/>
+                                
+                                <!-- Signos inducidos -->
+                                <text x="100" y="53" fill="var(--color-boton-eliminar)" font-size="12" font-weight="bold" text-anchor="middle">+</text>
+                                <text x="100" y="155" fill="var(--color-boton-eliminar)" font-size="12" font-weight="bold" text-anchor="middle">+</text>
+                                <text x="49" y="104" fill="var(--color-boton-eliminar)" font-size="12" font-weight="bold" text-anchor="middle">+</text>
+                                <text x="151" y="104" fill="var(--color-boton-eliminar)" font-size="12" font-weight="bold" text-anchor="middle">+</text>
+
+                                <text x="100" y="36" fill="var(--accent)" font-size="16" font-weight="bold" text-anchor="middle">-</text>
+                                <text x="100" y="172" fill="var(--accent)" font-size="16" font-weight="bold" text-anchor="middle">-</text>
+                                <text x="32" y="104" fill="var(--accent)" font-size="16" font-weight="bold" text-anchor="middle">-</text>
+                                <text x="168" y="104" fill="var(--accent)" font-size="16" font-weight="bold" text-anchor="middle">-</text>
+
+                                <!-- Líneas interiores entrando al centro -->
+                                <line x1="55" y1="55" x2="85" y2="85" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="100" y1="55" x2="100" y2="85" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="145" y1="55" x2="115" y2="85" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="55" y1="100" x2="85" y2="100" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="145" y1="100" x2="115" y2="100" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="55" y1="145" x2="85" y2="115" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="100" y1="145" x2="100" y2="115" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="145" y1="145" x2="115" y2="115" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+                                <!-- Carga Central Negativa -->
+                                <circle cx="100" cy="100" r="10" fill="var(--accent)"/>
+                                <text x="100" y="104" fill="white" font-size="12" font-weight="bold" text-anchor="middle">-</text>
+
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--text-color)"/>
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Las figuras muestran las líneas de campo electrostático en la región entre dos placas metálicas. Una esfera metálica ha sido colocada entre las dos placas. ¿En cuál de los diagramas de la figura están correctamente representadas las líneas de campo electrostático?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <p>Para determinar la representación gráfica correcta, se deben cumplir obligatoriamente tres principios físicos fundamentales cuando un conductor (la esfera metálica) se introduce en un campo eléctrico:</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>Superficie equipotencial:</strong> El campo eléctrico debe incidir sobre la superficie exterior del conductor siempre de forma estrictamente <strong>perpendicular</strong> (a 90° de la tangente local). Las líneas no pueden "doblarse" ni arrastrarse tangencialmente sobre el metal.</li>
+                            <li><strong>Campo interno nulo:</strong> El espesor e interior del conductor metálico carecen de líneas de campo, ya que el arreglo de cargas inducido (polarización) en su superficie anula el campo externo en su interior ($\vec{E} = 0$).</li>
+                            <li><strong>Atraídas y concentradas:</strong> Las líneas tenderán a curvarse hacia la esfera al ser atraídas por la carga inducida en la misma.</li>
+                        </ul>
+
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
+                            <svg viewBox="0 0 300 200" style="width: 100%; max-width: 400px; height: auto;">
+                                <!-- Definición de la flecha -->
+                                <defs>
+                                    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                        <polyline points="2 1, 7 4, 2 7" fill="none" stroke="var(--text-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- Placas Metálicas -->
+                                <rect x="20" y="10" width="10" height="180" fill="var(--text-color)" rx="2"/>
+                                <rect x="270" y="10" width="10" height="180" fill="var(--text-color)" rx="2"/>
+
+                                <!-- Esfera conductora central (Gris sólida con borde) -->
+                                <circle cx="150" cy="100" r="25" fill="#9ca3af" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Líneas Rectas Superiores e Inferiores -->
+                                <line x1="30" y1="25" x2="267" y2="25" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <line x1="30" y1="175" x2="267" y2="175" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                                <!-- Línea del Centro (Eje) -->
+                                <line x1="30" y1="100" x2="122" y2="100" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <line x1="175" y1="100" x2="267" y2="100" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                                <!-- Curvas Entrando a la Esfera (Lado Izquierdo) -->
+                                <path d="M 30 50 C 90 50, 115 65, 132.3 82.3" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <path d="M 30 75 C 80 75, 106.7 75, 128.3 87.5" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <path d="M 30 125 C 80 125, 106.7 125, 128.3 112.5" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <path d="M 30 150 C 90 150, 115 135, 132.3 117.7" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                                <!-- Curvas Saliendo de la Esfera (Lado Derecho) -->
+                                <path d="M 167.7 82.3 C 185 65, 210 50, 267 50" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <path d="M 171.7 87.5 C 193.3 75, 220 75, 267 75" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <path d="M 171.7 112.5 C 193.3 125, 220 125, 267 125" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                <path d="M 167.7 117.7 C 185 135, 210 150, 267 150" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>Una partícula de carga $Q$ está en el centro de un cascarón esférico de radios interior $R_1$ y exterior $R_2$. Si la carga total del cascarón es $-3Q$. Determine:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la densidad de carga en cada superficie del cascarón.</li>
+                            <li>el campo electrostático en todas sus partes como función de la coordenada radial.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Densidades de carga en superficies:</strong></p>
+                        <p>Por ley de Gauss, si trazamos una superficie esférica concéntrica dentro de la masa conductora del cascarón ($R_1 < r < R_2$), el campo eléctrico debe ser nulo. Esto exige que la carga neta encerrada sea cero. Al existir una carga central $+Q$, la superficie interna del cascarón se polariza adquiriendo una carga inducida compensatoria $Q_{int} = -Q$.</p>
+                        <p>Dado que la carga neta del cascarón es $Q_{total} = -3Q$, la carga residente en la superficie externa será la remanente:</p>
+                        <div class="formula-responsive">
+                            $$ Q_{ext} = Q_{total} - Q_{int} = -3Q - (-Q) = -2Q $$
+                        </div>
+                        <p>Las densidades superficiales respectivas resultan ($A = 4\pi R^2$):</p>
+                        <div class="formula-responsive">
+                            $$ \sigma_{int} = \frac{-Q}{4\pi R_1^2} \quad \text{y} \quad \sigma_{ext} = \frac{-2Q}{4\pi R_2^2} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Campo electrostático:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>Para $r < R_1$ (cavidad):</strong> Solo influye la carga central $+Q$. $E(r) = k \frac{Q}{r^2}$ radially outward.</li>
+                            <li><strong>Para $R_1 < r < R_2$ (metal del cascarón):</strong> Estado electrostático en el seno de un conductor macizo, rigurosamente $E(r) = 0$.</li>
+                            <li><strong>Para $r > R_2$ (exterior):</strong> La carga neta encerrada es la suma algebraica $Q + (-3Q) = -2Q$. El campo en el exterior se comporta como si esta carga estuviese concentrada en el centro. $E(r) = -k \frac{2Q}{r^2}$ apuntando radicalmente hacia adentro.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>Dos esferas iguales de radio 5 cm uniformemente cargadas con densidad $\rho=30\mu\text{C/m}^3$, se encuentran emplazadas con sus centros separadas 15 cm. Utilice la Ley de Gauss y el principio de superposición para establecer el campo electrostático en un punto que se encuentra a 3 cm del centro de una de las esferas, medidos perpendicularmente a la línea que une los centros.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Situamos el origen $(0,0)$ en el centro de la Esfera 1, y la Esfera 2 en $(15,0)\text{ cm}$. El punto de interés $P$ se ubica a 3 cm perpendicular al eje, es decir, en $(0, 3)\text{ cm}$. Aplicaremos el Principio de Superposición calculando la magnitud vectorial del campo que genera cada distribución esférica por separado en dicho punto.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>Contribución de Esfera 1 ($r_1 = 3\text{ cm} < R = 5\text{ cm}$):</strong></p>
+                        <p>El punto $P$ está en el *interior* de la Esfera 1. Por Ley de Gauss, el campo interno depende linealmente del radio y de la densidad volumétrica $\rho$:</p>
+                        <div class="formula-responsive">
+                            $$ E_1 = \frac{\rho \cdot r_1}{3\epsilon_0} = \frac{(30 \times 10^{-6} \text{ C/m}^3) \cdot 0,03 \text{ m}}{3 \cdot 8,85 \times 10^{-12} \text{ C}^2/\text{N}\cdot\text{m}^2} = 33898 \text{ N/C} $$
+                        </div>
+                        <p>Este vector $\vec{E}_1$ apunta perpendicularmente a la línea de los centros (dirección $+y$).</p>
+
+                        <p style="margin-top: 1rem;"><strong>Contribución de Esfera 2 ($r_2 > R$):</strong></p>
+                        <p>La distancia desde el centro de la Esfera 2 al punto $P$ es la hipotenusa $d = \sqrt{15^2 + 3^2} = \sqrt{234} \approx 15,3\text{ cm}$. Al estar en el *exterior*, se comporta como una carga puntual concentrada en su centro. Calculamos su carga total $Q_2 = \rho \cdot \frac{4}{3}\pi R^3 = 1,57 \times 10^{-8} \text{ C}$.</p>
+                        <div class="formula-responsive">
+                            $$ E_2 = k \frac{Q_2}{d^2} = (9 \times 10^9) \frac{1,57 \times 10^{-8}}{(0,153)^2} = 6038 \text{ N/C} $$
+                        </div>
+                        <p>Este vector no es paralelo a los ejes. Su componente en el eje de los centros (horizontal) es la relevante para la respuesta teórica, proyectada por un factor trigonométrico dependiente de la hipotenusa.</p>
+                        <div class="formula-responsive">
+                            $$ E_{2,x} = E_2 \cos(\alpha) = 6038 \cdot \frac{15}{15,3} = 5919 \text{ N/C} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12</h3>
+                        <p>La densidad de carga en una región del espacio es esféricamente simétrica y viene dada por</p>
+                        <div class="formula-responsive">
+                            $$ \rho(r) = \begin{cases} C r & \text{si } r < R \\ 0 & \text{si } r > R \end{cases} $$
+                        </div>
+                        <p>Siendo C una constante. Determine el campo electrostático en todo el espacio como función de la coordenada radial r.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Aplicaremos la Ley de Gauss: $\oint \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0}$, y dada la simetría, $E \cdot 4\pi r^2 = \frac{Q_{enc}}{\epsilon_0}$. La carga encerrada en una esfera de radio $r$ se halla integrando sobre cortezas esféricas diferenciales de volumen $dV = 4\pi r'^2 dr'$:</p>
+                        
+                        <p style="margin-top: 1.5rem;"><strong>Región interior ($r < R$):</strong></p>
+                        <div class="formula-responsive">
+                            $$ Q_{enc} = \int_0^r \rho(r') \, dV = \int_0^r (C r') (4\pi r'^2) \, dr' = 4\pi C \int_0^r r'^3 \, dr' $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ Q_{enc} = 4\pi C \left[ \frac{r'^4}{4} \right]_0^r = \pi C r^4 $$
+                        </div>
+                        <p>Reemplazando en Gauss para hallar el campo interno:</p>
+                        <div class="formula-responsive">
+                            $$ E_{int} \cdot 4\pi r^2 = \frac{\pi C r^4}{\epsilon_0} \implies \vec{E}_{int}(r) = \frac{C r^2}{4 \epsilon_0} \hat{r} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>Región exterior ($r > R$):</strong></p>
+                        <p>La carga total contenida no varía una vez superado el radio $R$ de la distribución volumétrica. Su valor límite es evaluando la integral anterior en $R$:</p>
+                        <div class="formula-responsive">
+                            $$ Q_{total} = \pi C R^4 $$
+                        </div>
+                        <p>Reemplazando en Gauss asumiendo $r > R$:</p>
+                        <div class="formula-responsive">
+                            $$ E_{ext} \cdot 4\pi r^2 = \frac{\pi C R^4}{\epsilon_0} \implies \vec{E}_{ext}(r) = \frac{C R^4}{4 \epsilon_0 r^2} \hat{r} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 13 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 13</h3>
+                        <p>Un cable coaxial se compone de un alambre metálico recubierto por una capa aislante, que a la vez está recubierta por una corteza cilíndrico metálica, de manera que los ejes de alambre y la corteza coinciden. Considere un cable coaxil recto y muy largo, tal que el radio del alambre interior es de 1,5 cm y los radios interior y exterior de la corteza metálica son 4,5 cm y 6,5 cm. Suponga que una densidad lineal de carga de $6\text{ nC/m}$ se instala uniformemente distribuida en el conductor interior.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine el campo electrostático como función de la coordenada radial r.</li>
+                            <li>¿Cuáles serán las densidades superficiales de carga en el alambre y en las superficies interior y exterior de la corteza?</li>
+                            <li>¿Cambiaría la respuesta anterior si los ejes de ambos conductores se conservan paralelos pero no coincidentes?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Campo electrostático (Ley de Gauss para cilindros $E \cdot 2\pi r L = \frac{\lambda L}{\epsilon_0}$):</strong></p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>$r < 1,5\text{ cm}$: $E = 0$ (interior del alambre metálico).</li>
+                            <li>$1,5 < r < 4,5$: Cavidad hueca. Aplica el teorema envolviendo al hilo interno. $E = \frac{\lambda}{2\pi\epsilon_0 r}$ apuntando radialmente.</li>
+                            <li>$4,5 < r < 6,5$: $E = 0$ (espesor de la corteza metálica).</li>
+                            <li>$r > 6,5\text{ cm}$: Asumiendo que el cable completo es eléctricamente neutro exteriormente en estado de reposo habitual, el campo decae a cero.</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Densidades superficiales:</strong></p>
+                        <p>La carga $\lambda = 6\text{ nC/m}$ en el alambre induce por polarización $-\lambda$ en la cara interna del cascarón (para anular E en el espesor metálico). Las densidades ($\sigma = \frac{\lambda}{2\pi R}$) serán:</p>
+                        <div class="formula-responsive">
+                            $$ \sigma_{alambre} = \frac{\lambda}{2\pi R_{1,5}} \quad , \quad \sigma_{interior} = \frac{-\lambda}{2\pi R_{4,5}} \quad , \quad \sigma_{exterior} = \frac{+\lambda}{2\pi R_{6,5}} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Si los ejes no son coincidentes:</strong></p>
+                        <p>La simetría cilíndrica fundamental se quiebra. El campo en el hueco sigue pareciéndose al de un hilo largo pero pierde isotropía rotacional respecto a las paredes de la corteza. La gran diferencia reside en que las distribuciones de carga inducida en la cara interna del cilindro exterior <strong>dejan de ser uniformes</strong>; se concentrarán de forma asimétrica (mayor densidad donde el alambre esté más próximo a la pared) para garantizar que el interior del bloque de metal mantenga $\vec{E} = 0$ en toda su geometría descentrada.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 14 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 14</h3>
+                        <p>Una esfera conductora de radio R tiene una carga +Q ¿cuál de los siguientes gráficos representaría mejor el campo eléctrico en función de la distancia r medida desde el centro de la esfera?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        <p>Un conductor perfecto en equilibrio electrostático que posee una carga neta acumula todo su exceso de electrones (o huecos positivos) exclusivamente en su superficie exterior. En el volumen interior del material conductor, el campo eléctrico interno $\vec{E}$ es matemáticamente nulo en todo momento, de lo contrario habría fluidez de cargas, refutando la condición de equilibrio electrostático.</p>
+                        
+                        <p style="margin-top: 1rem;">Por lo tanto, desde el centro de la esfera ($r=0$) hasta el límite marginal interior de la superficie ($r=R$), la magnitud del campo será una línea horizontal clavada en cero.</p>
+                        
+                        <p style="margin-top: 1rem;">Justo en el radio de la superficie externa ($r=R^+$), el campo emerge abruptamente asumiendo el valor máximo posible dictaminado por la Ley de Coulomb: $E_{max} = \frac{kQ}{R^2}$. A partir de allí, a medida que nos alejamos hacia el exterior del cuerpo ($r>R$), el campo se degrada y pierde intensidad decreciendo de forma parabólica hiperbólica siguiendo la ley del inverso del cuadrado de la distancia ($\propto 1/r^2$).</p>
+
+                        <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                            <svg viewBox="0 0 300 200" style="width: 350px; height: auto;">
+                                <!-- Ejes -->
+                                <line x1="40" y1="20" x2="40" y2="160" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <line x1="30" y1="150" x2="280" y2="150" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <text x="25" y="15" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">E</text>
+                                <text x="285" y="165" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14">r</text>
+                                
+                                <!-- Marca de radio R -->
+                                <line x1="120" y1="145" x2="120" y2="155" stroke="var(--text-color)" stroke-width="1.5"/>
+                                <text x="120" y="170" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">R</text>
+
+                                <!-- Gráfica E=0 interno -->
+                                <line x1="40" y1="148" x2="120" y2="148" stroke="var(--accent)" stroke-width="3"/>
+
+                                <!-- Gráfica 1/r^2 externo -->
+                                <path d="M 120 40 Q 150 140 270 140" fill="none" stroke="var(--accent)" stroke-width="3"/>
+                                
+                                <!-- Discontinuidad de salto -->
+                                <line x1="120" y1="148" x2="120" y2="40" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4,4"/>
+
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--text-color)"/>
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>

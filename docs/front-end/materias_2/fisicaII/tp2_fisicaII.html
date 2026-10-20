@@ -1,1 +1,579 @@
-WIP
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <!-- Botón volver apuntando a fisicaII.html según solicitud -->
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Considere tres partículas cargadas: una tiene carga $+q$ y se ubica en $(0, 0, 0)$; otra de
+                            carga $+q$, se ubica en $(L, 0, 0)$ y la última tiene una carga $-2q$ y se ubica en $(x, y,
+                            0)$.</p>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿Qué ley utiliza para calcular la fuerza debido a la interacción eléctrica que existe
+                                entre estas partículas cargadas? Indique qué representa cada término de la ley que
+                                utilice.</li>
+                            <li>Represente en un esquema la fuerza neta que actúa sobre cada partícula, explicitando el
+                                principio que utiliza para confeccionarlo.</li>
+                            <li>¿Dónde debería ubicarse la tercera carga, para que la fuerza que actúe sobre ella sea
+                                nula?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) Ley de Coulomb:</strong></p>
+                        <p>Se utiliza la <strong>Ley de Coulomb</strong> para calcular la interacción eléctrica entre
+                            partículas puntuales estáticas. La expresión matemática es:</p>
+                        <div class="formula-responsive">
+                            $$ \vec{F}_{12} = k \frac{q_1 q_2}{r^2} \hat{r} $$
+                        </div>
+                        <ul class="componentes-list">
+                            <li><strong>$k$:</strong> Constante electrostática ($9 \times 10^9 \text{
+                                N}\cdot\text{m}^2/\text{C}^2$).</li>
+                            <li><strong>$q_1, q_2$:</strong> Magnitud de las cargas interactuantes.</li>
+                            <li><strong>$r^2$:</strong> Cuadrado de la distancia que separa ambas cargas.</li>
+                            <li><strong>$\hat{r}$:</strong> Versor direccional sobre la línea que une las cargas.</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Principio de Superposición:</strong></p>
+                        <p>La fuerza neta sobre cualquier partícula es la suma vectorial de las fuerzas ejercidas
+                            individualmente por las demás partículas. Por ejemplo, la fuerza neta sobre la
+                            carga 3 ($-2q$) es $\vec{F}_{neta,3} = \vec{F}_{1 \to 3} + \vec{F}_{2 \to 3}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Ubicación para fuerza nula:</strong></p>
+                        <p>Para que la fuerza neta sobre la tercera carga ($-2q$) sea nula, las fuerzas de atracción
+                            ejercidas por las dos cargas $+q$ deben cancelarse mutuamente. Como ambas cargas positivas
+                            son de igual magnitud $+q$, la única forma de que las fuerzas tengan el mismo módulo y
+                            sentidos opuestos es situando la carga $-2q$ exactamente en el <strong>punto medio</strong>
+                            del segmento que las une. Por ende, debe ubicarse en:</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>En la figura a se muestra dos partículas rígidamente emplazadas separadas una distancia $d=10
+                            \text{ mm}$. Sus cargas son $Q_1 = Q_2 = -12,4 \mu\text{C}$.</p>
+
+                            <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0;">
+    <!-- Figura a -->
+    <div style="text-align: center; width: 100%; max-width: 150px;">
+        <svg viewBox="0 0 150 200" style="width: 100%; height: auto;">
+            <!-- Línea de conexión -->
+            <line x1="75" y1="40" x2="75" y2="160" stroke="var(--text-color)" stroke-width="2"/>
+            
+            <!-- Q1 -->
+            <circle cx="75" cy="40" r="16" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+            <text x="75" y="45" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Q1</text>
+            
+            <!-- Q2 -->
+            <circle cx="75" cy="160" r="16" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+            <text x="75" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Q2</text>
+            
+            <!-- Etiqueta d -->
+            <text x="60" y="105" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end">d</text>
+        </svg>
+        <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: bold; margin-top: 0.5rem;">Figura a</p>
+    </div>
+
+    <!-- Figura b -->
+    <div style="text-align: center; width: 100%; max-width: 250px;">
+        <svg viewBox="0 0 250 200" style="width: 100%; height: auto;">
+            <!-- Líneas del triángulo -->
+            <line x1="50" y1="40" x2="50" y2="160" stroke="var(--text-color)" stroke-width="2"/>
+            <line x1="50" y1="40" x2="154" y2="100" stroke="var(--text-color)" stroke-width="2"/>
+            <line x1="50" y1="160" x2="154" y2="100" stroke="var(--text-color)" stroke-width="2"/>
+            
+            <!-- Q1 -->
+            <circle cx="50" cy="40" r="16" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+            <text x="50" y="45" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Q1</text>
+            
+            <!-- Q2 -->
+            <circle cx="50" cy="160" r="16" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+            <text x="50" y="165" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Q2</text>
+            
+            <!-- Q3 -->
+            <circle cx="154" cy="100" r="16" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+            <text x="154" y="105" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Q3</text>
+            
+            <!-- Etiquetas d -->
+            <text x="35" y="105" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end">d</text>
+            <text x="98" y="60" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end">d</text>
+            <text x="98" y="150" fill="var(--text-color)" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end">d</text>
+        </svg>
+        <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: bold; margin-top: 0.5rem;">Figura b</p>
+    </div>
+</div>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine la fuerza sobre la partícula 1 debido a la partícula 2. Analice cómo será la
+                                fuerza sobre la partícula 2 debido a la partícula 1. Justifique el resultado utilizando
+                                alguna ley física.</li>
+                            <li>Ahora se agrega al montaje una tercera partícula de carga $Q_3 = 18,5 \mu\text{C}$ como
+                                indica la figura b (formando un triángulo equilátero de lado $d$). ¿Varía la fuerza
+                                sobre la partícula 1 debido a la partícula 2? Justifique.</li>
+                            <li>Determine la fuerza neta sobre la partícula 1.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) Fuerza entre Q1 y Q2:</strong></p>
+                        <p>Dado que ambas poseen el mismo signo, la fuerza será de repulsión. Calculamos su módulo con
+                            la Ley de Coulomb:</p>
+                        <div class="formula-responsive">
+                            $$ F_{12} = k \frac{|Q_1| |Q_2|}{d^2} = 9 \times 10^9 \frac{(12,4 \times
+                            10^{-6})^2}{(0,01)^2} $$
+                            $$ F_{12} = 9 \times 10^9 \frac{153,76 \times 10^{-12}}{1 \times 10^{-4}} = 13838,4 \text{
+                            N} $$
+                        </div>
+                        <p>Por la <strong>Tercera Ley de Newton (Acción y Reacción)</strong>, la fuerza que $Q_1$ ejerce
+                            sobre $Q_2$ tiene exactamente la misma magnitud y misma dirección, pero en sentido
+                            opuesto.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Invariabilidad por adición de Q3:</strong></p>
+                        <p><strong>No varía.</strong> Según el Principio de Superposición de la electrostática, la
+                            fuerza de interacción entre dos cargas puntuales es independiente de la presencia de
+                            terceras cargas.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Fuerza neta sobre Q1:</strong></p>
+                        <p>Se calcula sumando vectorialmente la repulsión de $Q_2$ y la atracción de $Q_3$. La magnitud
+                            de la fuerza debida a $Q_3$ es:</p>
+                        <div class="formula-responsive">
+                            $$ F_{13} = k \frac{|Q_1| |Q_3|}{d^2} = 9 \times 10^9 \frac{(12,4 \times 10^{-6})(18,5
+                            \times 10^{-6})}{(0,01)^2} = 20646 \text{ N} $$
+                        </div>
+                        <p>Proyectando las componentes cartesianas según los ángulos del triángulo equilátero, se
+                            obtiene la fuerza neta final.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Suponga que dos electrones se encuentran en posiciones fijas de modo que la distancia entre
+                            ellos es $D$. En estas condiciones, se dan interacciones tanto eléctricas como
+                            gravitatorias. Determine cuantas veces mayor resulta una que otra. ¿Cuál debería ser la masa
+                            de un electrón para que esas fuerzas se equilibren?</p>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Planteamos la magnitud de ambas fuerzas:</p>
+                        <div class="formula-responsive">
+                            $$ F_e = k \frac{e^2}{D^2} \quad \text{y} \quad F_g = G \frac{m_e^2}{D^2} $$
+                        </div>
+                        <p>Calculamos la razón entre la fuerza eléctrica y la fuerza gravitatoria:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{F_e}{F_g} = \frac{k \cdot e^2}{G \cdot m_e^2} = \frac{9 \times 10^9 \cdot (1,6
+                            \times 10^{-19})^2}{6,67 \times 10^{-11} \cdot (9,1 \times 10^{-31})^2} $$
+                        </div>
+                        <p>El cálculo nos indica que la fuerza eléctrica es abrumadoramente mayor que la gravitatoria,
+                            aproximadamente $4,16 \times 10^{42}$ veces superior.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>Masa requerida para el equilibrio ($F_e = F_g$):</strong>
+                        </p>
+                        <div class="formula-responsive">
+                            $$ k \frac{e^2}{D^2} = G \frac{m^2}{D^2} \implies m = \sqrt{\frac{k \cdot e^2}{G}} $$
+                            $$ m = \sqrt{\frac{9 \times 10^9 \cdot (1,6 \times 10^{-19})^2}{6,67 \times 10^{-11}}}
+                            \approx 1,85 \times 10^{-9} \text{ kg} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Dos esferas pequeñas (digamos de $1\text{ cm}^3$ de volumen) posee cada una carga positiva de
+                            $1\text{ C}$. Para evitar el alejamiento por repulsión electrostáticamente las esferas se
+                            las ata mediante una cuerda de 1m de largo.</p>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Calcule la tensión de la cuerda.</li>
+                            <li>Si el material con que está hecha la cuerda resiste hasta un esfuerzo de $1000\text{
+                                kg/cm}^2$, determine la sección de la cuerda. Discuta el resultado.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) Tensión de la cuerda:</strong></p>
+                        <p>La tensión $T$ requerida para mantenerlas unidas debe ser igual a la fuerza de repulsión
+                            electrostática. Aplicamos la Ley de Coulomb:</p>
+                        <div class="formula-responsive">
+                            $$ T = F_e = k \frac{Q_1 Q_2}{d^2} = 9 \times 10^9 \frac{(1)(1)}{1^2} = 9 \times 10^9 \text{
+                            N} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Sección de la cuerda:</strong></p>
+                        <p>El esfuerzo máximo soportado es $\sigma_{max} = 1000 \text{ kgf/cm}^2$. Convertimos esta
+                            magnitud al Sistema Internacional (N/m²):</p>
+                        <div class="formula-responsive">
+                            $$ \sigma_{max} = 1000 \frac{\text{kgf}}{\text{cm}^2} \times 9,8 \frac{\text{N}}{\text{kgf}}
+                            \times 10^4 \frac{\text{cm}^2}{\text{m}^2} = 9,8 \times 10^7 \text{ N/m}^2 $$
+                        </div>
+                        <p>Sabiendo que el esfuerzo es $\sigma = \frac{T}{A}$, despejamos el área de sección transversal
+                            $A$:</p>
+                        <div class="formula-responsive">
+                            $$ A = \frac{T}{\sigma_{max}} = \frac{9 \times 10^9 \text{ N}}{9,8 \times 10^7 \text{
+                            N/m}^2} \approx 91,8 \text{ m}^2 $$
+                        </div>
+                        <p><strong>Discusión:</strong> Un área de $\approx 92 \text{ m}^2$ es el equivalente a la
+                            sección de un edificio entero. El valor de $1\text{ C}$ es una magnitud de carga
+                            monstruosamente enorme a escala macroscópica y la repulsión generada es inmanejable con
+                            materiales comunes.</p>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Dos esferas idénticas de masa 11,2 gr cuelgan de un mismo punto del techo, mediante hilos de
+                            seda de igual longitud 122 cm. Las esferas poseen cargas iguales de magnitud 3,4 nC,
+                            relativamente pequeñas como para que la separación por repulsión electrostática sea mucho
+                            menor que la longitud de los hilos.</p>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Bajo las condiciones mencionadas, encuentre la distancia de separación entre las
+                                esferas.</li>
+                            <li>Si las esferas son conductoras explique qué sucede después de descargar una de ellas.
+                                Encuentre la nueva posición de equilibrio.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) Distancia de separación inicial:</strong></p>
+                        <p>En el equilibrio, el peso $mg$, la fuerza electrostática $F_e$ y la tensión $T$ se
+                            equilibran. De la sumatoria de fuerzas surge que $\tan(\theta) = \frac{F_e}{mg}$. Como la
+                            separación $x$ es pequeña respecto a $L$, aproximamos $\tan(\theta) \approx \sin(\theta)
+                            \approx \frac{x/2}{L}$.</p>
+                        <div class="formula-responsive">
+                            $$ \frac{x}{2L} \approx \frac{k \frac{q^2}{x^2}}{mg} \implies x^3 = \frac{2 L k q^2}{mg} $$
+                        </div>
+                        <p>Reemplazando $m = 0,0112 \text{ kg}$, $L = 1,22 \text{ m}$, $q = 3,4 \times 10^{-9} \text{
+                            C}$:</p>
+                        <div class="formula-responsive">
+                            $$ x = \sqrt[3]{\frac{2 (1,22) (9 \times 10^9) (3,4 \times 10^{-9})^2}{(0,0112)(9,8)}}
+                            \approx 0,013 \text{ m} = 13 \text{ mm} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Nueva posición de equilibrio tras descarga:</strong>
+                        </p>
+                        <p>Al descargar una esfera, esta vuelve a caer verticalmente hasta tocar la esfera cargada. Al
+                            ser conductores idénticos en contacto, la carga remanente $q$ se divide a la mitad: $q' =
+                            q/2$ en cada una. Luego, se repelen nuevamente con una fuerza $F_e' = k
+                            \frac{(q/2)^2}{x'^2}$.</p>
+                        <div class="formula-responsive">
+                            $$ x'^3 = \frac{2 L k (q/2)^2}{mg} = \frac{1}{4} \left( \frac{2 L k q^2}{mg} \right) =
+                            \frac{x^3}{4} \implies x' = \frac{x}{\sqrt[3]{4}} $$
+                        </div>
+                        <div class="formula-responsive">
+                            $$ x' = \frac{13 \text{ mm}}{1,587} \approx 8,19 \text{ mm} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Cuatro partículas cargadas idénticas $(1 \mu\text{C})$ están dispuestas en los vértices de un
+                            cuadrado (0,2 m).</p>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Halle la fuerza sobre la partícula del vértice inferior izquierdo que ejercerán las
+                                restantes.</li>
+                            <li>¿Cuánto vale la fuerza sobre las restantes partículas? Trate de responder utilizando el
+                                resultado anterior.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) Fuerza sobre el vértice inferior izquierdo:</strong></p>
+                        <p>Colocando el origen de coordenadas en dicho vértice $(0,0)$, interactúa con las cargas en
+                            $(L,0)$, $(0,L)$ y $(L,L)$. Las fuerzas de repulsión debidas a las cargas adyacentes son:
+                        </p>
+                        <div class="formula-responsive">
+                            $$ F_{adyacente} = k \frac{q^2}{L^2} = 9 \times 10^9 \frac{(1 \times 10^{-6})^2}{(0,2)^2} =
+                            0,225 \text{ N} $$
+                        </div>
+                        <p>La fuerza debida a la carga en la diagonal (distancia $\sqrt{2}L$) es:</p>
+                        <div class="formula-responsive">
+                            $$ F_{diagonal} = k \frac{q^2}{(\sqrt{2}L)^2} = \frac{1}{2} F_{adyacente} = 0,1125 \text{ N}
+                            $$
+                        </div>
+                        <p>Proyectando y sumando las componentes vectoriales en $X$ e $Y$ se obtiene una magnitud
+                            resultante apuntando hacia el exterior del cuadrado a 45 grados.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Fuerza sobre las restantes partículas:</strong></p>
+                        <p>Por simple inspección geométrica, la configuración es perfectamente simétrica. La
+                            magnitud de la fuerza experimentada por cada partícula será idéntica en todos los vértices,
+                            y su dirección siempre apuntará radialmente hacia afuera desde el centro del cuadrado a 45
+                            grados de los lados.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Dos partículas cargadas, cuyas cargas son $Q_o$ y $-3Q_o$, se encuentran separadas una
+                            distancia $L$. Pueden moverse libremente pero no lo hacen porque cerca de ellas se encuentra
+                            una tercera partícula cargada.</p>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Encuentre la posición de dicha partícula y su carga en términos de las constantes $Q_o$
+                                y $L$.</li>
+                            <li>Determine la fuerza neta sobre la tercera partícula.</li>
+                            <li>¿Será estable el equilibrio del sistema completo? Justifique.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) Posición y carga:</strong></p>
+                        <p>Para que una tercera carga $q$ logre el equilibrio estacionario, las fuerzas sobre cada carga
+                            individual deben anularse. Para que la fuerza sobre $q$ se cancele, debe estar
+                            <strong>afuera</strong> del segmento que las une y del lado de la carga de <strong>menor
+                                magnitud</strong> (es decir, de $Q_o$). Sea $x$ la distancia desde $Q_o$ (hacia afuera):
+                        </p>
+                        <div class="formula-responsive">
+                            $$ k \frac{Q_o \cdot q}{x^2} = k \frac{3Q_o \cdot q}{(L+x)^2} \implies (L+x)^2 = 3x^2
+                            \implies L+x = \sqrt{3}x $$
+                            $$ x = \frac{L}{\sqrt{3}-1} \approx 1,366 L $$
+                        </div>
+                        <p>Para que $Q_o$ también esté en equilibrio (y sea atraída por $-3Q_o$ pero repelida por $q$),
+                            $q$ debe tener carga positiva. Igualando fuerzas sobre $Q_o$:</p>
+                        <div class="formula-responsive">
+                            $$ k \frac{Q_o \cdot 3Q_o}{L^2} = k \frac{Q_o \cdot q}{x^2} \implies q = 3 Q_o
+                            \left(\frac{x}{L}\right)^2 \approx 3 Q_o (1,366)^2 \approx 5,6 Q_o $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Fuerza neta y Estabilidad:</strong></p>
+                        <p>La fuerza neta sobre la tercera partícula es, por diseño de la condición impuesta, <strong>0
+                                N</strong>. El sistema completo <strong>no posee un equilibrio estable</strong> (Teorema
+                            de Earnshaw); cualquier perturbación desplazará las cargas rompiendo el equilibrio estático
+                            de forma permanente.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Considere el sistema formado por dos partículas cargadas ($q$ y $Q$), con masas
+                            respectivamente $m$ y $M$ ($M \gg m$), liberadas en reposo cuando la distancia entre ellas
+                            es $L$. Determine la velocidad de la partícula de menor masa cuando la distancia entre ambas
+                            partículas es $x$. Analice los casos en que ambas cargas tienen el mismo signo o signos
+                            contrarios.</p>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p>Por ser $M \gg m$, asumimos que la masa $M$ permanece prácticamente en reposo, mientras que
+                            $m$ se acelera. Dado que la fuerza electrostática es conservativa, aplicamos el
+                            teorema de conservación de la energía mecánica ($K_i + U_i = K_f + U_f$):</p>
+                        <div class="formula-responsive">
+                            $$ 0 + k \frac{qQ}{L} = \frac{1}{2} m v^2 + k \frac{qQ}{x} $$
+                        </div>
+                        <p>Despejando la velocidad final $v$ de la partícula menor:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{1}{2} m v^2 = k q Q \left( \frac{1}{L} - \frac{1}{x} \right) = k q Q \left( \frac{x
+                            - L}{L x} \right) $$
+                        </div>
+                        <p>Para que la raíz tenga sentido real (la energía cinética es positiva):</p>
+                        <ul class="componentes-list">
+                            <li><strong>Mismo signo (Repulsión):</strong> El producto $qQ$ es positivo. Las partículas
+                                se alejan, por lo que $x > L \implies x - L > 0$.</li>
+                            <li><strong>Signos contrarios (Atracción):</strong> El producto $qQ$ es negativo. Las
+                                partículas se acercan, por lo que $x < L \implies x - L < 0$ (el factor total compensa
+                                    el signo del producto $qQ$).</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Un conductor rectilíneo de longitud $L$ está cargado uniformemente con una carga $Q$. Calcule
+                            la fuerza resultante sobre una partícula cuya carga es $-q$ situada a una distancia $S$
+                            sobre la prolongación de un extremo del conductor.</p>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Planteamos una densidad lineal de carga uniforme a lo largo del conductor $\lambda =
+                            \frac{Q}{L}$. Un segmento diferencial del conductor $dx$ posee una carga $dQ = \lambda dx =
+                            \frac{Q}{L} dx$.</p>
+                        <p>Ubicando el origen $(0,0)$ en el extremo del conductor más cercano a la partícula, la carga
+                            $-q$ se encuentra en la posición $-S$, y el conductor abarca el segmento de $x=0$ a $x=L$.
+                            La distancia desde un diferencial de carga $dQ$ hasta $-q$ es $(S + x)$.</p>
+
+                        <p style="margin-top: 1rem;">La fuerza diferencial $dF$ ejercida sobre $-q$ es:</p>
+                        <div class="formula-responsive">
+                            $$ dF = k \frac{q \cdot dQ}{(S+x)^2} = k \frac{q \left(\frac{Q}{L}\right) dx}{(S+x)^2} $$
+                        </div>
+                        <p>Integramos a lo largo de toda la longitud $L$ del conductor para obtener la fuerza resultante
+                            neta:</p>
+                        <div class="formula-responsive">
+                            $$ F = \frac{k q Q}{L} \int_{0}^{L} \frac{dx}{(S+x)^2} = \frac{k q Q}{L} \left[
+                            -\frac{1}{S+x} \right]_{0}^{L} $$
+                            $$ F = \frac{k q Q}{L} \left( \frac{1}{S} - \frac{1}{S+L} \right) = \frac{k q Q}{L} \left(
+                            \frac{S+L-S}{S(S+L)} \right) = \frac{k q Q}{S(S+L)} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>Un aro de radio $3\text{ cm}$ posee una carga total de $10^{-3}\text{ C}$, distribuida
+                            uniformemente.</p>
+                        <ul
+                            style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿Cuál es la fuerza que actúa sobre una partícula cargada de $10^{-2}\text{ C}$ ubicada
+                                en el centro del anillo?</li>
+                            <li>¿Cuál es la fuerza que actúa sobre la misma partícula, ubicada en un punto sobre el eje
+                                del anillo a una distancia de $4\text{ cm}$ de su centro?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container"
+                        style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p><strong>a) En el centro del anillo:</strong></p>
+                        <p>Por la propia simetría radial del sistema, el campo eléctrico en el centro exacto de un
+                            anillo de carga uniformemente distribuida se anula completamente. Como $E_{centro}
+                            = 0$, la fuerza experimentada por cualquier carga emplazada allí será nula: $F = qE = 0
+                            \text{ N}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) A $4\text{ cm}$ sobre el eje:</strong></p>
+                        <p>La expresión para el campo eléctrico generado por un anillo de carga continua $Q$ y radio
+                            $R$, en un punto a una distancia $z$ sobre su eje perpendicular es:</p>
+                        <div class="formula-responsive">
+                            $$ E_z = k \frac{Q z}{(R^2 + z^2)^{3/2}} $$
+                        </div>
+                        <p>La fuerza neta se extrae multiplicando el campo por la carga de prueba $q$ ($F = q \cdot
+                            E_z$):</p>
+                        <div class="formula-responsive">
+                            $$ F = 10^{-2} \text{ C} \cdot 9 \times 10^9 \frac{\text{N}\cdot\text{m}^2}{\text{C}^2}
+                            \frac{(10^{-3} \text{ C}) \cdot 0,04 \text{ m}}{\left((0,03 \text{ m})^2 + (0,04 \text{
+                            m})^2\right)^{3/2}} $$
+                            $$ F = \frac{9 \times 10^4 \cdot 0,04}{(0,0025)^{3/2}} = \frac{3600}{1,25 \times 10^{-4}} =
+                            2,88 \times 10^7 \text{ N} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+
+</body>
+
+</html>

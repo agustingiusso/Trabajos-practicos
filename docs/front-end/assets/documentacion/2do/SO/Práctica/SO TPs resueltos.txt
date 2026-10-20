@@ -1,0 +1,884 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TRABAJO PRÁCTICO 1
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+PARTE A:
+
+1- Instalar un Sistema Operativo GNU/Linux (preferentemente última versión Ubuntu Mate), y guardar sobre un documento de office o texto imágenes de dos momentos de la instalación.
+
+2- De contar con un sistema operativo Windows instalado en la computadora, instalar la capa de compatibilidad WSL (Subsistema de Windows para Linux)
+
+3- Actualizar el Sistema Operativo instalado usando la interfaz de comandos, guardar en el documento imágenes de la actualización y de los comandos utilizados para tal fin.
+
+Para actualizar la lista de repositorios: sudo apt update
+Para instalar las actualizaciones: sudo apt upgrade
+
+4- Explique cuál es la finalidad de actualizar un sistema operativo.
+
+La finalidad de actualizar un sistema operativo es corregir errores (bugs) de versiones anteriores, tapar agujeros de seguridad o vulnerabilidades, mejorar el rendimiento general del sistema, garantizar compatibilidad con nuevo hardware y añadir nuevas funciones o características que mejoran la experiencia del usuario.
+
+5- ¿Qué es un gestor de arranque?
+
+Un gestor de arranque (como GRUB en Linux o Windows Boot Manager) es el primer programa que se ejecuta cuando se enciende una computadora. Su finalidad es cargar el sistema operativo en la memoria RAM para que pueda iniciar. Si hay varios sistemas operativos instalados, el gestor de arranque muestra un menú para que el usuario elija con cuál quiere iniciar.
+
+6- Qué es un intérprete de comandos, y decir cual se instaló por defecto (default) en su máquina, al momento de instalar el Sistema Operativo.
+
+Un intérprete de comandos (o shell) es un programa informático que tiene la capacidad de traducir las órdenes que el usuario introduce (en formato de texto) en instrucciones que el sistema operativo puede entender y ejecutar.
+En Ubuntu Linux (y la mayoría de las distribuciones GNU/Linux), el intérprete de comandos instalado por defecto se llama Bash (Bourne Again Shell).
+
+7- Realizar una breve descripción del directorio raíz ( / ) (sistema de Archivo), indicando qué se aloja en cada directorio del Sistema (solamente los directorios del raíz).
+
+El directorio raíz (/) es la base de la jerarquía de archivos en Linux. Sus principales subdirectorios alojan lo siguiente:
+/bin: Comandos binarios esenciales para todos los usuarios (ej. ls, cp, bash).
+/boot: Archivos estáticos necesarios para el arranque del sistema (ej. kernel, GRUB).
+/dev: Archivos de dispositivos (hardware como discos, teclados, puertos).
+/etc: Archivos de configuración del sistema y de los programas instalados.
+/home: Directorios personales de los usuarios (documentos, descargas, escritorio).
+/lib: Bibliotecas compartidas esenciales y módulos del kernel.
+/media o /mnt: Puntos de montaje para medios extraíbles (USB, CD-ROM) o temporales.
+/opt: Paquetes de software de aplicaciones de terceros.
+/root: Directorio personal del súper-usuario (Administrador).
+/sbin: Binarios esenciales para la administración del sistema (usados por root).
+/tmp: Archivos temporales creados por el sistema o aplicaciones.
+/usr: Utilidades y aplicaciones de usuario (segunda jerarquía más grande).
+/var: Archivos de datos variables, como registros del sistema (logs) y bases de datos.
+
+8- Usando el comando listar, mostrar tres formas diferentes de ver el contenido de un directorio.
+
+Forma 1: Listado simple de los nombres de archivos y carpetas.
+Comando: ls
+
+Forma 2: Listado detallado (muestra permisos, propietario, tamaño y fecha).
+Comando: ls -l
+
+Forma 3: Listado incluyendo archivos ocultos (los que empiezan con un punto).
+Comando: ls -a
+
+9- Indicar como hace para ver la ayuda/documentación de cada comando del shell del Sistema Operativo.
+
+Usando el manual del sistema: man <comando> (ej. man ls)
+Usando el parámetro de ayuda del propio comando: <comando> --help (ej. ls --help)
+Usando las páginas de información: info <comando>
+
+10- En el Sistema Operativo Windows 11/10/8/7/vista/XP, en que directorio se guardan por defecto los perfiles usuarios.
+
+En Windows 11, 10, 8, 7 y Vista: Se guardan en la ruta C:\Users\ (o C:\Usuarios\).
+En Windows XP: Se guardaban en C:\Documents and Settings\.
+
+11- Decir cómo se llaman el intérprete de comando más común de Windows
+
+En Windows, los intérpretes de comandos más comunes son el Símbolo del sistema (cmd.exe) y Windows PowerShell.
+
+12- Usando comandos del Shell del sistema operativo Windows 10/8/7/Vista/XP, listar el contenido del directorio raíz del sistema y describir brevemente cada uno de sus directorios (realizarlo en cualquier instalación de Windows que posea).
+
+El comando a usar en la consola de Windows (CMD) sería: dir C:\
+Los directorios que habitualmente encontramos son:
+C:\Windows: Contiene los archivos centrales y esenciales del Sistema Operativo Windows.
+C:\Program Files (Archivos de programa): Contiene el software y aplicaciones instaladas de 64 bits.
+C:\Program Files (x86): Contiene el software y aplicaciones instaladas de 32 bits (si el sistema es de 64 bits).
+C:\Users (Usuarios): Contiene las carpetas personales y perfiles de cada usuario creado en el sistema.
+
+13- Investigar sobre el protocolo e implementación de SSH
+
+SSH (Secure Shell) es un protocolo de red criptográfico que permite operar servicios de red de forma segura sobre una red no segura. Su uso más común es el inicio de sesión remoto en sistemas informáticos por parte de usuarios a través de una consola de comandos. SSH cifra todo el tráfico entre el cliente y el servidor (incluyendo contraseñas), mitigando ataques como el "sniffing". La implementación de código abierto más famosa y utilizada en sistemas Linux/Unix es OpenSSH.
+
+PARTE B:
+
+1- En su home ( Perfil de Usuario ) crear un directorio llamado prácticas.
+
+mkdir ~/practicas
+
+2- Dentro de prácticas crear un directorio tp1.
+
+mkdir ~/practicas/tp1
+
+3- Dentro de tp1 crear el archivo perfil.txt.
+
+touch ~/practicas/tp1/perfil.txt
+
+4- Usando comandos del Shell, crear un usuario nombre “admi”, para luego darle accesos privilegiados.
+
+Para crear el usuario:
+sudo adduser admi
+
+Para darle accesos privilegiados (añadirlo al grupo sudo):
+sudo usermod -aG sudo admi
+
+5- En tp1 realizar una copia de los archivos /etc/passwd y /etc/group y guardarlos como usuarios y grupos.
+
+cp /etc/passwd ~/practicas/tp1/usuarios
+cp /etc/group ~/practicas/tp1/grupos
+
+6- En el archivo usuarios creado en el punto anterior, identificar el uid (Identificador de usuario), gid (Identificador de grupo), y shell (Interpetre de comandos) y guardarlos en el archivo perfil.txt creado en el punto 3
+
+grep "admi" ~/practicas/tp1/usuarios | cut -d: -f3,4,7 > ~/practicas/tp1/perfil.txt
+
+7- Cambiar la fecha de acceso de perfil.txt a 2024-03-06
+
+touch -a -d "2024-03-06" ~/practicas/tp1/perfil.txt
+
+8- Muestra las primeras 2 líneas del archivo usuarios.
+
+head -n 2 ~/practicas/tp1/usuarios
+
+9- Muestre las últimas 4 líneas del archivo grupos.
+
+tail -n 4 ~/practicas/tp1/grupos
+
+10- Mostrar el contenido del archivo /etc/fstab y redireccionar su contenido al archivo filesystem.txt
+
+cat /etc/fstab > ~/practicas/tp1/filesystem.txt
+
+11- Indicar cantidad de líneas, caracteres y palabras que contiene el archivo filesystems.txt, redireccionar las salidas al archivo cantidad.
+
+wc ~/practicas/tp1/filesystem.txt > ~/practicas/tp1/cantidad
+
+12- Redireccionar history a /documentos/practicas/tp1/cmd.txt.
+
+history > ~/practicas/tp1/cmd.txt
+
+13- Renombrar el archivo cmd.txt como hist.txt
+
+mv ~/practicas/tp1/cmd.txt ~/practicas/tp1/hist.txt
+
+14- Usando el comando grep buscar en el archivo usuarios el registro correspondiente al usuario creado anteriormente y mandar al archivo newusuario.
+
+grep "admi" ~/practicas/tp1/usuarios > ~/practicas/tp1/newusuario
+
+15- Copiar el directorio tp1 como tp1-temp.
+
+cp -r ~/practicas/tp1 ~/practicas/tp1-temp
+
+16- Copiar el documento desarrollado en la PARTE A dentro de la carpeta practicas/tp1, con el nombre Practica1ParteA.txt.
+
+cp /ruta/donde/tengas/tu/documentoA.txt ~/practicas/tp1/Practica1ParteA.txt // Fijarse dónde está guardado el documento que contiene la PARTE A
+
+17- Comprimir y empaquetar el directorio tp1 y dejar dicho archivo en el directorio practicas.
+
+tar -czvf ~/practicas/tp1.tar.gz -C ~/practicas tp1
+
+18- Borrar el directorio tp1-temp.
+
+rm -r ~/practicas/tp1-temp
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TRABAJO PRÁCTICO 2
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+PARA TODOS LOS SCRIPTS
+
+# 1. Se abre el editor de texto 'nano' para escribir el código
+nano ejercicio1.sh
+
+# (Escribís el código, guardás con Ctrl+O y salís con Ctrl+X)
+
+# 2. Le das permisos de ejecución al archivo que acabás de crear
+chmod +x ejercicio1.sh
+
+# 3. Ejecutás el script
+./ejercicio1.sh
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Crear el directorio tp2 dentro de /documentos/practicas y realizar un script que muestre por pantalla “Estoy aprendiendo lenguaje scripting”.
+
+mkdir -p /documentos/practicas/tp2
+cd /documentos/practicas/tp2
+
+#!/bin/bash
+echo "Estoy aprendiendo lenguaje scripting"
+
+2. Hacer un script que realice los siguientes pasos:
+- Limpiar la pantalla
+- Ejecutar el comando df
+- Buscar en la salida del comando anterior el espacio disponible en el sistema de archivos raíz -
+Mostrar un mensaje por pantalla que diga:
+"El espacio disponible en el sistema de archivos raíz es : xxxxxx"
+
+#!/bin/bash
+# Limpiar la pantalla
+clear
+
+# Se obtiene el espacio disponible en el raíz (/). 
+# Se usa awk para capturar la columna correspondiente al espacio disponible (columna 4).
+ESPACIO=$(df -h / | awk 'NR==2 {print $4}')
+
+# Mostrar mensaje
+echo "El espacio disponible en el sistema de archivos raíz es : $ESPACIO"
+
+3. Realizar un script que evalúe 2 archivos ordinarios, e indique entre ambos cuál posee más cantidad de líneas.
+
+#!/bin/bash
+echo "Ingrese la ruta del primer archivo:"
+read arch1
+echo "Ingrese la ruta del segundo archivo:"
+read arch2
+
+# Verifico si los archivos existen
+if [ ! -f "$arch1" ] || [ ! -f "$arch2" ]; then
+    echo "Error: Uno o ambos no son archivos válidos."
+    exit 1
+fi
+
+# Cuento las líneas usando wc -l
+lineas1=$(wc -l < "$arch1")
+lineas2=$(wc -l < "$arch2")
+
+if [ "$lineas1" -gt "$lineas2" ]; then
+    echo "El archivo '$arch1' tiene más cantidad de líneas ($lineas1)."
+elif [ "$lineas1" -lt "$lineas2" ]; then
+    echo "El archivo '$arch2' tiene más cantidad de líneas ($lineas2)."
+else
+    echo "Ambos archivos tienen la misma cantidad de líneas ($lineas1)."
+fi
+
+4. Idem anterior pero pasando los archivos por parámetro
+
+#!/bin/bash
+# Verifico que se hayan pasado exactamente 2 parámetros
+if [ $# -ne 2 ]; then
+    echo "Error: Se requieren exactamente 2 parámetros."
+    echo "Uso: ./ejercicio4.sh archivo1 archivo2"
+    exit 1
+fi
+
+# Verifico que los parámetros sean archivos
+if [ ! -f "$1" ] || [ ! -f "$2" ]; then
+    echo "Error: Ambos parámetros deben ser archivos ordinarios."
+    exit 1
+fi
+
+a=$(cat "$1" | wc -l)
+b=$(cat "$2" | wc -l)
+
+if [ "$a" -gt "$b" ]; then
+    echo "El primer archivo ($1) tiene más cantidad de líneas ($a)."
+elif [ "$a" -lt "$b" ]; then
+    echo "El segundo archivo ($2) tiene más cantidad de líneas ($b)."
+else
+    echo "Ambos archivos tienen la misma cantidad de líneas ($a)."
+fi
+
+5. Hacer un script que indique la cantidad de archivos y directorios que hay en un directorio cualquiera pasado como argumento, usando estructuras repetitivas.
+
+#!/bin/bash
+# Valido que el parámetro pasado sea un directorio
+if [ ! -d "$1" ]; then
+    echo "Error: El parámetro debe ser un directorio válido."
+    exit 1
+fi
+
+cont_dir=0
+cont_arch=0
+
+# Recorro el directorio con una estructura iterativa (for)
+for elemento in "$1"/*; do
+    if [ -d "$elemento" ]; then
+        cont_dir=$((cont_dir + 1))
+    elif [ -f "$elemento" ]; then
+        cont_arch=$((cont_arch + 1))
+    fi
+done
+
+echo "La cantidad de directorios es: $cont_dir"
+echo "La cantidad de archivos ordinarios es: $cont_arch"
+
+6. Hacer un scripts que realice los siguientes pasos:
+○ Descomprimir el directorio tp1 de la práctica 1 en un directorio llamado nuevo
+○ Del archivo hist.txt sacar las líneas que corresponden al comando ls y guardarlas en el archivo “listado”
+○ Comprimir el archivo “listado”
+
+#!/bin/bash
+# 1. Se asume que el archivo comprimido del TP1 se llama tp1.txt y está en el dir actual.
+mkdir -p nuevo
+tar -xzvf tp1.txt -C nuevo
+
+# 2. Buscar las líneas del comando 'ls' en hist.txt y guardarlas en 'listado'
+# Se asume la ruta interna tras descomprimir, ajusta si es diferente.
+grep "ls" nuevo/tp1/hist.txt > listado
+
+# 3. Comprimir el archivo listado
+tar -czvf listado.tar.gz listado
+
+echo "Proceso finalizado. Archivo listado.tar.gz generado exitosamente."
+
+7. Hacer un scripts que recorra el directorio tp1 copiado anteriormente y busque todos los archivos con extensión .txt y le asigna permiso de escritura a otros
+
+#!/bin/bash
+# Busco en el directorio tp1 y usamos chmod o+w para dar permiso de escritura a "otros"
+for archivo in $(find nuevo/tp1 -type f -name "*.txt"); do
+    chmod o+w "$archivo"
+    echo "Permiso asignado a: $archivo"
+done
+
+8. Implementar con un script el punto 6 de la parte B de la práctica 1
+
+#!/bin/bash
+# Filtra información del usuario (ejemplo: 'usuario_prueba') sacando campos clave (1,3,4,7) del /etc/passwd
+echo "Ingrese el nombre de usuario a extraer de /etc/passwd:"
+read usuario
+
+# Se extrae usuario, UID, GID y Shell
+cat /etc/passwd | grep "$usuario" | cut -d":" -f 1,3,4,7 >> perfil.txt
+echo "Datos exportados correctamente a perfil.txt"
+
+9. Implementar un script usando la sentencia while, en donde se lea el archivo passwd línea por línea y se imprima el mismo por Terminal.
+
+#!/bin/bash
+archivo="/etc/passwd"
+
+# Se lee el archivo línea por línea usando la estructura while y read
+while read linea; do
+    echo "$linea"
+done < "$archivo"
+
+10. Copiar el archivo usuarios generado en el punto 5 parte B del tp1 y utilizarlo en un script que permita simular dar de alta un usuario en términos de:
+usu01:x:uid:guid: :/home/usu01:/bin/bash (línea que debe agregar al archivo usuarios)
+El usuario usu01 debe ser pasado como argumento
+
+#!/bin/bash
+# Verificar que se pasó un argumento
+if [ -z "$1" ]; then
+    echo "Error: El usuario debe ser pasado como argumento."
+    echo "Uso: ./ejercicio10.sh <nombre_usuario>"
+    exit 1
+fi
+
+USUARIO=$1
+ARCHIVO="usuarios"
+
+# Verificamos que exista el archivo, sino lo creamos.
+if [ ! -f "$ARCHIVO" ]; then
+    touch "$ARCHIVO"
+fi
+
+# Buscar el último ID ingresado (tomamos el UID del último registro). 
+# Si el archivo está vacío, comenzamos desde 1000.
+ultimo_uid=$(tail -n 1 "$ARCHIVO" | cut -d":" -f3)
+ultimo_guid=$(tail -n 1 "$ARCHIVO" | cut -d":" -f4)
+
+if [ -z "$ultimo_uid" ]; then
+    uid=1000
+    guid=1000
+else
+    # Sumar 1 usando let (o aritmética de bash)
+    let uid=$ultimo_uid+1
+    let guid=$ultimo_guid+1
+fi
+
+# Insertar el nuevo usuario
+echo "${USUARIO}:x:${uid}:${guid}::/home/${USUARIO}:/bin/bash" >> "$ARCHIVO"
+echo "El usuario $USUARIO ha sido dado de alta exitosamente en el archivo '$ARCHIVO'."
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TRABAJO PRÁCTICO 3
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1- Guardar las variables de entorno HOSTNAME, HOME, LOGNAME Y PATH en un archivo de nombre var-set ordenado por nombre de variable.
+
+#!/bin/bash
+(
+  echo "HOSTNAME=$HOSTNAME"
+  echo "HOME=$HOME"
+  echo "LOGNAME=$LOGNAME"
+  echo "PATH=$PATH"
+) | sort > var-set
+echo "Las variables han sido guardadas y ordenadas en 'var-set'."
+
+2- Implementar un script que cambie los permisos de todos los ejercicios (scripts) de la practica 2 que se encuentran en …/practicas/tp2/ para que puedan ser ejecutados por otros y modificados por el grupo, el resto de los permisos quedan igual.
+
+#!/bin/bash
+# Asumo que estoy en un directorio al mismo nivel que "practicas/tp2/"
+chmod o+x,g+w ../practicas/tp2/*
+echo "Permisos de los scripts del TP2 actualizados."
+
+3- Recorrer el directorio …/practicas/tp1/ y encontrar los archivos ordinarios que tengan permiso igual a 644. De dichos archivos guardar solo los nombres en un archivo de nombre “perm644”.
+
+#!/bin/bash
+# Uso find para buscar archivos (-type f) con permisos exactos 644 y extraemos el nombre
+find ../practicas/tp1/ -type f -perm 644 -exec basename {} \; > perm644
+echo "Los nombres de los archivos se han guardado en 'perm644'."
+
+4- Usando el comando find, generar un scrip que al pasarle un directorio cualquiera pasado como parámetro:
+a) Guarde en el archivo name los nombres de archivos que comienzan con la letra a.
+b) Guarde en el archivo extend los nombres de archivos que tienen extensión .txt
+c) Guarde en el archivo perm los nombre de archivos que tienen permisos iguales a 644
+d) Guarde en el archivo tam los nombres de archivos que tienen tamaño mayor a 1K
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Error: Debe pasar un directorio válido como parámetro."
+  exit 1
+fi
+
+find "$1" -maxdepth 1 -type f -name "a*" > name
+find "$1" -maxdepth 1 -type f -name "*.txt" > extend
+find "$1" -maxdepth 1 -type f -perm 644 > perm
+find "$1" -maxdepth 1 -type f -size +1k > tam
+
+echo "Archivos name, extend, perm y tam generados correctamente."
+
+5- Usando una estructura repetitiva recorrer un directorio cualquiera pasado por parámetro y determinar que archivos fueron modificados (Comando stat) en un mes determinado. Dicho mes también pasarlo por parámetro.
+
+#!/bin/bash
+if [ $# -ne 2 ]; then
+  echo "Uso: $0 <directorio> <mes_en_numero_01_a_12>"
+  exit 1
+fi
+
+if [ -d "$1" ]; then
+  for i in "$1"/*; do
+    if [ -f "$i" ]; then
+      mes_mod=$(stat -c %y "$i" | cut -d'-' -f2)
+      if [ "$mes_mod" == "$2" ]; then
+        echo "El archivo $i fue modificado en el mes $2"
+      fi
+    fi
+  done
+else
+  echo "Error: El primer parámetro debe ser un directorio."
+fi
+
+6- Hacer un informe de un directorio cualquiera pasado por parámetro que indique:
+a) Que archivos han sido modificados en los últimos 30 minutos
+b) Que archivos han sido accedidos en los últimos 60 minutos.
+c) Que archivos han sido modificados en los últimos 5 días
+d) Que archivos han sido modificados hace más de 10 días
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Error: Debe ingresar un directorio válido."
+  exit 1
+fi
+
+informe="informe_tiempos.txt"
+echo "--- Informe del directorio $1 ---" > "$informe"
+
+echo "a) Modificados en los últimos 30 minutos:" >> "$informe"
+find "$1" -maxdepth 1 -type f -mmin -30 >> "$informe"
+
+echo -e "\nb) Accedidos en los últimos 60 minutos:" >> "$informe"
+find "$1" -maxdepth 1 -type f -amin -60 >> "$informe"
+
+echo -e "\nc) Modificados en los últimos 5 días:" >> "$informe"
+find "$1" -maxdepth 1 -type f -mtime -5 >> "$informe"
+
+echo -e "\nd) Modificados hace más de 10 días:" >> "$informe"
+find "$1" -maxdepth 1 -type f -mtime +10 >> "$informe"
+
+echo "Informe generado en '$informe'."
+
+7- Hacer un script que al ejecutarse pida al usuario 2 números y después presente la suma, resta, producto y división de los mismos
+
+#!/bin/bash
+read -p "Ingrese el primer número: " num1
+read -p "Ingrese el segundo número: " num2
+
+echo "Suma: $((num1 + num2))"
+echo "Resta: $((num1 - num2))"
+echo "Producto: $((num1 * num2))"
+if [ "$num2" -ne 0 ]; then
+  echo "División: $((num1 / num2))"
+else
+  echo "División: Error, no se puede dividir por cero."
+fi
+
+8- Compruebe si un directorio cualquiera pasado como argumento existe, en tal caso contabilizar la cantidad de archivos y directorios, guardar ambos contadores en un archivo. Usar una estructura repetitiva para resolverlo.
+
+#!/bin/bash
+if [ -d "$1" ]; then
+  c_arch=0
+  c_dir=0
+  for i in "$1"/*; do
+    if [ -f "$i" ]; then
+      c_arch=$((c_arch + 1))
+    elif [ -d "$i" ]; then
+      c_dir=$((c_dir + 1))
+    fi
+  done
+  echo "Cantidad de archivos: $c_arch" > contadores.txt
+  echo "Cantidad de directorios: $c_dir" >> contadores.txt
+  echo "Resultados guardados en 'contadores.txt'."
+else
+  echo "El directorio especificado no existe."
+fi
+
+9- Muestre los números naturales del 1-20
+
+#!/bin/bash
+num=1
+while [ $num -le 20 ]; do
+  echo $num
+  num=$((num + 1))
+done
+
+10- Hacer un script que visualice un menú de tres opciones, la primera borra un fichero cualquiera, la segunda visualiza un fichero, la tercera copia un archivo al directorio actual y la cuarta sale del script.
+
+#!/bin/bash
+opcion=0
+while [ "$opcion" -ne 4 ]; do
+  echo "--- MENÚ ---"
+  echo "1. Borrar un fichero"
+  echo "2. Visualizar un fichero"
+  echo "3. Copiar archivo al directorio actual"
+  echo "4. Salir"
+  read -p "Elija una opción: " opcion
+
+  case $opcion in
+    1)
+      read -p "Archivo a borrar: " arch
+      rm -f "$arch" && echo "Hecho."
+      ;;
+    2)
+      read -p "Archivo a visualizar: " arch
+      cat "$arch" 2>/dev/null || echo "Error al abrir."
+      ;;
+    3)
+      read -p "Ruta del archivo a copiar: " arch
+      cp "$arch" . 2>/dev/null && echo "Copiado." || echo "Error al copiar."
+      ;;
+    4)
+      echo "Saliendo..."
+      ;;
+    *)
+      echo "Opción incorrecta."
+      ;;
+  esac
+done
+
+11- Hacer un script que pida continuamente una palabra clave, si la palabra introducida es “secreto” que nos muestre un mensaje de Bienvenida.
+
+#!/bin/bash
+palabra=""
+while [ "$palabra" != "secreto" ]; do
+  read -p "Ingrese la palabra clave: " palabra
+  if [ "$palabra" != "secreto" ]; then
+    echo "Incorrecto, intente nuevamente."
+  fi
+done
+echo "¡Bienvenido!"
+
+12- Hacer un script que compare dos cadenas de caracteres introducidas como parámetro, previamente comprobar si el número de parámetros es correcto. Dejar un mensaje en pantalla que diga cadenas correctas o incorrectas.
+
+#!/bin/bash
+if [ $# -ne 2 ]; then
+  echo "Error: Debe ingresar exactamente dos cadenas como parámetros."
+  exit 1
+fi
+
+if [ "$1" == "$2" ]; then
+  echo "cadenas correctas"
+else
+  echo "cadenas incorrectas"
+fi
+
+13- Hacer un script que evalúe el tamaño de 2 directorios cualesquiera pasado por parámetro y determine cuál de ellos tiene mayor tamaño.
+
+#!/bin/bash
+if [ $# -ne 2 ] || [ ! -d "$1" ] || [ ! -d "$2" ]; then
+  echo "Error: Debe ingresar dos directorios válidos."
+  exit 1
+fi
+
+tam1=$(du -sb "$1" | cut -f1)
+tam2=$(du -sb "$2" | cut -f1)
+
+if [ "$tam1" -gt "$tam2" ]; then
+  echo "El directorio $1 es mayor."
+elif [ "$tam2" -gt "$tam1" ]; then
+  echo "El directorio $2 es mayor."
+else
+  echo "Ambos directorios tienen el mismo tamaño."
+fi
+
+14- Hacer un script que elimine una cadena de caracteres cualquiera, de un archivo ordinario pasado por parámetro. Genere un archivo nuevo como salida, y cambie los permisos a este archivo para que solo lo pueda leer y escribir el dueño. Chequear que se pase el parámetro y que el mismo sea un archivo ordinario.
+
+#!/bin/bash
+if [ $# -ne 2 ]; then
+  echo "Uso: $0 <archivo> <cadena_a_eliminar>"
+  exit 1
+fi
+
+if [ -f "$1" ]; then
+  sed "s/$2//g" "$1" > "$1.nuevo"
+  chmod 600 "$1.nuevo"
+  echo "Se generó $1.nuevo con permisos de lectura/escritura solo para el dueño."
+else
+  echo "Error: El primer parámetro debe ser un archivo ordinario."
+fi	
+
+15- Hacer un script que lea por parámetro el directorio tp2 (solo los ejercicios de script), a cada archivo leído cambiarle la palabra bash por sh, y guardar el archivo modificado en un directorio llamado “scripts-sh” dentro de tp3.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe pasar un directorio (ej. tp2) como parámetro."
+  exit 1
+fi
+
+mkdir -p ../tp3/scripts-sh
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    nom=$(basename "$arch")
+    sed 's/bash/sh/g' "$arch" > "../tp3/scripts-sh/$nom"
+  fi
+done
+echo "Archivos copiados y modificados en ../tp3/scripts-sh/"
+
+16- Hacer un script que lea un archivo por parámetro y borre un rango de líneas del mismo. Chequear que el archivo pasado por parámetro sea de tipo ordinario.
+
+#!/bin/bash
+if [ $# -ne 3 ]; then
+  echo "Uso: $0 <archivo> <linea_inicio> <linea_fin>"
+  exit 1
+fi
+
+if [ -f "$1" ]; then
+  sed "${2},${3}d" "$1" > "$1.modificado"
+  echo "Rango de líneas borrado, guardado como $1.modificado."
+else
+  echo "El primer parámetro debe ser un archivo ordinario."
+fi
+
+17- Hacer un script que acepte un fichero como parámetro, comprobar si este existe, en caso que si exista convertir todas sus letras minúsculas en mayúsculas en lo que respecta al contenido del mismo.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -f "$1" ]; then
+  echo "Debe ingresar un archivo ordinario válido."
+  exit 1
+fi
+
+tr '[:lower:]' '[:upper:]' < "$1" > "$1.mayus"
+echo "Archivo convertido y guardado como $1.mayus"
+
+18- Hacer un script que al pasarle un directorio cualquiera que contenga archivos ordinarios, le borre a cada uno de los archivos las líneas 2 a 5, el nuevo archivo de salida se debe llamar igual que el original con el agregado al final del nombre “-m”, los archivos nuevos dejarlos en un directorio de nombre “ar-modificados”
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe pasar un directorio como parámetro."
+  exit 1
+fi
+
+mkdir -p ar-modificados
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    nom=$(basename "$arch")
+    sed '2,5d' "$arch" > "ar-modificados/${nom}-m"
+  fi
+done
+echo "Archivos procesados en el directorio 'ar-modificados'."
+
+19- Hacer un script que al pasarle un directorio cualquiera que contenga archivos ordinarios, le inserte 3 espacios en blanco al principio de cada línea.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe pasar un directorio como parámetro."
+  exit 1
+fi
+
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    sed -i 's/^/   /' "$arch"
+  fi
+done
+echo "Se han insertado 3 espacios al inicio de cada línea."
+
+20- Escribir un script que copie todos los archivos ejecutables de la carpeta “tp2” a una carpeta llamada “execu” y los no ejecutables a una carpeta llamada “no-execu”, ademas generar un listado con los nombres de los archivos copiados.
+
+#!/bin/bash
+dir_origen="tp2"
+dir_exec="execu"
+dir_noexec="no-execu"
+listado="listado_copiados.txt"
+
+if [ ! -d "$dir_origen" ]; then
+  echo "El directorio $dir_origen no existe. Créelo o ajuste la ruta."
+  exit 1
+fi
+
+mkdir -p "$dir_exec" "$dir_noexec"
+> "$listado"
+
+for arch in "$dir_origen"/*; do
+  if [ -f "$arch" ]; then
+    nom=$(basename "$arch")
+    if [ -x "$arch" ]; then
+      cp "$arch" "$dir_exec/"
+      echo "$nom -> movido a $dir_exec" >> "$listado"
+    else
+      cp "$arch" "$dir_noexec/"
+      echo "$nom -> movido a $dir_noexec" >> "$listado"
+    fi
+  fi
+done
+echo "Archivos clasificados. Listado generado en $listado."
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ANEXO
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1- Hacer un script que reciba como parámetro un archivo y un string y me informe si dicho string esta en el archivo. A su vez debe chequear la existencia del archivo y del parámetro
+
+#!/bin/bash
+if [ $# -ne 2 ] || [ ! -f "$1" ]; then
+  echo "Uso: $0 <archivo> <string>"
+  exit 1
+fi
+
+if grep -q "$2" "$1"; then
+  echo "El string '$2' SÍ se encuentra en el archivo."
+else
+  echo "El string '$2' NO se encuentra en el archivo."
+fi
+
+2- Hacer un script que al pasarle un directorio cualquiera que contenga archivos ordinarios, muestre las 5 primeras líneas de cada archivo, las líneas mostradas de cada uno de ellos ir guardándola en un archivo nuevo.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe pasar un directorio como parámetro."
+  exit 1
+fi
+
+> primeras_lineas.txt
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    echo "--- $arch ---" >> primeras_lineas.txt
+    head -n 5 "$arch" >> primeras_lineas.txt
+    echo "--- $arch ---"
+    head -n 5 "$arch"
+  fi
+done
+
+3- Realizar un script, el cuál solicite un número y responda mostrando los 6 siguientes, los 6 números deben quedar guardados en orden inverso en el archivo num
+
+#!/bin/bash
+read -p "Ingrese un número: " numero
+> num
+
+for i in {1..6}; do
+  val=$((numero + i))
+  echo "$val"
+done | sort -nr > num
+
+echo "Números guardados en 'num':"
+cat num
+
+4- Realizar un script, donde por parámetro se ingresa una palabra, y esta se imprima 10 veces por pantalla y a su vez se guarde en un archivo con nombre word. Usar una sentencia iterativa para resolverlo, a su vez chequear que el parámetro no se pase en blanco cuando se ejecuta el script. Al finalizar comprimir el archivo word.
+
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Error: El parámetro (palabra) no puede estar vacío."
+  exit 1
+fi
+
+> word
+for i in {1..10}; do
+  echo "$1"
+  echo "$1" >> word
+done
+
+gzip word
+echo "Archivo word comprimido exitosamente (word.gz)."
+
+5- Realizar un script que indique si un usuario pasado por argumento tiene como shell el bash, de lo contrario decir que tipo de shell tiene.
+
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Debe ingresar un nombre de usuario."
+  exit 1
+fi
+
+shell=$(grep "^$1:" /etc/passwd | cut -d':' -f7)
+
+if [ -z "$shell" ]; then
+  echo "El usuario no existe."
+elif [ "$shell" == "/bin/bash" ]; then
+  echo "El usuario tiene como shell el bash."
+else
+  echo "El usuario tiene como shell: $shell"
+fi
+
+6 - Realizar un script que al pasarle un archivo como parámetro nos devuelva el tamaño del mismo. A su vez chequear que el parámetro no se pase en blanco y que el archivo exista o sea del tipo ordinario.
+
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Error: Parámetro en blanco. Ingrese un archivo."
+  exit 1
+fi
+
+if [ -f "$1" ]; then
+  tamano=$(du -b "$1" | cut -f1)
+  echo "El tamaño del archivo es $tamano bytes."
+else
+  echo "No es un archivo ordinario o no existe."
+fi
+
+7 - Realizar un script utilizando la sentencia while, que lea un archivo cualquiera línea por línea y guarde cada una de ellas en un archivo llamado copia, a su vez vaya mostrando cada línea por terminal con un retardo de 3 segundos.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -f "$1" ]; then
+  echo "Debe pasar un archivo válido."
+  exit 1
+fi
+
+> copia
+while IFS= read -r linea; do
+  echo "$linea" >> copia
+  echo "$linea"
+  sleep 3
+done < "$1"
+
+8 - Hacer un script que lea un directorio cualquiera por parámetro y guarde el nombre de los archivos comunes solamente en solo-archi, y contabilice los mismos, dicho contador guardarlo al final del archivo solo-archi. Usar una sentencia iterativa para resolverlo y chequear que el parámetro no se pase en blanco.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe ingresar un directorio."
+  exit 1
+fi
+
+> solo-archi
+cont=0
+
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    basename "$arch" >> solo-archi
+    cont=$((cont + 1))
+  fi
+done
+
+echo "TOTAL_ARCHIVOS=$cont" >> solo-archi
+echo "Proceso terminado. Archivos totales: $cont"
+
+9- Hacer un script que guarde en el archivo perm todos los archivos que tienen permisos igual 755 y en el archivo exten todos aquellos que terminan con extensión .conf de un directorio cualquiera pasado como parámetro, a su vez chequear que el parámetro no sea pasado en blanco.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe pasar un directorio."
+  exit 1
+fi
+
+find "$1" -type f -perm 755 > perm
+find "$1" -type f -name "*.conf" > exten
+
+echo "Archivos filtrados y guardados en 'perm' y 'exten'."
+
+10- Hacer un script que reciba un directorio cualquiera pasado por parámetro, y calcule la cantidad de líneas de cada uno de sus archivos ordinarios (comunes), además contabilizar el total de líneas de todos los archivos y guardarlo en el archivo TOT_GENERAL.
+
+#!/bin/bash
+if [ -z "$1" ] || [ ! -d "$1" ]; then
+  echo "Debe pasar un directorio."
+  exit 1
+fi
+
+> TOT_GENERAL
+total_lineas=0
+
+for arch in "$1"/*; do
+  if [ -f "$arch" ]; then
+    lineas=$(wc -l < "$arch")
+    echo "$arch tiene $lineas líneas."
+    total_lineas=$((total_lineas + lineas))
+  fi
+done
+
+echo "El total general de líneas de todos los archivos es: $total_lineas" >> TOT_GENERAL
+echo "Conteo finalizado, ver archivo TOT_GENERAL."

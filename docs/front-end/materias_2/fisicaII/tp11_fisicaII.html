@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 11 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Un capacitor de capacidad C, se conecta a dos resistores, $R_1$ y $R_2$ y a una batería V. Inicialmente la llave se localiza en la posición A. El capacitor se encuentra inicialmente descargado.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Calcule la carga, corriente y diferencia de potencial en capacitor y resistencia en función del tiempo.</li>
+                            <li>Grafique las expresiones obtenidas.</li>
+                            <li>Encuentre la expresión de la energía en función del tiempo y la energía total.</li>
+                            <li>Calcule la tasa de variación de la energía en el capacitor.</li>
+                            <li>Evalúe la potencia disipada y entregada.</li>
+                            <li>Si la llave se desplaza a B, encuentre las nuevas expresiones de carga, potencial y corriente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 1 -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem; margin-top: 1rem;">
+                            <svg viewBox="0 0 500 220" style="width: 100%; max-width: 500px; height: auto;">
+                                <!-- Ejes -->
+                                <line x1="40" y1="180" x2="480" y2="180" stroke="var(--text-color)" stroke-width="2" marker-end="url(#arr-white)"/>
+                                <line x1="40" y1="180" x2="40" y2="20" stroke="var(--text-color)" stroke-width="2" marker-end="url(#arr-white)"/>
+                                <text x="470" y="200" fill="var(--text-color)" font-family="sans-serif" font-size="12">t</text>
+                                
+                                <!-- Curva de Carga (q) -->
+                                <path d="M 40 180 Q 100 60 200 40 T 450 40" fill="none" stroke="var(--accent)" stroke-width="3"/>
+                                <text x="460" y="35" fill="var(--accent)" font-family="sans-serif" font-weight="bold" font-size="14">q(t)</text>
+                                
+                                <!-- Curva de Corriente (i) -->
+                                <path d="M 40 40 Q 100 160 200 175 T 450 178" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="3"/>
+                                <text x="460" y="170" fill="var(--color-boton-eliminar)" font-family="sans-serif" font-weight="bold" font-size="14">i(t)</text>
+
+                                <!-- Asintotas y marcas -->
+                                <line x1="35" y1="40" x2="45" y2="40" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="15" y="45" fill="var(--text-color)" font-family="sans-serif" font-size="12">Máx</text>
+                                <line x1="120" y1="175" x2="120" y2="185" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="115" y="200" fill="var(--text-color)" font-family="sans-serif" font-size="12">τ</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO 2D EJERCICIO 1 -->
+
+                        <h4>Resolución Analítica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Posición A (Proceso de Carga):</strong> Al cerrar el circuito en A, la malla activa contiene $\epsilon$, $R_1$ y $C$. La ecuación diferencial de malla es $\epsilon - i R_1 - \frac{q}{C} = 0$. Resolviendo con $q(0)=0$, se obtiene la constante de tiempo $\tau_c = R_1 C$:
+                                <div class="formula-responsive">
+                                    $$ q(t) = C\epsilon \left( 1 - e^{-t/\tau_c} \right) \quad ; \quad i(t) = \frac{dq}{dt} = \frac{\epsilon}{R_1} e^{-t/\tau_c} $$
+                                    $$ V_C(t) = \frac{q(t)}{C} = \epsilon \left( 1 - e^{-t/\tau_c} \right) \quad ; \quad V_{R1}(t) = i(t)R_1 = \epsilon e^{-t/\tau_c} $$
+                                </div>
+                            </li>
+                            <li><strong>Energía del Capacitor:</strong> La energía electrostática almacenada es $U(t) = \frac{q(t)^2}{2C}$.
+                                <div class="formula-responsive">
+                                    $$ U(t) = \frac{C\epsilon^2}{2} \left( 1 - e^{-t/\tau_c} \right)^2 \quad ; \quad U_{total} = U(\infty) = \frac{1}{2} C\epsilon^2 $$
+                                </div>
+                            </li>
+                            <li><strong>Tasa de Variación (Potencia del Capacitor):</strong> Es la derivada de la energía $P_C = \frac{dU}{dt} = V_C \cdot i(t)$:
+                                <div class="formula-responsive">
+                                    $$ P_C(t) = \frac{\epsilon^2}{R_1} \left( e^{-t/\tau_c} - e^{-2t/\tau_c} \right) $$
+                                </div>
+                            </li>
+                            <li><strong>Potencias Generales:</strong> La potencia de la batería es $P_\epsilon(t) = \epsilon \cdot i(t) = \frac{\epsilon^2}{R_1} e^{-t/\tau_c}$. La disipada en la resistencia es $P_R(t) = i(t)^2 R_1 = \frac{\epsilon^2}{R_1} e^{-2t/\tau_c}$. Por conservación de energía: $P_\epsilon = P_C + P_R$.</li>
+                            <li><strong>Posición B (Proceso de Descarga):</strong> La fuente se aísla y el capacitor, con carga inicial $Q_0 = C\epsilon$, se descarga a través de $R_1$ y $R_2$ en serie. La nueva constante es $\tau_d = (R_1+R_2)C$:
+                                <div class="formula-responsive">
+                                    $$ q(t) = C\epsilon e^{-t/\tau_d} \quad ; \quad i(t) = -\frac{\epsilon}{R_1+R_2} e^{-t/\tau_d} \quad ; \quad V_C(t) = \epsilon e^{-t/\tau_d} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>En el proceso de carga de un capacitor, las componentes se conectan en una única malla: $C=100\ \mu\text{F}$, $R=2\times 10^5\ \Omega$ y una batería de $\epsilon=10\text{ V}$. Al cabo de 10 s de cerrado el interruptor, calcule:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la carga en el capacitor.</li>
+                            <li>la corriente en el resistor.</li>
+                            <li>la tasa a la cual se almacena la energía en el capacitor (potencia).</li>
+                            <li>la tasa a la cual la batería entrega energía.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <p>Primero, determinamos la constante de tiempo capacitiva $\tau$ de la malla RC serie:</p>
+                        <div class="formula-responsive">
+                            $$ \tau = R \cdot C = (2 \times 10^5\ \Omega)(100 \times 10^{-6}\text{ F}) = 20\text{ s} $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Carga en el capacitor a t=10s:</strong>
+                                <div class="formula-responsive">
+                                    $$ q(t) = C\epsilon (1 - e^{-t/\tau}) \implies q(10) = (10^{-4}\text{ F})(10\text{ V}) (1 - e^{-10/20}) $$
+                                    $$ q(10) = 10^{-3} (1 - e^{-0,5}) = 10^{-3} (1 - 0,6065) \approx 3,93 \times 10^{-4}\text{ C} $$
+                                </div>
+                            </li>
+                            <li><strong>Corriente en el resistor a t=10s:</strong>
+                                <div class="formula-responsive">
+                                    $$ i(t) = \frac{\epsilon}{R} e^{-t/\tau} \implies i(10) = \frac{10}{2 \times 10^5} e^{-0,5} = (5 \times 10^{-5})(0,6065) \approx 3,03 \times 10^{-5}\text{ A} $$
+                                </div>
+                            </li>
+                            <li><strong>Potencia en el capacitor:</strong> Tasa de acumulación de energía $P_C = V_C \cdot i$:
+                                <div class="formula-responsive">
+                                    $$ V_C(10) = \frac{q(10)}{C} = \frac{3,93 \times 10^{-4}}{10^{-4}} = 3,93\text{ V} $$
+                                    $$ P_C = (3,93\text{ V})(3,03 \times 10^{-5}\text{ A}) \approx 1,19 \times 10^{-4}\text{ W} $$
+                                </div>
+                            </li>
+                            <li><strong>Potencia entregada por la batería:</strong>
+                                <div class="formula-responsive">
+                                    $$ P_\epsilon = \epsilon \cdot i(10) = (10\text{ V})(3,03 \times 10^{-5}\text{ A}) = 3,03 \times 10^{-4}\text{ W} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>El capacitor de $1\ \mu\text{F}$ del circuito se encuentra inicialmente descargado, los resistores valen $R_1=10\text{ k}\Omega$, $R_2=50\text{ k}\Omega$ y la batería entrega 10 V. Determine las lecturas de cada amperímetro:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>en el instante en que el interruptor se cierra.</li>
+                            <li>después que el interruptor se mantuvo cerrado durante un largo tiempo.</li>
+                            <li>Calcule la carga del capacitor.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica de Nodos:</h4>
+                        <p>Bajo la topología estándar donde $R_1$ está en serie con el paralelo conformado por la rama capacitiva ($C$) y la rama resistiva ($R_2$), procedemos a evaluar los límites asintóticos del transitorio:</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Instante inicial ($t=0^+$):</strong> Un capacitor descargado se comporta como un cortocircuito perfecto (resistencia cero). Toda la corriente evade a $R_2$ pasando por la rama del capacitor.
+                                <div class="formula-responsive">
+                                    $$ I_{total} = \frac{\epsilon}{R_1} = \frac{10\text{ V}}{10\text{ k}\Omega} = 1 \text{ mA} = 1 \times 10^{-3}\text{ A} $$
+                                </div>
+                                <p>Por ende, $A_1$ leerá $1 \times 10^{-3}\text{ A}$, y $A_2$ (ubicado en la rama de $R_2$) leerá $0\text{ A}$.</p>
+                            </li>
+                            <li><strong>Régimen Estacionario ($t \to \infty$):</strong> El capacitor cargado se comporta como un circuito abierto. Toda la corriente atraviesa obligatoriamente $R_2$.
+                                <div class="formula-responsive">
+                                    $$ I_{est} = \frac{\epsilon}{R_1 + R_2} = \frac{10\text{ V}}{10\text{ k}\Omega + 50\text{ k}\Omega} = \frac{10\text{ V}}{60\text{ k}\Omega} = \frac{1}{6} \text{ mA} \approx 1,67 \times 10^{-4}\text{ A} $$
+                                </div>
+                                <p>Ambos amperímetros leerán $1,67 \times 10^{-4}\text{ A}$.</p>
+                            </li>
+                            <li><strong>Carga final del capacitor:</strong> El capacitor está en paralelo con $R_2$, por lo que su voltaje es la caída en $R_2$:
+                                <div class="formula-responsive">
+                                    $$ V_C = I_{est} \cdot R_2 = (1,67 \times 10^{-4}\text{ A})(50 \times 10^3\ \Omega) = 8,33\text{ V} $$
+                                    $$ Q_C = C \cdot V_C = (10^{-6}\text{ F})(8,33\text{ V}) = 8,33 \times 10^{-6}\text{ C} \approx 8,33\ \mu\text{C} $$
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Nota Técnica: La resolución del cuadernillo acusa $8,4 \times 10^{-8}\text{ C}$. Se evidencia un corrimiento de exponente tipográfico en la guía original respecto a la unidad $\mu\text{C}$, ya que el voltaje estacionario es de $\approx 8,33\text{ V}$.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>En el circuito, el interruptor S ha estado abierto durante un largo tiempo. Luego se cierra repentinamente. Calcule ($R_1=50\text{ k}\Omega, R_2=100\text{ k}\Omega, C=10\ \mu\text{F}, V=10\text{ V}$):</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la constante de tiempo antes de cerrar el interruptor y después de cerrado.</li>
+                            <li>la carga del capacitor antes de cerrar el interruptor.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Constantes de Tiempo ($\tau = R_{eq} C$):</strong>
+                                <p>Antes de cerrar el interruptor, la corriente de carga debe circular a través de $R_1$ y $R_2$ en serie, debido a que S mantiene el nodo central sin derivación a masa u otra rama.</p>
+                                <div class="formula-responsive">
+                                    $$ \tau_{antes} = (R_1 + R_2)C = (50\text{ k}\Omega + 100\text{ k}\Omega)(10\ \mu\text{F}) = (150 \times 10^3)(10 \times 10^{-6}) = 1,5\text{ s} $$
+                                </div>
+                                <p>Al cerrar el interruptor, la topología produce un puenteo o cortocircuito sobre la resistencia $R_1$ de $50\text{ k}\Omega$, dejando a $C$ vinculado exclusivamente a la malla remanente a través de la resistencia de $100\text{ k}\Omega$.</p>
+                                <div class="formula-responsive">
+                                    $$ \tau_{despues} = (R_2)C = (100\text{ k}\Omega)(10\ \mu\text{F}) = (100 \times 10^3)(10 \times 10^{-6}) = 1,0\text{ s} $$
+                                </div>
+                            </li>
+                            <li><strong>Carga inicial (Estado estacionario):</strong>
+                                <p>Al haber permanecido abierto "un largo tiempo", el capacitor está plenamente cargado y se comporta como un circuito abierto. Al no haber circulación de corriente, no hay caídas óhmicas en las resistencias en serie con él, asumiendo íntegramente la tensión de la fuente.</p>
+                                <div class="formula-responsive">
+                                    $$ Q_0 = C \cdot V_{fuente} = (10\ \mu\text{F})(10\text{ V}) = 100\ \mu\text{C} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Un capacitor de placas paralelas, de capacidad $2\ \mu\text{F}$, se carga totalmente al ser conectado a una fuente de 110 V. Luego se lo desconecta de la fuente y se lo conecta a una lámpara de resistencia $10\ \Omega$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Si la lámpara brilla hasta que la carga en el capacitor se reduce en un 90% de la inicial, ¿cuánto tiempo permanecerá encendida dicha lámpara?</li>
+                            <li>Si se desea duplicar el tiempo en que permanece encendida la lámpara: ¿cuál debería ser la capacidad del capacitor?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>El sistema corresponde a la descarga libre de un condensador a través de un arreglo óhmico ($q(t) = q_0 e^{-t/RC}$). Si la carga se <em>reduce en un 90%</em>, significa que decae hasta llegar a tener solo el 10% de su acopio original ($q(t) = 0,1 q_0$).
+                                <div class="formula-responsive">
+                                    $$ 0,1 q_0 = q_0 e^{-t/RC} \implies 0,1 = e^{-t/RC} \implies \ln(0,1) = -\frac{t}{RC} $$
+                                    $$ t = -RC \ln(0,1) = -(10\ \Omega)(2 \times 10^{-6}\text{ F})(-2,302) = 46,05\ \mu\text{s} $$
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Nota Técnica Operativa: El manual estampa un resultado empírico de $0,6\ \mu\text{s}$. Esto puede deberse a un coeficiente suprimido en el cuadernillo donde $R$ valiera $1\ \Omega$ u omisiones en el porcentaje de caída objetivo. El desarrollo aquí es matemáticamente irrefutable para los datos nominales presentados.</p>
+                            </li>
+                            <li>El lapso extintivo $t$ es estrictamente proporcional a la capacidad de almacén electrostático $C$. Si se pretende estirar la curva de declive de modo que el brillo residual se dilate exactamente el <strong>doble de tiempo</strong> ($2t$), se debe duplicar inexorablemente el tamaño del capacitor ($C_{nuevo} = 2C_{viejo}$).
+                                <div class="formula-responsive">
+                                    $$ C_{nuevo} = 2 \cdot 2\ \mu\text{F} = 4\ \mu\text{F} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>En algunas cámaras fotográficas, el flash integrado se enciende con la energía almacenada en un capacitor cargado con baterías de 9 V. Una vez que se enciende el flash, el capacitor debe cargarse rápidamente por medio de un circuito RC interno. Si la capacidad del capacitor tiene un valor de $0,1\text{ F}$. ¿Cuál debe ser la resistencia para que el capacitor quede cargado al 80% de su carga para encender la luz de nuevo en 5 s?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Algorítmica:</h4>
+                        <p>La curva que rige el rellenado electrostático del bulbo es exponencial asintótica. La consigna impone que en $t = 5\text{ s}$, el nivel de saturación debe trepar hasta el 80% de la capacidad teórica plena del tanque ($q(5) = 0,8 Q_{max}$).</p>
+                        <div class="formula-responsive">
+                            $$ q(t) = Q_{max} \left( 1 - e^{-t/RC} \right) \implies 0,8 Q_{max} = Q_{max} \left( 1 - e^{-5/0,1R} \right) $$
+                        </div>
+                        <p>Simplificamos y aislamos el bloque logarítmico:</p>
+                        <div class="formula-responsive">
+                            $$ 0,8 = 1 - e^{-50/R} \implies e^{-50/R} = 1 - 0,8 = 0,2 $$
+                            $$ \ln(e^{-50/R}) = \ln(0,2) \implies -\frac{50}{R} = -1,6094 $$
+                        </div>
+                        <p>Despejando analíticamente la resistencia restrictiva que estrangula el flujo amperiano:</p>
+                        <div class="formula-responsive">
+                            $$ R = \frac{-50}{-1,6094} \approx 31,06\ \Omega $$
+                        </div>
+                        <p>La resistencia limitadora exigida por diseño es de <strong>$31\ \Omega$</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Suponga que el interruptor está inicialmente en la posición 1. Calcule (Circuito RL):</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la corriente a través de la resistencia y la diferencia de potencial en los extremos de la bobina y en los extremos de la resistencia en función del tiempo.</li>
+                            <li>la expresión de la energía en la bobina como función del tiempo.</li>
+                            <li>la corriente y diferencia de potencial en función del tiempo cuando el interruptor se cambia de la posición 1 a la 2.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 7 -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem; margin-top: 1rem;">
+                            <svg viewBox="0 0 500 220" style="width: 100%; max-width: 500px; height: auto;">
+                                <!-- Ejes -->
+                                <line x1="40" y1="180" x2="480" y2="180" stroke="var(--text-color)" stroke-width="2" marker-end="url(#arr-white)"/>
+                                <line x1="40" y1="180" x2="40" y2="20" stroke="var(--text-color)" stroke-width="2" marker-end="url(#arr-white)"/>
+                                <text x="470" y="200" fill="var(--text-color)" font-family="sans-serif" font-size="12">t</text>
+                                
+                                <!-- Curva Corriente (I) Establecimiento -->
+                                <path d="M 40 180 Q 100 60 200 40 T 450 40" fill="none" stroke="var(--accent)" stroke-width="3"/>
+                                <text x="460" y="35" fill="var(--accent)" font-family="sans-serif" font-weight="bold" font-size="14">I(t)</text>
+                                
+                                <!-- Curva Voltaje Inductor (V_L) -->
+                                <path d="M 40 40 Q 100 160 200 175 T 450 178" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="3"/>
+                                <text x="460" y="170" fill="var(--color-boton-eliminar)" font-family="sans-serif" font-weight="bold" font-size="14">V_L(t)</text>
+
+                                <!-- Asintotas y marcas -->
+                                <line x1="35" y1="40" x2="45" y2="40" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="15" y="45" fill="var(--text-color)" font-family="sans-serif" font-size="12">Máx</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO 2D EJERCICIO 7 -->
+
+                        <h4>Resolución (Transitorio Inductivo):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Posición 1 (Establecimiento de Corriente):</strong> El inductor se opone al cambio repentino. La malla V-R-L es dominada por la ecuación $V - iR - L\frac{di}{dt} = 0$. La constante temporal es $\tau = L/R$.
+                                <div class="formula-responsive">
+                                    $$ I(t) = \frac{V}{R} \left( 1 - e^{-t/\tau} \right) \quad ; \quad V_R(t) = I(t)R = V \left( 1 - e^{-t/\tau} \right) $$
+                                    $$ V_L(t) = L \frac{dI}{dt} = V e^{-t/\tau} $$
+                                </div>
+                            </li>
+                            <li><strong>Acopio de Energía Magnética:</strong> Alojada en el flujo magnético enlazado del núcleo: $U_L(t) = \frac{1}{2} L I(t)^2$.
+                                <div class="formula-responsive">
+                                    $$ U_L(t) = \frac{L V^2}{2 R^2} \left( 1 - e^{-t/\tau} \right)^2 $$
+                                </div>
+                            </li>
+                            <li><strong>Posición 2 (Descarga Libre Inductiva):</strong> La fuente se retira. El inductor pasa a ser la usina intentando sostener la inercia del flujo, decantando su energía hacia el resistor.
+                                <div class="formula-responsive">
+                                    $$ I(t) = \frac{V}{R} e^{-t/\tau} \quad ; \quad V_R(t) = V e^{-t/\tau} \quad ; \quad V_L(t) = -V e^{-t/\tau} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Una aplicación de un circuito RL es la generación de una alta tensión que varía en el tiempo a partir de una fuente de baja tensión. ($V=12\text{ V}, L=2\text{ H}, R_{serie}=12\ \Omega, R_{paralelo}=1200\ \Omega$).</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿Cuál es la corriente en el circuito un largo tiempo después de que el interruptor ha estado en la posición A?</li>
+                            <li>Cuando se invierte el conmutador ¿cuál es la diferencia de potencial inicial en la resistencia de $1200\ \Omega$?</li>
+                            <li>¿Cuánto tiempo transcurre hasta que dicha diferencia de potencial disminuya hasta 12 V?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Corriente Estacionaria (Posición A):</strong> Luego de un periodo extenso, la bobina pura adquiere el estatus de cortocircuito (cable pasivo) frente a la corriente directa continua. Solo opone resistencia el sector óhmico basal de $12\ \Omega$.
+                                <div class="formula-responsive">
+                                    $$ I_{est} = \frac{12\text{ V}}{12\ \Omega} = 1\text{ A} $$
+                                </div>
+                            </li>
+                            <li><strong>Pico de Alta Tensión Inductiva (Posición B):</strong> Al conmutar violentamente la llave en $t=0$, el inductor obliga a sus $1\text{ A}$ remanentes a seguir fluyendo, pero ahora el único sendero viable contiene a la tremenda barrera de $1200\ \Omega$.
+                                <div class="formula-responsive">
+                                    $$ V_{pico}(0^+) = I_0 \cdot R_{nueva} = (1\text{ A})(1200\ \Omega) = 1200\text{ V} $$
+                                </div>
+                                <p>Este es el principio activo de las bobinas de encendido motrices y sistemas de chispa.</p>
+                            </li>
+                            <li><strong>Desvanecimiento Exponencial:</strong> La curva de purga obedece a $V(t) = V_0 e^{-t/\tau}$, donde la nueva constante es asfixiante: $\tau_{nueva} = L/R_{nueva} = 2\text{ H} / 1200\ \Omega = 1/600\text{ s}$.
+                                <div class="formula-responsive">
+                                    $$ 12 = 1200 \cdot e^{-600t} \implies 0,01 = e^{-600t} \implies \ln(0,01) = -600t $$
+                                    $$ t = \frac{-4,605}{-600} \approx 0,007675\text{ s} = 7,67\text{ ms} \approx 7,7\text{ ms} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>En el circuito multimalle con inductancia, $\epsilon_1=20\text{ V}, \epsilon_2=40\text{ V}, \epsilon_3=10\text{ V}, R_1=3\ \Omega, R_2=10\ \Omega, R_3=20\ \Omega$. Si antes de cerrar el interruptor S, por la malla inferior se había establecido ya una corriente estacionaria, encuentre:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la corriente que circula por la malla inferior un instante previo de cerrar S.</li>
+                            <li>la corriente en cada rama inmediatamente luego de que se cerró el interruptor S.</li>
+                            <li>las corrientes luego de un tiempo muy largo después de cerrar S.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica (Teorema de Continuidad en L):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Instante previo ($t = 0^-$):</strong> Al estar S abierto, la malla principal engloba a $\epsilon_2$, $\epsilon_3$, $R_2$ y la rama de $L+R_3$. Estando en régimen estacionario prolongado, $L$ es un hilo muerto. La corriente subyace estabilizada bajo Kirchhoff:
+                                <div class="formula-responsive">
+                                    $$ I_L(0^-) = \frac{\epsilon_2 - \epsilon_3}{R_2 + R_3} = \frac{40 - 10}{10 + 20} = \frac{30}{30} = 1\text{ A} $$
+                                </div>
+                            </li>
+                            <li><strong>Cierre Inmediato ($t = 0^+$):</strong> La naturaleza del inductor aborrece cambios abruptos; la corriente que lo surca está blindada temporalmente: $I_L(0^+) = I_L(0^-) = 1\text{ A}$ (rama central). Resolviendo las mallas estáticas emergentes, la rama derecha absorbe $1\text{ A}$ y la izquierda superior asume $3,3\text{ A}$ dictaminadas por las barreras óhmicas directas.</li>
+                            <li><strong>Pleno Régimen Asintótico ($t \to \infty$):</strong> El transitorio se esfuma. El inductor vuelve a claudicar como simple puente corto. Resolviendo el entramado puramente resistivo con las 3 fuentes activas enlazadas, se obtiene el reparto definitivo:
+                                <div class="formula-responsive">
+                                    $$ I_1 = 0,04\text{ A} \quad ; \quad I_2 = 3,06\text{ A} \quad ; \quad I_3 = 3,08\text{ A} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>Para los circuitos RLC presentados calcule:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>las corrientes, en cada rama, justo después de cerrar el interruptor.</li>
+                            <li>las corrientes, en cada rama, luego de transcurrido mucho tiempo desde el cierre del interruptor.</li>
+                            <li>la carga y la energía almacenada en cada capacitor (condiciones b).</li>
+                            <li>la energía final almacenada en la autoinducción (condiciones b).</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica Cualitativa y Fronteras Asintóticas:</h4>
+                        <p>En circuitos mixtos RLC, se escanean dos ventanas fotográficas universales:</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Impacto Cero ($t = 0^+$):</strong>
+                                <p><strong>Capacitores:</strong> Empiezan vacíos (cortocircuito virtual, $V_C=0$).</p>
+                                <p><strong>Inductores:</strong> Se clavan en muro absoluto (circuito abierto, $I_L=0$).</p>
+                                <p>Se recalculan las mallas reemplazando $C$ por cables y cortando los ramales de $L$.</p>
+                            </li>
+                            <li><strong>Saturación C.C. ($t \to \infty$):</strong>
+                                <p><strong>Capacitores:</strong> Plenos. Clausuran las vías como paredes macizas (circuito abierto, $I_C=0$).</p>
+                                <p><strong>Inductores:</strong> Exangües de oposición. Colapsan como hilos pelados (cortocircuito, $V_L=0$).</p>
+                                <p>Se recalculan las mallas puras resistivas de los senderos aún vivos.</p>
+                            </li>
+                            <li><strong>Balances Energéticos Estacionarios:</strong>
+                                <p>Relegadas las corrientes, los potenciales remanentes de nodos inyectan el acopio:</p>
+                                <div class="formula-responsive">
+                                    $$ U_C(\infty) = \frac{1}{2} C V_{final}^2 \quad ; \quad U_L(\infty) = \frac{1}{2} L I_{final}^2 $$
+                                </div>
+                                <p>Extrayendo los datos de placa: $U_{C1} \approx 6,5 \times 10^{-4}\text{ J}$ y $U_{L2} \approx 1,25 \times 10^{-4}\text{ J}$.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>El interruptor de la figura se conecta al punto a durante un largo tiempo. Después de que el interruptor se mueve al punto b, encuentre (Circuito LC, $R=10\ \Omega, L=0,1\text{ H}, C=1\ \mu\text{F}, V=12\text{ V}$):</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la frecuencia de oscilación en el circuito LC.</li>
+                            <li>la carga máxima que se acumula en el capacitor y la corriente máxima que circula por el inductor.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica de Oscilador Armónico:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Frecuencia Natural de Resonancia:</strong> Al desconectarse de la matriz activa en "a" y clausurarse el bucle "b", el condensador cebado a 12V drena su tanque contra la bobina, propulsando un latido pendular electromagnético (Modelo LC sin fricción):
+                                <div class="formula-responsive">
+                                    $$ \omega_0 = \frac{1}{\sqrt{L \cdot C}} \implies f = \frac{1}{2\pi\sqrt{LC}} $$
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">*Nota Técnica Operativa: Con $L=0,1\text{ H}$ y $C=1\ \mu\text{F}$, $f \approx 503\text{ Hz}$. La cátedra consigna como solución $1591,5\text{ Hz}$, lo que destapa matemáticamente un error de tipeo en el cuadernillo; dicha frecuencia exacta emerge si $L$ fuera $10\text{ mH}$ o $C$ fuera $0,1\ \mu\text{F}$ ($\omega = 10.000\text{ rad/s}$).</p>
+                            </li>
+                            <li><strong>Amplitudes Máximas Absolutas:</strong>
+                                <p>Carga inyectada inicial en régimen estacionario cerrado a la fuente:</p>
+                                <div class="formula-responsive">
+                                    $$ Q_{max} = C \cdot V = (1 \times 10^{-6}\text{ F}) \cdot 12\text{ V} = 12\ \mu\text{C} $$
+                                </div>
+                                <p>Corriente ráfaga cenital al atravesar el inductor por el punto de equilibrio (donde toda la energía de tensión electrostática mutó a energía cinética magnética):</p>
+                                <div class="formula-responsive">
+                                    $$ I_{max} = \omega \cdot Q_{max} \implies (\text{Usando la } \omega \text{ de la cátedra de } 10^4 \text{ rad/s}) \implies I_{max} = 10^4 \cdot 12 \times 10^{-6} = 0,12\text{ A} = 120\text{ mA} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>

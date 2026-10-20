@@ -4,3 +4,37 @@ body.sintaxis-page {
     --header-line-color: var(--color-sintaxis);
     --theme-color: var(--color-sintaxis);
 }
+
+/* ============================================================
+   DIAGRAMAS SVG (Autómatas)
+   ============================================================ */
+.afd-svg {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 1.5rem auto;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+    transition: all 0.3s ease;
+}
+.afd-svg text {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    fill: var(--text-color);
+    user-select: none;
+}
+.afd-svg circle {
+    fill: var(--card-bg);
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    transition: all 0.3s ease;
+}
+.afd-svg path, .afd-svg line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+}
+.afd-svg:hover circle {
+    filter: brightness(1.1);
+}

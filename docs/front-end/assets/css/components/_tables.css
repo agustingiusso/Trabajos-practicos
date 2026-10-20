@@ -39,3 +39,49 @@
 
 .data-table tr:nth-child(even) { background-color: var(--table-row-even, rgba(0,0,0,0.02)); }
 .data-table tr:nth-child(odd) { background-color: var(--table-row-odd, transparent); }
+
+/* ===== TABLAS DE ITERACIONES (Análisis Numérico) ===== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    border: 1px solid var(--table-border-color);
+}
+
+.table-responsive::-webkit-scrollbar { height: 6px; }
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: var(--table-border-color);
+    border-radius: 4px;
+}
+
+.tabla-iteraciones {
+    width: 100%;
+    min-width: 500px;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    color: var(--table-text-color, var(--text-color));
+    text-align: center;
+    background-color: var(--card-bg);
+}
+
+.tabla-iteraciones th, .tabla-iteraciones td {
+    border: 1px solid var(--table-border-color);
+    padding: 8px 12px;
+    white-space: nowrap; /* CRÍTICO: Evita que los números largos se dividan en dos renglones */
+}
+
+.tabla-iteraciones th {
+    background-color: var(--table-header-bg, var(--card-bg));
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.tabla-iteraciones tr:nth-child(even) { 
+    background-color: var(--table-row-even, rgba(0,0,0,0.02)); 
+}
+
+.tabla-iteraciones tr:nth-child(odd) { 
+    background-color: var(--table-row-odd, transparent); 
+}

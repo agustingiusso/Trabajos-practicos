@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - Análisis Numérico</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="numerico-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../analisis_numerico.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <h1 class="logo">TP 2: Cálculo de Raíces</h1>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 1</h3>
+                        <p>Estimar la cota de error absoluto al tomar $x=1.43$ como un valor aproximado de una raíz de:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = x^2 - 1.5x $$
+                        </div>
+                        <p>(Utilizar algún método conocido para hallar las raíces exactas de una función cuadrática)</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para estimar la cota de error, primero voy a calcular las raíces exactas de la función cuadrática igualándola a cero:</p>
+                        <div class="formula-responsive">
+                            $$ x^2 - 1.5x = 0 $$
+                        </div>
+                        <p>Saco factor común $x$:</p>
+                        <div class="formula-responsive">
+                            $$ x \times (x - 1.5) = 0 $$
+                        </div>
+                        <p>De acá obtengo dos raíces exactas: $x_1 = 0$ y $x_2 = 1.5$.</p>
+                        <p>Como el enunciado me da el valor aproximado $a = 1.43$, es evidente que se intentaba aproximar la raíz $1.5$. Por lo tanto, defino mi valor exacto como $\alpha = 1.5$.</p>
+                        <p>Aplico la fórmula de error absoluto de la teoría (la diferencia en valor absoluto entre el valor exacto y el aproximado):</p>
+                        <div class="formula-responsive">
+                            $$ \Delta(x) = |\alpha - a| $$<br>
+                            $$ \Delta(x) = |1.5 - 1.43| = 0.07 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> La cota de error absoluto cometida es de $0.07$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 2</h3>
+                        <p>Estimar la cota de error absoluto cometido por el método de bisección al calcular en 6 iteraciones un valor aproximado de una raíz de:</p>
+                        <div class="formula-responsive">
+                            $$ f(x) = x^2 - 6x + 8 $$
+                        </div>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> En el Intervalo [0; 3]</li>
+                            <li><strong>b)</strong> En el Intervalo [3.5; 6]</li>
+                            <li><strong>c)</strong> En el Intervalo [0; 6]</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Para saber las raíces exactas y poder calcular el error absoluto utilice algún método exacto que conozca.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Primero voy a hallar las raíces exactas de la función mediante la fórmula resolvente cuadrática para tenerlas como referencia:</p>
+                        <div class="formula-responsive">
+                            $$ x = \frac{-(-6) \pm \sqrt{(-6)^2 - 4(1)(8)}}{2(1)} = \frac{6 \pm \sqrt{36 - 32}}{2} = \frac{6 \pm 2}{2} $$
+                        </div>
+                        <p>Obtengo las raíces exactas $r_1 = 2$ y $r_2 = 4$.</p>
+                        <p>La teoría del método de bisección establece que la cota de error absoluto en la n-ésima iteración está garantizada por la expresión:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta(x) \le \frac{b - a}{2^n} $$
+                        </div>
+                        <p>Donde $[a, b]$ es la amplitud del intervalo inicial y $n = 6$ es la cantidad de iteraciones.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">a) En el intervalo [0; 3]</p>
+                        <p>Evalúo los extremos para validar el Teorema de Bolzano: $f(0) = 8$ (positivo) y $f(3) = -1$ (negativo). Como hay cambio de signo, el método aplica (la raíz que se aproxima es $r=2$).</p>
+                        <p>Calculo la cota de error:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta(x) \le \frac{3 - 0}{2^6} = \frac{3}{64} = 0.046875 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) En el intervalo [3.5; 6]</p>
+                        <p>Evalúo los extremos: $f(3.5) = -0.75$ (negativo) y $f(6) = 8$ (positivo). Cumple Bolzano (aproxima la raíz $r=4$).</p>
+                        <p>Calculo la cota de error:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta(x) \le \frac{6 - 3.5}{2^6} = \frac{2.5}{64} = 0.0390625 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) En el intervalo [0; 6]</p>
+                        <p>Evalúo los extremos del intervalo: $f(0) = 8$ y $f(6) = 8$. Como $f(0) \times f(6) = 64 > 0$, ambos extremos tienen el mismo signo. <strong>No se cumple el teorema del valor intermedio de Bolzano</strong> en este intervalo. Aunque gráficamente el intervalo contiene a ambas raíces, esto rompe la hipótesis fundamental del método de bisección, por lo que <strong>no se puede aplicar</strong> para aproximar una raíz aquí.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 3</h3>
+                        <p>Estimar el valor aproximado de la raíz que se obtiene al aplicar el método de bisección con 6 iteraciones a las siguientes funciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $f(x)=x^4-4x+1 \quad , [0; 0.5]$</li>
+                            <li><strong>b)</strong> $f(x)=x^3+4x^2-10 \quad , [1; 2]$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Voy a ejecutar el algoritmo de bisección tabulando los reemplazos sistemáticos de los límites "$a$" y "$b$" en base al signo del punto medio evaluado $f(mk)$.</p>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) $f(x) = x^4 - 4x + 1$ en $[0; 0.5]$</p>
+                        <p>Signos iniciales: $f(0) = 1$ (positivo) y $f(0.5) = -0.9375$ (negativo).</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$a$</th>
+                                        <th>$b$</th>
+                                        <th>$mk_n$</th>
+                                        <th>$f(mk_n)$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>0.000000</td><td>0.500000</td><td>0.250000</td><td>0.003906 (+)</td></tr>
+                                    <tr><td>2</td><td>0.250000</td><td>0.500000</td><td>0.375000</td><td>-0.480224 (-)</td></tr>
+                                    <tr><td>3</td><td>0.250000</td><td>0.375000</td><td>0.312500</td><td>-0.240463 (-)</td></tr>
+                                    <tr><td>4</td><td>0.250000</td><td>0.312500</td><td>0.281250</td><td>-0.118742 (-)</td></tr>
+                                    <tr><td>5</td><td>0.250000</td><td>0.281250</td><td>0.265625</td><td>-0.057521 (-)</td></tr>
+                                    <tr><td>6</td><td>0.250000</td><td>0.265625</td><td>0.257812</td><td>-0.026832 (-)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta a):</strong> El valor aproximado de la raíz es $0.257812$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) $f(x) = x^3 + 4x^2 - 10$ en $[1; 2]$</p>
+                        <p>Signos iniciales: $f(1) = -5$ (negativo) y $f(2) = 14$ (positivo).</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$a$</th>
+                                        <th>$b$</th>
+                                        <th>$mk_n$</th>
+                                        <th>$f(mk_n)$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>1.000000</td><td>2.000000</td><td>1.500000</td><td>2.375000 (+)</td></tr>
+                                    <tr><td>2</td><td>1.000000</td><td>1.500000</td><td>1.250000</td><td>-1.796875 (-)</td></tr>
+                                    <tr><td>3</td><td>1.250000</td><td>1.500000</td><td>1.375000</td><td>0.162109 (+)</td></tr>
+                                    <tr><td>4</td><td>1.250000</td><td>1.375000</td><td>1.312500</td><td>-0.848388 (-)</td></tr>
+                                    <tr><td>5</td><td>1.312500</td><td>1.375000</td><td>1.343750</td><td>-0.350982 (-)</td></tr>
+                                    <tr><td>6</td><td>1.343750</td><td>1.375000</td><td>1.359375</td><td>-0.096408 (-)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta b):</strong> El valor aproximado de la raíz es $1.359375$.</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Bisección)</h4>
+                        
+                        <div class="simulador-biseccion" style="display: flex; flex-direction: column; gap: 1rem;">
+                            
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(x):</label>
+                                        <select class="sim-funcion" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--table-border-color); background: var(--card-bg); color: var(--text-color);">
+                                            <option value="p3a" data-a="0" data-b="0.5" data-tol="0" data-iter="6">a) x⁴ - 4x + 1</option>
+                                            <option value="p3b" data-a="1" data-b="2" data-tol="0" data-iter="6">b) x³ + 4x² - 10</option>
+                                        </select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">a:</label><input type="number" class="sim-a" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">b:</label><input type="number" class="sim-b" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" step="0.0001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 4</h3>
+                        <p>Estimar utilizando el método de bisección con un error $<10^{-3}$ las raíces de las siguientes funciones continuas:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $f(x)=x-0.8-0.2 \cdot \sin(x) \quad , [0; \pi/2]$</li>
+                            <li><strong>b)</strong> $e^x=-x \quad , [-5; 1]$</li>
+                            <li><strong>c)</strong> $e^x=3x \quad , [-2; 1]$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para asegurar un error máximo $E < 10^{-3}$, primero voy a usar la fórmula teórica que relaciona la amplitud del intervalo con la cantidad de iteraciones necesarias "n":</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{b - a}{E}\right) $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) $f(x) = x - 0.8 - 0.2\sin(x)$ en $[0; \pi/2]$</p>
+                        <p>Amplitud del intervalo: $b - a = \frac{\pi}{2} - 0 \approx 1.5708$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{1.5708}{0.001}\right) = \log_2(1570.8) \approx 10.61 $$
+                        </div>
+                        <p>Se requieren 11 iteraciones. Al aplicar el algoritmo de bisección 11 veces sobre la función, la aproximación final de la raíz resulta ser:</p>
+                        <p><strong>Respuesta a):</strong> $mk_{11} \approx 0.9645$</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) $f(x) = e^x + x = 0$ en $[-5; 1]$</p>
+                        <p>Amplitud del intervalo: $b - a = 1 - (-5) = 6$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{6}{0.001}\right) = \log_2(6000) \approx 12.55 $$
+                        </div>
+                        <p>Se requieren 13 iteraciones. Realizando los pasos iterativos correspondientes para encontrar la raíz obtenemos:</p>
+                        <p><strong>Respuesta b):</strong> $mk_{13} \approx -0.5670$</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) $f(x) = e^x - 3x = 0$ en $[-2; 1]$</p>
+                        <p>Compruebo primero el teorema de Bolzano: $f(-2) \approx 6.135$ (positivo) y $f(1) \approx -0.281$ (negativo). Existe raíz.</p>
+                        <p>Amplitud del intervalo: $b - a = 1 - (-2) = 3$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{3}{0.001}\right) = \log_2(3000) \approx 11.55 $$
+                        </div>
+                        <p>Se requieren 12 iteraciones. Al resolver iterando hasta $n=12$, el valor estimado de la raíz es:</p>
+                        <p><strong>Respuesta c):</strong> $mk_{12} \approx 0.6188$</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Bisección)</h4>
+                        
+                        <div class="simulador-biseccion" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(x):</label>
+                                        <select class="sim-funcion" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--table-border-color); background: var(--card-bg); color: var(--text-color);">
+                                            <option value="p4a" data-a="0" data-b="1.5708" data-tol="0.001" data-iter="50">a) x - 0.8 - 0.2sin(x)</option>
+                                            <option value="p4b" data-a="-5" data-b="1" data-tol="0.001" data-iter="50">b) e^x + x</option>
+                                            <option value="p4c" data-a="-2" data-b="1" data-tol="0.001" data-iter="50">c) e^x - 3x</option>
+                                        </select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">a:</label><input type="number" class="sim-a" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">b:</label><input type="number" class="sim-b" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" step="0.001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 5</h3>
+                        <p>Encuentre el número de iteraciones necesarias por el método de bisección para alcanzar un valor aproximado de la raíz con un error de $10^{-4}$ para la solución de la función:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $f(x)=x^3-x-1 \quad$ en el intervalo $[1; 4]$</li>
+                            <li><strong>b)</strong> $f(x)=x^4-4x+1 \quad$ en el intervalo $[0; 0.5]$ (Verificar usando Excel)</li>
+                            <li><strong>c)</strong> $f(x)=x^3+4x^2-10 \quad$ en el intervalo $[1; 2]$ (Verificar usando Excel)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>A partir de la condición de parada por error en la teoría $\left( \frac{b-a}{2^n} \le e \right)$, despejo y uso nuevamente la fórmula logarítmica general para averiguar la cantidad exacta de ciclos "n" exigidos para tolerar $e = 10^{-4} = 0.0001$.</p>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) En el intervalo $[1; 4]$</p>
+                        <p>La amplitud inicial es $b - a = 3$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{3}{0.0001}\right) = \log_2(30000) \approx 14.87 $$
+                        </div>
+                        <p><strong>Respuesta a):</strong> Como la iteración debe ser un número entero, redondeo hacia arriba y necesito <strong>15 iteraciones</strong>.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) En el intervalo $[0; 0.5]$</p>
+                        <p>La amplitud inicial es $b - a = 0.5$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{0.5}{0.0001}\right) = \log_2(5000) \approx 12.28 $$
+                        </div>
+                        <p><strong>Respuesta b):</strong> Redondeando hacia arriba, necesito <strong>13 iteraciones</strong>.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) En el intervalo $[1; 2]$</p>
+                        <p>La amplitud inicial es $b - a = 1$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{1}{0.0001}\right) = \log_2(10000) \approx 13.28 $$
+                        </div>
+                        <p><strong>Respuesta c):</strong> Redondeando hacia arriba, necesito <strong>14 iteraciones</strong>.</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Bisección)</h4>
+                        
+                        <div class="simulador-biseccion" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(x):</label>
+                                        <select class="sim-funcion" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--table-border-color); background: var(--card-bg); color: var(--text-color);">
+                                            <option value="p5a" data-a="1" data-b="4" data-tol="0.0001" data-iter="50">a) x³ - x - 1</option>
+                                            <option value="p3a" data-a="0" data-b="0.5" data-tol="0.0001" data-iter="50">b) x⁴ - 4x + 1</option>
+                                            <option value="p3b" data-a="1" data-b="2" data-tol="0.0001" data-iter="50">c) x³ + 4x² - 10</option>
+                                        </select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">a:</label><input type="number" class="sim-a" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">b:</label><input type="number" class="sim-b" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" step="0.0001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 6</h3>
+                        <p>Resolver utilizando Excel u otro programa de computadora.</p>
+                        <p>Se proyecta crear un nuevo centro de diversiones que cuesta \$10 millones de pesos y que producirá una ganancia de \$2 millones al año que se usará para pagar la deuda que debe ser cancelada en 10 años ¿A qué tasa de interés anual debe hacerse el préstamo para esta obra? El costo actual (P), el pago anual (A) y la tasa de interés (i) se relacionan entre sí mediante la siguiente formula:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{P}{A} = \frac{(1+i)^n - 1}{i \cdot (1+i)^n} $$
+                        </div>
+                        <p>Sustituyendo datos y simplificando resulta lo siguiente:</p>
+                        <div class="formula-responsive">
+                            $$ f(i) = \frac{(1+i)^{10} - 1}{i \cdot (1+i)^{10}} - 5 = 0 $$
+                        </div>
+                        <p>Calcule el interés anual "i" usando el Método de Bisección en el Intervalo $[0.08; 0.2]$ tal que el error sea menor que $10^{-4}$ (Léase que el interés puede variar entre un 8% y un 20%).</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Estática:</h4>
+                        
+                        <p>Para resolverlo, primero voy a calcular cuántas iteraciones garantiza el método computacional para alcanzar la tolerancia exigida ($e < 10^{-4}$):</p>
+                        <p>Sabiendo que el intervalo inicial es $[0.08; 0.2]$, la amplitud inicial es $0.12$.</p>
+                        <div class="formula-responsive">
+                            $$ n \ge \log_2\left(\frac{0.12}{0.0001}\right) = \log_2(1200) \approx 10.22 $$
+                        </div>
+                        <p>Esto me indica que el proceso convergerá al error especificado en la <strong>Iteración 11</strong>.</p>
+                        
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Tabla de Iteraciones:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$a$</th>
+                                        <th>$b$</th>
+                                        <th>$mk_n$</th>
+                                        <th>$f(mk_n)$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>0.080000</td><td>0.200000</td><td>0.140000</td><td>0.2161</td></tr>
+                                    <tr><td>2</td><td>0.140000</td><td>0.200000</td><td>0.170000</td><td>-0.3414</td></tr>
+                                    <tr><td>3</td><td>0.140000</td><td>0.170000</td><td>0.155000</td><td>-0.0754</td></tr>
+                                    <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                                    <tr><td>10</td><td>0.150781</td><td>0.151016</td><td>0.150898</td><td>0.0016</td></tr>
+                                    <tr><td>11</td><td>0.150898</td><td>0.151016</td><td>0.150957</td><td>0.0005</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p><strong>Respuesta:</strong> El proceso converge en 11 iteraciones. La tasa de interés anual a la que debe hacerse el préstamo es de aproximadamente $0.1509$ (es decir, un <strong>$15.09\%$</strong>).</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Bisección)</h4>
+                        
+                        <div class="simulador-biseccion" data-fn="p6" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(i): Tasa de Interés</label>
+                                        <select style="visibility: hidden; position: absolute;"><option value="p6" data-a="0.08" data-b="0.2" data-tol="0" data-iter="70"></option></select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">a:</label><input type="number" class="sim-a" value="0.08" step="0.01" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">b:</label><input type="number" class="sim-b" value="0.20" step="0.01" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" value="0" step="0.0001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" value="70" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 7</h3>
+                        <p>Estimar el valor aproximado de la raíz que se obtiene al aplicar el método de Newton con 4 iteraciones a las siguientes funciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $f(x)=x^2-4x-45$<br>
+                                a1) con $x_0=0.5$<br>
+                                a2) con $x_0=4$
+                            </li>
+                            <li><strong>b)</strong> $f(x)=x-0.8-0.2 \cdot \sin(x) \quad , x_0=\pi/4(0.7854rad)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para todos los incisos, tabularemos los resultados de la fórmula recursiva del Método de Newton-Raphson:</p>
+                        <div class="formula-responsive">
+                            $$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">a) $f(x) = x^2 - 4x - 45$</p>
+                        <p>Calculo su derivada para la fórmula: $f'(x) = 2x - 4$.</p>
+                        
+                        <p><strong>Para el caso a1) con valor semilla $x_0 = 0.5$:</strong></p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>0.500000</td><td>-15.083333</td></tr>
+                                    <tr><td>2</td><td>-15.083333</td><td>-7.975813</td></tr>
+                                    <tr><td>3</td><td>-7.975813</td><td>-5.443846</td></tr>
+                                    <tr><td>4</td><td>-5.443846</td><td>-5.013232</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta a1):</strong> El valor aproximado en la 4ta iteración es $-5.0132$.</p>
+
+                        <p style="margin-top: 1rem;"><strong>Para el caso a2) con valor semilla $x_0 = 4$:</strong></p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>4.000000</td><td>15.250000</td></tr>
+                                    <tr><td>2</td><td>15.250000</td><td>10.474056</td></tr>
+                                    <tr><td>3</td><td>10.474056</td><td>9.128205</td></tr>
+                                    <tr><td>4</td><td>9.128205</td><td>9.001152</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta a2):</strong> El valor aproximado en la 4ta iteración es $9.0012$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) $f(x) = x - 0.8 - 0.2\sin(x)$ con $x_0 = 0.7854$</p>
+                        <p>Calculo su derivada: $f'(x) = 1 - 0.2\cos(x)$.</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>0.785400</td><td>0.967120</td></tr>
+                                    <tr><td>2</td><td>0.967120</td><td>0.964334</td></tr>
+                                    <tr><td>3</td><td>0.964334</td><td>0.964333</td></tr>
+                                    <tr><td>4</td><td>0.964333</td><td>0.964333</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta b):</strong> El método converge extremadamente rápido en este caso; el valor aproximado estabilizado para la 4ta iteración es $0.9643$.</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Newton)</h4>
+                        
+                        <div class="simulador-newton" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(x):</label>
+                                        <select class="sim-funcion" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--table-border-color); background: var(--card-bg); color: var(--text-color);">
+                                            <option value="p7a" data-x0="0.5" data-tol="0" data-iter="15">a1) x² - 4x - 45</option>
+                                            <option value="p7a" data-x0="4" data-tol="0" data-iter="15">a2) x² - 4x - 45</option>
+                                            <option value="p4a" data-x0="0.7854" data-tol="0" data-iter="15">b) x - 0.8 - 0.2sin(x)</option>
+                                        </select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">x₀:</label><input type="number" class="sim-x0" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" step="0.0001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 8</h3>
+                        <p>Estimar utilizando el método de Newton con un error $<10^{-3}$ las raíces de las siguientes funciones continuas:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $f(x)=x-\cos(x) \quad , x_0=\pi/4(0.7854rad)$</li>
+                            <li><strong>b)</strong> $e^x+2x+2\cos(x)=6 \quad , x_0=\pi/4(0.7854rad)$</li>
+                            <li><strong>c)</strong> $f(x)=x^3-2x^2=3x-10 \quad$<br>
+                                c1) con $x_0=1.9$<br>
+                                c2) con $x_0=-3$
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para satisfacer la cota de error, evaluaré el criterio de parada iterativo propio de Newton que mide la diferencia absoluta entre la estimación actual y la anterior: $|x_{n+1} - x_n| < 0.001$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">a) $f(x) = x - \cos(x)$</p>
+                        <p>Derivada: $f'(x) = 1 + \sin(x)$. Partiendo de $x_0 = 0.7854$:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                        <th>$|x_{n+1} - x_n|$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>0.785400</td><td>0.739536</td><td>0.045864</td></tr>
+                                    <tr><td>2</td><td>0.739536</td><td>0.739085</td><td>0.000451 (&lt; 10⁻³)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta a):</strong> La estimación se detiene en la iteración 2 y la raíz es aproximadamente $0.7391$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) $f(x) = e^x + 2x + 2\cos(x) - 6 = 0$</p>
+                        <p>Derivada: $f'(x) = e^x + 2 - 2\sin(x)$. Partiendo de $x_0 = 0.7854$:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                        <th>$|x_{n+1} - x_n|$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>0.785400</td><td>1.040843</td><td>0.255443</td></tr>
+                                    <tr><td>2</td><td>1.040843</td><td>1.064849</td><td>0.024006</td></tr>
+                                    <tr><td>3</td><td>1.064849</td><td>1.065048</td><td>0.000199 (&lt; 10⁻³)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta b):</strong> La estimación se detiene en la iteración 3 y la raíz es aproximadamente $1.0650$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) $f(x) = x^3 - 2x^2 - 3x + 10 = 0$</p>
+                        <p>Derivada: $f'(x) = 3x^2 - 4x - 3$.</p>
+                        
+                        <p><strong>c1) Valor inicial $x_0 = 1.9$:</strong></p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                        <th>$|x_{n+1} - x_n|$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>1.900000</td><td>-15.226087</td><td>17.126087</td></tr>
+                                    <tr><td>2</td><td>-15.226087</td><td>-9.999274</td><td>5.226813</td></tr>
+                                    <tr><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                                    <tr><td>8</td><td>-2.028441</td><td>-2.000373</td><td>0.028068</td></tr>
+                                    <tr><td>9</td><td>-2.000373</td><td>-2.000000</td><td>0.000373 (&lt; 10⁻³)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta c1):</strong> La convergencia toma 9 iteraciones y estima la raíz en $-2.0000$.</p>
+
+                        <p style="margin-top: 1rem;"><strong>c2) Valor inicial $x_0 = -3$:</strong></p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$x_n$</th>
+                                        <th>$x_{n+1}$</th>
+                                        <th>$|x_{n+1} - x_n|$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>-3.000000</td><td>-2.277778</td><td>0.722222</td></tr>
+                                    <tr><td>2</td><td>-2.277778</td><td>-2.030455</td><td>0.247322</td></tr>
+                                    <tr><td>3</td><td>-2.030455</td><td>-2.000427</td><td>0.030028</td></tr>
+                                    <tr><td>4</td><td>-2.000427</td><td>-2.000000</td><td>0.000427 (&lt; 10⁻³)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta c2):</strong> Al estar la semilla inicial en la misma concavidad que la raíz, el método es óptimo y solo requiere 4 iteraciones para llegar a $-2.0000$.</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Newton)</h4>
+                        
+                        <div class="simulador-newton" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(x):</label>
+                                        <select class="sim-funcion" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--table-border-color); background: var(--card-bg); color: var(--text-color);">
+                                            <option value="p8a" data-x0="0.7854" data-tol="0" data-iter="30">a) x - cos(x)</option>
+                                            <option value="p8b" data-x0="0.7854" data-tol="0" data-iter="30">b) e^x + 2x + 2cos(x) - 6</option>
+                                            <option value="p8c" data-x0="1.9" data-tol="0" data-iter="30">c1) x³ - 2x² - 3x + 10</option>
+                                            <option value="p8c" data-x0="-3" data-tol="0" data-iter="30">c2) x³ - 2x² - 3x + 10</option>
+                                        </select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">x₀:</label><input type="number" class="sim-x0" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" step="0.001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 9</h3>
+                        <p>La concentración "c" de una bacteria contaminante en un lago decrece de acuerdo a la siguiente expresión:</p>
+                        <div class="formula-responsive">
+                            $$ c(t) = 80e^{-2t} + 20e^{-0.5t} $$
+                        </div>
+                        <p>Siendo "t" el tiempo en horas. Determinar el tiempo que se necesita para que el número de bacterias se reduzca a $7 (c(t)=7)$. Utilice el Método de Newton.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para utilizar un método de raíces, primero igualo la ecuación a 7 y despejo para construir la función $f(t)$ analizada:</p>
+                        <div class="formula-responsive">
+                            $$ f(t) = 80e^{-2t} + 20e^{-0.5t} - 7 = 0 $$
+                        </div>
+                        
+                        <p>Derivo la función aplicando la regla de la cadena sobre cada exponente:</p>
+                        <div class="formula-responsive">
+                            $$ f'(t) = 80 \cdot (-2) \cdot e^{-2t} + 20 \cdot (-0.5) \cdot e^{-0.5t} $$<br>
+                            $$ f'(t) = -160e^{-2t} - 10e^{-0.5t} $$
+                        </div>
+
+                        <p>Como el problema no me proporciona de antemano un valor semilla explícito para $t_0$, asumo $t_0 = 1$ (una hora) y realizo las iteraciones pertinentes controlando que el error marginal entre la solución actual y la anterior sea lo suficientemente despreciable (utilizo una tolerancia estándar de $10^{-3}$):</p>
+
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>$n$</th>
+                                        <th>$t_n$</th>
+                                        <th>$t_{n+1}$</th>
+                                        <th>$|t_{n+1} - t_n|$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>1.000000</td><td>1.575687</td><td>0.575687</td></tr>
+                                    <tr><td>2</td><td>1.575687</td><td>2.060099</td><td>0.484412</td></tr>
+                                    <tr><td>3</td><td>2.060099</td><td>2.293395</td><td>0.233297</td></tr>
+                                    <tr><td>4</td><td>2.293395</td><td>2.328457</td><td>0.035061</td></tr>
+                                    <tr><td>5</td><td>2.328457</td><td>2.329087</td><td>0.000631 (&lt; 10⁻³)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>Respuesta:</strong> El tiempo necesario para que la concentración de bacterias se reduzca a 7 es de aproximadamente $2.329$ horas.</p>
+
+                        <!-- SIMULADOR -->
+                        <hr class="card-divider" style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-laptop-code"></i> Laboratorio Interactivo (Newton)</h4>
+                        
+                        <div class="simulador-newton" data-fn="p9" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="pm-controls-panel" style="width: 100%;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                                    <div class="pm-input-group" style="flex: 2; min-width: 200px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" style="width: auto;">f(t): Bacterias</label>
+                                        <select style="visibility: hidden; position: absolute;"><option value="p9" data-x0="1" data-tol="0" data-iter="30"></option></select>
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">t₀:</label><input type="number" class="sim-x0" value="1" step="0.1" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 80px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label" title="Poner en 0 para forzar N iteraciones">Tol:</label>
+                                        <input type="number" class="sim-tol" value="0" step="0.001" placeholder="0 = Inactivo" style="width: 100%;">
+                                    </div>
+                                    <div class="pm-input-group" style="flex: 1; min-width: 60px; flex-direction: column; align-items: flex-start;">
+                                        <label class="pm-vector-label">N:</label><input type="number" class="sim-max-iter" value="30" step="1" style="width: 100%;">
+                                    </div>
+                                    <button class="pm-btn-action btn-simular" style="margin: 0; padding: 10px 15px; height: 39px;">Simular</button>
+                                </div>
+                                <div class="pm-result-box sim-result" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+                            </div>
+                            <div class="table-responsive sim-table-container" style="margin: 0;"></div>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+    <script src="../../assets/js/numerico.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensa Integrador - Smalltalk</title>
+
+    <!-- Enlace a tu CSS unificado -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <!-- FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="paradigmas-page" data-theme="dark">
+    
+    <header class="header">
+        <nav class="container">
+            <!-- Botón para volver a la página principal de Paradigmas -->
+            <a href="../pp.html" class="btn-volver">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <h1 class="logo">Defensa Smalltalk</h1>
+        </nav>
+        <div class="header-line"></div> 
+    </header>
+
+    <!-- Contenedor principal centrado -->
+    <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+        
+        <div class="section-header" style="margin-top: 2rem;">
+            <h2>Sistema de Gestión de Plataforma de Streaming</h2>
+            <p>Defensa del Trabajo Integrador - Paradigma Orientado a Objetos</p>
+        </div>
+
+        <!-- ==========================================
+             REQUISITO OBLIGATORIO 1: DIAGRAMA DE CLASES
+             ========================================== -->
+        <section class="uml-section" style="margin-bottom: 4rem;">
+            <h2 class="section-title"><i class="fas fa-sitemap"></i> 1. Diagrama de Clases</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Representación de la jerarquía, atributos y firmas de los métodos principales del sistema.</p>
+            
+            <div class="uml-container">
+                <div class="uml-class root-class">
+                    <h3>Plataforma</h3>
+                    <hr>
+                    <p>- nombre: String<br>- empresa: String<br>- anio: Number<br>- capacidad: Number<br>- tipo: String<br>- contenidos: OrderedCollection</p>
+                    <hr>
+                    <p class="method">+ agregarContenido(c: Contenido)<br>+ espacioOcupado(): Number</p>
+                </div>
+                <div class="uml-arrow"><i class="fas fa-long-arrow-alt-down"></i> 1..* (Agregación)</div>
+                <div class="uml-class abstract-class">
+                    <h3>Contenido &lt;&lt;Abstract&gt;&gt;</h3>
+                    <hr>
+                    <p>- codigo: Number<br>- titulo: String<br>- genero: String<br>- anio: Number<br>- tamanio: Number<br>- calificacion: Number<br>- disponible: Boolean</p>
+                    <hr>
+                    <p class="method">+ esRecomendable() &lt;&lt;abstract&gt;&gt;</p>
+                </div>
+                <div class="uml-branches">
+                    <div class="uml-branch">
+                        <div class="uml-arrow-up"><i class="fas fa-long-arrow-alt-up"></i></div>
+                        <div class="uml-class">
+                            <h3>Pelicula</h3>
+                            <hr>
+                            <p>- duracion: Number<br>- enCine: Boolean</p>
+                            <hr>
+                            <p class="method">+ esRecomendable(): Boolean</p>
+                        </div>
+                    </div>
+                    <div class="uml-branch">
+                        <div class="uml-arrow-up"><i class="fas fa-long-arrow-alt-up"></i></div>
+                        <div class="uml-class">
+                            <h3>Serie</h3>
+                            <hr>
+                            <p>- temporadas: Number<br>- finalizada: Boolean</p>
+                            <hr>
+                            <p class="method">+ esRecomendable(): Boolean</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="doc-separator">
+
+        <!-- ==========================================
+             REQUISITO OBLIGATORIO 2: MENÚ
+             ========================================== -->
+        <section class="menu-section" style="margin-bottom: 4rem;">
+            <h2 class="section-title"><i class="fas fa-list-alt"></i> 2. Implementación del Menú</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">El menú interactivo se mantiene en ejecución mediante un bucle <code>whileTrue:</code> y utiliza la clase <code>ChoicePrompter</code>.</p>
+            
+            <div class="code-box">
+                <div class="code-header">
+                    <span>Estructura de repetición y Prompter</span>
+                </div>
+                <pre><code>continuar := true.
+[continuar] <span class="highlight">whileTrue:</span> [
+    opc := <span class="highlight">ChoicePrompter choices:</span> #(
+        '1. Listado calificación >= 7'
+        '2. Filtrar por género'
+        '3. Listado recomendables para maratón'
+        '8. Agregar nuevo contenido'
+        '0. Salir'
+    ).
+    
+    (opc isNil) ifTrue: [ continuar := false ] ifFalse: [
+        "Resolución de opciones..."
+        (opc = '0. Salir') ifTrue: [ continuar := false ].
+    ].
+].</code></pre>
+            </div>
+        </section>
+
+        <hr class="doc-separator">
+
+        <!-- ==========================================
+             REQUISITO OBLIGATORIO 3 Y EXTRA: ITERADORES Y POLIMORFISMO (SIMULADOR)
+             ========================================== -->
+        <section class="simulator-section" style="margin-bottom: 4rem;">
+            <h2 class="section-title"><i class="fas fa-memory"></i> 3. Simulador de Memoria e Iteradores</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Visualización en tiempo real de cómo los iteradores de colección (<code>select:</code>, <code>collect:</code>, <code>reject:</code>) procesan los objetos en la RAM, y cómo actúa el <i>Binding Dinámico</i>.</p>
+            
+            <div class="split-screen">
+                
+                <!-- COLUMNA IZQUIERDA: CÓDIGO -->
+                <div class="code-column">
+                    <div class="control-panel">
+                        <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear Memoria</button>
+                    </div>
+
+                    <!-- Iterador Select -->
+                    <div class="code-block" id="step-select">
+                        <div class="code-header">
+                            <span>A. Filtrado (select:)</span>
+                            <button class="sim-btn action" onclick="runSelect()"><i class="fas fa-play"></i> Ejecutar</button>
+                        </div>
+                        <pre><code>colFil := netflix verContenidos <span class="highlight">select:</span> [:c | 
+    c verCalificacion >= 7
+].</code></pre>
+                        <p class="explanation">Retorna una <strong>nueva colección</strong> solo con los elementos que cumplen la condición booleana.</p>
+                    </div>
+
+                    <!-- Iterador Collect -->
+                    <div class="code-block" id="step-collect">
+                        <div class="code-header">
+                            <span>B. Transformación (collect:)</span>
+                            <button class="sim-btn action" onclick="runCollect()"><i class="fas fa-play"></i> Ejecutar</button>
+                        </div>
+                        <pre><code>colGen := netflix verContenidos <span class="highlight">collect:</span> [:c | 
+    c verGenero
+].</code></pre>
+                        <p class="explanation">Retorna una <strong>nueva colección</strong> mapeando los objetos a un nuevo tipo de dato (Strings).</p>
+                    </div>
+
+                    <!-- Iterador Reject -->
+                    <div class="code-block" id="step-reject">
+                        <div class="code-header">
+                            <span>C. Eliminación (reject:)</span>
+                            <button class="sim-btn action" onclick="runReject()"><i class="fas fa-play"></i> Ejecutar</button>
+                        </div>
+                        <pre><code>eliminados := netflix verContenidos <span class="highlight">reject:</span> [:c | 
+    c verDisponible
+].</code></pre>
+                        <p class="explanation">Retorna una <strong>nueva colección</strong> excluyendo los elementos que devuelven <em>true</em>.</p>
+                    </div>
+
+                    <!-- Polimorfismo -->
+                    <div class="code-block" id="step-poly">
+                        <div class="code-header">
+                            <span>D. Polimorfismo (esRecomendable)</span>
+                            <button class="sim-btn action" onclick="runPoly()"><i class="fas fa-play"></i> Ejecutar</button>
+                        </div>
+                        <pre><code>colFil := netflix verContenidos select: [:c | 
+    <span class="highlight">c esRecomendable</span>
+].</code></pre>
+                        <p class="explanation">El mensaje es único, pero el <em>Binding Dinámico</em> decide qué regla aplicar según si es Serie o Película.</p>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: MEMORIA VISUAL -->
+                <div class="visual-column">
+                    <div class="memory-container" id="memory-board">
+                        <div class="collection-title">OrderedCollection: <span id="col-name">contenidos</span></div>
+                        
+                        <div class="memory-grid">
+                            
+                            <!-- Objeto 1: Pelicula (Inception) -->
+                            <div class="mem-object peli" data-calif="9" data-dur="148" data-disp="true">
+                                <div class="obj-header">a Pelicula</div>
+                                <div class="obj-body">
+                                    <div class="attr"><span>titulo:</span> 'Inception'</div>
+                                    <div class="attr genre-target"><span>genero:</span> 'Ficcion'</div>
+                                    <div class="attr calif-target"><span>calif:</span> 9</div>
+                                    <div class="attr"><span>duracion:</span> 148</div>
+                                    <div class="attr disp-target"><span>disp:</span> true</div>
+                                </div>
+                                <div class="poly-tooltip">duracion <= 120? Falso</div>
+                            </div>
+
+                            <!-- Objeto 2: Serie (Breaking Bad) -->
+                            <div class="mem-object serie" data-calif="9.5" data-temp="5" data-fin="true" data-disp="true">
+                                <div class="obj-header">a Serie</div>
+                                <div class="obj-body">
+                                    <div class="attr"><span>titulo:</span> 'Breaking Bad'</div>
+                                    <div class="attr genre-target"><span>genero:</span> 'Drama'</div>
+                                    <div class="attr calif-target"><span>calif:</span> 9.5</div>
+                                    <div class="attr"><span>temp:</span> 5</div>
+                                    <div class="attr disp-target"><span>disp:</span> true</div>
+                                </div>
+                                <div class="poly-tooltip">temporadas <= 3? Falso</div>
+                            </div>
+
+                            <!-- Objeto 3: Pelicula (El Conjuro - No Disponible) -->
+                            <div class="mem-object peli" data-calif="7.5" data-dur="112" data-disp="false">
+                                <div class="obj-header">a Pelicula</div>
+                                <div class="obj-body">
+                                    <div class="attr"><span>titulo:</span> 'El Conjuro'</div>
+                                    <div class="attr genre-target"><span>genero:</span> 'Terror'</div>
+                                    <div class="attr calif-target"><span>calif:</span> 7.5</div>
+                                    <div class="attr"><span>duracion:</span> 112</div>
+                                    <div class="attr disp-target" style="color: #e74c3c;"><span>disp:</span> false</div>
+                                </div>
+                                <div class="poly-tooltip">dur <= 120 & calif >=7? True</div>
+                            </div>
+                            
+                            <!-- Objeto 4: Pelicula (Toy Story) -->
+                            <div class="mem-object peli" data-calif="8.5" data-dur="81" data-disp="true">
+                                <div class="obj-header">a Pelicula</div>
+                                <div class="obj-body">
+                                    <div class="attr"><span>titulo:</span> 'Toy Story'</div>
+                                    <div class="attr genre-target"><span>genero:</span> 'Animacion'</div>
+                                    <div class="attr calif-target"><span>calif:</span> 8.5</div>
+                                    <div class="attr"><span>duracion:</span> 81</div>
+                                    <div class="attr disp-target"><span>disp:</span> true</div>
+                                </div>
+                                <div class="poly-tooltip">dur <= 120 & calif >=7? True</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- SCRIPTS PARA EL SIMULADOR -->
+    <script>
+        const objects = document.querySelectorAll('.mem-object');
+        const colName = document.getElementById('col-name');
+        
+        function resetSim() {
+            objects.forEach(obj => {
+                // Limpia todas las clases extra y reinicia los tooltips
+                obj.className = 'mem-object ' + (obj.classList.contains('peli') ? 'peli' : 'serie');
+            });
+            colName.innerText = 'contenidos';
+        }
+
+        // 1. SELECT (Filtra >= 7)
+        function runSelect() {
+            resetSim();
+            colName.innerText = 'colFil (Nueva Colección)';
+            objects.forEach(obj => {
+                const calif = parseFloat(obj.getAttribute('data-calif'));
+                if (calif < 7) {
+                    obj.classList.add('dimmed'); // Se apagan los menores a 7
+                } else {
+                    obj.classList.add('highlighted'); // Se iluminan los >= 7
+                }
+            });
+        }
+
+        // 2. COLLECT (Extrae solo los Géneros)
+        function runCollect() {
+            resetSim();
+            colName.innerText = 'colGen (Strings)';
+            objects.forEach(obj => {
+                obj.classList.add('collected'); // Achica la tarjeta a solo el string
+            });
+        }
+
+        // 3. REJECT (Excluye los disponibles)
+        function runReject() {
+            resetSim();
+            colName.innerText = 'eliminados (Colección Temporal)';
+            objects.forEach(obj => {
+                const isDisp = obj.getAttribute('data-disp') === 'true';
+                if (isDisp) {
+                    obj.classList.add('dimmed'); // Excluye (apaga) los disponibles
+                } else {
+                    obj.classList.add('highlighted-danger'); // Resalta en rojo los no disponibles
+                }
+            });
+        }
+
+        // 4. POLIMORFISMO
+        function runPoly() {
+            resetSim();
+            colName.innerText = 'colFil (Recomendados)';
+            objects.forEach(obj => {
+                // Evaluamos según la clase del objeto instanciado
+                if(obj.classList.contains('peli')) {
+                    const dur = parseFloat(obj.getAttribute('data-dur'));
+                    const calif = parseFloat(obj.getAttribute('data-calif'));
+                    if(dur <= 120 && calif >= 7) {
+                        obj.classList.add('poly-true');
+                    } else {
+                        obj.classList.add('poly-false');
+                    }
+                } else if(obj.classList.contains('serie')) {
+                    const temp = parseFloat(obj.getAttribute('data-temp'));
+                    const calif = parseFloat(obj.getAttribute('data-calif'));
+                    const fin = obj.getAttribute('data-fin') === 'true';
+                    if(fin && temp <= 3 && calif >= 7) {
+                        obj.classList.add('poly-true');
+                    } else {
+                        obj.classList.add('poly-false');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

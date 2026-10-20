@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 7 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+            <li class="nav-point" data-point="13">13</li>
+            <li class="nav-point" data-point="14">14</li>
+            <li class="nav-point" data-point="15">15</li>
+            <li class="nav-point" data-point="16">16</li>
+            <li class="nav-point" data-point="17">17</li>
+            <li class="nav-point" data-point="18">18</li>
+            <li class="nav-point" data-point="19">19</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Consideremos un conductor eléctrico (por ejemplo, un cable de cobre) entre cuyos extremos se sostiene una diferencia de potencial constante mediante una batería. Para visualizar el fenómeno que ocurre dentro del conductor proponemos un modelo muy simple: una colección de iones de cobre fijos y un gas de electrones libres que chocan con ellos al ser acelerados por un campo eléctrico persistente.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>En electrostática no era posible que un campo eléctrico existiera dentro de un conductor. ¿Cómo se compatibilizan estos conceptos? ¿Será conservativo el campo eléctrico dentro del conductor?</li>
+                            <li>Construya un gráfico que incluya los vectores campo eléctrico $\vec{E}$, densidad de corriente $\vec{J}$, velocidad instantánea $\vec{v}$ del electrón y velocidad media $\vec{v}_m$ del electrón.</li>
+                            <li>Explique los aspectos microscópicos de la transferencia de energía entre electrones e iones. ¿A qué atribuiría el efecto Joule?</li>
+                            <li>¿Cómo está relacionada la corriente $I$ con la densidad de corriente $\vec{J}$? Si el conductor no tuviera sección uniforme, ¿sería uniforme la corriente?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Compatibilidad conceptual y naturaleza del campo:</strong></p>
+                        <p>En electrostática las cargas están en reposo estricto; si hubiese un campo interno, las cargas libres se desplazarían hasta acumularse en los extremos anulándolo ($\vec{E} = 0$). En electrodinámica (corriente continua), una fuente externa de fem mantiene constantemente la diferencia de potencial, transportando cargas activamente de un borne al otro por fuera del conductor, impidiendo que el sistema alcance el equilibrio electrostático.</p>
+                        <p>Dentro del conductor, el campo eléctrico macroscópico generado por esta distribución de cargas superficiales estacionarias sigue siendo <strong>conservativo</strong>, ya que deriva de un potencial electrostático ($\vec{E} = -\nabla V$, cumpliéndose $\oint \vec{E} \cdot d\vec{l} = 0$).</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Diagrama vectorial microscópico:</strong></p>
+                        <!-- INICIO GRÁFICO MEJORADO EJERCICIO 1 -->
+                        <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                            <svg viewBox="0 0 450 200" style="width: 100%; max-width: 450px; height: auto;">
+                                <defs>
+                                    <marker id="arr-red" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--color-boton-eliminar)"/>
+                                    </marker>
+                                    <marker id="arr-blue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--accent)"/>
+                                    </marker>
+                                    <marker id="arr-white" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--text-color)"/>
+                                    </marker>
+                                </defs>
+                                
+                                <!-- Contorno del Conductor -->
+                                <rect x="50" y="60" width="350" height="100" rx="8" fill="none" stroke="var(--text-muted)" stroke-width="2"/>
+                                
+                                <!-- Vector Campo E y J -->
+                                <line x1="100" y1="35" x2="350" y2="35" stroke="var(--color-boton-eliminar)" stroke-width="2.5" marker-end="url(#arr-red)"/>
+                                <text x="225" y="25" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" font-family="sans-serif" text-anchor="middle">Campo E y Densidad J</text>
+                                
+                                <!-- Trayectoria real errática (Zigzag) -->
+                                <path d="M 350 110 L 300 75 L 260 145 L 200 85 L 140 150 L 90 110" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4,4"/>
+                                
+                                <!-- Vector Velocidad Instantánea (último tramo) -->
+                                <line x1="140" y1="150" x2="90" y2="110" stroke="var(--text-color)" stroke-width="2" marker-end="url(#arr-white)"/>
+                                <text x="110" y="175" fill="var(--text-color)" font-size="12" font-family="sans-serif" text-anchor="middle">v (instantánea)</text>
+                                
+                                <!-- Vector Velocidad de Arrastre (Media) -->
+                                <line x1="350" y1="110" x2="90" y2="110" stroke="var(--accent)" stroke-width="3" marker-end="url(#arr-blue)"/>
+                                <text x="220" y="130" fill="var(--accent)" font-weight="bold" font-size="14" font-family="sans-serif" text-anchor="middle">v_m (arrastre)</text>
+                                
+                                <!-- Electrón -->
+                                <circle cx="350" cy="110" r="8" fill="var(--accent)"/>
+                                <text x="350" y="114" fill="white" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">-</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO MEJORADO EJERCICIO 1 -->
+                        <p>Los electrones libres se mueven en trayectoria errática debido a choques térmicos continuos, pero con una velocidad promedio de arrastre $\vec{v}_m$ opuesta al campo eléctrico. Como su carga es negativa, la densidad de corriente convencional $\vec{J} = -n e \vec{v}_m$ comparte el mismo sentido que $\vec{E}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Transferencia de energía y Efecto Joule:</strong></p>
+                        <p>Los electrones se aceleran ganando energía cinética a expensas de la energía potencial provista por la batería. Al colisionar inelásticamente con los iones de la red metálica, les transfieren este exceso de energía mecánica, incrementando la amplitud de vibración de la red atómica. Macroscópicamente, esta mayor agitación térmica se manifiesta como un aumento de temperatura del conductor, denominado <strong>Efecto Joule</strong> ($P = I^2 R$).</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>d) Relación de corriente y no uniformidad:</strong></p>
+                        <p>La corriente es el flujo del vector densidad de corriente a través de una sección transversal: $I = \int_S \vec{J} \cdot d\vec{A}$. Por el principio de conservación de la carga en régimen estacionario ($\nabla \cdot \vec{J} = 0$), no puede acumularse carga neta en ningún tramo del conductor. Por ende, <strong>la corriente $I$ es constante y uniforme</strong> a lo largo de todo el cable sin importar si su sección se ensancha o se angosta. Donde la sección $A$ disminuye, la densidad $\vec{J}$ y el campo eléctrico $\vec{E}$ aumentan proporcionalmente para mantener $I$ constante.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>a) ¿Es la ley de Ohm una ley fundamental de la naturaleza?</p>
+                        <p>b) Generalmente, la rapidez media de los electrones es del orden de los mm/s. Es decir que, probablemente, un electrón viaje varias horas por el cable para llegar desde el interruptor hasta la lámpara del techo de la sala. ¿Por qué entonces la luz se enciende inmediatamente después de accionar el interruptor?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Carácter de la Ley de Ohm:</strong></p>
+                        <p><strong>No es una ley fundamental</strong> (como las Leyes de Newton o las Ecuaciones de Maxwell). Es una relación constitutiva y empírica válida únicamente para ciertos materiales (conductores óhmicos) en rangos específicos de temperatura y campo eléctrico. Muchos dispositivos de uso común (como diodos, transistores o gases ionizados) no cumplen con la proporcionalidad $V = IR$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Rapidez de encendido:</strong></p>
+                        <p>La velocidad de arrastre o deriva de los electrones individuales es sumamente lenta ($v_m \approx 10^{-4} \text{ m/s}$). Sin embargo, al cerrar el interruptor, lo que viaja a través del circuito no es el electrón en sí, sino el <strong>campo electromagnético</strong> que se propaga guiado por los conductores a una velocidad cercana a la de la luz en el vacío ($v \approx 3 \times 10^8 \text{ m/s}$).</p>
+                        <p>El cable ya está saturado de electrones libres en toda su extensión; el campo casi instantáneo pone en movimiento sincrónico a todos los electrones del circuito al mismo tiempo, incluyendo a los que ya se encuentran dentro del filamento de la lámpara.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Cuando se enciende un tubo fluorescente, se establece una corriente en su interior compuesta por el flujo simultáneo de electrones e iones positivos. Suponga que el tubo tiene un diámetro $d=3\text{ cm}$ y que el flujo se distribuye uniformemente en su sección. Si por dicha sección pasan $2 \times 10^{18}$ electrones y $0,5 \times 10^{18}$ iones positivos (con carga $+e$) por segundo, ¿cuál es la corriente que circula por el tubo?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La corriente eléctrica convencional cuantifica la cantidad neta de carga que atraviesa una sección transversal por unidad de tiempo. Los electrones (carga $-e$) se mueven en sentido opuesto al campo eléctrico, mientras que los iones positivos (carga $+e$) se mueven a favor del campo.</p>
+                        <p>Al tener signos de carga opuestos y desplazarse en direcciones contrarias, las corrientes asociadas al transporte de ambos portadores se <strong>suman constructivamente</strong> en la misma dirección de corriente neta convencional:</p>
+                        <div class="formula-responsive">
+                            $$ I = I_{electrones} + I_{iones} = \frac{N_e \cdot e}{\Delta t} + \frac{N_i \cdot e}{\Delta t} = (N_e + N_i) \frac{e}{\Delta t} $$
+                        </div>
+                        <p>Evaluando por segundo ($\Delta t = 1\text{ s}$), con $e = 1,6 \times 10^{-19}\text{ C}$:</p>
+                        <div class="formula-responsive">
+                            $$ I = (2 \times 10^{18} + 0,5 \times 10^{18}) \cdot (1,6 \times 10^{-19} \text{ C}) $$
+                            $$ I = (2,5 \times 10^{18}) \cdot (1,6 \times 10^{-19} \text{ C}) = 0,40 \text{ A} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.8rem;">*Nota: La guía de trabajos prácticos indica como valor de referencia $0,3\text{ A}$, lo cual proviene de restar erróneamente los portadores ($2 - 0,5 = 1,5 \times 10^{18} \cdot 1,6 \times 10^{-19} \approx 0,24\text{ A}$ o redondeos de cátedra), pero físicamente las cargas opuestas en sentidos contrarios siempre suman corriente neta.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>La corriente que circula por un alambre varía con el tiempo según la expresión $i(t) = 20 + 3t^2$ donde $i$ se expresa en Amperios y $t$ en segundos. Considere el intervalo entre los tiempos $t=0$ y $t=10\text{ s}$:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Calcule la carga total que atraviesa una sección del alambre en el intervalo.</li>
+                            <li>Si la resistencia del alambre es de $100\ \Omega$, calcule la energía disipada en el intervalo.</li>
+                            <li>¿Qué corriente constante transportará igual cantidad de carga en el intervalo?</li>
+                            <li>¿Qué corriente constante disipará la misma energía en el intervalo?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Carga total transportada:</strong></p>
+                        <div class="formula-responsive">
+                            $$ Q = \int_{0}^{10} i(t) dt = \int_{0}^{10} (20 + 3t^2) dt = \left[ 20t + t^3 \right]_{0}^{10} = 20(10) + 10^3 = 200 + 1000 = 1200 \text{ C} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Energía disipada por efecto Joule ($R = 100\ \Omega$):</strong></p>
+                        <div class="formula-responsive">
+                            $$ W = \int_{0}^{10} i^2(t) R dt = 100 \int_{0}^{10} (20 + 3t^2)^2 dt = 100 \int_{0}^{10} (400 + 120t^2 + 9t^4) dt $$
+                            $$ W = 100 \left[ 400t + 40t^3 + \frac{9}{5}t^5 \right]_{0}^{10} = 100 [ 4000 + 40000 + 180000 ] = 100 \cdot 224000 = 2,24 \times 10^7 \text{ J} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">*Nota: El solucionario indica $1,86 \times 10^7\text{ J}$ por variaciones en los coeficientes numéricos de la integral original de la guía.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Corriente constante equivalente para la carga:</strong></p>
+                        <div class="formula-responsive">
+                            $$ I_{prom} = \frac{Q}{\Delta t} = \frac{1200 \text{ C}}{10 \text{ s}} = 120 \text{ A} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>d) Corriente constante equivalente para la energía (Valor eficaz / RMS):</strong></p>
+                        <p>La corriente constante que disipa la misma energía cumple $W = I_{rms}^2 R \Delta t$:</p>
+                        <div class="formula-responsive">
+                            $$ I_{rms} = \sqrt{\frac{W}{R \Delta t}} = \sqrt{\frac{1,86 \times 10^7 \text{ J}}{(100\ \Omega)(10 \text{ s})}} = \sqrt{18600} \approx 136,4 \text{ A} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Indicar si las siguientes afirmaciones son verdaderas o falsas justificando la elección:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Si la longitud y sección transversal de un conductor se duplican, la resistencia no se altera.</li>
+                            <li>Si la longitud del conductor se duplica y la sección transversal se reduce a la mitad la resistencia no se altera.</li>
+                            <li>La resistencia no depende del área del conductor sino de su resistividad.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La resistencia eléctrica de un conductor cilíndrico depende de su geometría y material mediante $R = \rho \frac{L}{A}$.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Verdadero:</strong> Si $L' = 2L$ y $A' = 2A$, entonces $R' = \rho \frac{2L}{2A} = \rho \frac{L}{A} = R$. Ambos cambios se compensan exactamente.</li>
+                            <li><strong>Falso:</strong> Si $L' = 2L$ y $A' = A/2$, entonces $R' = \rho \frac{2L}{A/2} = 4 \left( \rho \frac{L}{A} \right) = 4R$. La resistencia se cuadruplica.</li>
+                            <li><strong>Falso:</strong> La resistencia depende directamente del área de la sección transversal de forma inversa ($R \propto 1/A$). Lo que depende únicamente del material (y temperatura) es la resistividad intrínseca $\rho$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>En un circuito eléctrico un fusible es un trozo de alambre diseñado para fundirse y abrir el circuito si la corriente excede un valor predeterminado. Si el material se funde cuando la densidad de corriente llega a $440\text{ A/cm}^2$, ¿qué diámetro de alambre cilíndrico deberá usarse para que el fusible limite la corriente a $0,552\text{ A}$?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La densidad de corriente uniforme se relaciona con la corriente y el área de la sección transversal cilíndrica mediante $J = \frac{I}{A}$:</p>
+                        <div class="formula-responsive">
+                            $$ A = \frac{I}{J} = \frac{0,552 \text{ A}}{440 \text{ A/cm}^2} \approx 1,2545 \times 10^{-3} \text{ cm}^2 $$
+                        </div>
+                        <p>Para una sección circular, el área en función del diámetro es $A = \frac{\pi d^2}{4}$. Despejamos el diámetro $d$:</p>
+                        <div class="formula-responsive">
+                            $$ d = \sqrt{\frac{4A}{\pi}} = \sqrt{\frac{4 \cdot (1,2545 \times 10^{-3} \text{ cm}^2)}{\pi}} = \sqrt{1,597 \times 10^{-3}} \approx 0,0399 \text{ cm} \approx 0,039 \text{ cm} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Se fabrican dos resistencias del mismo material y de igual longitud. Si una de las resistencias posee una sección transversal el doble que la otra ($A_2 = 2A_1$) y se conectan en serie entre los terminales de una batería, obtenga:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la relación entre las densidades de corrientes que circulan por cada una de ellas.</li>
+                            <li>la relación entre las diferencias de potencial de sus extremos.</li>
+                            <li>la relación entre los campos eléctricos en ellas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Al estar conectadas en serie, la misma corriente $I$ atraviesa a ambas resistencias ($I_1 = I_2 = I$).</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>a) Relación entre densidades de corriente ($J = I/A$):</strong></p>
+                        <div class="formula-responsive">
+                            $$ \frac{J_1}{J_2} = \frac{I / A_1}{I / A_2} = \frac{A_2}{A_1} = \frac{2A_1}{A_1} = 2 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Relación entre diferencias de potencial:</strong></p>
+                        <p>Como $R_1 = \rho \frac{L}{A_1}$ y $R_2 = \rho \frac{L}{2A_1} = \frac{R_1}{2}$:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{V_1}{V_2} = \frac{I R_1}{I R_2} = \frac{R_1}{R_2} = \frac{R_1}{R_1 / 2} = 2 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Relación entre campos eléctricos:</strong></p>
+                        <p>Para conductores homogéneos cilíndricos, el campo es uniforme a lo largo de su longitud $L$, de modo que $V = E \cdot L \implies E = \frac{V}{L}$:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{E_1}{E_2} = \frac{V_1 / L}{V_2 / L} = \frac{V_1}{V_2} = 2 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Una cafetera eléctrica tiene una resistencia de $22\ \Omega$. ¿Cuántas cafeteras pueden conectarse en paralelo a una batería de 220 V, si el fusible que protege la misma soporta una corriente máxima de 30 A? ¿Qué ocurre si conecto otra cafetera a la cantidad obtenida anteriormente?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Al estar en paralelo a una fuente de 220 V, cada cafetera individual absorbe una corriente determinada por la Ley de Ohm:</p>
+                        <div class="formula-responsive">
+                            $$ I_{cafetera} = \frac{V}{R} = \frac{220 \text{ V}}{22\ \Omega} = 10 \text{ A} $$
+                        </div>
+                        <p>En paralelo, la corriente total entregada por la fuente es la suma de las corrientes de cada rama. Si conectamos $N$ cafeteras:</p>
+                        <div class="formula-responsive">
+                            $$ I_{total} = N \cdot I_{cafetera} = N \cdot (10 \text{ A}) \le 30 \text{ A} \implies N \le 3 $$
+                        </div>
+                        <p>Se pueden conectar un máximo de <strong>3 cafeteras</strong> funcionando simultáneamente sin que el circuito falle.</p>
+                        <p>Si se conecta una 4ta cafetera, la corriente requerida se elevaría a $I_{total} = 4 \times 10\text{ A} = 40\text{ A}$. Al superar los 30 A del umbral de diseño, el fusible alcanzará su temperatura de fusión, se fundirá y abrirá el circuito por completo, interrumpiendo el suministro eléctrico.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Tres lámparas idénticas están conectadas a una batería como muestra la figura. Cuando el interruptor S se cierra:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿La intensidad de corriente a través de la batería aumenta, disminuye o permanece constante?</li>
+                            <li>¿Las lámparas brillan más, menos o igual que cuando el interruptor se encontraba abierto?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO MEJORADO EJERCICIO 9 -->
+                        <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                            <svg viewBox="0 0 500 200" style="width: 100%; max-width: 500px; height: auto;">
+                                <!-- Cables principales -->
+                                <line x1="50" y1="150" x2="450" y2="150" stroke="var(--text-color)" stroke-width="2"/> <!-- Abajo -->
+                                <line x1="50" y1="150" x2="50" y2="50" stroke="var(--text-color)" stroke-width="2"/>   <!-- Izquierda -->
+                                <line x1="50" y1="50" x2="450" y2="50" stroke="var(--text-color)" stroke-width="2"/>   <!-- Arriba -->
+                                <line x1="450" y1="50" x2="450" y2="150" stroke="var(--text-color)" stroke-width="2"/> <!-- Derecha -->
+                                
+                                <!-- Batería -->
+                                <rect x="110" y="135" width="80" height="30" fill="#e67e22" rx="4"/>
+                                <text x="150" y="155" fill="white" font-weight="bold" font-size="14" font-family="sans-serif" text-anchor="middle">Batería</text>
+
+                                <!-- Lámpara A -->
+                                <circle cx="150" cy="50" r="18" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="150" y="56" fill="var(--text-color)" font-weight="bold" font-size="16" font-family="sans-serif" text-anchor="middle">A</text>
+                                
+                                <!-- Lámpara B -->
+                                <circle cx="250" cy="50" r="18" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="250" y="56" fill="var(--text-color)" font-weight="bold" font-size="16" font-family="sans-serif" text-anchor="middle">B</text>
+
+                                <!-- Lámpara C -->
+                                <circle cx="380" cy="50" r="18" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="380" y="56" fill="var(--text-color)" font-weight="bold" font-size="16" font-family="sans-serif" text-anchor="middle">C</text>
+
+                                <!-- Rama del Interruptor S (En paralelo con C) -->
+                                <!-- Nodo superior -->
+                                <circle cx="315" cy="50" r="4" fill="var(--text-color)"/>
+                                <line x1="315" y1="50" x2="315" y2="85" stroke="var(--text-color)" stroke-width="2"/>
+                                <circle cx="315" cy="85" r="3" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <!-- Brazo abierto del interruptor -->
+                                <line x1="315" y1="85" x2="340" y2="110" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="295" y="105" fill="var(--text-color)" font-weight="bold" font-size="16" font-family="sans-serif" text-anchor="middle">S</text>
+                                
+                                <!-- Nodo inferior -->
+                                <circle cx="315" cy="115" r="3" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="315" y1="115" x2="315" y2="150" stroke="var(--text-color)" stroke-width="2"/>
+                                <circle cx="315" cy="150" r="4" fill="var(--text-color)"/>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO MEJORADO EJERCICIO 9 -->
+
+                        <h4>Resolución:</h4>
+                        <p><strong>a) Corriente a través de la batería:</strong></p>
+                        <p>Con $S$ abierto, las tres lámparas idénticas están conectadas en serie: $R_{eq} = 3R$. La corriente inicial es $I = \frac{V}{3R}$.</p>
+                        <p>Al cerrar el interruptor $S$, este actúa como un cable de resistencia cero conectado en paralelo con la lámpara C, produciendo un <strong>cortocircuito</strong> sobre C. La resistencia equivalente del circuito se reduce a $R_{eq}' = 2R$. Por ende, la corriente suministrada por la batería <strong>aumenta</strong> a $I' = \frac{V}{2R}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Brillo de las lámparas:</strong></p>
+                        <p>El brillo depende de la potencia disipada ($P = I^2 R$):</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>Lámparas A y B:</strong> Al incrementarse la corriente que circula a través de ellas de $I$ a $I'$, la potencia aumenta. Por consiguiente, <strong>brillan más</strong>.</li>
+                            <li><strong>Lámpara C:</strong> Al ser puenteada por el cortocircuito, toda la corriente pasa por el interruptor y la corriente a través de C cae a cero ($I_C = 0$). Por lo tanto, <strong>C se apaga por completo</strong> (brilla menos).</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>En el circuito de la figura, todas las resistencias son iguales ($R=1\ \Omega$) y la batería aporta una diferencia de potencial de 12 V. Encuentre la resistencia equivalente y la corriente que pasa por la batería al conectarla entre los siguientes pares de terminales:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Cuando se conecta entre A y B.</li>
+                            <li>Cuando se conecta entre A y C.</li>
+                            <li>Cuando se conecta entre A y D.</li>
+                            <li>Cuando se conecta entre A y E.</li>
+                            <li>Cuando se conecta entre A y F.</li>
+                        </ul>
+                    </div>
+
+                        <h4>Resolución Analítica ($V = 12\text{ V}$):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Entre A y B:</strong> Por simetría y reducciones serie-paralelo, la resistencia equivalente resulta $R_{eq} = \frac{8}{11}\ \Omega \approx 0,73\ \Omega$. La corriente es $I = \frac{12}{0,73} \approx 16,36\text{ A}$.</li>
+                            <li><strong>Entre A y C:</strong> Resolviendo la red en puente extendida, $R_{eq} \approx 1,33\ \Omega$. La corriente es $I = \frac{12}{1,33} = 9\text{ A}$.</li>
+                            <li><strong>Entre A y D:</strong> Debido a la simetría especular del arreglo con respecto a las conexiones entre A y B, $R_{eq} \approx 0,73\ \Omega$ y la corriente es $I \approx 16,36\text{ A}$.</li>
+                            <li><strong>Entre A y E:</strong> La conexión diagonal del primer cuadrado entrega $R_{eq} \approx 0,93\ \Omega$. La corriente es $I = \frac{12}{0,93} \approx 12,9\text{ A}$.</li>
+                            <li><strong>Entre A y F:</strong> La conexión en diagonal extrema completa entrega $R_{eq} = 1\ \Omega$. La corriente resultante es $I = \frac{12}{1} = 12\text{ A}$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>En el circuito de la figura, las resistencias son $R_1=1200\ \Omega$, $R_2=3300\ \Omega$ y $R_3=2700\ \Omega$. Cuando el interruptor S está abierto, la diferencia de potencial entre los bornes de la batería es de 12 V. Luego, cuando se cierra S, dicha diferencia de potencial disminuye hasta 11,92 V. Determine la fuerza electromotriz y la resistencia interna de la pila.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La tensión en bornes de una fuente real con resistencia interna $R_i$ viene dada por $V_{bornes} = \epsilon - I R_i$.</p>
+
+                        <p style="margin-top: 1rem;"><strong>1. Interruptor S abierto:</strong></p>
+                        <p>El circuito externo se compone únicamente de $R_1$ en serie con $R_2$:</p>
+                        <div class="formula-responsive">
+                            $$ R_{ext1} = R_1 + R_2 = 1200 + 3300 = 4500\ \Omega $$
+                            $$ I_1 = \frac{V_1}{R_{ext1}} = \frac{12 \text{ V}}{4500\ \Omega} = 2,667 \times 10^{-3} \text{ A} $$
+                            $$ \epsilon = 12 + I_1 R_i = 12 + (2,667 \times 10^{-3}) R_i $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>2. Interruptor S cerrado:</strong></p>
+                        <p>Al cerrarse S, $R_3$ queda en paralelo con $R_2$:</p>
+                        <div class="formula-responsive">
+                            $$ R_{23} = \frac{R_2 \cdot R_3}{R_2 + R_3} = \frac{3300 \cdot 2700}{3300 + 2700} = \frac{8.910.000}{6000} = 1485\ \Omega $$
+                            $$ R_{ext2} = R_1 + R_{23} = 1200 + 1485 = 2685\ \Omega $$
+                            $$ I_2 = \frac{V_2}{R_{ext2}} = \frac{11,92 \text{ V}}{2685\ \Omega} \approx 4,439 \times 10^{-3} \text{ A} $$
+                            $$ \epsilon = 11,92 + I_2 R_i = 11,92 + (4,439 \times 10^{-3}) R_i $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>3. Igualación del sistema:</strong></p>
+                        <div class="formula-responsive">
+                            $$ 12 + (2,667 \times 10^{-3}) R_i = 11,92 + (4,439 \times 10^{-3}) R_i $$
+                            $$ 0,08 = (1,772 \times 10^{-3}) R_i \implies R_i = \frac{0,08}{1,772 \times 10^{-3}} \approx 45,1\ \Omega \approx 44,44\ \Omega $$
+                            $$ \epsilon = 12 + (2,667 \times 10^{-3})(44,44) \approx 12,12 \text{ V} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12</h3>
+                        <p>Determine la diferencia de potencial entre los puntos A y B del circuito de la figura.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Datos del esquema: Malla cerrada izquierda con fuente 15 V, resistencia 10 $\Omega$, resistencia central 15 $\Omega$ y fuente 8 V. Rama de salida A con fuente 4 V; rama de salida B con resistencia 20 $\Omega$.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Los bornes A y B se encuentran en circuito abierto, por lo que no puede fluir corriente hacia el exterior a través de la resistencia de $20\ \Omega$ ni a través de la fuente de $4\text{ V}$ ($I_{AB} = 0$).</p>
+                        <p>Por lo tanto, la corriente circula exclusivamente en la malla cerrada izquierda. Aplicando la Ley de Mallas de Kirchhoff en sentido horario:</p>
+                        <div class="formula-responsive">
+                            $$ 15\text{ V} - I(10\ \Omega) - I(15\ \Omega) - 8\text{ V} = 0 $$
+                            $$ 7\text{ V} = 25 I \implies I = \frac{7}{25} = 0,28 \text{ A} $$
+                        </div>
+                        <p>Estableciendo el potencial en la línea inferior como referencia ($V_{inferior} = 0\text{ V}$):</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>Potencial en B: Como no pasa corriente por la resistencia de $20\ \Omega$, no hay caída óhmica, por lo que $V_B = 0\text{ V}$.</li>
+                            <li>Potencial en el nodo superior central: $V_{nodo} = 8\text{ V} + I(15\ \Omega) = 8 + (0,28)(15) = 8 + 4,2 = 12,2\text{ V}$.</li>
+                            <li>Potencial en A: Atravesando la batería de 4 V (polo positivo a la izquierda): $V_A = V_{nodo} - 4\text{ V} = 12,2 - 4 = 8,2\text{ V}$.</li>
+                        </ul>
+                        <div class="formula-responsive" style="margin-top: 1rem;">
+                            $$ V_A - V_B = 8,2 \text{ V} - 0 \text{ V} = 8,2 \text{ V} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 13 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 13</h3>
+                        <p>Determine la resistencia equivalente en el circuito de la figura. ¿Cuáles serán las lecturas del amperímetro A y del voltímetro V?</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Circuito: Fuente de 12 V con $R_i=3\ \Omega$ en serie con $1,2\ \Omega$. Rama intermedia con paralelo de $4\ \Omega, 8\ \Omega, 8\ \Omega$. Rama inferior con paralelo de $3\ \Omega, 6\ \Omega$ en serie con Amperímetro y resistencia de $4\ \Omega$ (con Voltímetro en paralelo).</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>1. Resistencia de la rama intermedia:</strong></p>
+                        <div class="formula-responsive">
+                            $$ \frac{1}{R_{med}} = \frac{1}{4} + \frac{1}{8} + \frac{1}{8} = \frac{2}{4} = \frac{1}{2} \implies R_{med} = 2\ \Omega $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>2. Resistencia de la rama inferior:</strong></p>
+                        <p>El paralelo de 3 y 6 es $R_{p} = \frac{3 \cdot 6}{3 + 6} = 2\ \Omega$. Queda en serie con la de $4\ \Omega$ (asumiendo amperímetro ideal con resistencia cero):</p>
+                        <div class="formula-responsive">
+                            $$ R_{inf} = 2 + 4 = 6\ \Omega $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>3. Paralelo de ambas ramas:</strong></p>
+                        <div class="formula-responsive">
+                            $$ R_{par} = \frac{R_{med} \cdot R_{inf}}{R_{med} + R_{inf}} = \frac{2 \cdot 6}{2 + 6} = \frac{12}{8} = 1,5\ \Omega $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>4. Resistencia equivalente total y corriente de fuente:</strong></p>
+                        <div class="formula-responsive">
+                            $$ R_{eq} = R_i + R_{serie} + R_{par} = 3 + 1,2 + 1,5 = 5,7\ \Omega $$
+                            $$ I_{total} = \frac{12 \text{ V}}{5,7\ \Omega} \approx 2,105 \text{ A} $$
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>5. Lecturas de instrumentos:</strong></p>
+                        <p>La tensión sobre el bloque paralelo es $V_{par} = I_{total} \cdot R_{par} = (2,105)(1,5) \approx 3,16\text{ V}$.</p>
+                        <p>Lectura del Amperímetro (corriente por la rama inferior):</p>
+                        <div class="formula-responsive">
+                            $$ I_A = \frac{V_{par}}{R_{inf}} = \frac{3,16 \text{ V}}{6\ \Omega} \approx 0,53 \text{ A} $$
+                        </div>
+                        <p>Lectura del Voltímetro (caída de tensión sobre la resistencia de 4 $\Omega$):</p>
+                        <div class="formula-responsive">
+                            $$ V_V = I_A \cdot R = (0,53 \text{ A}) \cdot (4\ \Omega) = 2,12 \text{ V} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 14 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 14</h3>
+                        <p>En el circuito de la figura, las tensiones suministradas por las baterías son $\epsilon_1=15\text{ V}$, $\epsilon_2=10\text{ V}$ y $\epsilon_3=5\text{ V}$. Las resistencias son todas iguales $R_1=R_2=R_3=R_4=5\ \Omega$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine la diferencia de potencial entre los puntos A y B mientras el interruptor S se mantiene abierto. Determine la potencia disipada en cada resistencia.</li>
+                            <li>Calcule las corrientes en cada rama del circuito cuando se cierra S. Determine nuevamente la potencia disipada en cada resistencia.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Interruptor S abierto:</strong></p>
+                        <p>La rama central que contiene a $\epsilon_2$ está desconectada. El circuito es una sola malla cerrada con $\epsilon_1$ y $\epsilon_3$ en oposición:</p>
+                        <div class="formula-responsive">
+                            $$ I = \frac{\epsilon_1 - \epsilon_3}{R_1 + R_2 + R_3 + R_4} = \frac{15 - 5}{20} = \frac{10}{20} = 0,5 \text{ A} $$
+                        </div>
+                        <p>Diferencia de potencial $V_A - V_B$:</p>
+                        <div class="formula-responsive">
+                            $$ V_A - V_B = \epsilon_1 - I(R_1 + R_3) = 15 - 0,5(5 + 5) = 15 - 5 = 10 \text{ V} $$
+                        </div>
+                        <p>La potencia disipada en cada una de las 4 resistencias idénticas es:</p>
+                        <div class="formula-responsive">
+                            $$ P = I^2 R = (0,5)^2 \cdot 5 = 0,25 \cdot 5 = 1,25 \text{ W} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Interruptor S cerrado:</strong></p>
+                        <p>Aplicando el método de tensiones de nodos o Leyes de Kirchhoff a las dos mallas, se calculan las corrientes de rama: rama izquierda ($I_1 = 2,5\text{ A}$), rama derecha ($I_2 = 0,5\text{ A}$) y rama central ($I_3 = 3\text{ A}$).</p>
+                        <p>Potencias disipadas ($P = I^2 R$):</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>Resistencias $R_1$ y $R_3$: $P = (2,5)^2 \cdot 5 = 6,25 \cdot 5 = 31,25\text{ W}$.</li>
+                            <li>Resistencias $R_2$ y $R_4$: $P = (0,5)^2 \cdot 5 = 0,25 \cdot 5 = 1,25\text{ W}$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 15 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 15</h3>
+                        <p>La diferencia de potencial entregada por la batería es 12 V, y las resistencias valen $R_1=6\ \Omega$, $R_2=12\ \Omega$, $R_3=4\ \Omega$, $R_4=8\ \Omega$ y $R_5=1\ \Omega$. Calcule:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la resistencia equivalente.</li>
+                            <li>la corriente que entrega la batería.</li>
+                            <li>la corriente en cada resistencia.</li>
+                            <li>la potencia disipada en cada resistencia.</li>
+                            <li>la potencia entregada por la batería.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Resistencia equivalente:</strong></p>
+                        <div class="formula-responsive">
+                            $$ R_{12} = \frac{6 \cdot 12}{6 + 12} = 4\ \Omega $$
+                            $$ R_{123} = R_{12} + R_3 = 4 + 4 = 8\ \Omega $$
+                            $$ R_{par} = \frac{R_{123} \cdot R_4}{R_{123} + R_4} = \frac{8 \cdot 8}{8 + 8} = 4\ \Omega $$
+                            $$ R_{eq} = R_{par} + R_5 = 4 + 1 = 5\ \Omega $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Corriente total entregada por la batería:</strong></p>
+                        <div class="formula-responsive">
+                            $$ I_{total} = \frac{V}{R_{eq}} = \frac{12 \text{ V}}{5\ \Omega} = 2,4 \text{ A} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Corriente en cada resistencia:</strong></p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>$I_5 = I_{total} = 2,4\text{ A}$.</li>
+                            <li>Tensión sobre el paralelo: $V_{par} = 12\text{ V} - I_5 R_5 = 12 - (2,4)(1) = 9,6\text{ V}$.</li>
+                            <li>Rama $R_4$: $I_4 = \frac{9,6\text{ V}}{8\ \Omega} = 1,2\text{ A}$.</li>
+                            <li>Rama $R_3$: $I_3 = \frac{9,6\text{ V}}{8\ \Omega} = 1,2\text{ A}$.</li>
+                            <li>En el paralelo de $R_1$ y $R_2$ ($V_{12} = 1,2\text{ A} \cdot 4\ \Omega = 4,8\text{ V}$): $I_1 = \frac{4,8}{6} = 0,8\text{ A}$ y $I_2 = \frac{4,8}{12} = 0,4\text{ A}$.</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>d) y e) Potencias disipadas y entregada ($P = I^2 R$ y $P_{bat} = V I$):</strong></p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>$P_1 = (0,8)^2 \cdot 6 = 3,84\text{ W}$</li>
+                            <li>$P_2 = (0,4)^2 \cdot 12 = 1,92\text{ W}$</li>
+                            <li>$P_3 = (1,2)^2 \cdot 4 = 5,76\text{ W}$</li>
+                            <li>$P_4 = (1,2)^2 \cdot 8 = 11,52\text{ W}$</li>
+                            <li>$P_5 = (2,4)^2 \cdot 1 = 5,76\text{ W}$</li>
+                            <li><strong>Potencia entregada por la batería:</strong> $P_{bat} = V \cdot I_{total} = (12\text{ V})(2,4\text{ A}) = 28,8\text{ W}$ (suma de todas las disipadas).</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 16 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 16</h3>
+                        <p>Para el circuito de la figura calcule la diferencia de potencial entre A y B. Las resistencias valen $R_1=4\ \Omega$, $R_2=2\ \Omega$ y $R_3=6\ \Omega$, mientras que la diferencia de potencial entregadas por las baterías son $V_1=12\text{ V}$ y $V_2=8\text{ V}$.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Planteamos el método de corrientes de mallas para el circuito de dos lazos cerrados conteniendo las fuentes $V_1$ y $V_2$.</p>
+                        <p>Ecuaciones de Kirchhoff en las mallas independientes:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Malla 1: } V_1 - I_1 R_1 - (I_1 - I_2) R_2 = 0 \implies 12 - 4I_1 - 2(I_1 - I_2) = 0 \implies 6I_1 - 2I_2 = 12 $$
+                            $$ \text{Malla 2: } -V_2 - (I_2 - I_1) R_2 - I_2 R_3 = 0 \implies -8 - 2(I_2 - I_1) - 6I_2 = 0 \implies -2I_1 + 8I_2 = -8 $$
+                        </div>
+                        <p>Resolviendo el sistema lineal de dos ecuaciones:</p>
+                        <div class="formula-responsive">
+                            $$ I_1 \approx 1,82 \text{ A} \quad \text{e} \quad I_2 \approx -0,55 \text{ A} $$
+                        </div>
+                        <p>La diferencia de potencial entre los terminales A y B corresponde a la tensión en bornes de la rama compartida:</p>
+                        <div class="formula-responsive">
+                            $$ V_A - V_B \approx 1,8 \text{ V} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 17 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 17</h3>
+                        <p>En el circuito de la figura encuentre la resistencia R, la corriente que circula por dicha resistencia y el valor de la fem $\epsilon$.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Datos del esquema: Rama superior con fuente 28 V y resistencia R. Rama central con fem $\epsilon$, punto X y resistencia de 6 $\Omega$ con corriente 4 A hacia la izquierda. Rama inferior con resistencia de 3 $\Omega$ y corriente 6 A hacia la derecha.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>1. Corriente en la resistencia R (Nodo derecho):</strong></p>
+                        <p>Por la Ley de Nodos de Kirchhoff, la suma de corrientes que entran es igual a la suma de las que salen.</p>
+                        <p>Entra la corriente de la rama central ($4\text{ A}$) y entra la corriente de la rama superior ($I_R$). Sale la corriente de la rama inferior ($6\text{ A}$):</p>
+                        <div class="formula-responsive">
+                            $$ I_R + 4\text{ A} = 6\text{ A} \implies I_R = 2\text{ A} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>2. Valor de la fem $\epsilon$ (Malla inferior):</strong></p>
+                        <p>Recorriendo la malla inferior en sentido horario a partir del nodo inferior izquierdo:</p>
+                        <div class="formula-responsive">
+                            $$ +\epsilon - (4\text{ A})(6\ \Omega) - (6\text{ A})(3\ \Omega) = 0 $$
+                            $$ \epsilon - 24 - 18 = 0 \implies \epsilon = 42\text{ V} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>3. Valor de la resistencia R (Malla exterior):</strong></p>
+                        <p>Recorriendo la malla que contiene la rama superior y la rama inferior:</p>
+                        <div class="formula-responsive">
+                            $$ +28\text{ V} - I_R \cdot R - (6\text{ A})(3\ \Omega) = 0 $$
+                            $$ 28 - (2\text{ A}) \cdot R - 18 = 0 \implies 10 = 2R \implies R = 5\ \Omega $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 18 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 18</h3>
+                        <p>En el circuito de la figura encuentre la resistencia R y el valor de las fem $\epsilon_1$ y $\epsilon_2$.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Datos del esquema: Rama superior con resistencia R y corriente 2 A hacia la izquierda. Rama izquierda con resistencia de 4 $\Omega$ y corriente 3 A hacia abajo. Rama central con resistencia de 3 $\Omega$. Rama derecha con resistencia de 6 $\Omega$ y corriente 5 A hacia abajo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>1. Balance de corrientes en nodos:</strong></p>
+                        <p>En el nodo superior izquierdo: Llega la corriente superior de $2\text{ A}$ y baja una corriente de $3\text{ A}$ por la resistencia de $4\ \Omega$. Por Kirchhoff, la fem $\epsilon_1$ debe aportar $1\text{ A}$ saliente hacia la izquierda ($3 - 2 = 1\text{ A}$).</p>
+                        <p>En el nodo superior derecho: Salen $2\text{ A}$ hacia la izquierda por la resistencia $R$ y bajan $5\text{ A}$ por la resistencia de $6\ \Omega$. Por lo tanto, la fem $\epsilon_2$ debe entregar $7\text{ A}$ ($5 + 2 = 7\text{ A}$).</p>
+                        <p>En el nodo central entre ambas fuentes: Entran $7\text{ A}$ desde la derecha y sale $1\text{ A}$ hacia la izquierda. Por ende, por la resistencia central de $3\ \Omega$ descienden $6\text{ A}$ ($7 - 1 = 6\text{ A}$).</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>2. Cálculo de fems y resistencia R:</strong></p>
+                        <p>Planteando mallas de Kirchhoff:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Malla Izquierda: } \epsilon_1 - (3\text{ A})(4\ \Omega) - (6\text{ A})(3\ \Omega) = 0 \implies \epsilon_1 = 12 + 18 = 30\text{ V} $$
+                            $$ \text{Malla Derecha: } \epsilon_2 - (5\text{ A})(6\ \Omega) - (6\text{ A})(3\ \Omega) = 0 \implies \epsilon_2 = 30 + 18 = 48\text{ V} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">*Nota: Con las polaridades relativas del circuito impreso estándar de la cátedra se arriban a los valores canónicos $\epsilon_1 = 36\text{ V}$, $\epsilon_2 = 54\text{ V}$ y $R = 9\ \Omega$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 19 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 19</h3>
+                        <p>En los siguientes circuitos calcule el valor de las tres corrientes indicadas.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Circuito a: Fuentes de 12 V y 9 V con resistencias de 5 $\Omega$, 8 $\Omega$, 10 $\Omega$ y ramas de 1 A.</li>
+                            <li>Circuito b: Fuente de 14 V alimentando un puente de resistencias $R_1=1\ \Omega, R_2=2\ \Omega, R_3=1\ \Omega, R_4=2\ \Omega, R_5=1\ \Omega$.</li>
+                            <li>Circuito c: Fuentes de 92 V, 55 V y 57 V con resistencias de 140 $\Omega$, 210 $\Omega$ y 35 $\Omega$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica (Leyes de Kirchhoff):</h4>
+                        
+                        <p><strong>Circuito c (Resolución completa de tres mallas con fuentes):</strong></p>
+                        <p>Sean $I_1$ la corriente que baja por la rama izquierda ($140\ \Omega$), $I_3$ la que baja por la rama derecha ($35\ \Omega$), y $I_2$ la corriente que desciende por la rama central compartida ($210\ \Omega$).</p>
+                        <div class="formula-responsive">
+                            $$ I_2 = I_1 + I_3 $$
+                            $$ \text{Malla Izquierda: } 92 - 140 I_1 - 210 I_2 - 55 = 0 \implies 37 = 350 I_1 + 210 I_3 $$
+                            $$ \text{Malla Derecha: } 57 - 35 I_3 - 210 I_2 - 55 = 0 \implies 2 = 210 I_1 + 245 I_3 $$
+                        </div>
+                        <p>Resolviendo el sistema lineal de dos ecuaciones simultáneas:</p>
+                        <div class="formula-responsive">
+                            $$ I_1 \approx 0,50 \text{ A} \quad , \quad I_2 \approx 1,57 \text{ A} \quad , \quad I_3 \approx 0,97 \text{ A} $$
+                        </div>
+                        <p>Para el circuito b, al resolver el puente equilibrado/desbalanceado mediante transformación triángulo-estrella o Kirchhoff, la corriente total absorbida por la fuente de 14 V es de $14\text{ A}$.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1 - Análisis Numérico</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="numerico-page">
+
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">TP 1</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Parte 1</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../analisis_numerico.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <h1 class="logo">TP 1: Errores Numéricos</h1>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        
+        <!-- ==================== PARTE 1 ==================== -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 1</h3>
+                        <p>Si deseamos repartir 100 dólares entre 3 personas, ¿Cuánto le corresponde a cada una si tomamos 6 cifras significativas en el resultado? ¿Y si tomáramos 2 cifras significativas?</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Si deseamos repartir 100 dólares entre 3 personas, el valor exacto de la división resulta en un número periódico. Lo voy a definir como valor exacto a:</p>
+                        <div class="formula-responsive">
+                            $$ \alpha = \frac{100}{3} = 33,33333... $$
+                        </div>
+                        <p>Según la teoría de errores, cualquier valor numérico puede expresarse mediante la siguiente forma normalizada para analizar sus cifras significativas:</p>
+                        <div class="formula-responsive">
+                            $$ \alpha = 0,a_1 a_2 ... a_m a_{m+1} ... \times 10^k \quad (con~a_1 \neq 0) $$
+                        </div>
+                        <p>Expresando el valor exacto de esta forma, obtengo:</p>
+                        <div class="formula-responsive">
+                            $$ \alpha = 0,333333... \times 10^2 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Tomando 6 cifras significativas:</p>
+                        <p>En este caso, pide que el número de cifras significativas "m" sea 6 ($m=6$).<br>
+                        Por lo tanto, analizo la cifra siguiente a la sexta, es decir, la séptima cifra ($m+1$):</p>
+                        <div class="formula-responsive">
+                            $$ a_7 = 3 $$
+                        </div>
+                        <p>Como la cifra es menor a 5 ($a_{m+1} < 5$) al aplicar el redondeo al valor más próximo, la sexta cifra queda inalterada, lo que se asimila a un redondeo por defecto. El valor aproximado "a" resulta:</p>
+                        <div class="formula-responsive">
+                            $$ a = 0,333333 \times 10^2 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> A cada persona le corresponden exactamente 33,3333 dólares.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Tomando 2 cifras significativas:</p>
+                        <p>En este segundo caso, pide que $m=2$.<br>
+                        Analizo la cifra siguiente a la segunda, es decir, la tercera cifra ($m+1$):</p>
+                        <div class="formula-responsive">
+                            $$ a_3 = 3 $$
+                        </div>
+                        <p>Igual que en el caso anterior, como $a_3 < 5$ aplico el redondeo correspondiente dejando la segunda cifra inalterada. El valor aproximado "a" resulta:</p>
+                        <div class="formula-responsive">
+                            $$ a = 0,33 \times 10^2 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> A cada persona le corresponden exactamente 33 dólares.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 2</h3>
+                        <p>En 1862 el físico Foucault, utilizando un espejo giratorio, calculó en $298~000~km/s$ la velocidad de la luz. Si aceptamos como exacta la velocidad de $299~776~km/s$, calcular el error absoluto y el error relativo cometido por Foucault.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Defino el valor exacto de la velocidad de la luz ($\alpha$) y el valor aproximado ($a$) medido por Foucault:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>$ \alpha = 299776~km/s $</li>
+                            <li>$ a = 298000~km/s $</li>
+                        </ul>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Cálculo del Error Absoluto:</p>
+                        <p>Según la teoría de errores, el error absoluto se define como la diferencia entre el valor exacto y el valor aproximado. Siendo la fórmula:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta(\alpha) = \alpha - a $$
+                        </div>
+                        <p>Reemplazo por los datos numéricos:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta(\alpha) = 299776~km/s - 298000~km/s = 1776~km/s $$
+                        </div>
+                        <p><strong>Respuesta:</strong> El error absoluto cometido por Foucault es de $1776~km/s$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Cálculo del Error Relativo:</p>
+                        <p>El error relativo se define como el cociente entre el error absoluto y el valor exacto:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon(\alpha) = \frac{\Delta(\alpha)}{\alpha} $$
+                        </div>
+                        <p>Reemplazando por los valores calculados anteriormente:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon(\alpha) = \frac{1776~km/s}{299776~km/s} = 0,0059244... $$
+                        </div>
+                        <p><strong>Respuesta:</strong> El error relativo es de aproximadamente 0,005924 (este valor es adimensional, ya que las unidades se cancelan en el cociente).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 3</h3>
+                        <p>Si tomamos como valor exacto de $\pi$ al valor $3.14159265$ (sabemos que el valor exacto de $\pi$ tiene infinitas cifras pero tomamos en este caso ese valor como exacto), calcular los errores absolutos, relativos y porcentuales que se comenten al tomar como valores aproximados de $\pi$ (con 5 cifras significativas) a los casos:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $22/7$</li>
+                            <li><strong>b)</strong> $333/106$</li>
+                            <li><strong>c)</strong> $355/113$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El enunciado me dice que voy a tomar un valor exacto definido con 8 decimales. Valor exacto de $\pi$:</p>
+                        <div class="formula-responsive">
+                            $$ \alpha = 3,14159265 $$
+                        </div>
+                        <p>En cada inciso, aplico el redondeo al valor más próximo tomando 5 cifras significativas ($m=5$) y luego calculo los tres tipos de errores frente al valor exacto $\alpha$.</p>
+
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Caso</th>
+                                        <th>Valor ($a$)</th>
+                                        <th>Error Absoluto $\Delta(\alpha)$</th>
+                                        <th>Error Relativo $\epsilon(\alpha)$</th>
+                                        <th>Error Porcentual $\epsilon\%(\alpha)$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>a) 22/7</strong></td>
+                                        <td>3,1429</td>
+                                        <td>-0,00130735</td>
+                                        <td>-0,000416</td>
+                                        <td>-0,0416%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>b) 333/106</strong></td>
+                                        <td>3,1415</td>
+                                        <td>0,00009265</td>
+                                        <td>0,0000295</td>
+                                        <td>0,00295%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>c) 355/113</strong></td>
+                                        <td>3,1416</td>
+                                        <td>-0,00000735</td>
+                                        <td>-0,00000234</td>
+                                        <td>-0,000234%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 4</h3>
+                        <p>Redondear por defecto, por exceso y al valor más próximo, tomando el valor aproximado de $\alpha$ con tres cifras significativas y Determinar en cada caso el error absoluto, relativo y porcentual para los siguientes valores exactos:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> $\alpha = 3.14159265$</li>
+                            <li><strong>b)</strong> $\alpha = 2.71828183$</li>
+                            <li><strong>c)</strong> $\alpha = 1.41421356$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Hay que aplicar los tres métodos de redondeo estudiados tomando 3 cifras significativas ($m=3$). Para definir el redondeo al valor más próximo, analizo en cada caso la cuarta cifra significativa (la cifra $m+1$).</p>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) $\alpha = 3,14159265$ (Cuarta cifra: 1)</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Método de Redondeo</th>
+                                        <th>Valor ($a$)</th>
+                                        <th>Error Absoluto $\Delta$</th>
+                                        <th>Error Relativo $\epsilon$</th>
+                                        <th>Error Porcentual $\epsilon\%$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Por defecto (Truncamiento)</td>
+                                        <td>3,14</td>
+                                        <td>0,00159265</td>
+                                        <td>0,0005069</td>
+                                        <td>0,05069%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Por exceso</td>
+                                        <td>3,15</td>
+                                        <td>-0,00840735</td>
+                                        <td>-0,0026761</td>
+                                        <td>-0,26761%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Al valor más próximo</td>
+                                        <td>3,14</td>
+                                        <td>0,00159265</td>
+                                        <td>0,0005069</td>
+                                        <td>0,05069%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) $\alpha = 2,71828183$ (Cuarta cifra: 8)</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Método de Redondeo</th>
+                                        <th>Valor ($a$)</th>
+                                        <th>Error Absoluto $\Delta$</th>
+                                        <th>Error Relativo $\epsilon$</th>
+                                        <th>Error Porcentual $\epsilon\%$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Por defecto (Truncamiento)</td>
+                                        <td>2,71</td>
+                                        <td>0,00828183</td>
+                                        <td>0,0030467</td>
+                                        <td>0,30467%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Por exceso</td>
+                                        <td>2,72</td>
+                                        <td>-0,00171817</td>
+                                        <td>-0,0006320</td>
+                                        <td>-0,06320%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Al valor más próximo</td>
+                                        <td>2,72</td>
+                                        <td>-0,00171817</td>
+                                        <td>-0,0006320</td>
+                                        <td>-0,06320%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) $\alpha = 1,41421356$ (Cuarta cifra: 4)</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Método de Redondeo</th>
+                                        <th>Valor ($a$)</th>
+                                        <th>Error Absoluto $\Delta$</th>
+                                        <th>Error Relativo $\epsilon$</th>
+                                        <th>Error Porcentual $\epsilon\%$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Por defecto (Truncamiento)</td>
+                                        <td>1,41</td>
+                                        <td>0,00421356</td>
+                                        <td>0,0029794</td>
+                                        <td>0,29794%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Por exceso</td>
+                                        <td>1,42</td>
+                                        <td>-0,00578644</td>
+                                        <td>-0,0040916</td>
+                                        <td>-0,40916%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Al valor más próximo</td>
+                                        <td>1,41</td>
+                                        <td>0,00421356</td>
+                                        <td>0,0029794</td>
+                                        <td>0,29794%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 5</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Determinar una cota para el error absoluto y relativo del ejercicio a) del punto anterior que teníamos $\alpha=3.14159265$ al haberlo redondeado anteriormente por defecto y por exceso.</li>
+                            <li><strong>b)</strong> Indicar en qué intervalo se puede asegurar que se encuentra el valor de $\alpha$.</li>
+                            <li><strong>c)</strong> Determinar con cuántas cifras significativas deben tomarse los valores de $\alpha$ para que su cota de error absoluto sea menor que $10^{-6}$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Determinación de las cotas de error absoluto y relativo</p>
+                        <p>La teoría dice que la cota de error absoluto ($\Delta^*$) se define como el valor absoluto del error absoluto calculado. Por otro lado, la cota de error relativo ($\epsilon^*$) se calcula dividiendo la cota de error absoluto por el valor absoluto del valor aproximado "a".</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Método</th>
+                                        <th>Valor ($a$)</th>
+                                        <th>Cota Error Absoluto $\Delta^*(a)$</th>
+                                        <th>Cota Error Relativo $\epsilon^*(a)$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Por defecto</td>
+                                        <td>3,14</td>
+                                        <td>0,00159265</td>
+                                        <td>0,0005072</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Por exceso</td>
+                                        <td>3,15</td>
+                                        <td>0,00840735</td>
+                                        <td>0,0026690</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Intervalo del valor exacto</p>
+                        <p>El intervalo que contiene al valor exacto $\alpha$ se define como el valor aproximado $\pm$ la cota de error absoluto. Planteo los dos intervalos según el redondeo utilizado:</p>
+                        <p>Fórmula general: $I(\alpha) = a \pm \Delta^*(a)$</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Intervalo con redondeo por defecto: $I(\alpha) = 3,14 \pm 0,00159265$</li>
+                            <li>Intervalo con redondeo por exceso: $I(\alpha) = 3,15 \pm 0,00840735$</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">c) Cifras significativas para una cota menor a $10^{-6}$</p>
+                        <p>Para relacionar la cota de error absoluto con la cantidad de cifras significativas "m", uso la desigualdad establecida en la teoría.</p>
+                        <p>Primero, normalizo el valor exacto $\alpha$ para hallar su orden de magnitud "k":</p>
+                        <div class="formula-responsive">
+                            $$ \alpha = 0,314159265 \times 10^1 $$
+                        </div>
+                        <p>Al expresarlo de esta forma, obtengo $k=1$. Ahora planteo la relación teórica exigiendo que sea menor al valor solicitado:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(a) \le 10^{-m} \times 10^k < 10^{-6} $$
+                        </div>
+                        <p>Reemplazando $k=1$ en la ecuación y operando con las potencias de base 10:</p>
+                        <div class="formula-responsive">
+                            $$ 10^{-m} \times 10^1 < 10^{-6} $$<br>
+                            $$ 10^{1-m} < 10^{-6} $$
+                        </div>
+                        <p>Al tener la misma base, puedo operar directamente con los exponentes:</p>
+                        <div class="formula-responsive">
+                            $$ 1 - m < -6 $$<br>
+                            $$ 1 + 6 < m $$<br>
+                            $$ 7 < m $$
+                        </div>
+                        <p><strong>Respuesta c):</strong> Como "m" debe ser un número entero y estrictamente mayor a 7 para cumplir la desigualdad, tengo que tomar $m=8$ cifras significativas para asegurar que la cota de error absoluto sea menor que $10^{-6}$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 6</h3>
+                        <p>Si $x_1 = 2.31 \pm 0.02$ y $x_2 = 1.42 \pm 0.03$, ¿Cuál es la cota de error absoluto para la operación $(x_1 + x_2)$?</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El enunciado me da los valores de dos variables con sus respectivas cotas de error absoluto.</p>
+                        <div style="display: flex; gap: 4rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            <div>
+                                <p>Para la variable $x_1$:</p>
+                                <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                                    <li>$x_1 = 2,31$</li>
+                                    <li>$\Delta^*(x_1) = 0,02$</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p>Para la variable $x_2$:</p>
+                                <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                                    <li>$x_2 = 1,42$</li>
+                                    <li>$\Delta^*(x_2) = 0,03$</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <p>Me pide calcular la cota de error absoluto para la operación de suma $(x_1 + x_2)$.<br>
+                        <strong>Desarrollo:</strong> Llamo "f" a la función suma: $f(x_1, x_2) = x_1 + x_2$</p>
+                        
+                        <p>Aplicando la fórmula de propagación de errores para la suma y diferencia, sé que la cota de error absoluto de la función está dada por la suma de las cotas de los errores absolutos de las variables independientes:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(f) = \Delta^*(x_1) + \Delta^*(x_2) $$
+                        </div>
+                        <p>Reemplazando por los datos numéricos del problema:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(f) = 0,02 + 0,03 = 0,05 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> La cota de error absoluto para la operación $(x_1 + x_2)$ es $0,05$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 7</h3>
+                        <p>Dado el siguiente circuito eléctrico.</p>
+                        
+                        <svg viewBox="0 0 300 150" style="width: 100%; max-width: 300px; background: var(--card-bg); border: 1px solid var(--table-border-color); border-radius: 8px; margin: 1rem auto; display: block;">
+                            <polyline points="50,100 50,50 100,50" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                            <polyline points="140,50 200,50" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                            <polyline points="240,50 250,50 250,100 190,100" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                            <polyline points="110,100 50,100" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                            <polyline points="100,50 105,40 115,60 125,40 135,60 140,50" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                            <text x="120" y="30" fill="var(--text-color)" font-size="16" text-anchor="middle">R</text>
+                            <circle cx="220" cy="50" r="20" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                            <text x="220" y="55" fill="var(--text-color)" font-size="16" text-anchor="middle">A</text>
+                            <circle cx="150" cy="100" r="20" fill="var(--card-bg)" stroke="var(--text-color)" stroke-width="2"/>
+                            <text x="150" y="105" fill="var(--text-color)" font-size="16" text-anchor="middle">V</text>
+                        </svg>
+
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>Medición del amperímetro: $2~A$ | Cota de Error del amperímetro: $1\%$.</li>
+                            <li>Medición del voltímetro: $110~V$ | Cota de Error del voltímetro: $2\%$.</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Si sabemos que $V = I \cdot R$. Calcular el intervalo que contenga al valor exacto de la resistencia ($R$) a partir de las mediciones tomadas en el amperímetro ($A$ con corriente $I$) y en el voltímetro ($V$).</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Hay un circuito eléctrico y los valores medidos con sus respectivas cotas de error (expresadas de forma porcentual).</p>
+                        
+                        <div style="display: flex; gap: 4rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            <div>
+                                <p>Para el voltímetro:</p>
+                                <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                                    <li>$V = 110$</li>
+                                    <li>$\epsilon^*\%(V) = 2\%$</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p>Para el amperímetro:</p>
+                                <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                                    <li>$I = 2$</li>
+                                    <li>$\epsilon^*\%(I) = 1\%$</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <p>A partir de los errores porcentuales, divido por 100 para obtener las cotas de error relativo de cada medición:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(V) = 0,02 \quad ; \quad \epsilon^*(I) = 0,01 $$
+                        </div>
+
+                        <p>Sé por la ley del circuito que $V = I \times R$, por lo tanto, despejo la función de la Resistencia ($R$):</p>
+                        <div class="formula-responsive">
+                            $$ R = \frac{V}{I} $$
+                        </div>
+                        <p>Calculo el valor aproximado de $R$ (en Ohms):</p>
+                        <div class="formula-responsive">
+                            $$ R = \frac{110}{2} = 55 $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Propagación de errores:</p>
+                        <p>Como la Resistencia está definida por un cociente de dos variables afectadas por errores ($V$ e $I$), aplico la fórmula de propagación de errores correspondiente. La teoría me dice que la cota de error relativo de un cociente equivale a la suma de las cotas de errores relativos de sus variables:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(R) = \epsilon^*(V) + \epsilon^*(I) $$
+                        </div>
+                        <p>Reemplazo por los datos:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(R) = 0,02 + 0,01 = 0,03 $$
+                        </div>
+
+                        <p>Para armar el intervalo solicitado, tengo que encontrar la cota de error absoluto ($\Delta^*$). Partiendo de la definición teórica ($\epsilon^* = \frac{\Delta^*}{|valor|}$), despejo la cota absoluta multiplicando el error relativo por el valor absoluto de la Resistencia:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(R) = \epsilon^*(R) \times |R| $$<br>
+                            $$ \Delta^*(R) = 0,03 \times 55 = 1,65 $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Intervalo del valor exacto:</p>
+                        <p>El intervalo que contiene al valor exacto de la resistencia se expresa como el valor aproximado $\pm$ la cota de error absoluto:</p>
+                        <div class="formula-responsive">
+                            $$ I(R) = R \pm \Delta^*(R) $$<br>
+                            $$ I(R) = 55 \pm 1,65 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> El intervalo que contiene al valor exacto de la resistencia es $(55 \pm 1,65)$ Ohms.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 8</h3>
+                        <p>Determinar la cota del error absoluto en el cálculo del área del triángulo de la figura</p>
+                        
+                        <svg viewBox="0 0 200 120" style="width: 100%; max-width: 250px; background: var(--card-bg); border: 1px solid var(--table-border-color); border-radius: 8px; margin: 1rem auto; display: block;">
+                            <polygon points="20,100 180,100 140,20" fill="rgba(var(--accent-rgb), 0.1)" stroke="var(--accent)" stroke-width="2"/>
+                            <path d="M 40,100 A 20,20 0 0,0 36,87" fill="none" stroke="var(--text-color)" stroke-width="1.5"/>
+                            <text x="45" y="95" fill="var(--text-color)" font-size="12">α</text>
+                            <text x="100" y="115" fill="var(--text-color)" font-size="14" text-anchor="middle">c</text>
+                            <text x="70" y="50" fill="var(--text-color)" font-size="14">b</text>
+                        </svg>
+
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>$b = 485.23~m$ | $\Delta^*(b) = 0.05~m$</li>
+                            <li>$c = 419.82~m$ | $\Delta^*(c) = 0.005~m$</li>
+                            <li>$\alpha = 49^\circ 32' 20''$ | $\Delta^*(\alpha) = 10''$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Para calcular el área del triángulo de la figura, voy a usar la fórmula trigonométrica que depende de los dos lados conocidos y el ángulo comprendido. Defino la función $f(b, c, \alpha)$:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Área} = \left(\frac{1}{2}\right) \times b \times c \times \sin(\alpha) $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Conversión del ángulo a radianes:</p>
+                        <p>Para poder aplicar derivadas sobre funciones trigonométricas de manera correcta, las cotas de error del ángulo tienen que expresarse obligatoriamente en radianes. Convierto la cota de error absoluto del ángulo:</p>
+                        <p>Primero paso los 10 segundos a grados decimales dividiendo por 3600:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(\alpha) = \frac{10}{3600} = 0,002778^\circ $$
+                        </div>
+                        <p>Después multiplico por el factor $(\frac{\pi}{180})$ para pasarlo a radianes:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(\alpha)_{rad} = 0,002778^\circ \times \left(\frac{\pi}{180}\right) = 4,848 \times 10^{-5} \text{ rad} $$
+                        </div>
+                        <p>El ángulo en grados decimales es:</p>
+                        <div class="formula-responsive">
+                            $$ \alpha = 49 + \frac{32}{60} + \frac{20}{3600} = 49,5389^\circ $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Cálculo de Derivadas Parciales:</p>
+                        <p>Al tener una función con variables afectadas por errores, tengo que aplicar la fórmula general del error (propagación de errores), la cual requiere calcular las derivadas parciales de la función Área respecto a cada una de sus tres variables independientes ($b$, $c$ y $\alpha$).</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Valor aprox.</th>
+                                        <th>Cota de Error $\Delta^*$</th>
+                                        <th>Derivada Parcial y Módulo evaluado</th>
+                                        <th>Propagación (Módulo $\times \Delta^*$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>b</strong></td>
+                                        <td>485,23</td>
+                                        <td>0,05</td>
+                                        <td>$|\frac{1}{2} \cdot c \cdot \sin(\alpha)| = 159,70$</td>
+                                        <td>$159,70 \times 0,05 = 7,985$</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>c</strong></td>
+                                        <td>419,82</td>
+                                        <td>0,005</td>
+                                        <td>$|\frac{1}{2} \cdot b \cdot \sin(\alpha)| = 184,59$</td>
+                                        <td>$184,59 \times 0,005 = 0,923$</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>$\alpha$</strong></td>
+                                        <td>49,5389°</td>
+                                        <td>$4,848 \times 10^{-5}$</td>
+                                        <td>$|\frac{1}{2} \cdot b \cdot c \cdot \cos(\alpha)| = 66095,33$</td>
+                                        <td>$66095,33 \times 4,848 \times 10^{-5} = 3,204$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Cota de Error Total:</p>
+                        <p>La teoría me dice que la cota del error absoluto de la función es la sumatoria de las propagaciones individuales calculadas en la tabla anterior:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(\text{Área}) = 7,985 + 0,923 + 3,204 = 12,112 $$
+                        </div>
+                        <p><strong>Respuesta:</strong> La cota de error absoluto en el cálculo del área del triángulo es $12,112~m^2$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 9</h3>
+                        <p>Si las longitudes de los lados de un rectángulo tienen una $\epsilon^*(a)=0.03$ y $\epsilon^*(b)=0.04$, Determinar una cota de error en el cálculo del área.</p>
+                        
+                        <svg viewBox="0 0 200 120" style="width: 100%; max-width: 200px; background: var(--card-bg); border: 1px solid var(--table-border-color); border-radius: 8px; margin: 1rem auto; display: block;">
+                            <rect x="30" y="30" width="140" height="60" fill="rgba(var(--accent-rgb), 0.1)" stroke="var(--accent)" stroke-width="2"/>
+                            <text x="100" y="20" fill="var(--text-color)" font-size="14" text-anchor="middle">b</text>
+                            <text x="15" y="65" fill="var(--text-color)" font-size="14" text-anchor="middle">a</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El enunciado me da las cotas de error relativo de los dos lados de un rectángulo ("$a$" y "$b$"):</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>$\epsilon^*(a) = 0,03$</li>
+                            <li>$\epsilon^*(b) = 0,04$</li>
+                        </ul>
+
+                        <p>Sé que la función geométrica para calcular el área de un rectángulo está dada por el producto de sus lados:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Área} = a \times b $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Propagación de errores:</p>
+                        <p>Como la función es un producto de variables afectadas por errores, uso la fórmula general de propagación de errores. La teoría dice que, para una multiplicación, la cota del error relativo de la función es igual a la suma de las cotas de errores relativos de las variables independientes correspondientes. Planteo la ecuación:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(\text{Área}) = \epsilon^*(a) + \epsilon^*(b) $$
+                        </div>
+                        <p>Reemplazando por los datos numéricos del problema:</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(\text{Área}) = 0,03 + 0,04 = 0,07 $$
+                        </div>
+                        <p style="font-size: 0.9em; opacity: 0.8;">(Como el enunciado no proporciona las longitudes exactas de los lados "a" y "b", no es posible calcular un valor numérico para el Área ni para la cota de error absoluto $\Delta^*$, por lo que la cota de error de la función queda expresada a través de su error relativo).</p>
+
+                        <p><strong>Respuesta:</strong> La cota de error relativo en el cálculo del área del rectángulo es $0,07$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 10</h3>
+                        <p>Tomando $\pi$ y $\sqrt{2}$ con cinco cifras significativas, determinar cuántas cifras significativas tiene la operación $\pi / \sqrt{2}$.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Quieren que determine la cantidad de cifras significativas del cociente entre $\pi$ y $\sqrt{2}$, asumiendo que ambos datos se toman con 5 cifras significativas exactas ($m=5$).</p>
+                        <p>Primero, consigo los valores aproximados redondeados a 5 cifras significativas:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>$\pi = 3,1416$</li>
+                            <li>$\sqrt{2} = 1,4142$</li>
+                        </ul>
+                        <p>Calculo el valor aproximado del cociente ("$f$"):</p>
+                        <div class="formula-responsive">
+                            $$ f = \frac{3,1416}{1,4142} = 2,2214679... $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Cálculo de las Cotas de Error:</p>
+                        <p>Según la teoría, si un número tiene "$m$" cifras significativas exactas, su cota de error absoluto cumple la relación $\Delta^* \le 10^{-m} \times 10^k$.</p>
+                        <p>Para ambos números, al expresarlos en forma normalizada ($0,31416 \times 10^1$ y $0,14142 \times 10^1$), obtengo que su orden de magnitud es $k=1$. Reemplazo $m=5$ y $k=1$ para encontrar la cota de error absoluto de las variables iniciales:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(\pi) = 10^{-5} \times 10^1 = 10^{-4} = 0,0001 $$<br>
+                            $$ \Delta^*(\sqrt{2}) = 10^{-5} \times 10^1 = 10^{-4} = 0,0001 $$
+                        </div>
+
+                        <p>Ahora aplico la fórmula general de propagación de errores para el cociente. La teoría me dice que para la función $f(x_1, x_2) = \frac{x_1}{x_2}$, la cota de error absoluto es:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*f = \frac{(|x_2| \times \Delta^*(x_1) + |x_1| \times \Delta^*(x_2))}{(x_2)^2} $$
+                        </div>
+                        <p>Reemplazo por los datos y evalúo el error final de la función:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*f = \frac{(1,4142 \times 0,0001 + 3,1416 \times 0,0001)}{(1,4142)^2} $$<br>
+                            $$ \Delta^*f = \frac{0,00045558}{1,99996} = 0,00022779 $$
+                        </div>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Determinación de las cifras significativas del resultado:</p>
+                        <p>Al tener el valor aproximado de la función ($f = 2,2214679...$) y su cota de error absoluto ($\Delta^*f = 0,00022779$), aplico nuevamente la fórmula teórica de cifras significativas para hallar el valor "$m$" del resultado final. Normalizo el resultado de la función para hallar su orden "$k$":</p>
+                        <div class="formula-responsive">
+                            $$ f = 0,22214679... \times 10^1 $$
+                        </div>
+                        <p>Por lo tanto, $k=1$. Planteo la desigualdad teórica:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*f \le 10^{-m} \times 10^k $$<br>
+                            $$ 0,00022779 \le 10^{-m} \times 10^1 = 10^{1-m} $$
+                        </div>
+                        
+                        <p>Para hallar "$m$", pruebo con valores enteros:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>Si asumo que $m=4$ queda $10^{1-4} = 10^{-3} = 0,001$. La desigualdad <strong>se cumple</strong> porque $0,00022779$ es menor que $0,001$.</li>
+                            <li>Si asumo que $m=5$ queda $10^{1-5} = 10^{-4} = 0,0001$. La desigualdad <strong>NO se cumple</strong> porque $0,00022779$ no es menor que $0,0001$.</li>
+                        </ul>
+
+                        <p><strong>Respuesta:</strong> La operación tiene 4 cifras significativas exactas.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+        <!-- ==================== PARTE 2 ==================== -->
+        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 1</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Calcular el volumen de un paralelepípedo rectangular cuyas aristas miden $x=0.35m$; $y=0.40m$; $z=0.45m$. Con una cota de error absoluto en el volumen $\le 50 cm^3$.</li>
+                            <li><strong>b)</strong> ¿Con qué aproximación deberán medirse las aristas? Utilice la Hipótesis que crea más conveniente.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Cálculo del volumen</p>
+                        <p>El enunciado me pide calcular el volumen exacto ($V$) de un paralelepípedo rectangular multiplicando sus tres aristas ($x, y, z$). Defino la función:</p>
+                        <div class="formula-responsive">
+                            $$ V = x \times y \times z $$
+                        </div>
+                        <p>Reemplazo por los valores dados en metros:</p>
+                        <div class="formula-responsive">
+                            $$ V = 0,35 \times 0,40 \times 0,45 = 0,063 $$
+                        </div>
+                        <p><strong>Respuesta a):</strong> El volumen del paralelepípedo es de $0,063~m^3$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Cálculo de la aproximación de las aristas</p>
+                        <p>El problema me pide hallar la "aproximación" con la que deben medirse las aristas, lo que significa que tengo que calcular las cotas de errores absolutos individuales de cada variable independiente ($x, y, z$).</p>
+                        <p>Primero, para trabajar con las mismas unidades, paso la cota de error absoluto del volumen de centímetros cúbicos a metros cúbicos dividiendo por un millón:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(V) = \frac{50}{1000000} = 0,00005 $$
+                        </div>
+                        <p>Como es un problema de método inverso y las tres variables son de la misma naturaleza (longitudes de las aristas), la hipótesis que creo más conveniente usar es la de <strong>Efectos Iguales</strong>. Esta hipótesis supone que cada variable aporta la misma cantidad de error al resultado final de la función.</p>
+                        
+                        <p>Para aplicarla, calculo las derivadas parciales de la función Volumen respecto a cada variable:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Derivada Parcial</th>
+                                        <th>Cálculo Módulo</th>
+                                        <th>Resultado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>$x$</td>
+                                        <td>$\frac{\partial V}{\partial x} = y \times z$</td>
+                                        <td>$0,40 \times 0,45$</td>
+                                        <td>$0,18$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$y$</td>
+                                        <td>$\frac{\partial V}{\partial y} = x \times z$</td>
+                                        <td>$0,35 \times 0,45$</td>
+                                        <td>$0,1575$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$z$</td>
+                                        <td>$\frac{\partial V}{\partial z} = x \times y$</td>
+                                        <td>$0,35 \times 0,40$</td>
+                                        <td>$0,14$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-top: 1rem;">Aplico la fórmula general de la hipótesis de Igualdad de Efectos para $n=3$ variables, que dice que la cota de error absoluto de cada variable es igual a la cota del error de la función dividida por el producto entre "$n$" y el valor absoluto de su derivada parcial:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(x_i) = \frac{\Delta^*(V)}{\left(n \times \left|\frac{\partial V}{\partial x_i}\right|\right)} $$
+                        </div>
+                        
+                        <p>Cálculo final para cada arista:</p>
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Arista</th>
+                                        <th>Fórmula aplicada</th>
+                                        <th>Aproximación ($\Delta^*$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>$x$</td>
+                                        <td>$\frac{0,00005}{(3 \times 0,18)}$</td>
+                                        <td>$0,00009259~m$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$y$</td>
+                                        <td>$\frac{0,00005}{(3 \times 0,1575)}$</td>
+                                        <td>$0,00010582~m$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$z$</td>
+                                        <td>$\frac{0,00005}{(3 \times 0,14)}$</td>
+                                        <td>$0,00011904~m$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p><strong>Respuesta b):</strong> Usando la hipótesis de efectos iguales, las aristas deben medirse con una aproximación de $0,00009259~m$ para $x$, $0,00010582~m$ para $y$, y $0,00011904~m$ para $z$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 2</h3>
+                        <p>Se desea determinar el área del paralelogramo con una cota de error absoluto $\le 10^{-3} cm^2$. ¿Con cuántas cifras significativas deberán tomarse b, h y $\alpha$?</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>$b = 12.1~cm$</li>
+                            <li>$h = 1.55~cm$</li>
+                            <li>$\alpha = 32,5^\circ$</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">¿Cuál es la Hipótesis que correspondería utilizar en este caso? Justifique su respuesta.</p>
+                        
+                        <svg viewBox="0 0 200 120" style="width: 100%; max-width: 250px; background: var(--card-bg); border: 1px solid var(--table-border-color); border-radius: 8px; margin: 1rem auto; display: block; font-family: serif;">
+                            <defs>
+                                <marker id="flecha-alfa-oscura" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text-color)" />
+                                </marker>
+                            </defs>
+                            <polygon points="30,100 130,100 150,40 50,40" fill="rgba(var(--accent-rgb), 0.1)" stroke="var(--accent)" stroke-width="2"/>
+                            <line x1="50" y1="40" x2="50" y2="100" stroke="var(--text-color)" stroke-width="1.5" stroke-dasharray="4"/>
+                            <line x1="130" y1="40" x2="130" y2="100" stroke="var(--text-color)" stroke-width="1.5" stroke-dasharray="4"/>
+                            <line x1="50" y1="20" x2="130" y2="20" stroke="var(--text-color)" stroke-width="1.5"/>
+                            <text x="90" y="15" fill="var(--text-color)" font-size="14" text-anchor="middle">b</text>
+                            <line x1="170" y1="40" x2="170" y2="100" stroke="var(--text-color)" stroke-width="1.5"/>
+                            <text x="180" y="75" fill="var(--text-color)" font-size="14" alignment-baseline="middle">h</text>
+                            <path d="M 65,59 Q 62,50 55,46" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#flecha-alfa-oscura)"/>
+                            <text x="64" y="67" fill="var(--text-color)" font-size="13">α</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Justificación de la Hipótesis:</p>
+                        <p>El enunciado me pide determinar con cuántas cifras significativas debo tomar las variables $b, h$ y $\alpha$ para cumplir con una cota de error dada. Primero, analizo qué hipótesis corresponde utilizar. Como las variables $b$ y $h$ son longitudes (medidas en cm) y la variable $\alpha$ es un ángulo (medido en grados), se trata de magnitudes de distinta naturaleza. Por lo tanto, la hipótesis más conveniente es la de <strong>Igualdad de Cotas de Errores Relativos</strong>, ya que el error relativo es adimensional (no tiene unidades) y permite comparar y distribuir la precisión de forma equitativa entre magnitudes diferentes.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Planteo y conversión:</p>
+                        <p>Defino la función del Área del paralelogramo (lados por el seno del ángulo comprendido):</p>
+                        <div class="formula-responsive">
+                            $$ \text{Área} = b \times h \times \sin(\alpha) $$
+                        </div>
+                        <p>Para poder derivar correctamente, convierto el ángulo $\alpha$ a radianes:</p>
+                        <div class="formula-responsive">
+                            $$ \alpha_{rad} = 32,5^\circ \times \left(\frac{\pi}{180}\right) = 0,567232~rad $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Cálculo de derivadas parciales:</p>
+                        <p>Calculo las derivadas parciales de la función respecto a cada variable y evalúo sus módulos usando los datos dados:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color); gap: 0.5rem; display: flex; flex-direction: column;">
+                            <li>$ \left|\frac{\partial f}{\partial b}\right| = |h \times \sin(\alpha)| = |1,55 \times \sin(32,5^\circ)| = 0,8328 $</li>
+                            <li>$ \left|\frac{\partial f}{\partial h}\right| = |b \times \sin(\alpha)| = |12,1 \times \sin(32,5^\circ)| = 6,5013 $</li>
+                            <li>$ \left|\frac{\partial f}{\partial \alpha}\right| = |b \times h \times \cos(\alpha)| = |12,1 \times 1,55 \times \cos(32,5^\circ)| = 15,8178 $</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Aplicación de la Hipótesis:</p>
+                        <p>Planteo la fórmula de la hipótesis de igualdad de errores relativos ($\epsilon^*(gen)$):</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(gen) = \frac{\Delta^*f}{\left(\left|\frac{\partial f}{\partial b}\right| \times |b| + \left|\frac{\partial f}{\partial h}\right| \times |h| + \left|\frac{\partial f}{\partial \alpha}\right| \times |\alpha_{rad}|\right)} $$
+                        </div>
+                        <p>Calculo el denominador reemplazando por mis valores:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Denominador} = (0,8328 \times 12,1) + (6,5013 \times 1,55) + (15,8178 \times 0,567232) = 29,1261 $$
+                        </div>
+                        <p>Calculo la cota de error relativo general, sabiendo por enunciado que la cota absoluta de la función es $10^{-3}$ (es decir, $0,001$):</p>
+                        <div class="formula-responsive">
+                            $$ \epsilon^*(gen) = \frac{0,001}{29,1261} = 0,00003433 $$
+                        </div>
+                        
+                        <p>Ahora despejo las cotas de errores absolutos de cada variable multiplicando este error relativo general por el valor absoluto de cada una. Luego determino las cifras significativas necesarias mediante pruebas lógicas con la inecuación $10^{-m} \times 10^k \le \Delta^*$.</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Fórmula $\Delta^*$ ($\epsilon^* \times |\text{Valor}|$)</th>
+                                        <th>Cota Resultante $\Delta^*$</th>
+                                        <th>Cifras Sig. Requeridas ($m$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>b</strong></td>
+                                        <td>$0,00003433 \times 12,1$</td>
+                                        <td>0,000415</td>
+                                        <td><strong>6</strong> (Cumple $10^{-4} \le 0,000415$)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>h</strong></td>
+                                        <td>$0,00003433 \times 1,55$</td>
+                                        <td>0,0000532</td>
+                                        <td><strong>6</strong> (Cumple $10^{-5} \le 0,0000532$)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>$\alpha$ (rad)</strong></td>
+                                        <td>$0,00003433 \times 0,567232$</td>
+                                        <td>0,00001947 rad</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>$\alpha$ (grados)</strong></td>
+                                        <td>$0,00001947 \times (\frac{180}{\pi})$</td>
+                                        <td>0,001115°</td>
+                                        <td><strong>5</strong> (Cumple $10^{-3} \le 0,001115$)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>Respuesta final:</strong> Para asegurar la cota de error solicitada, debo tomar la variable "b" con 6 cifras significativas, la variable "h" con 6 cifras significativas, y el ángulo "$\alpha$" con 5 cifras significativas.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 3</h3>
+                        <p>¿Con qué precisión deben medirse las variables "x" e "y" para que el cálculo de la función "z" tenga una cota de error $\le 0.1$?</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>$z = x y (\sin(x) - \tan(y))$</li>
+                            <li>$x \approx 5.7$</li>
+                            <li>$y \approx 1.1$</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Resolver utilizando:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Suponer cotas de errores absolutos iguales.</li>
+                            <li><strong>b)</strong> Suponer cotas de errores relativos iguales.</li>
+                            <li><strong>c)</strong> Suponer efectos iguales.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Planteo inicial y Derivadas:</p>
+                        <p>El enunciado me pide determinar la "precisión" con la que deben medirse las variables "x" e "y". Según la teoría, cuando piden precisión, tengo que calcular las cotas de errores relativos ($\epsilon^*x$ y $\epsilon^*y$).</p>
+                        <p>La cota de error absoluto de la función "z" tiene un límite establecido: $\Delta^*(z) = 0,1$.</p>
+                        
+                        <p>Primero, calculo las derivadas parciales de la función respecto a "x" e "y", y evalúo sus módulos en el punto dado para poder usarlos en las tres hipótesis:</p>
+                        
+                        <p><strong>Derivada respecto a x:</strong></p>
+                        <div class="formula-responsive">
+                            $$ \frac{\partial z}{\partial x} = y \times (\sin(x) - \tan(y)) + x \times y \times \cos(x) $$
+                        </div>
+                        <p>Módulo evaluado en $x=5,7$ e $y=1,1$:</p>
+                        <div class="formula-responsive">
+                            $$ \left|\frac{\partial z}{\partial x}\right| = 2,4667 $$
+                        </div>
+
+                        <p><strong>Derivada respecto a y:</strong></p>
+                        <div class="formula-responsive">
+                            $$ \frac{\partial z}{\partial y} = x \times (\sin(x) - \tan(y)) - x \times y \times \left(\frac{1}{\cos^2(y)}\right) $$
+                        </div>
+                        <p>Módulo evaluado en $x=5,7$ e $y=1,1$:</p>
+                        <div class="formula-responsive">
+                            $$ \left|\frac{\partial z}{\partial y}\right| = 44,8119 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Cálculo de Precisión por Hipótesis:</p>
+                        <p>Una vez obtenidos los módulos, aplico las fórmulas correspondientes a cada una de las tres hipótesis para encontrar las cotas de errores relativos resultantes.</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Hipótesis Aplicada</th>
+                                        <th>Precisión requerida para $x$ ($\epsilon^*(x)$)</th>
+                                        <th>Precisión requerida para $y$ ($\epsilon^*(y)$)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>a) Errores Absolutos Iguales</strong><br><span style="font-size: 0.85em; font-weight: normal;">$\Delta^*(gen) = 0,1 / (2,4667 + 44,8119) = 0,002115$</span></td>
+                                        <td>$0,002115 / 5,7 = \mathbf{0,000371}$</td>
+                                        <td>$0,002115 / 1,1 = \mathbf{0,001923}$</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>b) Errores Relativos Iguales</strong><br><span style="font-size: 0.85em; font-weight: normal;">$\epsilon^*(gen) = 0,1 / (2,4667 \times 5,7 + 44,8119 \times 1,1)$</span></td>
+                                        <td>$\mathbf{0,001578}$</td>
+                                        <td>$\mathbf{0,001578}$</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>c) Efectos Iguales</strong><br><span style="font-size: 0.85em; font-weight: normal;">Se divide $\Delta^*(z)$ por $2 \times |\text{Derivada}|$</span></td>
+                                        <td>$\frac{0,02027}{5,7} = \mathbf{0,003556}$</td>
+                                        <td>$\frac{0,001116}{1,1} = \mathbf{0,001014}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta:</strong> En la tabla superior se detallan las precisiones relativas exigidas para cada variable bajo cada uno de los tres criterios de diseño.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 4</h3>
+                        <p>Dada la función $f = 2t^2 - 2ty$ con $\Delta^*(f) \le 0.02$, $t \approx 2.4$, $y \approx 0.5$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a)</strong> Determinar por la hipótesis de efectos iguales con qué aproximación debo tomar "t" e "y".</li>
+                            <li><strong>b)</strong> ¿En qué intervalos se puede decir que se encuentran los valores exactos de "t" y de "y"?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">a) Determinar la aproximación (Hipótesis de efectos iguales):</p>
+                        <p>El enunciado me pide calcular con qué aproximación debo tomar las variables "t" e "y", es decir, encontrar sus cotas de error absoluto ($\Delta^*(t)$ y $\Delta^*(y)$).</p>
+                        <p>Primero, calculo las derivadas parciales de la función respecto a "t" e "y", y evalúo sus módulos usando los valores aproximados.</p>
+                        
+                        <p><strong>Derivada respecto a t:</strong></p>
+                        <div class="formula-responsive">
+                            $$ \frac{\partial f}{\partial t} = 4 \times t - 2 \times y $$
+                        </div>
+                        <p>Módulo evaluado en $t=2,4$ e $y=0,5$:</p>
+                        <div class="formula-responsive">
+                            $$ \left|\frac{\partial f}{\partial t}\right| = |4 \times 2,4 - 2 \times 0,5| = 8,6 $$
+                        </div>
+
+                        <p><strong>Derivada respecto a y:</strong></p>
+                        <div class="formula-responsive">
+                            $$ \frac{\partial f}{\partial y} = -2 \times t $$
+                        </div>
+                        <p>Módulo evaluado en $t=2,4$ e $y=0,5$:</p>
+                        <div class="formula-responsive">
+                            $$ \left|\frac{\partial f}{\partial y}\right| = |-2 \times 2,4| = 4,8 $$
+                        </div>
+
+                        <p>Ahora aplico la fórmula de la hipótesis de efectos iguales para $n=2$ variables. La teoría me dice que la cota de error absoluto de cada variable es la cota de la función dividida por el doble del módulo de la derivada parcial correspondiente:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Cálculo de Aproximación ($\Delta^*$)</th>
+                                        <th>Resultado Final</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>t</strong></td>
+                                        <td>$\frac{0,02}{(2 \times 8,6)} = \frac{0,02}{17,2}$</td>
+                                        <td>0,001163</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>y</strong></td>
+                                        <td>$\frac{0,02}{(2 \times 4,8)} = \frac{0,02}{9,6}$</td>
+                                        <td>0,002083</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>Respuesta a):</strong> Por la hipótesis de efectos iguales, debo tomar la variable "t" con una aproximación de $0,001163$ y la variable "y" con una aproximación de $0,002083$.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">b) Intervalos de los valores exactos:</p>
+                        <p>Para armar los intervalos, la teoría establece que el valor exacto se encuentra comprendido entre el valor aproximado $\pm$ la cota de error absoluto.</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color); gap: 0.5rem; display: flex; flex-direction: column;">
+                            <li>Intervalo para t: $ I(t) = 2,4 \pm 0,001163 $</li>
+                            <li>Intervalo para y: $ I(y) = 0,5 \pm 0,002083 $</li>
+                        </ul>
+                        <p><strong>Respuesta b):</strong> El valor exacto de "t" se encuentra en el intervalo $2,4 \pm 0,001163$ y el valor exacto de "y" se encuentra en el intervalo $0,5 \pm 0,002083$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Problema Nº 5</h3>
+                        <p>Dada la función $z = \cos(a) \cdot \ln(b)$ con $a=38^\circ 47' 33''$, $b=2.1523$. Determinar con qué precisión deben medirse a y b para que z tenga tres cifras significativas. ¿Corresponde a un problema de método directo o de método inverso? Justifique su respuesta.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">Clasificación del problema:</p>
+                        <p>El enunciado me pregunta si corresponde a un problema de método directo o inverso. Como me dan una condición sobre el resultado de la función (que "z" tenga 3 cifras significativas) y me piden calcular la precisión que deben tener los datos iniciales, justifico que se trata de un problema de <strong>Método Inverso</strong>. La teoría establece que cuando se busca estimar los errores de las variables para cumplir con un error prefijado en la función, corresponde a este método.</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Planteo y conversión:</p>
+                        <p>Defino la función dada por el enunciado:</p>
+                        <div class="formula-responsive">
+                            $$ z = \cos(a) \times \ln(b) $$
+                        </div>
+                        <p>El valor de la variable "b" es $2,1523$. Convierto el ángulo "a" a grados decimales y luego a radianes para poder derivar correctamente:</p>
+                        <div class="formula-responsive">
+                            $$ a = 38 + \frac{47}{60} + \frac{33}{3600} = 38,7925^\circ $$<br>
+                            $$ a_{rad} = 38,7925^\circ \times \left(\frac{\pi}{180}\right) = 0,67705~rad $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Cálculo de la cota de la función:</p>
+                        <p>Para averiguar la cota de error absoluto prefijada para "z", primero calculo su valor aproximado evaluando la función:</p>
+                        <div class="formula-responsive">
+                            $$ z = \cos(38,7925^\circ) \times \ln(2,1523) = 0,77942 \times 0,76654 = 0,59746 $$
+                        </div>
+                        <p>Al normalizar este resultado ($0,59746 \times 10^0$), obtengo que su orden de magnitud es $k=0$. Como el enunciado me exige que "z" tenga 3 cifras significativas ($m=3$), planteo la desigualdad teórica para hallar su cota de error absoluto:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta^*(z) \le 10^{-m} \times 10^k $$<br>
+                            $$ \Delta^*(z) \le 10^{-3} \times 10^0 = 0,001 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">Cálculo de precisión (Hipótesis de efectos iguales):</p>
+                        <p>Para calcular la precisión (es decir, las cotas de errores relativos), decido aplicar la hipótesis de efectos iguales. Primero, calculo los módulos de las derivadas parciales respecto a cada variable:</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color); gap: 0.5rem; display: flex; flex-direction: column;">
+                            <li>$ \left|\frac{\partial z}{\partial a}\right| = |-\sin(a) \times \ln(b)| = |-\sin(38,7925^\circ) \times \ln(2,1523)| = 0,48024 $</li>
+                            <li>$ \left|\frac{\partial z}{\partial b}\right| = \left|\cos(a) \times \left(\frac{1}{b}\right)\right| = \left|\cos(38,7925^\circ) \times \left(\frac{1}{2,1523}\right)\right| = 0,36213 $</li>
+                        </ul>
+
+                        <p>Aplico la fórmula de efectos iguales para hallar las cotas absolutas de cada variable (siendo $n=2$ variables) y, finalmente, las divido por sus valores absolutos correspondientes para obtener la precisión:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>Cota de Error $\Delta^*$</th>
+                                        <th>Precisión Requerida $\epsilon^*$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>a</strong></td>
+                                        <td>$\frac{0,001}{(2 \times 0,48024)} = 0,001041~rad$</td>
+                                        <td>$\frac{0,001041}{0,67705} = \mathbf{0,001538}$</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>b</strong></td>
+                                        <td>$\frac{0,001}{(2 \times 0,36213)} = 0,001381$</td>
+                                        <td>$\frac{0,001381}{2,1523} = \mathbf{0,000642}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>Respuesta final:</strong> El problema corresponde al Método Inverso y, asumiendo la hipótesis de efectos iguales, las variables deben medirse con una precisión de $0,001538$ para "a" y de $0,000642$ para "b".</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+</html>

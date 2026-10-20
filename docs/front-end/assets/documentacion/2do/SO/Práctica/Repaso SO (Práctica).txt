@@ -1,0 +1,264 @@
+Repaso SO (Práctica)
+
+if / elif / else / fi: estructuras condicionales; -f para files (archivos), -d para directories (directorios)
+
+for ... in ... / do / done: bucle que recorre una lista de elementos uno por uno, se usa bastante para recorrer todos los archivos dentro de un directorio
+(for i in "$1"/*)
+
+while ... / do / done: bucle que se repite mientras una condición se cumpla, se puede usar para leer archivos línea por línea
+(while read linea; do ... done < archivo)
+
+read: funciona como un input en python, espera a que el usuario ingrese algo por teclado, guardando esa entrada en una variable
+
+let: permite la realización de cálculos matemáticos básicos. Se puede usar para sumar contadores
+(let cont=$cont+1)
+
+$1, $2, $#: parámetros de posición, $1 guarda el primer argumento que se escribe al ejecutar el script, $2 el segundo, y $# te dice la cantidad total de parámetros que se pasaron
+
+grep: busca un texto o patrón específico dentro de uno o más archivos. Si lo encuentra, imprime la línea entera. Si le agregás -q (quiet), busca de forma silenciosa sin imprimir nada, útil para un if
+
+cut: corta texto y extrae partes de una línea. Se usa el flag -d para indicar el separador (-d":" usa los dos puntos como separador) y -f para indicar el número de columna que se quiere ver
+
+awk: lenguaje de procesamiento de texto. Se usa para extraer columnas específicas que están separadas por espacios 
+(awk '{print $4}' extrae la cuarta columna)
+
+wc (Word Count): cuenta líneas, palabras o caracteres de un archivo. Casi siempre se usa wc -l para que devuelva solo la cantidad de líneas que tiene un archivo.
+
+sort: ordena las líneas de un archivo alfabéticamente. Con -n ordena numéricamente y con -r lo hace en orden inverso (mayor a menor)
+
+tr: traduce o intercambia caracteres. Se puede usar para transformar todo un texto de minúsculas a mayúsculas (tr '[:lower:]' '[:upper:]')
+
+find: buscador del sistema. No busca dentro del texto, sino que busca los archivos en sí basándose en reglas. Se usa para buscar por nombre (-name), por tipo (-type f para archivos ordinarios), por permisos (-perm 644), por tamaño (-size +1k) o por tiempo de modificación (-mtime)
+
+stat: muestra información detallada (metadatos) de un archivo. Se usa con -c %y para obtener la fecha exacta en la que un archivo fue modificado y así poder extraer el mes.
+
+cat: concatena archivos y los muestra en la pantalla. Se usa para ver el contenido completo de un archivo o pasárselo a otro comando (usando una tubería o pipe |)
+
+head y tail: muestran el principio (head) o el final (tail) de un archivo. Con el parámetro -n se puede decir exactamente cuántas líneas queres ver (head -n 5 muestra las primeras 5 líneas)
+
+touch: su función principal es crear un archivo vacío si no existe. También se usa para actualizar la fecha de modificación/acceso de un archivo existente
+
+cp, mv, rm: copiar (cp), mover/renombrar (mv) y borrar (rm). Si le pasas la opción -r (recursivo) a cp o rm, actúan sobre un directorio entero y todo su contenido (obligatorio el uso de -r para directorios)
+
+mkdir: crea directorios. se usa el flag -p para que cree toda la ruta de directorios si no existe y para que no arroje un error si la carpeta ya está creada
+
+tar y gzip: se usan para empaquetar y comprimir. tar -czvf nombre.tar.gz carpeta/ empaqueta y comprime un directorio en un solo paso. gzip comprime archivos individuales
+
+df (Disk Free): muestra el espacio disponible en los distintos sistemas de archivos del disco duro. El flag -h (human) hace que el tamaño se lea en Megas o Gigas en lugar de bytes
+
+chmod: cambia los permisos de los archivos y directorios. Modifica quién puede leer (r), escribir (w) y ejecutar (x) según sea el dueño (u), el grupo (g) u otros (o)
+
+seq: genera secuencias de números. Útil para usar dentro de un for 
+(seq 1 10 genera los números del 1 al 10)
+
+sleep: pausa la ejecución del script por la cantidad de segundos que le indiques
+
+/////////////////////////////////////////////////////////////////////////////////
+				FLAGS
+/////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////
+ls (Listar)
+//////////////////////
+
+-l (long): muestra la lista en formato largo (detallado). Muestra permisos, dueño, tamaño y fecha
+
+-a (all): muestra "todos" los archivos, incluyendo los ocultos (los que empiezan con un punto .)
+
+-R (recursive): muestra el contenido de la carpeta actual y también entra a todas sus subcarpetas
+
+//////////////////////
+cp (Copiar) y rm (Borrar)
+//////////////////////
+
+-r o -R (recursive): la acción afectará a una carpeta y a todo lo que tenga adentro. Es obligatorio para copiar o borrar directorios completos
+
+-f (force): fuerza la acción. En rm, borra sin pedir confirmación
+
+//////////////////////
+mkdir (Crear directorio)
+//////////////////////
+
+-p (parents): crea la ruta completa. Si pones mkdir -p carpeta1/carpeta2, va a crear ambas. Además, evita que dé error si la carpeta ya existe
+
+//////////////////////
+tar (Empaquetar) y gzip (Comprimir)
+//////////////////////
+
+-c (create): crea un nuevo archivo .tar
+
+-x (extract): extrae (descomprime) el contenido de un archivo .tar
+
+-z (gzip): le dice a tar que además de empaquetar, comprima usando gzip
+
+-v (verbose): te va mostrando en pantalla el nombre de cada archivo que va procesando
+
+-f (file): debe ser el último flag. Le indica que lo que escribas a continuación será el nombre del archivo (tp1.tar.gz)
+
+-C (change directory): en la extracción, le indica en qué carpeta destino querés volcar los archivos
+
+//////////////////////
+find (Buscar archivos)
+//////////////////////
+ 
+-maxdepth 1: limita la búsqueda solo a la carpeta actual (profundidad 1), evitando que busque en subcarpetas
+
+-type f / -type d: filtra el resultado por "tipo". La f es para archivos (files) y la d para directorios (directories)
+
+-name: filtra exactamente por el nombre del archivo. Permite usar comodines como *.txt
+
+-perm: filtra archivos que tengan permisos exactos (-perm 644)
+
+-size: filtra por tamaño. El + significa "mayor a" (-size +1k busca mayores a 1 Kilobyte)
+
+-mtime / -mmin: busca por "Modification Time/Minutes" (modificados hace X días o X minutos)
+
+-amin: Busca por "Access Minutes" (accedidos hace X minutos)
+
+-printf: le da un formato de salida específico. Se usa "%f\n" para que solo imprima el nombre del archivo y un salto de línea, sin toda la ruta larga
+
+//////////////////////
+grep (Filtrar texto)
+//////////////////////
+
+-q (quiet): modo silencioso. Hace la búsqueda pero no imprime nada en pantalla. Ideal para los if, ya que solo devuelve verdadero si encontró el texto, o falso si no
+
+-E (extended): permite usar expresiones regulares avanzadas. Se usa para buscar la barra de la raíz (\s/$).
+
+//////////////////////
+cut (Cortar columnas)
+//////////////////////
+
+-d (delimiter): define cuál será el carácter separador. Por defecto es el tabulador, pero se usa -d":" para usar los dos puntos
+
+-f (field): indica el "campo" o columna que queremos extraer (-f 3,4,7 extrae las columnas 3, 4 y 7)
+
+//////////////////////
+head y tail (Principio y Final)
+//////////////////////
+
+-n (number): le dice al comando cuántas líneas debe mostrar o extraer (head -n 5 muestra las primeras 5 líneas)
+
+//////////////////////
+sort (Ordenar)
+//////////////////////
+
+-n (numeric): ordena las cosas como números, no como letras (sino el "10" quedaría antes que el "2")
+
+-r (reverse): invierte el orden (de mayor a menor, o de la Z a la A)
+
+-o (output): guarda el resultado en un archivo. Permite sobreescribir el mismo archivo que estás ordenando (sort -o num.txt num.txt)
+
+//////////////////////
+stat (Estado/Metadatos)
+//////////////////////
+
+-c (format): igual que printf, le da formato. Se usa -c %y para decirle "solo quiero ver la fecha de modificación"
+
+//////////////////////
+df (Espacio en discos)
+//////////////////////
+
+-h (human-readable): en lugar de mostrar los tamaños en larguísimos números de bytes, los muestra en formatos que los humanos leemos fácil (Megabytes, Gigabytes)
+
+//////////////////////
+touch (Crear / Actualizar fechas)
+//////////////////////
+
+-a (access): solo actualiza la "fecha de acceso" de un archivo, ignorando la de modificación
+
+-t (time): permite introducir una fecha específica manualmente en formato AAAAMMDDhhmm (Año-Mes-Día-Hora-Minuto)
+
+-d -d (date): Permite escribir fechas en un formato "humano" o natural.
+
+//////////////////////
+read (Leer ingreso de teclado)
+//////////////////////
+
+-p (prompt): permite imprimir un mensaje en la pantalla justo antes de quedarse esperando que el usuario escriba, todo en la misma línea
+(read -p "Ingrese nombre: " var)
+
+////////////////////////////////////////////
+Operadores de Test (usados dentro de los [ ] en los if y while)
+////////////////////////////////////////////
+
+//////////////////////
+De Archivos/Directorios:
+//////////////////////
+
+-f "$var": verdadero si existe y es un archivo ordinario (file)
+
+-d "$var": verdadero si existe y es un directorio (directory)
+
+-x "$var": verdadero si existe y tiene permisos de ejecución (executable)
+
+//////////////////////
+De Cadenas de Texto (Strings):
+//////////////////////
+
+-z "$var": verdadero si la variable está vacía o tiene una longitud de cero (zero)
+
+-n "$var": verdadero si la variable NO está vacía (not null)
+
+//////////////////////
+De Comparación Numérica (solo para números):
+//////////////////////
+
+-eq (equal): igual a
+
+-ne (not equal): distinto de
+
+-gt (greater than): mayor que
+
+-lt (less than): menor que
+
+-ge (greater or equal): mayor o igual que
+
+-le (less or equal): menor o igual que
+
+1. Comandos Básicos y de Rutas
+
+echo: Imprime texto o variables por pantalla. Es fundamental para mostrar mensajes al usuario o escribir dentro de un archivo usando redirecciones (ej: echo "Hola" > archivo.txt).
+
+cd (Change Directory) y pwd (Print Working Directory): cd sirve para moverse entre directorios dentro del script, y pwd te devuelve la ruta absoluta del directorio donde estás parado actualmente.
+
+basename: Extrae únicamente el nombre del archivo de una ruta larga. (Ej: basename /home/user/archivo.txt devuelve solo archivo.txt). Muy usado en bucles for.
+
+dirname: Hace lo opuesto a basename. Dada una ruta completa, te devuelve solo la ruta del directorio, omitiendo el nombre del archivo.
+
+2. Procesamiento de Texto (El compañero de grep y awk)
+
+sed (Stream Editor): Es vital. Se usa principalmente para buscar y reemplazar texto de forma automática o borrar líneas.
+
+Ejemplo de uso: sed 's/palabra_vieja/palabra_nueva/g' archivo.txt
+
+Flag importante: -i modifica el archivo original directamente en lugar de solo mostrar el resultado en pantalla.
+
+3. Estructuras de Control y Scripting
+
+case / in / esac: Estructura condicional múltiple (similar al switch en otros lenguajes). Es la forma más limpia y utilizada para hacer menús interactivos en scripts, reemplazando a una cadena larguísima de if/elif.
+
+exit: Termina la ejecución del script por completo. Se usa habitualmente con un número (ej: exit 1) para indicar que el script falló debido a un error (por ejemplo, si el usuario no pasó los parámetros correctos).
+
+$(( ... )) (Expansión aritmética): Es la alternativa moderna y más estándar a let. Permite hacer cálculos matemáticos directamente. (Ej: suma=$((num1 + num2))).
+
+4. Variables Especiales del Sistema
+
+$?: Es importantísima. Guarda el código de salida del último comando ejecutado. Si un comando fue exitoso, $? vale 0. Si falló, vale distinto de 0 (generalmente 1). Se usa muchísimo en los if para validar si un comando (como cp o mkdir) se ejecutó bien.
+
+$() (Sustitución de comandos): Permite ejecutar un comando y guardar lo que imprimiría por pantalla dentro de una variable. (Ej: fecha_actual=$(date)).
+
+5. Archivos, Enlaces y Permisos
+
+chown (Change Owner): Cambia el dueño y/o el grupo de un archivo o directorio. (Ej: chown usuario:grupo archivo.txt). Es el complemento natural de chmod.
+
+ln (Links): Crea enlaces (accesos directos) a archivos. El flag -s es el más usado para crear enlaces simbólicos (soft links) en lugar de enlaces físicos (hard links).
+
+> y >> (Redirecciones): Aunque no son comandos, son operadores vitales. > sobreescribe (o crea) un archivo con el texto nuevo, mientras que >> añade el texto al final del archivo sin borrar lo que ya tenía.
+
+6. Sistema y Fechas
+date: Muestra la fecha y hora del sistema. Se usa mucho formateado para nombrar archivos de backups o logs.
+
+Formato común: date +%Y-%m-%d (Devuelve, por ejemplo, 2024-05-18).
+
+ps y kill: ps muestra los procesos que se están ejecutando actualmente (suele usarse ps aux), y kill sirve para terminar un proceso pasándole su número de PID (Process ID).

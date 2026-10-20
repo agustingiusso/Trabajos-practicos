@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 14 - Física II (Óptica Física)</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Realice un esquema que permita representar el fenómeno de interferencia y explique las condiciones que se deben dar para observar, proyectado en una pantalla: zonas luminosas y zonas oscuras.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 1 (YOUNG) -->
+                        <div style="display: flex; justify-content: center; margin: 1rem 0 2rem 0;">
+                            <svg viewBox="0 0 500 250" style="width: 100%; max-width: 500px; height: auto;">
+                                <!-- Fuente de luz -->
+                                <circle cx="30" cy="125" r="5" fill="var(--color-boton-eliminar)"/>
+                                <path d="M 40 100 Q 70 125 40 150 M 55 90 Q 95 125 55 160" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="2" opacity="0.5"/>
+                                
+                                <!-- Doble Rendija -->
+                                <rect x="120" y="20" width="10" height="85" fill="var(--text-color)"/>
+                                <rect x="120" y="115" width="10" height="20" fill="var(--text-color)"/>
+                                <rect x="120" y="145" width="10" height="85" fill="var(--text-color)"/>
+                                
+                                <!-- Rayos (Caminos Ópticos) -->
+                                <line x1="130" y1="110" x2="380" y2="60" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4"/>
+                                <line x1="130" y1="140" x2="380" y2="60" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4"/>
+                                
+                                <!-- Pantalla -->
+                                <rect x="380" y="20" width="15" height="210" fill="var(--text-muted)"/>
+                                
+                                <!-- Patrón de Franjas -->
+                                <circle cx="387" cy="125" r="6" fill="var(--color-boton-eliminar)"/> <!-- Central -->
+                                <circle cx="387" cy="90" r="4" fill="var(--bg-color)" stroke="var(--text-color)"/> <!-- Oscura -->
+                                <circle cx="387" cy="60" r="6" fill="var(--color-boton-eliminar)"/> <!-- Luminosa (Punto) -->
+                                <circle cx="387" cy="160" r="4" fill="var(--bg-color)" stroke="var(--text-color)"/> <!-- Oscura -->
+                                <circle cx="387" cy="190" r="6" fill="var(--color-boton-eliminar)"/> <!-- Luminosa -->
+                                
+                                <!-- Anotaciones -->
+                                <text x="100" y="110" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">S1</text>
+                                <text x="100" y="150" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">S2</text>
+                                <text x="410" y="65" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">Punto P</text>
+                                
+                                <!-- Delta r -->
+                                <path d="M 130 140 Q 180 140 185 100" fill="none" stroke="var(--text-color)" stroke-width="1"/>
+                                <text x="160" y="160" fill="var(--text-color)" font-family="sans-serif" font-size="12">Δr</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO 2D EJERCICIO 1 -->
+
+                        <h4>Resolución Teórica:</h4>
+                        <p>El experimento de la doble rendija de Thomas Young evidencia la naturaleza ondulatoria de la luz. Para que se observe un patrón de interferencia estable, la fuente de luz debe ser <strong>coherente</strong> (fase constante) y <strong>monocromática</strong> (una sola longitud de onda $\lambda$).</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Zonas Luminosas (Interferencia Constructiva):</strong> Se producen cuando las ondas provenientes de ambas rendijas llegan en fase al mismo punto P de la pantalla. Esto ocurre si la diferencia de camino óptico ($\Delta r$) es un múltiplo entero de la longitud de onda:
+                                <div class="formula-responsive">
+                                    $$ \Delta r = d \sin(\theta) = m \lambda \quad \text{donde } m = 0, \pm 1, \pm 2, ... $$
+                                </div>
+                            </li>
+                            <li><strong>Zonas Oscuras (Interferencia Destructiva):</strong> Se forman cuando las ondas llegan en contrafase (desfasadas $180^\circ$ o $\pi$ radianes), anulándose mutuamente. Esto exige que la diferencia de marcha sea un múltiplo semientero:
+                                <div class="formula-responsive">
+                                    $$ \Delta r = d \sin(\theta) = \left(m + \frac{1}{2}\right) \lambda \quad \text{donde } m = 0, \pm 1, \pm 2, ... $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Dos rendijas separadas por una distancia de 1 mm se iluminan con luz roja de $\lambda=6,5 \times 10^{-7}\text{ m}$. La franja de interferencia se observa en una pantalla ubicada a 1m de las rendijas. Halle la distancia entre dos franjas brillantes y entre dos franjas oscuras.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <p>Para distancias a la pantalla ($L$) mucho mayores que la separación de las rendijas ($d$), la aproximación paraxial ($\sin \theta \approx \tan \theta = y/L$) es válida.</p>
+                        <p>La posición transversal $y_m$ de una franja brillante de orden $m$ sobre la pantalla está dada por:</p>
+                        <div class="formula-responsive">
+                            $$ y_m = m \frac{\lambda L}{d} $$
+                        </div>
+                        <p>La distancia interfringal ($\Delta y$), es decir, la separación lineal entre dos máximos (brillantes) o dos mínimos (oscuros) <strong>consecutivos</strong>, es constante y no depende del orden $m$:</p>
+                        <div class="formula-responsive">
+                            $$ \Delta y = y_{m+1} - y_m = (m+1)\frac{\lambda L}{d} - m\frac{\lambda L}{d} = \frac{\lambda L}{d} $$
+                        </div>
+                        <p>Sustituyendo los valores de diseño ($d = 1\text{ mm} = 10^{-3}\text{ m}$, $L = 1\text{ m}$ y $\lambda = 6,5 \times 10^{-7}\text{ m}$):</p>
+                        <div class="formula-responsive">
+                            $$ \Delta y = \frac{(6,5 \times 10^{-7} \text{ m}) \cdot (1 \text{ m})}{10^{-3} \text{ m}} = 6,5 \times 10^{-4} \text{ m} $$
+                        </div>
+                        <p>La distancia entre dos franjas brillantes (o entre dos franjas oscuras consecutivas) es de <strong>$0,65\text{ mm}$</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Una fina capa de aceite ($n=1,30$) yace sobre el agua ($n=1,33$) y es iluminada de manera normal por luz blanca. Sólo las longitudes de ondas consecutivas, correspondientes a las radiaciones "violeta" ($\lambda=400\text{ nm}$) y "roja" ($\lambda=666\text{ nm}$), no están presentes en la luz reflejada. Halle el espesor de la capa.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Algorítmica (Interferencia en Películas Delgadas):</h4>
+                        <p>Analizamos los desfases sufridos por los rayos reflejados en las dos interfaces de la película delgada:</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: disc;">
+                            <li><strong>Reflexión superior (Aire $\to$ Aceite):</strong> Se refleja en un medio de mayor índice ($1,00 < 1,30$). Experimenta un salto de fase de $\pi$ radianes ($\lambda/2$).</li>
+                            <li><strong>Reflexión inferior (Aceite $\to$ Agua):</strong> Se refleja en un medio de mayor índice ($1,30 < 1,33$). <em>También</em> experimenta un salto de fase de $\pi$ radianes ($\lambda/2$).</li>
+                        </ul>
+                        <p>Dado que ambos rayos sufren el mismo desfase por reflexión, el desfase neto es nulo. Por lo tanto, la interferencia destructiva (ondas ausentes) depende exclusivamente de la diferencia de camino óptico $\Delta r = 2 \cdot n_{aceite} \cdot t$ igualada a un múltiplo semientero de la longitud de onda:</p>
+                        <div class="formula-responsive">
+                            $$ 2 n_{aceite} t = \left(m + \frac{1}{2}\right) \lambda $$
+                        </div>
+                        <p>Al afirmar que $400\text{ nm}$ y $666\text{ nm}$ son las longitudes de onda ausentes <strong>consecutivas</strong>, planteamos un sistema (a mayor longitud de onda $\lambda$, le corresponde un orden $m$ menor):</p>
+                        <div class="formula-responsive">
+                            $$ 2(1,30)t = (m + 0,5) \cdot 666 $$
+                            $$ 2(1,30)t = (m + 1 + 0,5) \cdot 400 = (m + 1,5) \cdot 400 $$
+                        </div>
+                        <p>Igualamos los segundos miembros para despejar el orden de franja $m$:</p>
+                        <div class="formula-responsive">
+                            $$ 666m + 333 = 400m + 600 \implies 266m = 267 \implies m \approx 1 $$
+                        </div>
+                        <p>Sustituyendo $m=1$ en cualquiera de las ecuaciones originales para despejar el espesor $t$ de la capa aceitosa:</p>
+                        <div class="formula-responsive">
+                            $$ 2,6 t = (1 + 0,5) \cdot 666 \implies 2,6 t = 999 \implies t = \frac{999}{2,6} \approx 384,2 \text{ nm} $$
+                        </div>
+                        <p>El espesor microscópico de la película de aceite es de aproximadamente <strong>$384\text{ nm}$</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Fenómeno de Difracción:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Escriba las ecuaciones que le permiten estudiar la posición de máximos y mínimos en el fenómeno de difracción.</li>
+                            <li>Realice un esquema que le permita representar el fenómeno de difracción en una rendija, con su gráfico de distribución de intensidades.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 4 (DIFRACCIÓN) -->
+                        <div style="display: flex; justify-content: center; margin: 1rem 0 2rem 0;">
+                            <svg viewBox="0 0 500 250" style="width: 100%; max-width: 500px; height: auto;">
+                                <!-- Rendija Única -->
+                                <rect x="120" y="20" width="10" height="90" fill="var(--text-color)"/>
+                                <rect x="120" y="140" width="10" height="90" fill="var(--text-color)"/>
+                                
+                                <!-- Eje central -->
+                                <line x1="130" y1="125" x2="380" y2="125" stroke="var(--text-muted)" stroke-dasharray="4"/>
+                                <text x="140" y="140" fill="var(--text-color)" font-family="sans-serif" font-size="14">a</text>
+                                
+                                <!-- Curva de Intensidad de Difracción (Sinc^2) -->
+                                <path d="M 380 20 Q 375 50 380 70 Q 360 90 380 110 Q 300 125 380 140 Q 360 160 380 180 Q 375 200 380 230" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                                <!-- Eje de intensidad (Pantalla) -->
+                                <line x1="380" y1="20" x2="380" y2="230" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <!-- Anotaciones -->
+                                <text x="400" y="130" fill="var(--accent)" font-weight="bold" font-family="sans-serif">Máximo Central</text>
+                                <text x="400" y="80" fill="var(--text-muted)" font-family="sans-serif" font-size="12">Min (m=1)</text>
+                                <text x="400" y="175" fill="var(--text-muted)" font-family="sans-serif" font-size="12">Min (m=-1)</text>
+                                
+                                <!-- Frentes de onda -->
+                                <path d="M 130 125 Q 160 80 200 80" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5" opacity="0.6"/>
+                                <path d="M 130 125 Q 160 170 200 170" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5" opacity="0.6"/>
+                                <path d="M 130 125 Q 180 60 250 60" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5" opacity="0.3"/>
+                                <path d="M 130 125 Q 180 190 250 190" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO 2D EJERCICIO 4 -->
+
+                        <h4>Resolución Teórica (Difracción de Fraunhofer por una rendija):</h4>
+                        <p>La difracción ocurre cuando la luz se curva y dispersa al atravesar un obstáculo o abertura cuyo tamaño $a$ es comparable a su longitud de onda $\lambda$. El patrón de intensidad está dominado por la función matemática $I = I_0 \left( \frac{\sin(\alpha)}{\alpha} \right)^2$ donde $\alpha = \frac{\pi a \sin\theta}{\lambda}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Posición de los Mínimos (Zonas oscuras):</strong> La interferencia totalmente destructiva entre los frentes de onda de la propia rendija se establece cuando:
+                                <div class="formula-responsive">
+                                    $$ a \sin(\theta) = m \lambda \quad \text{con } m = \pm 1, \pm 2, \pm 3, ... \quad (m \neq 0) $$
+                                </div>
+                            </li>
+                            <li><strong>Posición de los Máximos Secundarios:</strong> Los picos de intensidad no central son tenues y ocurren aproximadamente a la mitad entre dos mínimos consecutivos.
+                                <div class="formula-responsive">
+                                    $$ a \sin(\theta) \approx \left(m + \frac{1}{2}\right) \lambda \quad \text{con } m = \pm 1, \pm 2, ... $$
+                                </div>
+                                <em>El Máximo Central absoluto (y más brillante) ocurre estricamente en $\theta = 0^\circ$ ($m=0$). Su anchura angular está delimitada por los dos primeros mínimos ($m=\pm 1$).</em>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Cuando se ilumina una red de difracción con luz de longitud de onda $\lambda=580\text{ nm}$, se observa el tercer mínimo de difracción a una distancia de 2,5 m del máximo central sobre una pantalla situada a 5 m de la red; y que el cuarto máximo de interferencia coincide con el primer mínimo de difracción. Halle la constante de red y el ancho de las ranuras.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica Combinada:</h4>
+                        
+                        <p><strong>1. Ancho de la ranura ($a$) a partir de la Envolvente de Difracción:</strong></p>
+                        <p>El tercer mínimo de difracción ($n=3$) se ubica a $y_3 = 2,5\text{ m}$ sobre una pantalla a $L = 5\text{ m}$. Hallamos el ángulo $\theta_3$:</p>
+                        <div class="formula-responsive">
+                            $$ \tan(\theta_3) = \frac{y_3}{L} = \frac{2,5}{5} = 0,5 \implies \theta_3 \approx 26,56^\circ $$
+                            $$ \sin(\theta_3) = \frac{0,5}{\sqrt{1^2 + 0,5^2}} = \frac{0,5}{\sqrt{1,25}} \approx 0,4472 $$
+                        </div>
+                        <p>La ecuación de los mínimos de difracción es $a \sin(\theta) = n \lambda$. Despejamos el ancho $a$:</p>
+                        <div class="formula-responsive">
+                            $$ a = \frac{n \lambda}{\sin(\theta_3)} = \frac{3 \cdot (580 \times 10^{-9} \text{ m})}{0,4472} = \frac{1,74 \times 10^{-6}}{0,4472} \approx 3,89 \times 10^{-6} \text{ m} $$
+                        </div>
+                        <p>El ancho de cada ranura individual es <strong>$a \approx 3,89\ \mu\text{m}$</strong>.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>2. Constante de la Red ($d$) por Órdenes Ausentes:</strong></p>
+                        <p>El enunciado revela un fenómeno de <em>órdenes ausentes (missing orders)</em>: El cuarto máximo principal de interferencia ($m=4$) es aniquilado o coincide exactamente con la posición del primer mínimo de la envolvente de difracción ($n=1$).</p>
+                        <p>Ambas ecuaciones evalúan el mismo ángulo crítico $\theta$:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Interferencia (Máximo): } \sin(\theta) = \frac{m \lambda}{d} = \frac{4 \lambda}{d} $$
+                            $$ \text{Difracción (Mínimo): } \sin(\theta) = \frac{n \lambda}{a} = \frac{1 \lambda}{a} $$
+                        </div>
+                        <p>Igualando las expresiones geométricas:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{4 \lambda}{d} = \frac{1 \lambda}{a} \implies d = 4a $$
+                        </div>
+                        <p>La constante de separación de la red es <strong>$d = 4 \cdot 3,89\ \mu\text{m} = 15,56\ \mu\text{m}$</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿En qué consiste el fenómeno de "polarización por reflexión"? Enuncie el modelo matemático que le permitirá estudiar dicho fenómeno.</li>
+                            <li>Calcule el ángulo de incidencia con que debe llegar un rayo de luz natural para polarizarse totalmente por reflexión, en un cristal de índice de refracción 1,5.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 6 (BREWSTER) -->
+                        <div style="display: flex; justify-content: center; margin: 1rem 0 2rem 0;">
+                            <svg viewBox="0 0 500 250" style="width: 100%; max-width: 500px; height: auto;">
+                                <!-- Medios -->
+                                <rect x="50" y="125" width="400" height="100" fill="var(--card-hover)"/>
+                                <line x1="50" y1="125" x2="450" y2="125" stroke="var(--accent)" stroke-width="3"/>
+                                
+                                <!-- Normal -->
+                                <line x1="250" y1="20" x2="250" y2="230" stroke="var(--text-muted)" stroke-dasharray="6"/>
+                                
+                                <!-- Rayo Incidente (No polarizado) -->
+                                <line x1="100" y1="20" x2="250" y2="125" stroke="var(--color-boton-eliminar)" stroke-width="2" marker-end="url(#arr-red)"/>
+                                <text x="130" y="40" fill="var(--color-boton-eliminar)" font-weight="bold" font-family="sans-serif" font-size="12">Luz Natural</text>
+                                <!-- Símbolos de polarización aleatoria (rayitas perpendiculares) -->
+                                <line x1="140" y1="58" x2="160" y2="42" stroke="var(--text-color)" stroke-width="1.5"/>
+                                <circle cx="150" cy="50" r="3" fill="var(--text-color)"/>
+                                <line x1="170" y1="79" x2="190" y2="63" stroke="var(--text-color)" stroke-width="1.5"/>
+                                <circle cx="180" cy="71" r="3" fill="var(--text-color)"/>
+                                
+                                <!-- Rayo Reflejado (Polarizado S) -->
+                                <line x1="250" y1="125" x2="400" y2="20" stroke="var(--color-fisica)" stroke-width="2" marker-end="url(#arr-green)"/>
+                                <!-- Símbolos de polarización S (puntos) -->
+                                <circle cx="320" cy="76" r="3" fill="var(--text-color)"/>
+                                <circle cx="350" cy="55" r="3" fill="var(--text-color)"/>
+                                <text x="310" y="40" fill="var(--color-fisica)" font-weight="bold" font-family="sans-serif" font-size="12">Polarizada al plano</text>
+
+                                <!-- Rayo Refractado -->
+                                <line x1="250" y1="125" x2="330" y2="210" stroke="var(--color-boton-eliminar)" stroke-width="2" opacity="0.6"/>
+                                <line x1="300" y1="168" x2="315" y2="155" stroke="var(--text-color)" stroke-width="1.5"/>
+                                <circle cx="307" cy="161" r="3" fill="var(--text-color)"/>
+                                
+                                <!-- Ortogonalidad 90 grados -->
+                                <path d="M 333 113 L 345 125 L 333 138" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="360" y="130" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">90°</text>
+                                
+                                <!-- Etiquetas -->
+                                <text x="60" y="110" fill="var(--text-color)" font-family="sans-serif">n1 = 1 (Aire)</text>
+                                <text x="60" y="150" fill="var(--text-color)" font-family="sans-serif">n2 = 1.5 (Cristal)</text>
+                                <text x="210" y="90" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">θB</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO 2D EJERCICIO 6 -->
+
+                        <h4>Resolución Teórica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Polarización por Reflexión:</strong> Cuando un haz de luz no polarizada incide sobre la interfaz entre dos medios dieléctricos transparentes, los coeficientes de Fresnel dictaminan que la componente del campo eléctrico paralela al plano de incidencia ($p$) tiene un coeficiente de reflexión distinto a la componente perpendicular ($s$). Existe un ángulo mágico donde la reflectancia de la onda $p$ decae a <strong>cero exacto</strong>. A este ángulo, el rayo reflejado está compuesto 100% por luz polarizada linealmente en el plano de la superficie. Físicamente, ocurre cuando el rayo reflejado y el rayo refractado son rigurosamente ortogonales ($90^\circ$ entre sí). El modelo matemático es la <strong>Ley de Brewster</strong>:
+                                <div class="formula-responsive">
+                                    $$ \tan(\theta_B) = \frac{n_2}{n_1} $$
+                                </div>
+                            </li>
+                            <li><strong>Cálculo del Ángulo de Incidencia Crítico ($\theta_B$):</strong>
+                                Suponiendo que el rayo de luz viene desde el aire ($n_1 = 1$) e impacta contra la masa del cristal ($n_2 = 1,5$):
+                                <div class="formula-responsive">
+                                    $$ \tan(\theta_B) = \frac{1,5}{1} = 1,5 $$
+                                    $$ \theta_B = \arctan(1,5) \approx 56,31^\circ $$
+                                </div>
+                                A un ángulo de incidencia de <strong>$56,3^\circ$</strong>, el rayo reflejado estará totalmente polarizado en el plano de la interfaz.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Cuando una determinada muestra biológica es atravesada por luz monocromática de $426\text{ nm}$ de longitud de onda en el vacío, esta luz se divide en dos haces polarizados linealmente perpendiculares entre sí, siendo sus índices de refracción $1,316$ y $1,332$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿Cuáles son las velocidades y las longitudes de onda de estos haces en el interior de la muestra?</li>
+                            <li>Si la muestra tiene un espesor de $0,001\text{ mm}$, ¿cuál es la diferencia de fase introducida entre los dos haces al atravesarla?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica (Birrefringencia):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>La muestra es un material ópticamente anisótropo (doble refracción). La velocidad de la luz y la longitud de onda se comprimen de acuerdo al índice del medio ($v = c/n$ y $\lambda_{mat} = \lambda_0 / n$).
+                                <p><strong>Haz Ordinario (Eje Rápido $n_1=1,316$):</strong></p>
+                                <div class="formula-responsive">
+                                    $$ v_1 = \frac{3 \times 10^8 \text{ m/s}}{1,316} \approx 2,28 \times 10^8 \text{ m/s} \quad ; \quad \lambda_1 = \frac{426 \text{ nm}}{1,316} \approx 323,7 \text{ nm} $$
+                                </div>
+                                <p><strong>Haz Extraordinario (Eje Lento $n_2=1,332$):</strong></p>
+                                <div class="formula-responsive">
+                                    $$ v_2 = \frac{3 \times 10^8 \text{ m/s}}{1,332} \approx 2,25 \times 10^8 \text{ m/s} \quad ; \quad \lambda_2 = \frac{426 \text{ nm}}{1,332} \approx 319,8 \text{ nm} $$
+                                </div>
+                            </li>
+                            <li><strong>Diferencia de Fase Retardadora ($\Delta \phi$):</strong>
+                                <p>El haz lento acumula un desfase (retardo óptico) respecto al rápido al atravesar el espesor real $e = 0,001\text{ mm} = 1000\text{ nm}$. La fórmula de retardo por birrefringencia evalúa la diferencia de caminos ópticos relativos a la onda base:</p>
+                                <div class="formula-responsive">
+                                    $$ \Delta \phi = \frac{2\pi}{\lambda_0} \cdot (n_2 - n_1) \cdot e $$
+                                </div>
+                                Evaluando los tensores biológicos de la muestra:
+                                <div class="formula-responsive">
+                                    $$ \Delta \phi = \frac{2\pi}{426 \text{ nm}} \cdot (1,332 - 1,316) \cdot (1000 \text{ nm}) = \frac{2\pi}{426} \cdot (0,016) \cdot 1000 $$
+                                    $$ \Delta \phi = \frac{2\pi \cdot 16}{426} = \frac{32\pi}{426} \approx 0,236 \text{ rad} $$
+                                </div>
+                                El desfase acumulado al emerger de la película orgánica es de <strong>$0,236$ radianes</strong> (aprox $13,5^\circ$).
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>

@@ -1,1 +1,291 @@
-wip
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3 - Análisis Numérico</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="numerico-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../analisis_numerico.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <h1 class="logo">Unidad 3: Transformada de Laplace</h1>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        
+        <div class="slides-container">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Calcular por definición la transformada de Laplace de las siguientes funciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>1.1)</strong> $f(t) = \begin{cases} 0, & t < 0 \\ 3, & t \ge 0 \end{cases}$</li>
+                            <li><strong>1.2)</strong> $f(t) = \begin{cases} 0, & t < 0 \\ 3e^{-2t}, & t \ge 0 \end{cases}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica (Definición: $F(s) = \int_0^\infty f(t)e^{-st}dt$):</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">1.1) Constante f(t) = 3</p>
+                        <div class="formula-responsive">
+                            $$ \mathcal{L}\{3\} = \int_{0}^{\infty} 3 e^{-st} dt = 3 \lim_{b \to \infty} \int_{0}^{b} e^{-st} dt $$
+                        </div>
+                        <p>Resolvemos la integral:</p>
+                        <div class="formula-responsive">
+                            $$ = 3 \lim_{b \to \infty} \left[ \frac{e^{-st}}{-s} \right]_{0}^{b} = -\frac{3}{s} \lim_{b \to \infty} \left( e^{-sb} - e^{0} \right) $$
+                        </div>
+                        <p>Asumiendo que $Re(s) > 0$, $e^{-sb} \to 0$ cuando $b \to \infty$:</p>
+                        <div class="formula-responsive">
+                            $$ = -\frac{3}{s} (0 - 1) = \mathbf{\frac{3}{s}} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">1.2) Exponencial $f(t) = 3e^{-2t}$</p>
+                        <div class="formula-responsive">
+                            $$ \mathcal{L}\{3e^{-2t}\} = \int_{0}^{\infty} 3e^{-2t} e^{-st} dt = 3 \lim_{b \to \infty} \int_{0}^{b} e^{-(s+2)t} dt $$
+                        </div>
+                        <p>Resolvemos la integral:</p>
+                        <div class="formula-responsive">
+                            $$ = 3 \lim_{b \to \infty} \left[ \frac{e^{-(s+2)t}}{-(s+2)} \right]_{0}^{b} = -\frac{3}{s+2} \lim_{b \to \infty} \left( e^{-(s+2)b} - 1 \right) $$
+                        </div>
+                        <p>Asumiendo $Re(s) > -2$, el término con $b$ se hace cero:</p>
+                        <div class="formula-responsive">
+                            $$ = -\frac{3}{s+2} (0 - 1) = \mathbf{\frac{3}{s+2}} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Calcular $\lim_{t \to 0} f(t)$ y $\lim_{t \to \infty} f(t)$ para las siguientes funciones, utilizando los Teoremas de Valor Inicial y de Valor Final:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>2.1)</strong> $F(s) = \frac{1}{s(s+5)}$</li>
+                            <li><strong>2.2)</strong> $F(s) = \frac{s}{(s-2)(s+3)}$</li>
+                            <li><strong>2.3)</strong> $F(s) = \frac{1}{(s+5)}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>2.1) $F(s) = \frac{1}{s(s+5)}$</strong><br>
+                                - <strong>Valor Inicial:</strong> $f(0^+) = \lim_{s \to \infty} s \cdot \frac{1}{s(s+5)} = \lim_{s \to \infty} \frac{1}{s+5} = \mathbf{0}$.<br>
+                                - <strong>Valor Final:</strong> (Verificamos polos: $s=0, s=-5$. Como los polos distintos de cero tienen parte real negativa, aplica el TVF).<br>
+                                $f(\infty) = \lim_{s \to 0} s \cdot \frac{1}{s(s+5)} = \lim_{s \to 0} \frac{1}{s+5} = \mathbf{\frac{1}{5}}$.
+                            </li>
+                            <li>
+                                <strong>2.2) $F(s) = \frac{s}{(s-2)(s+3)}$</strong><br>
+                                - <strong>Valor Inicial:</strong> $f(0^+) = \lim_{s \to \infty} s \cdot \frac{s}{(s-2)(s+3)} = \lim_{s \to \infty} \frac{s^2}{s^2+s-6} = \mathbf{1}$.<br>
+                                - <strong>Valor Final:</strong> Polos en $s=2$ y $s=-3$. Existe un polo con parte real positiva ($s=2$). El sistema es inestable y no tiende a un estado estacionario, por lo que el Teorema de Valor Final <strong>no es aplicable</strong> (diverge).
+                            </li>
+                            <li>
+                                <strong>2.3) $F(s) = \frac{1}{s+5}$</strong><br>
+                                - <strong>Valor Inicial:</strong> $f(0^+) = \lim_{s \to \infty} s \cdot \frac{1}{s+5} = \lim_{s \to \infty} \frac{s}{s+5} = \mathbf{1}$.<br>
+                                - <strong>Valor Final:</strong> (Polo en $s=-5$, aplicable).<br>
+                                $f(\infty) = \lim_{s \to 0} s \cdot \frac{1}{s+5} = \frac{0}{5} = \mathbf{0}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>A partir de las tablas y propiedades, calcular la Transformada de Laplace de las siguientes funciones:</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>3.1)</strong> $f(t) = 3t + 4$</li>
+                                <li><strong>3.2)</strong> $f(t) = t^2 + 3t + 4$</li>
+                                <li><strong>3.3)</strong> $f(t) = 2t e^t$</li>
+                            </ul>
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>3.4)</strong> $f(t) = e^{2t+4}$</li>
+                                <li><strong>3.5)</strong> $f(t) = sen\left(\frac{\pi i}{2}\right)$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>3.1)</strong> Usamos la propiedad de Linealidad y la tabla: $\mathcal{L}\{t^n\} = \frac{n!}{s^{n+1}}$, $\mathcal{L}\{1\} = \frac{1}{s}$.<br>
+                                $F(s) = 3\mathcal{L}\{t\} + 4\mathcal{L}\{1\} = 3\left(\frac{1}{s^2}\right) + 4\left(\frac{1}{s}\right) = \mathbf{\frac{3}{s^2} + \frac{4}{s}}$.
+                            </li>
+                            <li>
+                                <strong>3.2)</strong> Por Linealidad: $\mathcal{L}\{t^2\} = \frac{2}{s^3}$.<br>
+                                $F(s) = \mathcal{L}\{t^2\} + 3\mathcal{L}\{t\} + 4\mathcal{L}\{1\} = \mathbf{\frac{2}{s^3} + \frac{3}{s^2} + \frac{4}{s}}$.
+                            </li>
+                            <li>
+                                <strong>3.3)</strong> Por el Primer Teorema de Traslación: $\mathcal{L}\{e^{at}f(t)\} = F(s-a)$. Sabiendo que $\mathcal{L}\{2t\} = \frac{2}{s^2}$, evaluamos en $(s-1)$.<br>
+                                $F(s) = \mathbf{\frac{2}{(s-1)^2}}$.
+                            </li>
+                            <li>
+                                <strong>3.4)</strong> Aplicamos propiedades de potencias: $e^{2t+4} = e^4 \cdot e^{2t}$. Aquí $e^4$ opera como constante multiplicativa.<br>
+                                $F(s) = e^4 \cdot \mathcal{L}\{e^{2t}\} = e^4 \left( \frac{1}{s-2} \right) = \mathbf{\frac{e^4}{s-2}}$.
+                            </li>
+                            <li>
+                                <strong>3.5)</strong> <em>(Nota: asumiendo que el enunciado se refiere a la variable temporal $t$ en lugar de $i$)</em> $\mathcal{L}\{\sin(kt)\} = \frac{k}{s^2+k^2}$ con $k = \pi/2$.<br>
+                                $F(s) = \frac{\pi/2}{s^2 + (\pi/2)^2} = \mathbf{\frac{\pi/2}{s^2 + \pi^2/4}} = \mathbf{\frac{2\pi}{4s^2 + \pi^2}}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Calcular la transformada de Laplace $Y(s)$ de las siguientes ecuaciones diferenciales:</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>4.1)</strong> $\ddot{y} + 3\dot{y} + 6y = 0 \quad [y(0)=0, \dot{y}(0)=3]$</li>
+                                <li><strong>4.2)</strong> $2\ddot{y} + 7\dot{y} + 3y = 0 \quad [y(0)=3, \dot{y}(0)=0]$</li>
+                                <li><strong>4.3)</strong> $\ddot{y} - 3\dot{y} + 2y = 2e^{3t} \quad [y(0)=0, \dot{y}(0)=4]$</li>
+                            </ul>
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>4.4)</strong> $\ddot{y} + 5\dot{y} + 4y = t \quad [y(0)=0, \dot{y}(0)=1]$</li>
+                                <li><strong>4.5)</strong> $\ddot{y} + 5\dot{y} + 4y = sen(t) \quad [y(0)=0, \dot{y}(0)=0]$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p style="margin-bottom: 1rem; opacity: 0.9;">Recordatorio: $\mathcal{L}\{\ddot{y}\} = s^2Y(s) - sy(0) - \dot{y}(0)$ y $\mathcal{L}\{\dot{y}\} = sY(s) - y(0)$.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>4.1)</strong> $[s^2Y(s) - s(0) - 3] + 3[sY(s) - 0] + 6Y(s) = 0$<br>
+                                $Y(s)(s^2 + 3s + 6) - 3 = 0 \implies \mathbf{Y(s) = \frac{3}{s^2 + 3s + 6}}$
+                            </li>
+                            <li>
+                                <strong>4.2)</strong> $2[s^2Y(s) - s(3) - 0] + 7[sY(s) - 3] + 3Y(s) = 0$<br>
+                                $Y(s)(2s^2 + 7s + 3) - 6s - 21 = 0 \implies \mathbf{Y(s) = \frac{6s + 21}{2s^2 + 7s + 3}}$
+                            </li>
+                            <li>
+                                <strong>4.3)</strong> $[s^2Y(s) - s(0) - 4] - 3[sY(s) - 0] + 2Y(s) = \frac{2}{s-3}$<br>
+                                $Y(s)(s^2 - 3s + 2) - 4 = \frac{2}{s-3} \implies Y(s)(s^2 - 3s + 2) = \frac{2}{s-3} + 4$<br>
+                                $\mathbf{Y(s) = \frac{2}{(s-3)(s^2 - 3s + 2)} + \frac{4}{s^2 - 3s + 2}}$
+                            </li>
+                            <li>
+                                <strong>4.4)</strong> $[s^2Y(s) - s(0) - 1] + 5[sY(s) - 0] + 4Y(s) = \frac{1}{s^2}$<br>
+                                $Y(s)(s^2 + 5s + 4) - 1 = \frac{1}{s^2} \implies Y(s)(s^2 + 5s + 4) = \frac{1}{s^2} + 1$<br>
+                                $\mathbf{Y(s) = \frac{1}{s^2(s^2 + 5s + 4)} + \frac{1}{s^2 + 5s + 4}}$
+                            </li>
+                            <li>
+                                <strong>4.5)</strong> $[s^2Y(s) - 0 - 0] + 5[sY(s) - 0] + 4Y(s) = \frac{1}{s^2+1}$<br>
+                                $Y(s)(s^2 + 5s + 4) = \frac{1}{s^2+1}$<br>
+                                $\mathbf{Y(s) = \frac{1}{(s^2+1)(s^2 + 5s + 4)}}$
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Calcular la transformada inversa de Laplace $y(t)$ de las siguientes funciones:</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>5.1)</strong> $Y(s) = \frac{1}{s(s+5)}$</li>
+                                <li><strong>5.2)</strong> $Y(s) = \frac{s}{(s-2)(s+3)}$</li>
+                                <li><strong>5.3)</strong> $Y(s) = \frac{1}{(s+5)}$</li>
+                            </ul>
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>5.4)</strong> $Y(s) = \frac{s+3}{(s^2+s-2)}$</li>
+                                <li><strong>5.5)</strong> $Y(s) = \frac{s}{s^2-1} + \frac{s-2}{(s^2+s)}$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>5.1) $Y(s) = \frac{1}{s(s+5)}$</strong><br>
+                                Fracciones parciales: $\frac{A}{s} + \frac{B}{s+5} = \frac{1}{s(s+5)} \implies A(s+5) + Bs = 1$<br>
+                                Si $s=0 \implies 5A = 1 \implies A = 1/5$. Si $s=-5 \implies -5B = 1 \implies B = -1/5$.<br>
+                                $y(t) = \mathcal{L}^{-1}\left\{\frac{1/5}{s} - \frac{1/5}{s+5}\right\} = \mathbf{\frac{1}{5} - \frac{1}{5}e^{-5t}}$.
+                            </li>
+                            <li>
+                                <strong>5.2) $Y(s) = \frac{s}{(s-2)(s+3)}$</strong><br>
+                                Fracciones parciales: $\frac{A}{s-2} + \frac{B}{s+3}$. $A = [\frac{s}{s+3}]_{s=2} = \frac{2}{5}$. $B = [\frac{s}{s-2}]_{s=-3} = \frac{-3}{-5} = \frac{3}{5}$.<br>
+                                $y(t) = \mathcal{L}^{-1}\left\{\frac{2/5}{s-2} + \frac{3/5}{s+3}\right\} = \mathbf{\frac{2}{5}e^{2t} + \frac{3}{5}e^{-3t}}$.
+                            </li>
+                            <li>
+                                <strong>5.3) $Y(s) = \frac{1}{s+5}$</strong><br>
+                                Aplicación directa de tabla: $\mathcal{L}^{-1}\left\{\frac{1}{s-a}\right\} = e^{at}$.<br>
+                                $y(t) = \mathbf{e^{-5t}}$.
+                            </li>
+                            <li>
+                                <strong>5.4) $Y(s) = \frac{s+3}{s^2+s-2}$</strong><br>
+                                Factorizando denominador: raíces de $s^2+s-2=0$ son $s=1, s=-2$. $\implies (s-1)(s+2)$.<br>
+                                $\frac{A}{s-1} + \frac{B}{s+2}$. $A = [\frac{s+3}{s+2}]_{s=1} = \frac{4}{3}$. $B = [\frac{s+3}{s-1}]_{s=-2} = \frac{1}{-3} = -\frac{1}{3}$.<br>
+                                $y(t) = \mathcal{L}^{-1}\left\{\frac{4/3}{s-1} - \frac{1/3}{s+2}\right\} = \mathbf{\frac{4}{3}e^t - \frac{1}{3}e^{-2t}}$.
+                            </li>
+                            <li>
+                                <strong>5.5) $Y(s) = \frac{s}{s^2-1} + \frac{s-2}{s^2+s}$</strong><br>
+                                Término 1: Directo de tabla $\mathbf{\cosh(t)}$ (o fracciones parciales $\frac{1/2}{s-1} + \frac{1/2}{s+1} = \frac{1}{2}e^t + \frac{1}{2}e^{-t}$).<br>
+                                Término 2: Fracciones parciales de $\frac{s-2}{s(s+1)} = \frac{A}{s} + \frac{B}{s+1}$. $A = [\frac{s-2}{s+1}]_{s=0} = -2$. $B = [\frac{s-2}{s}]_{s=-1} = \frac{-3}{-1} = 3$.<br>
+                                Antitransformada de Término 2: $-2 + 3e^{-t}$.<br>
+                                Sumando todo: $y(t) = \cosh(t) - 2 + 3e^{-t}$ (o también $\mathbf{\frac{1}{2}e^t + \frac{7}{2}e^{-t} - 2}$).
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+</html>

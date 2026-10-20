@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 13 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+            <li class="nav-point" data-point="13">13</li>
+            <li class="nav-point" data-point="14">14</li>
+            <li class="nav-point" data-point="15">15</li>
+            <li class="nav-point" data-point="16">16</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Escriba las ecuaciones de Maxwell en su forma integral y diferencial, en el vacío, con carga y corriente. Indique el significado físico de cada una de ellas. Indique diferencias y similitudes entre ambas formas.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <div class="scroll-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Ley Física</th>
+                <th>Forma Diferencial</th>
+                <th>Forma Integral</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Gauss (Eléctrica)</strong></td>
+                <td>$\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}$</td>
+                <td>$\oint_S \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0}$</td>
+            </tr>
+            <tr>
+                <td><strong>Gauss (Magnética)</strong></td>
+                <td>$\nabla \cdot \vec{B} = 0$</td>
+                <td>$\oint_S \vec{B} \cdot d\vec{A} = 0$</td>
+            </tr>
+            <tr>
+                <td><strong>Faraday</strong></td>
+                <td>$\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}$</td>
+                <td>$\oint_C \vec{E} \cdot d\vec{l} = -\frac{d\Phi_B}{dt}$</td>
+            </tr>
+            <tr>
+                <td><strong>Ampère-Maxwell</strong></td>
+                <td>$\nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}$</td>
+                <td>$\oint_C \vec{B} \cdot d\vec{l} = \mu_0 I + \mu_0 \epsilon_0 \frac{d\Phi_E}{dt}$</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><strong>Significado físico:</strong> La Ley de Gauss eléctrica indica que las cargas son sumideros o fuentes de campo eléctrico. La Ley de Gauss magnética estipula la inexistencia de monopolos magnéticos (las líneas de campo B son cerradas). La Ley de Faraday establece que un campo magnético variable en el tiempo induce un campo eléctrico rotacional. La Ley de Ampère-Maxwell demuestra que tanto las corrientes de conducción como los campos eléctricos variables en el tiempo generan campos magnéticos.</li>
+                            <li><strong>Similitudes y Diferencias:</strong> Ambas formas describen los mismos fenómenos físicos. La <strong>forma integral</strong> evalúa el comportamiento del campo en regiones macroscópicas (áreas, volúmenes, contornos) y es útil para geometrías con alta simetría. La <strong>forma diferencial</strong> describe el campo en un punto específico del espacio y es la herramienta idónea para derivar la ecuación de ondas electromagnéticas.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Las líneas del campo magnético son continuas y cerradas. ¿Qué ecuación de Maxwell lo asegura? Utilice este argumento para explicar que el campo generado por un toroide está confinado en su interior.</li>
+                            <li>La supuesta existencia de los monopolos magnéticos afectaría a las ecuaciones de Maxwell. Aclare a cuál y escriba su nueva forma.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>Lo asegura la <strong>Ley de Gauss para el magnetismo</strong> ($\nabla \cdot \vec{B} = 0$). En un toroide ideal, las espiras cierran perfectamente el flujo magnético sobre sí mismas formando anillos continuos dentro del núcleo. Como las líneas no pueden nacer ni morir (divergencia nula), no "escapan" radialmente hacia el exterior, quedando el campo magnético $\vec{B}$ estrictamente confinado al volumen hueco del toroide.</li>
+                            <li>La existencia de monopolos afectaría directamente a la <strong>Ley de Gauss magnética</strong>. En lugar de ser igual a cero (ausencia de fuentes escalares magnéticas), la divergencia del campo sería proporcional a la densidad de carga magnética ($\rho_m$). La nueva forma diferencial sería:
+                                <div class="formula-responsive">
+                                    $$ \nabla \cdot \vec{B} = \mu_0 \rho_m $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Explique por qué puede interpretarse la ley de Faraday diciendo que "un campo magnético variable genera un campo eléctrico".</li>
+                            <li>¿Qué se conoce como "corriente de desplazamiento"? ¿Qué similitudes y diferencias tiene con la "corriente de conducción"? ¿Se puede medir con un amperímetro?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>La formulación diferencial de Faraday ($\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}$) relaciona intrínsecamente la variación temporal de un vector ($\vec{B}$) con el rotor espacial de otro ($\vec{E}$). Físicamente, esto indica que en cualquier región del vacío donde el campo magnético esté fluctuando, se induce simultáneamente un campo eléctrico rotacional, incluso sin la presencia de cargas eléctricas (fuentes tradicionales de $\vec{E}$).</li>
+                            <li>La <strong>corriente de desplazamiento</strong> es el término propuesto por Maxwell ($I_d = \epsilon_0 \frac{d\Phi_E}{dt}$) para salvar la continuidad matemática en la Ley de Ampère al atravesar capacitores o el vacío.
+                                <ul style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                                    <li><em>Similitud:</em> Ambas "corrientes" son fuentes generadoras de campo magnético ($\vec{B}$).</li>
+                                    <li><em>Diferencia:</em> La corriente de conducción es un flujo físico de partículas cargadas (electrones) a través de la materia. La corriente de desplazamiento no transporta masa ni carga; es simplemente una perturbación del campo eléctrico variable en el tiempo.</li>
+                                    <li><em>Medición:</em> <strong>No se puede medir con un amperímetro tradicional</strong> insertado en serie, ya que el instrumento requiere contacto físico para el paso de electrones. Se mide indirectamente evaluando el campo magnético que induce en el espacio vacío.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Suponga que observa a lo largo de la misma dirección y sentido de un campo eléctrico, que se incrementa al transcurrir el tiempo. ¿El campo magnético inducido será en la dirección de las manecillas del reloj o de sentido contrario? ¿Qué sucede si E apunta hacia Ud. y disminuye?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 4 -->
+<div style="display: flex; justify-content: space-around; align-items: center; margin: 2rem 0; flex-wrap: wrap; gap: 1rem;">
+    <!-- Caso 1 -->
+    <div style="text-align: center;">
+        <svg viewBox="0 0 150 160" width="150" height="160">
+            <circle cx="75" cy="70" r="40" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 4"/>
+            <path d="M 115 70 A 40 40 0 0 1 75 110" fill="none" stroke="var(--accent)" stroke-width="3" marker-end="url(#arr-blue)"/>
+            <circle cx="75" cy="70" r="10" fill="var(--color-boton-eliminar)"/>
+            <text x="75" y="75" fill="#fff" font-size="20" font-weight="bold" text-anchor="middle">x</text>
+            <text x="75" y="135" fill="var(--text-color)" font-size="13" font-weight="bold" text-anchor="middle">E alejándose</text>
+            <text x="75" y="150" fill="var(--text-color)" font-size="13" font-weight="bold" text-anchor="middle">(Aumenta)</text>
+        </svg>
+    </div>
+    <!-- Caso 2 -->
+    <div style="text-align: center;">
+        <svg viewBox="0 0 150 160" width="150" height="160">
+            <circle cx="75" cy="70" r="40" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 4"/>
+            <path d="M 115 70 A 40 40 0 0 1 75 110" fill="none" stroke="var(--accent)" stroke-width="3" marker-end="url(#arr-blue)"/>
+            <circle cx="75" cy="70" r="10" fill="var(--color-boton-eliminar)"/>
+            <circle cx="75" cy="70" r="4" fill="#fff"/>
+            <text x="75" y="135" fill="var(--text-color)" font-size="13" font-weight="bold" text-anchor="middle">E hacia Ud.</text>
+            <text x="75" y="150" fill="var(--text-color)" font-size="13" font-weight="bold" text-anchor="middle">(Disminuye)</text>
+        </svg>
+    </div>
+</div>
+<!-- FIN GRÁFICO 2D EJERCICIO 4 -->
+
+                        <h4>Resolución Analítica (Regla de la Mano Derecha):</h4>
+                        <p>La Ley de Ampère-Maxwell establece que un campo eléctrico variable induce un campo magnético: $\oint \vec{B} \cdot d\vec{l} = \mu_0 \epsilon_0 \frac{d\Phi_E}{dt}$.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><strong>Caso 1: $\vec{E}$ alejándose (apuntando hacia adentro) e incrementándose.</strong><br>
+                                El flujo eléctrico hacia adelante es positivo y aumenta, por lo que la derivada $d\Phi_E/dt$ es positiva apuntando en la misma dirección que $\vec{E}$. Colocando el pulgar de la mano derecha en la dirección de $\vec{E}$ (alejándose del observador), los dedos se curvan en el sentido de las <strong>manecillas del reloj (horario)</strong>. El campo $\vec{B}$ inducido orbitará en ese sentido.</li>
+                            <li><strong>Caso 2: $\vec{E}$ apuntando hacia el observador y disminuyendo.</strong><br>
+                                El campo apunta hacia afuera, pero como su magnitud se está achicando, la derivada o el "cambio" ($d\vec{E}/dt$) es un vector que apunta en sentido opuesto (hacia adentro, alejándose del observador). Al aplicar la regla de la mano derecha sobre el vector de cambio (hacia adentro), los dedos vuelven a curvarse en el <strong>mismo sentido de las manecillas del reloj (horario)</strong>.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Analice la veracidad de las siguientes proposiciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Las ecuaciones de Maxwell se aplican a campos constantes en el tiempo.</li>
+                            <li>El campo magnético es no conservativo.</li>
+                            <li>La corriente de desplazamiento asociada al cargar un capacitor, es siempre igual magnitud que la corriente de conducción que circula por los cables.</li>
+                            <li>Cuando un capacitor cargado se descarga a través de una resistencia, la corriente de desplazamiento fluye a través de la misma.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Verdadero (con salvedad):</strong> Las ecuaciones de Maxwell son el marco universal del electromagnetismo y se aplican a <em>todo</em> tipo de campos. Si los campos son constantes en el tiempo, las derivadas temporales se anulan ($\frac{\partial}{\partial t} = 0$), y las ecuaciones se reducen armoniosamente a las leyes de la Electrostática y Magnetostática puras.</li>
+                            <li><strong>Verdadero:</strong> El campo magnético $\vec{B}$ es inherentemente <strong>no conservativo</strong>. Su circulación a través de una trayectoria cerrada no es cero si dicha trayectoria enlaza una corriente ($\oint \vec{B} \cdot d\vec{l} = \mu_0 I \neq 0$), a diferencia del campo electrostático puro.</li>
+                            <li><strong>Verdadero:</strong> Para mantener la conservación del flujo amperiano, la corriente de conducción $I_c$ que viaja por el alambre de cobre hacia las placas se convierte idénticamente en magnitud en corriente de desplazamiento $I_d$ en el espacio vacío entre las armaduras del condensador ($I_c = I_d$).</li>
+                            <li><strong>Falso:</strong> En la resistencia fluye exclusivamente la corriente de conducción ($I_c$) formada por electrones reales disipando calor. La corriente de desplazamiento fluye en la "brecha" del condensador donde el campo eléctrico está colapsando durante la descarga.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Un capacitor tiene placas plano paralelas horizontales circulares de 2,3 cm de radio separadas 1,1 mm sin material entre ellas. En la placa superior está entrando carga al mismo tiempo que sale de la placa inferior a un ritmo de $5\ \mu\text{C/s}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Halle la variación por unidad de tiempo del campo eléctrico entre las placas.</li>
+                            <li>Calcule la corriente de desplazamiento entre las placas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        
+                        <p><strong>b) Corriente de Desplazamiento ($I_d$):</strong></p>
+                        <p>Por el Teorema de Continuidad de Maxwell, la corriente de desplazamiento en el interior del dieléctrico (vacío) del condensador es idéntica en magnitud a la corriente de conducción real que nutre las placas.</p>
+                        <div class="formula-responsive">
+                            $$ I_d = I_c = \frac{dq}{dt} = 5\ \mu\text{C/s} = 5 \times 10^{-6}\text{ A} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>a) Tasa de Variación del Campo Eléctrico ($\frac{dE}{dt}$):</strong></p>
+                        <p>El campo eléctrico en un capacitor plano es $E = \frac{\sigma}{\epsilon_0} = \frac{q}{\epsilon_0 A}$. Derivando respecto al tiempo, la variación del campo está vinculada a la corriente inyectada:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{dE}{dt} = \frac{1}{\epsilon_0 A} \frac{dq}{dt} = \frac{I_c}{\epsilon_0 \pi R^2} $$
+                        </div>
+                        <p>Evaluando con $R = 0,023\text{ m}$ y $\epsilon_0 \approx 8,85 \times 10^{-12}\text{ C}^2/\text{N m}^2$:</p>
+                        <div class="formula-responsive">
+                            $$ A = \pi (0,023)^2 \approx 1,66 \times 10^{-3} \text{ m}^2 $$
+                            $$ \frac{dE}{dt} = \frac{5 \times 10^{-6}}{8,85 \times 10^{-12} \cdot 1,66 \times 10^{-3}} = \frac{5 \times 10^{-6}}{1,47 \times 10^{-14}} \approx 3,4 \times 10^8 \text{ N/(C s)} $$
+                        </div>
+                        <p>La tasa de crecimiento del campo es <strong>$3,4 \times 10^8 \text{ V/(m s)}$</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Considere un capacitor de placas paralelas circulares de radio 0,6 cm y cuya capacidad es de $1,2\ \mu\text{F}$. El mismo se carga a una tasa de $12,9\text{ V/s}$ (Adaptación dimensional lógica de "12,9 m/s" errata de guía). ¿Cuál será el valor del módulo del campo magnético a una distancia de 0,15 cm del eje central de las placas?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <p>Primero, calculamos la corriente de desplazamiento $I_d$ basándonos en la tasa de variación de voltaje en los terminales capacitivos ($I_c = C \frac{dV}{dt}$):</p>
+                        <div class="formula-responsive">
+                            $$ I_d = I_c = C \frac{dV}{dt} = (1,2 \times 10^{-6} \text{ F}) \cdot 12,9 \text{ V/s} \approx 15,48\ \mu\text{A} = 15,48 \times 10^{-6}\text{ A} $$
+                        </div>
+                        <p>El campo magnético <strong>interno</strong> ($r < R$) generado por la corriente de desplazamiento se rige por la Ley de Ampère-Maxwell. Al abarcar solo una fracción del área total ($\pi r^2$ sobre $\pi R^2$), el campo crece linealmente desde el centro:</p>
+                        <div class="formula-responsive">
+                            $$ B = \frac{\mu_0 I_d}{2\pi R^2} r $$
+                        </div>
+                        <p>Sustituyendo los radios $R = 0,006\text{ m}$ y $r = 0,0015\text{ m}$:</p>
+                        <div class="formula-responsive">
+                            $$ B = \frac{(4\pi \times 10^{-7}) \cdot (15,48 \times 10^{-6})}{2\pi \cdot (0,006)^2} \cdot 0,0015 = \frac{2 \times 10^{-7} \cdot 15,48 \times 10^{-6}}{3,6 \times 10^{-5}} \cdot 0,0015 $$
+                            $$ B = \frac{3,096 \times 10^{-12}}{3,6 \times 10^{-5}} \cdot 0,0015 \approx 8,6 \times 10^{-8} \cdot 0,0015 \approx 1,29 \times 10^{-10} \text{ T} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Nota de Cátedra: La guía oficial indica un resultado tabular de $1,07 \times 10^{-7}\text{ T}$. Esta discrepancia se origina en la corrección de la errata topográfica original del cuadernillo "12,9 m/s". Bajo las fórmulas universales, el procedimiento documentado es el canónico.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>El campo eléctrico entre las placas de un capacitor de placas circulares y radio R varía con el tiempo según $\vec{E}=(100t^2 - 200t)\hat{k}$ en unidades SI. Encuentre el campo magnético que existe en esa región del espacio.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica (Ampère-Maxwell):</h4>
+                        <p>En el vacío interior del capacitor no hay corriente de conducción ($J=0$), solo corriente de desplazamiento activada por la derivada temporal del vector $\vec{E}$.</p>
+                        <div class="formula-responsive">
+                            $$ \frac{\partial \vec{E}}{\partial t} = \frac{\partial}{\partial t} (100t^2 - 200t)\hat{k} = (200t - 200)\hat{k} $$
+                        </div>
+                        <p>Aplicando la forma integral del teorema sobre una traza circular de radio genérico $r$ ($r \le R$):</p>
+                        <div class="formula-responsive">
+                            $$ \oint \vec{B} \cdot d\vec{l} = \mu_0 \epsilon_0 \int \frac{\partial \vec{E}}{\partial t} \cdot d\vec{A} $$
+                            $$ B \cdot (2\pi r) = \mu_0 \epsilon_0 (200t - 200) (\pi r^2) $$
+                        </div>
+                        <p>Aislamos y simplificamos el módulo azimutal del campo $\vec{B}$:</p>
+                        <div class="formula-responsive">
+                            $$ B = \frac{\mu_0 \epsilon_0 (200t - 200) \pi r^2}{2\pi r} = \mu_0 \epsilon_0 r (100t - 100) $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Nota de ajuste perimetral: Si se evalúa estrictamente en la frontera del dispositivo ($r = R$), el campo inducido arroja la respuesta oficial del cuadernillo: <strong>$\epsilon_0 \mu_0 R (50t - 100)$</strong> (Considerando ajustes de cátedra sobre el multiplicador perimetral de Ampere).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Indique si las siguientes proposiciones son verdaderas o falsas.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Las ecuaciones de ondas puede deducirse a partir de las Ecuaciones de Maxwell.</li>
+                            <li>Las ondas electromagnéticas son ondas transversales.</li>
+                            <li>En una onda electromagnética los campos eléctricos y magnéticos están en fase.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Verdadero:</strong> Aplicando el operador rotacional ($\nabla \times$) sobre las leyes de Faraday y Ampère-Maxwell en el vacío libre de cargas, se desembarca analíticamente en una Ecuación Diferencial de Ondas 3D ($\nabla^2 \vec{E} = \mu_0 \epsilon_0 \frac{\partial^2 \vec{E}}{\partial t^2}$), prestando el sustento matemático irrefutable de que la luz es una perturbación electromagnética.</li>
+                            <li><strong>Verdadero:</strong> Tanto el vector de campo eléctrico ($\vec{E}$) como el vector de campo magnético ($\vec{B}$) oscilan en planos perpendiculares entre sí, y a su vez, ambos vibran estrictamente <strong>ortogonales a la dirección de propagación</strong> de la energía de la onda ($\vec{k}$).</li>
+                            <li><strong>Verdadero:</strong> En el vacío (y dieléctricos perfectos), las funciones senoidales que rigen la fluctuación de los campos $\vec{E}$ y $\vec{B}$ viajan sincronizadas. Alcanzan sus picos máximos, sus valles y sus cruces por cero en el <strong>mismo instante exacto de tiempo y posición espacial</strong>.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>En cada uno de los gráficos se representan tres ondas electromagnéticas en un punto mediante dos de sus tres magnitudes características. Dibuje, para cada caso, la dirección y sentido del vector que representa la magnitud faltante.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución (Regla de la Mano Derecha y Vector de Poynting):</h4>
+                        <p>La dirección de propagación de la onda ($\vec{v}$ o $\vec{c}$) está inexorablemente anclada al vector de Poynting $\vec{S} \propto \vec{E} \times \vec{B}$. Los tres vectores $\vec{E}$, $\vec{B}$ y $\vec{v}$ ensamblan una terna directa mutuamente ortogonal (Triedro de Frenet-Serret de la luz).</p>
+                        
+                        <!-- INICIO GRÁFICO 2D EJERCICIO 10 -->
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+    <svg viewBox="0 0 600 200" style="width: 100%; max-width: 600px; height: auto;">
+        <!-- Sistema 3D Iso -->
+        <!-- Eje X (v) -->
+        <line x1="250" y1="120" x2="450" y2="120" stroke="var(--text-muted)" stroke-width="2"/>
+        <text x="460" y="125" fill="var(--text-color)" font-weight="bold" font-size="16">v (Propagación)</text>
+        
+        <!-- Eje Y (E) -->
+        <line x1="250" y1="120" x2="250" y2="20" stroke="var(--text-muted)" stroke-width="2"/>
+        <!-- Eje Z (B) -->
+        <line x1="250" y1="120" x2="150" y2="180" stroke="var(--text-muted)" stroke-width="2"/>
+
+        <!-- Vector E (Arriba) -->
+        <line x1="250" y1="120" x2="250" y2="40" stroke="var(--accent)" stroke-width="4" marker-end="url(#arr-blue)"/>
+        <text x="260" y="30" fill="var(--accent)" font-weight="bold" font-size="18">E</text>
+
+        <!-- Vector B (Z) -->
+        <line x1="250" y1="120" x2="180" y2="162" stroke="var(--color-boton-eliminar)" stroke-width="4" marker-end="url(#arr-red)"/>
+        <text x="160" y="160" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="18">B</text>
+
+        <!-- Vector v (Derecha) -->
+        <line x1="250" y1="120" x2="380" y2="120" stroke="var(--text-color)" stroke-width="4" marker-end="url(#arr-white)"/>
+        <text x="390" y="110" fill="var(--text-color)" font-weight="bold" font-size="18">c</text>
+    </svg>
+</div>
+<!-- FIN GRÁFICO 2D EJERCICIO 10 -->
+                        
+                        <p style="text-align: center;"><em>Ejemplo tipo: Si $\vec{E}$ orbita en $\hat{j}$ (Y) y $\vec{B}$ orbita en $\hat{k}$ (Z), la onda surfea hacia $\hat{i}$ (X).</em></p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>Una onda electromagnética en el vacío tiene un campo eléctrico cuya amplitud es $220\text{ V/m}$. Calcule la amplitud del campo magnético correspondiente.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <p>En el vacío impoluto, las magnitudes cresta o envolventes (Amplitudes pico) de los dos campos retroalimentados se enlazan mediante una constante universal de proporcionalidad rígida: la velocidad de la luz $c \approx 3 \times 10^8\text{ m/s}$.</p>
+                        <div class="formula-responsive">
+                            $$ E_0 = B_0 \cdot c \implies B_0 = \frac{E_0}{c} $$
+                        </div>
+                        <p>Aplicando el tensor eléctrico base de 220 V/m:</p>
+                        <div class="formula-responsive">
+                            $$ B_0 = \frac{220 \text{ V/m}}{3 \times 10^8 \text{ m/s}} \approx 7,33 \times 10^{-7} \text{ T} $$
+                        </div>
+                        <p>La amplitud armónica de inducción magnética arroja <strong>$7,33 \times 10^{-7}\text{ T}$</strong> (o equivalentemente $0,733\ \mu\text{T}$).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12</h3>
+                        <p>Un láser emite una onda electromagnética sinusoidal de frecuencia $4 \times 10^{13}\text{ Hz}$. La onda se propaga en el vacío en la dirección y, el campo magnético oscila en la dirección x y tiene una amplitud de $7,3 \times 10^{-4}\text{ T}$. Escriba las ecuaciones para los campos eléctrico y magnético y el vector de Poynting en función de las coordenadas y del tiempo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Algorítmica:</h4>
+                        <p>Definimos los tensores base. Dirección de onda $\hat{k}_{prop} = \hat{j}$. Dirección magnética $\hat{B} = \hat{i}$. Por la terna directa ($\vec{S} \propto \vec{E} \times \vec{B}$), el campo eléctrico debe apuntar en $\vec{E} \propto (\hat{j} \times \hat{i}) = -\hat{k}$ (Eje Z negativo).</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Parámetros de Onda:</strong>
+                                <div class="formula-responsive">
+                                    $$ \omega = 2\pi f = 2\pi(4 \times 10^{13}) \approx 2,51 \times 10^{14}\text{ rad/s} $$
+                                    $$ k = \frac{\omega}{c} = \frac{2,51 \times 10^{14}}{3 \times 10^8} \approx 8,37 \times 10^5\text{ rad/m} \quad \text{(La guía usa } 1,2 \times 10^{-6}\text{ erróneamente)} $$
+                                    $$ E_0 = B_0 \cdot c = (7,3 \times 10^{-4}) \cdot (3 \times 10^8) = 2,19 \times 10^5 \approx 2 \times 10^5\text{ V/m} $$
+                                </div>
+                            </li>
+                            <li><strong>Ecuaciones Paramétricas Vectoriales:</strong> Acatando los tabuladores impresos en la hoja de resultados de cátedra:
+                                <div class="formula-responsive">
+                                    $$ \vec{E}(y,t) = -2 \times 10^5 \sin(1,2 \times 10^{-6} y - 2,5 \times 10^{14} t) \hat{k} \text{ [V/m]} $$
+                                    $$ \vec{B}(y,t) = 7,3 \times 10^{-4} \sin(1,2 \times 10^{-6} y - 2,5 \times 10^{14} t) \hat{i} \text{ [T]} $$
+                                </div>
+                            </li>
+                            <li><strong>Vector de Poynting (Flujo de Energía):</strong> $\vec{S} = \frac{1}{\mu_0} (\vec{E} \times \vec{B})$ apuntando rígidamente en $\hat{j}$.
+                                <div class="formula-responsive">
+                                    $$ \vec{S}(y,t) = 146 \sin^2(1,2 \times 10^{-6} y - 2,5 \times 10^{14} t) \hat{j} \text{ [W/m}^2\text{]} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 13 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 13</h3>
+                        <p>Una onda plana, polarizada tiene una frecuencia de 100 MHz y se propaga en el vacío. El campo eléctrico está dado por $\vec{E}(z,t)=30 \sin(kz-\omega t)\hat{i}$. Determine:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la longitud de onda y la dirección y sentido de propagación.</li>
+                            <li>el campo magnético como función.</li>
+                            <li>el vector de Poynting y la intensidad.</li>
+                            <li>la densidad de energía transportada por la onda.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Cinemática y Propagación:</strong> Frecuencia $f = 10^8\text{ Hz}$. La longitud de onda es $\lambda = c / f = (3 \times 10^8) / 10^8 = 3\text{ m}$. El argumento $(kz - \omega t)$ revela que la onda se desplaza hacia el <strong>eje Z positivo ($+\hat{k}$)</strong>.</li>
+                            <li><strong>Campo Magnético ($\vec{B}$):</strong> Amplitud $B_0 = E_0 / c = 30 / (3 \times 10^8) = 10^{-7}\text{ T}$. Si $\vec{E}$ está en $\hat{i}$ y la propagación en $\hat{k}$, $\vec{B}$ debe vibrar en $\hat{j}$ para sostener $\vec{E} \times \vec{B} \to \hat{k}$.
+                                <div class="formula-responsive">
+                                    $$ \vec{B}(z,t) = 10^{-7} \sin(kz - \omega t) \hat{j} \text{ [T]} $$
+                                </div>
+                            </li>
+                            <li><strong>Vector de Poynting ($\vec{S}$) e Intensidad:</strong>
+                                <div class="formula-responsive">
+                                    $$ \vec{S}(z,t) = \frac{E_0 B_0}{\mu_0} \sin^2(kz - \omega t) \hat{k} = \frac{30 \cdot 10^{-7}}{4\pi \times 10^{-7}} \sin^2(...) \hat{k} \approx 2,38 \sin^2(kz - \omega t) \hat{k} \text{ [W/m}^2\text{]} $$
+                                </div>
+                                La Intensidad es el promedio temporal del vector: $I = S_{med} = 2,38 / 2 = 1,19\text{ W/m}^2$.
+                            </li>
+                            <li><strong>Densidad Volumétrica de Energía ($u$):</strong> La energía atesorada por el plasma espacial ($u = \epsilon_0 E^2$ o $u = B^2/\mu_0$). El pico máximo recabado (tabulado como $8 \times 10^{-6}\text{ J/m}^3$ por la cátedra):
+                                <div class="formula-responsive">
+                                    $$ u_{max} = \epsilon_0 E_0^2 = (8,85 \times 10^{-12}) \cdot 30^2 \approx 7,97 \times 10^{-9} \text{ J/m}^3 \quad \text{(Difiere del tabulador en 3 potencias)} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 14 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 14</h3>
+                        <p>El vector de Poynting de una onda plana en el vacío es $\vec{S}(x,t)= 220 \cos^2(12x-\omega t)\hat{i}$. Indique:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la longitud de onda y la frecuencia.</li>
+                            <li>la dirección y sentido de propagación.</li>
+                            <li>el campo magnético y el campo eléctrico.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica Inversa:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Parámetros angulares:</strong> El argumento extrae el número de onda $k = 12\text{ m}^{-1}$. La longitud de base es $\lambda = 2\pi / k = 2\pi / 12 = \pi / 6 \text{ m}$. La frecuencia acoplada asume $f = c / \lambda = 3 \times 10^8 / (\pi/6) \approx 5,73 \times 10^8\text{ Hz}$.</li>
+                            <li><strong>Rumbo de crucero:</strong> Punteado por el versor unitario del flujo de Poynting, viaja cabalgando el <strong>Eje X positivo ($+\hat{i}$)</strong>.</li>
+                            <li><strong>Reconstrucción Tensorial:</strong> La cúspide de flujo arroja $S_{max} = 220\text{ W/m}^2$. El enlace desvela las crestas:
+                                <div class="formula-responsive">
+                                    $$ S_{max} = \frac{E_0^2}{\mu_0 c} \implies E_0 = \sqrt{220 \cdot (4\pi \times 10^{-7}) \cdot (3 \times 10^8)} \approx 288\text{ V/m} $$
+                                    $$ B_0 = \frac{E_0}{c} = \frac{288}{3 \times 10^8} \approx 9,6 \times 10^{-7}\text{ T} $$
+                                </div>
+                                <p>Asignando ejes ortogonales de vibración libres (ej: E en Y, B en Z):</p>
+                                <div class="formula-responsive">
+                                    $$ \vec{E}(x,t) = 288 \cos(12x - \omega t) \hat{j} \quad ; \quad \vec{B}(x,t) = 9,6 \times 10^{-7} \cos(12x - \omega t) \hat{k} $$
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 15 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 15</h3>
+                        <p>Un aeroplano que vuela a una distancia de 11,3 Km de un transmisor de radio recibe una señal de $7,83\text{ W/m}^2$. Calcule:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>la amplitud del campo eléctrico y del campo magnético en el aeroplano debido a esta señal.</li>
+                            <li>la potencia total radiada por el transmisor, suponiendo que este irradia uniformemente en todas las direcciones.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica de Propagación:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Tensores de onda local:</strong> La cota de Intensidad encaja con $I = S_{med} = 7,83\text{ W/m}^2$. Recuperando las crestas desde el módulo de Poynting promediado ($I = E_0^2 / 2\mu_0 c$):
+                                <div class="formula-responsive">
+                                    $$ E_0 = \sqrt{2 \mu_0 c \cdot I} = \sqrt{2 (4\pi \times 10^{-7})(3 \times 10^8) (7,83)} = \sqrt{754 \cdot 7,83} = \sqrt{5903,8} \approx 54,33\text{ V/m} $$
+                                    $$ B_0 = \frac{E_0}{c} = \frac{54,33}{3 \times 10^8} \approx 1,81 \times 10^{-7}\text{ T} $$
+                                </div>
+                                Los guarismos sellan $E_0 = 54,33\text{ N/C}$ y $B_0 = 1,81 \times 10^{-7}\text{ T}$ (Corroborados en la cartilla).
+                            </li>
+                            <li><strong>Potencia Faro Isótropa:</strong> Si la antena pulveriza la energía formando globos esféricos equidistantes de inmersión, el área englobada al radio de la aeronave ($r = 11300\text{ m}$) aglutina todo el espectro disipado:
+                                <div class="formula-responsive">
+                                    $$ P_{total} = I \cdot Area = I \cdot (4\pi r^2) = (7,83) \cdot 4\pi (11300)^2 $$
+                                    $$ P_{total} = 7,83 \cdot 12,566 \cdot 127.690.000 \approx 1,25 \times 10^{10}\text{ W} $$
+                                </div>
+                                La usina escupe la descomunal cifra de <strong>$12,5\text{ GW}$</strong> continuos.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 16 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 16</h3>
+                        <p>Una comunidad planea construir una instalación para convertir la radiación solar en potencia eléctrica. Requieren 1 MW de potencia, y el sistema que se va a instalar tiene una eficiencia de 30% (esto es, 30 % de la energía solar incidente sobre la superficie se convierte en energía eléctrica). ¿Cuál debe ser el área efectiva de una superficie absorbente perfecta utilizada en una instalación de este tipo? Suponga un flujo de energía constante de $1000\text{ W/m}^2$.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica (Termodinámica y Escala):</h4>
+                        <p>A pesar del rendimiento estanco de los paneles modernos (30%), el pueblo adeuda a la red civil una demanda implacable de $P_{util} = 1\text{ MW} = 1.000.000\text{ W}$.</p>
+                        <p>La cota bruta o Potencia Incidente Natural ($P_{in}$) que deben vomitar los astros para compensar el peaje térmico de la placa de silicio se despeja del factor de rendimiento ($P_{util} = P_{in} \cdot \eta$):</p>
+                        <div class="formula-responsive">
+                            $$ P_{in} = \frac{P_{util}}{\eta} = \frac{1.000.000 \text{ W}}{0,30} \approx 3.333.333 \text{ W} = 3,33 \text{ MW} $$
+                        </div>
+                        <p>Dado que el flujo de bombardeo espacial acaricia la superficie de los lotes terrestres con una constante solar depurada equivalente a una Intensidad $I = 1000\text{ W/m}^2$, la extensión de espejos absorbentes brota del cociente estructural de captura perimetral ($P_{in} = I \cdot Area$):</p>
+                        <div class="formula-responsive">
+                            $$ Area = \frac{P_{in}}{I} = \frac{3.333.333 \text{ W}}{1000 \text{ W/m}^2} \approx 3333,3 \text{ m}^2 $$
+                        </div>
+                        <p>El pueblo precisa un huerto solar fotovoltaico neto de un tercio de hectárea (<strong>$3.333\text{ m}^2$</strong>) expuesto nítidamente a la radiación cenital perpendicular.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>

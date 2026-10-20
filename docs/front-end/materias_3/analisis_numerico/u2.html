@@ -1,1 +1,1146 @@
-WIP
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - Análisis Numérico</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="numerico-page">
+
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Unidad 2</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Parte 1</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../analisis_numerico.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <h1 class="logo">Unidad 2: Variable Compleja</h1>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        
+        <!-- ==================== PARTE 1 ==================== -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Expresar cada uno de los siguientes números complejos en la forma binómica $a+ib$ y hallar su conjugado:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>1.1)</strong> $(10-4i)+(-3+5i)$</li>
+                            <li><strong>1.2)</strong> $(5+4i)(6-3i)$</li>
+                            <li><strong>1.3)</strong> $(1-2i)/(3+4i)$</li>
+                            <li><strong>1.4)</strong> $(2-3i)^2$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>1.1) Suma:</strong> Agrupamos partes reales e imaginarias.<br>
+                                $z = (10-3) + i(-4+5) = \mathbf{7 + i}$<br>
+                                Conjugado: $\overline{z} = \mathbf{7 - i}$
+                            </li>
+                            <li>
+                                <strong>1.2) Producto:</strong> Aplicamos distributiva y usamos $i^2 = -1$.<br>
+                                $z = 30 - 15i + 24i - 12i^2 = 30 + 9i - 12(-1) = 30 + 12 + 9i = \mathbf{42 + 9i}$<br>
+                                Conjugado: $\overline{z} = \mathbf{42 - 9i}$
+                            </li>
+                            <li>
+                                <strong>1.3) Cociente:</strong> Multiplicamos numerador y denominador por el conjugado del denominador.<br>
+                                $z = \frac{1-2i}{3+4i} \cdot \frac{3-4i}{3-4i} = \frac{3 - 4i - 6i + 8i^2}{3^2 + 4^2} = \frac{3 - 10i - 8}{9 + 16} = \frac{-5 - 10i}{25} = \mathbf{-\frac{1}{5} - \frac{2}{5}i}$<br>
+                                Conjugado: $\overline{z} = \mathbf{-\frac{1}{5} + \frac{2}{5}i}$
+                            </li>
+                            <li>
+                                <strong>1.4) Cuadrado de un binomio:</strong> Desarrollamos $(a-b)^2 = a^2 - 2ab + b^2$.<br>
+                                $z = 2^2 - 2(2)(3i) + (3i)^2 = 4 - 12i + 9i^2 = 4 - 12i - 9 = \mathbf{-5 - 12i}$<br>
+                                Conjugado: $\overline{z} = \mathbf{-5 + 12i}$
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Escribir los siguientes números complejos en forma polar ($z = r \cdot e^{i\theta}$) y representar gráficamente:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>2.1)</strong> $z=-\frac{\sqrt{3}}{2}-\frac{1}{2}i$</li>
+                            <li><strong>2.2)</strong> $z=-\sqrt{3}+i$</li>
+                            <li><strong>2.3)</strong> $z=(1-2i)/(3+4i)$</li>
+                            <li><strong>2.4)</strong> $z=(1+i)^4$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución y Gráficos:</h4>
+                        <p style="margin-bottom: 1rem; opacity: 0.9;">Calculamos el módulo $r = \sqrt{x^2+y^2}$ y el argumento $\theta = \arctan(y/x)$, ajustando según el cuadrante.</p>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                            
+                            <!-- 2.1 -->
+                            <div style="text-align: center; width: 100%; max-width: 250px;">
+                                <p style="font-size: 0.95em; margin-bottom: 0.5rem;"><strong>2.1)</strong> 3er cuadrante</p>
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;">$r = 1$, $\theta = \frac{7\pi}{6} \implies \mathbf{z = e^{i\frac{7\pi}{6}}}$</p>
+                                <svg viewBox="-2 -2 4 4" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-2" y1="0" x2="2" y2="0" stroke="var(--text-color)" stroke-width="0.02"/>
+                                    <line x1="0" y1="-2" x2="0" y2="2" stroke="var(--text-color)" stroke-width="0.02"/>
+                                    <circle cx="0" cy="0" r="1" fill="none" stroke="var(--text-color)" stroke-width="0.02" stroke-dasharray="0.1"/>
+                                    <line x1="0" y1="0" x2="-0.866" y2="0.5" stroke="var(--accent)" stroke-width="0.05"/>
+                                    <circle cx="-0.866" cy="0.5" r="0.08" fill="var(--accent)"/>
+                                </svg>
+                            </div>
+
+                            <!-- 2.2 -->
+                            <div style="text-align: center; width: 100%; max-width: 250px;">
+                                <p style="font-size: 0.95em; margin-bottom: 0.5rem;"><strong>2.2)</strong> 2do cuadrante</p>
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;">$r = 2$, $\theta = \frac{5\pi}{6} \implies \mathbf{z = 2e^{i\frac{5\pi}{6}}}$</p>
+                                <svg viewBox="-3 -3 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.02"/>
+                                    <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--text-color)" stroke-width="0.02"/>
+                                    <circle cx="0" cy="0" r="2" fill="none" stroke="var(--text-color)" stroke-width="0.02" stroke-dasharray="0.1"/>
+                                    <line x1="0" y1="0" x2="-1.732" y2="-1" stroke="var(--accent)" stroke-width="0.05"/>
+                                    <circle cx="-1.732" cy="-1" r="0.08" fill="var(--accent)"/>
+                                </svg>
+                            </div>
+
+                            <!-- 2.3 -->
+                            <div style="text-align: center; width: 100%; max-width: 250px;">
+                                <p style="font-size: 0.95em; margin-bottom: 0.5rem;"><strong>2.3)</strong> (Del ej 1.3), 3er cuadrante</p>
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;">$r = \frac{1}{\sqrt{5}}$, $\theta \approx 4.25\text{ rad} \implies \mathbf{z = \frac{1}{\sqrt{5}}e^{i4.25}}$</p>
+                                <svg viewBox="-1 -1 2 2" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-1" y1="0" x2="1" y2="0" stroke="var(--text-color)" stroke-width="0.01"/>
+                                    <line x1="0" y1="-1" x2="0" y2="1" stroke="var(--text-color)" stroke-width="0.01"/>
+                                    <circle cx="0" cy="0" r="0.447" fill="none" stroke="var(--text-color)" stroke-width="0.02" stroke-dasharray="0.05"/>
+                                    <line x1="0" y1="0" x2="-0.2" y2="0.4" stroke="var(--accent)" stroke-width="0.03"/>
+                                    <circle cx="-0.2" cy="0.4" r="0.05" fill="var(--accent)"/>
+                                </svg>
+                            </div>
+
+                            <!-- 2.4 -->
+                            <div style="text-align: center; width: 100%; max-width: 250px;">
+                                <p style="font-size: 0.95em; margin-bottom: 0.5rem;"><strong>2.4)</strong> Moivre: $(\sqrt{2}e^{i\pi/4})^4$</p>
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;">$r = 4$, $\theta = \pi \implies \mathbf{z = 4e^{i\pi}}$ (ó $-4$)</p>
+                                <svg viewBox="-5 -5 10 10" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-5" y1="0" x2="5" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-5" x2="0" y2="5" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <circle cx="0" cy="0" r="4" fill="none" stroke="var(--text-color)" stroke-width="0.05" stroke-dasharray="0.2"/>
+                                    <line x1="0" y1="0" x2="-4" y2="0" stroke="var(--accent)" stroke-width="0.1"/>
+                                    <circle cx="-4" cy="0" r="0.2" fill="var(--accent)"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Hallar la solución de la siguiente ecuación. Graficar las raíces halladas:</p>
+                        <div class="formula-responsive">
+                            $$ z^3 + 8 = 0 $$
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Despejamos $z$: $z^3 = -8$. Expresamos $-8$ en polar: $r=8$, $\theta=\pi \implies -8 = 8e^{i\pi}$.</p>
+                        <p>Aplicamos la fórmula de raíces n-ésimas complejas:</p>
+                        <div class="formula-responsive">
+                            $$ z_k = \sqrt[3]{8} \cdot e^{i \frac{\pi + 2k\pi}{3}} = 2 \cdot e^{i\left(\frac{\pi}{3} + \frac{2k\pi}{3}\right)}, \quad k = 0, 1, 2 $$
+                        </div>
+
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-color);">
+                            <li><strong>$k=0$:</strong> $z_0 = 2e^{i\pi/3} = 2(\cos 60^\circ + i\ sen 60^\circ) = \mathbf{1 + i\sqrt{3}}$</li>
+                            <li><strong>$k=1$:</strong> $z_1 = 2e^{i\pi} = 2(-1) = \mathbf{-2}$</li>
+                            <li><strong>$k=2$:</strong> $z_2 = 2e^{i5\pi/3} = 2(\cos 300^\circ + i\ sen 300^\circ) = \mathbf{1 - i\sqrt{3}}$</li>
+                        </ul>
+
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <svg viewBox="-3 -3 6 6" style="width: 100%; max-width: 300px; height: auto; background: var(--card-bg); border-radius: 50%;">
+                                <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--text-color)" stroke-width="0.05"/>
+                                <circle cx="0" cy="0" r="2" fill="none" stroke="var(--text-color)" stroke-width="0.03" stroke-dasharray="0.1" />
+                                <polygon points="1,-1.732 -2,0 1,1.732" fill="rgba(var(--accent-rgb), 0.1)" stroke="var(--accent)" stroke-width="0.05"/>
+                                <circle cx="1" cy="-1.732" r="0.1" fill="var(--accent)"/>
+                                <circle cx="-2" cy="0" r="0.1" fill="var(--accent)"/>
+                                <circle cx="1" cy="1.732" r="0.1" fill="var(--accent)"/>
+                                <text x="1.2" y="-1.8" fill="var(--text-color)" font-size="0.4">z₀</text>
+                                <text x="-2.5" y="-0.2" fill="var(--text-color)" font-size="0.4">z₁</text>
+                                <text x="1.2" y="2" fill="var(--text-color)" font-size="0.4">z₂</text>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Representar gráficamente los complejos z que verifican las siguientes relaciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>4.1)</strong> $|z - i| = 2$</li>
+                            <li><strong>4.2)</strong> $Re(z) = -2, \quad 0 \le Im(z) < 5$</li>
+                            <li><strong>4.3)</strong> $Re(z) < 3, \quad Im(z) \ge -2$</li>
+                            <li><strong>4.4)</strong> $\frac{\pi}{2} < Arg(z) < \frac{3\pi}{4}$</li>
+                            <li><strong>4.5)</strong> $1 \le |z| \le 4$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución y Gráficos:</h4>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 1.5rem;">
+                            <!-- 4.1 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;"><strong>4.1)</strong> Circunferencia centro $i$, radio 2</p>
+                                <svg viewBox="-4 -2 8 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-4" y1="0" x2="4" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-2" x2="0" y2="4" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <circle cx="0" cy="1" r="2" fill="none" stroke="var(--accent)" stroke-width="0.1"/>
+                                    <circle cx="0" cy="1" r="0.1" fill="var(--text-color)"/>
+                                </svg>
+                            </div>
+
+                            <!-- 4.2 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;"><strong>4.2)</strong> Segmento vertical en $x=-2$, $y \in [0, 5)$</p>
+                                <svg viewBox="-4 -6 6 8" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-4" y1="0" x2="2" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-6" x2="0" y2="2" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="-2" y1="0" x2="-2" y2="-5" stroke="var(--accent)" stroke-width="0.1"/>
+                                    <circle cx="-2" cy="0" r="0.1" fill="var(--accent)"/>
+                                    <circle cx="-2" cy="-5" r="0.1" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="0.05"/>
+                                </svg>
+                            </div>
+
+                            <!-- 4.3 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;"><strong>4.3)</strong> Intersección de semiplanos</p>
+                                <svg viewBox="-2 -4 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <rect x="-2" y="-4" width="5" height="6" fill="rgba(var(--accent-rgb), 0.3)" />
+                                    <line x1="-2" y1="0" x2="4" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-4" x2="0" y2="2" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="3" y1="-4" x2="3" y2="2" stroke="var(--accent)" stroke-width="0.1" stroke-dasharray="0.2"/>
+                                    <line x1="-2" y1="2" x2="3" y2="2" stroke="var(--accent)" stroke-width="0.1"/>
+                                </svg>
+                            </div>
+
+                            <!-- 4.4 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;"><strong>4.4)</strong> Sector angular $90^\circ$ a $135^\circ$</p>
+                                <svg viewBox="-4 -4 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <path d="M 0 0 L 0 -4 A 4 4 0 0 0 -2.828 -2.828 Z" fill="rgba(var(--accent-rgb), 0.3)" />
+                                    <line x1="-4" y1="0" x2="2" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-4" x2="0" y2="2" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="0" x2="0" y2="-4" stroke="var(--accent)" stroke-width="0.1" stroke-dasharray="0.2"/>
+                                    <line x1="0" y1="0" x2="-2.828" y2="-2.828" stroke="var(--accent)" stroke-width="0.1" stroke-dasharray="0.2"/>
+                                </svg>
+                            </div>
+
+                            <!-- 4.5 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.85em; margin-bottom: 0.5rem;"><strong>4.5)</strong> Corona circular entre $R=1$ y $R=4$</p>
+                                <svg viewBox="-5 -5 10 10" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <path d="M 0 0 m -4 0 a 4 4 0 1 0 8 0 a 4 4 0 1 0 -8 0 m 3 0 a 1 1 0 1 1 2 0 a 1 1 0 1 1 -2 0" fill="rgba(var(--accent-rgb), 0.3)" fill-rule="evenodd" />
+                                    <line x1="-5" y1="0" x2="5" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-5" x2="0" y2="5" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <circle cx="0" cy="0" r="1" fill="none" stroke="var(--accent)" stroke-width="0.1"/>
+                                    <circle cx="0" cy="0" r="4" fill="none" stroke="var(--accent)" stroke-width="0.1"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Dados $z_1 = -1+2i$, $z_2 = -4$, $z_3 = 3i$. Calcular:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>5.1)</strong> $\overline{z_1} - 2z_2 + {z_3}^2$</li>
+                            <li><strong>5.2)</strong> $Im\left(\frac{Im(z_1)}{z_3}\right)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 0.5rem; color: var(--accent); font-weight: bold;">5.1) $\overline{z_1} - 2z_2 + {z_3}^2$</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>$\overline{z_1} = -1 - 2i$</li>
+                            <li>$2z_2 = 2(-4) = -8$</li>
+                            <li>${z_3}^2 = (3i)^2 = 9i^2 = -9$</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">Sustituyendo: $(-1 - 2i) - (-8) + (-9) = -1 - 2i + 8 - 9 = \mathbf{-2 - 2i}$</p>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">5.2) $Im\left(\frac{Im(z_1)}{z_3}\right)$</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-color);">
+                            <li>$Im(z_1) = 2$ (Recordar que la parte imaginaria es el número real que acompaña a $i$).</li>
+                            <li>Construimos el cociente: $\frac{2}{3i}$.</li>
+                            <li>Multiplicamos por $i/i$ para eliminar la unidad imaginaria del denominador: $\frac{2i}{3i^2} = \frac{2i}{-3} = 0 - \frac{2}{3}i$.</li>
+                            <li>Extraemos la parte imaginaria del resultado: $Im(-\frac{2}{3}i) = \mathbf{-\frac{2}{3}}$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Hallar y graficar el dominio más amplio de la función dada y escribir la parte real y la parte imaginaria de la misma:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>6.1)</strong> $f(z) = \frac{1}{z^2+1}$</li>
+                            <li><strong>6.2)</strong> $f(z) = \frac{\overline{z}}{Im(z)}$</li>
+                            <li><strong>6.3)</strong> $f(z) = \frac{i}{|z-i|-3}$</li>
+                            <li><strong>6.4)</strong> $f(z) = \frac{z}{z^2+\overline{z}^2}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución y dominios:</h4>
+                        
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">6.1) $f(z) = \frac{1}{z^2+1}$</p>
+                        <p>El dominio es todo $\mathbb{C}$ excepto donde el denominador se anula: $z^2+1 = 0 \implies z^2 = -1 \implies z = \pm i$.<br>
+                        <strong>Dom: $\mathbb{C} \setminus \{i, -i\}$</strong> (Todo el plano perforado en $y=1$ e $y=-1$ sobre el eje imaginario).</p>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">6.2) $f(z) = \frac{\overline{z}}{Im(z)}$</p>
+                        <p>Sustituimos $z=x+iy$: $f(z) = \frac{x-iy}{y} = \frac{x}{y} - i$.<br>
+                        El denominador no puede ser nulo: $y \neq 0$. Por lo tanto, el dominio es todo el plano complejo excepto el eje real ($Im(z)=0$).<br>
+                        <strong>Dom: $\mathbb{C} \setminus \{z: Im(z) = 0\}$</strong><br>
+                        Parte Real $u(x,y) = \mathbf{\frac{x}{y}}$. Parte Imaginaria $v(x,y) = \mathbf{-1}$.</p>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">6.3) $f(z) = \frac{i}{|z-i|-3}$</p>
+                        <p>El denominador se anula si $|z-i| = 3$. Esto es una circunferencia de radio 3 centrada en $i$.<br>
+                        <strong>Dom: $\mathbb{C} \setminus \{z: |z-i| = 3\}$</strong></p>
+
+                        <p style="margin-top: 1rem; color: var(--accent); font-weight: bold;">6.4) $f(z) = \frac{z}{z^2+\overline{z}^2}$</p>
+                        <p>Reescribimos el denominador con $z=x+iy$:<br>
+                        $z^2 = x^2-y^2+2ixy$<br>
+                        $\overline{z}^2 = x^2-y^2-2ixy$<br>
+                        Suma: $z^2+\overline{z}^2 = 2x^2 - 2y^2$.<br>
+                        Esto se anula si $2x^2 = 2y^2 \implies |x| = |y|$. Es decir, las rectas a $45^\circ$ ($y=x$ e $y=-x$).<br>
+                        <strong>Dom: $\mathbb{C} \setminus \{x+iy: |x| = |y|\}$</strong></p>
+                        
+                        <p style="margin-top: 0.5rem;">Descomponemos en $u$ y $v$:<br>
+                        $f(z) = \frac{x+iy}{2(x^2-y^2)} \implies \mathbf{u(x,y) = \frac{x}{2(x^2-y^2)}}, \quad \mathbf{v(x,y) = \frac{y}{2(x^2-y^2)}}$</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Determinar los siguientes límites:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>7.1)</strong> $\lim_{z \to 0}(Arg(z))$</li>
+                            <li><strong>7.2)</strong> $\lim_{z \to 2+i}(z^2)$</li>
+                            <li><strong>7.3)</strong> $\lim_{z \to 0}\left(\frac{\overline{z}}{z}\right)$</li>
+                            <li><strong>7.4)</strong> $\lim_{z \to 0}\left(\frac{Re(z^2)}{\overline{z}}\right)$</li>
+                            <li><strong>7.5)</strong> $\lim_{z \to 0}(z \cdot Arg(z))$</li>
+                            <li><strong>7.6)</strong> $\lim_{z \to i}\frac{z-i}{z^2+iz+2}$</li>
+                            <li><strong>7.7)</strong> $\lim_{z \to 0}\frac{i~Im(z)}{|z|}$</li>
+                            <li><strong>7.8)</strong> $\lim_{z \to 0}\frac{Re(z^3)}{z^2}$</li>
+                            <li><strong>7.9)</strong> $\lim_{z \to 2+i}f(z)$, donde $f(z)=2xy^2-i(3x-y)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>7.1) $\lim_{z \to 0} Arg(z)$</strong><br>
+                                <strong>No existe.</strong> El argumento depende de la trayectoria. Si nos acercamos a $0$ por el semieje real positivo, $Arg(z) \to 0$. Si nos acercamos por el semieje imaginario positivo, $Arg(z) \to \pi/2$.
+                            </li>
+                            <li>
+                                <strong>7.2) $\lim_{z \to 2+i} (z^2)$</strong><br>
+                                Función polinómica entera, se evalúa por sustitución directa: $(2+i)^2 = 4 + 4i + i^2 = \mathbf{3+4i}$.
+                            </li>
+                            <li>
+                                <strong>7.3) $\lim_{z \to 0} \left(\frac{\overline{z}}{z}\right)$</strong><br>
+                                <strong>No existe.</strong> Evaluando trayectorias: Por eje real ($y=0$), $\lim_{x \to 0} \frac{x-i0}{x+i0} = 1$. Por eje imaginario ($x=0$), $\lim_{y \to 0} \frac{0-iy}{0+iy} = -1$. Al diferir los límites laterales, no hay límite.
+                            </li>
+                            <li>
+                                <strong>7.4) $\lim_{z \to 0} \frac{Re(z^2)}{\overline{z}}$</strong><br>
+                                $Re(z^2) = x^2-y^2$. Expresión: $\frac{x^2-y^2}{x-iy}$. Si multiplicamos y dividimos por $x+iy$, queda $\frac{(x^2-y^2)(x+iy)}{x^2+y^2}$. El numerador tiende a 0 más rápido que el denominador (grado 3 vs grado 2). El límite es $\mathbf{0}$.
+                            </li>
+                            <li>
+                                <strong>7.5) $\lim_{z \to 0} (z \cdot Arg(z))$</strong><br>
+                                Sabemos que $-\pi < Arg(z) \le \pi$ (está acotada). Un infinitésimo ($z \to 0$) por una función acotada da como resultado $\mathbf{0}$.
+                            </li>
+                            <li>
+                                <strong>7.6) $\lim_{z \to i} \frac{z-i}{z^2+iz+2}$</strong><br>
+                                Indeterminación $0/0$. Factorizamos el denominador buscando sus raíces: $z^2+iz+2=0 \implies z=i, z=-2i$. El denominador es $(z-i)(z+2i)$. Simplificando queda $\lim_{z \to i} \frac{1}{z+2i} = \frac{1}{3i} = \mathbf{-\frac{i}{3}}$.
+                            </li>
+                            <li>
+                                <strong>7.7) $\lim_{z \to 0} \frac{i \cdot Im(z)}{|z|}$</strong><br>
+                                <strong>No existe.</strong> Evaluamos $f(z) = \frac{i \cdot y}{\sqrt{x^2+y^2}}$. Por $y=0 \implies 0$. Por $x=0 \implies \frac{iy}{|y|}$, que vale $i$ si $y \to 0^+$ y $-i$ si $y \to 0^-$. Distintos límites.
+                            </li>
+                            <li>
+                                <strong>7.8) $\lim_{z \to 0} \frac{Re(z^3)}{z^2}$</strong><br>
+                                $z^3 = x^3 - 3xy^2 + i(3x^2y - y^3) \implies Re(z^3) = x^3 - 3xy^2$. El numerador es de orden 3 y el denominador ($z^2$) de orden 2. Al tender a cero, el límite es $\mathbf{0}$.
+                            </li>
+                            <li>
+                                <strong>7.9) $\lim_{z \to 2+i} (2xy^2 - i(3x-y))$</strong><br>
+                                Sustitución directa con $x=2$ e $y=1$: $2(2)(1)^2 - i(3(2)-1) = \mathbf{4 - 5i}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Determinar si la función dada es continua en $z_0$:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <li><strong>8.1)</strong> $f(z) = \begin{cases} \frac{z-i}{z^2+iz+2}, & \text{si } z \neq i \\ -\frac{1}{3}i, & \text{si } z = i \end{cases} \quad \text{en } z_0 = i$</li>
+                            <li><strong>8.2)</strong> $f(z) = \begin{cases} \frac{i~Im(z)}{|z|}, & \text{si } z \neq 0 \\ 0, & \text{si } z = 0 \end{cases} \quad \text{en } z_0 = 0$</li>
+                            <li><strong>8.3)</strong> $f(z) = \begin{cases} \frac{Re(z^3)}{z^2}, & \text{si } z \neq 0 \\ 0, & \text{si } z = 0 \end{cases} \quad \text{en } z_0 = 0$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>8.1)</strong> Del límite 7.6 sabemos que $\lim_{z \to i} f(z) = -i/3$. Como este límite existe y coincide exactamente con el valor definido de la función $f(i) = -i/3$, <strong>Sí es continua</strong> en $z_0=i$.
+                            </li>
+                            <li>
+                                <strong>8.2)</strong> Del límite 7.7 sabemos que $\lim_{z \to 0} f(z)$ <strong>no existe</strong> porque depende de la trayectoria de acercamiento al origen. Al no existir el límite, la función <strong>No es continua</strong> en $z_0=0$.
+                            </li>
+                            <li>
+                                <strong>8.3)</strong> Del límite 7.8 sabemos que $\lim_{z \to 0} f(z) = 0$. Como el límite existe y coincide con el valor de la función en ese punto $f(0)=0$, <strong>Sí es continua</strong> en $z_0=0$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Hallar los dominios de definición, derivabilidad y analiticidad y calcular la derivada en los puntos donde exista:</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>9.1)</strong> $f(z) = \frac{1}{z}$</li>
+                                <li><strong>9.2)</strong> $f(z) = \overline{z}$</li>
+                                <li><strong>9.3)</strong> $f(z) = \left(\frac{z+1}{z^2-3iz}\right)^3$</li>
+                                <li><strong>9.4)</strong> $f(z) = z~Re(z)$</li>
+                                <li><strong>9.5)</strong> $f(z) = (x^2-y) + ixy^2$</li>
+                            </ul>
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>9.6)</strong> $f(z) = sen(y) - ix~cos(y)$</li>
+                                <li><strong>9.7)</strong> $f(z) = \left(\frac{z}{z^2+4}\right)^3$</li>
+                                <li><strong>9.8)</strong> $f(z) = i~Re(z)$</li>
+                                <li><strong>9.9)</strong> $f(z) = y^3 - ix^3$</li>
+                                <li><strong>9.10)</strong> $f(z) = x^3 - 3xy^2 + i(3x^2y - y^3)$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución (usando Ecuaciones de Cauchy-Riemann $u_x=v_y, u_y=-v_x$ o reglas directas):</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>9.1) $f(z) = 1/z$</strong><br>
+                                <strong>Dom Def/Deriv/Analit:</strong> $\mathbb{C} \setminus \{0\}$. Reglas clásicas de derivación aplican directamente. $f'(z) = \mathbf{-1/z^2}$.
+                            </li>
+                            <li>
+                                <strong>9.2) $f(z) = \overline{z}$</strong><br>
+                                $u=x, v=-y$. CR: $1 \neq -1$. Falla en todo el plano. <strong>Dom Deriv/Analit:</strong> $\emptyset$.
+                            </li>
+                            <li>
+                                <strong>9.3) $f(z) = \left(\frac{z+1}{z^2-3iz}\right)^3$</strong><br>
+                                Racional, derivable en todo punto donde no se anule el denominador: $z(z-3i)=0 \implies z=0, 3i$.<br>
+                                <strong>Dom Def/Deriv/Analit:</strong> $\mathbb{C} \setminus \{0, 3i\}$.<br> Derivada por regla de la cadena y cociente: $f'(z) = 3\left(\frac{z+1}{z^2-3iz}\right)^2 \cdot \frac{1(z^2-3iz) - (z+1)(2z-3i)}{(z^2-3iz)^2}$.
+                            </li>
+                            <li>
+                                <strong>9.4) $f(z) = z~Re(z)$</strong><br>
+                                $f(z) = (x+iy)x = x^2 + ixy$. Identificamos $u=x^2, v=xy$.<br>
+                                CR: $u_x = v_y \implies 2x=x \implies x=0$. Y $u_y = -v_x \implies 0=-y \implies y=0$.<br>
+                                <strong>Dom Derivabilidad:</strong> Solo en $z=0$. $f'(0)=0$. <strong>Dom Analiticidad:</strong> $\emptyset$ (un solo punto no contiene un entorno abierto).
+                            </li>
+                            <li>
+                                <strong>9.5) $f(z) = (x^2-y) + ixy^2$</strong><br>
+                                CR: $2x=2xy \implies x=0 \vee y=1$. Y $-1=-y^2 \implies y=\pm1$. La intersección de ambas condiciones da como resultado la recta $y=1$.<br>
+                                <strong>Dom Derivabilidad:</strong> Recta $y=1$ ($z = x+i$). $f'(x+i) = 2x+i$. <strong>Dom Analiticidad:</strong> $\emptyset$.
+                            </li>
+                            <li>
+                                <strong>9.6) $f(z) = sen(y) - ix~cos(y)$</strong><br>
+                                $u=sen(y), v=-x~cos(y)$. CR: $0 = -x~sen(y) \implies x=0 \vee y=k\pi$. Y $cos(y) = cos(y)$ (siempre).<br>
+                                <strong>Dom Derivabilidad:</strong> Eje imaginario ($x=0$) y rectas horizontales $y=k\pi$. <strong>Dom Analiticidad:</strong> $\emptyset$.
+                            </li>
+                            <li>
+                                <strong>9.7) $f(z) = \left(\frac{z}{z^2+4}\right)^3$</strong><br>
+                                Función racional entera. Puntos singulares: $z^2+4=0 \implies z=\pm 2i$.<br>
+                                <strong>Dom Def/Deriv/Analit:</strong> $\mathbb{C} \setminus \{2i, -2i\}$.
+                            </li>
+                            <li>
+                                <strong>9.8) $f(z) = i~Re(z)$</strong><br>
+                                $f(z) = 0 + ix$. $u=0, v=x$. CR: $0 \neq 0$ y $0 \neq -1$.<br>
+                                <strong>Dom Deriv/Analit:</strong> $\emptyset$.
+                            </li>
+                            <li>
+                                <strong>9.9) $f(z) = y^3 - ix^3$</strong><br>
+                                $u=y^3, v=-x^3$. CR: $0 = 0$ y $3y^2 = 3x^2 \implies y = \pm x$.<br>
+                                <strong>Dom Derivabilidad:</strong> Rectas $y=x$ e $y=-x$. <strong>Dom Analiticidad:</strong> $\emptyset$.
+                            </li>
+                            <li>
+                                <strong>9.10) $f(z) = x^3 - 3xy^2 + i(3x^2y - y^3)$</strong><br>
+                                Si desarrollamos $(x+iy)^3$, obtenemos exactamente esta expresión. Es decir, $f(z) = z^3$. Al ser polinómica, es una función entera.<br>
+                                <strong>Dom Def/Deriv/Analit:</strong> Todo $\mathbb{C}$. $f'(z) = \mathbf{3z^2}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>Hallar los dominios de definición, derivabilidad y analiticidad y calcular la derivada en los puntos donde exista, de las siguientes funciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>10.1)</strong> $f(z) = \frac{e^z}{e^{3z}+1}$</li>
+                            <li><strong>10.2)</strong> $f(z) = \frac{z}{e^z+i}$</li>
+                            <li><strong>10.3)</strong> $f(z) = \frac{1}{Ln(z)}$</li>
+                            <li><strong>10.4)</strong> $f(z) = z \cdot Ln(iz)$</li>
+                            <li><strong>10.5)</strong> $f(z) = \frac{sen(z)}{2-cos(z)}$</li>
+                            <li><strong>10.6)</strong> $f(z) = \frac{z}{senh(iz)+cos(z)}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución (Funciones combinadas):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>10.1) $f(z) = \frac{e^z}{e^{3z}+1}$</strong><br>
+                                Exponenciales son enteras. Falla donde el denominador se anula: $e^{3z} = -1 = e^{i(\pi+2k\pi)}$.<br>
+                                $3z = i(\pi+2k\pi) \implies z = i\frac{\pi}{3}(1+2k)$.<br>
+                                <strong>Dom Analit:</strong> $\mathbb{C} \setminus \{i\frac{\pi}{3}(1+2k)\}$. $f'(z) = \frac{e^z(e^{3z}+1) - e^z(3e^{3z})}{(e^{3z}+1)^2}$.
+                            </li>
+                            <li>
+                                <strong>10.2) $f(z) = \frac{z}{e^z+i}$</strong><br>
+                                Denominador nulo: $e^z = -i = e^{i(-\pi/2+2k\pi)}$. Despejando: $z = i(2k\pi - \pi/2)$.<br>
+                                <strong>Dom Analit:</strong> $\mathbb{C} \setminus \{i(2k\pi - \pi/2)\}$. $f'(z) = \frac{e^z(1-z)+i}{(e^z+i)^2}$.
+                            </li>
+                            <li>
+                                <strong>10.3) $f(z) = \frac{1}{Ln(z)}$</strong><br>
+                                $Ln(z)$ no es analítica en $z=0$ ni en su rama de corte (semieje real negativo $x \le 0$). Además, $Ln(z)=0$ en $z=1$.<br>
+                                <strong>Dom Analit:</strong> $\mathbb{C} \setminus (\{1\} \cup \{x \le 0\})$. $f'(z) = -\frac{1}{z \cdot [Ln(z)]^2}$.
+                            </li>
+                            <li>
+                                <strong>10.4) $f(z) = z \cdot Ln(iz)$</strong><br>
+                                Falla en la rama de corte de $Ln(w)$ que es $(-\infty, 0]$. Haciendo $w = iz = -y+ix$, la parte real $-y \le 0 \implies y \ge 0$, y la parte imaginaria $x=0$.<br>
+                                <strong>Dom Analit:</strong> $\mathbb{C} \setminus \{iy : y \ge 0\}$ (semieje imaginario positivo). $f'(z) = Ln(iz) + 1$.
+                            </li>
+                            <li>
+                                <strong>10.5) $f(z) = \frac{sen(z)}{2-cos(z)}$</strong><br>
+                                Raíces denominador: $cos(z) = 2 \implies \frac{e^{iz} + e^{-iz}}{2} = 2 \implies e^{2iz} - 4e^{iz} + 1 = 0$. Por Bhaskara: $e^{iz} = 2 \pm \sqrt{3}$.<br> Tomando $Ln$: $iz = Ln(2 \pm \sqrt{3}) + 2k\pi i \implies z = 2k\pi - i \ln(2 \pm \sqrt{3})$.<br>
+                                <strong>Dom Analit:</strong> $\mathbb{C} \setminus \{2k\pi - i \ln(2 \pm \sqrt{3})\}$.
+                            </li>
+                            <li>
+                                <strong>10.6) $f(z) = \frac{z}{senh(iz)+cos(z)}$</strong><br>
+                                Identidad hiperbólica: $senh(iz) = i~sen(z)$.<br>
+                                Denominador: $cos(z) + i~sen(z) = e^{iz}$. La función exponencial $e^{iz}$ jamás se anula.<br>
+                                <strong>Dom Analit:</strong> Todo $\mathbb{C}$ (Es una función entera). $f'(z) = \frac{e^{iz} - iz e^{iz}}{e^{2iz}} = \frac{1-iz}{e^{iz}}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>Demostrar que las siguientes funciones $u(x,y)$ son armónicas y hallar una conjugada armónica $v(x,y)$ tal que $f(z) = u(x,y) + iv(x,y)$ sea analítica.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>11.1)</strong> $u(x,y) = 2xy + 3x$</li>
+                            <li><strong>11.2)</strong> $u(x,y) = 3x^2y - y^3$</li>
+                            <li><strong>11.3)</strong> $u(x,y) = e^{-x} \cdot cos(y)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución (Ecuación de Laplace $\Delta u = u_{xx} + u_{yy} = 0$ y C-R):</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>11.1) $u(x,y) = 2xy + 3x$</strong><br>
+                                $u_x = 2y+3 \implies u_{xx} = 0$. Y $u_y = 2x \implies u_{yy} = 0$. $\Delta u = 0$ (Armónica).<br>
+                                Por C-R ($v_y = u_x$): $v_y = 2y+3 \implies v = y^2+3y+C(x)$.<br>
+                                Por C-R ($v_x = -u_y$): $v_x = C'(x) = -2x \implies C(x) = -x^2+K$.<br>
+                                <strong>$v(x,y) = y^2 - x^2 + 3y + K$</strong>.
+                            </li>
+                            <li>
+                                <strong>11.2) $u(x,y) = 3x^2y - y^3$</strong><br>
+                                $u_x = 6xy \implies u_{xx} = 6y$. Y $u_y = 3x^2 - 3y^2 \implies u_{yy} = -6y$.<br>
+                                $\Delta u = 6y - 6y = 0$ (Armónica).<br>
+                                Por C-R: $v_y = u_x = 6xy \implies v = 3xy^2 + C(x)$.<br>
+                                $v_x = C'(x) = -u_y = -(3x^2 - 3y^2)$. Al derivar nuestra $v$, $v_x = 0 + C'(x)$. Igualando: $C'(x) = -3x^2 \implies C(x) = -x^3 + K$.<br>
+                                <strong>$v(x,y) = 3xy^2 - x^3 + K$</strong>.
+                            </li>
+                            <li>
+                                <strong>11.3) $u(x,y) = e^{-x} \cdot cos(y)$</strong><br>
+                                $u_x = -e^{-x}cos(y) \implies u_{xx} = e^{-x}cos(y)$.<br>
+                                $u_y = -e^{-x}sen(y) \implies u_{yy} = -e^{-x}cos(y)$.<br>
+                                $\Delta u = e^{-x}cos(y) - e^{-x}cos(y) = 0$ (Armónica).<br>
+                                Por C-R: $v_y = u_x = -e^{-x}cos(y) \implies v = -e^{-x}sen(y) + C(x)$.<br>
+                                $v_x = e^{-x}sen(y) + C'(x)$. Igualando a $-u_y$ (que es $e^{-x}sen(y)$): $e^{-x}sen(y) + C'(x) = e^{-x}sen(y) \implies C'(x) = 0 \implies C(x) = K$.<br>
+                                <strong>$v(x,y) = -e^{-x}sen(y) + K$</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+        <!-- ==================== PARTE 2 ==================== -->
+        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+            
+            <!-- EJERCICIO 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Aplicarle al paralelogramo de vértices $z_1=2$, $z_2=i$, $z_3=1+2i$, $z_4=3+i$ las transformaciones lineales siguientes:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>1.1)</strong> $T: w = f(z) = z - 1 - 2i$</li>
+                            <li><strong>1.2)</strong> $T: w = f(z) = 2z$</li>
+                            <li><strong>1.3)</strong> $T: w = f(z) = iz$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>1.1) Traslación:</strong> Geométricamente equivale a sumar el vector $B = (-1, -2)$ a cada vértice. La figura se desplaza sin rotar ni escalar.
+                                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>$w_1 = 2 - 1 - 2i = \mathbf{1 - 2i}$</li>
+                                    <li>$w_2 = i - 1 - 2i = \mathbf{-1 - i}$</li>
+                                    <li>$w_3 = 1+2i - 1 - 2i = \mathbf{0}$</li>
+                                    <li>$w_4 = 3+i - 1 - 2i = \mathbf{2 - i}$</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>1.2) Escalamiento:</strong> Dilatación desde el origen con factor de escala $a=2$. El paralelogramo duplica su tamaño original y su distancia al origen.
+                                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>$w_1 = 2(2) = \mathbf{4}$</li>
+                                    <li>$w_2 = 2(i) = \mathbf{2i}$</li>
+                                    <li>$w_3 = 2(1+2i) = \mathbf{2 + 4i}$</li>
+                                    <li>$w_4 = 2(3+i) = \mathbf{6 + 2i}$</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>1.3) Rotación:</strong> Multiplicar por $i$ equivale a rotar $\pi/2$ radianes ($90^\circ$) en sentido antihorario. Forma y tamaño se conservan.
+                                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>$w_1 = i(2) = \mathbf{2i}$</li>
+                                    <li>$w_2 = i(i) = i^2 = \mathbf{-1}$</li>
+                                    <li>$w_3 = i(1+2i) = i + 2i^2 = \mathbf{-2 + i}$</li>
+                                    <li>$w_4 = i(3+i) = 3i + i^2 = \mathbf{-1 + 3i}$</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Hallar una transformación lineal $T(z)=Az+B$ (¿Es única?) que envíe:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>2.1)</strong> El punto $z_1=i$ en $w_1=1$, y el punto $z_2=-1$ en $w_2=2-i$.</li>
+                            <li><strong>2.2)</strong> El punto $z_1=i$ en $w_1=1$, y deja fijo el punto $z_2=-1$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p style="margin-bottom: 1rem;">Una transformación lineal en el plano complejo tiene la forma $w = Az+B$. Determinar $A$ y $B$ requiere de 2 ecuaciones independientes. Como cada punto da una ecuación, dos pares de puntos definen <strong>una única</strong> transformación.</p>
+
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>2.1)</strong> Planteamos el sistema lineal:<br>
+                                $(1)\quad A(i) + B = 1$<br>
+                                $(2)\quad A(-1) + B = 2-i$<br>
+                                Restando la ecuación (2) de la (1) para eliminar $B$:<br>
+                                $A(i) - A(-1) = 1 - (2-i) \implies A(i+1) = -1+i \implies A = \frac{-1+i}{1+i}$<br>
+                                Multiplicamos numerador y denominador por el conjugado $(1-i)$:<br>
+                                $A = \frac{(-1+i)(1-i)}{1^2+1^2} = \frac{-1+i+i-i^2}{2} = \frac{2i}{2} = i$<br>
+                                Sustituimos $A=i$ en la ec. (1): $i(i) + B = 1 \implies -1 + B = 1 \implies B = 2$<br>
+                                <strong>Transformación: $T(z) = iz + 2$</strong>.
+                            </li>
+                            <li>
+                                <strong>2.2)</strong> "Deja fijo el punto $z_2=-1$" significa que $T(-1) = -1$.<br>
+                                Planteamos el sistema:<br>
+                                $(1)\quad A(i) + B = 1$<br>
+                                $(2)\quad A(-1) + B = -1$<br>
+                                Restamos (2) de (1):<br>
+                                $A(i+1) = 2 \implies A = \frac{2}{1+i} = \frac{2(1-i)}{(1+i)(1-i)} = \frac{2-2i}{2} = 1-i$<br>
+                                Sustituimos $A$ en la ec. (2): $-(1-i) + B = -1 \implies -1+i+B = -1 \implies B = -i$<br>
+                                <strong>Transformación: $T(z) = (1-i)z - i$</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3 - Composición de Transformaciones</h3>
+                        <p>Dada la región $A=\{z:|z-4i| \le 2\}$ y las transformaciones $T_1: w = z/2$ y $T_2: w = z - 4i$, hallar analítica y gráficamente la imagen de $A$ por:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>3.1)</strong> $T_1 \circ T_2$</li>
+                            <li><strong>3.2)</strong> $T_2 \circ T_1$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>La región original $A$ es un disco cerrado de radio 2 centrado en $4i$.</p>
+                        
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">3.1) $T_1 \circ T_2$ (Traslación seguida de Escalamiento)</p>
+                        <p>Aplicamos primero $T_2(z) = z-4i$, luego $T_1(T_2(z)) = \frac{z-4i}{2} = w$. Despejando $z-4i = 2w$.<br>
+                        Sustituyendo en la inecuación de $A$: $|2w| \le 2 \implies \mathbf{|w| \le 1}$.<br>
+                        <strong>Geometría:</strong> Un disco cerrado centrado en el origen con radio 1.</p>
+
+                        <div style="text-align: center; margin-top: 1rem; width: 100%; max-width: 250px; margin-left: auto; margin-right: auto;">
+                            <svg viewBox="-3 -3 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--text-color)" stroke-width="0.05"/>
+                                <circle cx="0" cy="0" r="1" fill="rgba(var(--accent-rgb), 0.3)" stroke="var(--accent)" stroke-width="0.05"/>
+                                <circle cx="0" cy="0" r="0.1" fill="var(--text-color)"/>
+                            </svg>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; color: var(--accent); font-weight: bold;">3.2) $T_2 \circ T_1$ (Escalamiento seguido de Traslación)</p>
+                        <p>Aplicamos $T_1(z) = z/2$, luego $T_2(T_1(z)) = \frac{z}{2} - 4i = w$. Despejando $z = 2w+8i$.<br>
+                        Sustituyendo en la inecuación de $A$: $|2w+8i - 4i| \le 2 \implies |2w+4i| \le 2 \implies \mathbf{|w+2i| \le 1}$.<br>
+                        <strong>Geometría:</strong> Un disco cerrado centrado en $-2i$ con radio 1.</p>
+
+                        <div style="text-align: center; margin-top: 1rem; width: 100%; max-width: 250px; margin-left: auto; margin-right: auto;">
+                            <svg viewBox="-3 -1 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                <line x1="0" y1="-1" x2="0" y2="5" stroke="var(--text-color)" stroke-width="0.05"/>
+                                <circle cx="0" cy="2" r="1" fill="rgba(var(--accent-rgb), 0.3)" stroke="var(--accent)" stroke-width="0.05"/>
+                                <circle cx="0" cy="2" r="0.1" fill="var(--text-color)"/>
+                                <text x="0.3" y="2.2" font-size="0.4" fill="var(--text-color)">-2i</text>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4 - Transformación Inversión</h3>
+                        <p>Aplicar la transformación inversión $T: w = 1/z$ a las siguientes regiones y representar:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>4.1)</strong> $A = \{z: |z| \ge 1/2\}$</li>
+                            <li><strong>4.2)</strong> $A = \{z: |z - 2i| = 2\}$</li>
+                            <li><strong>4.3)</strong> $A = \{x+iy: y = x\}$</li>
+                            <li><strong>4.4)</strong> $A = \{x+iy: 2y = 2x-1\}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem; color: var(--text-color);">
+                            <li>
+                                <strong>4.1)</strong> Tomando módulos: $|1/w| \ge 1/2 \implies \mathbf{|w| \le 2}$. El exterior del disco en $z$ pasa al interior del disco de radio 2 en $w$.
+                            </li>
+                            <li>
+                                <strong>4.2)</strong> Circunferencia por el origen $\to$ Recta. $|1/w - 2i| = 2 \implies |1-2iw|^2 = 4|w|^2 \implies (1+2v)^2 + (-2u)^2 = 4(u^2+v^2) \implies 1+4v+4v^2+4u^2 = 4u^2+4v^2 \implies \mathbf{v = -1/4}$. Recta horizontal.
+                            </li>
+                            <li>
+                                <strong>4.3)</strong> Recta por el origen $\to$ Recta. $x=u/(u^2+v^2)$, $y=-v/(u^2+v^2)$. Si $y=x \implies -v = u \implies \mathbf{v = -u}$. Sigue siendo una recta por el origen, pero reflejada.
+                            </li>
+                            <li>
+                                <strong>4.4)</strong> Recta que NO pasa por el origen $\to$ Circunferencia que pasa por el origen. $2(-v)/(u^2+v^2) = 2u/(u^2+v^2) - 1 \implies -2v = 2u - (u^2+v^2) \implies u^2-2u + v^2-2v = 0$. Completando cuadrados: $\mathbf{(u-1)^2 + (v-1)^2 = 2}$. Centro $(1,1)$, radio $\sqrt{2}$.
+                            </li>
+                        </ul>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+                            <!-- Grafico 4.1 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.9em; margin-bottom: 0.5rem;">$T(4.1): |w| \le 2$</p>
+                                <svg viewBox="-3 -3 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <circle cx="0" cy="0" r="2" fill="rgba(var(--accent-rgb), 0.3)" stroke="var(--accent)" stroke-width="0.05"/>
+                                </svg>
+                            </div>
+                            <!-- Grafico 4.2 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.9em; margin-bottom: 0.5rem;">$T(4.2): v = -1/4$</p>
+                                <svg viewBox="-3 -3 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="-3" y1="0.5" x2="3" y2="0.5" stroke="var(--accent)" stroke-width="0.1"/>
+                                </svg>
+                            </div>
+                            <!-- Grafico 4.3 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.9em; margin-bottom: 0.5rem;">$T(4.3): v = -u$</p>
+                                <svg viewBox="-3 -3 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-3" y1="0" x2="3" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="-3" y1="-3" x2="3" y2="3" stroke="var(--accent)" stroke-width="0.1"/>
+                                </svg>
+                            </div>
+                            <!-- Grafico 4.4 -->
+                            <div style="text-align: center; width: 100%; max-width: 200px;">
+                                <p style="font-size: 0.9em; margin-bottom: 0.5rem;">$T(4.4): (u-1)^2+(v-1)^2 = 2$</p>
+                                <svg viewBox="-2 -4 6 6" style="width: 100%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                    <line x1="-2" y1="0" x2="4" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <line x1="0" y1="-4" x2="0" y2="2" stroke="var(--text-color)" stroke-width="0.05"/>
+                                    <circle cx="1" cy="-1" r="1.414" fill="none" stroke="var(--accent)" stroke-width="0.1"/>
+                                    <circle cx="1" cy="-1" r="0.1" fill="var(--text-color)"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5 - Transformación Potencia</h3>
+                        <p>Hallar gráficamente las imágenes de las siguientes regiones al aplicar la transformación potencia $T: w = z^2$:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>5.1)</strong> $A = \{(x,y): 0 \le y < x\}$</li>
+                            <li><strong>5.2)</strong> $A = \{(x,y): 0 \le y < x, x^2+y^2 \ge 4\}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p style="margin-bottom: 1rem;">Bajo la transformación $w=z^2$, un punto con coordenadas polares $(r, \theta)$ se mapea a un punto $(\rho, \phi)$ donde $\rho = r^2$ y $\phi = 2\theta$. Por lo tanto, los ángulos se duplican y los radios se elevan al cuadrado.</p>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 1.5rem;">
+                            <!-- 5.1 -->
+                            <div style="text-align: center; width: 100%; max-width: 450px;">
+                                <p style="font-size: 0.9em; margin-bottom: 0.5rem;"><strong>5.1)</strong> El sector original $0 \le \theta < \pi/4$ se abre cubriendo $0 \le \phi < \pi/2$ (Primer cuadrante completo).</p>
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                                    <svg viewBox="-1 -4 5 5" style="width: 45%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                        <path d="M 0 0 L 4 0 A 4 4 0 0 0 2.828 -2.828 Z" fill="rgba(var(--accent-rgb), 0.3)" />
+                                        <line x1="-1" y1="0" x2="4" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <line x1="0" y1="-4" x2="0" y2="1" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <line x1="0" y1="0" x2="4" y2="-4" stroke="var(--accent)" stroke-width="0.1" stroke-dasharray="0.2"/>
+                                        <line x1="0" y1="0" x2="4" y2="0" stroke="var(--accent)" stroke-width="0.1"/>
+                                    </svg>
+                                    <i class="fas fa-arrow-right" style="color: var(--text-color);"></i>
+                                    <svg viewBox="-1 -4 5 5" style="width: 45%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                        <rect x="0" y="-4" width="4" height="4" fill="rgba(var(--accent-rgb), 0.3)" />
+                                        <line x1="-1" y1="0" x2="4" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <line x1="0" y1="-4" x2="0" y2="1" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <line x1="0" y1="0" x2="0" y2="-4" stroke="var(--accent)" stroke-width="0.1" stroke-dasharray="0.2"/>
+                                        <line x1="0" y1="0" x2="4" y2="0" stroke="var(--accent)" stroke-width="0.1"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- 5.2 -->
+                            <div style="text-align: center; width: 100%; max-width: 450px;">
+                                <p style="font-size: 0.9em; margin-bottom: 0.5rem;"><strong>5.2)</strong> El sector original excluye el disco $r < 2$. La imagen excluirá el disco $\rho < 4$.</p>
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                                    <svg viewBox="-1 -6 7 7" style="width: 45%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                        <path d="M 2 0 L 6 0 A 6 6 0 0 0 4.242 -4.242 L 1.414 -1.414 A 2 2 0 0 1 2 0 Z" fill="rgba(var(--accent-rgb), 0.3)" />
+                                        <line x1="-1" y1="0" x2="6" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <line x1="0" y1="-6" x2="0" y2="1" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <circle cx="0" cy="0" r="2" fill="none" stroke="var(--text-color)" stroke-width="0.05" stroke-dasharray="0.2"/>
+                                    </svg>
+                                    <i class="fas fa-arrow-right" style="color: var(--text-color);"></i>
+                                    <svg viewBox="-1 -6 7 7" style="width: 45%; border: 1px solid var(--table-border-color); background: var(--card-bg);">
+                                        <path d="M 4 0 L 6 0 L 6 -6 L 0 -6 L 0 -4 A 4 4 0 0 0 4 0 Z" fill="rgba(var(--accent-rgb), 0.3)" />
+                                        <line x1="-1" y1="0" x2="6" y2="0" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <line x1="0" y1="-6" x2="0" y2="1" stroke="var(--text-color)" stroke-width="0.05"/>
+                                        <circle cx="0" cy="0" r="4" fill="none" stroke="var(--text-color)" stroke-width="0.05" stroke-dasharray="0.2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Resolver los siguientes ejercicios:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>6.1)</strong> Hallar el dominio de conformidad de $T: w = z^3 + 3z$.</li>
+                            <li><strong>6.2)</strong> Hallar el dominio de conformidad de $T: w = \frac{i}{z^2+1}$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        <p style="margin-bottom: 1rem;">Una transformación definida por una función analítica $f(z)$ es <strong>conforme</strong> en todos los puntos donde su derivada no se anula ($f'(z) \neq 0$).</p>
+
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>6.1)</strong> Calculamos la derivada: $f'(z) = 3z^2 + 3$.<br>
+                                Buscamos dónde se anula: $3z^2+3 = 0 \implies 3z^2 = -3 \implies z^2 = -1 \implies z = \pm i$.<br>
+                                El dominio de conformidad es todo el plano excepto esos puntos críticos.<br>
+                                <strong>Dom. Conformidad: $\mathbb{C} \setminus \{i, -i\}$</strong>.
+                            </li>
+                            <li>
+                                <strong>6.2)</strong> La función es racional, analítica salvo en los polos donde el denominador se anula: $z^2+1=0 \implies z=\pm i$. En estos puntos no hay derivabilidad ni conformidad.<br>
+                                Calculamos la derivada en el resto del dominio mediante la regla del cociente:<br>
+                                $f'(z) = \frac{0(z^2+1) - i(2z)}{(z^2+1)^2} = \frac{-2iz}{(z^2+1)^2}$.<br>
+                                Buscamos dónde se anula la derivada: $\frac{-2iz}{(z^2+1)^2} = 0 \implies -2iz = 0 \implies z = 0$.<br>
+                                <strong>Dom. Conformidad: $\mathbb{C} \setminus \{0, i, -i\}$</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Calcular las siguientes integrales de funciones complejas de variable real:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>7.1)</strong> $\int e^{it} dt$</li>
+                            <li><strong>7.2)</strong> $\int_{-\pi}^{\pi} t e^{it} dt$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-color);">
+                            <li>
+                                <strong>7.1)</strong> Calculamos la primitiva directamente asumiendo a $i$ como una constante escalar compleja:<br>
+                                $\int e^{it} dt = \frac{e^{it}}{i} + C$. Multiplicando por $i/i$ el término fraccionario: $\mathbf{-i e^{it} + C}$.
+                            </li>
+                            <li>
+                                <strong>7.2)</strong> Resolvemos la integral definida mediante el método de integración <strong>por partes</strong>:<br>
+                                Sea $u = t \implies du = dt$. Sea $dv = e^{it}dt \implies v = -ie^{it}$.<br>
+                                Aplicando la fórmula $\int u~dv = uv - \int v~du$:<br>
+                                $\int_{-\pi}^{\pi} t e^{it} dt = [-ite^{it}]_{-\pi}^{\pi} - \int_{-\pi}^{\pi} (-ie^{it}) dt = [-ite^{it} + e^{it}]_{-\pi}^{\pi}$<br>
+                                Evaluando en límite superior $\pi$: $-i\pi e^{i\pi} + e^{i\pi} = -i\pi(-1) + (-1) = i\pi - 1$.<br>
+                                Evaluando en límite inferior $-\pi$: $-i(-\pi) e^{-i\pi} + e^{-i\pi} = i\pi(-1) + (-1) = -i\pi - 1$.<br>
+                                Restando los límites: $(i\pi - 1) - (-i\pi - 1) = i\pi - 1 + i\pi + 1 = \mathbf{2\pi i}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Calcular las siguientes integrales a lo largo de curvas del plano complejo:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>8.1)</strong> $\int_{C_1} \overline{z} dz$, $C_1$ segmento de $2$ a $2i$.</li>
+                            <li><strong>8.2)</strong> $\int_{C_2} \overline{z} dz$, $C_2: z(t)=(2-t)+it, t \in [0,2]$.</li>
+                            <li><strong>8.3)</strong> $\int_{C_3} \overline{z} dz$, $C_3$ poligonal de $2 \to 0 \to 2i$.</li>
+                            <li><strong>8.4)</strong> $\oint_C \frac{1}{z} dz$, $|z|=1$ antihoraria.</li>
+                            <li><strong>8.5)</strong> $\int_{C} \frac{1}{z} dz$, $|z|=1$ de $1$ a $-1$ antihoraria.</li>
+                            <li><strong>8.6)</strong> $\int_{C} \frac{1}{z} dz$, $|z|=1$ de $1$ a $-1$ horaria.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución (La función $\overline{z}$ NO es analítica, depende del camino):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>8.1 y 8.2)</strong> La curva $C_1$ y la curva $C_2$ representan el <strong>mismo camino rectilíneo</strong>. Usamos la parametrización de $C_2$: $z(t) = 2-t+it$.<br>
+                                Diferencial: $dz = (-1+i)dt$. Función: $\overline{z} = 2-t-it$.<br>
+                                $\int_0^2 (2-t-it)(-1+i) dt = \int_0^2 (-2 + 2i + t - it - it - i^2t) dt = \int_0^2 (2t - 2 + 2i) dt$.<br>
+                                Evaluando primitiva $[t^2 - 2t + 2it]_0^2 = 4 - 4 + 4i = \mathbf{4i}$.
+                            </li>
+                            <li>
+                                <strong>8.3)</strong> Poligonal en 2 tramos. Tramo 1 (eje x de 2 a 0): $z=x, dz=dx \implies \int_2^0 x dx = [x^2/2]_2^0 = -2$.<br>
+                                Tramo 2 (eje y de 0 a 2i): $z=iy, \overline{z}=-iy, dz=idy \implies \int_0^2 (-iy)(idy) = \int_0^2 y dy = [y^2/2]_0^2 = 2$.<br>
+                                Suma de tramos: $-2 + 2 = \mathbf{0}$.
+                            </li>
+                        </ul>
+                        <h4 style="margin-top: 1rem;">Resolución (La función $1/z$ tiene singularidad en origen):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>8.4)</strong> Integral cerrada que encierra la singularidad $z=0$ con orientación positiva. Resultado estándar por Cauchy: $\mathbf{2\pi i}$.
+                            </li>
+                            <li>
+                                <strong>8.5)</strong> Semicírculo superior antihorario. Parametrización $z(\theta) = e^{i\theta}$ con $\theta \in [0, \pi]$.<br> $dz = ie^{i\theta}d\theta \implies \int_0^\pi \frac{ie^{i\theta}}{e^{i\theta}} d\theta = \int_0^\pi i d\theta = \mathbf{\pi i}$.
+                            </li>
+                            <li>
+                                <strong>8.6)</strong> Semicírculo inferior horario. $z(\theta) = e^{-i\theta}$ con $\theta \in [0, \pi]$.<br> $dz = -ie^{-i\theta}d\theta \implies \int_0^\pi \frac{-ie^{-i\theta}}{e^{-i\theta}} d\theta = \int_0^\pi -i d\theta = \mathbf{-\pi i}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Sean $z_1=1$ y $z_2=i$. Verificar si $\int_{C_k} z dz$ para $k=1,2,3$ es independiente del camino, siendo:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>9.1)</strong> $C_1$: el segmento dirigido desde $z_1$ hasta $z_2$.</li>
+                            <li><strong>9.2)</strong> $C_2$: $|z|=1$ recorrida en sentido antihorario desde $z_1$ hasta $z_2$.</li>
+                            <li><strong>9.3)</strong> $C_3$: la poligonal de vértices $z_1$, $0$, $z_2$ en ese orden.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        <p>El integrando es $f(z) = z$. Por ser un polinomio, esta función es una función <strong>entera</strong>, es decir, analítica en todo el plano complejo $\mathbb{C}$.</p>
+                        <p>Por el Teorema de Independencia del Camino (consecuencia de poseer primitiva y del Teorema de Cauchy), toda integral de línea de una función analítica entre dos puntos fijos de un dominio simplemente conexo arrojará <strong>exactamente el mismo resultado</strong>, sin importar la trayectoria elegida.</p>
+
+                        <p style="margin-top: 1rem;">Para calcular el valor, usamos la Regla de Barrow evaluando en su primitiva $F(z) = \frac{z^2}{2}$:</p>
+                        <div class="formula-responsive">
+                            $$ \int_1^i z dz = \left[ \frac{z^2}{2} \right]_1^i = \frac{i^2}{2} - \frac{1^2}{2} = \frac{-1}{2} - \frac{1}{2} = \mathbf{-1} $$
+                        </div>
+                        <p>Se concluye y verifica que las tres trayectorias solicitadas en $C_1$, $C_2$ y $C_3$ convergen en el valor $\mathbf{-1}$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- EJERCICIO 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>Calcular las siguientes integrales con orientación antihoraria:</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>10.1)</strong> $\oint_{|z-1-i|=1} \frac{1}{z} dz$</li>
+                                <li><strong>10.2)</strong> $\oint_{|z|=2} \frac{z^2e^{i\pi z}}{z-1} dz$</li>
+                                <li><strong>10.3)</strong> $\oint_{C} \frac{z+2}{z(z^2+4)} dz$, C: cuadrado vértices $\pm1\pm i$.</li>
+                                <li><strong>10.4)</strong> $\oint_{|z|=4} \frac{sen(z)}{(z-\pi)^4} dz$</li>
+                            </ul>
+                            <ul style="flex: 1; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>10.5)</strong> $\oint_{|z-i|=2} \frac{(z+2)^2}{z^3+16z} dz$</li>
+                                <li><strong>10.6)</strong> $\oint_{|z-2i|=1} \frac{(z+2)^2}{z^3+16z} dz$</li>
+                                <li><strong>10.7)</strong> $\oint_{|z-3i|=2} \frac{(z+2)^2}{z^3+16z} dz$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución (Por Teoremas de Cauchy y Fórmula Integral):</h4>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; color: var(--text-color);">
+                            <li>
+                                <strong>10.1)</strong> La función $1/z$ tiene singularidad en $z=0$. El contorno $|z-(1+i)|=1$ es un círculo centrado en $(1,1)$. La distancia al origen es $\sqrt{2} \approx 1.41 > 1$. Como el polo queda FUERA del recinto, la función es analítica en el interior. Por Teorema de Cauchy-Goursat: $\mathbf{0}$.
+                            </li>
+                            <li>
+                                <strong>10.2)</strong> Singularidad en $z=1$ (dentro del disco $|z|=2$). Usamos la Fórmula Integral de Cauchy con $f(z) = z^2e^{i\pi z}$:<br>
+                                $\oint = 2\pi i \cdot f(1) = 2\pi i \cdot (1^2 e^{i\pi}) = 2\pi i(-1) = \mathbf{-2\pi i}$.
+                            </li>
+                            <li>
+                                <strong>10.3)</strong> El denominador se anula en $z=0$ y $z=\pm 2i$. El cuadrado de vértices $\pm1\pm i$ contiene SOLO a $z=0$. Definimos $f(z) = \frac{z+2}{z^2+4}$ como función analítica.<br>
+                                $\oint = 2\pi i \cdot f(0) = 2\pi i \cdot \frac{2}{4} = \mathbf{\pi i}$.
+                            </li>
+                            <li>
+                                <strong>10.4)</strong> Polo de orden 4 en $z=\pi$ (interior a $|z|=4$). Usamos la Fórmula Integral de las Derivadas para $n=3$ ($n+1=4$). $\oint = \frac{2\pi i}{3!} f'''(\pi)$. Si $f(z) = \sin(z) \implies f'(z) = \cos(z) \implies f''(z) = -\sin(z) \implies f'''(z) = -\cos(z)$. Evaluado en $\pi$: $-\cos(\pi) = -(-1) = 1$.<br>
+                                $\oint = \frac{2\pi i}{6}(1) = \mathbf{\frac{\pi i}{3}}$.
+                            </li>
+                            <li>
+                                <strong>10.5 a 10.7)</strong> Factorizamos denominador: $z(z^2+16) = z(z-4i)(z+4i)$. Singularidades: $\mathbf{z=0, z=4i, z=-4i}$.<br>
+                                - <strong>10.5)</strong> Contorno $|z-i|=2$: Solo $z=0$ está dentro. $f(z) = \frac{(z+2)^2}{z^2+16}$. $\oint = 2\pi i \cdot f(0) = 2\pi i(4/16) = \mathbf{\frac{\pi i}{2}}$.<br>
+                                - <strong>10.6)</strong> Contorno $|z-2i|=1$: Ningún polo está dentro (0 está a dist 2, $4i$ está a dist 2). Integral = $\mathbf{0}$.<br>
+                                - <strong>10.7)</strong> Contorno $|z-3i|=2$: Solo $z=4i$ está dentro. $f(z) = \frac{(z+2)^2}{z(z+4i)}$. Evaluamos $f(4i)$:<br>
+                                $f(4i) = \frac{(4i+2)^2}{4i(8i)} = \frac{16i^2+16i+4}{-32} = \frac{-12+16i}{-32} = \frac{3}{8} - \frac{1}{2}i$.<br>
+                                $\oint = 2\pi i \left(\frac{3}{8} - \frac{1}{2}i\right) = 2\pi i \frac{3}{8} - 2\pi i^2 \frac{1}{2} = \mathbf{\pi + i\frac{3\pi}{4}}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+</html>

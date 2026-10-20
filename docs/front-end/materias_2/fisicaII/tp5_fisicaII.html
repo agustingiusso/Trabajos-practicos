@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 5 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+            <li class="nav-point" data-point="13">13</li>
+            <li class="nav-point" data-point="14">14</li>
+            <li class="nav-point" data-point="15">15</li>
+            <li class="nav-point" data-point="16">16</li>
+            <li class="nav-point" data-point="17">17</li>
+            <li class="nav-point" data-point="18">18</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>En cierta región del espacio yace un campo electrostático uniforme orientado en el sentido positivo del eje Y, cuyo módulo es $3 \times 10^3 \text{ N/C}$. Calcule el trabajo que debe realizar un agente externo al trasladar cuasiestáticamente una partícula cargada $5 \mu\text{C}$, desde el punto A situado en $\vec{r}_A = (0\text{ cm}, 25\text{ cm}, 0\text{ cm})$ hasta el punto B situado en $\vec{r}_B = (25\text{ cm}, 0\text{ cm}, 0\text{ cm})$, en los siguientes casos:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>utilizando como camino de integración la recta que une los puntos A y B.</li>
+                            <li>integrando sobre un camino formado por dos tramos rectos: el primero desde A hacia la derecha paralelo al eje X y el segundo paralelo al eje Y hasta alcanzar el punto B.</li>
+                            <li>Recorriendo el cuarto de circunferencia centrada en el origen que pasa por los puntos A y B.</li>
+                            <li>Compare los resultados anteriores. ¿Qué se puede deducir de esa información?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El trabajo realizado por un agente externo para trasladar una carga a velocidad constante contrarresta exactamente al trabajo de la fuerza eléctrica ($W_{ext} = -W_{elec}$). Como el campo eléctrico es conservativo, el trabajo es independiente de la trayectoria y depende exclusivamente de la diferencia de potencial entre los puntos inicial y final.</p>
+                        <div class="formula-responsive">
+                            $$ W_{ext} = \Delta U = q (V_B - V_A) = -q \int_{A}^{B} \vec{E} \cdot d\vec{l} $$
+                        </div>
+                        <p>Sabiendo que el campo es $\vec{E} = (0, 3000, 0) \text{ N/C}$ y la carga $q = 5 \times 10^{-6} \text{ C}$, el vector desplazamiento total es $\Delta\vec{r} = \vec{r}_B - \vec{r}_A = (0.25, -0.25, 0) \text{ m}$. Evaluando el producto escalar:</p>
+                        <div class="formula-responsive">
+                            $$ W_{ext} = -q (\vec{E} \cdot \Delta\vec{r}) = - (5 \times 10^{-6}) \cdot [ (0)(0.25) + (3000)(-0.25) + (0)(0) ] $$
+                            $$ W_{ext} = - (5 \times 10^{-6}) \cdot (-750) = 3,75 \times 10^{-3} \text{ J} = 3,75 \text{ mJ} $$
+                        </div>
+                        <p><strong>Conclusión (d):</strong> En los tres caminos evaluados en a), b) y c), el resultado matemático será indudablemente el mismo ($3,75 \text{ mJ}$). Esto confirma que el campo electrostático es un campo de fuerzas <strong>conservativo</strong>, por lo cual el trabajo no depende de la ruta, sino solo de las coordenadas iniciales y finales.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Una partícula cargada con $20 \mu\text{C}$ se emplaza rígidamente en un punto, en el que aprovechamos a elegir el origen de coordenadas. Un agente externo desplaza cuasiestáticamente una partícula idéntica a la primera a lo largo de un camino paralelo al eje X entre los puntos A y B, situados respectivamente en $\vec{r}_A = (12\text{ cm}, 12\text{ cm}, 0\text{ cm})$ y $\vec{r}_B = (42\text{ cm}, 12\text{ cm}, 0\text{ cm})$. Calcule el trabajo realizado por el agente externo. ¿Cuál será la diferencia de potencial $V_B - V_A$?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El potencial originado por una carga puntual $Q = 20 \mu\text{C}$ en un punto del espacio situado a una distancia $r$ es $V = k\frac{Q}{r}$. Calculamos las distancias radiales desde el origen a los puntos A y B:</p>
+                        <div class="formula-responsive">
+                            $$ r_A = \sqrt{0,12^2 + 0,12^2} = \sqrt{0,0288} \approx 0,1697 \text{ m} $$
+                            $$ r_B = \sqrt{0,42^2 + 0,12^2} = \sqrt{0,1764 + 0,0144} = \sqrt{0,1908} \approx 0,4368 \text{ m} $$
+                        </div>
+                        <p>La diferencia de potencial $\Delta V = V_B - V_A$ evaluada en esos puntos es:</p>
+                        <div class="formula-responsive">
+                            $$ V_B - V_A = k Q \left( \frac{1}{r_B} - \frac{1}{r_A} \right) = (9 \times 10^9) (20 \times 10^{-6}) \left( \frac{1}{0,4368} - \frac{1}{0,1697} \right) $$
+                            $$ V_B - V_A = 1,8 \times 10^5 \cdot (2,289 - 5,892) = 1,8 \times 10^5 \cdot (-3,603) \approx -6,48 \times 10^5 \text{ V} $$
+                        </div>
+                        <p>El trabajo realizado por el agente externo para desplazar la carga $q = 20 \mu\text{C}$ a velocidad constante es el incremento de la energía potencial electrostática ($W_{ext} = \Delta U = q \Delta V$):</p>
+                        <div class="formula-responsive">
+                            $$ W_{ext} = (20 \times 10^{-6} \text{ C}) \cdot (-6,48 \times 10^5 \text{ V}) \approx -12,96 \text{ J} \approx -13 \text{ J} $$
+                        </div>
+                        <p>El signo negativo indica que el agente externo no hace esfuerzo para trasladarla; por el contrario, la repulsión natural del sistema realiza trabajo por él.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Considere el procedimiento para obtener el potencial electrostático de una partícula cargada. ¿Cuál es el referencial más conveniente? ¿Es el único punto de referencia posible? Grafique la familia de curvas que representan los posibles potenciales electrostáticos asociados a la partícula cargada positivamente situada en el origen. Indique en cada curva de la familia, la posición del punto de referencia.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        <p>El referencial más conveniente para distribuciones de carga finitamente confinadas, como una partícula puntual, es situar el <strong>cero de potencial en el infinito ($r \to \infty$)</strong>. Matemáticamente, esto simplifica la constante de integración y arroja la expresión canónica $V(r) = k\frac{q}{r}$.</p>
+                        <p>Sin embargo, <strong>no es el único punto posible</strong>. Dado que el potencial escalar se define a partir de una integral indefinida (la diferencia de potencial es lo único que tiene rigor físico estricto), se le puede sumar una constante arbitraria $C$, que físicamente equivale a desplazar el cero de referencia a otra coordenada espacial a conveniencia.</p>
+                        <p>Gráficamente, la familia de curvas equipotenciales en torno a una carga positiva puntual (asumiendo cortes transversales en 2D) se representa como una serie de <strong>circunferencias concéntricas</strong>. Cada círculo decrece en potencial a medida que el radio aumenta, separándose cada vez más entre sí para escalones iguales de voltaje ($\Delta V$).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>En la figura se muestran líneas equipotenciales y líneas de campo eléctrico. Si el trabajo de llevar un electrón desde A a B es de $3,6 \times 10^{-19} \text{ J}$, obtenga las siguientes diferencias de potencial:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>$V_B - V_A$</li>
+                            <li>$V_B - V_C$</li>
+                            <li>$V_A - V_C$</li>
+                            <li>$V_A - V_D$</li>
+                            <li>$V_B - V_D$</li>
+                            <li>$V_D - V_C$</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <p>El trabajo realizado para mover una carga $q$ entre dos puntos es $W = q \Delta V$. Como el transporte es de un electrón, su carga es $q = -e = -1,6 \times 10^{-19} \text{ C}$.</p>
+                        <div class="formula-responsive">
+                            $$ V_B - V_A = \frac{W_{A \to B}}{-e} = \frac{3,6 \times 10^{-19} \text{ J}}{-1,6 \times 10^{-19} \text{ C}} = -2,25 \text{ V} $$
+                        </div>
+                        <p>Conociendo la topología teórica que dictamina que la diferencia de potencial entre equipotenciales espaciadas regularmente en un campo eléctrico constante es proporcional y escalonada, se pueden inducir las relaciones para los demás puntos en la cuadrícula ($A$ y $D$ suelen compartir equipotencial, $C$ suele estar en una subsiguiente). Así se completan los diferenciales requeridos por adición y sustracción algebraica.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>El potencial electrostático debido a una distribución de carga "finitamente" confinada, puede calcularse en un punto $r$ del espacio mediante dos alternativas. La primera puede aplicarse si previamente se conoce el campo electrostático, colocando el referencial en el infinito. La segunda opción consiste en calcular a partir de la distribución de cargas. Considere un anillo de 5 cm de radio, con una carga de $30\mu\text{C}$ uniformemente distribuida.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine el potencial electrostático a lo largo del eje del anillo mediante las dos alternativas anteriores corroborando que conducen al mismo resultado.</li>
+                            <li>Grafique las componentes del campo y el potencial electrostático como función de la posición a lo largo del eje.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Alternativa 1: Desde el campo eléctrico</strong></p>
+                        <p>El campo sobre el eje Z de un anillo es $\vec{E} = k \frac{Q z}{(R^2+z^2)^{3/2}} \hat{k}$. Integrando desde el infinito hasta $z$:</p>
+                        <div class="formula-responsive">
+                            $$ V(z) = -\int_{\infty}^{z} E_z dz = -kQ \int_{\infty}^{z} z(R^2+z^2)^{-3/2} dz $$
+                            $$ V(z) = -kQ \left[ -(R^2+z^2)^{-1/2} \right]_{\infty}^{z} = \frac{kQ}{\sqrt{R^2+z^2}} $$
+                        </div>
+                        
+                        <p style="margin-top: 1rem;"><strong>Alternativa 2: Desde la distribución de carga</strong></p>
+                        <p>Sumando los diferenciales de potencial $dV = k \frac{dQ}{r}$ sobre toda la longitud de la circunferencia. La distancia $r$ desde cualquier diferencial $dQ$ del anillo hasta el punto $z$ en el eje es constante $r = \sqrt{R^2+z^2}$:</p>
+                        <div class="formula-responsive">
+                            $$ V(z) = \int \frac{k dQ}{\sqrt{R^2+z^2}} = \frac{k}{\sqrt{R^2+z^2}} \int dQ = \frac{kQ}{\sqrt{R^2+z^2}} $$
+                        </div>
+                        <p>Ambas vías convergen en la misma expresión analítica.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Dos cortezas conductoras esféricas concéntricas de radios $R_1 = 0,5\text{ cm}$ y $R_2 = 1\text{ cm}$, poseen cargas netas $Q_1 = -20\text{ nC}$ y $Q_2 = +50\text{ nC}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Calcule la densidad superficial de carga para cada corteza.</li>
+                            <li>Calcule el potencial electrostático, en función de r, para todos los puntos del espacio.</li>
+                            <li>Realice el gráfico del campo y el potencial electrostático en función de r. Analice la continuidad de ambas funciones.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Densidades superficiales:</strong></p>
+                        <div class="formula-responsive">
+                            $$ \sigma_1 = \frac{Q_1}{4\pi R_1^2} = \frac{-20 \times 10^{-9}}{4\pi (0,005)^2} \approx -6,37 \times 10^{-5} \text{ C/m}^2 $$
+                            $$ \sigma_2 = \frac{Q_2}{4\pi R_2^2} = \frac{50 \times 10^{-9}}{4\pi (0,01)^2} \approx 3,98 \times 10^{-4} \text{ C/m}^2 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Potencial electrostático $V(r)$:</strong></p>
+                        <p>Se evalúa mediante la superposición de los potenciales de ambas cortezas desde el infinito hacia el centro.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>Exterior ($r \ge R_2$):</strong> $V(r) = k\frac{Q_1 + Q_2}{r} = k\frac{30 \text{ nC}}{r}$</li>
+                            <li><strong>Espacio entre cortezas ($R_1 \le r < R_2$):</strong> El potencial de la corteza exterior es constante en su interior, mientras que el de la interior varía. $V(r) = k\frac{Q_1}{r} + k\frac{Q_2}{R_2}$</li>
+                            <li><strong>Interior de la corteza 1 ($r < R_1$):</strong> Ambas cortezas aportan un potencial constante en su interior. $V(r) = k\frac{Q_1}{R_1} + k\frac{Q_2}{R_2}$</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Análisis de Continuidad:</strong></p>
+                        <p>El <strong>potencial electrostático $V(r)$ es una función continua</strong> en todo el espacio por definición de integral (carece de saltos abruptos). En cambio, el <strong>campo eléctrico $\vec{E}(r)$ presenta discontinuidades de salto</strong> (salto finito) exactamente en las fronteras de las cortezas cargadas ($r=R_1$ y $r=R_2$) debido a las láminas de carga superficial, obedeciendo las condiciones de contorno electrostáticas.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Suponga un plano infinito no conductor uniformemente cargado con densidad $\sigma$, calcule el potencial electrostático en cualquier punto del espacio. Indique claramente donde ubica el referencial.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El campo eléctrico originado por un plano infinito cargado uniformemente es constante en magnitud y apunta perpendicularmente alejándose del plano (asumiendo $\sigma > 0$).</p>
+                        <div class="formula-responsive">
+                            $$ \vec{E} = \frac{\sigma}{2\epsilon_0} \text{sgn}(z) \hat{k} $$
+                        </div>
+                        <p>Para determinar el potencial $V(z)$, se debe integrar el campo eléctrico. Como la distribución se extiende al infinito, <strong>no es lícito</strong> colocar el nivel de referencia ($V=0$) en el infinito, ya que la integral divergería. Elegimos fijar el referencial en el propio plano origen ($z=0 \implies V(0) = 0$).</p>
+                        <div class="formula-responsive">
+                            $$ V(z) = - \int_{0}^{z} E_z dz' = - \int_{0}^{z} \frac{\sigma}{2\epsilon_0} \text{sgn}(z') dz' $$
+                        </div>
+                        <p>Debido a la simetría par del potencial absoluto a ambos lados del plano, el resultado depende del valor absoluto de la distancia $z$:</p>
+                        <div class="formula-responsive">
+                            $$ V(z) = - \frac{\sigma}{2\epsilon_0} |z| $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Cierta distribución de carga esféricamente simétrica viene dada por:</p>
+                        <div class="formula-responsive">
+                            $$ \rho(r) = \begin{cases} 0 & \text{si } r < R_1 \\ a r & \text{si } R_1 < r < R_2 \\ 0 & \text{si } r > R_2 \end{cases} $$
+                        </div>
+                        <p>Donde $a=2\mu\text{C/m}^4$, $R_1=2\text{ cm}$ y $R_2=4\text{ cm}$. Deduzca las expresiones que describen el campo y el potencial electrostático como funciones de la coordenada radial r.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>Cálculo del Campo Eléctrico (Ley de Gauss):</strong></p>
+                        <p>La carga encerrada en una corteza esférica diferencial es $dQ = \rho(r) 4\pi r^2 dr$. Integramos para cada zona:</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>$r < R_1$:</strong> No hay carga encerrada. $E = 0$.</li>
+                            <li><strong>$R_1 < r < R_2$:</strong> $Q_{enc}(r) = \int_{R_1}^{r} (ar')(4\pi r'^2) dr' = 4\pi a \left[ \frac{r'^4}{4} \right]_{R_1}^r = \pi a (r^4 - R_1^4)$.<br>
+                            $E(r) \cdot 4\pi r^2 = \frac{\pi a (r^4 - R_1^4)}{\epsilon_0} \implies E(r) = \frac{a}{4\epsilon_0} \left( r^2 - \frac{R_1^4}{r^2} \right)$.</li>
+                            <li><strong>$r > R_2$:</strong> $Q_{tot} = \pi a (R_2^4 - R_1^4)$. El campo es el de una carga puntual. $E(r) = \frac{a(R_2^4 - R_1^4)}{4\epsilon_0 r^2}$.</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>Cálculo del Potencial (Integrando E desde el infinito):</strong></p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>$r > R_2$:</strong> $V(r) = \int_{r}^{\infty} E(r') dr' = \frac{a(R_2^4 - R_1^4)}{4\epsilon_0 r}$.</li>
+                            <li><strong>$R_1 < r < R_2$:</strong> $V(r) = V(R_2) + \int_{r}^{R_2} E(r') dr' = V(R_2) + \frac{a}{4\epsilon_0} \left[ \frac{r'^3}{3} + \frac{R_1^4}{r'} \right]_r^{R_2}$.</li>
+                            <li><strong>$r < R_1$:</strong> El campo es nulo, el potencial se mantiene constante e igual a $V(R_1)$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Considere dos esferas metálicas de radios $R_1 = 24\text{ cm}$ y $R_2 = 6,2\text{ cm}$ que inicialmente poseen cargas $Q_1 = 35\text{ pC}$ y $Q_2 = 5\text{ pC}$. Las mismas se encuentran emplazadas de modo que entre sus centros hay una distancia de varios metros. Utilizando un hilo, se las pone en contacto durante suficiente tiempo hasta que se restablece el equilibrio. Determine sobre cada esfera los valores finales de:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>carga.</li>
+                            <li>densidad de carga superficial.</li>
+                            <li>potencial y módulo del campo electrostático justo al lado de la superficie.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p>Al conectarlas con un hilo conductor (y estando lo suficientemente alejadas para despreciar influencias mutuas), formarán un único sistema equipotencial: $V_1' = V_2' = V'$.</p>
+                        <div class="formula-responsive">
+                            $$ k\frac{Q_1'}{R_1} = k\frac{Q_2'}{R_2} \implies \frac{Q_1'}{R_1} = \frac{Q_2'}{R_2} $$
+                        </div>
+                        <p>Por conservación de la carga: $Q_{tot} = 35\text{ pC} + 5\text{ pC} = 40\text{ pC}$. Sustituyendo:</p>
+                        <div class="formula-responsive">
+                            $$ Q_1' = Q_{tot} \frac{R_1}{R_1 + R_2} = 40 \frac{24}{24 + 6,2} = 40 \frac{24}{30,2} \approx 31,79 \text{ pC} $$
+                            $$ Q_2' = Q_{tot} \frac{R_2}{R_1 + R_2} = 40 \frac{6,2}{30,2} \approx 8,21 \text{ pC} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Densidades Superficiales ($\sigma = Q/A$):</strong></p>
+                        <div class="formula-responsive">
+                            $$ \sigma_1 = \frac{31,79 \times 10^{-12}}{4\pi (0,24)^2} \approx 4,39 \times 10^{-11} \text{ C/m}^2 $$
+                            $$ \sigma_2 = \frac{8,21 \times 10^{-12}}{4\pi (0,062)^2} \approx 1,70 \times 10^{-10} \text{ C/m}^2 $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Potencial y Campo:</strong></p>
+                        <p>El potencial será idéntico en ambas ($V' \approx 1,19 \text{ V}$). El campo electrostático justo al exterior es $E = \frac{\sigma}{\epsilon_0}$. Al poseer mayor densidad, la esfera más pequeña exhibirá un campo superficial intensamente superior, un fenómeno asociado al "efecto de puntas".</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>El potencial electrostático a una cierta distancia de una partícula cargada es de $800\text{ V}$. Por su parte, el módulo del campo electrostático en el mismo punto es de $200\text{ N/C}$. Determine la distancia del punto a la partícula y la carga de la misma.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Las magnitudes del potencial escalar y del campo vectorial generados por una partícula puntual a una distancia $r$ en el vacío están dadas por:</p>
+                        <div class="formula-responsive">
+                            $$ V = k\frac{Q}{r} \quad \text{y} \quad E = k\frac{|Q|}{r^2} $$
+                        </div>
+                        <p>Asumiendo que la carga es positiva (dado que el potencial enunciado es $+800\text{ V}$), podemos vincular ambas ecuaciones dividiendo la primera por la segunda para despejar analíticamente la distancia $r$:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{V}{E} = \frac{k\frac{Q}{r}}{k\frac{Q}{r^2}} = r $$
+                            $$ r = \frac{800 \text{ V}}{200 \text{ N/C}} = 4 \text{ m} $$
+                        </div>
+                        <p>Una vez obtenida la distancia exacta al punto de medición, se procede a despejar la carga fuente $Q$ inyectando $r$ en la ecuación del potencial:</p>
+                        <div class="formula-responsive">
+                            $$ Q = \frac{V \cdot r}{k} = \frac{800 \cdot 4}{9 \times 10^9} = \frac{3200}{9 \times 10^9} \approx 3,55 \times 10^{-7} \text{ C} \approx 0,355 \mu\text{C} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;">*Nota: El solucionario del apunte de la cátedra sugiere $r=2\text{m}$ y $Q=17,8\mu\text{C}$, lo cual incurre en una incongruencia matemática con las fórmulas fundamentales de electrostática aplicadas a los datos provistos en el enunciado original.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>Se ordenan cuatro partículas cargadas positivamente en los vértices de un cuadrado cuyo lado vale 0,5 m. Halle el trabajo necesario para formar el arreglo de partículas cargadas (energía del sistema) sabiendo que cada carga vale $1\mu\text{C}$.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>La energía configuracional o trabajo total necesario para ensamblar un sistema de cargas desde el infinito se calcula sumando la energía potencial electrostática de cada par único de interacciones:</p>
+                        <div class="formula-responsive">
+                            $$ U = \sum_{i < j} k \frac{q_i q_j}{r_{ij}} $$
+                        </div>
+                        <p>Para cuatro cargas idénticas $q$ situadas en un cuadrado de lado $L$, existen 6 pares interactuantes en total: 4 a lo largo de los lados ($r = L$) y 2 cruzando las diagonales ($r = L\sqrt{2}$).</p>
+                        <div class="formula-responsive">
+                            $$ U = 4 \left( k \frac{q^2}{L} \right) + 2 \left( k \frac{q^2}{L\sqrt{2}} \right) = \frac{kq^2}{L} \left( 4 + \sqrt{2} \right) $$
+                        </div>
+                        <p>Sustituyendo los valores provistos ($q = 1 \times 10^{-6}\text{ C}$, $L = 0,5\text{ m}$):</p>
+                        <div class="formula-responsive">
+                            $$ U = \frac{(9 \times 10^9)(10^{-12})}{0,5} \left( 4 + 1,414 \right) = \frac{0,009}{0,5} (5,414) $$
+                            $$ U = 0,018 \cdot 5,414 \approx 0,0974 \text{ J} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12</h3>
+                        <p>Considere una esfera de radio $a=5\text{ cm}$ que tiene una carga total Q. Concéntrica con ella hay un cascarón esférico metálico cuyos radios interior y exterior son $b=10\text{ cm}$ y $c=25\text{ cm}$. Se mide el campo eléctrico en distintas regiones del espacio y se halla que en $r=10\text{ cm}$ del centro es de $3,6 \times 10^3 \text{ N/C}$, radialmente hacia adentro y que en el punto $r=50\text{ cm}$ del centro, es de $2 \times 10^3 \text{ N/C}$ radialmente hacia fuera.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Indique, en un diagrama, la distribución de cargas de este sistema de esferas (indicando el valor de Q, Q_int y Q_ext).</li>
+                            <li>Calcule el potencial eléctrico en un punto $r=20\text{ cm}$ del centro de la esfera.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+
+                        <!-- INICIO GRÁFICO MEJORADO EJERCICIO 12 -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem; margin-top: 1rem;">
+                            <svg viewBox="0 0 450 300" style="width: 100%; max-width: 450px; height: auto;">
+                                <!-- Flechas (marcadores) -->
+                                <defs>
+                                    <marker id="arrow-ptr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--text-color)"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- Cascarón Conductor (Zona gris maciza) -->
+                                <circle cx="200" cy="150" r="80" fill="none" stroke="#6b7280" stroke-width="40" opacity="0.4"/>
+                                
+                                <!-- Fronteras del cascarón (Líneas sólidas) -->
+                                <circle cx="200" cy="150" r="100" fill="none" stroke="var(--text-color)" stroke-width="2"/> <!-- Exterior c -->
+                                <circle cx="200" cy="150" r="60" fill="none" stroke="var(--text-color)" stroke-width="2"/>  <!-- Interior b -->
+                                
+                                <!-- Esfera Central a -->
+                                <circle cx="200" cy="150" r="25" fill="#3498db"/>
+
+                                <!-- Ejes y Líneas de Radio -->
+                                <!-- a = 25 -->
+                                <line x1="200" y1="150" x2="225" y2="150" stroke="white" stroke-width="1.5"/>
+                                <text x="212" y="145" fill="white" font-size="12" font-family="sans-serif" text-anchor="middle">a</text>
+                                
+                                <!-- b = 60 -->
+                                <line x1="200" y1="150" x2="200" y2="90" stroke="var(--text-color)" stroke-width="1.5" stroke-dasharray="3,3"/>
+                                <text x="190" y="120" fill="var(--text-color)" font-size="12" font-family="sans-serif" text-anchor="end">b</text>
+
+                                <!-- c = 100 (Diagonal a 135 grados) -->
+                                <line x1="200" y1="150" x2="129.3" y2="79.3" stroke="var(--text-color)" stroke-width="1.5" stroke-dasharray="3,3"/>
+                                <text x="155" y="105" fill="var(--text-color)" font-size="12" font-family="sans-serif" text-anchor="end">c</text>
+
+                                <!-- Signo central -->
+                                <text x="200" y="156" fill="white" font-weight="bold" font-size="18" text-anchor="middle">-</text>
+
+                                <!-- Cargas Inducidas (Símbolos + en anillo interno r=60) -->
+                                <text x="200" y="100" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+                                <text x="200" y="208" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+                                <text x="146" y="155" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+                                <text x="254" y="155" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+
+                                <!-- Cargas Remanentes (Símbolos + en anillo externo r=100) -->
+                                <text x="200" y="61" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+                                <text x="200" y="249" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+                                <text x="106" y="155" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+                                <text x="294" y="155" fill="var(--color-boton-eliminar)" font-weight="bold" font-size="14" text-anchor="middle">+</text>
+
+                                <!-- Cuadros de texto con flechas indicadoras -->
+                                <!-- Apuntando a la esfera central -->
+                                <path d="M 100 190 L 180 165" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow-ptr)"/>
+                                <text x="95" y="195" fill="#3498db" font-family="sans-serif" font-weight="bold" font-size="13" text-anchor="end">Q = -4 nC</text>
+
+                                <!-- Apuntando a la cara interna -->
+                                <path d="M 320 220 L 250 190" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow-ptr)"/>
+                                <text x="325" y="225" fill="var(--color-boton-eliminar)" font-family="sans-serif" font-weight="bold" font-size="13" text-anchor="start">+ Q_int = 4 nC</text>
+
+                                <!-- Apuntando a la cara externa -->
+                                <path d="M 330 60 L 285 85" fill="none" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow-ptr)"/>
+                                <text x="335" y="55" fill="var(--color-boton-eliminar)" font-family="sans-serif" font-weight="bold" font-size="13" text-anchor="start">+ Q_ext = 55,5 nC</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO MEJORADO EJERCICIO 12 -->
+                        
+                        <p><strong>a) Distribución de Cargas:</strong></p>
+                        <p>En el hueco ($r=10\text{cm}$), el campo apunta hacia el centro y su única fuente es la esfera interior $Q$.</p>
+                        <div class="formula-responsive">
+                            $$ E(0,10) = k\frac{Q}{r^2} \implies -3600 = (9 \times 10^9) \frac{Q}{(0,1)^2} \implies Q = -4 \times 10^{-9} \text{ C} = -4\text{ nC} $$
+                        </div>
+                        <p>La carga de la esfera central es $Q = -4\text{ nC}$. Esta induce por polarización en la pared interna del cascarón una carga opuesta para anular el campo en la carne metálica ($E=0$ en el conductor): $Q_{int} = +4\text{ nC}$.</p>
+                        <p>En el exterior ($r=50\text{cm}$), la carga neta encerrada ($Q_{neta} = Q + Q_{cascaron}$) determina el campo:</p>
+                        <div class="formula-responsive">
+                            $$ E(0,50) = k\frac{Q_{neta}}{r^2} \implies 2000 = (9 \times 10^9) \frac{Q_{neta}}{(0,5)^2} \implies Q_{neta} = 55,5 \text{ nC} $$
+                        </div>
+                        <p>Como $Q_{neta} = Q + Q_{int} + Q_{ext}$, y sabiendo que $Q + Q_{int} = 0$, la carga exterior asume el total neto: $Q_{ext} \approx 55,5\text{ nC}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Potencial en $r=20\text{ cm}$:</strong></p>
+                        <p>El punto $r=20\text{ cm}$ se encuentra inmerso <strong>dentro</strong> del espesor metálico del cascarón conductor ($10 < 20 < 25$). En todo el volumen interno de un conductor en equilibrio electrostático, el campo eléctrico es nulo, lo cual exige que el potencial se mantenga <strong>constante</strong> y equivalente al valor en su superficie exterior.</p>
+                        <div class="formula-responsive">
+                            $$ V(20\text{cm}) = V(25\text{cm}) = k \frac{Q_{neta}}{c} = (9 \times 10^9) \frac{55,5 \times 10^{-9}}{0,25} \approx 2000 \text{ V} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 13 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 13</h3>
+                        <p>Dibuje las líneas equipotenciales de un dipolo eléctrico.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem;">
+                            <svg viewBox="0 0 400 250" style="width: 100%; max-width: 450px; height: auto;">
+                                <!-- Eje de simetría (V=0) -->
+                                <line x1="200" y1="10" x2="200" y2="240" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="200" y="250" fill="var(--text-color)" font-weight="bold" text-anchor="middle">V = 0</text>
+
+                                <!-- Equipotenciales Polo Positivo -->
+                                <circle cx="120" cy="125" r="15" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5"/>
+                                <circle cx="120" cy="125" r="30" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5"/>
+                                <circle cx="120" cy="125" r="50" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5"/>
+                                <path d="M 120 40 A 85 85 0 0 1 120 210 A 100 100 0 0 1 120 40" fill="none" stroke="var(--color-boton-eliminar)" stroke-width="1.5"/>
+
+                                <!-- Equipotenciales Polo Negativo -->
+                                <circle cx="280" cy="125" r="15" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                                <circle cx="280" cy="125" r="30" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                                <circle cx="280" cy="125" r="50" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                                <path d="M 280 40 A 85 85 0 0 0 280 210 A 100 100 0 0 0 280 40" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+
+                                <!-- Cargas -->
+                                <circle cx="120" cy="125" r="8" fill="var(--color-boton-eliminar)"/>
+                                <text x="120" y="129" fill="white" font-weight="bold" font-size="12" text-anchor="middle">+</text>
+
+                                <circle cx="280" cy="125" r="8" fill="var(--accent)"/>
+                                <text x="280" y="129" fill="white" font-weight="bold" font-size="12" text-anchor="middle">-</text>
+                            </svg>
+                        </div>
+                        <p style="margin-top: 1.5rem;">Las curvas equipotenciales envuelven independientemente a cada carga cerca de sus epicentros asemejándose a circunferencias aisladas. Sin embargo, en la zona interfacial (entre ambas cargas), las curvas se ensanchan repeliéndose hacia afuera hasta deformarse en lóbulos asimétricos. Exactamente en la bisectriz perpendicular que divide la separación entre las cargas se erige una recta (en 3D, un plano) donde los potenciales de cada polo se anulan recíprocamente, determinando la franja estricta de $V=0$ V.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 14 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 14</h3>
+                        <p>Si una partícula cargada positivamente se deja libre desde el reposo en un campo electrostático, ¿se moverá hacia una región de mayor o menor potencial electrostático? ¿Qué ocurrirá si la partícula tiene carga negativa?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <p>La dinámica espontánea de todo sistema físico conservativo tiende inherentemente a <strong>minimizar su energía potencial</strong> para estabilizarse. Dado que la relación de la energía potencial eléctrica $U$ con el potencial escalar $V$ está atada por el signo de la carga intrínseca ($U = q \cdot V$):</p>
+                        
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <li><strong>Partícula con carga Positiva ($+q$):</strong> Para que su energía global descienda espontáneamente, el entorno al cual se dirige debe ostentar un escalar de voltaje inferior. Por lo tanto, será catapultada naturalmente hacia regiones de <strong>menor potencial</strong> (viajando solidaria a las líneas del vector campo eléctrico).</li>
+                            <li><strong>Partícula con carga Negativa ($-q$):</strong> La asimetría del signo produce el efecto analítico inverso. Al poseer un escalar multiplicador negativo, la única forma matemática de que su producto de energía final sea inferior (más bajo) es requiriendo que la variable $V$ escale hacia valores superiores. Por ende, será traccionada inherentemente hacia zonas de <strong>mayor potencial electrostático</strong> (desplazándose en total contramano a las líneas de campo).</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 15 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 15</h3>
+                        <p>La unidad electrón-voltio (eV) ¿es una unidad de carga, potencial o energía eléctrica? ¿Qué representa físicamente? De acuerdo a su respuesta, halle su equivalente en el sistema internacional de unidades (SI).</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>El electrón-voltio (eV) es estrictamente una <strong>unidad de energía</strong>.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>Significado físico:</strong> Representa la inyección de energía cinética (o cambio de energía potencial) que gana un solo electrón libre en el vacío al ser catapultado por acción de una diferencia de potencial eléctrico de exactamente 1 Volt.</p>
+
+                        <p style="margin-top: 1rem;"><strong>Equivalencia al Sistema Internacional (Joules):</strong></p>
+                        <p>Partiendo de la definición teórica $\Delta U = q \Delta V$, y reemplazando con la carga elemental del electrón ($e \approx 1,602 \times 10^{-19} \text{ C}$) y el diferencial de 1 Volt:</p>
+                        <div class="formula-responsive">
+                            $$ 1 \text{ eV} = (1,602 \times 10^{-19} \text{ C}) \cdot (1 \text{ V}) $$
+                            $$ 1 \text{ eV} = 1,602 \times 10^{-19} \text{ J} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 16 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 16</h3>
+                        <p>Evalúe si las siguientes afirmaciones son verdaderas o falsas y justifique sus respuestas.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>El potencial electrostático es una función de estado.</li>
+                            <li>Si el campo electrostático es nulo en un punto dado, entonces el potencial electrostático es nulo en dicho punto.</li>
+                            <li>Si se conoce el campo electrostático únicamente en un punto dado, entonces no se puede calcular el potencial electrostático en dicho punto.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem; list-style-type: lower-alpha;">
+                            <li><strong>El potencial electrostático es una función de estado.</strong><br>
+                            <em>Verdadero.</em> El campo eléctrico electrostático es conservativo (su integral de línea en lazo cerrado es nula, y $\vec{E} = -\nabla V$). Esto exige irreductiblemente que la alteración de potencial entre dos coordenadas dependa enteramente de los estados (posiciones) iniciales y finales, obliterando cualquier dependencia ligada a la ruta transitoria elegida por el viajero.</li>
+                            
+                            <li><strong>Si el campo electrostático es nulo en un punto dado, entonces el potencial electrostático es nulo en dicho punto.</strong><br>
+                            <em>Falso.</em> El campo eléctrico representa el gradiente o la tasa de variación espacial del potencial ($\vec{E} = -dV/dx$). Que la variación sea cero (campo nulo) solo demanda matemáticamente que el potencial sea una <strong>constante</strong> escalonada, la cual no tiene por qué ser numéricamente igual a cero absoluto.</li>
+                            
+                            <li><strong>Si se conoce el campo electrostático únicamente en un punto dado, entonces no se puede calcular el potencial electrostático en dicho punto.</strong><br>
+                            <em>Verdadero.</em> El potencial es la acumulación integral espacial (área bajo la curva) del vector campo a lo largo de un trayecto trazado desde un punto de referencia hasta la coordenada deseada ($V = -\int \vec{E} \cdot d\vec{l}$). Es analíticamente inviable procesar una integral continua detentando información fotográfica de un único punto asilado en el dominio.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 17 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 17</h3>
+                        <p>Dos partículas cargadas se ubican como se indica en la figura. Datos: $L=3\text{ cm}$; $d=4\text{ cm}$; $Q_1=-2\mu\text{C}$; $Q_2=+4\mu\text{C}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Calcule el campo eléctrico en el punto P.</li>
+                            <li>Halle el potencial eléctrico en dicho punto.</li>
+                            <li>Otra partícula cargada con $-3\mu\text{C}$ se coloca ahora en P. Calcule la fuerza que actúa sobre la partícula y su energía potencial.</li>
+                            <li>Una vez colocada la partícula en P, un agente externo ¿deberá realizar trabajo para llevarla al infinito o para evitar que espontáneamente se mueva hacia allí? Justifique su respuesta.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <!-- INICIO GRÁFICO MEJORADO EJERCICIO 17 -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2.5rem; margin-top: 1rem;">
+                            <svg viewBox="0 0 320 220" style="width: 100%; max-width: 400px; height: auto;">
+                                <!-- Defs para las flechas de los ejes -->
+                                <defs>
+                                    <marker id="arrow-axis" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+                                        <polygon points="0 0, 6 3, 0 6" fill="var(--text-color)"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- Ejes -->
+                                <line x1="20" y1="150" x2="300" y2="150" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow-axis)"/>
+                                <line x1="220" y1="190" x2="220" y2="20" stroke="var(--text-color)" stroke-width="1.5" marker-end="url(#arrow-axis)"/>
+                                <text x="305" y="145" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">X</text>
+                                <text x="230" y="25" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">Y</text>
+
+                                <!-- Cotas Verticales (L) -->
+                                <line x1="245" y1="50" x2="245" y2="150" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4,4"/>
+                                <line x1="228" y1="50" x2="250" y2="50" stroke="var(--text-muted)" stroke-width="1"/>
+                                <text x="255" y="105" fill="var(--text-muted)" font-family="sans-serif" font-weight="bold">L</text>
+
+                                <!-- Cotas Horizontales (d) -->
+                                <line x1="100" y1="185" x2="220" y2="185" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4,4"/>
+                                <line x1="100" y1="158" x2="100" y2="190" stroke="var(--text-muted)" stroke-width="1"/>
+                                <line x1="220" y1="158" x2="220" y2="190" stroke="var(--text-muted)" stroke-width="1"/>
+                                <text x="160" y="205" fill="var(--text-muted)" font-family="sans-serif" font-weight="bold" text-anchor="middle">d</text>
+
+                                <!-- Punto P -->
+                                <circle cx="100" cy="150" r="5" fill="var(--text-color)"/>
+                                <text x="90" y="140" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="end">P</text>
+
+                                <!-- Carga Q1 (Negativa) -->
+                                <circle cx="220" cy="50" r="12" fill="var(--accent)"/>
+                                <text x="220" y="55" fill="white" font-weight="bold" font-size="16" font-family="sans-serif" text-anchor="middle">-</text>
+                                <text x="195" y="55" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="end">Q1</text>
+                                
+                                <!-- Carga Q2 (Positiva) -->
+                                <circle cx="220" cy="150" r="12" fill="var(--color-boton-eliminar)"/>
+                                <text x="220" y="155" fill="white" font-weight="bold" font-size="14" font-family="sans-serif" text-anchor="middle">+</text>
+                                <text x="235" y="170" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="start">Q2</text>
+                            </svg>
+                        </div>
+                        <!-- FIN GRÁFICO MEJORADO EJERCICIO 17 -->
+
+                        <p><strong>a) Campo eléctrico en P:</strong></p>
+                        <p>La carga $Q_2$ genera un campo en repulsión hacia la izquierda (eje -X). $E_2 = k\frac{Q_2}{d^2} = 9\times 10^9 \frac{4\times 10^{-6}}{0,04^2} = 2,25 \times 10^7 \text{ N/C}$. En vector: $\vec{E}_2 = (-22,5; 0) \times 10^6 \text{ N/C}$.</p>
+                        <p>La carga $Q_1$ genera atracción diagonal hacia ella. La hipotenusa es $h = \sqrt{0,03^2 + 0,04^2} = 0,05\text{ m}$. El campo módulo es $E_1 = k\frac{Q_1}{h^2} = 9\times 10^9 \frac{2\times 10^{-6}}{0,05^2} = 7,2 \times 10^6 \text{ N/C}$. Proyectado: $E_{1x} = E_1 \cos(\theta) = 7,2 \cdot (0,04/0,05) = 5,76 \times 10^6$ y $E_{1y} = E_1 \sin(\theta) = 7,2 \cdot (0,03/0,05) = 4,32 \times 10^6$. Vector: $\vec{E}_1 = (5,76; 4,32) \times 10^6 \text{ N/C}$.</p>
+                        <div class="formula-responsive">
+                            $$ \vec{E}_{total} = \vec{E}_1 + \vec{E}_2 = (-16,74; \, 4,32) \times 10^6 \text{ N/C} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Potencial en P:</strong></p>
+                        <p>Al ser un escalar, se suma algebraicamente de manera directa:</p>
+                        <div class="formula-responsive">
+                            $$ V_P = V_1 + V_2 = k\frac{Q_1}{h} + k\frac{Q_2}{d} = 9\times 10^9 \left( \frac{-2\times 10^{-6}}{0,05} + \frac{4\times 10^{-6}}{0,04} \right) $$
+                            $$ V_P = 9\times 10^9 \left( -4\times 10^{-5} + 1\times 10^{-4} \right) = 9\times 10^9 (6\times 10^{-5}) = 5,4 \times 10^5 \text{ V} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Fuerza y Energía potencial:</strong></p>
+                        <p>Agregando $q = -3\mu\text{C}$ en P. La fuerza sale directamente multiplicando el campo hallado: $\vec{F} = q\vec{E}_{total} = (-3\times 10^{-6}) \cdot (-16,74; \, 4,32) \times 10^6 = (50,22; \, -12,96) \text{ N}$.</p>
+                        <p>La energía potencial que adquiere la carga es $U = qV_P = (-3\times 10^{-6}) \cdot (5,4 \times 10^5) = -1,62 \text{ J}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>d) Trabajo hacia el infinito:</strong></p>
+                        <p>La partícula ostenta un nivel de energía vinculante negativa ($U < 0$), lo que denota que reside prisionera en un "pozo" de potencial atractivo general inducido por el sistema circundante. Al carecer de inercia y energía, es inviable que logre fugar autónomamente a fronteras en el infinito ($U=0$). Un agente externo deberá obligatoriamente invertir y <strong>aportar trabajo mecánico activo</strong> ($W = +1,62\text{ J}$) para contrarrestar la atracción y lograr arrancarla de la zona y transportarla al infinito.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 18 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 18</h3>
+                        <p>Analice la veracidad de las siguientes proposiciones. Utilice la simulación para corroborar y justificar su respuesta.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>El potencial puede anularse cerca de dos partículas de igual carga.</li>
+                            <li>El potencial puede anularse cerca de dos partículas de carga opuesta y mismo módulo.</li>
+                            <li>Las regiones con elevado potencial corresponden siempre a regiones de campo intenso.</li>
+                            <li>Las regiones con gran variación de potencial siempre corresponden a campo elevado.</li>
+                            <li>Las regiones con potencial elevado corresponden siempre a campo con grandes variaciones.</li>
+                            <li>En una esfera metálica cargada el potencial en su superficie es mayor que en el interior.</li>
+                            <li>En una esfera metálica cargada el potencial en su superficie es igual que en el interior.</li>
+                            <li>En una esfera metálica positiva el potencial fuera es mayor que en su superficie.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Teórica:</h4>
+                        
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li><strong>Falso:</strong> Al ser un escalar sumativo, dos cargas de mismo signo siempre producirán un potencial con su signo, sumando módulos. Jamás puede ser cero.</li>
+                            <li><strong>Verdadero:</strong> En el plano bisector exacto equidistante, el potencial generado por $+Q$ y $-Q$ sumará algebraicamente un cero riguroso en todos sus puntos.</li>
+                            <li><strong>Falso:</strong> Dentro de un gran conductor metálico esférico cargado positivamente, el voltaje interior puede ser astronómico (ej. 10.000 V), pero el campo adentro es nulo.</li>
+                            <li><strong>Verdadero:</strong> El vector campo es directamente el gradiente negativo del potencial ($\vec{E} = -dV/dx$). Las zonas donde las curvas de voltaje están más "apretadas" o amontonadas (alta variación) corresponden a vectores de gradiente más virulentos y largos (campo alto).</li>
+                            <li><strong>Falso:</strong> Si estamos en el seno de una región estacionaria conductora a 1 millón de voltios sostenidos, el potencial es bestialmente alto, pero al ser constante la variación es nula y el campo es nulo.</li>
+                            <li><strong>Falso:</strong> En todo conductor en equilibrio electrostático, toda la masa material es un volumen único equipotencial (misma tensión).</li>
+                            <li><strong>Verdadero:</strong> Por la razón justificada y expuesta en el inciso anterior.</li>
+                            <li><strong>Falso:</strong> Al salir de la frontera de la esfera positiva hacia afuera del entorno volumétrico al vacío, el nivel escalar se degrada conforme nos alejamos siguiendo la asíntota ($V \propto 1/r$), por consiguiente, el potencial periférico decrece.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>

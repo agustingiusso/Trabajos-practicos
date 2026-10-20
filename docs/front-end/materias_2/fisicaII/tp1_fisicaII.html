@@ -1,1 +1,329 @@
-WIP
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1 - Física II</title>
+    
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+            
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Las siguientes cuestiones ayudan a comprender el proceso de descarga a tierra.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿Por qué un cuerpo metálico esférico cargado aislado tiene distribución superficial uniforme de carga?</li>
+                            <li>Considere dos esferas metálicas idénticas, a las que denotaremos por 1 y 2. La 1 está inicialmente cargada y la 2 neutra. Suponga que primero se las pone en contacto y luego se las separa. ¿Habrá desplazamiento de partículas cargadas durante este proceso? ¿Se modifica la carga total del sistema? ¿Cómo resultarán, comparativamente, las cargas finales de ambas esfera?</li>
+                            <li>Responda nuevamente las preguntas del inciso b, si ahora la esfera 2 tiene radio mayor que la 1.</li>
+                            <li>De acuerdo al razonamiento desarrollado en c), ¿cuál será la carga final de cada esfera si la 2 tuviera un radio millones de veces mayor que la 1?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p style="margin-top: 1rem;"><strong>a) Distribución uniforme:</strong></p>
+                        <p>En un conductor aislado, las cargas del mismo signo experimentan una fuerza de repulsión mutua (Ley de Coulomb). Al tener libertad de movimiento dentro del material, estas migran lo más lejos posible unas de otras, ubicándose en la superficie. Dada la perfecta simetría de una esfera aislada, las cargas alcanzan el equilibrio distribuyéndose de forma homogénea para garantizar que el campo eléctrico interno sea nulo.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Esferas idénticas en contacto:</strong></p>
+                        <p>Sí, existirá un flujo de portadores de carga (electrones) impulsado por la diferencia de potencial hasta que ambas esferas se equilibren. La <strong>carga total del sistema se conserva</strong>, solo se redistribuye. Dado que poseen la misma capacitancia (mismos radios), tras separarlas ambas poseerán exactamente la misma carga final: $q_1' = q_2' = \frac{Q_{total}}{2}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Esfera 2 con radio mayor:</strong></p>
+                        <p>Nuevamente fluirán cargas hasta que las superficies se encuentren al mismo potencial eléctrico ($V_1 = V_2$). Como la capacidad de almacenar carga de una esfera es proporcional a su radio, la esfera más grande alojará una cantidad neta de carga mayor en el estado final.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>d) Radio millones de veces mayor (Tierra):</strong></p>
+                        <p>Si la esfera 2 tiene un radio monumental, su capacidad roza el infinito en términos relativos. Tras el contacto, esta esfera masiva absorberá casi el $100\%$ de la carga del sistema, dejando a la esfera 1 con una carga despreciable (virtualmente neutra). Este es el principio físico que explica la <strong>descarga a tierra</strong>.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Si sobre una alfombra de nylon en un día seco frota sus pies y luego toca un objeto metálico (una manija de puerta o el marco de una puerta metálico), ¿qué le ocurre? ¿Cómo puede explicarlo? Esto se denomina "proceso de carga por frotamiento". Analice con que signo queda cargado cada objeto (para este caso la alfombra y Usted).</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Al frotar los pies sobre la alfombra de nylon, se produce un fenómeno conocido como <strong>triboelectricidad</strong>, que consiste en la transferencia de electrones entre dos materiales distintos debido a la fricción. Uno de los materiales tiene mayor afinidad electrónica y "arranca" electrones del otro.</p>
+                        
+                        <p style="margin-top: 1rem;">Como resultado, usted queda con un exceso o déficit de electrones (carga electrostática acumulada). El cuerpo humano actúa temporalmente como un capacitor que almacena esa carga. Al acercar la mano a un material conductor, como una manija metálica, el exceso de electrones busca un camino rápido hacia el equilibrio (tierra), produciéndose un salto de carga a través del aire justo antes del contacto directo. Ese salto rompe la rigidez dieléctrica del aire, generando una pequeña <strong>chispa</strong> y la consiguiente sensación de choque eléctrico.</p>
+                        
+                        <p style="margin-top: 1rem;"><strong>Signos de carga:</strong> El nylon tiene tendencia a ganar electrones en la serie triboeléctrica. Por lo tanto, luego del frotamiento, la alfombra de nylon queda cargada <strong>negativamente</strong> (gana electrones) y el cuerpo humano queda cargado <strong>positivamente</strong> (cede electrones).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Considere una bolita metálica suspendida por un hilo.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿Qué sucede con la bolita cuándo se le acerca una barra cargada? ¿Depende, lo qué sucede, del tipo de carga de la barra?</li>
+                            <li>Si ahora con la barra se toca la bolita, ¿qué sucede? Esto se denomina "proceso de carga por contacto". Analice con qué signo queda cargado cada objeto (para este caso la bolita y la barra).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Acercamiento (sin contacto):</strong></p>
+                        <p>Cuando se acerca la barra cargada, la bolita neutra experimenta un proceso de <strong>polarización</strong>. Los electrones libres en la bolita metálica se reorganizan por influencia del campo eléctrico externo: las cargas de signo opuesto al de la barra se acumulan en el hemisferio más cercano a esta, mientras que las del mismo signo son repelidas al hemisferio más lejano.</p>
+                        <p>Debido a que la zona de carga atraída está físicamente más cerca de la barra que la zona repelida, la fuerza de atracción domina sobre la de repulsión (Ley de Coulomb). En consecuencia, <strong>la bolita será atraída</strong> hacia la barra. Esto <strong>no depende</strong> del tipo de carga de la barra; la polarización garantiza que la bolita siempre sea atraída inicialmente, ya sea que la barra sea positiva o negativa.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Carga por contacto:</strong></p>
+                        <p>Si la barra llega a tocar la bolita, los electrones saltan de un objeto al otro intentando equilibrar el potencial de ambos cuerpos conductores. Si la barra era positiva, "robará" electrones de la bolita; si era negativa, le cederá electrones. Como resultado de esta transferencia, ambos objetos finalizarán compartiendo el <strong>mismo signo</strong> de carga (el signo original de la barra).</p>
+                        <p>Al quedar ambos con carga del mismo signo, experimentarán de inmediato una fuerte <strong>repulsión</strong>, y la bolita saldrá rebotando, alejándose de la barra.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>En la figura se indican los pasos para "proceso de carga por inducción" de un cuerpo metálico inicialmente descargado. Complete cada paso dibujando en forma aproximada la distribución de las cargas. Finalizada la secuencia, compare el signo de la carga del cuerpo metálico con el signo de la carga en la barra inductora.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución: Proceso de Carga por Inducción</h4>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                            
+                            <!-- Paso 1 -->
+                            <div style="text-align: center;">
+                                <div style="position: relative; width: 160px; height: 120px; margin: 0 auto;">
+                                    <!-- Barra -->
+                                    <div style="position: absolute; left: 0; top: 40px; width: 50px; height: 20px; background: var(--color-boton-eliminar); border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">++++</div>
+                                    <!-- Esfera -->
+                                    <div style="position: absolute; right: 20px; top: 20px; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--text-color); background: var(--card-bg);">
+                                        <div style="position: absolute; left: 5px; top: 20px; color: var(--accent); font-weight: bold;">--</div>
+                                        <div style="position: absolute; right: 5px; top: 20px; color: var(--color-boton-eliminar); font-weight: bold;">++</div>
+                                    </div>
+                                    <!-- Soporte aislante -->
+                                    <div style="position: absolute; right: 48px; top: 80px; width: 4px; height: 40px; background: var(--text-muted);"></div>
+                                    <div style="position: absolute; right: 35px; top: 116px; width: 30px; height: 4px; background: var(--text-color);"></div>
+                                </div>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>1. Polarización</strong><br>La barra (+) atrae electrones (-) al lado izquierdo y repele (+) al derecho.</p>
+                            </div>
+
+                            <!-- Paso 2 -->
+                            <div style="text-align: center;">
+                                <div style="position: relative; width: 160px; height: 120px; margin: 0 auto;">
+                                    <div style="position: absolute; left: 0; top: 40px; width: 50px; height: 20px; background: var(--color-boton-eliminar); border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">++++</div>
+                                    <div style="position: absolute; right: 20px; top: 20px; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--text-color); background: var(--card-bg);">
+                                        <div style="position: absolute; left: 5px; top: 20px; color: var(--accent); font-weight: bold;">--</div>
+                                    </div>
+                                    <!-- Soporte aislante -->
+                                    <div style="position: absolute; right: 48px; top: 80px; width: 4px; height: 40px; background: var(--text-muted);"></div>
+                                    <div style="position: absolute; right: 35px; top: 116px; width: 30px; height: 4px; background: var(--text-color);"></div>
+                                    <!-- Conexión a tierra -->
+                                    <svg style="position: absolute; right: 0px; top: 40px; width: 40px; height: 60px;" overflow="visible">
+                                        <polyline points="20,10 40,10 40,40" fill="none" stroke="var(--text-color)" stroke-width="2"/>
+                                        <line x1="30" y1="40" x2="50" y2="40" stroke="var(--text-color)" stroke-width="2"/>
+                                        <line x1="34" y1="45" x2="46" y2="45" stroke="var(--text-color)" stroke-width="2"/>
+                                        <line x1="38" y1="50" x2="42" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>2. Conexión a Tierra</strong><br>Los electrones suben desde la Tierra neutralizando la zona positiva derecha.</p>
+                            </div>
+
+                            <!-- Paso 3 -->
+                            <div style="text-align: center;">
+                                <div style="position: relative; width: 160px; height: 120px; margin: 0 auto;">
+                                    <div style="position: absolute; left: 0; top: 40px; width: 50px; height: 20px; background: var(--color-boton-eliminar); border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">++++</div>
+                                    <div style="position: absolute; right: 20px; top: 20px; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--text-color); background: var(--card-bg);">
+                                        <div style="position: absolute; left: 5px; top: 20px; color: var(--accent); font-weight: bold;">--</div>
+                                    </div>
+                                    <div style="position: absolute; right: 48px; top: 80px; width: 4px; height: 40px; background: var(--text-muted);"></div>
+                                    <div style="position: absolute; right: 35px; top: 116px; width: 30px; height: 4px; background: var(--text-color);"></div>
+                                </div>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>3. Corte de conexión</strong><br>Se retira la conexión a Tierra. La esfera queda con carga neta negativa, aún atraída por la barra.</p>
+                            </div>
+
+                            <!-- Paso 4 -->
+                            <div style="text-align: center;">
+                                <div style="position: relative; width: 160px; height: 120px; margin: 0 auto;">
+                                    <div style="position: absolute; left: -40px; top: 40px; width: 50px; height: 20px; background: var(--color-boton-eliminar); border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; opacity: 0.3;">++++</div>
+                                    <div style="position: absolute; right: 20px; top: 20px; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--text-color); background: var(--card-bg);">
+                                        <div style="position: absolute; left: 10px; top: 10px; color: var(--accent); font-weight: bold;">-</div>
+                                        <div style="position: absolute; right: 10px; top: 10px; color: var(--accent); font-weight: bold;">-</div>
+                                        <div style="position: absolute; left: 10px; bottom: 10px; color: var(--accent); font-weight: bold;">-</div>
+                                        <div style="position: absolute; right: 10px; bottom: 10px; color: var(--accent); font-weight: bold;">-</div>
+                                    </div>
+                                    <div style="position: absolute; right: 48px; top: 80px; width: 4px; height: 40px; background: var(--text-muted);"></div>
+                                    <div style="position: absolute; right: 35px; top: 116px; width: 30px; height: 4px; background: var(--text-color);"></div>
+                                </div>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>4. Distribución uniforme</strong><br>Se aleja la barra. El exceso de electrones se distribuye homogéneamente por la superficie.</p>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>Conclusión:</strong></p>
+                        <p>Como se observa tras la secuencia, al usar el método de carga por inducción, el cuerpo metálico que originalmente estaba neutro finaliza con <strong>signo opuesto</strong> al de la barra inductora (si la barra era positiva, la esfera queda negativa, y viceversa).</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Calcule cuántos electrones se necesitan para obtener una carga de 1C.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p>Sabemos que la carga eléctrica está cuantizada y es un múltiplo entero de la carga elemental del electrón, donde el valor absoluto de dicha carga elemental es:</p>
+                        <div class="formula-responsive">
+                            $$ e = 1,6 \times 10^{-19} \text{ C} $$
+                        </div>
+                        <p style="margin-top: 1rem;">Si requerimos una carga total $Q = 1 \text{ C}$, el número de electrones $n$ necesarios se halla dividiendo la carga total por la carga de un solo electrón:</p>
+                        <div class="formula-responsive">
+                            $$ Q = n \cdot e \implies n = \frac{Q}{e} $$
+                        </div>
+                        <div class="formula-responsive" style="margin-top: 1rem;">
+                            $$ n = \frac{1 \text{ C}}{1,6 \times 10^{-19} \text{ C/electrón}} = 6,25 \times 10^{18} \text{ electrones} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Elija de las siguientes afirmaciones cuál o cuáles considera correctas</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li>
+                                <strong>a) Cuándo se dice que la carga eléctrica está cuantificada, significa que:</strong>
+                                <ul style="list-style-type: upper-roman; margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>I. existe una carga mínima no nula.</li>
+                                    <li>II. toda carga eléctrica es múltiplo entero de una carga eléctrica elemental.</li>
+                                    <li>III. la carga eléctrica es una magnitud continua.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>b) Decir que la carga eléctrica de un sistema se conserva significa que:</strong>
+                                <ul style="list-style-type: upper-roman; margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>I. su valor no cambia con el tiempo.</li>
+                                    <li>II. la suma algebraica de las cargas es constante.</li>
+                                    <li>III. la suma de cargas positivas y la suma de cargas negativas son constantes separadamente.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>Inciso a)</strong></p>
+                        <p>Las afirmaciones correctas son la <strong>I y II</strong>. La carga está discretizada o "cuantizada", lo que significa que no puede tomar cualquier valor continuo (descartando la III). Todo cuerpo adquiere carga ganando o perdiendo electrones enteros, por lo que siempre será un múltiplo de la carga elemental $e$ (II), la cual establece el límite de la carga mínima observable no nula (I).</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>Inciso b)</strong></p>
+                        <p>La afirmación correcta es la <strong>II</strong>. El principio de conservación de la carga establece que en un sistema aislado la suma algebraica neta (teniendo en cuenta los signos positivos y negativos) permanece invariable. La afirmación III es falsa porque se pueden crear o aniquilar pares partícula-antipartícula (ej: electrón y positrón simultáneamente), modificando la cantidad total de cargas positivas y negativas por separado, pero manteniendo inalterada la suma algebraica total.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Dos esferas conductoras idénticas (a las que rotularemos como 1 y 2) tienen igual carga y se mantienen en posiciones fijas de modo que la distancia entre ella es muy grande comparada con sus diámetros. Las mismas se repelen entre sí con una fuerza de 100 N. Una tercera esfera (a la que llamaremos 3) es también idéntica a las otras dos, se encuentra inicialmente descargada y sostenida por un mango aislante. Luego ocurre la siguiente sucesión de contactos: Primero se toca la esfera 1 con la 3. Sin descargar la esfera 3, se toca con ella a la esfera 2. Finalmente, se retira la esfera 3, quedando sólo las dos primeras. Calcule la fuerza entre las esferas 1 y 2 al final del proceso.</p>
+                    </div>
+                    
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        <p><strong>1. Estado inicial:</strong></p>
+                        <p>Las esferas 1 y 2 son idénticas y tienen igual carga $Q_1 = Q$ y $Q_2 = Q$. Separadas a una distancia $d$, la fuerza de repulsión entre ellas nos es dada por la Ley de Coulomb:</p>
+                        <div class="formula-responsive">
+                            $$ F_{inicial} = k \frac{Q_1 \cdot Q_2}{d^2} = k \frac{Q^2}{d^2} = 100 \text{ N} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>2. Primer contacto (Esfera 1 y Esfera 3):</strong></p>
+                        <p>La esfera 3 está descargada ($Q_3 = 0$). Al ser idénticas, al tocarse con la esfera 1 ($Q_1 = Q$), se reparten la carga total disponible equitativamente por simetría geométrica.</p>
+                        <div class="formula-responsive">
+                            $$ Q_{1}' = Q_{3}' = \frac{Q_1 + Q_3}{2} = \frac{Q + 0}{2} = \frac{Q}{2} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>3. Segundo contacto (Esfera 3 y Esfera 2):</strong></p>
+                        <p>Ahora la esfera 3, portando una carga $Q_3' = Q/2$, se pone en contacto con la esfera 2 que aún conserva su carga original $Q_2 = Q$. Nuevamente, la carga neta se redistribuye a partes iguales.</p>
+                        <div class="formula-responsive">
+                            $$ Q_{2}' = Q_{3}'' = \frac{Q_3' + Q_2}{2} = \frac{\frac{Q}{2} + Q}{2} = \frac{\frac{3Q}{2}}{2} = \frac{3Q}{4} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>4. Fuerza final entre las esferas 1 y 2:</strong></p>
+                        <p>Con las nuevas cargas finales $Q_1' = \frac{Q}{2}$ y $Q_2' = \frac{3Q}{4}$, y manteniendo la misma distancia $d$, la nueva fuerza de repulsión será:</p>
+                        <div class="formula-responsive">
+                            $$ F_{final} = k \frac{Q_1' \cdot Q_2'}{d^2} = k \frac{\left(\frac{Q}{2}\right) \cdot \left(\frac{3Q}{4}\right)}{d^2} = \frac{3}{8} \left( k \frac{Q^2}{d^2} \right) $$
+                        </div>
+                        <p>Sabiendo del estado inicial que el bloque $k \frac{Q^2}{d^2} = 100 \text{ N}$, reemplazamos de manera directa:</p>
+                        <div class="formula-responsive">
+                            $$ F_{final} = \frac{3}{8} \cdot 100 \text{ N} = 37,5 \text{ N} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div> 
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+
+</body>
+</html>

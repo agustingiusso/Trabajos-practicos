@@ -1,0 +1,527 @@
+﻿========================================================================
+                           DIAGRAMA DE CLASES
+========================================================================
+
+
+      +--------------------------------------------------+
+      |                   Plataforma                     |
+      +--------------------------------------------------+
+      | - nombre: String                                 |
+      | - empresa: String                                |
+      | - anio: Number                                   |
+      | - capacidad: Number                              |
+      | - tipo: String                                   |
+      | - contenidos: OrderedCollection                  |
+      +--------------------------------------------------+
+      | + crearPlataforma:(...)                          |
+      | + agregarContenido:(c: Contenido)                |
+      | + verContenidos(): OrderedCollection             |
+      | + modContenidos:(col: OrderedCollection)         |
+      +--------------------------------------------------+
+                             |
+                             | 1..* (agregación)
+                             v
+      +--------------------------------------------------+
+      |         Contenido <<Clase Abstracta>>            |
+      +--------------------------------------------------+
+      | - codigo: Number                                 |
+      | - titulo: String                                 |
+      | - genero: String                                 |
+      | - anio: Number                                   |
+      | - tamanio: Number                                |
+      | - calificacion: Number                           |
+      | - disponible: Boolean                            |
+      +--------------------------------------------------+
+      | + verCodigo(), verTitulo(), modTitulo:()         |
+      | + verCalificacion(), modCalificacion:()          |
+      | + verGenero(), verTamanio(), verDisponible()     |
+      | + esRecomendable(): Boolean <<abstracto>>        |
+      +--------------------------------------------------+
+                             ^
+                            / \
+                           /   \
+          +-----------------+ +-----------------+
+          |     Pelicula    | |      Serie      |
+          +-----------------+ +-----------------+
+          | - duracion: Num | | - temporadas:Num|
+          | - cine: Boolean | | - finalizada:Boo|
+          +-----------------+ +-----------------+
+          | + esRecomendable| | + esRecomendable|
+          | + crearPeli:(..)| | + crearSerie:(.)|
+          +-----------------+ +-----------------+
+
+
+========================================================================
+                          CLASE CONTENIDO
+========================================================================
+
+
+"Class definition"
+Object subclass: #Contenido
+        instanceVariableNames: 'codigo titulo genero anio tamanio calificacion disponible'
+        classVariableNames: ''
+        poolDictionaries: ''
+        classInstanceVariableNames: ''
+
+
+"Methods source: instance"
+initCont:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp
+    codigo := unCod.
+    titulo := unTit.
+    genero := unGen.
+    anio := unAnio.
+    tamanio := unTam.
+    calificacion := unaCal.
+    disponible := unDisp.
+
+
+verCodigo
+        ^codigo.
+
+
+verTitulo
+        ^titulo.
+
+
+modTitulo: unTit
+        titulo := unTit.
+
+
+verGenero
+        ^genero.
+
+
+verTamanio
+        ^tamanio.
+
+
+verCalificacion
+        ^calificacion.
+
+
+modCalificacion: unaCal
+        calificacion := unaCal.
+
+
+verDisponible
+        ^disponible.
+
+
+esRecomendable
+        "Método abstracto a implementar en subclases"
+        ^self subclassResponsibility.
+
+
+
+
+========================================================================
+                          CLASE PELICULA
+========================================================================
+
+
+"Class definition"
+Contenido subclass: #Pelicula
+        instanceVariableNames: 'duracion enCine'
+        classVariableNames: ''
+        poolDictionaries: ''
+        classInstanceVariableNames: ''
+
+
+"Methods source: class"
+crearPeli:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp dur:unaDur cine:unCine
+    ^(super new) initPeli:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp dur:unaDur cine:unCine
+
+
+"Methods source: instance"
+initPeli:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp dur:unaDur cine:unCine
+    super initCont:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp.
+    duracion := unaDur.
+    enCine := unCine.
+
+
+esRecomendable
+    "Una película será recomendable si su duración no supera los 120 minutos y su calificación es al menos 7"
+         ^(duracion <= 120) & (self verCalificacion >= 7).
+
+
+
+
+========================================================================
+                            CLASE SERIE
+========================================================================
+
+
+"Class definition"
+Contenido subclass: #Serie
+        instanceVariableNames: 'temporadas finalizada'
+        classVariableNames: ''
+        poolDictionaries: ''
+        classInstanceVariableNames: ''
+
+
+"Methods source: class"
+crearSerie:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp temp:unaTemp fin:unFin
+    ^(super new) initSerie:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp temp:unaTemp fin:unFin
+
+
+"Methods source: instance"
+initSerie:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp temp:unaTemp fin:unFin
+    super initCont:unCod tit:unTit gen:unGen anio:unAnio tam:unTam calif:unaCal disp:unDisp.
+    temporadas := unaTemp.
+    finalizada := unFin.
+
+
+esRecomendable
+    "Una serie será recomendable si está finalizada, posee hasta 3 temporadas y su calificación es al menos 7"
+        ^finalizada & (temporadas <= 3) & (self verCalificacion >= 7).
+
+
+
+
+========================================================================
+                          CLASE PLATAFORMA
+========================================================================
+
+
+"Class definition"
+Object subclass: #Plataforma
+        instanceVariableNames: 'nombre empresa anio capacidad tipo contenidos'
+        classVariableNames: ''
+        poolDictionaries: ''
+        classInstanceVariableNames: ''
+
+
+"Methods source: class"
+crearPlataforma:unNom emp:unaEmp anio:unAnio cap:unaCap tipo:unTipo
+    ^(super new) initPlataforma:unNom emp:unaEmp anio:unAnio cap:unaCap tipo:unTipo
+
+
+"Methods source: instance"
+initPlataforma:unNom emp:unaEmp anio:unAnio cap:unaCap tipo:unTipo
+    nombre := unNom.
+    empresa := unaEmp.
+    anio := unAnio.
+    capacidad := unaCap.
+    tipo := unTipo.
+    contenidos := OrderedCollection new.
+
+
+verContenidos
+        ^contenidos.
+
+
+verCapacidad
+        ^capacidad.
+
+
+modContenidos: unaColeccion
+        contenidos := unaColeccion.
+
+
+espacioOcupado
+    | suma |
+    suma := 0.
+    contenidos do: [:c | suma := suma + c verTamanio].
+    ^suma.
+
+
+agregarContenido: unCont
+    ((self espacioOcupado + unCont verTamanio) <= capacidad)
+        ifTrue: [ contenidos add: unCont ]
+        ifFalse: [ MessageBox errorMsg: 'No hay suficiente capacidad en la plataforma.' ].
+
+
+========================================================================
+                              WORKSPACE
+========================================================================
+
+
+| netflix peli1 peli2 peli3 peli4 peli5 serie1 serie2 serie3 serie4 serie5 continuar opc colFil prom mejor dic colGen sinRep |
+
+
+"--- 1. CREACIÓN DE PLATAFORMA ---"
+"Se aumentó la capacidad a 100.000 MB para que entren sin problema las películas y las series originales"
+netflix := Plataforma crearPlataforma:'StreamUTN' emp:'UTN-FRLP' anio:2026 cap:100000 tipo:'Premium'.
+
+
+"--- 2. PRECARGA DE 5 PELÍCULAS y 5 SERIES ---"
+peli1 := Pelicula crearPeli:1 tit:'Inception' gen:'Ficcion' anio:2010 tam:3500 calif:9 disp:true dur:148 cine:true.
+peli2 := Pelicula crearPeli:2 tit:'Toy Story' gen:'Animacion' anio:1995 tam:1500 calif:8.5 disp:true dur:81 cine:true.
+peli3 := Pelicula crearPeli:3 tit:'Zoolander' gen:'Comedia' anio:2001 tam:1200 calif:6.5 disp:true dur:90 cine:true.
+peli4 := Pelicula crearPeli:4 tit:'El Conjuro' gen:'Terror' anio:2013 tam:1800 calif:7.5 disp:false dur:112 cine:true.
+peli5 := Pelicula crearPeli:5 tit:'Gladiador' gen:'Accion' anio:2000 tam:4000 calif:8.5 disp:true dur:155 cine:true.
+
+
+serie1 := Serie crearSerie:6 tit:'Breaking Bad' gen:'Drama' anio:2008 tam:12000 calif:9.5 disp:true temp:5 fin:true.
+serie2 := Serie crearSerie:7 tit:'Stranger Things' gen:'Ficcion' anio:2016 tam:9500 calif:8.5 disp:true temp:4 fin:false.
+serie3 := Serie crearSerie:8 tit:'The Office' gen:'Comedia' anio:2005 tam:15000 calif:9 disp:true temp:9 fin:true.
+serie4 := Serie crearSerie:9 tit:'Dark' gen:'Ficcion' anio:2017 tam:8000 calif:8.5 disp:false temp:3 fin:true.
+serie5 := Serie crearSerie:10 tit:'Los Simpson' gen:'Animacion' anio:1989 tam:25000 calif:8 disp:true temp:35 fin:false.
+
+
+netflix agregarContenido: peli1.
+netflix agregarContenido: peli2.
+netflix agregarContenido: peli3.
+netflix agregarContenido: peli4.
+netflix agregarContenido: peli5.
+
+
+netflix agregarContenido: serie1.
+netflix agregarContenido: serie2.
+netflix agregarContenido: serie3.
+netflix agregarContenido: serie4.
+netflix agregarContenido: serie5.
+
+
+"El método clear limpia la ventana del System Transcript para iniciar en blanco[cite: 25]"
+Transcript clear.
+
+
+"--- 3. MENÚ INTERACTIVO COMPLETO ---"
+continuar := true.
+"Estructura de repetición: mientras la variable booleana sea true, el menú sigue iterando[cite: 28]"
+[continuar] whileTrue: [
+    
+    "ChoicePrompter despliega un menú interactivo visual para el usuario[cite: 28]"
+    opc := ChoicePrompter choices: #(
+        '--- OPCIONES PRINCIPALES (Obligatorias) ---'
+        '1. Listado calificación >= 7'
+        '2. Filtrar por género'
+        '3. Listado recomendables para maratón'
+        '4. Tamaño promedio y superiores'
+        '5. Contenido con mayor calificación'
+        '6. Eliminar NO disponibles'
+        '7. Cantidad por género (Diccionario)'
+        '8. Agregar nuevo contenido'
+        '9. Buscar y modificar por código'
+        '10. Eliminar contenido por código'
+        '--- OPCIONES ADICIONALES (Extra) ---'
+        '11. Mostrar TODO el catálogo'
+        '12. Mostrar SOLO Películas'
+        '13. Mostrar SOLO Series'
+        '0. Salir'
+    ).
+    
+    "Validación de nulos: Si el usuario cancela, sale. Si elige opción, entra al bloque ifFalse:[cite: 28]"
+    (opc isNil) ifTrue: [ continuar := false ] ifFalse: [
+        
+        (opc = '1. Listado calificación >= 7') ifTrue: [
+            "Uso de mensajes en cascada (show: y cr pegados por ;)[cite: 35]"
+            Transcript show: '--- CALIFICACION >= 7 ---'; cr.
+            
+            "ITERADOR SELECT: Devuelve una NUEVA colección solo con los elementos que cumplen la condición (true)[cite: 28]"
+            colFil := netflix verContenidos select: [:c | c verCalificacion >= 7].
+            
+            "ITERADOR DO: Recorre secuencialmente todos los elementos de la colección para procesarlos[cite: 28]"
+            colFil do: [:c | 
+                "displayString convierte el número de la calificación en un texto (String) para poder concatenarlo e imprimirlo[cite: 25]"
+                Transcript show: c verTitulo, ' (', c verCalificacion displayString, ')'; cr
+            ].
+            Transcript cr.
+        ].
+
+
+        (opc = '2. Filtrar por género') ifTrue: [
+            | gen |
+            "Prompter permite pedir un valor de ingreso manual por teclado al usuario[cite: 24]"
+            gen := Prompter prompt: 'Ingrese género a buscar:'.
+            Transcript show: '--- GÉNERO: ', gen, ' ---'; cr.
+            
+            colFil := netflix verContenidos select: [:c | c verGenero = gen].
+            colFil do: [:c | Transcript show: c verTitulo; cr].
+            Transcript cr.
+        ].
+
+
+        (opc = '3. Listado recomendables para maratón') ifTrue: [
+            Transcript show: '--- RECOMENDADOS PARA MARATÓN ---'; cr.
+            "Llama al método abstracto implementado en las subclases (Polimorfismo)"
+            colFil := netflix verContenidos select: [:c | c esRecomendable].
+            colFil do: [:c | Transcript show: c verTitulo; cr].
+            Transcript cr.
+        ].
+
+
+        (opc = '4. Tamaño promedio y superiores') ifTrue: [
+            | suma cant |
+            Transcript show: '--- TAMAÑOS ---'; cr.
+            suma := 0.
+            cant := netflix verContenidos size.
+            
+            "Estructura de decisión para evitar división por cero[cite: 28]"
+            (cant > 0) ifTrue: [
+                netflix verContenidos do: [:c | suma := suma + c verTamanio].
+                prom := suma / cant.
+                Transcript show: 'Promedio general: ', prom displayString, ' MB'; cr.
+                
+                colFil := netflix verContenidos select: [:c | c verTamanio > prom].
+                Transcript show: 'Superan el promedio:'; cr.
+                colFil do: [:c | Transcript show: '- ', c verTitulo, ' (', c verTamanio displayString, ' MB)'; cr].
+            ].
+            Transcript cr.
+        ].
+
+
+        (opc = '5. Contenido con mayor calificación') ifTrue: [
+            netflix verContenidos isEmpty ifFalse: [
+                "Se asume que el primer elemento es el mejor para luego ir comparándolo"
+                mejor := netflix verContenidos first.
+                netflix verContenidos do: [:c |
+                    (c verCalificacion > mejor verCalificacion) ifTrue: [ mejor := c ].
+                ].
+                Transcript show: '--- MEJOR CALIFICADO ---'; cr.
+                Transcript show: mejor verTitulo, ' con ', mejor verCalificacion displayString, ' puntos.'; cr.
+                Transcript cr.
+            ].
+        ].
+
+
+        (opc = '6. Eliminar NO disponibles') ifTrue: [
+            | eliminados |
+            "Filtramos y guardamos los que NO están disponibles para mostrarlos"
+            eliminados := netflix verContenidos select: [:c | c verDisponible not].
+            
+            eliminados isEmpty ifTrue: [
+                "MessageBox notify: informa mediante una ventana emergente sin retornar valor[cite: 26]"
+                MessageBox notify: 'Todos los contenidos están disponibles actualmente.'.
+            ] ifFalse: [
+                Transcript show: '--- CONTENIDOS ELIMINADOS ---'; cr.
+                eliminados do: [:c | Transcript show: '- ', c verTitulo; cr].
+                Transcript cr.
+                
+                "Pisamos la colección original guardando SOLO los que SI están disponibles"
+                netflix modContenidos: (netflix verContenidos select: [:c | c verDisponible]).
+                MessageBox notify: 'Se eliminaron los contenidos listados en el Transcript.'.
+            ].
+        ].
+
+
+        (opc = '7. Cantidad por género (Diccionario)') ifTrue: [
+            dic := Dictionary new.
+            "ITERADOR COLLECT: Transforma los datos. Crea una nueva colección solo de strings (géneros)[cite: 28]"
+            colGen := netflix verContenidos collect: [:c | c verGenero].
+            
+            "asSet convierte la colección en un Conjunto, eliminando automáticamente los géneros duplicados"
+            sinRep := colGen asSet.
+            
+            "occurrencesOf: cuenta las apariciones en la colección original"
+            sinRep do: [:g | dic at: g put: (colGen occurrencesOf: g)].
+            
+            Transcript show: '--- CANTIDAD POR GÉNERO ---'; cr.
+            dic keysDo: [:k |
+                Transcript show: 'Género: ', k, ' - Cantidad: ', (dic at: k) displayString; cr.
+            ].
+            Transcript cr.
+        ].
+
+
+        (opc = '8. Agregar nuevo contenido') ifTrue: [
+            | tipo cod tit gen anio tam calif disp dur cine temp fin nuevoObj espacioLibre |
+            "Calculamos y mostramos el espacio libre antes de que el usuario elija"
+            espacioLibre := netflix verCapacidad - netflix espacioOcupado.
+            MessageBox notify: 'Espacio disponible en la plataforma: ', espacioLibre displayString, ' MB.'.
+
+
+            tipo := ChoicePrompter choices: #('Pelicula' 'Serie').
+            "Si presionó 'Cancel' en el ChoicePrompter, tipo será nil. Entramos solo si eligió algo."
+            (tipo isNil) ifFalse: [
+                "asNumber convierte la cadena de texto recibida a formato numérico[cite: 24, 30]"
+                cod := (Prompter prompt: 'Código numérico:') asNumber.
+                tit := Prompter prompt: 'Título:'.
+                gen := Prompter prompt: 'Género:'.
+                anio := (Prompter prompt: 'Año:') asNumber.
+                tam := (Prompter prompt: 'Tamaño (MB):') asNumber.
+                calif := (Prompter prompt: 'Calificación (1 a 10):') asNumber.
+                
+                "MessageBox confirm: devuelve un booleano (true/false)[cite: 26]"
+                disp := MessageBox confirm: '¿Está disponible para reproducción?'.
+                
+                (tipo = 'Pelicula') ifTrue: [
+                    dur := (Prompter prompt: 'Duración (min):') asNumber.
+                    cine := MessageBox confirm: '¿Fue estrenada en cine?'.
+                    nuevoObj := Pelicula crearPeli:cod tit:tit gen:gen anio:anio tam:tam calif:calif disp:disp dur:dur cine:cine.
+                ] ifFalse: [
+                    temp := (Prompter prompt: 'Cantidad de temporadas:') asNumber.
+                    fin := MessageBox confirm: '¿Está finalizada?'.
+                    nuevoObj := Serie crearSerie:cod tit:tit gen:gen anio:anio tam:tam calif:calif disp:disp temp:temp fin:fin.
+                ].
+                
+                "El método agregarContenido: ya posee internamente el control de capacidad[cite: 39]"
+                netflix agregarContenido: nuevoObj.
+                MessageBox notify: 'Operación finalizada.'.
+            ].
+        ].
+
+
+        (opc = '9. Buscar y modificar por código') ifTrue: [
+            | codBuscado encontrado nuevoTit nuevaCal |
+            codBuscado := (Prompter prompt: 'Ingrese el código a modificar:') asNumber.
+            
+            "ITERADOR DETECT: Busca el primer elemento que cumpla la condición. Si no encuentra nada, ejecuta ifNone:[cite: 28]"
+            encontrado := netflix verContenidos detect: [:c | c verCodigo = codBuscado] ifNone: [nil].
+            
+            (encontrado isNil) ifTrue: [
+                "MessageBox warning: levanta una alerta visual en pantalla[cite: 26]"
+                MessageBox warning: 'No se encontró ningún contenido con ese código.'.
+            ] ifFalse: [
+                nuevoTit := Prompter prompt: 'Nuevo título (actual: ', encontrado verTitulo, '):'.
+                nuevaCal := (Prompter prompt: 'Nueva calificación (actual: ', encontrado verCalificacion displayString, '):') asNumber.
+                encontrado modTitulo: nuevoTit.
+                encontrado modCalificacion: nuevaCal.
+                MessageBox notify: 'Contenido modificado con éxito.'.
+            ].
+        ].
+
+
+        (opc = '10. Eliminar contenido por código') ifTrue: [
+            | codEliminar |
+            codEliminar := (Prompter prompt: 'Ingrese el código a eliminar:') asNumber.
+            
+            "ITERADOR REJECT: Devuelve una nueva colección omitiendo los elementos que cumplen la condición[cite: 28]"
+            netflix modContenidos: (netflix verContenidos reject: [:c | c verCodigo = codEliminar]).
+            MessageBox notify: 'Actualización finalizada (Si el código existía, fue eliminado).'.
+        ].
+
+
+        (opc = '11. Mostrar TODO el catálogo') ifTrue: [
+            Transcript show: '--- CATÁLOGO COMPLETO ---'; cr.
+            netflix verContenidos isEmpty ifTrue: [
+                Transcript show: 'La plataforma está vacía.'; cr.
+            ] ifFalse: [
+                netflix verContenidos do: [:c | 
+                    Transcript show: '- ', c verTitulo, ' (', c verGenero, ')'; cr.
+                ].
+            ].
+            Transcript cr.
+        ].
+
+
+        (opc = '12. Mostrar SOLO Películas') ifTrue: [
+            Transcript show: '--- TODAS LAS PELÍCULAS ---'; cr.
+            "isKindOf: evalúa si un objeto pertenece a una clase específica[cite: 35]"
+            colFil := netflix verContenidos select: [:c | c isKindOf: Pelicula].
+            colFil isEmpty ifTrue: [
+                Transcript show: 'No hay películas cargadas.'; cr.
+            ] ifFalse: [
+                colFil do: [:c | Transcript show: '- ', c verTitulo; cr].
+            ].
+            Transcript cr.
+        ].
+
+
+        (opc = '13. Mostrar SOLO Series') ifTrue: [
+            Transcript show: '--- TODAS LAS SERIES ---'; cr.
+            "isKindOf: evalúa si un objeto pertenece a una clase específica[cite: 35]"
+            colFil := netflix verContenidos select: [:c | c isKindOf: Serie].
+            colFil isEmpty ifTrue: [
+                Transcript show: 'No hay series cargadas.'; cr.
+            ] ifFalse: [
+                colFil do: [:c | Transcript show: '- ', c verTitulo; cr].
+            ].
+            Transcript cr.
+        ].
+
+
+        (opc = '0. Salir') ifTrue: [ continuar := false ].
+    ].
+].

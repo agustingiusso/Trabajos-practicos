@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 6 - Física II</title>
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="fisicaII-page">
+
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../fisicaII.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
+                    </svg>
+                    <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1</h3>
+                        <p>Determine las capacidades de los siguientes montajes en función de sus datos geométricos:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Capacitor de placas planas paralelas circulares de área R separadas una distancia d (con $d \ll R$).</li>
+                            <li>Capacitor formado por dos cortezas esféricas concéntricas de radios a y b (con a < b y b - a $\ll$ a).</li>
+                            <li>Capacitor formado por dos cortezas cilíndricas coaxiales de longitud l y radios a y b (con a < b y b - a $\ll$ a).</li>
+                            <li>En relación a los incisos anteriores b y c, verifique que la capacidad obtenida puede aproximarse por la de un Capacitor plano paralelo de igual superficie, cuando la distancia entre armaduras se hace muy pequeña.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        
+                        <p><strong>a) Capacitor de placas planas:</strong></p>
+                        <p>Para un capacitor de placas paralelas, el campo eléctrico se aproxima a $E = \frac{\sigma}{\epsilon_0}$ asumiendo placas infinitas por ser $d \ll R$. La diferencia de potencial es $V = E \cdot d = \frac{Q d}{\epsilon_0 A}$. La capacidad por definición es $C = \frac{Q}{V}$. Sabiendo que el área es $A = \pi R^2$:</p>
+                        <div class="formula-responsive">
+                            $$ C = \frac{\epsilon_0 A}{d} = \frac{\epsilon_0 \pi R^2}{d} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Capacitor esférico:</strong></p>
+                        <p>El campo entre las cortezas es $E = k\frac{Q}{r^2}$. Integrando desde $a$ hasta $b$ obtenemos $V = kQ\left(\frac{1}{a} - \frac{1}{b}\right) = kQ\frac{b-a}{ab}$. Evaluando $C = \frac{Q}{V}$:</p>
+                        <div class="formula-responsive">
+                            $$ C = \frac{1}{k} \frac{ab}{b-a} = 4\pi\epsilon_0 \frac{ab}{b-a} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Capacitor cilíndrico:</strong></p>
+                        <p>Aplicando Ley de Gauss, el campo entre las placas es $E = \frac{\lambda}{2\pi\epsilon_0 r}$. Integrando entre los radios se obtiene $V = \frac{\lambda}{2\pi\epsilon_0} \ln\left(\frac{b}{a}\right)$. Como $Q = \lambda l$, la capacidad resulta:</p>
+                        <div class="formula-responsive">
+                            $$ C = \frac{Q}{V} = \frac{2\pi\epsilon_0 l}{\ln(b/a)} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>d) Aproximación a capacitor plano ($d \to 0$):</strong></p>
+                        <p>Sea $d = b-a$. Si $d \ll a$, entonces $b \approx a$.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>Para el esférico: $C = 4\pi\epsilon_0 \frac{a \cdot a}{d} = \frac{\epsilon_0 (4\pi a^2)}{d} = \frac{\epsilon_0 A}{d}$.</li>
+                            <li>Para el cilíndrico: Usamos Taylor para $\ln(b/a) = \ln(1 + d/a) \approx d/a$. Entonces $C \approx \frac{2\pi\epsilon_0 l}{d/a} = \frac{\epsilon_0 (2\pi a l)}{d} = \frac{\epsilon_0 A}{d}$.</li>
+                        </ul>
+                        <p>Ambas geometrías se degeneran analíticamente a la ecuación de placas plano-paralelas cuando el espesor del dieléctrico (o vacío) tiende a ser infinitamente delgado.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2</h3>
+                        <p>Cierto capacitor está compuesto por dos placas planas paralelas, cada una de área $A=7,6\text{ cm}^2$, separadas por una distancia $d=1,8\text{ mm}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine la capacidad.</li>
+                            <li>Si se aplica una diferencia de potencial $V_0=20\text{ V}$ calcule el campo electroestático entre las placas.</li>
+                            <li>Determine la densidad de carga superficial en cada placa.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Capacidad:</strong></p>
+                        <p>Pasamos las magnitudes al S.I.: $A = 7,6 \times 10^{-4} \text{ m}^2$ y $d = 1,8 \times 10^{-3} \text{ m}$. Evaluando la fórmula del capacitor plano:</p>
+                        <div class="formula-responsive">
+                            $$ C = \frac{\epsilon_0 A}{d} = \frac{(8,854 \times 10^{-12}) \cdot (7,6 \times 10^{-4})}{1,8 \times 10^{-3}} = 3,738 \times 10^{-12} \text{ F} \approx 3,74 \text{ pF} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Campo electrostático:</strong></p>
+                        <p>Asumiendo campo eléctrico uniforme, se relaciona linealmente con el voltaje mediante $E = \frac{V_0}{d}$.</p>
+                        <div class="formula-responsive">
+                            $$ E = \frac{20 \text{ V}}{1,8 \times 10^{-3} \text{ m}} \approx 11.111,11 \text{ V/m} \quad (\text{o N/C}) $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>c) Densidad de carga superficial:</strong></p>
+                        <p>Sabiendo que, por Ley de Gauss para láminas metálicas, $E = \frac{\sigma}{\epsilon_0}$, despejamos $\sigma$:</p>
+                        <div class="formula-responsive">
+                            $$ \sigma = E \cdot \epsilon_0 = (11.111,11) \cdot (8,854 \times 10^{-12}) \approx 9,84 \times 10^{-8} \text{ C/m}^2 $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3</h3>
+                        <p>Dos capacitores $C_1=5 \mu\text{F}$ y $C_2=2 \mu\text{F}$ se conectan respectivamente con fuentes de tensión $V_1=20\text{ V}$ y $V_2=40\text{ V}$. Después de cargados se desconectan de las baterías.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>En estas condiciones, se conectan entre si las placas positivas y lo mismo se hace con las placas negativas. Calcule la diferencia de potencial y la carga final en cada capacitor. Determine la energía total almacenada antes y después de la conexión.</li>
+                            <li>Repita el análisis para el caso en que se conectan entre si las placas de distinto signo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p>Las cargas iniciales almacenadas son: $Q_1 = C_1 V_1 = 100 \mu\text{C}$ y $Q_2 = C_2 V_2 = 80 \mu\text{C}$.</p>
+                        <p>La energía inicial total es $U_i = \frac{1}{2} C_1 V_1^2 + \frac{1}{2} C_2 V_2^2 = 1000 \mu\text{J} + 1600 \mu\text{J} = 2600 \mu\text{J} = 2,6 \text{ mJ}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>a) Conexión en Paralelo Estándar (Placas mismo signo):</strong></p>
+                        <p>Las cargas se suman aditivamente y los capacitores forman un equivalente en paralelo:</p>
+                        <div class="formula-responsive">
+                            $$ Q_{total} = Q_1 + Q_2 = 180 \mu\text{C} \quad ; \quad C_{eq} = C_1 + C_2 = 7 \mu\text{F} $$
+                        </div>
+                        <p>Voltaje de equilibrio: $V_f = \frac{Q_{total}}{C_{eq}} = \frac{180}{7} \approx 25,71 \text{ V}$.</p>
+                        <p>Cargas finales: $Q_1' = C_1 V_f \approx 128,57 \mu\text{C}$ y $Q_2' = C_2 V_f \approx 51,43 \mu\text{C}$.</p>
+                        <p>Energía final: $U_f = \frac{1}{2} C_{eq} V_f^2 = \frac{1}{2} (7\mu) (25,71)^2 \approx 2314 \mu\text{J} = 2,31 \text{ mJ}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Conexión en Paralelo Invertido (Placas distinto signo):</strong></p>
+                        <p>Las cargas se neutralizan parcialmente, sobreviviendo solo el diferencial absoluto:</p>
+                        <div class="formula-responsive">
+                            $$ Q_{total} = |Q_1 - Q_2| = |100 - 80| = 20 \mu\text{C} $$
+                        </div>
+                        <p>Voltaje de equilibrio: $V_f = \frac{20}{7} \approx 2,86 \text{ V}$.</p>
+                        <p>Cargas finales: $Q_1' = 5 \cdot 2,86 = 14,3 \mu\text{C}$ y $Q_2' = 2 \cdot 2,86 = 5,7 \mu\text{C}$.</p>
+                        <p>Energía final: $U_f = \frac{1}{2} (7\mu) (2,86)^2 \approx 28,6 \mu\text{J} = 0,0286 \text{ mJ}$.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4</h3>
+                        <p>Determine la capacidad equivalente para la red de la figura. Si la red se conecta a una batería de 12 V en los puntos A y B, calcule la diferencia de potencial, la carga y la energía en cada capacitor.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Nota: La red detalla una rama superior con dos capacitores de 3pF y 6pF en serie, ambas en paralelo respecto de una rama inferior de 2pF.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- Gráfico Circuito -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                            <svg viewBox="0 0 400 200" style="width: 100%; max-width: 400px; height: auto;">
+                                <!-- Terminales A y B -->
+                                <circle cx="40" cy="100" r="5" fill="var(--text-color)"/>
+                                <text x="15" y="105" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">A</text>
+                                <line x1="45" y1="100" x2="80" y2="100" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <circle cx="360" cy="100" r="5" fill="var(--text-color)"/>
+                                <text x="375" y="105" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">B</text>
+                                <line x1="320" y1="100" x2="355" y2="100" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Nodos divisores -->
+                                <circle cx="80" cy="100" r="3" fill="var(--text-color)"/>
+                                <line x1="80" y1="50" x2="80" y2="150" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <circle cx="320" cy="100" r="3" fill="var(--text-color)"/>
+                                <line x1="320" y1="50" x2="320" y2="150" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Rama Superior (3pF y 6pF en serie) -->
+                                <line x1="80" y1="50" x2="140" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="140" y1="30" x2="140" y2="70" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="155" y1="30" x2="155" y2="70" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="147.5" y="20" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" text-anchor="middle">3 pF</text>
+                                
+                                <line x1="155" y1="50" x2="245" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <line x1="245" y1="30" x2="245" y2="70" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="260" y1="30" x2="260" y2="70" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="252.5" y="20" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" text-anchor="middle">6 pF</text>
+
+                                <line x1="260" y1="50" x2="320" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Rama Inferior (2pF) -->
+                                <line x1="80" y1="150" x2="192.5" y2="150" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="192.5" y1="130" x2="192.5" y2="170" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="207.5" y1="130" x2="207.5" y2="170" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="200" y="195" fill="var(--text-color)" font-family="sans-serif" font-weight="bold" text-anchor="middle">2 pF</text>
+                                <line x1="207.5" y1="150" x2="320" y2="150" stroke="var(--text-color)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        
+                        <h4>Resolución:</h4>
+
+                        <p><strong>1. Capacidad Equivalente:</strong></p>
+                        <p>La rama superior posee dos capacitores en serie. Evaluamos su equivalente $C_{serie}$:</p>
+                        <div class="formula-responsive">
+                            $$ \frac{1}{C_{serie}} = \frac{1}{3} + \frac{1}{6} = \frac{3}{6} \implies C_{serie} = 2\text{ pF} $$
+                        </div>
+                        <p>Este equivalente queda en paralelo con el condensador inferior de 2 pF. El equivalente final del circuito es aditivo:</p>
+                        <div class="formula-responsive">
+                            $$ C_{eq} = C_{serie} + C_{inf} = 2\text{ pF} + 2\text{ pF} = 4\text{ pF} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>2. Cargas, Tensiones y Energías ($V = 12\text{ V}$):</strong></p>
+                        <p>Dado que las ramas están en paralelo, a ambas ramas se les aplican directamente los 12 V.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><strong>Rama inferior (2 pF):</strong> 
+                                $V_2 = 12\text{ V}$. <br>
+                                $Q_2 = C_2 V_2 = (2\text{ pF})(12\text{ V}) = 24\text{ pC}$.<br>
+                                $U_2 = \frac{1}{2} C_2 V_2^2 = \frac{1}{2}(2)(144) = 144\text{ pJ}$.
+                            </li>
+                            <li><strong>Rama superior (Serie 3 pF y 6 pF):</strong>
+                                La carga en elementos en serie es la misma y corresponde a la del equivalente de esa rama ($C_{serie}$):<br>
+                                $Q_3 = Q_6 = C_{serie} \cdot V = 2\text{ pF} \cdot 12\text{ V} = 24\text{ pC}$.<br>
+                                Tensiones individuales ($V = Q/C$): $V_3 = \frac{24}{3} = 8\text{ V}$ y $V_6 = \frac{24}{6} = 4\text{ V}$ (Nótese que suman 12V).<br>
+                                Energía: $U_3 = \frac{1}{2}(3)(8^2) = 96\text{ pJ}$ y $U_6 = \frac{1}{2}(6)(4^2) = 48\text{ pJ}$.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5</h3>
+                        <p>Un capacitor de placas planas paralelas separadas una distancia d, se conecta con una batería que mantiene constante una diferencia de potencial V entre las placas. Si se separan las placas hasta una distancia 2d, analice la veracidad de las siguientes proposiciones:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Aumenta la carga en las placas.</li>
+                            <li>El módulo del campo eléctrico E entre las placas disminuye.</li>
+                            <li>Aumenta la energía almacenada.</li>
+                            <li>La densidad de energía permanece constante.</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">Analice nuevamente las proposiciones del problema anterior, pero suponiendo que el capacitor se desconecta de la batería una vez cargado.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        
+                        <p>La capacitancia base es $C = \frac{\epsilon_0 A}{d}$. Al duplicar la separación ($d' = 2d$), la nueva capacitancia se reduce a la mitad: $C' = C/2$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>Escenario 1: Conectado a la batería ($V$ constante)</strong></p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a) Falsa:</strong> $Q' = C'V = (C/2)V = Q/2$. La carga disminuye.</li>
+                            <li><strong>b) Verdadera:</strong> $E' = \frac{V}{d'} = \frac{V}{2d} = E/2$. El campo decrece.</li>
+                            <li><strong>c) Falsa:</strong> $U' = \frac{1}{2} C' V^2 = \frac{1}{2} (C/2) V^2 = U/2$. La energía almacenada cae a la mitad.</li>
+                            <li><strong>d) Falsa:</strong> La densidad volumétrica de energía es $u = \frac{1}{2}\epsilon_0 E^2$. Al caer el campo a la mitad, la densidad de energía disminuye un cuarto.</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>Escenario 2: Desconectado de la batería ($Q$ constante)</strong></p>
+                        <p>Al estar aislado, la carga $Q$ no tiene vía de escape, por lo que se asume como valor fijo.</p>
+                        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>a) Falsa:</strong> La carga en las placas se mantiene constante ($Q' = Q$).</li>
+                            <li><strong>b) Falsa:</strong> $E' = \frac{V'}{d'}$. Como $V' = Q/C' = Q/(C/2) = 2V$. Entonces $E' = \frac{2V}{2d} = \frac{V}{d} = E$. El campo permanece constante.</li>
+                            <li><strong>c) Verdadera:</strong> $U' = \frac{Q^2}{2C'} = \frac{Q^2}{2(C/2)} = 2 \left( \frac{Q^2}{2C} \right) = 2U$. La energía se duplica (debido al trabajo del agente externo al separar las placas atrayéndose).</li>
+                            <li><strong>d) Verdadera:</strong> $u = \frac{1}{2}\epsilon_0 E^2$. Al mantenerse el campo $E$ constante, la densidad de energía por unidad de volumen no se ve alterada.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6</h3>
+                        <p>Sea un capacitor de placas paralelas cuadradas de área A y separación d, en el vacío. ¿Cuál es el efecto cualitativo sobre su capacidad en cada uno de los siguientes casos? Justifique en cada caso su respuesta.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>si d se reduce.</li>
+                            <li>si se duplica el área de ambas placas.</li>
+                            <li>si se duplica la diferencia de potencial entre las placas.</li>
+                            <li>si se coloca una lámina de cobre entre las placas, pero sin que toque a ninguna de ellas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p>Basamos nuestras justificaciones en la ecuación directriz de capacitancia para geometría plano-paralela en el vacío: $C = \frac{\epsilon_0 A}{d}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Aumenta:</strong> La capacidad es inversamente proporcional a la distancia $d$. Al reducirla, crece la capacidad del condensador de almacenar carga.</li>
+                            <li><strong>Se duplica:</strong> La capacidad es directamente proporcional al área $A$. Incrementos superficiales promueven retención adicional proporcional.</li>
+                            <li><strong>No se altera:</strong> La capacitancia $C$ es una constante exclusivamente de factor geométrico y del dieléctrico. Escala la carga con el voltaje ($Q = CV$), pero $C$ permanece estática e inmune a las tensiones aplicadas.</li>
+                            <li><strong>Aumenta:</strong> Si insertamos una lámina de cobre (metal conductor) de espesor $e$, el campo eléctrico se anula en el interior del metal ($E=0$ en el cobre). El sistema muta a dos capacitores más delgados en serie cuyo espacio de vacío total útil se redujo a $(d-e)$. Al reducirse la distancia efectiva $d$, la capacidad neta experimenta un ascenso, comportándose como $C' = \frac{\epsilon_0 A}{d - e}$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7</h3>
+                        <p>Un capacitor $C_1$ de 0,1 $\mu$F que se ha cargado a 100 V, se conecta a otro $C_2$ totalmente descargado, de 0,3 $\mu$F de capacidad. Prediga justificadamente:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>¿La carga final de $C_1$ será mayor, menor o igual que la de $C_2$?</li>
+                            <li>¿La diferencia de potencial entre las placas de $C_2$ será mayor, menor o igual que 100V?</li>
+                            <li>¿La energía almacenada por el conjunto de capacitores será mayor, menor o igual que la almacenada inicialmente por $C_1$?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución Analítica:</h4>
+                        
+                        <p>La carga inicial en $C_1$ es $Q_0 = C_1 \cdot V_0 = (0,1 \mu\text{F})(100\text{ V}) = 10 \mu\text{C}$. Al conectarlos en paralelo, la carga total se redistribuye, y el sistema alcanza un potencial común: $V_f = \frac{Q_{total}}{C_1 + C_2} = \frac{10}{0,4} = 25\text{ V}$. Las cargas finales son $Q_1 = 0,1 \cdot 25 = 2,5 \mu\text{C}$ y $Q_2 = 0,3 \cdot 25 = 7,5 \mu\text{C}$.</p>
+
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: lower-alpha;">
+                            <li><strong>Menor:</strong> Al estar en paralelo, ambos comparten la tensión. Dado que $Q = C \cdot V$, la carga acumulada es puramente proporcional a su capacitancia. Como $C_1 < C_2$, $C_1$ retendrá menos carga.</li>
+                            <li><strong>Menor:</strong> Se estabilizará obligatoriamente en 25 V. Es matemáticamente imposible exceder o mantener los 100V porque la carga fluye distribuyéndose en una capacidad global ($C_{eq}$) mayor a la inicial, abatiendo el nivel del escalón.</li>
+                            <li><strong>Menor:</strong> La energía inicial era $U_i = \frac{1}{2}(0,1\mu)(100^2) = 500 \mu\text{J}$. La final es $U_f = \frac{1}{2}(0,4\mu)(25^2) = 125 \mu\text{J}$. Ocurre una aparente pérdida, disipada en formato de calor (Efecto Joule) a través de los cables conductores y radiación electromagnética (chispas) durante el brusco reacomodamiento dinámico de las cargas.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8</h3>
+                        <p>Los capacitores de la figura poseen las siguientes capacidades: $C_1=5\mu\text{F}$, $C_2=10\mu\text{F}$, $C_3=15\mu\text{F}$ y $C_4=10\mu\text{F}$. La diferencia de potencial de la batería es $V_0=1,5\text{ V}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Determine la capacidad equivalente del circuito y la carga en cada capacitor cuando la batería se conecta entre los puntos A y B.</li>
+                            <li>Repita el análisis cuando la conexión se realiza entre los puntos B y D.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- Gráfico Circuito Cuadrado -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                            <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px; height: auto;">
+                                <!-- Líneas Cuadrado -->
+                                <line x1="50" y1="50" x2="250" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="250" y1="50" x2="250" y2="250" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="250" y1="250" x2="50" y2="250" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="50" y1="250" x2="50" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Nodos -->
+                                <circle cx="50" cy="250" r="4" fill="var(--text-color)"/>
+                                <text x="35" y="265" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">A</text>
+                                
+                                <circle cx="50" cy="50" r="4" fill="var(--text-color)"/>
+                                <text x="35" y="45" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">B</text>
+
+                                <circle cx="250" cy="50" r="4" fill="var(--text-color)"/>
+                                <text x="265" y="45" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">C</text>
+
+                                <circle cx="250" cy="250" r="4" fill="var(--text-color)"/>
+                                <text x="265" y="265" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">D</text>
+
+                                <!-- Capacitor C1 (Izquierda) -->
+                                <rect x="35" y="140" width="30" height="20" fill="var(--card-bg)" />
+                                <line x1="35" y1="145" x2="65" y2="145" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="35" y1="155" x2="65" y2="155" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="5" y="155" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">C1</text>
+
+                                <!-- Capacitor C2 (Arriba) -->
+                                <rect x="140" y="35" width="20" height="30" fill="var(--card-bg)" />
+                                <line x1="145" y1="35" x2="145" y2="65" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="155" y1="35" x2="155" y2="65" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="140" y="25" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">C2</text>
+
+                                <!-- Capacitor C3 (Derecha) -->
+                                <rect x="235" y="140" width="30" height="20" fill="var(--card-bg)" />
+                                <line x1="235" y1="145" x2="265" y2="145" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="235" y1="155" x2="265" y2="155" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="275" y="155" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">C3</text>
+
+                                <!-- Capacitor C4 (Abajo) -->
+                                <rect x="140" y="235" width="20" height="30" fill="var(--card-bg)" />
+                                <line x1="145" y1="235" x2="145" y2="265" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="155" y1="235" x2="155" y2="265" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="140" y="285" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">C4</text>
+                            </svg>
+                        </div>
+                        
+                        <h4>Resolución Analítica:</h4>
+
+                        <p><strong>a) Batería entre los nodos A y B:</strong></p>
+                        <p>El esquema forma una topología perimetral. Conectando la batería en la rama izquierda (A y B), el capacitor $C_1$ queda en paralelo con el resto del anillo, es decir, con la rama que contiene la combinación en <strong>serie</strong> de $C_2$, $C_3$ y $C_4$.</p>
+                        <div class="formula-responsive">
+                            $$ \frac{1}{C_{serie}} = \frac{1}{C_2} + \frac{1}{C_3} + \frac{1}{C_4} = \frac{1}{10} + \frac{1}{15} + \frac{1}{10} = \frac{8}{30} \implies C_{serie} = 3,75 \mu\text{F} $$
+                        </div>
+                        <p>La capacidad equivalente total es el paralelo de ambas derivaciones:</p>
+                        <div class="formula-responsive">
+                            $$ C_{eq} = C_{serie} + C_1 = 3,75 + 5 = 8,75 \mu\text{F} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">*Nota: El solucionario de la UTN en su guía oficial arroja para el inciso a) el valor $13,75\mu\text{F}$ producto de considerar los cálculos del circuito evaluando la conexión sobre el capacitor $C_2$ o $C_4$ ($10\mu\text{F}$), y no sobre el $C_1$ como indica expresamente el enunciado (A-B). Físicamente uniendo A-B el valor riguroso dictaminado por los datos es $8,75\mu\text{F}$.</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Batería entre los nodos B y D (Conexión cruzada diagonal):</strong></p>
+                        <p>El circuito muta. Ahora contamos con una rama superior derecha conteniendo la <strong>serie</strong> de $C_2$ y $C_3$, conectada en paralelo con otra rama inferior izquierda que hospeda la <strong>serie</strong> de $C_1$ y $C_4$.</p>
+                        <div class="formula-responsive">
+                            $$ C_{serie,arr} = \left( \frac{1}{10} + \frac{1}{15} \right)^{-1} = 6 \mu\text{F} $$
+                            $$ C_{serie,aba} = \left( \frac{1}{5} + \frac{1}{10} \right)^{-1} \approx 3,33 \mu\text{F} $$
+                        </div>
+                        <p>Sumando los equivalentes paralelos, extraemos la resultante global (esta vez coincidente con la solución oficial de la cátedra):</p>
+                        <div class="formula-responsive">
+                            $$ C_{eq} = 6 + 3,33 = 9,33 \mu\text{F} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9</h3>
+                        <p>Tres capacitores se conectan como indica la figura. Primero se cierra el interruptor $S_1$. Luego se abre $S_1$ y se cierra $S_2$. Determine la diferencia de potencial y la carga en cada capacitor.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">*Nota: La figura indica $C_1=3\mu\text{F}$ en una rama principal, y una rama lateral paralela con $C_2=1\mu\text{F}$ y $C_3=2\mu\text{F}$ en serie, alimentados a 200 V.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        
+                        <!-- Gráfico Circuito -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                            <svg viewBox="0 0 400 250" style="width: 100%; max-width: 400px; height: auto;">
+                                <!-- Línea Base Inferior -->
+                                <line x1="50" y1="200" x2="350" y2="200" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <!-- Batería -->
+                                <line x1="50" y1="200" x2="50" y2="140" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="35" y1="140" x2="65" y2="140" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="25" y1="130" x2="75" y2="130" stroke="var(--text-color)" stroke-width="4"/>
+                                <line x1="50" y1="130" x2="50" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                <text x="40" y="160" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="end">200 V</text>
+
+                                <!-- Línea Superior y S1 -->
+                                <line x1="50" y1="50" x2="100" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                <!-- Interruptor S1 -->
+                                <line x1="100" y1="50" x2="130" y2="35" stroke="var(--text-color)" stroke-width="2"/>
+                                <circle cx="100" cy="50" r="3" fill="var(--text-color)"/>
+                                <circle cx="140" cy="50" r="3" fill="var(--text-color)"/>
+                                <text x="115" y="30" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="middle">S1</text>
+                                
+                                <line x1="140" y1="50" x2="200" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Rama Central 3uF -->
+                                <line x1="200" y1="50" x2="200" y2="110" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="180" y1="110" x2="220" y2="110" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="180" y1="125" x2="220" y2="125" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="230" y="125" fill="var(--text-color)" font-weight="bold" font-family="sans-serif">3 μF</text>
+                                <line x1="200" y1="125" x2="200" y2="200" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <circle cx="200" cy="50" r="3" fill="var(--text-color)"/>
+                                <circle cx="200" cy="200" r="3" fill="var(--text-color)"/>
+
+                                <!-- Línea Superior 2 y S2 -->
+                                <line x1="200" y1="50" x2="230" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+                                <!-- Interruptor S2 -->
+                                <line x1="230" y1="50" x2="260" y2="35" stroke="var(--text-color)" stroke-width="2"/>
+                                <circle cx="230" cy="50" r="3" fill="var(--text-color)"/>
+                                <circle cx="270" cy="50" r="3" fill="var(--text-color)"/>
+                                <text x="245" y="30" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="middle">S2</text>
+                                
+                                <line x1="270" y1="50" x2="350" y2="50" stroke="var(--text-color)" stroke-width="2"/>
+
+                                <!-- Rama Derecha (1uF y 2uF) -->
+                                <line x1="350" y1="50" x2="350" y2="80" stroke="var(--text-color)" stroke-width="2"/>
+                                <line x1="330" y1="80" x2="370" y2="80" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="330" y1="95" x2="370" y2="95" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="315" y="95" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="end">1 μF</text>
+                                
+                                <line x1="350" y1="95" x2="350" y2="140" stroke="var(--text-color)" stroke-width="2"/>
+                                
+                                <line x1="330" y1="140" x2="370" y2="140" stroke="var(--text-color)" stroke-width="3"/>
+                                <line x1="330" y1="155" x2="370" y2="155" stroke="var(--text-color)" stroke-width="3"/>
+                                <text x="315" y="155" fill="var(--text-color)" font-weight="bold" font-family="sans-serif" text-anchor="end">2 μF</text>
+
+                                <line x1="350" y1="155" x2="350" y2="200" stroke="var(--text-color)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        
+                        <h4>Resolución Analítica:</h4>
+
+                        <p><strong>Paso 1: $S_1$ cerrado ($S_2$ abierto)</strong></p>
+                        <p>La fuente carga exclusivamente al capacitor central ($C_a = 3\mu\text{F}$) conectándolo directamente a los 200V. Alcanza su máxima carga estacionaria:</p>
+                        <div class="formula-responsive">
+                            $$ Q_{total} = C_a \cdot V = (3\mu\text{F})(200\text{ V}) = 600 \mu\text{C} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>Paso 2: $S_1$ abierto y $S_2$ cerrado</strong></p>
+                        <p>El capacitor cargado actúa ahora como "batería de choque" y descarga su excedente sobre la rama derecha, la cual se encuentra vacía. La rama derecha posee dos componentes en serie, con equivalente:</p>
+                        <div class="formula-responsive">
+                            $$ C_s = \left(\frac{1}{1} + \frac{1}{2}\right)^{-1} = \frac{2}{3} \mu\text{F} $$
+                        </div>
+                        <p>El circuito total final, es un paralelo entre la rama que retiene el de $3\mu\text{F}$ y la rama serie de $2/3\mu\text{F}$, con capacitancia equivalente total:</p>
+                        <div class="formula-responsive">
+                            $$ C_{eq} = 3\mu\text{F} + \frac{2}{3}\mu\text{F} = \frac{11}{3} \mu\text{F} $$
+                        </div>
+                        <p>Teniendo encapsulada la carga fuente intocable de $600\mu\text{C}$, se establece el voltaje de equilibrio estabilizado final de la malla:</p>
+                        <div class="formula-responsive">
+                            $$ V_f = \frac{Q_{total}}{C_{eq}} = \frac{600 \mu\text{C}}{11/3 \mu\text{F}} = \frac{1800}{11} \text{ V} \approx 163,64 \text{ V} $$
+                        </div>
+                        <p>Este es el voltaje sobre el de 3 $\mu$F. Para la rama derecha, los 163,64 V se reparten entre el 1 $\mu$F y el 2 $\mu$F. La carga en la rama derecha es $Q_s = C_s V_f = (2/3)(163,64) \approx 109,1 \mu\text{C}$.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong>Capacitor 3 $\mu$F:</strong> $V = 163,6 \text{ V}$, $Q = 3\mu \cdot 163,6 = 490,9 \mu\text{C}$.</li>
+                            <li><strong>Capacitor 1 $\mu$F:</strong> $Q = 109,1 \mu\text{C}$, $V = \frac{109,1\mu}{1\mu} = 109,1 \text{ V}$.</li>
+                            <li><strong>Capacitor 2 $\mu$F:</strong> $Q = 109,1 \mu\text{C}$, $V = \frac{109,1\mu}{2\mu} = 54,5 \text{ V}$.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10</h3>
+                        <p>En cierto tipo de teclado de computadora, cada tecla está conectada a una pequeña placa de metal que sirve como una de las placas de un capacitor de placas paralelas. Cuando se presiona una tecla, la separación entre las placas disminuye por lo que aumenta la capacidad. Se utilizan circuitos electrónicos para detectar el cambio de capacidad y determina qué tecla se presionó. En un teclado determinado, el área de cada placa metálica es de $49\text{ mm}^2$ y la separación entre las placas es de $0,6\text{ mm}$ antes de que se presione la tecla. Si el circuito puede detectar un cambio de capacidad de $0,3\text{ pF}$. ¿Cuánto debe presionarse la tecla antes de que el circuito detecte la presión?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p>Determinamos la capacidad base estática de la tecla ($A = 49 \times 10^{-6} \text{ m}^2$, $d_0 = 0,6 \times 10^{-3} \text{ m}$):</p>
+                        <div class="formula-responsive">
+                            $$ C_0 = \frac{\epsilon_0 A}{d_0} = \frac{(8,854 \times 10^{-12}) \cdot (49 \times 10^{-6})}{0,6 \times 10^{-3}} = 0,723 \times 10^{-12} \text{ F} = 0,723 \text{ pF} $$
+                        </div>
+                        <p>Para lograr enviar la señal lógica de actuación de la tecla, el sistema demanda un incremento positivo de $0,3\text{ pF}$, dictaminando que la capacidad límite final lograda producto de la compresión debe superar el nivel del umbral:</p>
+                        <div class="formula-responsive">
+                            $$ C_f = C_0 + \Delta C = 0,723 \text{ pF} + 0,3 \text{ pF} = 1,023 \text{ pF} $$
+                        </div>
+                        <p>Inyectando este nuevo nivel estabilizado límite ($C_f$) a la fórmula fundamental para retro-calcular la distancia residual remanente $d_f$:</p>
+                        <div class="formula-responsive">
+                            $$ d_f = \frac{\epsilon_0 A}{C_f} = \frac{(8,854 \times 10^{-12}) \cdot (49 \times 10^{-6})}{1,023 \times 10^{-12}} \approx 4,24 \times 10^{-4} \text{ m} = 0,424 \text{ mm} $$
+                        </div>
+                        <p>La distancia total presionada requerida será la contracción generada:</p>
+                        <div class="formula-responsive">
+                            $$ \text{Presión} = d_0 - d_f = 0,6 \text{ mm} - 0,424 \text{ mm} = 0,176 \text{ mm} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;">*Nota: La guía indica el resultado de $0,25 \text{ mm}$. Para poder alcanzar esa contracción final ($d_f = 0,35 \text{ mm}$ y $C_f = 1,239 \text{ pF}$), el circuito integrado del teclado debería requerir percibir un delta analítico de $0,5 \text{ pF}$. Las cuentas arrojadas documentan rigurosamente los datos provistos originalísimamente en el texto.</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11</h3>
+                        <p>El cable coaxial utilizado para conectar un reproductor de DVD puede considerarse como un capacitor cilíndrico, cuya capacidad por unidad de longitudes $69\text{ pF/m}$. Si se lo conecta a una diferencia de potencial de 2 V entre los conductores interior y exterior, ¿cuál será la densidad lineal de carga en los conductores?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p>La capacidad de un condensador nos indica la cantidad de carga que absorbe por voltio estabilizado. Dado que nos otorgan la "capacidad lineal" o capacidad dividida por la longitud ($C/L$), utilizamos la propia concepción definitoria matemática fundamental acoplada a la densidad de carga por unidad métrica ($\lambda = Q/L$):</p>
+                        <div class="formula-responsive">
+                            $$ C = \frac{Q}{V} \implies \frac{C}{L} = \frac{Q/L}{V} \implies \frac{C}{L} = \frac{\lambda}{V} $$
+                        </div>
+                        <p>Despejando la densidad lineal de carga $\lambda$:</p>
+                        <div class="formula-responsive">
+                            $$ \lambda = \left( \frac{C}{L} \right) \cdot V $$
+                        </div>
+                        <p>Inyectando el valor brindado y la tensión generada en la malla coaxial:</p>
+                        <div class="formula-responsive">
+                            $$ \lambda = (69 \text{ pF/m}) \cdot (2 \text{ V}) = 138 \text{ pC/m} $$
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12</h3>
+                        <p>Los flashes electrónicos integrados en las cámaras contienen un capacitor que almacena la energía utilizada para producir el destello. En uno de estos dispositivos, el destello dura 1/100 de segundo con una potencia media de salida de luz de 600 W.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: lower-alpha;">
+                            <li>Si la conversión de energía eléctrica en luz tiene una eficiencia del 95% (el resto se convierte en energía térmica), ¿cuánta energía debe almacenarse en el capacitor para producir un destello?</li>
+                            <li>Si la capacidad del dispositivo es de 0,754 mF, ¿cuál es la diferencia de potencial cuando el capacitor está listo para producir el destello?</li>
+                        </ul>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Resolución:</h4>
+                        
+                        <p><strong>a) Energía almacenada requerida:</strong></p>
+                        <p>Al dictaminar un consumo sostenido promedio de potencia por unidad de tiempo, derivamos primero la energía requerida neta de destello lumínico en el tubo (luz entregada al exterior):</p>
+                        <div class="formula-responsive">
+                            $$ E_{salida} = P \cdot \Delta t = 600 \text{ W} \cdot \left(\frac{1}{100} \text{ s}\right) = 6 \text{ J} $$
+                        </div>
+                        <p>Al estar penalizado mecánicamente con un grado de pérdida y limitación por rendimiento inelástico, exigimos calcular la energía <strong>bruta original ($U$)</strong> embutida en el capacitor (100% real):</p>
+                        <div class="formula-responsive">
+                            $$ U \cdot \eta_{rendimiento} = E_{salida} \implies U = \frac{6 \text{ J}}{0,95} = 6,31 \text{ J} $$
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>b) Diferencia de Potencial en bornes:</strong></p>
+                        <p>Sabiendo que la energía encapsulada electrostáticamente en el módulo es $U = \frac{1}{2} C V^2$, y conociendo $C = 0,754 \text{ mF} = 0,754 \times 10^{-3} \text{ F}$, extraemos la variable residual:</p>
+                        <div class="formula-responsive">
+                            $$ V = \sqrt{\frac{2U}{C}} = \sqrt{\frac{2 \cdot 6,31 \text{ J}}{0,754 \times 10^{-3} \text{ F}}} = \sqrt{\frac{12,62}{0,000754}} = \sqrt{16.737,4} \approx 129,3 \text{ V} $$
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;">*Nota: La guía aporta las respuestas de $11,7\text{ J}$ y $176,2\text{ V}$. Para arribar escalarmente a dicho requerimiento final global en el depósito original de los condensadores, la lámpara estroboscópica hubiese tenido que demandar teóricamente $1110\text{ W}$ efectivos lumínicos. Los pasos dictados en la presente justificación analítica responden íntegra y matemáticamente de modo impecable a los escalares expuestos por el texto oficial.</p>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/formulas_math.js"></script>
+
+</body>
+
+</html>
