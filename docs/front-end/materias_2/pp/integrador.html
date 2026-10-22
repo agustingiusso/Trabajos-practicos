@@ -5,324 +5,674 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Defensa Integrador - Smalltalk</title>
 
-    <!-- Enlace a tu CSS unificado -->
     <link rel="stylesheet" href="../../assets/css/main.css">
-    <!-- FontAwesome para los íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="paradigmas-page" data-theme="dark">
+<body class="paradigmas-page">
     
     <header class="header">
         <nav class="container">
-            <!-- Botón para volver a la página principal de Paradigmas -->
             <a href="../pp.html" class="btn-volver">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
             </a>
+
             <h1 class="logo">Defensa Smalltalk</h1>
+
+            <button class="theme-btn" id="theme-toggle">
+                <svg aria-hidden="true" class="sun" width="18" height="18" viewBox="0 0 24 24">
+                    <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                </svg>
+            </button>
         </nav>
         <div class="header-line"></div> 
     </header>
 
-    <!-- Contenedor principal centrado -->
     <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
         
         <div class="section-header" style="margin-top: 2rem;">
-            <h2>Sistema de Gestión de Plataforma de Streaming</h2>
-            <p>Defensa del Trabajo Integrador - Paradigma Orientado a Objetos</p>
+            <h2>Inciso 2: Sistema de Gestión de Plataforma de Streaming</h2>
+            <p>Defensa Visual del Trabajo Integrador - Relación Clases, Objetos y Workspace</p>
         </div>
 
-        <!-- ==========================================
-             REQUISITO OBLIGATORIO 1: DIAGRAMA DE CLASES
-             ========================================== -->
+        <!-- SECCIÓN 1: DIAGRAMA DE CLASES Y RELACIÓN CON EL WORKSPACE -->
         <section class="uml-section" style="margin-bottom: 4rem;">
-            <h2 class="section-title"><i class="fas fa-sitemap"></i> 1. Diagrama de Clases</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">Representación de la jerarquía, atributos y firmas de los métodos principales del sistema.</p>
+            <h2 class="section-title"><i class="fas fa-sitemap"></i> 1. Arquitectura de Clases y Relación con el Workspace</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                Modelamos el sistema separando la clase compuesta <strong>Plataforma</strong> de la jerarquía de herencia encabezada por la clase abstracta <strong>Contenido</strong> y sus subclases concretas <strong>Pelicula</strong> y <strong>Serie</strong>.
+            </p>
             
             <div class="uml-container">
                 <div class="uml-class root-class">
                     <h3>Plataforma</h3>
                     <hr>
-                    <p>- nombre: String<br>- empresa: String<br>- anio: Number<br>- capacidad: Number<br>- tipo: String<br>- contenidos: OrderedCollection</p>
+                    <p>
+                        - nombre: String<br>
+                        - empresa: String<br>
+                        - anio: Number<br>
+                        - capacidad: Number<br>
+                        - tipo: String<br>
+                        - contenidos: OrderedCollection
+                    </p>
                     <hr>
-                    <p class="method">+ agregarContenido(c: Contenido)<br>+ espacioOcupado(): Number</p>
+                    <p class="method">
+                        + crearPlataforma:emp:anio:cap:tipo: &lt;&lt;class&gt;&gt;<br>
+                        + initPlataforma:emp:anio:cap:tipo:<br>
+                        + verContenidos(): OrderedCollection<br>
+                        + verCapacidad(): Number<br>
+                        + modContenidos:(unaColeccion)<br>
+                        + espacioOcupado(): Number<br>
+                        + agregarContenido:(unCont: Contenido)
+                    </p>
                 </div>
-                <div class="uml-arrow"><i class="fas fa-long-arrow-alt-down"></i> 1..* (Agregación)</div>
+
+                <div class="uml-arrow"><i class="fas fa-long-arrow-alt-down"></i> 1..* (Agregación: variable de instancia <code>contenidos</code>)</div>
+
                 <div class="uml-class abstract-class">
-                    <h3>Contenido &lt;&lt;Abstract&gt;&gt;</h3>
+                    <h3>Contenido &lt;&lt;Clase Abstracta&gt;&gt;</h3>
                     <hr>
-                    <p>- codigo: Number<br>- titulo: String<br>- genero: String<br>- anio: Number<br>- tamanio: Number<br>- calificacion: Number<br>- disponible: Boolean</p>
+                    <p>
+                        - codigo: Number<br>
+                        - titulo: String<br>
+                        - genero: String<br>
+                        - anio: Number<br>
+                        - tamanio: Number<br>
+                        - calificacion: Number<br>
+                        - disponible: Boolean
+                    </p>
                     <hr>
-                    <p class="method">+ esRecomendable() &lt;&lt;abstract&gt;&gt;</p>
+                    <p class="method">
+                        + initCont:tit:gen:anio:tam:calif:disp:<br>
+                        + verCodigo() / verTitulo() / modTitulo:()<br>
+                        + verGenero() / verTamanio() / verDisponible()<br>
+                        + verCalificacion() / modCalificacion:()<br>
+                        + esRecomendable(): Boolean &lt;&lt;subclassResponsibility&gt;&gt;
+                    </p>
                 </div>
+
                 <div class="uml-branches">
                     <div class="uml-branch">
-                        <div class="uml-arrow-up"><i class="fas fa-long-arrow-alt-up"></i></div>
-                        <div class="uml-class">
+                        <div class="uml-arrow-up"><i class="fas fa-long-arrow-alt-up"></i> Herencia (es-un)</div>
+                        <div class="uml-class" style="border-color: #e74c3c;">
                             <h3>Pelicula</h3>
                             <hr>
-                            <p>- duracion: Number<br>- enCine: Boolean</p>
+                            <p>
+                                - duracion: Number<br>
+                                - enCine: Boolean
+                            </p>
                             <hr>
-                            <p class="method">+ esRecomendable(): Boolean</p>
+                            <p class="method">
+                                + crearPeli:...(9 args) &lt;&lt;class&gt;&gt;<br>
+                                + initPeli:...(llama a <code>super initCont:...</code>)<br>
+                                + esRecomendable(): Boolean<br>
+                                <span style="color: var(--text-muted); font-weight: normal; font-size: 0.8rem;">^(duracion &lt;= 120) &amp; (self verCalificacion &gt;= 7)</span>
+                            </p>
                         </div>
                     </div>
+
                     <div class="uml-branch">
-                        <div class="uml-arrow-up"><i class="fas fa-long-arrow-alt-up"></i></div>
-                        <div class="uml-class">
+                        <div class="uml-arrow-up"><i class="fas fa-long-arrow-alt-up"></i> Herencia (es-un)</div>
+                        <div class="uml-class" style="border-color: #3498db;">
                             <h3>Serie</h3>
                             <hr>
-                            <p>- temporadas: Number<br>- finalizada: Boolean</p>
+                            <p>
+                                - temporadas: Number<br>
+                                - finalizada: Boolean
+                            </p>
                             <hr>
-                            <p class="method">+ esRecomendable(): Boolean</p>
+                            <p class="method">
+                                + crearSerie:...(9 args) &lt;&lt;class&gt;&gt;<br>
+                                + initSerie:...(llama a <code>super initCont:...</code>)<br>
+                                + esRecomendable(): Boolean<br>
+                                <span style="color: var(--text-muted); font-weight: normal; font-size: 0.8rem;">^finalizada &amp; (temporadas &lt;= 3) &amp; (self verCalificacion &gt;= 7)</span>
+                            </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="punto-card" style="margin-top: 2rem;">
+                <h3 style="color: var(--color-paradigmas); margin-bottom: 1rem;">
+                    <i class="fas fa-project-diagram"></i> Trazabilidad entre el Workspace y las Clases
+                </h3>
+                <div class="trace-grid">
+                    <div class="trace-step">
+                        <div class="trace-badge">1. Instanciación Compuesta</div>
+                        <p>En el Workspace ejecutamos <code>netflix := Plataforma crearPlataforma:...</code>. El método de clase ejecuta <code>^(super new) initPlataforma:...</code>, creando la instancia e inicializando <code>contenidos := OrderedCollection new</code>.</p>
+                    </div>
+                    <div class="trace-step">
+                        <div class="trace-badge">2. Herencia con <code>super</code></div>
+                        <p>Al instanciar con <code>crearPeli:...</code> o <code>crearSerie:...</code>, su método <code>init</code> envía <code>super initCont:...</code> para cargar los 7 atributos heredados en <strong>Contenido</strong> y luego asigna sus 2 atributos propios.</p>
+                    </div>
+                    <div class="trace-step">
+                        <div class="trace-badge">3. Agregación y Validación</div>
+                        <p>Con <code>netflix agregarContenido: peli1</code>, el objeto <code>netflix</code> calcula <code>self espacioOcupado + unCont verTamanio</code> y valida que no supere <code>capacidad</code> antes de ejecutar <code>contenidos add: unCont</code>.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <hr class="doc-separator">
+        <hr class="card-divider" style="border: 0; height: 1px; background: var(--table-border-color); margin: 3rem 0;">
 
-        <!-- ==========================================
-             REQUISITO OBLIGATORIO 2: MENÚ
-             ========================================== -->
+        <!-- SECCIÓN 2: PRECARGA Y ESTRUCTURA DEL MENÚ EN EL WORKSPACE -->
         <section class="menu-section" style="margin-bottom: 4rem;">
-            <h2 class="section-title"><i class="fas fa-list-alt"></i> 2. Implementación del Menú</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">El menú interactivo se mantiene en ejecución mediante un bucle <code>whileTrue:</code> y utiliza la clase <code>ChoicePrompter</code>.</p>
-            
+            <h2 class="section-title"><i class="fas fa-terminal"></i> 2. Inicialización del Workspace y Menú Principal</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                Instanciamos la plataforma <strong>StreamUTN</strong> con 100.000 MB de capacidad, precargamos 5 películas y 5 series (ocupando 81.500 MB iniciales) y abrimos el ciclo interactivo con <code>ChoicePrompter</code>.
+            </p>
             <div class="code-box">
-                <div class="code-header">
-                    <span>Estructura de repetición y Prompter</span>
-                </div>
-                <pre><code>continuar := true.
+                <div class="code-header"><span>Workspace: Precarga de Objetos y Ciclo whileTrue:</span></div>
+                <pre><code>| netflix peli1 peli2 peli3 peli4 peli5 serie1 serie2 serie3 serie4 serie5 continuar opc colFil prom mejor dic colGen sinRep |
+
+netflix := <span class="highlight">Plataforma crearPlataforma:</span>'StreamUTN' emp:'UTN-FRLP' anio:2026 cap:100000 tipo:'Premium'.
+
+peli1 := <span class="highlight">Pelicula crearPeli:</span>1 tit:'Inception' gen:'Ficcion' anio:2010 tam:3500 calif:9 disp:true dur:148 cine:true.
+"... (Se instancian peli1..peli5 y serie1..serie5 y se agregan con netflix agregarContenido:) ..."
+
+continuar := true.
 [continuar] <span class="highlight">whileTrue:</span> [
     opc := <span class="highlight">ChoicePrompter choices:</span> #(
-        '1. Listado calificación >= 7'
-        '2. Filtrar por género'
-        '3. Listado recomendables para maratón'
-        '8. Agregar nuevo contenido'
+        '1. Listado calificación >= 7'          '6. Eliminar NO disponibles'
+        '2. Filtrar por género'                 '7. Cantidad por género (Diccionario)'
+        '3. Listado recomendables para maratón' '8. Agregar nuevo contenido'
+        '4. Tamaño promedio y superiores'       '9. Buscar y modificar por código'
+        '5. Contenido con mayor calificación'   '10. Eliminar contenido por código'
         '0. Salir'
     ).
-    
     (opc isNil) ifTrue: [ continuar := false ] ifFalse: [
-        "Resolución de opciones..."
+        "... Evaluación de cada inciso (ver simulador individual debajo) ..."
         (opc = '0. Salir') ifTrue: [ continuar := false ].
     ].
 ].</code></pre>
             </div>
         </section>
 
-        <hr class="doc-separator">
+        <hr class="card-divider" style="border: 0; height: 1px; background: var(--table-border-color); margin: 3rem 0;">
 
-        <!-- ==========================================
-             REQUISITO OBLIGATORIO 3 Y EXTRA: ITERADORES Y POLIMORFISMO (SIMULADOR)
-             ========================================== -->
+        <!-- SECCIÓN 3: SIMULADOR INDIVIDUAL PUNTO POR PUNTO -->
         <section class="simulator-section" style="margin-bottom: 4rem;">
-            <h2 class="section-title"><i class="fas fa-memory"></i> 3. Simulador de Memoria e Iteradores</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Visualización en tiempo real de cómo los iteradores de colección (<code>select:</code>, <code>collect:</code>, <code>reject:</code>) procesan los objetos en la RAM, y cómo actúa el <i>Binding Dinámico</i>.</p>
-            
-            <div class="split-screen">
-                
-                <!-- COLUMNA IZQUIERDA: CÓDIGO -->
-                <div class="code-column">
-                    <div class="control-panel">
-                        <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear Memoria</button>
-                    </div>
+            <h2 class="section-title"><i class="fas fa-memory"></i> 3. Defensa Interactiva Punto por Punto (Workspace + Memoria)</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                Seleccioná cualquier punto del menú en la barra inferior para visualizar de forma individual su código en el Workspace y, justo debajo, el impacto en vivo sobre la memoria RAM y el <code>System Transcript</code>.
+            </p>
 
-                    <!-- Iterador Select -->
-                    <div class="code-block" id="step-select">
-                        <div class="code-header">
-                            <span>A. Filtrado (select:)</span>
-                            <button class="sim-btn action" onclick="runSelect()"><i class="fas fa-play"></i> Ejecutar</button>
-                        </div>
-                        <pre><code>colFil := netflix verContenidos <span class="highlight">select:</span> [:c | 
-    c verCalificacion >= 7
-].</code></pre>
-                        <p class="explanation">Retorna una <strong>nueva colección</strong> solo con los elementos que cumplen la condición booleana.</p>
-                    </div>
+            <!-- BARRA DE NAVEGACIÓN DE PUNTOS -->
+            <div class="slide-controls" style="margin: 1.5rem auto 2rem;">
+                <ul class="nav-points" id="sim-nav-points">
+                    <li class="nav-point active" onclick="selectPoint(1)">Punto 1</li>
+                    <li class="nav-point" onclick="selectPoint(2)">Punto 2</li>
+                    <li class="nav-point" onclick="selectPoint(3)">Punto 3</li>
+                    <li class="nav-point" onclick="selectPoint(4)">Punto 4</li>
+                    <li class="nav-point" onclick="selectPoint(5)">Punto 5</li>
+                    <li class="nav-point" onclick="selectPoint(6)">Punto 6</li>
+                    <li class="nav-point" onclick="selectPoint(7)">Punto 7</li>
+                    <li class="nav-point" onclick="selectPoint(8)">Punto 8</li>
+                    <li class="nav-point" onclick="selectPoint(9)">Punto 9</li>
+                    <li class="nav-point" onclick="selectPoint(10)">Punto 10</li>
+                    <li class="nav-point" onclick="selectPoint(0)"><i class="fas fa-layer-group"></i> Ver Todos</li>
+                </ul>
+            </div>
 
-                    <!-- Iterador Collect -->
-                    <div class="code-block" id="step-collect">
-                        <div class="code-header">
-                            <span>B. Transformación (collect:)</span>
-                            <button class="sim-btn action" onclick="runCollect()"><i class="fas fa-play"></i> Ejecutar</button>
-                        </div>
-                        <pre><code>colGen := netflix verContenidos <span class="highlight">collect:</span> [:c | 
-    c verGenero
-].</code></pre>
-                        <p class="explanation">Retorna una <strong>nueva colección</strong> mapeando los objetos a un nuevo tipo de dato (Strings).</p>
-                    </div>
+            <!-- CONTENEDOR VERTICAL DE PUNTOS -->
+            <div class="vertical-points-wrapper">
 
-                    <!-- Iterador Reject -->
-                    <div class="code-block" id="step-reject">
-                        <div class="code-header">
-                            <span>C. Eliminación (reject:)</span>
-                            <button class="sim-btn action" onclick="runReject()"><i class="fas fa-play"></i> Ejecutar</button>
+                <!-- PUNTO 1 -->
+                <div class="code-block point-panel active-panel" id="step-1">
+                    <div class="code-header">
+                        <span>Punto 1. Listado de contenidos con calificación &gt;= 7 (select: + do:)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto1()"><i class="fas fa-play"></i> Ejecutar Punto 1</button>
                         </div>
-                        <pre><code>eliminados := netflix verContenidos <span class="highlight">reject:</span> [:c | 
-    c verDisponible
-].</code></pre>
-                        <p class="explanation">Retorna una <strong>nueva colección</strong> excluyendo los elementos que devuelven <em>true</em>.</p>
                     </div>
-
-                    <!-- Polimorfismo -->
-                    <div class="code-block" id="step-poly">
-                        <div class="code-header">
-                            <span>D. Polimorfismo (esRecomendable)</span>
-                            <button class="sim-btn action" onclick="runPoly()"><i class="fas fa-play"></i> Ejecutar</button>
-                        </div>
-                        <pre><code>colFil := netflix verContenidos select: [:c | 
-    <span class="highlight">c esRecomendable</span>
+                    <pre><code>(opc = '1. Listado calificación >= 7') ifTrue: [
+    Transcript show: '--- CALIFICACION >= 7 ---'; cr.
+    colFil := netflix verContenidos <span class="highlight">select:</span> [:c | c verCalificacion >= 7].
+    colFil <span class="highlight">do:</span> [:c | 
+        Transcript show: c verTitulo, ' (', c verCalificacion <span class="highlight">displayString</span>, ')'; cr
+    ].
+    Transcript cr.
 ].</code></pre>
-                        <p class="explanation">El mensaje es único, pero el <em>Binding Dinámico</em> decide qué regla aplicar según si es Serie o Película.</p>
-                    </div>
+                    <p class="explanation">
+                        <strong>Relación Clases ↔ Workspace:</strong> Se solicita la colección al objeto <code>netflix</code> con <code>Plataforma &gt;&gt; verContenidos</code>. El iterador <code>select:</code> evalúa el bloque enviando el mensaje heredado <code>Contenido &gt;&gt; verCalificacion</code> a cada instancia y retorna una nueva colección con los 9 contenidos que cumplen la condición (excluyendo a <em>Zoolander</em> con 6.5).
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-1"></div>
                 </div>
 
-                <!-- COLUMNA DERECHA: MEMORIA VISUAL -->
-                <div class="visual-column">
-                    <div class="memory-container" id="memory-board">
-                        <div class="collection-title">OrderedCollection: <span id="col-name">contenidos</span></div>
-                        
-                        <div class="memory-grid">
-                            
-                            <!-- Objeto 1: Pelicula (Inception) -->
-                            <div class="mem-object peli" data-calif="9" data-dur="148" data-disp="true">
-                                <div class="obj-header">a Pelicula</div>
-                                <div class="obj-body">
-                                    <div class="attr"><span>titulo:</span> 'Inception'</div>
-                                    <div class="attr genre-target"><span>genero:</span> 'Ficcion'</div>
-                                    <div class="attr calif-target"><span>calif:</span> 9</div>
-                                    <div class="attr"><span>duracion:</span> 148</div>
-                                    <div class="attr disp-target"><span>disp:</span> true</div>
-                                </div>
-                                <div class="poly-tooltip">duracion <= 120? Falso</div>
-                            </div>
-
-                            <!-- Objeto 2: Serie (Breaking Bad) -->
-                            <div class="mem-object serie" data-calif="9.5" data-temp="5" data-fin="true" data-disp="true">
-                                <div class="obj-header">a Serie</div>
-                                <div class="obj-body">
-                                    <div class="attr"><span>titulo:</span> 'Breaking Bad'</div>
-                                    <div class="attr genre-target"><span>genero:</span> 'Drama'</div>
-                                    <div class="attr calif-target"><span>calif:</span> 9.5</div>
-                                    <div class="attr"><span>temp:</span> 5</div>
-                                    <div class="attr disp-target"><span>disp:</span> true</div>
-                                </div>
-                                <div class="poly-tooltip">temporadas <= 3? Falso</div>
-                            </div>
-
-                            <!-- Objeto 3: Pelicula (El Conjuro - No Disponible) -->
-                            <div class="mem-object peli" data-calif="7.5" data-dur="112" data-disp="false">
-                                <div class="obj-header">a Pelicula</div>
-                                <div class="obj-body">
-                                    <div class="attr"><span>titulo:</span> 'El Conjuro'</div>
-                                    <div class="attr genre-target"><span>genero:</span> 'Terror'</div>
-                                    <div class="attr calif-target"><span>calif:</span> 7.5</div>
-                                    <div class="attr"><span>duracion:</span> 112</div>
-                                    <div class="attr disp-target" style="color: #e74c3c;"><span>disp:</span> false</div>
-                                </div>
-                                <div class="poly-tooltip">dur <= 120 & calif >=7? True</div>
-                            </div>
-                            
-                            <!-- Objeto 4: Pelicula (Toy Story) -->
-                            <div class="mem-object peli" data-calif="8.5" data-dur="81" data-disp="true">
-                                <div class="obj-header">a Pelicula</div>
-                                <div class="obj-body">
-                                    <div class="attr"><span>titulo:</span> 'Toy Story'</div>
-                                    <div class="attr genre-target"><span>genero:</span> 'Animacion'</div>
-                                    <div class="attr calif-target"><span>calif:</span> 8.5</div>
-                                    <div class="attr"><span>duracion:</span> 81</div>
-                                    <div class="attr disp-target"><span>disp:</span> true</div>
-                                </div>
-                                <div class="poly-tooltip">dur <= 120 & calif >=7? True</div>
-                            </div>
-
+                <!-- PUNTO 2 -->
+                <div class="code-block point-panel" id="step-2">
+                    <div class="code-header">
+                        <span>Punto 2. Filtrar el catálogo por género (Prompter + select:)</span>
+                        <div class="header-actions">
+                            <label for="select-genero" style="font-size: 0.85rem; color: var(--text-muted);">Género:</label>
+                            <select id="select-genero" class="sim-select" onchange="runPunto2()">
+                                <option value="Ficcion">'Ficcion'</option>
+                                <option value="Animacion">'Animacion'</option>
+                                <option value="Comedia">'Comedia'</option>
+                                <option value="Terror">'Terror'</option>
+                                <option value="Accion">'Accion'</option>
+                                <option value="Drama">'Drama'</option>
+                            </select>
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto2()"><i class="fas fa-play"></i> Ejecutar Punto 2</button>
                         </div>
                     </div>
+                    <pre><code>(opc = '2. Filtrar por género') ifTrue: [
+    | gen |
+    gen := <span class="highlight">Prompter prompt:</span> 'Ingrese género a buscar:'.
+    Transcript show: '--- GÉNERO: ', gen, ' ---'; cr.
+    colFil := netflix verContenidos <span class="highlight">select:</span> [:c | c verGenero = gen].
+    colFil <span class="highlight">do:</span> [:c | Transcript show: c verTitulo; cr].
+    Transcript cr.
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Relación Clases ↔ Workspace:</strong> La clase <code>Prompter</code> captura el String ingresado por el usuario y lo guarda en la variable temporal <code>gen</code>. Luego <code>select:</code> compara ese valor con el retorno de <code>Contenido &gt;&gt; verGenero</code> en cada objeto.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-2"></div>
+                </div>
+
+                <!-- PUNTO 3 -->
+                <div class="code-block point-panel" id="step-3">
+                    <div class="code-header">
+                        <span>Punto 3. Contenidos recomendables para maratón (Polimorfismo y Binding Dinámico)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto3()"><i class="fas fa-play"></i> Ejecutar Punto 3</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '3. Listado recomendables para maratón') ifTrue: [
+    Transcript show: '--- RECOMENDADOS PARA MARATÓN ---'; cr.
+    colFil := netflix verContenidos select: [:c | <span class="highlight">c esRecomendable</span>].
+    colFil do: [:c | Transcript show: c verTitulo; cr].
+    Transcript cr.
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Polimorfismo y Binding Dinámico:</strong> En <code>Contenido</code> el método <code>esRecomendable</code> está declarado como <code>^self subclassResponsibility</code>. En tiempo de ejecución, si <code>c</code> es instancia de <code>Pelicula</code> ejecuta <code>^(duracion &lt;= 120) &amp; (self verCalificacion &gt;= 7)</code>; si es instancia de <code>Serie</code> ejecuta <code>^finalizada &amp; (temporadas &lt;= 3) &amp; (self verCalificacion &gt;= 7)</code>.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-3"></div>
+                </div>
+
+                <!-- PUNTO 4 -->
+                <div class="code-block point-panel" id="step-4">
+                    <div class="code-header">
+                        <span>Punto 4. Tamaño promedio y contenidos que lo superan (size + do: + select:)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto4()"><i class="fas fa-play"></i> Ejecutar Punto 4</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '4. Tamaño promedio y superiores') ifTrue: [
+    | suma cant |
+    suma := 0.
+    cant := netflix verContenidos <span class="highlight">size</span>.
+    (cant > 0) ifTrue: [
+        netflix verContenidos <span class="highlight">do:</span> [:c | suma := suma + c verTamanio].
+        prom := suma / cant.
+        Transcript show: 'Promedio general: ', prom displayString, ' MB'; cr.
+        colFil := netflix verContenidos <span class="highlight">select:</span> [:c | c verTamanio > prom].
+        colFil do: [:c | Transcript show: '- ', c verTitulo, ' (', c verTamanio displayString, ' MB)'; cr].
+    ].
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Relación Clases ↔ Workspace:</strong> Primero recorre todos los objetos con <code>do:</code> enviando el mensaje <code>Contenido &gt;&gt; verTamanio</code> para acumular el total (81.500 MB / 10 = <strong>8.150 MB</strong> de promedio) y luego filtra con <code>select:</code> los 4 objetos cuyo tamaño supera ese promedio.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-4"></div>
+                </div>
+
+                <!-- PUNTO 5 -->
+                <div class="code-block point-panel" id="step-5">
+                    <div class="code-header">
+                        <span>Punto 5. Contenido con mayor calificación (first + do:)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto5()"><i class="fas fa-play"></i> Ejecutar Punto 5</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '5. Contenido con mayor calificación') ifTrue: [
+    netflix verContenidos isEmpty ifFalse: [
+        mejor := netflix verContenidos <span class="highlight">first</span>.
+        netflix verContenidos <span class="highlight">do:</span> [:c |
+            (c verCalificacion > mejor verCalificacion) ifTrue: [ mejor := c ].
+        ].
+        Transcript show: mejor verTitulo, ' con ', mejor verCalificacion displayString, ' puntos.'; cr.
+    ].
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Relación Clases ↔ Workspace:</strong> Toma como referencia inicial el primer objeto de la colección mediante <code>first</code> y recorre con <code>do:</code> comparando las calificaciones mediante <code>verCalificacion</code> hasta hallar a <em>Breaking Bad</em> (9.5 puntos).
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-5"></div>
+                </div>
+
+                <!-- PUNTO 6 -->
+                <div class="code-block point-panel" id="step-6">
+                    <div class="code-header">
+                        <span>Punto 6. Eliminar contenidos NO disponibles (select: not + modContenidos:)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto6()"><i class="fas fa-play"></i> Ejecutar Punto 6</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '6. Eliminar NO disponibles') ifTrue: [
+    | eliminados |
+    eliminados := netflix verContenidos select: [:c | <span class="highlight">c verDisponible not</span>].
+    eliminados isEmpty ifTrue: [
+        MessageBox notify: 'Todos los contenidos están disponibles actualmente.'.
+    ] ifFalse: [
+        eliminados do: [:c | Transcript show: '- ', c verTitulo; cr].
+        netflix <span class="highlight">modContenidos:</span> (netflix verContenidos select: [:c | c verDisponible]).
+        MessageBox notify: 'Se eliminaron los contenidos listados en el Transcript.'.
+    ].
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Modificación de Estado en Plataforma:</strong> Identifica los objetos con <code>disponible = false</code> (<em>El Conjuro</em> y <em>Dark</em>) enviando el mensaje unario <code>not</code> al booleano retornado por <code>verDisponible</code>. Luego actualiza la variable de instancia <code>contenidos</code> de <code>netflix</code> usando <code>Plataforma &gt;&gt; modContenidos:</code>.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-6"></div>
+                </div>
+
+                <!-- PUNTO 7 -->
+                <div class="code-block point-panel" id="step-7">
+                    <div class="code-header">
+                        <span>Punto 7. Cantidad de contenidos por género (Dictionary + collect: + asSet)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto7()"><i class="fas fa-play"></i> Ejecutar Punto 7</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '7. Cantidad por género (Diccionario)') ifTrue: [
+    dic := <span class="highlight">Dictionary new</span>.
+    colGen := netflix verContenidos <span class="highlight">collect:</span> [:c | c verGenero].
+    sinRep := colGen <span class="highlight">asSet</span>.
+    sinRep do: [:g | <span class="highlight">dic at: g put:</span> (colGen occurrencesOf: g)].
+    dic <span class="highlight">keysDo:</span> [:k |
+        Transcript show: 'Género: ', k, ' - Cantidad: ', (dic at: k) displayString; cr.
+    ].
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Transformación y Diccionario:</strong> <code>collect:</code> genera una colección integrada únicamente por los Strings de los géneros (<code>colGen</code>). Con <code>asSet</code> eliminamos las repeticiones y con <code>occurrencesOf:</code> contabilizamos cuántas veces aparece cada género para guardarlo como par <code>clave -&gt; valor</code> en el <code>Dictionary</code>.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-7"></div>
+                </div>
+
+                <!-- PUNTO 8 -->
+                <div class="code-block point-panel" id="step-8">
+                    <div class="code-header">
+                        <span>Punto 8. Agregar nuevo contenido validando capacidad (agregarContenido:)</span>
+                        <div class="header-actions">
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto8(false)"><i class="fas fa-plus"></i> Carga Válida (4500 MB)</button>
+                            <button class="sim-btn btn-danger-outline" onclick="runPunto8(true)"><i class="fas fa-exclamation-triangle"></i> Exceso (25000 MB)</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '8. Agregar nuevo contenido') ifTrue: [
+    espacioLibre := netflix verCapacidad - <span class="highlight">netflix espacioOcupado</span>.
+    MessageBox notify: 'Espacio disponible en la plataforma: ', espacioLibre displayString, ' MB.'.
+    "... Ingreso de datos con ChoicePrompter, Prompter y MessageBox confirm: ..."
+    nuevoObj := <span class="highlight">Pelicula crearPeli:</span>cod tit:tit gen:gen anio:anio tam:tam calif:calif disp:disp dur:dur cine:cine.
+    netflix <span class="highlight">agregarContenido:</span> nuevoObj.
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Delegación de Responsabilidad:</strong> El Workspace instancia el nuevo objeto y se lo envía a <code>netflix agregarContenido: nuevoObj</code>. Es la propia clase <code>Plataforma</code> la que verifica internamente <code>((self espacioOcupado + unCont verTamanio) &lt;= capacidad)</code> antes de agregarlo o mostrar un <code>MessageBox errorMsg:</code>.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-8"></div>
+                </div>
+
+                <!-- PUNTO 9 -->
+                <div class="code-block point-panel" id="step-9">
+                    <div class="code-header">
+                        <span>Punto 9. Buscar y modificar contenido por código (detect: ifNone: + setters)</span>
+                        <div class="header-actions">
+                            <label for="select-cod-mod" style="font-size: 0.85rem; color: var(--text-muted);">Código:</label>
+                            <select id="select-cod-mod" class="sim-select" onchange="runPunto9()">
+                                <option value="3">Cód 3 (Zoolander)</option>
+                                <option value="1">Cód 1 (Inception)</option>
+                                <option value="6">Cód 6 (Breaking Bad)</option>
+                                <option value="99">Cód 99 (No existe)</option>
+                            </select>
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto9()"><i class="fas fa-play"></i> Ejecutar Punto 9</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '9. Buscar y modificar por código') ifTrue: [
+    codBuscado := (Prompter prompt: 'Ingrese el código a modificar:') asNumber.
+    encontrado := netflix verContenidos <span class="highlight">detect:</span> [:c | c verCodigo = codBuscado] <span class="highlight">ifNone:</span> [nil].
+    (encontrado isNil) ifTrue: [
+        MessageBox warning: 'No se encontró ningún contenido con ese código.'.
+    ] ifFalse: [
+        encontrado <span class="highlight">modTitulo:</span> nuevoTit.
+        encontrado <span class="highlight">modCalificacion:</span> nuevaCal.
+    ].
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Búsqueda Única y Mutación por Referencia:</strong> <code>detect:ifNone:</code> retorna la referencia directa a la instancia buscada (o <code>nil</code> si no existe). Al enviarle <code>modTitulo:</code> y <code>modCalificacion:</code>, modificamos el estado interno de ese objeto directamente en la colección de <code>netflix</code>.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-9"></div>
+                </div>
+
+                <!-- PUNTO 10 -->
+                <div class="code-block point-panel" id="step-10">
+                    <div class="code-header">
+                        <span>Punto 10. Eliminar un contenido por código (reject: + modContenidos:)</span>
+                        <div class="header-actions">
+                            <label for="select-cod-del" style="font-size: 0.85rem; color: var(--text-muted);">Código:</label>
+                            <select id="select-cod-del" class="sim-select" onchange="runPunto10()">
+                                <option value="5">Cód 5 (Gladiador)</option>
+                                <option value="2">Cód 2 (Toy Story)</option>
+                                <option value="10">Cód 10 (Los Simpson)</option>
+                            </select>
+                            <button class="sim-btn reset" onclick="resetSim()"><i class="fas fa-undo"></i> Resetear RAM</button>
+                            <button class="sim-btn action" onclick="runPunto10()"><i class="fas fa-play"></i> Ejecutar Punto 10</button>
+                        </div>
+                    </div>
+                    <pre><code>(opc = '10. Eliminar contenido por código') ifTrue: [
+    | codEliminar |
+    codEliminar := (Prompter prompt: 'Ingrese el código a eliminar:') asNumber.
+    netflix <span class="highlight">modContenidos:</span> (netflix verContenidos <span class="highlight">reject:</span> [:c | c verCodigo = codEliminar]).
+    MessageBox notify: 'Actualización finalizada (Si el código existía, fue eliminado).'.
+].</code></pre>
+                    <p class="explanation">
+                        <strong>Iterador reject:</strong> A diferencia de <code>select:</code>, el iterador <code>reject:</code> incluye en la nueva colección únicamente los elementos donde el bloque evalúa en <code>false</code>, descartando el objeto cuyo código coincide con <code>codEliminar</code>.
+                    </p>
+                    <div class="sim-mount-Slot" id="mount-10"></div>
                 </div>
 
             </div>
+
+            <!-- SIMULADOR DE MEMORIA DE ANCHO COMPLETO (SE ACOPLA DEBAJO DEL PUNTO ACTIVO) -->
+            <div class="memory-container" id="memory-board">
+                
+                <!-- FILA SUPERIOR: ESTADO DE NETFLIX (IZQ) + SYSTEM TRANSCRIPT (DER) -->
+                <div class="sim-top-dashboard">
+                    
+                    <div class="platform-status-box">
+                        <div class="platform-status-header">
+                            <div class="platform-title-group">
+                                <i class="fas fa-server"></i>
+                                <span>Variable Workspace: <strong>netflix</strong> (<code>a Plataforma</code>)</span>
+                            </div>
+                            <span id="plat-count-badge" class="plat-badge">10 objetos</span>
+                        </div>
+
+                        <div class="platform-chips">
+                            <span class="plat-chip"><b>nombre:</b> 'StreamUTN'</span>
+                            <span class="plat-chip"><b>empresa:</b> 'UTN-FRLP'</span>
+                            <span class="plat-chip"><b>anio:</b> 2026</span>
+                            <span class="plat-chip"><b>tipo:</b> 'Premium'</span>
+                        </div>
+
+                        <div class="capacity-bar-wrapper">
+                            <div class="capacity-labels">
+                                <span>Método <code>espacioOcupado</code>: <strong id="plat-used">81500</strong> / 100000 MB</span>
+                                <span>Libre: <strong id="plat-free">18500</strong> MB</span>
+                            </div>
+                            <div class="capacity-track">
+                                <div id="plat-bar" class="capacity-fill" style="width: 81.5%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transcript-box">
+                        <div class="transcript-header">
+                            <span><i class="fas fa-terminal"></i> System Transcript / MessageBox</span>
+                            <span id="active-op-badge" class="op-badge">Estado Inicial</span>
+                        </div>
+                        <div id="transcript-output" class="transcript-body">
+                            &gt; Plataforma 'StreamUTN' creada (81.500 / 100.000 MB).<br>
+                            &gt; 5 instancias de Pelicula y 5 de Serie cargadas en contenidos.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="collection-title">
+                    OrderedCollection: <span id="col-name">contenidos</span>
+                </div>
+                
+                <!-- GRILLA AMPLIA DE LOS 10 OBJETOS EN MEMORIA RAM -->
+                <div class="memory-grid" id="memory-grid">
+                    
+                    <!-- 1. Inception -->
+                    <div class="mem-object peli" data-cod="1" data-tit="Inception" data-gen="Ficcion" data-tam="3500" data-calif="9" data-dur="148" data-disp="true">
+                        <div class="obj-header"><span>#1 a Pelicula</span> <small>3500 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Inception'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Ficcion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">9</strong></div>
+                            <div class="attr"><span>dur:</span> 148 min | <span>disp:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">dur &lt;= 120? False (148m)</div>
+                    </div>
+
+                    <!-- 2. Toy Story -->
+                    <div class="mem-object peli" data-cod="2" data-tit="Toy Story" data-gen="Animacion" data-tam="1500" data-calif="8.5" data-dur="81" data-disp="true">
+                        <div class="obj-header"><span>#2 a Pelicula</span> <small>1500 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Toy Story'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Animacion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">8.5</strong></div>
+                            <div class="attr"><span>dur:</span> 81 min | <span>disp:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">dur&lt;=120 &amp; cal&gt;=7: True</div>
+                    </div>
+
+                    <!-- 3. Zoolander -->
+                    <div class="mem-object peli" data-cod="3" data-tit="Zoolander" data-gen="Comedia" data-tam="1200" data-calif="6.5" data-dur="90" data-disp="true">
+                        <div class="obj-header"><span>#3 a Pelicula</span> <small>1200 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Zoolander'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Comedia'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">6.5</strong></div>
+                            <div class="attr"><span>dur:</span> 90 min | <span>disp:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">calif &gt;= 7? False (6.5)</div>
+                    </div>
+
+                    <!-- 4. El Conjuro -->
+                    <div class="mem-object peli" data-cod="4" data-tit="El Conjuro" data-gen="Terror" data-tam="1800" data-calif="7.5" data-dur="112" data-disp="false">
+                        <div class="obj-header"><span>#4 a Pelicula</span> <small>1800 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'El Conjuro'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Terror'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">7.5</strong></div>
+                            <div class="attr disp-target" style="color:#e74c3c;"><span>dur:</span> 112m | <span>disp:</span> false</div>
+                        </div>
+                        <div class="poly-tooltip">dur&lt;=120 &amp; cal&gt;=7: True</div>
+                    </div>
+
+                    <!-- 5. Gladiador -->
+                    <div class="mem-object peli" data-cod="5" data-tit="Gladiador" data-gen="Accion" data-tam="4000" data-calif="8.5" data-dur="155" data-disp="true">
+                        <div class="obj-header"><span>#5 a Pelicula</span> <small>4000 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Gladiador'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Accion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">8.5</strong></div>
+                            <div class="attr"><span>dur:</span> 155 min | <span>disp:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">dur &lt;= 120? False (155m)</div>
+                    </div>
+
+                    <!-- 6. Breaking Bad -->
+                    <div class="mem-object serie" data-cod="6" data-tit="Breaking Bad" data-gen="Drama" data-tam="12000" data-calif="9.5" data-temp="5" data-fin="true" data-disp="true">
+                        <div class="obj-header"><span>#6 a Serie</span> <small>12000 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Breaking Bad'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Drama'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">9.5</strong></div>
+                            <div class="attr"><span>temp:</span> 5 | <span>fin:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">temp &lt;= 3? False (5 temp)</div>
+                    </div>
+
+                    <!-- 7. Stranger Things -->
+                    <div class="mem-object serie" data-cod="7" data-tit="Stranger Things" data-gen="Ficcion" data-tam="9500" data-calif="8.5" data-temp="4" data-fin="false" data-disp="true">
+                        <div class="obj-header"><span>#7 a Serie</span> <small>9500 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Stranger Things'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Ficcion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">8.5</strong></div>
+                            <div class="attr"><span>temp:</span> 4 | <span>fin:</span> false</div>
+                        </div>
+                        <div class="poly-tooltip">finalizada? False</div>
+                    </div>
+
+                    <!-- 8. The Office -->
+                    <div class="mem-object serie" data-cod="8" data-tit="The Office" data-gen="Comedia" data-tam="15000" data-calif="9" data-temp="9" data-fin="true" data-disp="true">
+                        <div class="obj-header"><span>#8 a Serie</span> <small>15000 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'The Office'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Comedia'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">9</strong></div>
+                            <div class="attr"><span>temp:</span> 9 | <span>fin:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">temp &lt;= 3? False (9 temp)</div>
+                    </div>
+
+                    <!-- 9. Dark -->
+                    <div class="mem-object serie" data-cod="9" data-tit="Dark" data-gen="Ficcion" data-tam="8000" data-calif="8.5" data-temp="3" data-fin="true" data-disp="false">
+                        <div class="obj-header"><span>#9 a Serie</span> <small>8000 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Dark'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Ficcion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">8.5</strong></div>
+                            <div class="attr disp-target" style="color:#e74c3c;"><span>temp:</span> 3 | <span>disp:</span> false</div>
+                        </div>
+                        <div class="poly-tooltip">fin &amp; temp&lt;=3 &amp; cal&gt;=7: True</div>
+                    </div>
+
+                    <!-- 10. Los Simpson -->
+                    <div class="mem-object serie" data-cod="10" data-tit="Los Simpson" data-gen="Animacion" data-tam="25000" data-calif="8" data-temp="35" data-fin="false" data-disp="true">
+                        <div class="obj-header"><span>#10 a Serie</span> <small>25000 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Los Simpson'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Animacion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">8</strong></div>
+                            <div class="attr"><span>temp:</span> 35 | <span>fin:</span> false</div>
+                        </div>
+                        <div class="poly-tooltip">finalizada? False</div>
+                    </div>
+
+                    <!-- 11. Objeto Dinámico para Punto 8 -->
+                    <div id="obj-nuevo-p8" class="mem-object peli" data-cod="11" data-tit="Interstellar" data-gen="Ficcion" data-tam="4500" data-calif="9.2" data-dur="169" data-disp="true" style="display: none;">
+                        <div class="obj-header"><span>#11 a Pelicula (Nuevo)</span> <small>4500 MB</small></div>
+                        <div class="obj-body">
+                            <div class="attr tit-target"><span>tit:</span> <strong class="val-tit">'Interstellar'</strong></div>
+                            <div class="attr genre-target"><span>gen:</span> 'Ficcion'</div>
+                            <div class="attr calif-target"><span>calif:</span> <strong class="val-calif">9.2</strong></div>
+                            <div class="attr"><span>dur:</span> 169 min | <span>disp:</span> true</div>
+                        </div>
+                        <div class="poly-tooltip">dur &lt;= 120? False (169m)</div>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
     </main>
 
-    <!-- SCRIPTS PARA EL SIMULADOR -->
-    <script>
-        const objects = document.querySelectorAll('.mem-object');
-        const colName = document.getElementById('col-name');
-        
-        function resetSim() {
-            objects.forEach(obj => {
-                // Limpia todas las clases extra y reinicia los tooltips
-                obj.className = 'mem-object ' + (obj.classList.contains('peli') ? 'peli' : 'serie');
-            });
-            colName.innerText = 'contenidos';
-        }
-
-        // 1. SELECT (Filtra >= 7)
-        function runSelect() {
-            resetSim();
-            colName.innerText = 'colFil (Nueva Colección)';
-            objects.forEach(obj => {
-                const calif = parseFloat(obj.getAttribute('data-calif'));
-                if (calif < 7) {
-                    obj.classList.add('dimmed'); // Se apagan los menores a 7
-                } else {
-                    obj.classList.add('highlighted'); // Se iluminan los >= 7
-                }
-            });
-        }
-
-        // 2. COLLECT (Extrae solo los Géneros)
-        function runCollect() {
-            resetSim();
-            colName.innerText = 'colGen (Strings)';
-            objects.forEach(obj => {
-                obj.classList.add('collected'); // Achica la tarjeta a solo el string
-            });
-        }
-
-        // 3. REJECT (Excluye los disponibles)
-        function runReject() {
-            resetSim();
-            colName.innerText = 'eliminados (Colección Temporal)';
-            objects.forEach(obj => {
-                const isDisp = obj.getAttribute('data-disp') === 'true';
-                if (isDisp) {
-                    obj.classList.add('dimmed'); // Excluye (apaga) los disponibles
-                } else {
-                    obj.classList.add('highlighted-danger'); // Resalta en rojo los no disponibles
-                }
-            });
-        }
-
-        // 4. POLIMORFISMO
-        function runPoly() {
-            resetSim();
-            colName.innerText = 'colFil (Recomendados)';
-            objects.forEach(obj => {
-                // Evaluamos según la clase del objeto instanciado
-                if(obj.classList.contains('peli')) {
-                    const dur = parseFloat(obj.getAttribute('data-dur'));
-                    const calif = parseFloat(obj.getAttribute('data-calif'));
-                    if(dur <= 120 && calif >= 7) {
-                        obj.classList.add('poly-true');
-                    } else {
-                        obj.classList.add('poly-false');
-                    }
-                } else if(obj.classList.contains('serie')) {
-                    const temp = parseFloat(obj.getAttribute('data-temp'));
-                    const calif = parseFloat(obj.getAttribute('data-calif'));
-                    const fin = obj.getAttribute('data-fin') === 'true';
-                    if(fin && temp <= 3 && calif >= 7) {
-                        obj.classList.add('poly-true');
-                    } else {
-                        obj.classList.add('poly-false');
-                    }
-                }
-            });
-        }
-    </script>
+    <!-- Conexión al gestor de temas y al simulador JS externo -->
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/integrador_pp.js"></script>
 </body>
 </html>
