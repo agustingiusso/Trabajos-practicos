@@ -1,5 +1,5 @@
 body.algoritmos-page,
-body.tp1-algoritmos-page {
+body[class*="algoritmos-page"] {
     --accent: var(--color-algoritmos);
     --button-hover-bg: var(--color-algoritmos-dark);
     --header-line-color: var(--color-algoritmos);

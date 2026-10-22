@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP1 - 18 Puntos</title>
+    <title>TP1 - Algoritmos y Estructuras de Datos</title>
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+
 </head>
-<body class="tp1-algoritmos-page">
+
+<body class="algoritmos-page">
+
+    <!-- Menú lateral de partes -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Trabajo Práctico 1</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Parte 1: Variables y Operaciones</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2: Control de Decisión</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
     <header class="header">
         <div class="header-container">
             <nav class="container">
@@ -18,859 +38,1241 @@
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                 </a>
-                <button class="theme-btn" aria-label="Cambiar tema">
-                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
-                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
-                    </svg>
-                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
-                        <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
-                    </svg>
-                </button>
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
+    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+    </svg>
+    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+    </svg>
+</button>
             </nav>
             <div class="header-line"></div>
         </div>
     </header>
 
-    <!-- Menú lateral de navegación -->
-        <div class="slide-controls">
-             <ul class="nav-points">
-             <li class="nav-point" data-point="1">01</li>
-             <li class="nav-point" data-point="2">02</li>
-             <li class="nav-point" data-point="3">03</li>
-             <li class="nav-point" data-point="4">04</li>
-             <li class="nav-point" data-point="5">05</li>
-             <li class="nav-point" data-point="6">06</li>
-             <li class="nav-point" data-point="7">07</li>
-             <li class="nav-point" data-point="8">08</li>
-             <li class="nav-point" data-point="9">09</li>
-             <li class="nav-point" data-point="10">10</li>
-             <li class="nav-point" data-point="11">11</li>
-             <li class="nav-point" data-point="12">12</li>
-             <li class="nav-point" data-point="13">13</li>
-             <li class="nav-point" data-point="14">14</li>
-             <li class="nav-point" data-point="15">15</li>
-             <li class="nav-point" data-point="16">16</li>
-             <li class="nav-point" data-point="17">17</li>
-             <li class="nav-point" data-point="18">18</li>
-          </ul>
-        </div>
+    <!-- Selector de puntos -->
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+        </ul>
+    </div>
 
     <main class="main-container">
 
-        <div class="slides-container">
-            <!-- Punto 1 -->
+        <!-- =========================================================================
+             PARTE 1: USO DE VARIABLES Y OPERACIONES (5 PUNTOS)
+             ========================================================================= -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Parte 1 - Ejercicio 1 -->
             <article class="slide active">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 1: Operaciones básicas</h3>
-                        <p>Dados como datos dos números calcular su suma y su producto e informar los resultados.</p>
+                        <h3>Ejercicio 1: Liquidación y recibo de sueldo</h3>
+                        <p>Una empresa desea calcular el sueldo de un empleado e imprimir su recibo detallando: Nombre y Apellido, Sueldo Básico, Premio, Comida, Viáticos, Ausentes, Obra social (3%), Ley 19032 (3%), y Jubilación (11%). Por los ausentes, se descuenta un monto fijo por día de ausencia. Los porcentajes se calculan sobre los montos remunerativos. Viáticos, premios y comida no se consideran remunerativos.</p>
                     </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main()
 {
-    float num1 = 0, num2 = 0, sum = 0, multi = 0;
+    // Declaración de variables:
+    char nombre[50];
+    char apellido[50];
+    float sueldo_basico;
+    float premio;
+    float comida;
+    float viaticos;
+    int ausentes;
+    float descuento_ausentes, total_ausentes;
+    float monto_remunerativo, monto_no_remunerativo;
+    float obra_social, ley_19032, jubilacion, total_descuentos;
+    float sueldo_bruto;
+    float sueldo_neto;
 
-    printf("Ingrese el primer numero: ");
-    scanf("%f", &num1);
-    printf("Ingrese el segundo numero: ");
-    scanf("%f", &num2);
+    // Ingreso de datos:
+    printf("Ingrese el nombre del empleado: ");
+    scanf("%s", nombre);
 
-    sum = num1 + num2;
-    multi = num1 * num2;
+    printf("Ingrese el apellido del empleado: ");
+    scanf("%s", apellido);
 
-    printf("\nLa suma de los numeros es: %.2f", sum);
-    printf("\nLa multiplicacion de los numeros es: %.2f", multi);
+    printf("Ingrese el sueldo basico: ");
+    scanf("%f", &amp;sueldo_basico);
+
+    printf("Ingrese el premio: ");
+    scanf("%f", &amp;premio);
+
+    printf("Ingrese el monto de comida: ");
+    scanf("%f", &amp;comida);
+
+    printf("Ingrese el monto de viaticos: ");
+    scanf("%f", &amp;viaticos);
+
+    printf("Ingrese la cantidad de dias ausentes: ");
+    scanf("%d", &amp;ausentes);
+
+    printf("Ingrese el monto fijo por dia de ausencia: ");
+    scanf("%f", &amp;descuento_ausentes);
+
+    // Cálculo de haberes y retenciones sobre monto remunerativo:
+    total_ausentes = ausentes * descuento_ausentes;
+    monto_remunerativo = sueldo_basico - total_ausentes;
+    monto_no_remunerativo = premio + comida + viaticos;
+
+    obra_social = monto_remunerativo * 0.03;
+    ley_19032 = monto_remunerativo * 0.03;
+    jubilacion = monto_remunerativo * 0.11;
+
+    total_descuentos = obra_social + ley_19032 + jubilacion;
+    sueldo_bruto = monto_remunerativo + monto_no_remunerativo;
+    sueldo_neto = sueldo_bruto - total_descuentos;
+
+    // Impresión del recibo:
+    printf("\n================ RECIBO DE SUELDO ================\n");
+    printf("Empleado: %s %s\n", nombre, apellido);
+    printf("--------------------------------------------------\n");
+    printf("Sueldo Basico:               $ %.2f\n", sueldo_basico);
+    printf("Ausentes (%d dias):          -$ %.2f\n", ausentes, total_ausentes);
+    printf("Premio (No rem.):            $ %.2f\n", premio);
+    printf("Comida (No rem.):            $ %.2f\n", comida);
+    printf("Viaticos (No rem.):          $ %.2f\n", viaticos);
+    printf("--------------------------------------------------\n");
+    printf("Obra Social (3%%):           -$ %.2f\n", obra_social);
+    printf("Ley 19032 (3%%):             -$ %.2f\n", ley_19032);
+    printf("Jubilacion (11%%):           -$ %.2f\n", jubilacion);
+    printf("--------------------------------------------------\n");
+    printf("Sueldo Bruto:                $ %.2f\n", sueldo_bruto);
+    printf("Total Retenciones:          -$ %.2f\n", total_descuentos);
+    printf("SUELDO NETO A COBRAR:        $ %.2f\n", sueldo_neto);
+    printf("==================================================\n");
 
     return 0;
 }</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
                     </div>
                 </section>
             </article>
 
-            <!-- Punto 2 -->
+            <!-- Parte 1 - Ejercicio 2 -->
             <article class="slide">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 2: Promedio de cinco números</h3>
-                        <p>Dados cinco números obtener el promedio de los mismos e informar el resultado.</p>
+                        <h3>Ejercicio 2: Recibo de uso en librería e Internet</h3>
+                        <p>Una Librería cobra $10 el minuto de uso de una computadora con conexión a Internet, y $15 la hoja impresa. Existe un cargo adicional consistente en $5 * X, siendo X el 1% del tiempo utilizado, en concepto de seguro. Se quiere imprimir el recibo de uso de un cliente, en el que se detallen todos los conceptos.</p>
                     </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main()
 {
-    float num1 = 0, num2 = 0, num3 = 0, num4 = 0, num5 = 0, prom = 0;
+    float minutos = 0, x = 0;
+    int hojas = 0;
+    float costo_internet = 0, costo_impresion = 0, costo_seguro = 0, total = 0;
 
-    printf("Ingrese cinco numeros para conocer su promedio: ");
-    scanf("%f %f %f %f %f", &num1, &num2, &num3, &num4, &num5);
+    printf("Ingrese los minutos de uso de la computadora: ");
+    scanf("%f", &amp;minutos);
 
-    prom = (num1 + num2 + num3 + num4 + num5) / 5;
+    printf("Ingrese la cantidad de hojas impresas: ");
+    scanf("%d", &amp;hojas);
 
-    printf("El promedio de los numeros ingresados es: %.2f\n", prom);
+    // Cálculos de los conceptos:
+    costo_internet = minutos * 10.0;
+    costo_impresion = hojas * 15.0;
+    x = minutos * 0.01;
+    costo_seguro = 5.0 * x;
+    total = costo_internet + costo_impresion + costo_seguro;
+
+    // Salida del recibo detallado:
+    printf("\n============= RECIBO DE USO - LIBRERIA =============\n");
+    printf("Uso de Internet (%.2f min x $10):     $ %.2f\n", minutos, costo_internet);
+    printf("Hojas impresas (%d hojas x $15):      $ %.2f\n", hojas, costo_impresion);
+    printf("Cargo de seguro ($5 x %.2f):          $ %.2f\n", x, costo_seguro);
+    printf("----------------------------------------------------\n");
+    printf("TOTAL A ABONAR:                       $ %.2f\n", total);
+    printf("====================================================\n");
 
     return 0;
 }</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
                     </div>
                 </section>
             </article>
 
-            <!-- Punto 3 -->
+            <!-- Parte 1 - Ejercicio 3 -->
             <article class="slide">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 3: Operaciones con enteros</h3>
-                        <p>Dados dos números enteros obtener su suma, resta, multiplicación y división.</p>
+                        <h3>Ejercicio 3: Calificación de maestras por grupos</h3>
+                        <p>En una escuela primaria se solicita a los 30 alumnos del sexto curso que califiquen a sus 3 maestras. Para hacerlo, deben agruparse de a 5 y cada grupo asignar una nota entre 1 y 10 a cada maestra. Se requiere un informe en el que se detalle, para cada maestra, la nota que cada grupo le asignó y la nota promedio que obtuvo.</p>
                     </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main()
 {
-    int num1 = 0, num2 = 0, sum = 0, multi = 0, resta = 0;
-    float div = 0;
+    // 30 alumnos agrupados de a 5 conforman 6 grupos en total:
+    float m1_g1, m1_g2, m1_g3, m1_g4, m1_g5, m1_g6, prom_m1;
+    float m2_g1, m2_g2, m2_g3, m2_g4, m2_g5, m2_g6, prom_m2;
+    float m3_g1, m3_g2, m3_g3, m3_g4, m3_g5, m3_g6, prom_m3;
 
-    printf("Ingrese el primer numero: ");
-    scanf("%d", &num1);
-    printf("Ingrese el segundo numero: ");
-    scanf("%d", &num2);
+    printf("--- Calificaciones para la Maestra 1 (6 grupos) ---\n");
+    printf("Ingrese las 6 notas separadas por espacio (1 a 10): ");
+    scanf("%f %f %f %f %f %f", &amp;m1_g1, &amp;m1_g2, &amp;m1_g3, &amp;m1_g4, &amp;m1_g5, &amp;m1_g6);
 
-    sum = num1 + num2;
-    multi = num1 * num2;
-    resta = num1 - num2;
-    div = (float)num1 / num2;
+    printf("\n--- Calificaciones para la Maestra 2 (6 grupos) ---\n");
+    printf("Ingrese las 6 notas separadas por espacio (1 a 10): ");
+    scanf("%f %f %f %f %f %f", &amp;m2_g1, &amp;m2_g2, &amp;m2_g3, &amp;m2_g4, &amp;m2_g5, &amp;m2_g6);
 
-    printf("\nLa suma de los numeros es: %d", sum);
-    printf("\nLa multiplicacion de los numeros es: %d", multi);
-    printf("\nLa resta de los numeros es: %d", resta);
-    printf("\nLa division de los numeros es: %.2f", div);
+    printf("\n--- Calificaciones para la Maestra 3 (6 grupos) ---\n");
+    printf("Ingrese las 6 notas separadas por espacio (1 a 10): ");
+    scanf("%f %f %f %f %f %f", &amp;m3_g1, &amp;m3_g2, &amp;m3_g3, &amp;m3_g4, &amp;m3_g5, &amp;m3_g6);
+
+    prom_m1 = (m1_g1 + m1_g2 + m1_g3 + m1_g4 + m1_g5 + m1_g6) / 6.0;
+    prom_m2 = (m2_g1 + m2_g2 + m2_g3 + m2_g4 + m2_g5 + m2_g6) / 6.0;
+    prom_m3 = (m3_g1 + m3_g2 + m3_g3 + m3_g4 + m3_g5 + m3_g6) / 6.0;
+
+    printf("\n================ INFORME DE CALIFICACIONES ================\n");
+    printf("Maestra 1 -> G1:%.1f | G2:%.1f | G3:%.1f | G4:%.1f | G5:%.1f | G6:%.1f\n",
+           m1_g1, m1_g2, m1_g3, m1_g4, m1_g5, m1_g6);
+    printf("Promedio Maestra 1: %.2f\n\n", prom_m1);
+
+    printf("Maestra 2 -> G1:%.1f | G2:%.1f | G3:%.1f | G4:%.1f | G5:%.1f | G6:%.1f\n",
+           m2_g1, m2_g2, m2_g3, m2_g4, m2_g5, m2_g6);
+    printf("Promedio Maestra 2: %.2f\n\n", prom_m2);
+
+    printf("Maestra 3 -> G1:%.1f | G2:%.1f | G3:%.1f | G4:%.1f | G5:%.1f | G6:%.1f\n",
+           m3_g1, m3_g2, m3_g3, m3_g4, m3_g5, m3_g6);
+    printf("Promedio Maestra 3: %.2f\n", prom_m3);
+    printf("===========================================================\n");
 
     return 0;
 }</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
                     </div>
                 </section>
             </article>
 
-            <!-- Punto 4 -->
+            <!-- Parte 1 - Ejercicio 4 -->
             <article class="slide">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 4: Cálculo del tercer ángulo de un triángulo</h3>
-                        <p>Dadas las medidas de dos ángulos de un triángulo, determinar la medida del tercer ángulo e informar el resultado. Validar los datos ingresados.</p>
+                        <h3>Ejercicio 4: Encuesta de preferencia de jabones en polvo</h3>
+                        <p>Se realiza una encuesta para determinar cuáles son los jabones en polvo preferidos en una determinada población. Entre todas las personas encuestadas, se mencionaron 7 marcas diferentes. Se quiere obtener un informe en el que se detalle, para cada marca, la cantidad de personas y el porcentaje que ese número representa.</p>
                     </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main()
 {
-    float ang1 = 0, ang2 = 0, ang3 = 0;
+    int m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0, m6 = 0, m7 = 0, total = 0;
+    float p1 = 0, p2 = 0, p3 = 0, p4 = 0, p5 = 0, p6 = 0, p7 = 0;
 
-    printf("Ingrese el primer angulo: ");
-    scanf("%f", &ang1);
+    printf("Ingrese la cantidad de votantes para la Marca 1: ");
+    scanf("%d", &amp;m1);
+    printf("Ingrese la cantidad de votantes para la Marca 2: ");
+    scanf("%d", &amp;m2);
+    printf("Ingrese la cantidad de votantes para la Marca 3: ");
+    scanf("%d", &amp;m3);
+    printf("Ingrese la cantidad de votantes para la Marca 4: ");
+    scanf("%d", &amp;m4);
+    printf("Ingrese la cantidad de votantes para la Marca 5: ");
+    scanf("%d", &amp;m5);
+    printf("Ingrese la cantidad de votantes para la Marca 6: ");
+    scanf("%d", &amp;m6);
+    printf("Ingrese la cantidad de votantes para la Marca 7: ");
+    scanf("%d", &amp;m7);
 
-    printf("Ingrese el segundo angulo: ");
-    scanf("%f", &ang2);
+    total = m1 + m2 + m3 + m4 + m5 + m6 + m7;
 
-    if (ang1 <= 0 || ang2 <= 0)
-    {
-        printf("Error: Los angulos deben ser mayores a 0.\n");
-        return 1;
-    }
+    p1 = (m1 * 100.0) / total;
+    p2 = (m2 * 100.0) / total;
+    p3 = (m3 * 100.0) / total;
+    p4 = (m4 * 100.0) / total;
+    p5 = (m5 * 100.0) / total;
+    p6 = (m6 * 100.0) / total;
+    p7 = (m7 * 100.0) / total;
 
-    if ((ang1 + ang2) >= 180)
-    {
-        printf("Error: La suma de los dos angulos debe ser menor que 180.\n");
-        return 1;
-    }
-
-    ang3 = 180 - (ang1 + ang2);
-    printf("El tercer angulo es: %.2f\n", ang3);
+    printf("\n========= INFORME DE ENCUESTA (7 MARCAS) =========\n");
+    printf("Marca 1: %d personas (%.2f%%)\n", m1, p1);
+    printf("Marca 2: %d personas (%.2f%%)\n", m2, p2);
+    printf("Marca 3: %d personas (%.2f%%)\n", m3, p3);
+    printf("Marca 4: %d personas (%.2f%%)\n", m4, p4);
+    printf("Marca 5: %d personas (%.2f%%)\n", m5, p5);
+    printf("Marca 6: %d personas (%.2f%%)\n", m6, p6);
+    printf("Marca 7: %d personas (%.2f%%)\n", m7, p7);
+    printf("--------------------------------------------------\n");
+    printf("Total de personas encuestadas: %d\n", total);
+    printf("==================================================\n");
 
     return 0;
 }</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
                     </div>
                 </section>
             </article>
 
-            <!-- Punto 5 -->
+            <!-- Parte 1 - Ejercicio 5 -->
             <article class="slide">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 5: Cálculo de perímetro y superficie de un cuadrado</h3>
-                        <p>Dado como dato el valor del lado de un cuadrado calcular su perímetro y su superficie, e informar los mismos.</p>
+                        <h3>Ejercicio 5: Censo de grado de alfabetización</h3>
+                        <p>En el último censo, una de las preguntas se refirió al "grado de alfabetización" de la población mayor de 18 años. Se utilizaron las siguientes categorías: "sin escolaridad", "primaria completa", "secundaria completa", "universitaria completa". Se conoce la cantidad de hombres y mujeres correspondientes a cada categoría y se desea generar un reporte identificando los porcentajes parciales, como se muestra a continuación:
+Total de mujeres encuestadas: M.
+Sin escolaridad: N1%
+Primaria completa: C1%
+Secundaria completa: S1%
+Universitaria completa: U1%
+Total de Hombres encuestados: H.
+Sin escolaridad: N2%
+Primaria completa: C2%
+Secundaria completa: S2%
+Universitaria completa: U2%
+Total de Encuestados: W</p>
                     </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main()
 {
-    float lado = 0, per = 0, sup = 0;
+    int m_sin = 0, m_pri = 0, m_sec = 0, m_uni = 0, M = 0;
+    int h_sin = 0, h_pri = 0, h_sec = 0, h_uni = 0, H = 0;
+    int W = 0;
+    float N1 = 0, C1 = 0, S1 = 0, U1 = 0;
+    float N2 = 0, C2 = 0, S2 = 0, U2 = 0;
 
-    printf("Ingrese el lado del cuadrado para conocer su perimetro y superficie: ");
-    scanf("%f", &lado);
-    per = lado * 4;
-    sup = lado * lado;
-    printf("Perimetro: %.2f \n", per);
-    printf("Superficie: %.2f \n", sup);
+    printf("--- Datos de Mujeres mayores de 18 anios ---\n");
+    printf("Sin escolaridad: ");
+    scanf("%d", &amp;m_sin);
+    printf("Primaria completa: ");
+    scanf("%d", &amp;m_pri);
+    printf("Secundaria completa: ");
+    scanf("%d", &amp;m_sec);
+    printf("Universitaria completa: ");
+    scanf("%d", &amp;m_uni);
 
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
+    printf("\n--- Datos de Hombres mayores de 18 anios ---\n");
+    printf("Sin escolaridad: ");
+    scanf("%d", &amp;h_sin);
+    printf("Primaria completa: ");
+    scanf("%d", &amp;h_pri);
+    printf("Secundaria completa: ");
+    scanf("%d", &amp;h_sec);
+    printf("Universitaria completa: ");
+    scanf("%d", &amp;h_uni);
 
-            <!-- Punto 6 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 6: Cálculo del impuesto IVA</h3>
-                        <p>Dado como dato el importe de una factura, calcular el valor correspondiente al IVA (21% del valor de venta).</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+    // Totales parciales y general:
+    M = m_sin + m_pri + m_sec + m_uni;
+    H = h_sin + h_pri + h_sec + h_uni;
+    W = M + H;
 
-int main()
-{
-    float factu = 0, iva = 0;
+    // Porcentajes parciales sobre cada grupo:
+    N1 = (m_sin * 100.0) / M;
+    C1 = (m_pri * 100.0) / M;
+    S1 = (m_sec * 100.0) / M;
+    U1 = (m_uni * 100.0) / M;
 
-    printf("Ingrese el valor de la factura para saber el valor del IVA: ");
-    scanf("%f", &factu);
-    iva = (factu * 21) / 100;
-    printf("El valor del IVA es: %.2f", iva);
+    N2 = (h_sin * 100.0) / H;
+    C2 = (h_pri * 100.0) / H;
+    S2 = (h_sec * 100.0) / H;
+    U2 = (h_uni * 100.0) / H;
 
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
+    // Reporte con el formato solicitado:
+    printf("\n================ REPORTE DEL CENSO ================\n");
+    printf("Total de mujeres encuestadas: %d.\n", M);
+    printf("Sin escolaridad: %.2f%%\n", N1);
+    printf("Primaria completa: %.2f%%\n", C1);
+    printf("Secundaria completa: %.2f%%\n", S1);
+    printf("Universitaria completa: %.2f%%\n\n", U1);
 
-            <!-- Punto 7 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 7: Cálculo del sueldo mensual de un operario</h3>
-                        <p>Calcular el sueldo de un operario conociendo la cantidad de horas que trabajó en el mes y el valor de la hora trabajada.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+    printf("Total de Hombres encuestados: %d.\n", H);
+    printf("Sin escolaridad: %.2f%%\n", N2);
+    printf("Primaria completa: %.2f%%\n", C2);
+    printf("Secundaria completa: %.2f%%\n", S2);
+    printf("Universitaria completa: %.2f%%\n\n", U2);
 
-int main()
-{
-    float hs = 0, valorh = 0, sueldo = 0;
-
-    printf("Ingrese la cantidad de horas que trabajo el funcionario en el mes: ");
-    scanf("%f", &hs);
-    printf("Ingrese el valor de cada hora del funcionario: ");
-    scanf("%f", &valorh);
-    sueldo = hs * valorh;
-    printf("El sueldo del operario es: %.2f", sueldo);
+    printf("Total de Encuestados: %d\n", W);
+    printf("===================================================\n");
 
     return 0;
 }</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 8 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 8: Cálculo de factura con bonificación e IVA</h3>
-                        <p>Dado el importe bruto de una factura calcular el resultado de bonificarlo con un 4%. Al monto obtenido calcularle el IVA. Finalmente informar el importe bruto, el valor de la bonificación, el importe bruto bonificado, el monto correspondiente al IVA y el importe neto resultante.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    float impb = 0, bonus = 0, impbb = 0, iva = 0, impn = 0;
-
-    printf("Ingrese el importe bruto: ");
-    scanf("%f", &impb);
-
-    bonus = (impb * 4) / 100;
-    impbb = impb + ((impb * 4) / 100);
-    iva = (impb * 21) / 100;
-    impn = impb - iva;
-
-    printf("El valor del importe bruto es: %.2f\n", impb);
-    printf("El valor de la bonificacion es: %.2f\n", bonus);
-    printf("El valor del importe bruto bonificado es: %.2f\n", impbb);
-    printf("El valor del IVA es: %.2f\n", iva);
-    printf("El valor del importe neto es: %.2f\n", impn);
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 9 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 9: Cálculo del total de dinero en monedas de un banco</h3>
-                        <p>Calcular cuántos pesos tiene un banco en monedas si dispone de N1 monedas de 1 peso, N2 de medio peso, N3 de un cuarto de peso, N4 de 10 centavos de peso y N5 de 5 centavos de peso.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    int n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0;
-    float total = 0;
-
-    printf("Ingrese la cantidad de monedas de 1 peso: ");
-    scanf("%d", &n1);
-    printf("Ingrese la cantidad de monedas de medio peso: ");
-    scanf("%d", &n2);
-    printf("Ingrese la cantidad de monedas de un cuarto de peso: ");
-    scanf("%d", &n3);
-    printf("Ingrese la cantidad de monedas de 10 centavos: ");
-    scanf("%d", &n4);
-    printf("Ingrese la cantidad de monedas de 5 centavos: ");
-    scanf("%d", &n5);
-    total = n1 + (n2 * 0.5) + (n3 * 0.25) + (n4 * 0.1) + (n5 * 0.05);
-    printf("El banco tiene %.2f", total);
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 10 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 10: Rotación circular de valores entre tres variables</h3>
-                        <p>Ingresar 3 valores en 3 variables X, Y y Z. Se desea obtener una rotación de sus valores, es decir que el contenido de Z pase a X, el contenido de X pase a Y, y el contenido de Y pase a Z. Mostrar luego las variables en el mismo orden en que se ingresaron (X,Y,Z). Indicar cómo será la salida luego de realizar lo pedido en el párrafo anterior, si se ingresa 5 en la variable X, 15 en la variable Y y 25 en la variable Z.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    int x = 0, y = 0, z = 0, w = 0;
-
-    printf("Ingrese el valor de la variable X: ");
-    scanf("%d", &x);
-    printf("Ingrese el valor de la variable Y: ");
-    scanf("%d", &y);
-    printf("Ingrese el valor de la variable Z: ");
-    scanf("%d", &z);
-
-    w = x;
-    x = z;
-    z = y;
-    y = w;
-
-    printf("\nLos valores rotados seran: \nx: %d \ny: %d \nz: %d", x, y, z);
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 11 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 11: Ordenamiento creciente de dos números distintos</h3>
-                        <p>Dados dos números distintos, mostrarlos ordenados en forma creciente.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    float num1 = 0, num2 = 0;
-
-    do
-    {
-        printf("Ingrese el primer numero: ");
-        scanf("%f", &num1);
-        printf("Ingrese el segundo numero: ");
-        scanf("%f", &num2);
-
-        if (num1 == num2)
-        {
-            printf("Los numeros deben ser distintos. Intente nuevamente.\n\n");
-        }
-
-    } while (num1 == num2);
-
-    if (num1 > num2)
-    {
-        printf("Numeros en orden creciente: %.2f %.2f\n", num2, num1);
-    }
-    else
-    {
-        printf("Numeros en orden creciente: %.2f %.2f\n", num1, num2);
-    }
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 12 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 12: ¿El número es positivo o negativo?</h3>
-                        <p>Dado un número determinar si es positivo o negativo.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    float num = 0;
-
-    printf("Ingrese un numero para ver si es positivo o negativo: ");
-    scanf("%f", &num);
-
-    if (num < 0)
-    {
-        printf("El numero ingresado es negativo");
-    }
-    else if (num > 0)
-    {
-        printf("El numero ingresado es positivo");
-    }
-    else
-    {
-        printf("El numero ingresado es 0");
-    }
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 13 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 13: Verificación de triángulo rectángulo a partir de sus ángulos</h3>
-                        <p>Dada la medida de cada uno de los tres ángulos de un triángulo determinar e informar mediante un mensaje si pertenecen o no a un triángulo rectángulo.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    float ang1 = 0, ang2 = 0, ang3 = 0, sum = 0;
-
-    do
-    {
-        printf("Ingrese el valor del primer angulo: ");
-        scanf("%f", &ang1);
-        printf("Ingrese el valor del segundo angulo: ");
-        scanf("%f", &ang2);
-        printf("Ingrese el valor del tercer angulo: ");
-        scanf("%f", &ang3);
-
-        sum = ang1 + ang2 + ang3;
-
-        if (sum != 180)
-        {
-            printf("Los angulos no forman un triangulo valido. Ingrese uno nuevo\n");
-        }
-
-    } while (sum != 180);
-
-    if (ang1 == 90 || ang2 == 90 || ang3 == 90)
-    {
-        printf("Los angulos ingresados pertenecen a un triangulo rectangulo\n");
-    }
-    else
-    {
-        printf("Los angulos ingresados NO pertenecen a un triangulo rectangulo\n");
-    }
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 14 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 14: Orden creciente de tres números</h3>
-                        <p>Ingresar tres nros. enteros, distintos. Determinar y mostrar si ingresaron en orden creciente.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    int num1 = 0, num2 = 0, num3 = 0;
-
-    printf("Ingrese 3 numeros: ");
-    scanf("%d %d %d", &num1, &num2, &num3);
-
-    if (num3 > num2 && num2 > num1)
-    {
-        printf("Los numeros ingresados estan en orden creciente");
-    }
-    else
-    {
-        printf("Los numeros ingresados no estan en orden creciente");
-    }
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 15 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 15: Comparación de estatura con la media por sexo</h3>
-                        <p>Determinar y exhibir si la estatura de una persona adulta dada, es mayor que la estatura media de las personas adultas de su sexo, siendo:
-                            Estatura media de mujeres adultas: 1,65 m.
-                            Estatura media de varones adultos: 1,72 m.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;ctype.h&gt;
-
-int main()
-{
-    char sex;
-    float h;
-
-    do
-    {
-        printf("Ingrese el genero de la persona (M/F): ");
-        scanf(" %c", &sex);
-        sex = tolower(sex); // Para el ingreso de mayusculas //
-
-        if (sex != 'm' && sex != 'f')
-        {
-            printf("El genero ingresado no es valido. Intente nuevamente.\n");
-        }
-
-    } while (sex != 'm' && sex != 'f');
-
-    printf("Ingrese la estatura de la persona (en metros): ");
-    scanf("%f", &h);
-
-    if (sex == 'f')
-    {
-        if (h > 1.65)
-            printf("La estatura de la mujer ingresada es mayor al promedio\n");
-        else if (h == 1.65)
-            printf("La estatura de la mujer ingresada es promedio\n");
-        else
-            printf("La estatura de la mujer ingresada es menor al promedio\n");
-    }
-    else if (sex == 'm')
-    {
-        if (h > 1.72)
-            printf("La estatura del hombre ingresado es mayor al promedio\n");
-        else if (h == 1.72)
-            printf("La estatura del hombre ingresado es promedio\n");
-        else
-            printf("La estatura del hombre ingresado es menor al promedio\n");
-    }
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 16 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 16: Clasificación de triángulo según sus lados</h3>
-                        <p>Se leen tres números que son las longitudes de los lados de un triángulo. Determinar e informar si el mismo es equilátero, isósceles o escaleno.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    float lado1 = 0, lado2 = 0, lado3 = 0;
-
-    do
-    {
-        printf("Ingrese el primer lado: ");
-        scanf(" %f", &lado1); // Agregar espacio antes de %f
-        printf("Ingrese el segundo lado: ");
-        scanf(" %f", &lado2); // Agregar espacio antes de %f
-        printf("Ingrese el tercer lado: ");
-        scanf(" %f", &lado3); // Agregar espacio antes de %f
-
-        if ((lado1 + lado2 > lado3) &&
-            (lado1 + lado3 > lado2) &&
-            (lado2 + lado3 > lado1))
-        {
-            break;
-        }
-        else
-        {
-            printf("Los lados ingresados no forman un triangulo valido. Intente de nuevo.\n\n");
-        }
-
-    } while (1);
-
-    if (lado1 == lado2 && lado2 == lado3)
-    {
-        printf("El triangulo es equilatero.\n");
-    }
-    else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3)
-    {
-        printf("El triangulo es isosceles.\n");
-    }
-    else
-    {
-        printf("El triangulo es escaleno.\n");
-    }
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 17 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 17: Cálculo de bonificación por compra de libros según tipo de cliente</h3>
-                        <p>Una distribuidora de libros vende a librerías y a particulares. Aplica bonificaciones por cantidad según el siguiente criterio:
-                            a librerías: hasta 24 unidades, el 20%; más de 24 unidades, el 25%. a particulares: menos de 6 unidades, nada; desde 6 hasta 18 unidades, el 5%; y más de 18 unidades, el 10%. 
-                            El tipo de cliente está codificado así: 'L' para librerías, 'P' para particular. Dado el importe bruto de una compra de libros, el tipo de cliente de que se trata y la cantidad total pedida por el mismo, determinar el importe bruto bonificado.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;ctype.h&gt;
-
-int main()
-{
-    char tipo_cliente;
-    int cant = 0;
-    float impbr = 0, bonus = 0, impbon = 0;
-
-    printf("Ingrese el tipo de cliente (L para libreria, P para particular): ");
-    scanf(" %c", &tipo_cliente);
-
-    tipo_cliente = tolower(tipo_cliente);
-
-    printf("Ingrese la cant de libros: ");
-    scanf("%d", &cant);
-
-    printf("Ingrese el importe bruto de la compra: ");
-    scanf("%f", &impbr);
-
-    switch (tipo_cliente)
-    {
-    case 'l':
-        if (cant <= 24)
-            bonus = 0.20;
-        else
-            bonus = 0.25;
-        break;
-    case 'p':
-        if (cant < 6)
-            bonus = 0.0;
-        else if (cant <= 18)
-            bonus = 0.05;
-        else
-            bonus = 0.10;
-        break;
-    default:
-        printf("Tipo de cliente no válido.\n");
-        return 1;
-    }
-
-    impbon = impbr * (1 - bonus);
-
-    printf("Importe bonificado: %.2f\n", impbon);
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- Punto 18 -->
-            <article class="slide">
-                <section class="punto-card">
-                    <div class="exercise-description">
-                        <h3>Ejercicio 18: Cálculo del importe a pagar según consumo de kilowatios</h3>
-                        <p>Dado como dato la cantidad de kilowatios consumidos por un usuario en un mes, calcular el importe a pagar por el mismo teniendo en cuenta que:
-                            si la cantidad de kilowatios consumidos es menor ó igual a 200, el precio del kilowatio es de 0.05 pesos.
-                            si la cantidad de kilowatios consumidos es mayor que 200 y menor que 1000, el precio del kilowatio es de 0.1 pesos. 
-                            si la cantidad de kilowatios consumidos es mayor ó igual que 1000, el precio del kilowatio es de 0.15 pesos.</p>
-                    </div>
-                    
-                    <div class="code-box">
-                        <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main()
-{
-    float kw = 0, kwf = 0;
-
-    do
-    {
-
-        printf("Ingrese la cantidad de kilowatios consumidos por un usuario en un mes: ");
-        scanf(" %f", &kw);
-
-        if (kw < 0)
-        {
-            printf("Ingrese un valor de kilowatios valido");
-        }
-
-    } while (kw < 0);
-
-    if (kw <= 200)
-    {
-        kwf = kw * 0.05;
-    }
-
-    else if (kw > 200 && kw < 1000)
-    {
-        kwf = kw * 0.1;
-    }
-    else
-    {
-        kwf = kw * 0.15;
-    }
-    printf("El precio de los kilowatios consumidos es %.2f pesos\n", kwf);
-
-    return 0;
-}</code></pre>
-                        <button class="btn-copy">
-                            <i class="fas fa-copy copy-icon"></i>
-                            <i class="fas fa-check check-icon" style="display: none;"></i>
-                            <span>Copiar</span>
-                        </button>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
                     </div>
                 </section>
             </article>
 
         </div>
+
+        <!-- =========================================================================
+             PARTE 2: ESTRUCTURA DE CONTROL DE DECISIÓN (12 PUNTOS)
+             ========================================================================= -->
+        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+
+            <!-- Parte 2 - Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Unificación de condiciones con un solo condicional</h3>
+                        <p>Si se analiza el pseudocódigo del ejemplo, se destaca que cada una de las condiciones llevaban a hacer exactamente lo mismo en caso de que cualquiera de ellas fuese verdadera, y sólo se hacía algo diferente en el caso en que TODAS ellas resultaban falsas.
+Encontrar una manera de construir una condición que permita expresar lo que acabamos de mencionar, de modo que el programa resultante utilice una sola sentencia SI para decidir.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p style="margin-bottom: 1rem;">Para unificar los tres condicionales anidados del problema de ejemplo (determinar si la suma de cualquier pareja de tres números reales es igual al tercero) en una única sentencia de decisión, vinculo las tres comparaciones mediante el operador lógico disyuntivo OR (<code>||</code> en lenguaje C). De esta forma, basta con que al menos una de las igualdades se cumpla para imprimir <code>"Son Iguales....!"</code>:</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float A = 0, B = 0, C = 0;
+
+    printf("Ingrese el primer valor: ");
+    scanf("%f", &amp;A);
+    printf("Ingrese el segundo valor: ");
+    scanf("%f", &amp;B);
+    printf("Ingrese el tercer valor: ");
+    scanf("%f", &amp;C);
+
+    // Única sentencia if combinando las tres condiciones con el operador OR (||):
+    if ((A + B) == C || (A + C) == B || (B + C) == A)
+    {
+        printf("Son Iguales....!\n");
+    }
+    else
+    {
+        printf("Son Distintos...!\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Signo de la suma de cuatro números reales</h3>
+                        <p>Se ingresan 4 números reales y se quiere determinar si la suma de ellos es positiva, negativa o cero. Imprimir un mensaje indicándolo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float n1 = 0, n2 = 0, n3 = 0, n4 = 0, suma = 0;
+
+    printf("Ingrese 4 numeros reales separados por espacio: ");
+    scanf("%f %f %f %f", &amp;n1, &amp;n2, &amp;n3, &amp;n4);
+
+    suma = n1 + n2 + n3 + n4;
+
+    if (suma &gt; 0)
+    {
+        printf("La suma (%.2f) es POSITIVA.\n", suma);
+    }
+    else if (suma &lt; 0)
+    {
+        printf("La suma (%.2f) es NEGATIVA.\n", suma);
+    }
+    else
+    {
+        printf("La suma es CERO.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Máquina expendedora de gaseosas</h3>
+                        <p>Se tiene una máquina expendedora de gaseosas cuyo valor es de $1,25.
+Admite monedas de: $0,10 $0,25 $0,50 y $1 y realiza las siguientes operaciones:
+a. Venta sin Vuelto
+b. Venta con Vuelto
+c. No Venta y devuelve las monedas
+El programa debe aceptar las monedas e imprimir un mensaje indicando la operatoria.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int m10 = 0, m25 = 0, m50 = 0, m100 = 0;
+    float monto_ingresado = 0, vuelto = 0;
+    const float PRECIO_GASEOSA = 1.25;
+
+    printf("--- Maquina Expendedora (Valor Gaseosa: $1.25) ---\n");
+    printf("Cantidad de monedas de $0.10: ");
+    scanf("%d", &amp;m10);
+    printf("Cantidad de monedas de $0.25: ");
+    scanf("%d", &amp;m25);
+    printf("Cantidad de monedas de $0.50: ");
+    scanf("%d", &amp;m50);
+    printf("Cantidad de monedas de $1.00: ");
+    scanf("%d", &amp;m100);
+
+    monto_ingresado = (m10 * 0.10) + (m25 * 0.25) + (m50 * 0.50) + (m100 * 1.00);
+
+    printf("\nMonto total ingresado: $%.2f\n", monto_ingresado);
+
+    if (monto_ingresado == PRECIO_GASEOSA)
+    {
+        printf("Operacion: a. Venta sin Vuelto.\n");
+    }
+    else if (monto_ingresado &gt; PRECIO_GASEOSA)
+    {
+        vuelto = monto_ingresado - PRECIO_GASEOSA;
+        printf("Operacion: b. Venta con Vuelto (Su vuelto es: $%.2f).\n", vuelto);
+    }
+    else
+    {
+        printf("Operacion: c. No Venta y devuelve las monedas ($%.2f).\n", monto_ingresado);
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Ticket de compra de dólares con comisión bancaria</h3>
+                        <p>Un empleado de banco tiene un sistema que imprime un ticket cada vez que un cliente realiza una compra de dólares. La operación tiene una comisión administrativa según la cantidad de dólares que se venden, lo que representa un sobre costo para el cliente:
+a. 2% si es más de 501 y menos de 1501
+b. 2,5% si es mayor de 1501 y menos que 3501
+c. 4% si es mayor a 3501
+El ticket muestra discriminados: la cantidad de dólares que se compraron, el valor de cada dólar, el monto de la comisión y el monto total que el cliente debe abonar por la compra.
+Hacer un programa que simule la compra e imprima el ticket.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float cant_dolares = 0, cotizacion = 0;
+    float subtotal = 0, porcentaje_comision = 0, monto_comision = 0, total_abonar = 0;
+
+    printf("Ingrese la cantidad de dolares a comprar: ");
+    scanf("%f", &amp;cant_dolares);
+
+    printf("Ingrese la cotizacion de cada dolar (en pesos): ");
+    scanf("%f", &amp;cotizacion);
+
+    subtotal = cant_dolares * cotizacion;
+
+    if (cant_dolares &gt; 501 &amp;&amp; cant_dolares &lt; 1501)
+    {
+        porcentaje_comision = 0.02;
+    }
+    else if (cant_dolares &gt; 1501 &amp;&amp; cant_dolares &lt; 3501)
+    {
+        porcentaje_comision = 0.025;
+    }
+    else if (cant_dolares &gt; 3501)
+    {
+        porcentaje_comision = 0.04;
+    }
+    else
+    {
+        porcentaje_comision = 0.0;
+    }
+
+    monto_comision = subtotal * porcentaje_comision;
+    total_abonar = subtotal + monto_comision;
+
+    printf("\n============== TICKET BANCARIO ==============\n");
+    printf("Cantidad comprada:        USD %.2f\n", cant_dolares);
+    printf("Valor de cada dolar:      $ %.2f\n", cotizacion);
+    printf("Subtotal:                 $ %.2f\n", subtotal);
+    printf("Monto de comision (%.1f%%): $ %.2f\n", porcentaje_comision * 100, monto_comision);
+    printf("---------------------------------------------\n");
+    printf("MONTO TOTAL A ABONAR:     $ %.2f\n", total_abonar);
+    printf("=============================================\n");
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Mayor de dos números y optimización de condiciones</h3>
+                        <p>Diseñar un algoritmo que calcule el mayor de dos números dados. ¿Cuántas condiciones requiere evaluar su algoritmo? ¿Podría codificar otro que utilice menos? ¿Y otro que utilice menos sentencias SI?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis Teórico:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>¿Cuántas condiciones requiere evaluar mi algoritmo?</strong> Si solo necesito obtener el valor máximo entre dos números <code>a</code> y <code>b</code> (sin importar si son iguales), requiero evaluar <strong>1 sola condición</strong> (<code>a &gt; b</code>) con una única estructura <code>if / else</code>. Si además quiero distinguir explícitamente el caso de igualdad, necesito 2 condiciones (<code>a &gt; b</code> y <code>b &gt; a</code>).</li>
+                            <li><strong>¿Podría codificar otro que utilice menos condiciones?</strong> Si asumo inicialmente que el mayor es el primer número (<code>mayor = a</code>), sigo evaluando 1 condición (<code>if (b &gt; mayor)</code>), pero me ahorro la rama <code>else</code>.</li>
+                            <li><strong>¿Y otro que utilice menos sentencias SI?</strong> Sí, en lenguaje C puedo prescindir por completo de la sentencia <code>if</code> utilizando una fórmula matemática con valor absoluto: $\text{mayor} = \frac{a + b + |a - b|}{2}$.</li>
+                        </ul>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float a = 0, b = 0, mayor = 0;
+
+    printf("Ingrese dos numeros reales: ");
+    scanf("%f %f", &amp;a, &amp;b);
+
+    // Versión 1: 1 sola sentencia if y sin rama else (asigna por defecto)
+    mayor = a;
+    if (b &gt; mayor)
+    {
+        mayor = b;
+    }
+    printf("El mayor (con 1 sentencia if) es: %.2f\n", mayor);
+
+    // Versión 2: 0 sentencias if (fórmula matemática con fabs)
+    mayor = (a + b + fabs(a - b)) / 2.0;
+    printf("El mayor (con 0 sentencias if) es: %.2f\n", mayor);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Detección de errores de sintaxis en condicionales</h3>
+                        <p>¿Qué errores de sintaxis se detectan en los siguientes grupos de sentencias?
+a) Si (A &gt; 0) Entonces
+       Si (B &gt; 0) Entonces
+           C := A + B
+   Sino
+       C := A + 3 * C
+       D := A - B - C
+
+b) Si (A &gt; 0)
+       Imprimir: 'Es Mayor...'
+   Sino
+       Imprimir: 'Es menor...'
+   Si
+       Imprimir: 'Son Iguales...'
+   Fin Si
+Analizar y mostrar todos los posibles códigos resultantes de intentar corregir el / los error(es) encontrado(s).</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis de Errores Detectados:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>Inciso a):</strong> Faltan los cierres de bloque (<code>Fin Si</code>). Al haber dos <code>Si</code> abiertos y un solo <code>Sino</code> sin delimitadores de cierre, se produce el problema clásico de ambigüedad del <em>dangling else</em>: no queda definido si el <code>Sino</code> pertenece al <code>Si (A &gt; 0)</code> externo (como sugiere la indentación) o al <code>Si (B &gt; 0)</code> interno, ni si la instrucción <code>D := A - B - C</code> forma parte del bloque condicional o se ejecuta siempre fuera de él.</li>
+                            <li><strong>Inciso b):</strong>
+                                <br>1. Al primer <code>Si (A &gt; 0)</code> le falta la palabra clave <code>Entonces</code> y su respectivo cierre <code>Fin Si</code>.
+                                <br>2. El segundo <code>Si</code> carece por completo de condición booleana a evaluar (debería ser <code>A == 0</code>) y de la palabra <code>Entonces</code>, además de estar mal anidado luego de un <code>Sino</code> que ya había cubierto el caso $A \le 0$.
+                            </li>
+                        </ul>
+
+                        <p style="margin-bottom: 1rem;">A continuación implemento en C todas las variantes válidas resultantes de corregir ambos fragmentos:</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int A = 5, B = -2, C = 1, D = 0;
+
+    // =================================================================
+    // CORRECCIONES POSIBLES DEL INCISO A
+    // =================================================================
+
+    // Interpretación A1: El "else" pertenece al if externo (según indentación)
+    if (A &gt; 0)
+    {
+        if (B &gt; 0)
+        {
+            C = A + B;
+        }
+    }
+    else
+    {
+        C = A + 3 * C;
+        D = A - B - C;
+    }
+
+    // Interpretación A2: El "else" pertenece al if interno (B &gt; 0)
+    if (A &gt; 0)
+    {
+        if (B &gt; 0)
+        {
+            C = A + B;
+        }
+        else
+        {
+            C = A + 3 * C;
+            D = A - B - C;
+        }
+    }
+
+    // Interpretación A3: D = A - B - C se ejecuta fuera del condicional
+    if (A &gt; 0)
+    {
+        if (B &gt; 0)
+        {
+            C = A + B;
+        }
+    }
+    else
+    {
+        C = A + 3 * C;
+    }
+    D = A - B - C;
+
+    // =================================================================
+    // CORRECCIÓN DEL INCISO B (Tricotomía de A respecto a 0)
+    // =================================================================
+    if (A &gt; 0)
+    {
+        printf("Es Mayor...\n");
+    }
+    else if (A &lt; 0)
+    {
+        printf("Es menor...\n");
+    }
+    else
+    {
+        printf("Son Iguales...\n");
+    }
+
+    printf("Valores finales: C = %d, D = %d\n", C, D);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7: Calculadora simple con estructura switch</h3>
+                        <p>Realizar un programa que simule una calculadora simple. Lee dos números y un carácter.
+Si el carácter es un "+", se imprime la suma; si es un "-", se imprime la diferencia; si es un "*" se imprime el producto; si es un "/", se imprime el cociente (si no puede calcularse debe emitirse un aviso). Utilizar el CASO.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float num1 = 0, num2 = 0, resultado = 0;
+    char op;
+
+    printf("Ingrese el primer numero: ");
+    scanf("%f", &amp;num1);
+
+    printf("Ingrese el segundo numero: ");
+    scanf("%f", &amp;num2);
+
+    printf("Ingrese la operacion (+, -, *, /): ");
+    scanf(" %c", &amp;op);
+
+    switch (op)
+    {
+    case '+':
+        resultado = num1 + num2;
+        printf("Resultado de la suma: %.2f\n", resultado);
+        break;
+
+    case '-':
+        resultado = num1 - num2;
+        printf("Resultado de la diferencia: %.2f\n", resultado);
+        break;
+
+    case '*':
+        resultado = num1 * num2;
+        printf("Resultado del producto: %.2f\n", resultado);
+        break;
+
+    case '/':
+        if (num2 != 0)
+        {
+            resultado = num1 / num2;
+            printf("Resultado del cociente: %.2f\n", resultado);
+        }
+        else
+        {
+            printf("Aviso: No se puede calcular el cociente (division por cero).\n");
+        }
+        break;
+
+    default:
+        printf("Operador ingresado no valido.\n");
+        break;
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8: Seguimiento de variables (Prueba de escritorio)</h3>
+                        <p>¿Qué valores van tomando las variables en este conjunto de instrucciones?
+A := 3625,25  B := 0,2568
+OP := (A + B) / 152
+Imprimir: OP
+OP := (OP * A) - B
+Imprimir: OP
+B := OP * 56
+Imprimir: B
+Si OP &gt;= 45 Entonces
+    Imprimir: 'Camino 1', A, B
+Sino Imprimir: 'Camino 2', A, OP
+Fin Si
+Imprimir: A, B, OP ** 3</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Traza de Ejecución Paso a Paso:</h4>
+                        <p>Realizo la prueba de escritorio siguiendo línea por línea el estado de la memoria y las salidas por pantalla:</p>
+
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Instrucción</th>
+                                        <th>Valor de A</th>
+                                        <th>Valor de B</th>
+                                        <th>Valor de OP</th>
+                                        <th>Salida Impresa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Inicialización</td>
+                                        <td>3625.25</td>
+                                        <td>0.2568</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>OP := (A + B) / 152</code></td>
+                                        <td>3625.25</td>
+                                        <td>0.2568</td>
+                                        <td>23.852018</td>
+                                        <td><code>23.852018</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>OP := (OP * A) - B</code></td>
+                                        <td>3625.25</td>
+                                        <td>0.2568</td>
+                                        <td>86469.272980</td>
+                                        <td><code>86469.272980</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>B := OP * 56</code></td>
+                                        <td>3625.25</td>
+                                        <td>4842279.286895</td>
+                                        <td>86469.272980</td>
+                                        <td><code>4842279.286895</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Si OP &gt;= 45</code> (Verdadero)</td>
+                                        <td>3625.25</td>
+                                        <td>4842279.286895</td>
+                                        <td>86469.272980</td>
+                                        <td><code>Camino 1 | 3625.25 | 4842279.29</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Imprimir: A, B, OP ** 3</code></td>
+                                        <td>3625.25</td>
+                                        <td>4842279.286895</td>
+                                        <td>86469.272980</td>
+                                        <td><code>3625.25 | 4842279.29 | 6.465252e+14</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    double A = 3625.25;
+    double B = 0.2568;
+    double OP = 0;
+
+    OP = (A + B) / 152.0;
+    printf("1) OP = %.6f\n", OP);
+
+    OP = (OP * A) - B;
+    printf("2) OP = %.6f\n", OP);
+
+    B = OP * 56.0;
+    printf("3) B  = %.6f\n", B);
+
+    if (OP &gt;= 45.0)
+    {
+        printf("4) Camino 1 -> A: %.2f, B: %.2f\n", A, B);
+    }
+    else
+    {
+        printf("4) Camino 2 -> A: %.2f, OP: %.2f\n", A, OP);
+    }
+
+    printf("5) Final -> A: %.2f, B: %.2f, OP^3: %.6e\n", A, B, pow(OP, 3));
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9: Igualdad de cocientes y validación de divisores</h3>
+                        <p>Diseñar un algoritmo que ingrese I, J, K, L. Si I/J = K/L imprimir "Son iguales", en caso contrario no dar mensaje. Recuerde verificar que los divisores sean distintos de cero y en este caso indicar la imposibilidad de realizar las operaciones.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float I = 0, J = 0, K = 0, L = 0;
+
+    printf("Ingrese los valores de I, J, K, L separados por espacio: ");
+    scanf("%f %f %f %f", &amp;I, &amp;J, &amp;K, &amp;L);
+
+    // Validación de divisores distintos de cero:
+    if (J == 0 || L == 0)
+    {
+        printf("Error: Imposibilidad de realizar las operaciones (divisor igual a cero).\n");
+    }
+    else if ((I / J) == (K / L))
+    {
+        printf("Son iguales\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10: Control de rendimiento, peso y récords de un atleta</h3>
+                        <p>Cierto atleta pierde en sus carreras 100 gramos de peso por cada 50m recorridos.
+Su entrenador desea un programa que a partir de datos como
+• Peso del corredor
+• Longitud del circuito (nunca menor a 50m)
+• Tiempo empleado (en seg.)
+Cumpla con los siguientes puntos:
+a. Determinar cuántos gramos pierde el corredor y cuál es su peso final
+b. Si ha perdido más de 300 g de peso, indicar que necesitará vitamina A y si pierde más de 450g necesitará también vitamina C
+c. Sabiendo que para el circuito olímpico el tiempo récord es de 25 seg., y que para el circuito panamericano el tiempo récord es de 15 seg., determinar si el corredor ha mejorado alguno de estos récords.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float peso_kg = 0, longitud_m = 0, tiempo_seg = 0;
+    float gramos_perdidos = 0, peso_final_kg = 0;
+
+    printf("Ingrese el peso inicial del corredor (en kg): ");
+    scanf("%f", &amp;peso_kg);
+
+    printf("Ingrese la longitud del circuito en metros (minimo 50m): ");
+    scanf("%f", &amp;longitud_m);
+
+    printf("Ingrese el tiempo empleado (en segundos): ");
+    scanf("%f", &amp;tiempo_seg);
+
+    if (longitud_m &lt; 50)
+    {
+        printf("Error: La longitud del circuito no puede ser menor a 50m.\n");
+        return 1;
+    }
+
+    // Inciso a: Cálculo de pérdida de peso (100g cada 50m = 2g por metro)
+    gramos_perdidos = (longitud_m / 50.0) * 100.0;
+    peso_final_kg = peso_kg - (gramos_perdidos / 1000.0);
+
+    printf("\n--- Resultados del Entrenamiento ---\n");
+    printf("a) Gramos perdidos: %.2f g | Peso final: %.3f kg\n", gramos_perdidos, peso_final_kg);
+
+    // Inciso b: Suplementación vitamínica
+    if (gramos_perdidos &gt; 450)
+    {
+        printf("b) El corredor necesitara Vitamina A y tambien Vitamina C.\n");
+    }
+    else if (gramos_perdidos &gt; 300)
+    {
+        printf("b) El corredor necesitara Vitamina A.\n");
+    }
+    else
+    {
+        printf("b) El corredor no requiere suplementos vitaminicos adicionales.\n");
+    }
+
+    // Inciso c: Evaluación de récords (Olímpico < 25s, Panamericano < 15s)
+    if (tiempo_seg &lt; 15)
+    {
+        printf("c) Ha mejorado el record Olimpico (25s) y el record Panamericano (15s)!\n");
+    }
+    else if (tiempo_seg &lt; 25)
+    {
+        printf("c) Ha mejorado el record Olimpico (25s)!\n");
+    }
+    else
+    {
+        printf("c) No ha superado los tiempos record vigentes.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11: Disponibilidad de bancos en un aula</h3>
+                        <p>Sabiendo la cantidad de bancos de un aula y la cantidad de alumnos inscriptos para este curso, determinar si alcanzan los bancos existentes. De no ser así informar además cuántos bancos es necesario agregar.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int bancos = 0, inscriptos = 0, faltantes = 0;
+
+    printf("Ingrese la cantidad de bancos disponibles en el aula: ");
+    scanf("%d", &amp;bancos);
+
+    printf("Ingrese la cantidad de alumnos inscriptos al curso: ");
+    scanf("%d", &amp;inscriptos);
+
+    if (bancos &gt;= inscriptos)
+    {
+        printf("Los bancos existentes alcanzan para todos los alumnos inscriptos.\n");
+    }
+    else
+    {
+        faltantes = inscriptos - bancos;
+        printf("No alcanzan los bancos. Es necesario agregar %d banco(s).\n", faltantes);
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12: Mayor de tres números y análisis de condiciones</h3>
+                        <p>Diseñar un algoritmo que calcule el mayor de 3 números dados. ¿Cuántas condiciones requiere evaluar su algoritmo? ¿Podría codificar otro que utilice menos? ¿Y otro que utilice menos sentencias SI?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis Teórico:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>¿Cuántas condiciones requiere evaluar el algoritmo?</strong> Si utilizo condiciones compuestas independientes (ej. <code>a &gt;= b &amp;&amp; a &gt;= c</code>), en el peor caso se evalúan hasta 4 comparaciones relacionales. En cambio, usando una estructura anidada o una variable auxiliar (<code>mayor = a</code>), solo necesito evaluar <strong>2 condiciones simples</strong> en total (<code>b &gt; mayor</code> y <code>c &gt; mayor</code>).</li>
+                            <li><strong>¿Podría codificar otro que utilice menos sentencias SI?</strong> Sí: pasando de 3 sentencias <code>if</code> anidadas a <strong>2 sentencias <code>if</code> secuenciales</strong> mediante una variable auxiliar, o incluso a <strong>0 sentencias <code>if</code></strong> anidando la función matemática de máximo con <code>fabs()</code> vista en el Ejercicio 5.</li>
+                        </ul>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float a = 0, b = 0, c = 0, mayor = 0;
+
+    printf("Ingrese tres numeros separados por espacio: ");
+    scanf("%f %f %f", &amp;a, &amp;b, &amp;c);
+
+    // Solución óptima: 2 condiciones simples y 2 sentencias if usando variable auxiliar
+    mayor = a;
+
+    if (b &gt; mayor)
+    {
+        mayor = b;
+    }
+
+    if (c &gt; mayor)
+    {
+        mayor = c;
+    }
+
+    printf("El mayor de los tres numeros es: %.2f\n", mayor);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
     </main>
 
-    <script src="../../assets/js/theme.js"></script>
+    <!-- Scripts externos -->
+     
     <script src="../../assets/js/copy.js"></script>
     <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/syntax_c.js"></script>
 </body>
 </html>

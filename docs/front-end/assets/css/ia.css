@@ -647,20 +647,26 @@ body.paradigmas-page {
 
 .card-paradigmas { --local-color: var(--color-paradigmas); }
 
+/* Layout de la tarjeta en pp.html */
+.pp-tp-card-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
 /* =========================================
-   SIMULADOR PARADIGMAS (SPLIT SCREEN)
+   DIAGRAMA UML Y TRAZABILIDAD
    ========================================= */
 
 .section-title {
     color: var(--color-paradigmas);
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* DIAGRAMA UML ESTÁTICO */
 .uml-container {
     display: flex;
     flex-direction: column;
@@ -669,101 +675,382 @@ body.paradigmas-page {
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid var(--table-border-color);
+    width: 100%;
+    overflow: hidden;
 }
 
 .uml-class {
     background: var(--bg-color);
     border: 2px solid var(--color-paradigmas);
     border-radius: 6px;
-    padding: 1rem;
-    min-width: 250px;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    max-width: 360px;
     box-shadow: var(--shadow);
 }
 
 .uml-class h3 { text-align: center; margin-bottom: 0.5rem; }
 .uml-class hr { border: 1px solid var(--table-border-color); margin: 0.5rem 0; }
-.uml-class p { font-family: monospace; font-size: 0.9rem; margin: 2px 0; }
+.uml-class p { font-family: monospace; font-size: 0.88rem; margin: 2px 0; overflow-wrap: break-word; }
 .uml-class .method { color: var(--color-paradigmas); font-weight: bold; }
 
 .abstract-class { border-style: dashed; }
-.uml-arrow { margin: 10px 0; font-weight: bold; color: var(--text-muted); }
-.uml-branches { display: flex; gap: 3rem; margin-top: 1rem; }
-.uml-branch { display: flex; flex-direction: column; align-items: center; }
-.uml-arrow-up { font-size: 1.5rem; margin-bottom: 5px; color: var(--text-muted); }
+.uml-arrow { margin: 12px 0; font-weight: bold; color: var(--text-muted); text-align: center; font-size: 0.9rem; }
+.uml-branches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+.uml-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 260px;
+    max-width: 360px;
+}
+.uml-arrow-up { font-size: 1rem; font-weight: bold; margin-bottom: 8px; color: var(--text-muted); }
 
-/* LAYOUT SPLIT SCREEN */
-.split-screen {
+.trace-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+}
+
+.trace-step {
+    background: var(--bg-color);
+    border: 1px solid var(--table-border-color);
+    border-top: 3px solid var(--color-paradigmas);
+    border-radius: 6px;
+    padding: 1rem;
+    font-size: 0.92rem;
+}
+
+.trace-badge {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--color-paradigmas);
+    font-weight: bold;
+    font-size: 0.82rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   PANELES INDIVIDUALES DE PUNTOS (VERTICAL)
+   ========================================= */
+
+.vertical-points-wrapper {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
-    align-items: start;
 }
 
-@media (max-width: 900px) {
-    .split-screen { grid-template-columns: 1fr; }
+.point-panel {
+    display: none;
+    animation: fadeInUp 0.3s ease-out;
 }
 
-/* COLUMNA CÓDIGO */
-.code-column { display: flex; flex-direction: column; gap: 1.5rem; }
+.point-panel.active-panel {
+    display: block;
+}
 
-.control-panel { display: flex; justify-content: flex-end; }
+.code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.code-header {
+    background: rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--table-border-color);
+}
+
+[data-theme="dark"] .code-header {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
 .sim-btn {
     background: var(--card-bg);
     color: var(--text-color);
     border: 1px solid var(--table-border-color);
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 7px 14px;
+    border-radius: 6px;
     font-weight: bold;
+    font-size: 0.86rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
-.sim-btn.action { background: var(--color-paradigmas); color: white; border: none; }
-.sim-btn.action:hover { background: var(--color-paradigmas-dark); transform: scale(1.05); }
 
-.code-block {
-    background: var(--code-bg);
+.sim-btn:hover {
+    border-color: var(--color-paradigmas);
+}
+
+.sim-btn.action {
+    background: var(--color-paradigmas);
+    color: white;
+    border: none;
+}
+
+.sim-btn.action:hover {
+    background: var(--color-paradigmas-dark);
+    transform: translateY(-1px);
+}
+
+.sim-btn.btn-danger-outline {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+[data-theme="dark"] .sim-btn.btn-danger-outline {
+    color: #fc8181;
+}
+
+.sim-select {
+    background: var(--card-bg);
+    color: var(--text-color);
     border: 1px solid var(--table-border-color);
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: monospace;
+    font-size: 0.86rem;
 }
 
-.code-header {
-    background: rgba(0,0,0,0.3);
-    padding: 10px 15px;
+.code-block pre,
+.code-box pre {
+    padding: 18px;
+    margin: 0;
+    background: transparent;
+    overflow-x: auto;
+    font-size: 0.92rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Contraste adaptado para Modo Claro y Modo Oscuro */
+.code-block .highlight,
+.code-box .highlight {
+    color: #b45309;
+    font-weight: bold;
+}
+
+[data-theme="dark"] .code-block .highlight,
+[data-theme="dark"] .code-box .highlight {
+    color: #f1c40f;
+}
+
+.explanation {
+    padding: 14px 18px;
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.04);
+    border-top: 1px dashed var(--table-border-color);
+    margin: 0;
+}
+
+[data-theme="dark"] .explanation {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   SIMULADOR DE MEMORIA (100% ANCHO DEBAJO DEL PUNTO)
+   ========================================= */
+
+.memory-container {
+    background: var(--card-bg);
+    border: 2px dashed var(--color-paradigmas);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 18px 18px 18px;
+}
+
+.sim-top-dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    align-items: stretch;
+}
+
+.platform-status-box {
+    background: var(--bg-color);
+    border: 1px solid var(--table-border-color);
+    border-left: 4px solid var(--color-paradigmas);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.platform-status-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0.75rem;
+}
+
+.platform-title-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.92rem;
+}
+
+.platform-title-group i {
+    color: var(--color-paradigmas);
+}
+
+.plat-badge {
+    background: var(--color-paradigmas);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 0.76rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.platform-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 0.85rem;
+}
+
+.plat-chip {
+    background: var(--card-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.plat-chip b {
+    color: var(--text-muted);
+    font-weight: normal;
+}
+
+.capacity-bar-wrapper {
+    font-size: 0.8rem;
+}
+
+.capacity-labels {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+}
+
+.capacity-labels strong {
+    color: var(--text-color);
+}
+
+.capacity-track {
+    width: 100%;
+    height: 9px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--table-border-color);
+}
+
+.capacity-fill {
+    height: 100%;
+    background: var(--color-paradigmas);
+    transition: width 0.4s ease, background-color 0.3s ease;
+}
+
+/* Ventana System Transcript */
+.transcript-box {
+    background: var(--code-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.84rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.transcript-header {
+    background: rgba(0, 0, 0, 0.08);
+    padding: 8px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-bottom: 1px solid var(--table-border-color);
     font-weight: bold;
 }
 
-.code-block pre { padding: 15px; margin: 0; background: transparent; }
-.code-block .highlight { color: #f1c40f; font-weight: bold; }
-.explanation { padding: 10px 15px; font-size: 0.9rem; color: var(--text-muted); border-top: 1px dashed var(--table-border-color); margin: 0; }
+[data-theme="dark"] .transcript-header {
+    background: rgba(0, 0, 0, 0.28);
+}
 
-/* COLUMNA MEMORIA VISUAL */
-.memory-container {
-    background: var(--card-bg);
-    border: 2px dashed var(--table-border-color);
-    border-radius: 8px;
-    padding: 1.5rem;
-    min-height: 500px;
+.op-badge {
+    color: var(--color-paradigmas);
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+.transcript-body {
+    padding: 12px 14px;
+    color: var(--code-text);
+    line-height: 1.5;
+    flex: 1;
+    overflow-wrap: break-word;
 }
 
 .collection-title {
     font-family: monospace;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.15rem);
     color: var(--text-muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     border-bottom: 2px solid var(--color-paradigmas);
     padding-bottom: 5px;
+    overflow-wrap: break-word;
 }
-.collection-title span { color: var(--color-paradigmas); }
 
+.collection-title span {
+    color: var(--color-paradigmas);
+}
+
+/* GRILLA AMPLIA */
 .memory-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
     gap: 1rem;
 }
 
@@ -772,80 +1059,164 @@ body.paradigmas-page {
     background: var(--bg-color);
     border-radius: 6px;
     border-left: 4px solid #777;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
 }
 
-.mem-object.peli { border-color: #e74c3c; } /* Rojo para Peli */
-.mem-object.serie { border-color: #3498db; } /* Azul para Serie */
+.mem-object.peli { border-color: #e74c3c; }
+.mem-object.serie { border-color: #3498db; }
 
-.obj-header { font-weight: bold; font-family: monospace; margin-bottom: 8px; border-bottom: 1px solid var(--table-border-color); padding-bottom: 4px;}
-.obj-body { font-size: 0.85rem; font-family: monospace; }
-.attr { margin-bottom: 4px; }
+.obj-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    font-family: monospace;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--table-border-color);
+    padding-bottom: 4px;
+    font-size: 0.86rem;
+}
+
+.obj-body { font-size: 0.82rem; font-family: monospace; }
+.attr { margin-bottom: 4px; overflow-wrap: break-word; }
 .attr span { color: var(--text-muted); }
 
 .poly-tooltip {
-    position: absolute; bottom: -30px; left: 0; width: 100%;
+    position: absolute; bottom: -32px; left: 0; width: 100%;
     background: var(--color-paradigmas); color: white;
     text-align: center; font-size: 0.75rem; padding: 4px;
     font-weight: bold; transition: bottom 0.3s ease;
 }
 
 /* ESTADOS DE ANIMACIÓN */
-
-/* 1. Select: Apagar los que no cumplen */
 .mem-object.dimmed {
-    opacity: 0.2;
-    transform: scale(0.9);
+    opacity: 0.25;
+    transform: scale(0.95);
     filter: grayscale(100%);
 }
+
 .mem-object.highlighted {
-    transform: scale(1.05);
-    border-width: 6px;
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+    transform: translateY(-3px);
+    border-left-width: 6px;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.35);
 }
+
 .mem-object.highlighted .calif-target {
     background: rgba(241, 196, 15, 0.2);
     font-weight: bold;
 }
 
-/* 2. Collect: Colapsar a solo Strings */
 .mem-object.collected {
     border-left-width: 0;
     border-top: 4px solid var(--color-paradigmas);
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    padding: 1.2rem 0.5rem;
 }
+
 .mem-object.collected .obj-header { display: none; }
 .mem-object.collected .obj-body .attr:not(.genre-target) { display: none; }
-.mem-object.collected .genre-target span { display: none; } /* Oculta "genero:" */
+.mem-object.collected .genre-target span { display: none; }
 .mem-object.collected .genre-target {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--color-paradigmas);
     font-weight: bold;
 }
 
-/* 3. Polimorfismo */
 .mem-object.poly-true, .mem-object.poly-false {
-    padding-bottom: 30px; /* Hace espacio para el tooltip */
+    padding-bottom: 32px;
 }
 .mem-object.poly-true .poly-tooltip { bottom: 0; background: #2ecc71; }
 .mem-object.poly-false .poly-tooltip { bottom: 0; background: #e74c3c; }
-.mem-object.poly-false { opacity: 0.4; }
+.mem-object.poly-false { opacity: 0.38; }
 
-/* Estado extra para el iterador REJECT */
 .mem-object.highlighted-danger {
-    transform: scale(1.05);
-    border-width: 6px;
+    transform: translateY(-3px);
+    border-left-width: 6px;
     border-color: #e74c3c !important;
     box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
 }
-.mem-object.highlighted-danger .disp-target {
-    background: rgba(231, 76, 60, 0.2);
-    font-weight: bold;
+
+.mem-object.highlighted-detect {
+    transform: translateY(-3px);
+    border-left-width: 6px;
+    border-color: #2ecc71 !important;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+}
+
+/* =========================================
+   REGLAS RESPONSIVE (TABLETS Y CELULARES)
+   ========================================= */
+
+@media (max-width: 900px) {
+    .sim-top-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .pp-tp-card-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .uml-container {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .uml-branches {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .uml-branch {
+        width: 100%;
+    }
+
+    .code-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .header-actions .sim-btn,
+    .header-actions .sim-select {
+        flex: 1 1 auto;
+    }
+
+    .memory-container {
+        margin: 0.75rem 8px 12px 8px;
+        padding: 1rem;
+    }
+
+    .code-block pre,
+    .code-box pre {
+        padding: 12px;
+        font-size: 0.84rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-status-box,
+    .transcript-box {
+        padding: 0.85rem;
+    }
 }
 
 /* _so.css */
