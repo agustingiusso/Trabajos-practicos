@@ -1846,7 +1846,6 @@ body .trabajo-card:hover {
 
 pre {
     padding: 2rem; overflow-x: auto; margin: 0;
-    color: var(--code-text);
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 0.95rem; line-height: 1.5; tab-size: 4;
 }
@@ -1874,6 +1873,67 @@ pre {
 .punto-link:hover, .punto-link.active {
     background: var(--accent); color: white;
 }
+
+/* =========================================================
+   RESALTADO DE SINTAXIS C - MODO CLARO (VS CODE LIGHT+)
+   ========================================================= */
+.code-box:has(code.language-c) {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.code-box pre:has(code.language-c) {
+    background-color: transparent;
+    color: #1f2328;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+code.language-c .hl-macro     { color: #8250df; } /* #include, #define (Violeta oscuro) */
+code.language-c .hl-header    { color: #0550ae; } /* <stdio.h> (Azul marino) */
+code.language-c .hl-keyword   { color: #cf222e; } /* int, float, char, if, return (Rojo carmesí) */
+code.language-c .hl-operator  { color: #cf222e; } /* &, =, +, -, *, / (Rojo carmesí) */
+code.language-c .hl-def       { color: #953800; } /* main, arreglos nombre[50] (Naranja tostado) */
+code.language-c .hl-func      { color: #6639ba; } /* printf, scanf (Púrpura intenso) */
+code.language-c .hl-string    { color: #0a3069; } /* "Texto..." (Azul profundo) */
+code.language-c .hl-format    { color: #cf222e; } /* %s, %f, %d, \n dentro de strings (Rojo carmesí) */
+code.language-c .hl-number    { color: #098658; } /* 50, 0, 180 (Verde esmeralda oscuro) */
+code.language-c .hl-comment   { color: #57606a; font-style: italic; } /* // Comentarios (Gris pizarra) */
+code.language-c .hl-var       { color: #1f2328; } /* Variables e identificadores (Carbón) */
+
+/* VS Code Bracket Pair Colorization (Modo Claro) */
+code.language-c .hl-bracket-1 { color: #9a6700; } /* Nivel 1 (Ámbar oscuro) */
+code.language-c .hl-bracket-2 { color: #a40e26; } /* Nivel 2 (Magenta/Rojo oscuro) */
+code.language-c .hl-bracket-3 { color: #0550ae; } /* Nivel 3 (Azul intenso) */
+
+/* =========================================================
+   RESALTADO DE SINTAXIS C - MODO OSCURO (VS CODE DARK+)
+   ========================================================= */
+[data-theme="dark"] .code-box:has(code.language-c) {
+    background-color: #0d0d0d;
+    border: 1px solid #2d3748;
+}
+
+[data-theme="dark"] .code-box pre:has(code.language-c) {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] code.language-c .hl-macro     { color: #c586c0; } /* #include, #define (Violeta) */
+[data-theme="dark"] code.language-c .hl-header    { color: #79c0ff; } /* <stdio.h> (Celeste) */
+[data-theme="dark"] code.language-c .hl-keyword   { color: #ff7b72; } /* int, float, char, if, return (Coral) */
+[data-theme="dark"] code.language-c .hl-operator  { color: #ff7b72; } /* &, =, +, -, *, / (Coral) */
+[data-theme="dark"] code.language-c .hl-def       { color: #ffa657; } /* main, arreglos nombre[50] (Naranja) */
+[data-theme="dark"] code.language-c .hl-func      { color: #d2a8ff; } /* printf, scanf (Lavanda) */
+[data-theme="dark"] code.language-c .hl-string    { color: #a5d6ff; } /* "Texto..." (Azul claro) */
+[data-theme="dark"] code.language-c .hl-format    { color: #ff7b72; } /* %s, %f, %d, \n dentro de strings (Coral) */
+[data-theme="dark"] code.language-c .hl-number    { color: #b5cea8; } /* 50, 0, 180 (Verde menta) */
+[data-theme="dark"] code.language-c .hl-comment   { color: #6e7681; font-style: italic; } /* // Comentarios */
+[data-theme="dark"] code.language-c .hl-var       { color: #e6edf3; } /* Variables (Blanco suave) */
+
+/* VS Code Bracket Pair Colorization (Modo Oscuro) */
+[data-theme="dark"] code.language-c .hl-bracket-1 { color: #ffd700; } /* Nivel 1 (Dorado) */
+[data-theme="dark"] code.language-c .hl-bracket-2 { color: #da70d6; } /* Nivel 2 (Orquídea/Rosa) */
+[data-theme="dark"] code.language-c .hl-bracket-3 { color: #179fff; } /* Nivel 3 (Azul) */
 
 /* _d_arbol.css */
 

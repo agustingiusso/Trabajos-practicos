@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP1 - Algoritmos y Estructuras de Datos</title>
+    <title>TP2 - Algoritmos y Estructuras de Datos</title>
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="../../assets/js/theme.js"></script>
-
 </head>
 
-<body class="algoritmos-page" data-theme="dark">
+<body class="algoritmos-page">
 
-    <!-- Menú lateral de partes (integrado de u1.html) -->
+    <!-- Menú lateral de partes -->
     <div id="side-parts-menu" class="side-menu-container">
         <div class="side-menu-drawer">
-            <h3 class="side-menu-title">Trabajo Práctico 1</h3>
+            <h3 class="side-menu-title">Trabajo Práctico 2</h3>
             <ul class="side-menu-list">
-                <li><a href="#" class="part-link active" data-part="1">Parte 1</a></li>
-                <li><a href="#" class="part-link" data-part="2">Parte 2</a></li>
+                <li><a href="#" class="part-link active" data-part="1">Parte 1: Repetición Fija</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2: Repetición Condicional</a></li>
             </ul>
         </div>
         <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
@@ -28,7 +26,7 @@
         </button>
     </div>
 
-    <!-- Header (formato tp1_algoritmos.html) -->
+    <!-- Header -->
     <header class="header">
         <div class="header-container">
             <nav class="container">
@@ -38,7 +36,7 @@
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                 </a>
-                <button class="theme-btn" aria-label="Cambiar tema">
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
                     <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
                     </svg>
@@ -51,25 +49,41 @@
         </div>
     </header>
 
-    <!-- Selector de puntos (se actualiza según la parte activa) -->
+    <!-- Selector de puntos (16 botones totales: 13 visibles en Parte 1 y 16 en Parte 2) -->
     <div class="slide-controls">
         <ul class="nav-points">
             <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <li class="nav-point" data-point="11">11</li>
+            <li class="nav-point" data-point="12">12</li>
+            <li class="nav-point" data-point="13">13</li>
+            <li class="nav-point" data-point="14" style="display: none;">14</li>
+            <li class="nav-point" data-point="15" style="display: none;">15</li>
+            <li class="nav-point" data-point="16" style="display: none;">16</li>
         </ul>
     </div>
 
-    <!-- Contenedor principal -->
     <main class="main-container">
 
-        <!-- ==================== PARTE 1 ==================== -->
+        <!-- =========================================================================
+             PARTE 1: REPETICIÓN INCONDICIONAL / FIJA (13 PUNTOS)
+             ========================================================================= -->
         <div id="contenedor-parte-1" class="slides-container part-section active">
 
-            <!-- Punto 1 (Plantilla base) -->
+            <!-- Parte 1 - Ejercicio 1 -->
             <article class="slide active">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 1: Título del ejercicio</h3>
-                        <p>Enunciado del ejercicio aquí.</p>
+                        <h3>Ejercicio 1: Promedio entero de una comisión de 40 alumnos</h3>
+                        <p>Se desea calcular el promedio de notas de una comisión de 40 alumnos. Imprimir el resultado como un número entero (si hay parte decimal, eliminarla).</p>
                     </div>
 
                     <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
@@ -78,7 +92,760 @@
 
 int main()
 {
-    // Código del ejercicio
+    int i, promedio_entero = 0;
+    float nota = 0, suma = 0;
+    const int TOTAL_ALUMNOS = 40;
+
+    for (i = 1; i &lt;= TOTAL_ALUMNOS; i++)
+    {
+        printf("Ingrese la nota del alumno %d: ", i);
+        scanf("%f", &amp;nota);
+        suma = suma + nota;
+    }
+
+    // Conversión explícita a int para truncar la parte decimal:
+    promedio_entero = (int)(suma / TOTAL_ALUMNOS);
+
+    printf("\nEl promedio entero de la comision es: %d\n", promedio_entero);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Porcentaje de aprobados y nota promedio de aprobación</h3>
+                        <p>Se desea calcular e imprimir el porcentaje de alumnos aprobados en una comisión de 40 alumnos y la nota promedio de aprobación. El porcentaje debe calcularse con 2 dígitos decimales y la nota promedio debe ser entera y redondearse para abajo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, aprobados = 0, promedio_aprobacion = 0;
+    float nota = 0, suma_aprobados = 0, porcentaje_aprobados = 0;
+    const int TOTAL_ALUMNOS = 40;
+
+    for (i = 1; i &lt;= TOTAL_ALUMNOS; i++)
+    {
+        printf("Ingrese la nota del alumno %d: ", i);
+        scanf("%f", &amp;nota);
+
+        // Considerando aprobación con nota >= 6:
+        if (nota &gt;= 6.0)
+        {
+            aprobados++;
+            suma_aprobados = suma_aprobados + nota;
+        }
+    }
+
+    porcentaje_aprobados = (aprobados * 100.0) / TOTAL_ALUMNOS;
+
+    printf("\nPorcentaje de alumnos aprobados: %.2f%%\n", porcentaje_aprobados);
+
+    if (aprobados &gt; 0)
+    {
+        promedio_aprobacion = (int)(suma_aprobados / aprobados);
+        printf("Nota promedio de aprobacion (redondeada hacia abajo): %d\n", promedio_aprobacion);
+    }
+    else
+    {
+        printf("No se registraron alumnos aprobados en la comision.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Encuesta demográfica en tres ciudades</h3>
+                        <p>Se realiza una encuesta en tres ciudades de un mismo distrito para determinar cuál de ellas tiene el mayor porcentaje de chicos menores de 5 años. Imprimir un mensaje indicándolo. Se sabe que la ciudad 1 tienen 1000 chicos menores de 10 años, la ciudad 2 tiene 1500 chicos menores de 10 años y la ciudad 3 tiene 1530 chicos menores de 10 años.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, edad = 0, menores_5 = 0, ciudad_mayor = 0;
+    int poblacion[3] = {1000, 1500, 1530};
+    int c;
+    float porcentaje = 0, max_porcentaje = -1.0;
+
+    for (c = 0; c &lt; 3; c++)
+    {
+        menores_5 = 0;
+        printf("\n--- Relevamiento Ciudad %d (%d chicos menores de 10 anios) ---\n", c + 1, poblacion[c]);
+
+        for (i = 1; i &lt;= poblacion[c]; i++)
+        {
+            printf("Edad del chico %d (ciudad %d): ", i, c + 1);
+            scanf("%d", &amp;edad);
+
+            if (edad &lt; 5)
+            {
+                menores_5++;
+            }
+        }
+
+        porcentaje = (menores_5 * 100.0) / poblacion[c];
+        printf("Porcentaje de menores de 5 anios en Ciudad %d: %.2f%%\n", c + 1, porcentaje);
+
+        if (porcentaje &gt; max_porcentaje)
+        {
+            max_porcentaje = porcentaje;
+            ciudad_mayor = c + 1;
+        }
+    }
+
+    printf("\nLa Ciudad %d tiene el mayor porcentaje de chicos menores de 5 anios (%.2f%%).\n",
+           ciudad_mayor, max_porcentaje);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Impresión de patrón triangular de asteriscos</h3>
+                        <p>Realizar un programa que visualice por pantalla el siguiente dibujo
+*
+**
+***
+****
+*****</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int fila, col;
+
+    for (fila = 1; fila &lt;= 5; fila++)
+    {
+        for (col = 1; col &lt;= fila; col++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Cálculo del máximo de N números leídos</h3>
+                        <p>Implementar un programa que lea un número N y calcule el máximo de los siguientes N números leídos.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int N = 0, i;
+    float num = 0, maximo = 0;
+
+    printf("Ingrese la cantidad de numeros a leer (N): ");
+    scanf("%d", &amp;N);
+
+    if (N &lt;= 0)
+    {
+        printf("La cantidad N debe ser mayor a cero.\n");
+        return 1;
+    }
+
+    for (i = 1; i &lt;= N; i++)
+    {
+        printf("Ingrese el numero %d: ", i);
+        scanf("%f", &amp;num);
+
+        if (i == 1 || num &gt; maximo)
+        {
+            maximo = num;
+        }
+    }
+
+    printf("\nEl valor maximo de los %d numeros ingresados es: %.2f\n", N, maximo);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Primeras N potencias de M</h3>
+                        <p>Implementar un programa que lea dos números M y N e imprima las primeras N potencias de M, contando desde la potencia 0. Hacer dos versiones: una que use la función primitiva POTENCIA y otra que no la use.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float M = 0, acumulador = 1.0;
+    int N = 0, i;
+
+    printf("Ingrese la base (M): ");
+    scanf("%f", &amp;M);
+    printf("Ingrese la cantidad de potencias a mostrar (N): ");
+    scanf("%d", &amp;N);
+
+    // =================================================================
+    // VERSIÓN 1: Usando la función pow() de <math.h>
+    // =================================================================
+    printf("\n--- Version 1: Usando pow() ---\n");
+    for (i = 0; i &lt; N; i++)
+    {
+        printf("%.2f ^ %d = %.2f\n", M, i, pow(M, i));
+    }
+
+    // =================================================================
+    // VERSIÓN 2: Sin usar pow() (producto iterativo acumulado)
+    // =================================================================
+    printf("\n--- Version 2: Sin usar funcion de potencia ---\n");
+    acumulador = 1.0;
+    for (i = 0; i &lt; N; i++)
+    {
+        printf("%.2f ^ %d = %.2f\n", M, i, acumulador);
+        acumulador = acumulador * M;
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7: Suma de las primeras N potencias de M</h3>
+                        <p>Implementar un programa que lea dos números M y N e imprima la suma de las primeras N potencias de M, contando desde la potencia 0. Hacer dos versiones: una que use la función primitiva POTENCIA y otra que no la use.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float M = 0, suma_v1 = 0, suma_v2 = 0, potencia_actual = 1.0;
+    int N = 0, i;
+
+    printf("Ingrese la base (M): ");
+    scanf("%f", &amp;M);
+    printf("Ingrese la cantidad de potencias a sumar (N): ");
+    scanf("%d", &amp;N);
+
+    // Versión 1: Usando pow()
+    for (i = 0; i &lt; N; i++)
+    {
+        suma_v1 = suma_v1 + pow(M, i);
+    }
+
+    // Versión 2: Sin usar pow()
+    potencia_actual = 1.0;
+    for (i = 0; i &lt; N; i++)
+    {
+        suma_v2 = suma_v2 + potencia_actual;
+        potencia_actual = potencia_actual * M;
+    }
+
+    printf("\nSuma de las primeras %d potencias (con pow): %.2f\n", N, suma_v1);
+    printf("Suma de las primeras %d potencias (sin pow): %.2f\n", N, suma_v2);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8: Potencias de P desde la posición Q hasta R</h3>
+                        <p>Implementar un programa que lea tres números P, Q, R e imprima las potencias de P empezando desde la que está en la posición Q hasta la R.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float P = 0;
+    int Q = 0, R = 0, exp;
+
+    printf("Ingrese la base (P): ");
+    scanf("%f", &amp;P);
+    printf("Ingrese el exponente inicial (Q) y final (R): ");
+    scanf("%d %d", &amp;Q, &amp;R);
+
+    if (Q &gt; R)
+    {
+        printf("Error: La posicion inicial Q debe ser menor o igual a R.\n");
+        return 1;
+    }
+
+    printf("\n--- Potencias de %.2f desde %d hasta %d ---\n", P, Q, R);
+    for (exp = Q; exp &lt;= R; exp++)
+    {
+        printf("%.2f ^ %d = %.4f\n", P, exp, pow(P, exp));
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9: Salida de bucles anidados</h3>
+                        <p>Escriba la salida de los siguientes bucles Anidados:
+a) Repetir Para i := 1, 5, 1
+       Imprimir: i
+       Repetir Para j := i, 1, -2
+           Imprimir: j
+       Fin Repetir Para
+   Fin Repetir Para
+
+b) Repetir Para i := 3, 1, -1
+       Repetir Para j := 1, i, 1
+           Repetir Para k := i, j, -1
+               Imprimir: i, j, k
+           Fin Repetir Para
+       Fin Repetir Para
+   Fin Repetir Para
+
+c) Repetir Para i := 1, 3, 1
+       Repetir Para j := 1, 3, 1
+           Repetir Para k := i, j, 1
+               Imprimir: i, j, k
+           Fin Repetir Para
+       Fin Repetir Para
+   Fin Repetir Para</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Traza de Salidas por Pantalla:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><strong>Salida del bucle a):</strong> Por cada valor de <code>i</code> del 1 al 5, primero imprime <code>i</code> y luego decrementa <code>j</code> de 2 en 2 desde <code>i</code> hasta 1:
+                                <br><code>1, 1 | 2, 2 | 3, 3, 1 | 4, 4, 2 | 5, 5, 3, 1</code>
+                            </li>
+                            <li><strong>Salida del bucle b) (ternas <code>i, j, k</code>):</strong>
+                                <br>• Para <code>i = 3</code>: <code>(3,1,3), (3,1,2), (3,1,1), (3,2,3), (3,2,2), (3,3,3)</code>
+                                <br>• Para <code>i = 2</code>: <code>(2,1,2), (2,1,1), (2,2,2)</code>
+                                <br>• Para <code>i = 1</code>: <code>(1,1,1)</code>
+                            </li>
+                            <li><strong>Salida del bucle c) (ternas <code>i, j, k</code>):</strong> El bucle interno avanza con paso <code>+1</code> desde <code>k = i</code> hasta <code>j</code> (cuando <code>i &gt; j</code>, el bucle interno no se ejecuta):
+                                <br>• Para <code>i = 1</code>: <code>(1,1,1), (1,2,1), (1,2,2), (1,3,1), (1,3,2), (1,3,3)</code>
+                                <br>• Para <code>i = 2</code>: <code>(2,2,2), (2,3,2), (2,3,3)</code>
+                                <br>• Para <code>i = 3</code>: <code>(3,3,3)</code>
+                            </li>
+                        </ul>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, j, k;
+
+    printf("=== SALIDA BUCLE A ===\n");
+    for (i = 1; i &lt;= 5; i++)
+    {
+        printf("i=%d -&gt; ", i);
+        for (j = i; j &gt;= 1; j -= 2)
+        {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+
+    printf("\n=== SALIDA BUCLE B ===\n");
+    for (i = 3; i &gt;= 1; i--)
+    {
+        for (j = 1; j &lt;= i; j++)
+        {
+            for (k = i; k &gt;= j; k--)
+            {
+                printf("%d %d %d\n", i, j, k);
+            }
+        }
+    }
+
+    printf("\n=== SALIDA BUCLE C ===\n");
+    for (i = 1; i &lt;= 3; i++)
+    {
+        for (j = 1; j &lt;= 3; j++)
+        {
+            for (k = i; k &lt;= j; k++)
+            {
+                printf("%d %d %d\n", i, j, k);
+            }
+        }
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10: Divisores propios menores de un número</h3>
+                        <p>Implementar un programa que calcule todos los divisores de un número dado que son menores que él. Recordar que todos los divisores de un número, excepto por él mismo, son menores que la mitad.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int num = 0, d;
+
+    printf("Ingrese un numero entero positivo: ");
+    scanf("%d", &amp;num);
+
+    if (num &lt;= 1)
+    {
+        printf("El numero no posee divisores positivos menores que el.\n");
+        return 0;
+    }
+
+    printf("Divisores de %d menores que el mismo: ", num);
+    for (d = 1; d &lt;= num / 2; d++)
+    {
+        if (num % d == 0)
+        {
+            printf("%d ", d);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11: Raíces reales de una ecuación de segundo grado</h3>
+                        <p>Implementar un programa que calcule e imprima las raíces reales de una ecuación de segundo grado o un cartel indicando que no existen tales raíces.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float a = 0, b = 0, c = 0, discriminante = 0, x1 = 0, x2 = 0;
+
+    printf("Ingrese los coeficientes a, b y c de la ecuacion cuadratica: ");
+    scanf("%f %f %f", &amp;a, &amp;b, &amp;c);
+
+    if (a == 0)
+    {
+        printf("El coeficiente 'a' no puede ser 0 en una ecuacion de segundo grado.\n");
+        return 1;
+    }
+
+    discriminante = (b * b) - (4.0 * a * c);
+
+    if (discriminante &gt; 0)
+    {
+        x1 = (-b + sqrt(discriminante)) / (2.0 * a);
+        x2 = (-b - sqrt(discriminante)) / (2.0 * a);
+        printf("Raices reales distintas: x1 = %.2f | x2 = %.2f\n", x1, x2);
+    }
+    else if (discriminante == 0)
+    {
+        x1 = -b / (2.0 * a);
+        printf("Raiz real doble: x1 = x2 = %.2f\n", x1);
+    }
+    else
+    {
+        printf("No existen raices reales para los coeficientes ingresados.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12: Emisión de recibos de sueldo para 50 empleados</h3>
+                        <p>Retomando el ejercicio 1 del TP1, implementar un programa que imprima los recibos de los 50 empleados de la empresa.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, ausentes;
+    char nombre[50], apellido[50];
+    float sueldo_basico, premio, comida, viaticos;
+    float descuento_ausentes, total_ausentes;
+    float monto_remunerativo, monto_no_remunerativo;
+    float obra_social, ley_19032, jubilacion, total_descuentos;
+    float sueldo_bruto, sueldo_neto;
+    const int CANT_EMPLEADOS = 50;
+
+    for (i = 1; i &lt;= CANT_EMPLEADOS; i++)
+    {
+        printf("\n--- Carga de datos del Empleado %d de %d ---\n", i, CANT_EMPLEADOS);
+        printf("Nombre: ");
+        scanf("%s", nombre);
+        printf("Apellido: ");
+        scanf("%s", apellido);
+        printf("Sueldo basico: ");
+        scanf("%f", &amp;sueldo_basico);
+        printf("Premio: ");
+        scanf("%f", &amp;premio);
+        printf("Comida: ");
+        scanf("%f", &amp;comida);
+        printf("Viaticos: ");
+        scanf("%f", &amp;viaticos);
+        printf("Cantidad de dias ausentes: ");
+        scanf("%d", &amp;ausentes);
+        printf("Monto fijo por dia de ausencia: ");
+        scanf("%f", &amp;descuento_ausentes);
+
+        total_ausentes = ausentes * descuento_ausentes;
+        monto_remunerativo = sueldo_basico - total_ausentes;
+        monto_no_remunerativo = premio + comida + viaticos;
+
+        obra_social = monto_remunerativo * 0.03;
+        ley_19032 = monto_remunerativo * 0.03;
+        jubilacion = monto_remunerativo * 0.11;
+
+        total_descuentos = obra_social + ley_19032 + jubilacion;
+        sueldo_bruto = monto_remunerativo + monto_no_remunerativo;
+        sueldo_neto = sueldo_bruto - total_descuentos;
+
+        printf("\n=========== RECIBO DE SUELDO (#%02d) ===========\n", i);
+        printf("Empleado: %s %s\n", nombre, apellido);
+        printf("Sueldo Basico:               $ %.2f\n", sueldo_basico);
+        printf("Ausentes (%d dias):          -$ %.2f\n", ausentes, total_ausentes);
+        printf("No Remunerativos:            $ %.2f\n", monto_no_remunerativo);
+        printf("Obra Social (3%%):           -$ %.2f\n", obra_social);
+        printf("Ley 19032 (3%%):             -$ %.2f\n", ley_19032);
+        printf("Jubilacion (11%%):           -$ %.2f\n", jubilacion);
+        printf("SUELDO NETO A COBRAR:        $ %.2f\n", sueldo_neto);
+        printf("==============================================\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 13 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 13: Relevamiento simultáneo de 15 encuestadores en 3 ciudades</h3>
+                        <p>Quince encuestadores se reparten entre 3 ciudades para relevar entre la población si considera que cierto producto es bueno, malo, regular, o no lo conoce. El relevamiento se lleva a cabo simultáneamente en las 3 ciudades. Cada encuestador entrevista una cantidad fija de personas (a ser leída) y a medida que obtienen sus respuestas las envían junto con el código de la ciudad a la oficina central por medio de un dispositivo inalámbrico. En dicha oficina, la información es recibida por un programa que debe calcular e informar para cada ciudad el porcentaje de su población que ubica al producto en cada categoría.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main()
+{
+    int cant_por_encuestador = 0, total_envios = 0, i, c, ciudad = 0;
+    char opinion;
+    int bueno[3] = {0, 0, 0};
+    int malo[3] = {0, 0, 0};
+    int regular[3] = {0, 0, 0};
+    int no_conoce[3] = {0, 0, 0};
+    int total_ciudad[3] = {0, 0, 0};
+
+    printf("Ingrese la cantidad fija de personas entrevistadas por cada encuestador: ");
+    scanf("%d", &amp;cant_por_encuestador);
+
+    total_envios = 15 * cant_por_encuestador;
+
+    for (i = 1; i &lt;= total_envios; i++)
+    {
+        printf("\n--- Envio #%d de %d ---\n", i, total_envios);
+        printf("Codigo de ciudad (1, 2 o 3): ");
+        scanf("%d", &amp;ciudad);
+        printf("Opinion (B: Bueno, M: Malo, R: Regular, N: No conoce): ");
+        scanf(" %c", &amp;opinion);
+        opinion = toupper(opinion);
+
+        if (ciudad &gt;= 1 &amp;&amp; ciudad &lt;= 3)
+        {
+            total_ciudad[ciudad - 1]++;
+            switch (opinion)
+            {
+            case 'B':
+                bueno[ciudad - 1]++;
+                break;
+            case 'M':
+                malo[ciudad - 1]++;
+                break;
+            case 'R':
+                regular[ciudad - 1]++;
+                break;
+            case 'N':
+                no_conoce[ciudad - 1]++;
+                break;
+            default:
+                printf("Opinion no valida.\n");
+                break;
+            }
+        }
+    }
+
+    printf("\n============= INFORME OFICINA CENTRAL =============\n");
+    for (c = 0; c &lt; 3; c++)
+    {
+        printf("\nCiudad %d (Total entrevistados: %d):\n", c + 1, total_ciudad[c]);
+        if (total_ciudad[c] &gt; 0)
+        {
+            printf("  - Bueno:      %.2f%%\n", (bueno[c] * 100.0) / total_ciudad[c]);
+            printf("  - Malo:       %.2f%%\n", (malo[c] * 100.0) / total_ciudad[c]);
+            printf("  - Regular:    %.2f%%\n", (regular[c] * 100.0) / total_ciudad[c]);
+            printf("  - No conoce:  %.2f%%\n", (no_conoce[c] * 100.0) / total_ciudad[c]);
+        }
+        else
+        {
+            printf("  Sin datos registrados para esta ciudad.\n");
+        }
+    }
+
     return 0;
 }</code></pre>
                             <button class="btn-copy">
@@ -93,15 +860,87 @@ int main()
 
         </div>
 
-        <!-- ==================== PARTE 2 ==================== -->
+        <!-- =========================================================================
+             PARTE 2: REPETICIÓN CONDICIONAL (16 PUNTOS)
+             ========================================================================= -->
         <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
 
-            <!-- Punto 1 de la Parte 2 (Plantilla base) -->
+            <!-- Parte 2 - Ejercicio 1 -->
             <article class="slide active">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 1: Título del ejercicio</h3>
-                        <p>Enunciado del ejercicio aquí.</p>
+                        <h3>Ejercicio 1: Promedios de 5 comisiones de Matemática y promedio general</h3>
+                        <p>En una institución educativa de nivel terciario, los docentes de la asignatura Matemática del 3er. año de todas las carreras quieren determinar la nota promedio para cada una de las 5 comisiones y el promedio General. Para lograrlo, se le pide el examen a cada alumno para registrar la nota. Todos los promedios se calculan sobre la cantidad de alumnos presentes que tenían el examen consigo al momento de hacer el cálculo. Imprimir los resultados redondeados al entero más próximo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    int comision, cant_comision = 0, total_general_alumnos = 0;
+    float nota = 0, suma_comision = 0, suma_general = 0;
+    int prom_comision_redondeado = 0, prom_general_redondeado = 0;
+
+    for (comision = 1; comision &lt;= 5; comision++)
+    {
+        suma_comision = 0;
+        cant_comision = 0;
+
+        printf("\n--- Comision %d (Ingrese nota negativa para finalizar la comision) ---\n", comision);
+        printf("Nota del alumno presente con examen: ");
+        scanf("%f", &amp;nota);
+
+        while (nota &gt;= 0)
+        {
+            suma_comision += nota;
+            cant_comision++;
+
+            printf("Nota del siguiente alumno (negativo para cortar): ");
+            scanf("%f", &amp;nota);
+        }
+
+        if (cant_comision &gt; 0)
+        {
+            prom_comision_redondeado = (int)round(suma_comision / cant_comision);
+            printf("Promedio Comision %d (redondeado): %d\n", comision, prom_comision_redondeado);
+            suma_general += suma_comision;
+            total_general_alumnos += cant_comision;
+        }
+        else
+        {
+            printf("Comision %d sin alumnos con examen presentes.\n", comision);
+        }
+    }
+
+    if (total_general_alumnos &gt; 0)
+    {
+        prom_general_redondeado = (int)round(suma_general / total_general_alumnos);
+        printf("\n==================================================\n");
+        printf("PROMEDIO GENERAL DE LAS 5 COMISIONES: %d\n", prom_general_redondeado);
+        printf("==================================================\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Clasificación y numeración correlativa de cartas por sección</h3>
+                        <p>En una empresa se clasifican las cartas recibidas según la sección a la que va destinada, y se les asigna un número correlativo para cada sección comenzando siempre desde el 0. Implemente un programa que simule esta operatoria e imprima un informe que detalle para cada sección, y en total, la cantidad de cartas recibidas ese día.</p>
                     </div>
 
                     <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
@@ -110,7 +949,1017 @@ int main()
 
 int main()
 {
-    // Código del ejercicio
+    int seccion = 0, i, total_cartas = 0;
+    int cartas_seccion[5] = {0, 0, 0, 0, 0};
+
+    printf("Clasificacion de correspondencia (Secciones 1 a 5, 0 para finalizar):\n");
+    printf("Ingrese seccion de destino: ");
+    scanf("%d", &amp;seccion);
+
+    while (seccion != 0)
+    {
+        if (seccion &gt;= 1 &amp;&amp; seccion &lt;= 5)
+        {
+            // Se asigna número correlativo comenzando desde el 0:
+            printf("-&gt; Carta asignada a Seccion %d con Nro Correlativo: %d\n",
+                   seccion, cartas_seccion[seccion - 1]);
+            cartas_seccion[seccion - 1]++;
+            total_cartas++;
+        }
+        else
+        {
+            printf("Seccion invalida. Ingrese un valor entre 1 y 5.\n");
+        }
+
+        printf("\nIngrese seccion de destino (0 para terminar): ");
+        scanf("%d", &amp;seccion);
+    }
+
+    printf("\n========= INFORME DIARIO DE CORRESPONDENCIA =========\n");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Seccion %d: %d carta(s) recibida(s)\n", i + 1, cartas_seccion[i]);
+    }
+    printf("-----------------------------------------------------\n");
+    printf("TOTAL DE CARTAS RECIBIDAS EN EL DIA: %d\n", total_cartas);
+    printf("=====================================================\n");
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Frecuencia de valores 10, 20, 30 y 40 hasta el tercer -1</h3>
+                        <p>Se ingresa por teclado un conjunto de números uno a uno. Contar cuántas veces se presentan los valores 10, 20, 30 y 40 y cuántos números distintos a esos se presentan. El proceso finaliza la tercera vez que -1 es ingresado.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int num = 0;
+    int c10 = 0, c20 = 0, c30 = 0, c40 = 0, otros = 0, cont_menos_uno = 0;
+
+    while (cont_menos_uno &lt; 3)
+    {
+        printf("Ingrese un numero (-1 tres veces para finalizar): ");
+        scanf("%d", &amp;num);
+
+        if (num == -1)
+        {
+            cont_menos_uno++;
+        }
+        else if (num == 10)
+        {
+            c10++;
+        }
+        else if (num == 20)
+        {
+            c20++;
+        }
+        else if (num == 30)
+        {
+            c30++;
+        }
+        else if (num == 40)
+        {
+            c40++;
+        }
+        else
+        {
+            otros++;
+        }
+    }
+
+    printf("\n--- Resultados del Conteo ---\n");
+    printf("Veces que aparecio el 10: %d\n", c10);
+    printf("Veces que aparecio el 20: %d\n", c20);
+    printf("Veces que aparecio el 30: %d\n", c30);
+    printf("Veces que aparecio el 40: %d\n", c40);
+    printf("Cantidad de numeros distintos a ellos (sin contar el centinela -1): %d\n", otros);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Suma y valores absolutos hasta el quinto negativo</h3>
+                        <p>Dada una sucesión de números reales, se quiere obtener e imprimir la suma de sus elementos, el valor absoluto de dicha suma, y la suma de los valores absolutos de cada elemento de la sucesión. La sucesión termina al aparecer su quinto elemento negativo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float num = 0, suma = 0, suma_absolutos = 0;
+    int negativos = 0;
+
+    while (negativos &lt; 5)
+    {
+        printf("Ingrese un numero real (corta al 5to negativo): ");
+        scanf("%f", &amp;num);
+
+        suma += num;
+        suma_absolutos += fabs(num);
+
+        if (num &lt; 0)
+        {
+            negativos++;
+        }
+    }
+
+    printf("\n--- Resultados de la Sucesion ---\n");
+    printf("1) Suma algebraica de los elementos:             %.2f\n", suma);
+    printf("2) Valor absoluto de dicha suma |Suma|:          %.2f\n", fabs(suma));
+    printf("3) Suma de los valores absolutos de cada elem.:  %.2f\n", suma_absolutos);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Números reales con parte no decimal (truncada) par</h3>
+                        <p>Se leen números reales hasta que aparece un 0. Determinar e imprimir cuántos de ellos tienen su parte no decimal par y el porcentaje que ellos representan respecto de la cantidad de números leídos. Imprimir también esta última cantidad.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p style="margin-bottom: 1rem;">En este punto evalúo la <strong>parte no decimal</strong> utilizando truncamiento hacia cero (equivalente a la función primitiva <code>TRUNCAR(n)</code> o al casteo directo <code>(int)n</code> en C, donde por ejemplo para <code>-3.24</code> la parte no decimal es <code>-3</code>):</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    float num = 0, porcentaje = 0;
+    int parte_no_decimal = 0, cant_pares = 0, total_leidos = 0;
+
+    printf("Ingrese un numero real (0 para finalizar): ");
+    scanf("%f", &amp;num);
+
+    while (num != 0.0)
+    {
+        total_leidos++;
+        parte_no_decimal = (int)num; // Elimina la parte decimal (TRUNCAR)
+
+        if (parte_no_decimal % 2 == 0)
+        {
+            cant_pares++;
+        }
+
+        printf("Ingrese otro numero real (0 para finalizar): ");
+        scanf("%f", &amp;num);
+    }
+
+    printf("\n--- Informe Final ---\n");
+    printf("Cantidad total de numeros leidos: %d\n", total_leidos);
+    printf("Cantidad con parte no decimal par: %d\n", cant_pares);
+
+    if (total_leidos &gt; 0)
+    {
+        porcentaje = (cant_pares * 100.0) / total_leidos;
+        printf("Porcentaje respecto del total: %.2f%%\n", porcentaje);
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Inversión de una cadena de caracteres</h3>
+                        <p>Implementar un programa que invierta una cadena de caracteres.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    char cadena[200], aux;
+    int longitud = 0, izq = 0, der = 0;
+
+    printf("Ingrese una cadena de caracteres: ");
+    scanf(" %[^\n]", cadena);
+
+    // Calculo la longitud recorriendo hasta el terminador nulo '\0'
+    while (cadena[longitud] != '\0')
+    {
+        longitud++;
+    }
+
+    // Invierto la cadena in-place con dos índices (inicio y fin)
+    izq = 0;
+    der = longitud - 1;
+    while (izq &lt; der)
+    {
+        aux = cadena[izq];
+        cadena[izq] = cadena[der];
+        cadena[der] = aux;
+        izq++;
+        der--;
+    }
+
+    printf("Cadena invertida: \"%s\"\n", cadena);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7: Eliminación de espacios en blanco al comienzo de una cadena</h3>
+                        <p>Implementar un programa que elimine todos los espacios en blanco al comienzo de una cadena de caracteres.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    char cadena[200];
+    int inicio = 0, j = 0;
+
+    printf("Ingrese una cadena con espacios iniciales: ");
+    scanf("%[^\n]", cadena);
+
+    // Busco el primer carácter que no sea un espacio en blanco
+    while (cadena[inicio] == ' ')
+    {
+        inicio++;
+    }
+
+    // Desplazo los caracteres hacia el inicio del arreglo
+    if (inicio &gt; 0)
+    {
+        while (cadena[inicio] != '\0')
+        {
+            cadena[j] = cadena[inicio];
+            inicio++;
+            j++;
+        }
+        cadena[j] = '\0';
+    }
+
+    printf("Cadena sin blancos iniciales: \"%s\"\n", cadena);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8: Eliminación de espacios en blanco al final de una cadena</h3>
+                        <p>Implementar un programa que elimine todos los espacios en blanco al final de una cadena de caracteres.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    char cadena[200];
+    int fin = 0;
+
+    printf("Ingrese una cadena con espacios al final: ");
+    scanf("%[^\n]", cadena);
+
+    // Avanzo hasta el final de la cadena
+    while (cadena[fin] != '\0')
+    {
+        fin++;
+    }
+    fin--; // Me posiciono en el último carácter válido
+
+    // Retrocedo mientras haya espacios en blanco
+    while (fin &gt;= 0 &amp;&amp; cadena[fin] == ' ')
+    {
+        fin--;
+    }
+
+    // Coloco el terminador nulo inmediatamente después del último carácter no blanco
+    cadena[fin + 1] = '\0';
+
+    printf("Cadena sin blancos finales: \"%s\"\n", cadena);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9: Números reales con parte entera matemática (ENT / floor) par</h3>
+                        <p>Rehacer el ejercicio 5 pero contando la parte entera en lugar de la parte no decimal.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p style="margin-bottom: 1rem;">A diferencia del Ejercicio 5 (donde <code>TRUNCAR(-3.24)</code> daba <code>-3</code>, impar), la función matemática <strong>parte entera</strong> (<code>ENT(n)</code> en la guía o <code>floor(n)</code> en <code>&lt;math.h&gt;</code>) devuelve el mayor entero menor o igual que el número, por lo que para <code>-3.24</code> su parte entera es <code>-4</code> (que sí es par):</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float num = 0, porcentaje = 0;
+    int parte_entera = 0, cant_pares = 0, total_leidos = 0;
+
+    printf("Ingrese un numero real (0 para finalizar): ");
+    scanf("%f", &amp;num);
+
+    while (num != 0.0)
+    {
+        total_leidos++;
+        // floor(num) equivale a la funcion primitiva ENT(n) de Matematica:
+        parte_entera = (int)floor(num);
+
+        if (parte_entera % 2 == 0)
+        {
+            cant_pares++;
+        }
+
+        printf("Ingrese otro numero real (0 para finalizar): ");
+        scanf("%f", &amp;num);
+    }
+
+    printf("\n--- Informe Final (usando funcion Parte Entera floor) ---\n");
+    printf("Cantidad total de numeros leidos: %d\n", total_leidos);
+    printf("Cantidad con parte entera par:    %d\n", cant_pares);
+
+    if (total_leidos &gt; 0)
+    {
+        porcentaje = (cant_pares * 100.0) / total_leidos;
+        printf("Porcentaje respecto del total:    %.2f%%\n", porcentaje);
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10: Comparación normalizada de dos cadenas de hasta 200 caracteres</h3>
+                        <p>Se tienen 2 variables de tipo carácter de 200 y se leen de a un carácter por el teclado. Se quiere saber si son iguales, sabiendo que los blancos no se toman en cuenta, salvo que estén entre dos caracteres no blancos en cuyo caso se cuentan como uno solo. Además, se quiere determinar si en alguna de las variables las dos primeras posiciones son 'AB' y si las últimas posiciones son 'ON'. Puede suceder que no sean de la misma longitud. Imprima un mensaje.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void leerYNormalizar(char limpia[])
+{
+    char c;
+    int idx = 0, en_palabra = 0, espacio_pendiente = 0;
+
+    while (idx &lt; 199 &amp;&amp; (c = getchar()) != '\n' &amp;&amp; c != EOF)
+    {
+        if (c != ' ')
+        {
+            if (espacio_pendiente &amp;&amp; en_palabra)
+            {
+                limpia[idx++] = ' ';
+            }
+            limpia[idx++] = c;
+            en_palabra = 1;
+            espacio_pendiente = 0;
+        }
+        else if (en_palabra)
+        {
+            espacio_pendiente = 1;
+        }
+    }
+    limpia[idx] = '\0';
+}
+
+int main()
+{
+    char cad1[200], cad2[200];
+    int len1 = 0, len2 = 0, empieza_AB = 0, termina_ON = 0;
+
+    printf("Ingrese la primera cadena (Enter para terminar): ");
+    leerYNormalizar(cad1);
+
+    printf("Ingrese la segunda cadena (Enter para terminar): ");
+    leerYNormalizar(cad2);
+
+    len1 = strlen(cad1);
+    len2 = strlen(cad2);
+
+    if (strcmp(cad1, cad2) == 0)
+    {
+        printf("\n-&gt; Las cadenas SON IGUALES bajo la regla de espacios.\n");
+    }
+    else
+    {
+        printf("\n-&gt; Las cadenas SON DISTINTAS.\n");
+    }
+
+    if ((len1 &gt;= 2 &amp;&amp; cad1[0] == 'A' &amp;&amp; cad1[1] == 'B') ||
+        (len2 &gt;= 2 &amp;&amp; cad2[0] == 'A' &amp;&amp; cad2[1] == 'B'))
+    {
+        empieza_AB = 1;
+    }
+
+    if ((len1 &gt;= 2 &amp;&amp; cad1[len1 - 2] == 'O' &amp;&amp; cad1[len1 - 1] == 'N') ||
+        (len2 &gt;= 2 &amp;&amp; cad2[len2 - 2] == 'O' &amp;&amp; cad2[len2 - 1] == 'N'))
+    {
+        termina_ON = 1;
+    }
+
+    printf("-&gt; Alguna comienza con 'AB'?: %s\n", empieza_AB ? "SI" : "NO");
+    printf("-&gt; Alguna finaliza con 'ON'?: %s\n", termina_ON ? "SI" : "NO");
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 11 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 11: Estadísticas de 4 vendedores y 3 artículos durante 7 días</h3>
+                        <p>Un comercio cuenta con 4 vendedores para la venta de sus 3 tipos de artículos. El dueño del local desea cierta información de la actuación de sus vendedores al cabo de 7 días:
+a) Cantidad de artículos vendidos por vendedor, sin distinción de artículo
+b) El monto de la mayor operación de venta del artículo 1 realizada por el vendedor 3
+c) El importe promedio de ventas por artículo
+d) El importe promedio por vendedor</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int dia, vend, art, cant;
+    float monto;
+    int cant_por_vend[4] = {0, 0, 0, 0};
+    int ops_por_vend[4] = {0, 0, 0, 0};
+    float imp_por_vend[4] = {0, 0, 0, 0};
+    int ops_por_art[3] = {0, 0, 0};
+    float imp_por_art[3] = {0, 0, 0};
+    float max_art1_vend3 = 0.0;
+
+    for (dia = 1; dia &lt;= 7; dia++)
+    {
+        printf("\n=== DIA %d (Ingrese Vendedor 1..4, 0 para cerrar el dia) ===\n", dia);
+        printf("Vendedor (1 a 4, 0 para terminar dia): ");
+        scanf("%d", &amp;vend);
+
+        while (vend != 0)
+        {
+            printf("Tipo de articulo (1 a 3): ");
+            scanf("%d", &amp;art);
+            printf("Cantidad de unidades vendidas: ");
+            scanf("%d", &amp;cant);
+            printf("Importe total de la operacion ($): ");
+            scanf("%f", &amp;monto);
+
+            if (vend &gt;= 1 &amp;&amp; vend &lt;= 4 &amp;&amp; art &gt;= 1 &amp;&amp; art &lt;= 3)
+            {
+                cant_por_vend[vend - 1] += cant;
+                ops_por_vend[vend - 1]++;
+                imp_por_vend[vend - 1] += monto;
+
+                ops_por_art[art - 1]++;
+                imp_por_art[art - 1] += monto;
+
+                if (vend == 3 &amp;&amp; art == 1 &amp;&amp; monto &gt; max_art1_vend3)
+                {
+                    max_art1_vend3 = monto;
+                }
+            }
+
+            printf("\nVendedor (1 a 4, 0 para terminar dia %d): ", dia);
+            scanf("%d", &amp;vend);
+        }
+    }
+
+    printf("\n================ INFORME SEMANAL ================\n");
+    printf("a) Cantidad de articulos vendidos por vendedor:\n");
+    for (vend = 0; vend &lt; 4; vend++)
+    {
+        printf("   Vendedor %d: %d unidades\n", vend + 1, cant_por_vend[vend]);
+    }
+
+    printf("\nb) Mayor venta del Articulo 1 por Vendedor 3: $ %.2f\n", max_art1_vend3);
+
+    printf("\nc) Importe promedio de ventas por articulo:\n");
+    for (art = 0; art &lt; 3; art++)
+    {
+        float prom_a = (ops_por_art[art] &gt; 0) ? (imp_por_art[art] / ops_por_art[art]) : 0.0;
+        printf("   Articulo %d: $ %.2f\n", art + 1, prom_a);
+    }
+
+    printf("\nd) Importe promedio por vendedor:\n");
+    for (vend = 0; vend &lt; 4; vend++)
+    {
+        float prom_v = (ops_por_vend[vend] &gt; 0) ? (imp_por_vend[vend] / ops_por_vend[vend]) : 0.0;
+        printf("   Vendedor %d: $ %.2f\n", vend + 1, prom_v);
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 12 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 12: Control de calidad y rendimiento porcentual de producción</h3>
+                        <p>Una empresa fabrica productos que se comercializan en dos calidades: Primera y Segunda. Los productos que no caen en ninguna de esas categorías se consideran de Descarte. El control de calidad se lleva a cabo antes de empacar los productos terminados. La gerencia de la empresa solicita un informe impreso en el que se detalle porcentualmente el rendimiento de la producción a lo largo de cierto período de tiempo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int cal = 0, primera = 0, segunda = 0, descarte = 0, total = 0;
+
+    printf("Control de Calidad (1: Primera, 2: Segunda, otro: Descarte, 0: Finalizar)\n");
+    printf("Ingrese calificacion del producto: ");
+    scanf("%d", &amp;cal);
+
+    while (cal != 0)
+    {
+        total++;
+        if (cal == 1)
+        {
+            primera++;
+        }
+        else if (cal == 2)
+        {
+            segunda++;
+        }
+        else
+        {
+            descarte++;
+        }
+
+        printf("Ingrese calificacion del siguiente producto (0 para finalizar): ");
+        scanf("%d", &amp;cal);
+    }
+
+    printf("\n======== INFORME DE RENDIMIENTO DE PRODUCCION ========\n");
+    if (total &gt; 0)
+    {
+        printf("Total de productos controlados: %d\n", total);
+        printf("Calidad Primera:  %d unidades (%.2f%%)\n", primera, (primera * 100.0) / total);
+        printf("Calidad Segunda:  %d unidades (%.2f%%)\n", segunda, (segunda * 100.0) / total);
+        printf("Descarte:         %d unidades (%.2f%%)\n", descarte, (descarte * 100.0) / total);
+    }
+    else
+    {
+        printf("No se registraron productos en el periodo.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 13 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 13: Salida y conteo de iteraciones de bucles condicionales anidados</h3>
+                        <p>Escriba la salida de los siguientes bucles anidados:
+a) I := 0
+   Repetir Mientras (I * I &lt; 10)
+       J := I
+       Repetir Mientras (J * J &lt; 100)
+           Imprimir: I + J
+           J := J * 2
+       Fin Repetir Mientras
+       I := I + 1
+   Fin Repetir Mientras
+
+b) I := 1
+   X := 1
+   Repetir Mientras (I &lt; 80)
+       Repetir Mientras (X * I &lt; 800)
+           X := X + I * 10
+           I := I + 2
+       Fin Repetir Mientras
+       I := I + 2
+   Fin Repetir Mientras
+   Imprimir: X, I
+¿Se anima a contar cuántas iteraciones se calculan en total para cada uno de los bucles anidados del ejercicio anterior?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis Teórico y Conteo de Iteraciones:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><strong>Análisis del bucle a):</strong> Al comenzar con <code>I = 0</code>, se asigna <code>J = 0</code>. En el ciclo interno se cumple <code>0 * 0 &lt; 100</code>, imprime <code>0</code> y calcula <code>J = 0 * 2 = 0</code>. Como <code>J</code> nunca cambia de <code>0</code>, <strong>entra en un bucle infinito imprimiendo <code>0</code> indefinidamente</strong>.
+                                <br><em>Nota:</em> Si <code>I</code> se inicializara en <code>1</code> (evitando el 0), el ciclo externo ejecutaría 3 iteraciones (para <code>I = 1, 2, 3</code>) y el cuerpo del ciclo interno se ejecutaría <strong>11 veces en total</strong>:
+                                <br>• <code>I = 1</code> (<code>J = 1, 2, 4, 8</code> &rarr; 4 iteraciones): imprime <code>2, 3, 5, 9</code>.
+                                <br>• <code>I = 2</code> (<code>J = 2, 4, 8</code> &rarr; 3 iteraciones): imprime <code>4, 6, 10</code>.
+                                <br>• <code>I = 3</code> (<code>J = 3, 6</code> &rarr; 2 iteraciones): imprime <code>6, 9</code>.
+                            </li>
+                            <li><strong>Análisis del bucle b):</strong>
+                                <br>• En la primera entrada al bucle externo (<code>I = 1, X = 1</code>), el bucle interno se ejecuta <strong>4 veces</strong>:
+                                <br>&nbsp;&nbsp;1) <code>1 * 1 &lt; 800</code> &rarr; <code>X = 11, I = 3</code>
+                                <br>&nbsp;&nbsp;2) <code>11 * 3 = 33 &lt; 800</code> &rarr; <code>X = 41, I = 5</code>
+                                <br>&nbsp;&nbsp;3) <code>41 * 5 = 205 &lt; 800</code> &rarr; <code>X = 91, I = 7</code>
+                                <br>&nbsp;&nbsp;4) <code>91 * 7 = 637 &lt; 800</code> &rarr; <code>X = 161, I = 9</code> (sale del ciclo interno porque <code>161 * 9 = 1449 &gt;= 800</code>).
+                                <br>• Al terminar la 1ra vuelta externa, <code>I</code> pasa a <code>11</code>. Desde <code>I = 11</code> hasta <code>I = 79</code> (inclusive, subiendo de 2 en 2), el bucle externo realiza <strong>35 iteraciones más</strong> donde la condición interna <code>X * I &lt; 800</code> da siempre Falso, hasta que <code>I</code> llega a <code>81</code> y finaliza.
+                                <br>• <strong>Salida final impresa:</strong> <code>X = 161, I = 81</code> (con <strong>36 iteraciones del bucle externo</strong> y <strong>4 ejecuciones del cuerpo interno</strong>).
+                            </li>
+                        </ul>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int I, J, X;
+    int iter_ext_b = 0, iter_int_b = 0;
+
+    // Bucle A (Iniciando en I = 1 para evitar el lazo infinito en J = 0 * 2)
+    printf("=== BUCLE A (con I inicializado en 1) ===\n");
+    I = 1;
+    while (I * I &lt; 10)
+    {
+        J = I;
+        while (J * J &lt; 100)
+        {
+            printf("%d ", I + J);
+            J = J * 2;
+        }
+        I = I + 1;
+    }
+    printf("\n");
+
+    // Bucle B tal cual el enunciado
+    printf("\n=== BUCLE B ===\n");
+    I = 1;
+    X = 1;
+    while (I &lt; 80)
+    {
+        iter_ext_b++;
+        while (X * I &lt; 800)
+        {
+            iter_int_b++;
+            X = X + I * 10;
+            I = I + 2;
+        }
+        I = I + 2;
+    }
+    printf("Salida final -&gt; X = %d, I = %d\n", X, I);
+    printf("Iteraciones externas: %d | Iteraciones internas: %d\n", iter_ext_b, iter_int_b);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 14 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 14: Conversión de Repetir Mientras a Repetir Para</h3>
+                        <p>En los segmentos de código del ejercicio 13, ¿podría reemplazarse el Repetir Mientras por Repetir Para? De ser así, ¿cómo quedaría el código dentro de cada bucle?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Respuesta Teórica:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>En Pseudocódigo estricto de la cátedra:</strong> La estructura <code>Repetir Para</code> es de repetición fija con paso constante sumado al índice y requiere conocer de antemano el límite de iteraciones sin alterar el índice manualmente dentro del cuerpo. Por lo tanto, en el bucle <strong>a)</strong> el ciclo externo sí equivale a un <code>Repetir Para I := 1, 3, 1</code>, pero el interno multiplica <code>J := J * 2</code> (progresión geométrica, no paso constante). En el bucle <strong>b)</strong>, la variable de control <code>I</code> es modificada también adentro del ciclo anidado, lo cual viola la regla de no alterar el índice de un <code>Repetir Para</code>.</li>
+                            <li><strong>En Lenguaje C:</strong> Sí es posible reemplazar ambos <code>while</code> por sentencias <code>for (inicialización; condición; actualización)</code> gracias a la flexibilidad del encabezado del <code>for</code> en C:</li>
+                        </ul>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int I, J, X;
+
+    // Equivalente con for en C del segmento A (para I >= 1):
+    printf("--- Segmento A con for ---\n");
+    for (I = 1; I * I &lt; 10; I++)
+    {
+        for (J = I; J * J &lt; 100; J *= 2)
+        {
+            printf("%d ", I + J);
+        }
+    }
+    printf("\n");
+
+    // Equivalente con for en C del segmento B:
+    printf("\n--- Segmento B con for ---\n");
+    X = 1;
+    for (I = 1; I &lt; 80; I += 2)
+    {
+        for (; X * I &lt; 800; I += 2)
+        {
+            X = X + I * 10;
+        }
+    }
+    printf("Salida -> X = %d, I = %d\n", X, I);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 15 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 15: Lectura de tramas de 5 caracteres desde interfaz RS232</h3>
+                        <p>Desde un dispositivo RS232 un programa lee caracteres enviados por un sensor. Las lecturas se realizan de a 5 caracteres (buffer) por vez, los cuales deben llegar con un formato fijo: el primer carácter tiene que ser X y el último tiene que ser 0. Las secuencias leídas que respeten el formato se consideran correctas, la secuencia especial "&amp;&amp;&amp;&amp;&amp;" marca el final de los envíos (llamémosla FDE), y toda secuencia distinta de FDE que no sea correcta se considera inválida. Al finalizar el proceso, se imprime un informe indicando los porcentajes de lecturas correctas e inválidas recibidas.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char buffer[6];
+    int correctas = 0, invalidas = 0, total = 0;
+
+    printf("Recepcion RS232 (tramas de 5 caracteres, \"&&&&&\" para FDE):\n");
+    printf("Ingrese secuencia de 5 caracteres: ");
+    scanf("%5s", buffer);
+
+    while (strcmp(buffer, "&&&&&") != 0)
+    {
+        total++;
+
+        if (strlen(buffer) == 5 &amp;&amp; buffer[0] == 'X' &amp;&amp; buffer[4] == '0')
+        {
+            correctas++;
+        }
+        else
+        {
+            invalidas++;
+        }
+
+        printf("Ingrese siguiente secuencia (\"&&&&&\" para finalizar): ");
+        scanf("%5s", buffer);
+    }
+
+    printf("\n========= INFORME DE TRANSMISION RS232 =========\n");
+    if (total &gt; 0)
+    {
+        printf("Total de tramas procesadas: %d\n", total);
+        printf("Lecturas correctas:         %d (%.2f%%)\n", correctas, (correctas * 100.0) / total);
+        printf("Lecturas invalidas:         %d (%.2f%%)\n", invalidas, (invalidas * 100.0) / total);
+    }
+    else
+    {
+        printf("Se recibio FDE inmediatamente sin tramas de datos.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 16 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 16: Procesamiento de texto carácter a carácter terminado en punto</h3>
+                        <p>Un texto ingresa por teclado carácter a carácter. El texto termina en punto y las palabras se separan por (uno o más) blancos. Se pide:
+• Contar las palabras que contengan "cas" a partir de la tercera letra
+• Contar las palabras que tengan las letras c, a y s en cualquier orden de presentación y mostrar que porcentaje representan del total de palabras
+• Dar la longitud de la palabra más larga
+Hacer dos versiones: una sin usar funciones primitivas y la otra usándolas.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char ch, palabra[100];
+    int len = 0, i;
+    int total_palabras = 0, max_longitud = 0;
+    int cont_cas_manual = 0, cont_letras_manual = 0;
+    int cont_cas_prim = 0, cont_letras_prim = 0;
+
+    printf("Ingrese un texto terminado en punto (.):\n");
+
+    do
+    {
+        ch = getchar();
+
+        if (ch != ' ' &amp;&amp; ch != '.' &amp;&amp; ch != '\n')
+        {
+            if (len &lt; 99)
+            {
+                palabra[len++] = ch;
+            }
+        }
+        else if (len &gt; 0)
+        {
+            palabra[len] = '\0';
+            total_palabras++;
+
+            // =========================================================
+            // VERSIÓN 1: Sin usar funciones primitivas de <string.h>
+            // =========================================================
+            int tiene_c = 0, tiene_a = 0, tiene_s = 0, tiene_cas_3 = 0;
+
+            if (len &gt; max_longitud)
+            {
+                max_longitud = len;
+            }
+
+            for (i = 0; i &lt; len; i++)
+            {
+                if (palabra[i] == 'c' || palabra[i] == 'C') tiene_c = 1;
+                if (palabra[i] == 'a' || palabra[i] == 'A') tiene_a = 1;
+                if (palabra[i] == 's' || palabra[i] == 'S') tiene_s = 1;
+
+                // "cas" a partir de la 3ra letra (índice i >= 2)
+                if (i &gt;= 2 &amp;&amp; i + 2 &lt; len)
+                {
+                    if (palabra[i] == 'c' &amp;&amp; palabra[i + 1] == 'a' &amp;&amp; palabra[i + 2] == 's')
+                    {
+                        tiene_cas_3 = 1;
+                    }
+                }
+            }
+
+            if (tiene_cas_3) cont_cas_manual++;
+            if (tiene_c &amp;&amp; tiene_a &amp;&amp; tiene_s) cont_letras_manual++;
+
+            // =========================================================
+            // VERSIÓN 2: Usando funciones primitivas (strlen, strstr, strchr)
+            // =========================================================
+            if ((int)strlen(palabra) &gt;= 5 &amp;&amp; strstr(palabra + 2, "cas") != NULL)
+            {
+                cont_cas_prim++;
+            }
+
+            if (strchr(palabra, 'c') != NULL &amp;&amp;
+                strchr(palabra, 'a') != NULL &amp;&amp;
+                strchr(palabra, 's') != NULL)
+            {
+                cont_letras_prim++;
+            }
+
+            len = 0; // Reinicio el buffer para la siguiente palabra
+        }
+
+    } while (ch != '.');
+
+    printf("\n============= RESULTADOS DEL ANALISIS DE TEXTO =============\n");
+    printf("Total de palabras procesadas: %d\n", total_palabras);
+    printf("Longitud de la palabra mas larga: %d caracteres\n\n", max_longitud);
+
+    printf("--- Version 1 (Sin funciones primitivas) ---\n");
+    printf("Palabras con \"cas\" desde la 3ra letra: %d\n", cont_cas_manual);
+    printf("Palabras con 'c', 'a' y 's': %d (%.2f%%)\n\n",
+           cont_letras_manual, total_palabras &gt; 0 ? (cont_letras_manual * 100.0) / total_palabras : 0.0);
+
+    printf("--- Version 2 (Con funciones de string.h) ---\n");
+    printf("Palabras con \"cas\" desde la 3ra letra: %d\n", cont_cas_prim);
+    printf("Palabras con 'c', 'a' y 's': %d (%.2f%%)\n",
+           cont_letras_prim, total_palabras &gt; 0 ? (cont_letras_prim * 100.0) / total_palabras : 0.0);
+
     return 0;
 }</code></pre>
                             <button class="btn-copy">
@@ -127,8 +1976,7 @@ int main()
 
     </main>
 
-    <!-- Scripts externos -->
-     
+    <!-- Scripts de interactividad -->
     <script src="../../assets/js/copy.js"></script>
     <script src="../../assets/js/selector_puntos.js"></script>
     <script src="../../assets/js/side-menu.js"></script>

@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP1 - Algoritmos y Estructuras de Datos</title>
+    <title>TP3 - Algoritmos y Estructuras de Datos</title>
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="../../assets/js/theme.js"></script>
-
 </head>
 
-<body class="algoritmos-page" data-theme="dark">
+<body class="algoritmos-page">
 
-    <!-- Menú lateral de partes (integrado de u1.html) -->
+    <!-- Menú lateral de partes -->
     <div id="side-parts-menu" class="side-menu-container">
         <div class="side-menu-drawer">
-            <h3 class="side-menu-title">Trabajo Práctico 1</h3>
+            <h3 class="side-menu-title">Trabajo Práctico 3</h3>
             <ul class="side-menu-list">
-                <li><a href="#" class="part-link active" data-part="1">Parte 1</a></li>
-                <li><a href="#" class="part-link" data-part="2">Parte 2</a></li>
+                <li><a href="#" class="part-link active" data-part="1">Funciones y Procedimientos</a></li>
             </ul>
         </div>
         <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
@@ -28,7 +25,7 @@
         </button>
     </div>
 
-    <!-- Header (formato tp1_algoritmos.html) -->
+    <!-- Header -->
     <header class="header">
         <div class="header-container">
             <nav class="container">
@@ -38,7 +35,7 @@
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                 </a>
-                <button class="theme-btn" aria-label="Cambiar tema">
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
                     <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
                     </svg>
@@ -51,34 +48,130 @@
         </div>
     </header>
 
-    <!-- Selector de puntos (se actualiza según la parte activa) -->
+    <!-- Selector de puntos (8 ejercicios totales) -->
     <div class="slide-controls">
         <ul class="nav-points">
             <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
         </ul>
     </div>
 
-    <!-- Contenedor principal -->
     <main class="main-container">
 
-        <!-- ==================== PARTE 1 ==================== -->
+        <!-- =========================================================================
+             PARTE ÚNICA: FUNCIONES Y PROCEDIMIENTOS (8 PUNTOS)
+             ========================================================================= -->
         <div id="contenedor-parte-1" class="slides-container part-section active">
 
-            <!-- Punto 1 (Plantilla base) -->
+            <!-- Ejercicio 1 -->
             <article class="slide active">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 1: Título del ejercicio</h3>
-                        <p>Enunciado del ejercicio aquí.</p>
+                        <h3>Ejercicio 1: Funciones para cálculo de máximos (2, 3, 5 y 10 números)</h3>
+                        <p>Codificar funciones para calcular:
+a. el máximo entre 2 números enteros
+b. el máximo entre 3 números enteros
+c. el máximo entre 5 números enteros
+d. el máximo entre 10 números enteros
+En cada inciso donde sea posible, hacer dos versiones: una que calcule el máximo usando las funciones definidas en los incisos anteriores, y otra que no las use.
+¿En qué cambiaría el código si se pudiera calcular el máximo entre números reales?</p>
                     </div>
 
                     <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis Teórico:</h4>
+                        <p style="margin-bottom: 1.5rem;"><strong>¿En qué cambiaría el código para calcular el máximo entre números reales?</strong><br>
+                        La lógica algorítmica y la composición de llamadas a las funciones no cambian en absoluto. Únicamente debo modificar la firma (encabezamiento) de cada función reemplazando el tipo de retorno y el tipo de todos los parámetros formales de <code>int</code> a <code>float</code> (o <code>double</code>), hacer lo mismo con las variables locales auxiliares (<code>mayor</code>) y cambiar el especificador de formato de <code>%d</code> a <code>%f</code> en las lecturas e impresiones del programa principal.</p>
+
                         <div class="code-box">
                             <pre><code class="language-c">#include &lt;stdio.h&gt;
 
+// a) Máximo entre 2 números enteros
+int max2(int n1, int n2)
+{
+    return (n1 &gt; n2) ? n1 : n2;
+}
+
+// b) Máximo entre 3 números (Versión 1: Usando max2)
+int max3_compuesto(int n1, int n2, int n3)
+{
+    return max2(max2(n1, n2), n3);
+}
+
+// b) Máximo entre 3 números (Versión 2: Sin usar funciones previas)
+int max3_directo(int n1, int n2, int n3)
+{
+    int mayor = n1;
+    if (n2 &gt; mayor) mayor = n2;
+    if (n3 &gt; mayor) mayor = n3;
+    return mayor;
+}
+
+// c) Máximo entre 5 números (Versión 1: Usando max3 y max2)
+int max5_compuesto(int n1, int n2, int n3, int n4, int n5)
+{
+    return max2(max3_compuesto(n1, n2, n3), max2(n4, n5));
+}
+
+// c) Máximo entre 5 números (Versión 2: Sin usar funciones previas)
+int max5_directo(int n1, int n2, int n3, int n4, int n5)
+{
+    int mayor = n1;
+    if (n2 &gt; mayor) mayor = n2;
+    if (n3 &gt; mayor) mayor = n3;
+    if (n4 &gt; mayor) mayor = n4;
+    if (n5 &gt; mayor) mayor = n5;
+    return mayor;
+}
+
+// d) Máximo entre 10 números (Versión 1: Usando max5 y max2)
+int max10_compuesto(int n1, int n2, int n3, int n4, int n5,
+                    int n6, int n7, int n8, int n9, int n10)
+{
+    return max2(max5_compuesto(n1, n2, n3, n4, n5),
+                max5_compuesto(n6, n7, n8, n9, n10));
+}
+
+// d) Máximo entre 10 números (Versión 2: Sin usar funciones previas)
+int max10_directo(int n1, int n2, int n3, int n4, int n5,
+                  int n6, int n7, int n8, int n9, int n10)
+{
+    int mayor = n1;
+    if (n2 &gt; mayor) mayor = n2;
+    if (n3 &gt; mayor) mayor = n3;
+    if (n4 &gt; mayor) mayor = n4;
+    if (n5 &gt; mayor) mayor = n5;
+    if (n6 &gt; mayor) mayor = n6;
+    if (n7 &gt; mayor) mayor = n7;
+    if (n8 &gt; mayor) mayor = n8;
+    if (n9 &gt; mayor) mayor = n9;
+    if (n10 &gt; mayor) mayor = n10;
+    return mayor;
+}
+
 int main()
 {
-    // Código del ejercicio
+    int a, b, c, d, e, f, g, h, i, j;
+
+    printf("Ingrese 10 numeros enteros separados por espacio:\n");
+    scanf("%d %d %d %d %d %d %d %d %d %d",
+          &amp;a, &amp;b, &amp;c, &amp;d, &amp;e, &amp;f, &amp;g, &amp;h, &amp;i, &amp;j);
+
+    printf("\n--- Resultados de las Funciones ---\n");
+    printf("a) Maximo de los primeros 2:  %d\n", max2(a, b));
+    printf("b) Maximo de los primeros 3 (compuesto / directo):  %d | %d\n",
+           max3_compuesto(a, b, c), max3_directo(a, b, c));
+    printf("c) Maximo de los primeros 5 (compuesto / directo):  %d | %d\n",
+           max5_compuesto(a, b, c, d, e), max5_directo(a, b, c, d, e));
+    printf("d) Maximo de los 10 numeros (compuesto / directo):  %d | %d\n",
+           max10_compuesto(a, b, c, d, e, f, g, h, i, j),
+           max10_directo(a, b, c, d, e, f, g, h, i, j));
+
     return 0;
 }</code></pre>
                             <button class="btn-copy">
@@ -91,26 +184,689 @@ int main()
                 </section>
             </article>
 
-        </div>
-
-        <!-- ==================== PARTE 2 ==================== -->
-        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
-
-            <!-- Punto 1 de la Parte 2 (Plantilla base) -->
-            <article class="slide active">
+            <!-- Ejercicio 2 -->
+            <article class="slide">
                 <section class="punto-card">
                     <div class="exercise-description">
-                        <h3>Ejercicio 1: Título del ejercicio</h3>
-                        <p>Enunciado del ejercicio aquí.</p>
+                        <h3>Ejercicio 2: Distancia entre puntos del plano o del espacio</h3>
+                        <p>Diseñar una aplicación que ofrezca, a través de un menú, la posibilidad de calcular distancias entre puntos del plano o del espacio. Se deben codificar funciones que calculen las distancias a partir de las coordenadas de los puntos, que llegan como parámetros.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+float distanciaPlano(float x1, float y1, float x2, float y2)
+{
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+}
+
+float distanciaEspacio(float x1, float y1, float z1, float x2, float y2, float z2)
+{
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2));
+}
+
+int main()
+{
+    int opcion = 0;
+    float x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
+
+    do
+    {
+        printf("\n========= MENU CALCULO DE DISTANCIAS =========\n");
+        printf("1. Distancia entre dos puntos en el Plano (2D)\n");
+        printf("2. Distancia entre dos puntos en el Espacio (3D)\n");
+        printf("0. Salir\n");
+        printf("Seleccione una opcion: ");
+        scanf("%d", &amp;opcion);
+
+        switch (opcion)
+        {
+        case 1:
+            printf("Ingrese coordenadas del Punto 1 (x1 y1): ");
+            scanf("%f %f", &amp;x1, &amp;y1);
+            printf("Ingrese coordenadas del Punto 2 (x2 y2): ");
+            scanf("%f %f", &amp;x2, &amp;y2);
+            printf("-&gt; La distancia en el plano es: %.4f\n",
+                   distanciaPlano(x1, y1, x2, y2));
+            break;
+
+        case 2:
+            printf("Ingrese coordenadas del Punto 1 (x1 y1 z1): ");
+            scanf("%f %f %f", &amp;x1, &amp;y1, &amp;z1);
+            printf("Ingrese coordenadas del Punto 2 (x2 y2 z2): ");
+            scanf("%f %f %f", &amp;x2, &amp;y2, &amp;z2);
+            printf("-&gt; La distancia en el espacio es: %.4f\n",
+                   distanciaEspacio(x1, y1, z1, x2, y2, z2));
+            break;
+
+        case 0:
+            printf("Finalizando aplicacion...\n");
+            break;
+
+        default:
+            printf("Opcion invalida. Intente nuevamente.\n");
+            break;
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Menú para cálculo de áreas de figuras geométricas</h3>
+                        <p>Diseñar una aplicación que ofrezca, a través de un menú, la posibilidad de calcular áreas de figuras geométricas específicas. Se deben codificar funciones que calculen las áreas de: círculo, cuadrado, rectángulo, triángulo y trapecio. Las fórmulas pueden buscarse en libros de geometría de nivel secundario (polimodal).</p>
                     </div>
 
                     <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
                         <div class="code-box">
                             <pre><code class="language-c">#include &lt;stdio.h&gt;
 
+#define PI 3.14159265f
+
+float areaCirculo(float radio)
+{
+    return PI * radio * radio;
+}
+
+float areaCuadrado(float lado)
+{
+    return lado * lado;
+}
+
+float areaRectangulo(float base, float altura)
+{
+    return base * altura;
+}
+
+float areaTriangulo(float base, float altura)
+{
+    return (base * altura) / 2.0f;
+}
+
+float areaTrapecio(float base_mayor, float base_menor, float altura)
+{
+    return ((base_mayor + base_menor) * altura) / 2.0f;
+}
+
 int main()
 {
-    // Código del ejercicio
+    int opcion = 0;
+    float r = 0, l = 0, b = 0, h = 0, bm = 0;
+
+    do
+    {
+        printf("\n========= CALCULADORA DE AREAS GEOMETRICAS =========\n");
+        printf("1. Circulo\n");
+        printf("2. Cuadrado\n");
+        printf("3. Rectangulo\n");
+        printf("4. Triangulo\n");
+        printf("5. Trapecio\n");
+        printf("0. Salir\n");
+        printf("Seleccione una figura: ");
+        scanf("%d", &amp;opcion);
+
+        switch (opcion)
+        {
+        case 1:
+            printf("Ingrese el radio del circulo: ");
+            scanf("%f", &amp;r);
+            printf("-&gt; Area del circulo: %.2f\n", areaCirculo(r));
+            break;
+
+        case 2:
+            printf("Ingrese el lado del cuadrado: ");
+            scanf("%f", &amp;l);
+            printf("-&gt; Area del cuadrado: %.2f\n", areaCuadrado(l));
+            break;
+
+        case 3:
+            printf("Ingrese base y altura del rectangulo: ");
+            scanf("%f %f", &amp;b, &amp;h);
+            printf("-&gt; Area del rectangulo: %.2f\n", areaRectangulo(b, h));
+            break;
+
+        case 4:
+            printf("Ingrese base y altura del triangulo: ");
+            scanf("%f %f", &amp;b, &amp;h);
+            printf("-&gt; Area del triangulo: %.2f\n", areaTriangulo(b, h));
+            break;
+
+        case 5:
+            printf("Ingrese base mayor, base menor y altura del trapecio: ");
+            scanf("%f %f %f", &amp;b, &amp;bm, &amp;h);
+            printf("-&gt; Area del trapecio: %.2f\n", areaTrapecio(b, bm, h));
+            break;
+
+        case 0:
+            printf("Saliendo del programa...\n");
+            break;
+
+        default:
+            printf("Opcion no valida.\n");
+            break;
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Diseño con funciones o procedimientos según corresponda</h3>
+                        <p>Definir funciones o procedimientos, según convenga, para calcular:
+a. las raíces (reales o complejas) de una ecuación de 2do grado
+b. el promedio de 6 números enteros
+c. la conversión de temperaturas Celsius a Fahrenheit y viceversa
+d. el módulo de un vector del plano dadas sus coordenadas
+e. la suma de dos vectores dados del plano
+f. la conversión de letras mayúsculas a minúsculas y viceversa
+g. el valor del número PI usando la función primitiva ARCTAN</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Criterio de Elección (Función vs. Procedimiento):</h4>
+                        <p style="margin-bottom: 1rem;">Siguiendo la teoría de la cátedra, utilizo <strong>funciones</strong> en los incisos <strong>b, c, d, f y g</strong> porque cada uno produce un único resultado escalar de tipo simple que puede retornarse en el nombre de la función para formar parte de una expresión. En cambio, en los incisos <strong>a</strong> (dos raíces más un indicador de si son reales o complejas conjugadas) y <strong>e</strong> (las dos componentes $(r_x, r_y)$ del vector suma resultante) utilizo <strong>procedimientos</strong> (<code>void</code> en C con pasaje de parámetros por referencia mediante punteros) ya que requieren devolver más de un dato de salida al módulo llamador:</p>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+// a) PROCEDIMIENTO: Devuelve 2 raíces (o parte real e imaginaria) y el tipo de raíz
+void raicesCuadratica(float a, float b, float c, float *r1, float *r2, int *es_compleja)
+{
+    float disc = (b * b) - (4.0f * a * c);
+    if (disc &gt;= 0)
+    {
+        *es_compleja = 0;
+        *r1 = (-b + sqrt(disc)) / (2.0f * a);
+        *r2 = (-b - sqrt(disc)) / (2.0f * a);
+    }
+    else
+    {
+        *es_compleja = 1;
+        *r1 = -b / (2.0f * a);            // Parte real
+        *r2 = sqrt(-disc) / (2.0f * a);   // Parte imaginaria
+    }
+}
+
+// b) FUNCIÓN: Promedio de 6 números enteros (retorna 1 único real)
+float promedio6(int n1, int n2, int n3, int n4, int n5, int n6)
+{
+    return (n1 + n2 + n3 + n4 + n5 + n6) / 6.0f;
+}
+
+// c) FUNCIONES: Conversión entre Celsius y Fahrenheit
+float celsiusAFahrenheit(float c)
+{
+    return (c * 9.0f / 5.0f) + 32.0f;
+}
+
+float fahrenheitACelsius(float f)
+{
+    return (f - 32.0f) * 5.0f / 9.0f;
+}
+
+// d) FUNCIÓN: Módulo de un vector del plano
+float moduloVector2D(float vx, float vy)
+{
+    return sqrt((vx * vx) + (vy * vy));
+}
+
+// e) PROCEDIMIENTO: Suma de dos vectores del plano (devuelve 2 componentes rx y ry)
+void sumarVectores2D(float x1, float y1, float x2, float y2, float *rx, float *ry)
+{
+    *rx = x1 + x2;
+    *ry = y1 + y2;
+}
+
+// f) FUNCIONES: Conversión entre mayúsculas y minúsculas
+char aMinuscula(char letra)
+{
+    if (letra &gt;= 'A' &amp;&amp; letra &lt;= 'Z')
+        return letra + ('a' - 'A');
+    return letra;
+}
+
+char aMayuscula(char letra)
+{
+    if (letra &gt;= 'a' &amp;&amp; letra &lt;= 'z')
+        return letra - ('a' - 'A');
+    return letra;
+}
+
+// g) FUNCIÓN: Cálculo de PI sabiendo que arctan(1) = PI / 4
+double calcularPi(void)
+{
+    return 4.0 * atan(1.0);
+}
+
+int main()
+{
+    float r1 = 0, r2 = 0, sx = 0, sy = 0;
+    int compleja = 0;
+
+    // Prueba inciso a: x^2 + 2x + 5 = 0 (raíces complejas: -1 +- 2i)
+    raicesCuadratica(1.0f, 2.0f, 5.0f, &amp;r1, &amp;r2, &amp;compleja);
+    if (compleja)
+        printf("a) Raices complejas: %.2f + %.2fi  y  %.2f - %.2fi\n", r1, r2, r1, r2);
+    else
+        printf("a) Raices reales: x1 = %.2f, x2 = %.2f\n", r1, r2);
+
+    printf("b) Promedio de (4, 7, 8, 9, 10, 6): %.2f\n", promedio6(4, 7, 8, 9, 10, 6));
+    printf("c) 25 C a Fahrenheit: %.2f F | 77 F a Celsius: %.2f C\n",
+           celsiusAFahrenheit(25.0f), fahrenheitACelsius(77.0f));
+    printf("d) Modulo del vector (3, 4): %.2f\n", moduloVector2D(3.0f, 4.0f));
+
+    sumarVectores2D(2.0f, 5.0f, 4.0f, -1.0f, &amp;sx, &amp;sy);
+    printf("e) Suma de vectores (2,5) + (4,-1) = (%.2f, %.2f)\n", sx, sy);
+
+    printf("f) 'G' a minuscula: %c | 'm' a mayuscula: %c\n",
+           aMinuscula('G'), aMayuscula('m'));
+    printf("g) Valor de PI mediante 4 * atan(1): %.8f\n", calcularPi());
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Funciones de conversión entre sistemas de numeración</h3>
+                        <p>Definir funciones que permitan convertir:
+a. un número entero binario a base decimal
+b. un número entero decimal a base 2
+c. un número entero en base B a decimal
+d. un número entero decimal a base B
+e. un número entero en base B a base C</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// a) Binario a Decimal
+long binarioADecimal(long bin)
+{
+    long decimal = 0, peso = 1;
+    while (bin &gt; 0)
+    {
+        decimal += (bin % 10) * peso;
+        bin /= 10;
+        peso *= 2;
+    }
+    return decimal;
+}
+
+// b) Decimal a Base 2 (Binario)
+long decimalABinario(long dec)
+{
+    long binario = 0, posicion = 1;
+    while (dec &gt; 0)
+    {
+        binario += (dec % 2) * posicion;
+        dec /= 2;
+        posicion *= 10;
+    }
+    return binario;
+}
+
+// c) Base B a Decimal (para 2 <= B <= 10)
+long baseBADecimal(long num_b, int base_b)
+{
+    long decimal = 0, peso = 1;
+    while (num_b &gt; 0)
+    {
+        decimal += (num_b % 10) * peso;
+        num_b /= 10;
+        peso *= base_b;
+    }
+    return decimal;
+}
+
+// d) Decimal a Base B (para 2 <= B <= 10)
+long decimalABaseB(long dec, int base_b)
+{
+    long resultado = 0, posicion = 1;
+    while (dec &gt; 0)
+    {
+        resultado += (dec % base_b) * posicion;
+        dec /= base_b;
+        posicion *= 10;
+    }
+    return resultado;
+}
+
+// e) Base B a Base C (reutilizando modularmente las funciones c y d)
+long baseBABaseC(long num_b, int base_b, int base_c)
+{
+    long intermedio_decimal = baseBADecimal(num_b, base_b);
+    return decimalABaseB(intermedio_decimal, base_c);
+}
+
+int main()
+{
+    long num = 0;
+    int b_orig = 0, b_dest = 0;
+
+    printf("a) Binario 101111 a Decimal:       %ld\n", binarioADecimal(101111));
+    printf("b) Decimal 47 a Binario:           %ld\n", decimalABinario(47));
+    printf("c) Octal (base 8) 57 a Decimal:    %ld\n", baseBADecimal(57, 8));
+    printf("d) Decimal 47 a Base 5:            %ld\n", decimalABaseB(47, 5));
+
+    printf("\n--- Prueba Inciso e (Conversion general Base B a Base C) ---\n");
+    printf("Ingrese el numero entero en base origen: ");
+    scanf("%ld", &amp;num);
+    printf("Ingrese la base de origen (2 a 10) y la base destino (2 a 10): ");
+    scanf("%d %d", &amp;b_orig, &amp;b_dest);
+
+    printf("El numero %ld (base %d) equivale a %ld (base %d).\n",
+           num, b_orig, baseBABaseC(num, b_orig, b_dest), b_dest);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Funciones de validación y clasificación</h3>
+                        <p>Definir las siguientes funciones:
+a. signo, que decide si un número es positivo, negativo o cero (devuelve 1, -1, 0 respectivamente)
+b. esMayus, que decide si una letra dada es mayúscula o no lo es
+c. esVocal, si una letra dada es vocal o no lo es
+d. esMultiplo, que decide si el primer parámetro es múltiplo del segundo; ambos parámetros son números enteros</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+// a) Devuelve 1 si es positivo, -1 si es negativo y 0 si es cero
+int signo(float num)
+{
+    if (num &gt; 0) return 1;
+    if (num &lt; 0) return -1;
+    return 0;
+}
+
+// b) Devuelve 1 (verdadero) si es mayúscula, 0 (falso) en caso contrario
+int esMayus(char letra)
+{
+    return (letra &gt;= 'A' &amp;&amp; letra &lt;= 'Z') ? 1 : 0;
+}
+
+// c) Devuelve 1 (verdadero) si es vocal (mayúscula o minúscula), 0 si no lo es
+int esVocal(char letra)
+{
+    char min = tolower(letra);
+    return (min == 'a' || min == 'e' || min == 'i' || min == 'o' || min == 'u') ? 1 : 0;
+}
+
+// d) Devuelve 1 si 'a' es múltiplo de 'b', 0 en caso contrario (cuidando b != 0)
+int esMultiplo(int a, int b)
+{
+    if (b == 0) return 0;
+    return (a % b == 0) ? 1 : 0;
+}
+
+int main()
+{
+    float n = 0;
+    char ch;
+    int x = 0, y = 0;
+
+    printf("Ingrese un numero real para evaluar su signo: ");
+    scanf("%f", &amp;n);
+    printf("-&gt; signo(%.2f) = %d\n\n", n, signo(n));
+
+    printf("Ingrese una letra para evaluar esMayus y esVocal: ");
+    scanf(" %c", &amp;ch);
+    printf("-&gt; esMayus('%c') = %s\n", ch, esMayus(ch) ? "Verdadero (1)" : "Falso (0)");
+    printf("-&gt; esVocal('%c') = %s\n\n", ch, esVocal(ch) ? "Verdadero (1)" : "Falso (0)");
+
+    printf("Ingrese dos numeros enteros para verificar si el 1ro es multiplo del 2do: ");
+    scanf("%d %d", &amp;x, &amp;y);
+    printf("-&gt; esMultiplo(%d, %d) = %s\n", x, y, esMultiplo(x, y) ? "Verdadero (1)" : "Falso (0)");
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7: Simulación de pasaje de parámetros y alcance de variables</h3>
+                        <p>Simular 3 ejecuciones distintas del siguiente código, con valores diferentes para las variables G1, G2 y G3. Examinar el código y determinar su salida.
+Programa Prueba
+Variables
+    G1, G2, G3: Entero 3
+Procedimiento PP (pValor: Entero 3; REF: pRef: Entero 3)
+Variables
+    L1, L2: Entero 3
+Hacer
+    L1 := G2
+    L2 := pRef
+    pValor := L1 + L2
+    pRef := L1 - L2
+    G3 := 10 * L1
+Fin Hacer
+Fin Procedimiento
+Hacer
+    Leer: G1, G2, G3
+    Imprimir: 'antes de PP, G1=', G1
+    Imprimir: 'antes de PP, G2=', G2
+    Imprimir: 'antes de PP, G3=', G3
+    PP (G2, G1)
+    Imprimir: 'despues de PP, G1=', G1
+    Imprimir: 'despues de PP, G2=', G2
+    Imprimir: 'despues de PP, G3=', G3
+Fin Hacer
+Fin Programa</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis del Comportamiento en Memoria:</h4>
+                        <p>Al invocar <code>PP(G2, G1)</code>, se establece una correspondencia posicional entre los argumentos actuales y los parámetros formales:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong><code>pValor</code> (recibe <code>G2</code> por valor/copia):</strong> La instrucción <code>pValor := L1 + L2</code> solo modifica la copia local en el Registro de Activación de <code>PP</code>. Por lo tanto, la variable global <code>G2</code> <strong>nunca cambia su valor</strong> ($\text{G2}_{\text{final}} = \text{G2}_{\text{inicial}}$).</li>
+                            <li><strong><code>pRef</code> (recibe la dirección de <code>G1</code> por referencia):</strong> En <code>L2 := pRef</code> se guarda el valor original de <code>G1</code>, y en <code>pRef := L1 - L2</code> se escribe directamente sobre la celda de memoria de <code>G1</code> el resultado de $\text{G2}_{\text{inicial}} - \text{G1}_{\text{inicial}}$.</li>
+                            <li><strong><code>G3</code> (variable global modificada directamente):</strong> Como <code>G3</code> no fue declarada localmente en <code>PP</code>, la asignación <code>G3 := 10 * L1</code> produce un <strong>efecto lateral</strong> modificando la variable global <code>G3</code> al valor $10 \cdot \text{G2}_{\text{inicial}}$, sin importar qué valor tenía <code>G3</code> antes del llamado.</li>
+                        </ul>
+
+                        <div class="table-responsive">
+                            <table class="tabla-iteraciones">
+                                <thead>
+                                    <tr>
+                                        <th>Simulación</th>
+                                        <th>Entrada (Antes de PP)</th>
+                                        <th>Variables Locales en PP</th>
+                                        <th>Salida (Después de PP)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Ejecución 1</strong></td>
+                                        <td><code>G1 = 4, G2 = 10, G3 = 5</code></td>
+                                        <td><code>L1 = 10, L2 = 4, pValor = 14</code></td>
+                                        <td><code>G1 = 6, G2 = 10, G3 = 100</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ejecución 2</strong></td>
+                                        <td><code>G1 = 15, G2 = 5, G3 = 99</code></td>
+                                        <td><code>L1 = 5, L2 = 15, pValor = 20</code></td>
+                                        <td><code>G1 = -10, G2 = 5, G3 = 50</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ejecución 3</strong></td>
+                                        <td><code>G1 = -3, G2 = 8, G3 = 0</code></td>
+                                        <td><code>L1 = 8, L2 = -3, pValor = 5</code></td>
+                                        <td><code>G1 = 11, G2 = 8, G3 = 80</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Variables globales
+int G1, G2, G3;
+
+// Procedimiento PP: pValor por copia, pRef por referencia (puntero)
+void PP(int pValor, int *pRef)
+{
+    int L1, L2;
+
+    L1 = G2;
+    L2 = *pRef;
+    pValor = L1 + L2;
+    *pRef = L1 - L2;
+    G3 = 10 * L1;
+}
+
+int main()
+{
+    printf("Ingrese los valores iniciales de G1, G2 y G3: ");
+    scanf("%d %d %d", &amp;G1, &amp;G2, &amp;G3);
+
+    printf("\nantes de PP, G1 = %d\n", G1);
+    printf("antes de PP, G2 = %d\n", G2);
+    printf("antes de PP, G3 = %d\n", G3);
+
+    // Invocación: G2 se pasa por valor y G1 se pasa por referencia (&amp;G1)
+    PP(G2, &amp;G1);
+
+    printf("\ndespues de PP, G1 = %d\n", G1);
+    printf("despues de PP, G2 = %d\n", G2);
+    printf("despues de PP, G3 = %d\n", G3);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8: Números naturales primos menores que un número dado</h3>
+                        <p>Hacer un programa que imprima todos los números naturales primos menores que un número dado. Recordar que los números naturales primos son los que sólo admiten 2 divisores: 1 y sí mismos, y que los divisores de un número distintos de él mismo son menores que la mitad.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Función que determina si un número natural es primo utilizando la propiedad de n/2
+int esPrimo(int n)
+{
+    int d;
+    if (n &lt; 2) return 0;
+
+    for (d = 2; d &lt;= n / 2; d++)
+    {
+        if (n % d == 0)
+        {
+            return 0; // Encontró un divisor propio: no es primo
+        }
+    }
+    return 1; // Es primo
+}
+
+// Procedimiento que imprime todos los primos menores que el límite recibido
+void mostrarPrimosMenores(int limite)
+{
+    int candidato;
+    printf("\nNumeros naturales primos menores que %d:\n", limite);
+
+    for (candidato = 2; candidato &lt; limite; candidato++)
+    {
+        if (esPrimo(candidato))
+        {
+            printf("%d ", candidato);
+        }
+    }
+    printf("\n");
+}
+
+int main()
+{
+    int numero = 0;
+
+    printf("Ingrese un numero entero positivo: ");
+    scanf("%d", &amp;numero);
+
+    if (numero &lt;= 2)
+    {
+        printf("No existen numeros naturales primos menores que %d.\n", numero);
+    }
+    else
+    {
+        mostrarPrimosMenores(numero);
+    }
+
     return 0;
 }</code></pre>
                             <button class="btn-copy">
@@ -127,8 +883,7 @@ int main()
 
     </main>
 
-    <!-- Scripts externos -->
-     
+    <!-- Scripts de interactividad -->
     <script src="../../assets/js/copy.js"></script>
     <script src="../../assets/js/selector_puntos.js"></script>
     <script src="../../assets/js/side-menu.js"></script>
