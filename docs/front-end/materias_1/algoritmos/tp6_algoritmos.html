@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP6 - Tipo Abstracto de Datos (TAD)</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="algoritmos-page">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../algoritmos.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <!-- Selector de puntos (3 botones) -->
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+
+        <!-- =========================================================================
+             ÚNICA SECCIÓN: TIPO ABSTRACTO DE DATOS (TAD) - 3 PUNTOS
+             ========================================================================= -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Aplicación con TAD AUTO</h3>
+                        <p>Suponer creado e implementado el TAD AUTO para desarrollar un programa de aplicación que permita crear 2 autos y luego determinar cuál de los 2 es más caro y si ambos son del mismo año de fabricación. Utilizar la interfaz provista (crearAuto, verPrecio, verAnio, etc).</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p style="margin-bottom: 1rem;">Se implementa la estructura interna del TAD y sus funciones básicas en el mismo archivo para que el código sea funcional, emulando el comportamiento de un <code>TAD_Auto.h</code>. Se respeta la restricción de no usar variables globales.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// =====================================================================
+// IMPLEMENTACION DEL TAD AUTO (Simulando el archivo TAD_Auto.h)
+// =====================================================================
+struct Auto {
+    char patente[8];
+    char marca[31];
+    char modelo[31];
+    int anio;
+    float precio;
+};
+
+void crearAuto(struct Auto *A, char pat[], char mar[], char mod[], int a, float pre) {
+    strcpy(A-&gt;patente, pat);
+    strcpy(A-&gt;marca, mar);
+    strcpy(A-&gt;modelo, mod);
+    A-&gt;anio = a;
+    A-&gt;precio = pre;
+}
+
+float verPrecio(struct Auto A) {
+    return A.precio;
+}
+
+int verAnio(struct Auto A) {
+    return A.anio;
+}
+
+void verPatente(struct Auto A, char dest[]) {
+    strcpy(dest, A.patente);
+}
+
+// =====================================================================
+// APLICACION PRINCIPAL
+// =====================================================================
+int main() {
+    struct Auto auto1, auto2;
+    char pat1[8], pat2[8];
+
+    // Utilizacion de la interfaz publica del TAD
+    crearAuto(&amp;auto1, "AB123CD", "Toyota", "Corolla", 2020, 15000000.0);
+    crearAuto(&amp;auto2, "EF456GH", "Ford", "Focus", 2020, 14500000.0);
+
+    printf("--- COMPARATIVA DE AUTOS ---\n");
+    
+    // Determinacion del auto mas caro
+    if (verPrecio(auto1) &gt; verPrecio(auto2)) {
+        verPatente(auto1, pat1);
+        printf("El auto mas caro es el de patente: %s (Precio: $%.2f)\n", pat1, verPrecio(auto1));
+    } else if (verPrecio(auto2) &gt; verPrecio(auto1)) {
+        verPatente(auto2, pat2);
+        printf("El auto mas caro es el de patente: %s (Precio: $%.2f)\n", pat2, verPrecio(auto2));
+    } else {
+        printf("Ambos autos tienen exactamente el mismo precio.\n");
+    }
+
+    // Determinacion de anio de fabricacion
+    if (verAnio(auto1) == verAnio(auto2)) {
+        printf("Ambos autos son del mismo anio de fabricacion (%d).\n", verAnio(auto1));
+    } else {
+        printf("Los autos son de distinto anio de fabricacion.\n");
+    }
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: TAD Departamento</h3>
+                        <p>Diseñar un TAD para la gestión de departamentos de distintas comodidades de un complejo turístico, la información se maneja con los siguientes atributos: cod_depto, ubicacion, capacidad, precio_diario, internet, tv y estado. Usando el TAD, se debe crear un departamento y verificar su disponibilidad, cambiar el estado, calcular precio por días y visualizar datos.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// =====================================================================
+// ESPECIFICACION E IMPLEMENTACION DEL TAD DEPARTAMENTO
+// =====================================================================
+struct Departamento {
+    int cod_depto;
+    char ubicacion[50];
+    int capacidad;
+    float precio_diario;
+    int internet; // 1: Si posee, 0: No posee
+    int tv;       // 1: Si posee, 0: No posee
+    int estado;   // 0: Disponible, 1: Ocupado, 2: Mantenimiento
+};
+
+void crearDepto(struct Departamento *D, int cod, char ub[], int cap, float precio, int net, int tele) {
+    D-&gt;cod_depto = cod;
+    strcpy(D-&gt;ubicacion, ub);
+    D-&gt;capacidad = cap;
+    D-&gt;precio_diario = precio;
+    D-&gt;internet = net;
+    D-&gt;tv = tele;
+    D-&gt;estado = 0; // Por defecto se crea en estado Disponible (0)
+}
+
+int verificarDisponibilidad(struct Departamento D) {
+    return (D.estado == 0); // Retorna 1 (Verdadero) si esta disponible
+}
+
+void cambiarEstado(struct Departamento *D, int nuevo_estado) {
+    D-&gt;estado = nuevo_estado;
+}
+
+float calcularPrecioEstadia(struct Departamento D, int dias) {
+    return D.precio_diario * dias;
+}
+
+void mostrarDepto(struct Departamento D) {
+    printf("--- Ficha del Departamento %d ---\n", D.cod_depto);
+    printf("Ubicacion: %s | Capacidad Max: %d personas\n", D.ubicacion, D.capacidad);
+    printf("Precio Diario: $%.2f | Internet: %s | TV: %s\n", D.precio_diario, D.internet ? "Si" : "No", D.tv ? "Si" : "No");
+    
+    printf("Estado actual: ");
+    if (D.estado == 0) printf("Disponible\n");
+    else if (D.estado == 1) printf("Ocupado\n");
+    else printf("En Mantenimiento\n");
+}
+
+// =====================================================================
+// APLICACION PRINCIPAL
+// =====================================================================
+int main() {
+    struct Departamento depto1;
+    int dias_reserva = 5;
+
+    // 1. Crear departamento
+    crearDepto(&amp;depto1, 101, "Mar del Plata - Frente al Mar", 4, 25000.0, 1, 1);
+    
+    // 2. Visualizacion inicial
+    mostrarDepto(depto1);
+
+    // 3. Verificar disponibilidad, cambiar estado y calcular precio
+    if (verificarDisponibilidad(depto1)) {
+        printf("\nEl departamento se encuentra DISPONIBLE. Procediendo a generar reserva...\n");
+        cambiarEstado(&amp;depto1, 1); // Lo marcamos como Ocupado
+        
+        float total = calcularPrecioEstadia(depto1, dias_reserva);
+        printf("Reserva confirmada por %d dias. Total a abonar: $%.2f\n", dias_reserva, total);
+    } else {
+        printf("\nLo sentimos, el departamento no se encuentra disponible actualmente.\n");
+    }
+    
+    // 4. Visualizacion final para comprobar el cambio
+    printf("\nEstado actualizado post-reserva:\n");
+    mostrarDepto(depto1);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: TAD Producto</h3>
+                        <p>Diseñar un TAD para la gestión de inventario de productos de un comercio. La información se maneja con los atributos: Cod, Marca, Tipo, precio_costo, QR, cantidad y Proveedor. Usando el TAD, se debe crear un producto y verificar cantidad disponible, cambiar cantidad, visualizar código QR y mostrar datos del producto.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// =====================================================================
+// ESPECIFICACION E IMPLEMENTACION DEL TAD PRODUCTO
+// =====================================================================
+struct Producto {
+    int cod;
+    char marca[30];
+    char tipo[30];
+    float precio_costo;
+    char qr[50];
+    int cantidad;
+    char proveedor[30];
+};
+
+void crearProducto(struct Producto *P, int c, char mar[], char tip[], float pre, char cod_qr[], int cant, char prov[]) {
+    P-&gt;cod = c;
+    strcpy(P-&gt;marca, mar);
+    strcpy(P-&gt;tipo, tip);
+    P-&gt;precio_costo = pre;
+    strcpy(P-&gt;qr, cod_qr);
+    P-&gt;cantidad = cant;
+    strcpy(P-&gt;proveedor, prov);
+}
+
+int verificarCantidad(struct Producto P) {
+    return P.cantidad;
+}
+
+void cambiarCantidad(struct Producto *P, int nueva_cantidad) {
+    if (nueva_cantidad &gt;= 0) {
+        P-&gt;cantidad = nueva_cantidad;
+    } else {
+        printf("Error de inventario: La cantidad no puede ser menor a cero.\n");
+    }
+}
+
+void visualizarQR(struct Producto P) {
+    printf("\n=== ESCANEO DE CODIGO QR ===\n");
+    printf("  [ %s ]  \n", P.qr);
+    printf("============================\n");
+}
+
+void mostrarProducto(struct Producto P) {
+    printf("\n--- Detalle del Producto #%d ---\n", P.cod);
+    printf("Tipo: %s | Marca: %s\n", P.tipo, P.marca);
+    printf("Proveedor: %s | Precio de Costo: $%.2f\n", P.proveedor, P.precio_costo);
+    printf("Stock Actual: %d unidades\n", P.cantidad);
+}
+
+// =====================================================================
+// APLICACION PRINCIPAL
+// =====================================================================
+int main() {
+    struct Producto prod1;
+
+    // 1. Crear el producto usando la interfaz del TAD
+    crearProducto(&amp;prod1, 5501, "Logitech", "Mouse Inalambrico", 12500.50, "QR-LOGI-5501-MX", 15, "TechSupplies SA");
+    
+    // 2. Mostrar datos del producto recien creado
+    mostrarProducto(prod1);
+    
+    // 3. Simular visualizacion de codigo QR
+    visualizarQR(prod1);
+    
+    // 4. Verificar cantidad y procesar una venta o ajuste
+    printf("\nStock reportado por el sistema: %d unidades.\n", verificarCantidad(prod1));
+    printf("Se registra la venta de 5 unidades...\n");
+    
+    // 5. Cambiar cantidad
+    cambiarCantidad(&amp;prod1, verificarCantidad(prod1) - 5);
+    
+    printf("\nEstado actualizado del inventario:\n");
+    mostrarProducto(prod1);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts de interactividad -->
+    <script src="../../assets/js/copy.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/syntax_c.js"></script>
+</body>
+</html>

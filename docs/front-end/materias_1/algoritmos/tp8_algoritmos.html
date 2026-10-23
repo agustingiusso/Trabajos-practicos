@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP8 - Estructuras Dinámicas: Listas</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="algoritmos-page">
+
+    <!-- Menú lateral de partes -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Trabajo Práctico 8</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Parte 1: Listas Simples</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2: Listas de Listas / Arreglos</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../algoritmos.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0aa7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <!-- Selector de puntos (7 botones totales: 5 Parte 1 + 2 Parte 2) -->
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6" style="display: none;">06</li>
+            <li class="nav-point" data-point="7" style="display: none;">07</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+
+        <!-- =========================================================================
+             PARTE 1: LISTAS SIMPLES (5 PUNTOS)
+             ========================================================================= -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Parte 1 - Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Ocurrencias y Eliminación en Lista</h3>
+                        <p>Se lee una secuencia de números que se almacena en una lista encadenada. Además se lee otro número por teclado. Se desea: a) Determinar cuántas veces aparece ese número en la lista. b) Eliminarlo si aparece una sola vez, si no existe imprimir un mensaje indicando este hecho.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Nodo {
+    int dato;
+    struct Nodo* sig;
+};
+
+void insertar(struct Nodo** cabeza, int valor) {
+    struct Nodo* nuevo = (struct Nodo*)malloc(sizeof(struct Nodo));
+    nuevo-&gt;dato = valor;
+    nuevo-&gt;sig = *cabeza;
+    *cabeza = nuevo;
+}
+
+int contarOcurrencias(struct Nodo* cabeza, int buscado) {
+    int contador = 0;
+    struct Nodo* actual = cabeza;
+    while (actual != NULL) {
+        if (actual-&gt;dato == buscado) contador++;
+        actual = actual-&gt;sig;
+    }
+    return contador;
+}
+
+void eliminarUnico(struct Nodo** cabeza, int buscado) {
+    struct Nodo *actual = *cabeza, *anterior = NULL;
+    
+    // Si la cabeza es el nodo a eliminar
+    if (actual != NULL &amp;&amp; actual-&gt;dato == buscado) {
+        *cabeza = actual-&gt;sig;
+        free(actual);
+        printf("Elemento %d eliminado con exito (estaba en la cabeza).\n", buscado);
+        return;
+    }
+    
+    // Buscar el nodo
+    while (actual != NULL &amp;&amp; actual-&gt;dato != buscado) {
+        anterior = actual;
+        actual = actual-&gt;sig;
+    }
+    
+    // Desvincular y liberar
+    if (actual != NULL) {
+        anterior-&gt;sig = actual-&gt;sig;
+        free(actual);
+        printf("Elemento %d eliminado con exito.\n", buscado);
+    }
+}
+
+void procesarLista(struct Nodo** cabeza, int buscado) {
+    int cant = contarOcurrencias(*cabeza, buscado);
+    
+    if (cant == 0) {
+        printf("El numero %d NO existe en la lista.\n", buscado);
+    } else {
+        printf("El numero %d aparece %d vez/veces en la lista.\n", buscado, cant);
+        if (cant == 1) {
+            eliminarUnico(cabeza, buscado);
+        } else {
+            printf("Aparece mas de una vez, no se elimina.\n");
+        }
+    }
+}
+
+int main() {
+    struct Nodo* lista = NULL;
+    int nro_buscado = 15;
+    
+    // Simulacion de carga
+    insertar(&amp;lista, 10);
+    insertar(&amp;lista, 15);
+    insertar(&amp;lista, 20);
+    insertar(&amp;lista, 30);
+    
+    procesarLista(&amp;lista, nro_buscado); // Aparece 1 vez (se eliminara)
+    procesarLista(&amp;lista, 99);          // No existe
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Biblioteca Escolar (Inserción Ordenada)</h3>
+                        <p>En una escuela primaria se ha pedido a los alumnos que donen un libro. Se desea: a) Incorporar los datos a una lista en forma ordenada. (Título, género, autor, tema, editorial). b) Informar la cantidad de fábulas y cuentos infantiles donados.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct Libro {
+    char titulo[50];
+    char genero[30];
+    char autor[30];
+    char tema[30];
+    char editorial[30];
+};
+
+struct NodoLibro {
+    struct Libro dato;
+    struct NodoLibro* sig;
+};
+
+// Insercion ordenada alfabeticamente por Titulo
+void insertarOrdenado(struct NodoLibro** cabeza, struct Libro nuevo_libro) {
+    struct NodoLibro* nuevo = (struct NodoLibro*)malloc(sizeof(struct NodoLibro));
+    nuevo-&gt;dato = nuevo_libro;
+    nuevo-&gt;sig = NULL;
+    
+    if (*cabeza == NULL || strcmp((*cabeza)-&gt;dato.titulo, nuevo_libro.titulo) &gt; 0) {
+        nuevo-&gt;sig = *cabeza;
+        *cabeza = nuevo;
+    } else {
+        struct NodoLibro* actual = *cabeza;
+        while (actual-&gt;sig != NULL &amp;&amp; strcmp(actual-&gt;sig-&gt;dato.titulo, nuevo_libro.titulo) &lt; 0) {
+            actual = actual-&gt;sig;
+        }
+        nuevo-&gt;sig = actual-&gt;sig;
+        actual-&gt;sig = nuevo;
+    }
+}
+
+void reporteBiblioteca(struct NodoLibro* cabeza) {
+    int fabulas = 0, infantiles = 0;
+    struct NodoLibro* actual = cabeza;
+    
+    printf("--- LISTADO DE LIBROS ORDENADO ---\n");
+    while (actual != NULL) {
+        printf("Titulo: %s | Genero: %s\n", actual-&gt;dato.titulo, actual-&gt;dato.genero);
+        
+        // Uso estricto en minusculas para la comparacion
+        if (strcmp(actual-&gt;dato.genero, "fabula") == 0) fabulas++;
+        if (strcmp(actual-&gt;dato.genero, "infantil") == 0) infantiles++;
+        
+        actual = actual-&gt;sig;
+    }
+    
+    printf("\n--- ESTADISTICAS ---\n");
+    printf("Cantidad de Fabulas: %d\n", fabulas);
+    printf("Cantidad de Cuentos Infantiles: %d\n", infantiles);
+}
+
+int main() {
+    struct NodoLibro* biblioteca = NULL;
+    
+    struct Libro l1 = {"Zorro y Uvas", "fabula", "Esopo", "Moraleja", "Ed1"};
+    struct Libro l2 = {"Caperucita", "infantil", "Perrault", "Bosque", "Ed2"};
+    struct Libro l3 = {"Alicia", "infantil", "Carroll", "Fantasia", "Ed3"};
+    struct Libro l4 = {"El Principito", "fabula", "Exupery", "Filosofia", "Ed4"};
+    
+    insertarOrdenado(&amp;biblioteca, l1);
+    insertarOrdenado(&amp;biblioteca, l2);
+    insertarOrdenado(&amp;biblioteca, l3);
+    insertarOrdenado(&amp;biblioteca, l4);
+    
+    reporteBiblioteca(biblioteca);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Comparación de Listas de Supermercados</h3>
+                        <p>Se tiene una lista de precios de Carrefour y otra con los precios de los mismos productos en Disco. Se desea obtener una tercera lista con los nombres de cada producto y el nombre del supermercado donde conviene comprarlo.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct Producto {
+    char nombre[30];
+    float precio;
+};
+
+struct NodoProd {
+    struct Producto dato;
+    struct NodoProd* sig;
+};
+
+struct Resultado {
+    char nombre[30];
+    char supermercado[20];
+};
+
+struct NodoRes {
+    struct Resultado dato;
+    struct NodoRes* sig;
+};
+
+void insertarProd(struct NodoProd** cabeza, char nom[], float pre) {
+    struct NodoProd* nuevo = (struct NodoProd*)malloc(sizeof(struct NodoProd));
+    strcpy(nuevo-&gt;dato.nombre, nom);
+    nuevo-&gt;dato.precio = pre;
+    nuevo-&gt;sig = *cabeza;
+    *cabeza = nuevo;
+}
+
+void insertarRes(struct NodoRes** cabeza, char nom[], char super[]) {
+    struct NodoRes* nuevo = (struct NodoRes*)malloc(sizeof(struct NodoRes));
+    strcpy(nuevo-&gt;dato.nombre, nom);
+    strcpy(nuevo-&gt;dato.supermercado, super);
+    nuevo-&gt;sig = *cabeza;
+    *cabeza = nuevo;
+}
+
+// Se asume que ambas listas tienen los mismos productos
+void generarListaOptima(struct NodoProd* carrefour, struct NodoProd* disco, struct NodoRes** resultado) {
+    struct NodoProd *actualC = carrefour;
+    
+    while (actualC != NULL) {
+        struct NodoProd *actualD = disco;
+        
+        // Buscar el producto homonimo en Disco
+        while (actualD != NULL &amp;&amp; strcmp(actualC-&gt;dato.nombre, actualD-&gt;dato.nombre) != 0) {
+            actualD = actualD-&gt;sig;
+        }
+        
+        if (actualD != NULL) {
+            if (actualC-&gt;dato.precio &lt; actualD-&gt;dato.precio) {
+                insertarRes(resultado, actualC-&gt;dato.nombre, "Carrefour");
+            } else if (actualD-&gt;dato.precio &lt; actualC-&gt;dato.precio) {
+                insertarRes(resultado, actualC-&gt;dato.nombre, "Disco");
+            } else {
+                insertarRes(resultado, actualC-&gt;dato.nombre, "Indistinto");
+            }
+        }
+        actualC = actualC-&gt;sig;
+    }
+}
+
+void imprimirResultados(struct NodoRes* cabeza) {
+    struct NodoRes* actual = cabeza;
+    printf("--- LISTA OPTIMA DE COMPRAS ---\n");
+    while (actual != NULL) {
+        printf("Producto: %-15s | Conviene en: %s\n", actual-&gt;dato.nombre, actual-&gt;dato.supermercado);
+        actual = actual-&gt;sig;
+    }
+}
+
+int main() {
+    struct NodoProd *listaCarrefour = NULL;
+    struct NodoProd *listaDisco = NULL;
+    struct NodoRes *listaFinal = NULL;
+    
+    insertarProd(&amp;listaCarrefour, "Leche", 500.0);
+    insertarProd(&amp;listaCarrefour, "Pan", 800.0);
+    
+    insertarProd(&amp;listaDisco, "Leche", 480.0);
+    insertarProd(&amp;listaDisco, "Pan", 850.0);
+    
+    generarListaOptima(listaCarrefour, listaDisco, &amp;listaFinal);
+    imprimirResultados(listaFinal);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Inmobiliaria (Ordenación Indirecta)</h3>
+                        <p>De cada departamento se conoce: ubicación, dormitorios, piso, cochera, antigüedad, precio y expensas. Informar cuál es el más caro y generar un informe con el total de departamentos según cantidad de dormitorios, ordenados de mayor a menor por dicho total.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Se cuenta la cantidad de departamentos según número de dormitorios usando un pequeño vector estático auxiliar, y luego se ordena ese vector mediante el algoritmo de Burbuja para cumplir el requerimiento del reporte.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Depto {
+    char ubicacion[30];
+    int dormitorios;
+    int piso;
+    int cochera; // 1 si, 0 no
+    int antiguedad;
+    float precio;
+    float expensas;
+};
+
+struct NodoDepto {
+    struct Depto dato;
+    struct NodoDepto* sig;
+};
+
+void insertarDepto(struct NodoDepto** cabeza, struct Depto d) {
+    struct NodoDepto* nuevo = (struct NodoDepto*)malloc(sizeof(struct NodoDepto));
+    nuevo-&gt;dato = d;
+    nuevo-&gt;sig = *cabeza;
+    *cabeza = nuevo;
+}
+
+void analizarInmobiliaria(struct NodoDepto* cabeza) {
+    if (cabeza == NULL) return;
+    
+    struct NodoDepto* actual = cabeza;
+    float max_precio = actual-&gt;dato.precio;
+    
+    // Arreglo para contar deptos por cantidad de dormitorios (indice = cant. dorm)
+    // Suponemos maximo 10 dormitorios para el ejemplo
+    int conteo_dorm[10] = {0}; 
+    int indices_dorm[10]; // Para no perder que indice (dormitorio) corresponde tras ordenar
+    for(int i=0; i&lt;10; i++) indices_dorm[i] = i;
+    
+    while (actual != NULL) {
+        if (actual-&gt;dato.precio &gt; max_precio) {
+            max_precio = actual-&gt;dato.precio;
+        }
+        if (actual-&gt;dato.dormitorios &lt; 10) {
+            conteo_dorm[actual-&gt;dato.dormitorios]++;
+        }
+        actual = actual-&gt;sig;
+    }
+    
+    printf("El departamento mas caro cuesta: $%.2f\n\n", max_precio);
+    
+    // Ordenar arreglos paralelamente (Burbuja Descendente por conteo)
+    for(int i = 0; i &lt; 9; i++) {
+        for(int j = 0; j &lt; 9 - i; j++) {
+            if(conteo_dorm[j] &lt; conteo_dorm[j+1]) {
+                int aux_c = conteo_dorm[j];
+                conteo_dorm[j] = conteo_dorm[j+1];
+                conteo_dorm[j+1] = aux_c;
+                
+                int aux_i = indices_dorm[j];
+                indices_dorm[j] = indices_dorm[j+1];
+                indices_dorm[j+1] = aux_i;
+            }
+        }
+    }
+    
+    printf("--- AGRUPACION POR DORMITORIOS (MAYOR A MENOR) ---\n");
+    for(int i = 0; i &lt; 10; i++) {
+        if(conteo_dorm[i] &gt; 0) {
+            printf("%d Dormitorios: %d departamentos\n", indices_dorm[i], conteo_dorm[i]);
+        }
+    }
+}
+
+int main() {
+    struct NodoDepto* lista = NULL;
+    
+    struct Depto d1 = {"Centro", 2, 3, 1, 5, 80000.0, 5000.0};
+    struct Depto d2 = {"Norte", 3, 1, 1, 10, 120000.0, 7000.0};
+    struct Depto d3 = {"Sur", 2, 5, 0, 2, 75000.0, 4500.0};
+    struct Depto d4 = {"Centro", 1, 2, 0, 1, 60000.0, 3000.0};
+    
+    insertarDepto(&amp;lista, d1);
+    insertarDepto(&amp;lista, d2);
+    insertarDepto(&amp;lista, d3);
+    insertarDepto(&amp;lista, d4);
+    
+    analizarInmobiliaria(lista);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Vivero (Sublistas y Estadísticas)</h3>
+                        <p>De un vivero se almacena: código, nombre, precio, stock, ubicación (interior/exterior) y tipo (árbol/arbusto/flor). a) Generar e imprimir otra lista con arbustos de exterior. b) Calcular porcentaje de plantas de exterior e interior.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct Planta {
+    int codigo;
+    char nombre[30];
+    float precio;
+    int stock;
+    int exterior; // 1: Exterior, 0: Interior
+    char tipo[20]; // "arbol", "arbusto", "flor"
+};
+
+struct NodoPlanta {
+    struct Planta dato;
+    struct NodoPlanta* sig;
+};
+
+void insertar(struct NodoPlanta** cabeza, struct Planta p) {
+    struct NodoPlanta* nuevo = (struct NodoPlanta*)malloc(sizeof(struct NodoPlanta));
+    nuevo-&gt;dato = p;
+    nuevo-&gt;sig = *cabeza;
+    *cabeza = nuevo;
+}
+
+void procesarVivero(struct NodoPlanta* original, struct NodoPlanta** sublista) {
+    int total = 0, cant_ext = 0, cant_int = 0;
+    struct NodoPlanta* actual = original;
+    
+    while (actual != NULL) {
+        total++;
+        
+        if (actual-&gt;dato.exterior == 1) cant_ext++;
+        else cant_int++;
+        
+        // Si es Arbusto de Exterior, generar sublista
+        if (actual-&gt;dato.exterior == 1 &amp;&amp; strcmp(actual-&gt;dato.tipo, "arbusto") == 0) {
+            insertar(sublista, actual-&gt;dato);
+        }
+        actual = actual-&gt;sig;
+    }
+    
+    printf("--- ESTADISTICAS DEL VIVERO ---\n");
+    if (total &gt; 0) {
+        printf("Porcentaje Exterior: %.2f%%\n", (cant_ext * 100.0) / total);
+        printf("Porcentaje Interior: %.2f%%\n\n", (cant_int * 100.0) / total);
+    }
+}
+
+void imprimirSublista(struct NodoPlanta* sublista) {
+    struct NodoPlanta* actual = sublista;
+    printf("--- SUBLISTA: ARBUSTOS DE EXTERIOR ---\n");
+    while (actual != NULL) {
+        printf("Nombre: %-15s | Precio: $%.2f\n", actual-&gt;dato.nombre, actual-&gt;dato.precio);
+        actual = actual-&gt;sig;
+    }
+}
+
+int main() {
+    struct NodoPlanta* inventario = NULL;
+    struct NodoPlanta* sublista = NULL;
+    
+    struct Planta p1 = {1, "Ficus", 1500.0, 10, 0, "arbol"};
+    struct Planta p2 = {2, "Rosal", 800.0, 5, 1, "arbusto"};
+    struct Planta p3 = {3, "Helecho", 600.0, 12, 0, "arbusto"};
+    struct Planta p4 = {4, "Jazmin", 900.0, 8, 1, "arbusto"};
+    
+    insertar(&amp;inventario, p1);
+    insertar(&amp;inventario, p2);
+    insertar(&amp;inventario, p3);
+    insertar(&amp;inventario, p4);
+    
+    procesarVivero(inventario, &amp;sublista);
+    imprimirSublista(sublista);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+        <!-- =========================================================================
+             PARTE 2: LISTAS DE LISTAS O ARREGLOS DE LISTAS (2 PUNTOS)
+             ========================================================================= -->
+        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+
+            <!-- Parte 2 - Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Videoclub (Lista de Socios con Historial)</h3>
+                        <p>Simular el proceso de alquiler de películas. Cada socio registra sus alquileres (tipo, titulo, etc). Al final del día: a) Cantidad total de películas/juegos alquilados y monto. b) Detalle por socio con su historial (títulos), ordenado por código de socio de menor a mayor.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Dado que no existe un límite fijo de alquileres por socio, utilizamos una "Lista de Listas": Una lista principal ordenada de Socios, y dentro de cada Socio, un puntero a su propia lista enlazada de Alquileres.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+// Sub-lista: Historial de alquileres de un socio
+struct Alquiler {
+    int tipo; // 1: Pelicula, 2: Juego
+    char titulo[30];
+    float precio;
+};
+
+struct NodoAlquiler {
+    struct Alquiler dato;
+    struct NodoAlquiler* sig;
+};
+
+// Lista Principal: Socios (Ordenada por Codigo)
+struct Socio {
+    int cod_socio;
+    struct NodoAlquiler* historial; // Puntero a la sublista
+};
+
+struct NodoSocio {
+    struct Socio dato;
+    struct NodoSocio* sig;
+};
+
+void registrarAlquiler(struct NodoSocio** listaSocios, int cod_socio, struct Alquiler alq, int* tot_p, int* tot_j, float* monto) {
+    // Actualizar metricas globales
+    if (alq.tipo == 1) (*tot_p)++; else (*tot_j)++;
+    *monto += alq.precio;
+
+    // Buscar socio (o insertar si no existe, manteniendo orden)
+    struct NodoSocio* actual = *listaSocios;
+    struct NodoSocio* anterior = NULL;
+    
+    while (actual != NULL &amp;&amp; actual-&gt;dato.cod_socio &lt; cod_socio) {
+        anterior = actual;
+        actual = actual-&gt;sig;
+    }
+    
+    // Si no existe, crearlo
+    if (actual == NULL || actual-&gt;dato.cod_socio != cod_socio) {
+        struct NodoSocio* nuevoSocio = (struct NodoSocio*)malloc(sizeof(struct NodoSocio));
+        nuevoSocio-&gt;dato.cod_socio = cod_socio;
+        nuevoSocio-&gt;dato.historial = NULL; // Lista de alquileres vacia
+        nuevoSocio-&gt;sig = actual;
+        
+        if (anterior == NULL) *listaSocios = nuevoSocio;
+        else anterior-&gt;sig = nuevoSocio;
+        
+        actual = nuevoSocio;
+    }
+    
+    // Insertar alquiler en el historial del socio
+    struct NodoAlquiler* nuevoAlq = (struct NodoAlquiler*)malloc(sizeof(struct NodoAlquiler));
+    nuevoAlq-&gt;dato = alq;
+    nuevoAlq-&gt;sig = actual-&gt;dato.historial;
+    actual-&gt;dato.historial = nuevoAlq;
+}
+
+void emitirReporte(struct NodoSocio* cabeza, int tp, int tj, float monto) {
+    printf("--- REPORTE GLOBAL DEL DIA ---\n");
+    printf("Peliculas Alquiladas: %d | Juegos Alquilados: %d\n", tp, tj);
+    printf("Monto Recaudado: $%.2f\n\n", monto);
+    
+    printf("--- DETALLE POR SOCIO (Ordenado por Codigo) ---\n");
+    struct NodoSocio* actual = cabeza;
+    while (actual != NULL) {
+        int c_p = 0, c_j = 0;
+        printf("Socio Nro: %d\n", actual-&gt;dato.cod_socio);
+        
+        struct NodoAlquiler* h = actual-&gt;dato.historial;
+        printf("  Historial:\n");
+        while (h != NULL) {
+            printf("    - [%s] %s\n", (h-&gt;dato.tipo == 1) ? "Peli" : "Juego", h-&gt;dato.titulo);
+            if (h-&gt;dato.tipo == 1) c_p++; else c_j++;
+            h = h-&gt;sig;
+        }
+        printf("  Total Socio: %d Peliculas, %d Juegos.\n\n", c_p, c_j);
+        actual = actual-&gt;sig;
+    }
+}
+
+int main() {
+    struct NodoSocio* sistema = NULL;
+    int total_pelis = 0, total_juegos = 0;
+    float monto_total = 0.0;
+    
+    struct Alquiler a1 = {1, "Matrix", 500.0};
+    struct Alquiler a2 = {2, "FIFA 25", 800.0};
+    struct Alquiler a3 = {1, "Inception", 500.0};
+    
+    // Registros (Simulacion de atencion en el mostrador)
+    registrarAlquiler(&amp;sistema, 150, a1, &amp;total_pelis, &amp;total_juegos, &amp;monto_total);
+    registrarAlquiler(&amp;sistema, 102, a2, &amp;total_pelis, &amp;total_juegos, &amp;monto_total);
+    registrarAlquiler(&amp;sistema, 150, a3, &amp;total_pelis, &amp;total_juegos, &amp;monto_total);
+    
+    emitirReporte(sistema, total_pelis, total_juegos, monto_total);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Competencia (Arreglo de Listas)</h3>
+                        <p>Competencia en 10 disciplinas. Alumnos se inscriben en múltiples pruebas. El día del evento se registran, compiten y obtienen puntaje. Se pide simular el proceso para imprimir los 3 mejores por disciplina, y estadísticas (inscriptos vs presentes por prueba y asistencia por escuela).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Al ser exactamente 10 disciplinas fijas, la estructura idónea es un <strong>Arreglo de Listas</strong>. Se declara un vector de tamaño 10, donde cada celda es el puntero inicial a la lista enlazada de competidores inscritos en esa disciplina.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define DISCIPLINAS 3 // Usaremos 3 para el ejemplo practico (el PDF indica 10)
+
+struct Participante {
+    int dni;
+    char escuela[30];
+    int presente; // 1: Asistio, 0: Ausente
+    float puntaje;
+};
+
+struct NodoComp {
+    struct Participante dato;
+    struct NodoComp* sig;
+};
+
+void inscribir(struct NodoComp** disciplina, struct Participante p) {
+    p.presente = 0; // Por defecto ausente al inscribirse por internet
+    p.puntaje = 0.0;
+    
+    struct NodoComp* nuevo = (struct NodoComp*)malloc(sizeof(struct NodoComp));
+    nuevo-&gt;dato = p;
+    nuevo-&gt;sig = *disciplina;
+    *disciplina = nuevo;
+}
+
+void registrarPresencia(struct NodoComp* disciplina, int dni) {
+    struct NodoComp* actual = disciplina;
+    while (actual != NULL) {
+        if (actual-&gt;dato.dni == dni) {
+            actual-&gt;dato.presente = 1;
+            return;
+        }
+        actual = actual-&gt;sig;
+    }
+}
+
+void cargarPuntaje(struct NodoComp* disciplina, int dni, float pts) {
+    struct NodoComp* actual = disciplina;
+    while (actual != NULL) {
+        if (actual-&gt;dato.dni == dni &amp;&amp; actual-&gt;dato.presente == 1) {
+            actual-&gt;dato.puntaje = pts;
+            return;
+        }
+        actual = actual-&gt;sig;
+    }
+}
+
+void podioYEstadisticas(struct NodoComp* arreglo[], int total_dis) {
+    for (int i = 0; i &lt; total_dis; i++) {
+        printf("\n--- DISCIPLINA %d ---\n", i + 1);
+        int inscriptos = 0, presentes = 0;
+        float min_puntaje = 9999.0;
+        
+        // Variables rudimentarias para Top 3 (Asumiendo puntajes no negativos)
+        float max1 = -1, max2 = -1, max3 = -1;
+        int d1 = 0, d2 = 0, d3 = 0;
+        
+        struct NodoComp* actual = arreglo[i];
+        while (actual != NULL) {
+            inscriptos++;
+            if (actual-&gt;dato.presente == 1) {
+                presentes++;
+                float p = actual-&gt;dato.puntaje;
+                if (p &lt; min_puntaje) min_puntaje = p;
+                
+                // Calculo de podio en una pasada
+                if (p &gt; max1) {
+                    max3 = max2; d3 = d2;
+                    max2 = max1; d2 = d1;
+                    max1 = p; d1 = actual-&gt;dato.dni;
+                } else if (p &gt; max2) {
+                    max3 = max2; d3 = d2;
+                    max2 = p; d2 = actual-&gt;dato.dni;
+                } else if (p &gt; max3) {
+                    max3 = p; d3 = actual-&gt;dato.dni;
+                }
+            }
+            actual = actual-&gt;sig;
+        }
+        
+        printf("Inscriptos: %d | Presentes: %d\n", inscriptos, presentes);
+        if (presentes &gt; 0) {
+            printf("Menor puntaje obtenido: %.2f\n", min_puntaje);
+            printf("PODIO:\n");
+            printf("  1ro) DNI %d (%.2f pts)\n", d1, max1);
+            if (max2 != -1) printf("  2do) DNI %d (%.2f pts)\n", d2, max2);
+            if (max3 != -1) printf("  3ro) DNI %d (%.2f pts)\n", d3, max3);
+        }
+    }
+}
+
+int main() {
+    // Inicializacion del arreglo de listas
+    struct NodoComp* torneo[DISCIPLINAS];
+    for (int i = 0; i &lt; DISCIPLINAS; i++) torneo[i] = NULL;
+    
+    struct Participante p1 = {111, "EET 1", 0, 0};
+    struct Participante p2 = {222, "EET 1", 0, 0};
+    struct Participante p3 = {333, "EET 2", 0, 0};
+    
+    // Etapa 1: Inscripcion (DNI 111 y 222 en Discip 0. DNI 333 en Discip 0 y 1)
+    inscribir(&amp;torneo[0], p1);
+    inscribir(&amp;torneo[0], p2);
+    inscribir(&amp;torneo[0], p3);
+    inscribir(&amp;torneo[1], p3);
+    
+    // Etapa 2: Registracion el dia del evento (P2 no asiste)
+    registrarPresencia(torneo[0], 111);
+    registrarPresencia(torneo[0], 333);
+    registrarPresencia(torneo[1], 333);
+    
+    // Etapa 3: Competencia
+    cargarPuntaje(torneo[0], 111, 8.5);
+    cargarPuntaje(torneo[0], 333, 9.2);
+    cargarPuntaje(torneo[1], 333, 7.0);
+    
+    // Etapa 4: Cierre
+    podioYEstadisticas(torneo, DISCIPLINAS);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts de interactividad -->
+    <script src="../../assets/js/copy.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/syntax_c.js"></script>
+</body>
+</html>

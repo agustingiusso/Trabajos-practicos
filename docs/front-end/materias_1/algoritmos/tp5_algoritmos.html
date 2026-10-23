@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP5 - Registros, Búsqueda y Ordenación</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="algoritmos-page">
+
+    <!-- Menú lateral de partes -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Trabajo Práctico 5</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="1">Parte 1: Ordenación y Búsqueda</a></li>
+                <li><a href="#" class="part-link" data-part="2">Parte 2: Registros con Arreglos</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de partes">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../algoritmos.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <!-- Selector de puntos (16 botones totales: 10 visibles en Parte 1 y 6 ocultos para la Parte 2) -->
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <!-- Parte 1 (10 puntos) -->
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+            <li class="nav-point" data-point="9">09</li>
+            <li class="nav-point" data-point="10">10</li>
+            <!-- Parte 2 (6 puntos) con display: none inicial -->
+            <li class="nav-point" data-point="11" style="display: none;">11</li>
+            <li class="nav-point" data-point="12" style="display: none;">12</li>
+            <li class="nav-point" data-point="13" style="display: none;">13</li>
+            <li class="nav-point" data-point="14" style="display: none;">14</li>
+            <li class="nav-point" data-point="15" style="display: none;">15</li>
+            <li class="nav-point" data-point="16" style="display: none;">16</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+
+        <!-- =========================================================================
+             PARTE 1: ORDENACIÓN Y BÚSQUEDA EN ARREGLOS (10 PUNTOS)
+             ========================================================================= -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Parte 1 - Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Búsqueda de clave carácter</h3>
+                        <p>Realizar un algoritmo que permita buscar en un vector de 1500 posiciones la ocurrencia de una clave de tipo carácter introducida por el usuario.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Paso a Paso:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>Búsqueda Secuencial:</strong> Se recorre todo el vector utilizando un bucle <code>for</code>, ya que el vector no está garantizado que esté ordenado.</li>
+                            <li>Por cada coincidencia, se incrementa un contador y se puede imprimir su posición. (Se usa un tamaño menor para la prueba).</li>
+                        </ul>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX 10 // Simula las 1500 posiciones
+
+int buscarCaracter(char vector[], int tam, char clave) {
+    int ocurrencias = 0;
+    for (int i = 0; i &lt; tam; i++) {
+        if (vector[i] == clave) {
+            printf("Coincidencia encontrada en la posicion: %d\n", i);
+            ocurrencias++;
+        }
+    }
+    return ocurrencias;
+}
+
+int main() {
+    char letras[MAX] = {'a', 'b', 'c', 'x', 'e', 'x', 'g', 'h', 'x', 'j'};
+    char buscado;
+    
+    printf("Ingrese el caracter a buscar: ");
+    scanf(" %c", &amp;buscado);
+    
+    int encontradas = buscarCaracter(letras, MAX, buscado);
+    
+    if (encontradas == 0) {
+        printf("El caracter '%c' no se encuentra en el vector.\n", buscado);
+    } else {
+        printf("Total de ocurrencias: %d\n", encontradas);
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Selección y Burbuja Bidireccional</h3>
+                        <p>Implementar como procedimientos los algoritmos de ordenación por selección y burbuja, de modo que uno de ellos trabaje en sentido ascendente y el otro en sentido descendente. Utilizarlos en un programa que lea un vector de N posiciones y mostrarlo ordenado en ambos sentidos.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define N 5
+
+// Ordenamiento por Seleccion (Ascendente)
+void seleccionAscendente(int vec[], int tam) {
+    int i, j, min_idx, aux;
+    for (i = 0; i &lt; tam - 1; i++) {
+        min_idx = i;
+        for (j = i + 1; j &lt; tam; j++) {
+            if (vec[j] &lt; vec[min_idx]) {
+                min_idx = j;
+            }
+        }
+        aux = vec[i];
+        vec[i] = vec[min_idx];
+        vec[min_idx] = aux;
+    }
+}
+
+// Ordenamiento por Burbuja (Descendente)
+void burbujaDescendente(int vec[], int tam) {
+    int i, j, aux;
+    for (i = 0; i &lt; tam - 1; i++) {
+        for (j = 0; j &lt; tam - i - 1; j++) {
+            if (vec[j] &lt; vec[j + 1]) { // Cambia la condicion a menor que
+                aux = vec[j];
+                vec[j] = vec[j + 1];
+                vec[j + 1] = aux;
+            }
+        }
+    }
+}
+
+void imprimirVector(int vec[], int tam) {
+    for (int i = 0; i &lt; tam; i++) {
+        printf("%d ", vec[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int numeros[N] = {34, 12, 89, 5, 23};
+    int copia[N];
+    
+    // Copiamos para no perder el original
+    for (int i = 0; i &lt; N; i++) copia[i] = numeros[i];
+    
+    printf("Vector original: ");
+    imprimirVector(numeros, N);
+    
+    seleccionAscendente(numeros, N);
+    printf("Ordenado Ascendente (Seleccion): ");
+    imprimirVector(numeros, N);
+    
+    burbujaDescendente(copia, N);
+    printf("Ordenado Descendente (Burbuja):  ");
+    imprimirVector(copia, N);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Ordenar Matriz por Columna Indice</h3>
+                        <p>Se desea cargar una matriz de 14x50, ordenarla por una columna indicada, y luego imprimir la matriz resultado. La ordenación también debe realizarla un procedimiento.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Paso a Paso:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li>Se ordenan las <strong>filas completas</strong> en base al valor de una columna específica.</li>
+                            <li>Se utiliza el algoritmo de burbuja iterando sobre las filas. Si la celda de la columna elegida es mayor que la de abajo, se intercambian <strong>todos los elementos</strong> de ambas filas usando un bucle <code>k</code> adicional.</li>
+                        </ul>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define FILAS 4
+#define COLS 3
+
+void ordenarMatrizPorColumna(int mat[FILAS][COLS], int col_idx) {
+    int i, j, k, aux;
+    
+    // Burbuja adaptada para mover filas enteras
+    for (i = 0; i &lt; FILAS - 1; i++) {
+        for (j = 0; j &lt; FILAS - i - 1; j++) {
+            if (mat[j][col_idx] &gt; mat[j + 1][col_idx]) {
+                // Intercambiar toda la fila
+                for (k = 0; k &lt; COLS; k++) {
+                    aux = mat[j][k];
+                    mat[j][k] = mat[j + 1][k];
+                    mat[j + 1][k] = aux;
+                }
+            }
+        }
+    }
+}
+
+void imprimirMatriz(int mat[FILAS][COLS]) {
+    for (int i = 0; i &lt; FILAS; i++) {
+        for (int j = 0; j &lt; COLS; j++) {
+            printf("%4d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matriz[FILAS][COLS] = {
+        {10, 50, 30},
+        {20, 10, 80},
+        {30, 90, 10},
+        {40, 20, 40}
+    };
+    int col_elegida;
+    
+    printf("Matriz Original:\n");
+    imprimirMatriz(matriz);
+    
+    printf("\nIngrese la columna por la cual ordenar (0 a %d): ", COLS - 1);
+    scanf("%d", &amp;col_elegida);
+    
+    if (col_elegida &gt;= 0 &amp;&amp; col_elegida &lt; COLS) {
+        ordenarMatrizPorColumna(matriz, col_elegida);
+        printf("\nMatriz Ordenada por la columna %d:\n", col_elegida);
+        imprimirMatriz(matriz);
+    } else {
+        printf("Columna invalida.\n");
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Consultas Telefónicas</h3>
+                        <p>Escribir un programa de consultas telefónicas. Leer un conjunto de datos de hasta 1000 nombres y números telefónicos que vienen dados en forma aleatoria. Las consultas pueden realizarse por nombre o por número telefónico.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_CONTACTOS 5 // Reducido para prueba
+
+// Estructura definida localmente (tipo de dato, no variable global)
+struct Contacto {
+    char nombre[50];
+    long telefono;
+};
+
+void buscarPorNombre(struct Contacto agenda[], int tam, char nom[]) {
+    int encontrado = 0;
+    for (int i = 0; i &lt; tam; i++) {
+        // strcmp devuelve 0 si las cadenas son iguales
+        if (strcmp(agenda[i].nombre, nom) == 0) {
+            printf("Encontrado: %s - Tel: %ld\n", agenda[i].nombre, agenda[i].telefono);
+            encontrado = 1;
+        }
+    }
+    if (!encontrado) printf("No se encontro el nombre en la agenda.\n");
+}
+
+void buscarPorNumero(struct Contacto agenda[], int tam, long num) {
+    int encontrado = 0;
+    for (int i = 0; i &lt; tam; i++) {
+        if (agenda[i].telefono == num) {
+            printf("Encontrado: %s - Tel: %ld\n", agenda[i].nombre, agenda[i].telefono);
+            encontrado = 1;
+        }
+    }
+    if (!encontrado) printf("No se encontro el numero en la agenda.\n");
+}
+
+int main() {
+    struct Contacto agenda[MAX_CONTACTOS] = {
+        {"Agustin", 221444555},
+        {"Juan", 11223344},
+        {"Maria", 221999888},
+        {"Ana", 11445566},
+        {"Carlos", 221777777}
+    };
+    
+    int opcion;
+    char nom_buscado[50];
+    long num_buscado;
+    
+    do {
+        printf("\n--- GUIA TELEFONICA ---\n");
+        printf("1. Buscar por Nombre\n");
+        printf("2. Buscar por Numero\n");
+        printf("3. Salir\nOpcion: ");
+        scanf("%d", &amp;opcion);
+        
+        if (opcion == 1) {
+            printf("Ingrese nombre a buscar: ");
+            scanf("%s", nom_buscado);
+            buscarPorNombre(agenda, MAX_CONTACTOS, nom_buscado);
+        } else if (opcion == 2) {
+            printf("Ingrese numero a buscar: ");
+            scanf("%ld", &amp;num_buscado);
+            buscarPorNumero(agenda, MAX_CONTACTOS, num_buscado);
+        }
+    } while (opcion != 3);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Búsqueda Recursiva del Precio de un Libro</h3>
+                        <p>Dado un vector de libros (titulo, autor, código, precio) retornar el precio de un libro determinado (búsqueda secuencial en vector pero recursiva).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Paso a Paso:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li>La recursividad funciona avanzando el índice <code>idx</code> en cada llamada.</li>
+                            <li><strong>Caso base 1:</strong> Si <code>idx</code> supera el tamaño del arreglo, no se encontró.</li>
+                            <li><strong>Caso base 2:</strong> Si el código coincide, retorna el precio.</li>
+                            <li><strong>Caso recursivo:</strong> Llama a la función sumando 1 al índice.</li>
+                        </ul>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+struct Libro {
+    char titulo[30];
+    char autor[30];
+    int codigo;
+    float precio;
+};
+
+// Funcion recursiva
+float buscarPrecioRecursivo(struct Libro inv[], int tam, int idx, int cod_buscado) {
+    // Caso base 1: Se llego al final del arreglo sin encontrarlo
+    if (idx &gt;= tam) {
+        return -1.0; 
+    }
+    // Caso base 2: Se encontro el libro
+    if (inv[idx].codigo == cod_buscado) {
+        return inv[idx].precio;
+    }
+    // Llamada recursiva avanzando al siguiente indice
+    return buscarPrecioRecursivo(inv, tam, idx + 1, cod_buscado);
+}
+
+int main() {
+    struct Libro biblioteca[3] = {
+        {"Cien anos", "Garcia Marquez", 101, 2500.50},
+        {"El Aleph", "Borges", 102, 1800.00},
+        {"Rayuela", "Cortazar", 103, 3100.75}
+    };
+    
+    int cod;
+    printf("Ingrese codigo del libro a buscar: ");
+    scanf("%d", &amp;cod);
+    
+    // Inicia la busqueda recursiva desde el indice 0
+    float precio = buscarPrecioRecursivo(biblioteca, 3, 0, cod);
+    
+    if (precio != -1.0) {
+        printf("El precio del libro es: $%.2f\n", precio);
+    } else {
+        printf("Libro no encontrado.\n");
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Matriz de Palabras (Orden Alfabético)</h3>
+                        <p>En una matriz de 10x20 se cargan 20 palabras. Diseñar un procedimiento que ordene las filas de la matriz de modo que las palabras cargadas puedan leerse en orden alfabético de arriba hacia abajo.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Una matriz de caracteres de dos dimensiones en C equivale a un arreglo de <em>strings</em>. Se utiliza <code>strcmp</code> para comparar alfabéticamente y <code>strcpy</code> para intercambiar las palabras.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define FILAS 5 // Reducido para la demostracion
+#define MAX_LETRAS 20
+
+void ordenarPalabras(char matriz[FILAS][MAX_LETRAS]) {
+    int i, j;
+    char aux[MAX_LETRAS];
+    
+    // Algoritmo de Burbuja aplicado a cadenas de texto
+    for (i = 0; i &lt; FILAS - 1; i++) {
+        for (j = 0; j &lt; FILAS - i - 1; j++) {
+            // strcmp devuelve > 0 si la primera cadena es mayor alfabeticamente
+            if (strcmp(matriz[j], matriz[j + 1]) &gt; 0) {
+                // Intercambio completo de la fila (palabra)
+                strcpy(aux, matriz[j]);
+                strcpy(matriz[j], matriz[j + 1]);
+                strcpy(matriz[j + 1], aux);
+            }
+        }
+    }
+}
+
+int main() {
+    char palabras[FILAS][MAX_LETRAS] = {
+        "Zapato",
+        "Arbol",
+        "Mesa",
+        "Computadora",
+        "Silla"
+    };
+    
+    printf("Palabras Desordenadas:\n");
+    for (int i = 0; i &lt; FILAS; i++) {
+        printf("%s\n", palabras[i]);
+    }
+    
+    ordenarPalabras(palabras);
+    
+    printf("\nPalabras Ordenadas Alfabeticamente:\n");
+    for (int i = 0; i &lt; FILAS; i++) {
+        printf("%s\n", palabras[i]);
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7: Matriz de Números como Caracteres (Alineación Derecha)</h3>
+                        <p>Rehacer el ejercicio anterior con una matriz de números. En cada elemento se carga un solo dígito pero la alineación es hacia la derecha (relleno con 0). Comparar el resultado con el orden usual de números.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Al alinear con ceros a la izquierda (ej. `00045` vs `00120`), la comparación lexicográfica de texto (usando <code>strcmp</code>) coincide perfectamente con la comparación numérica real. Esta es la razón de rellenar con ceros a la izquierda en formatos de texto.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define FILAS 4
+#define MAX_DIGITOS 6
+
+void ordenarNumerosTexto(char matriz[FILAS][MAX_DIGITOS]) {
+    int i, j;
+    char aux[MAX_DIGITOS];
+    
+    for (i = 0; i &lt; FILAS - 1; i++) {
+        for (j = 0; j &lt; FILAS - i - 1; j++) {
+            if (strcmp(matriz[j], matriz[j + 1]) &gt; 0) {
+                strcpy(aux, matriz[j]);
+                strcpy(matriz[j], matriz[j + 1]);
+                strcpy(matriz[j + 1], aux);
+            }
+        }
+    }
+}
+
+int main() {
+    // Numeros rellenados con 0 a la izquierda (alineacion derecha logica)
+    char numeros_txt[FILAS][MAX_DIGITOS] = {
+        "00045",
+        "00120",
+        "00008",
+        "00099"
+    };
+    
+    printf("Matriz de Numeros Original:\n");
+    for (int i = 0; i &lt; FILAS; i++) {
+        printf("%s\n", numeros_txt[i]);
+    }
+    
+    ordenarNumerosTexto(numeros_txt);
+    
+    printf("\nMatriz Ordenada (Lexicograficamente):\n");
+    for (int i = 0; i &lt; FILAS; i++) {
+        printf("%s\n", numeros_txt[i]);
+    }
+    
+    printf("\nEl orden alfabetico coincide con el orden numerico gracias al relleno de ceros.\n");
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8: Menú Interactivo de Ordenación</h3>
+                        <p>Realizar un programa que permita al usuario cargar 35 números enteros en un vector y decidir mediante un menú qué método de ordenación utilizar y si el orden debe ser ascendente o descendente.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define TAM 5 // Reducido para prueba
+
+void burbuja(int v[], int n, int ascendente) {
+    int aux;
+    for(int i = 0; i &lt; n - 1; i++) {
+        for(int j = 0; j &lt; n - i - 1; j++) {
+            int condicion = ascendente ? (v[j] &gt; v[j+1]) : (v[j] &lt; v[j+1]);
+            if(condicion) {
+                aux = v[j];
+                v[j] = v[j+1];
+                v[j+1] = aux;
+            }
+        }
+    }
+}
+
+void seleccion(int v[], int n, int ascendente) {
+    int aux, min_max_idx;
+    for(int i = 0; i &lt; n - 1; i++) {
+        min_max_idx = i;
+        for(int j = i + 1; j &lt; n; j++) {
+            int condicion = ascendente ? (v[j] &lt; v[min_max_idx]) : (v[j] &gt; v[min_max_idx]);
+            if(condicion) min_max_idx = j;
+        }
+        aux = v[i];
+        v[i] = v[min_max_idx];
+        v[min_max_idx] = aux;
+    }
+}
+
+void imprimir(int v[], int n) {
+    for(int i = 0; i &lt; n; i++) printf("%d ", v[i]);
+    printf("\n");
+}
+
+int main() {
+    int arr[TAM] = {8, 2, 9, 1, 5};
+    int original[TAM] = {8, 2, 9, 1, 5};
+    int opcion_metodo, opcion_orden;
+    
+    do {
+        // Restaurar vector original para cada prueba
+        for(int i=0; i&lt;TAM; i++) arr[i] = original[i];
+        
+        printf("\nVector base: "); imprimir(arr, TAM);
+        printf("1. Burbuja\n2. Seleccion\n3. Salir\nOpcion: ");
+        scanf("%d", &amp;opcion_metodo);
+        
+        if(opcion_metodo == 1 || opcion_metodo == 2) {
+            printf("Orden (1: Ascendente, 0: Descendente): ");
+            scanf("%d", &amp;opcion_orden);
+            
+            if(opcion_metodo == 1) burbuja(arr, TAM, opcion_orden);
+            if(opcion_metodo == 2) seleccion(arr, TAM, opcion_orden);
+            
+            printf("Vector Ordenado: ");
+            imprimir(arr, TAM);
+        }
+    } while(opcion_metodo != 3);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 9 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 9: Base de Datos de Productos</h3>
+                        <p>En un comercio se mantiene información de los productos: código, nombre, proveedor, precio. El administrador quiere opciones para listar por precio (ascendente), por proveedor (alfabético), por nombre (alfabético), o buscar un producto por nombre.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_PROD 4
+
+struct Producto {
+    int codigo;
+    char nombre[30];
+    char proveedor[30];
+    float precio;
+};
+
+// Funcion generica de burbuja. Dependiendo del 'criterio' (1=precio, 2=prov, 3=nombre)
+void ordenarProductos(struct Producto arr[], int n, int criterio) {
+    struct Producto aux;
+    for(int i = 0; i &lt; n - 1; i++) {
+        for(int j = 0; j &lt; n - i - 1; j++) {
+            int intercambiar = 0;
+            if (criterio == 1 &amp;&amp; arr[j].precio &gt; arr[j+1].precio) intercambiar = 1;
+            if (criterio == 2 &amp;&amp; strcmp(arr[j].proveedor, arr[j+1].proveedor) &gt; 0) intercambiar = 1;
+            if (criterio == 3 &amp;&amp; strcmp(arr[j].nombre, arr[j+1].nombre) &gt; 0) intercambiar = 1;
+            
+            if (intercambiar) {
+                aux = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = aux;
+            }
+        }
+    }
+}
+
+void imprimirProductos(struct Producto arr[], int n) {
+    printf("\nCODIGO | NOMBRE       | PROVEEDOR    | PRECIO\n");
+    for(int i = 0; i &lt; n; i++) {
+        printf("%6d | %-12s | %-12s | $%.2f\n", 
+               arr[i].codigo, arr[i].nombre, arr[i].proveedor, arr[i].precio);
+    }
+}
+
+void buscarPorNombre(struct Producto arr[], int n, char nom[]) {
+    int encontrado = 0;
+    for(int i = 0; i &lt; n; i++) {
+        if(strcmp(arr[i].nombre, nom) == 0) {
+            printf("\nEncontrado: %d | %s | %s | $%.2f\n", 
+                   arr[i].codigo, arr[i].nombre, arr[i].proveedor, arr[i].precio);
+            encontrado = 1;
+        }
+    }
+    if(!encontrado) printf("\nProducto '%s' no encontrado.\n", nom);
+}
+
+int main() {
+    struct Producto db[MAX_PROD] = {
+        {101, "Teclado", "Logitech", 2500.0},
+        {102, "Mouse", "Genius", 1200.0},
+        {103, "Monitor", "Samsung", 15000.0},
+        {104, "Auricular", "Sony", 4500.0}
+    };
+    
+    int opcion;
+    char nom[30];
+    
+    do {
+        printf("\n1. Ordenar por Precio\n2. Ordenar por Proveedor\n3. Ordenar por Nombre\n4. Buscar por Nombre\n5. Salir\nOpcion: ");
+        scanf("%d", &amp;opcion);
+        
+        if(opcion &gt;= 1 &amp;&amp; opcion &lt;= 3) {
+            ordenarProductos(db, MAX_PROD, opcion);
+            imprimirProductos(db, MAX_PROD);
+        } else if(opcion == 4) {
+            printf("Ingrese el nombre exacto a buscar: ");
+            scanf("%s", nom);
+            buscarPorNombre(db, MAX_PROD, nom);
+        }
+    } while (opcion != 5);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 1 - Ejercicio 10 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 10: Búsqueda Inteligente (Secuencial vs Dicotómica)</h3>
+                        <p>Codificar un programa que permita cargar, ordenar y buscar sobre un vector de reales. La búsqueda debe ser inteligente: si el vector no está ordenado, usa búsqueda lineal; si está ordenado, usa búsqueda dicotómica (binaria).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Se maneja una bandera <code>esta_ordenado</code> para saber qué algoritmo aplicar. Al insertar un número nuevo (fuera de orden), el arreglo perdería su garantía de estar ordenado.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX 10
+
+void ordenar(float v[], int n) {
+    float aux;
+    for(int i = 0; i &lt; n - 1; i++) {
+        for(int j = 0; j &lt; n - i - 1; j++) {
+            if(v[j] &gt; v[j+1]) {
+                aux = v[j];
+                v[j] = v[j+1];
+                v[j+1] = aux;
+            }
+        }
+    }
+}
+
+int busquedaSecuencial(float v[], int n, float buscado) {
+    printf("[Usando Busqueda Secuencial Lineal]... ");
+    for(int i = 0; i &lt; n; i++) {
+        if(v[i] == buscado) return i;
+    }
+    return -1;
+}
+
+int busquedaDicotomica(float v[], int n, float buscado) {
+    printf("[Usando Busqueda Dicotomica / Binaria]... ");
+    int inicio = 0, fin = n - 1, medio;
+    while(inicio &lt;= fin) {
+        medio = (inicio + fin) / 2;
+        if(v[medio] == buscado) return medio;
+        if(v[medio] &lt; buscado) inicio = medio + 1;
+        else fin = medio - 1;
+    }
+    return -1;
+}
+
+int main() {
+    float arreglo[MAX] = {10.5, 3.2, 8.1, 1.0, 5.5};
+    int cantidad = 5;
+    int esta_ordenado = 0; // Bandera de estado
+    int opcion;
+    float buscar;
+
+    do {
+        printf("\n1. Ver Vector\n2. Ordenar Vector\n3. Buscar numero\n4. Salir\nOpcion: ");
+        scanf("%d", &amp;opcion);
+        
+        if (opcion == 1) {
+            for(int i=0; i&lt;cantidad; i++) printf("%.2f ", arreglo[i]);
+            printf("\n");
+        } 
+        else if (opcion == 2) {
+            ordenar(arreglo, cantidad);
+            esta_ordenado = 1; // Actualizamos estado
+            printf("Vector ordenado exitosamente.\n");
+        } 
+        else if (opcion == 3) {
+            printf("Ingrese numero real a buscar: ");
+            scanf("%f", &amp;buscar);
+            
+            int pos;
+            if (esta_ordenado) {
+                pos = busquedaDicotomica(arreglo, cantidad, buscar);
+            } else {
+                pos = busquedaSecuencial(arreglo, cantidad, buscar);
+            }
+            
+            if(pos != -1) printf("Encontrado en el indice %d\n", pos);
+            else printf("No encontrado.\n");
+        }
+    } while (opcion != 4);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+        <!-- =========================================================================
+             PARTE 2: REGISTROS Y ARREGLOS DE REGISTROS (6 PUNTOS)
+             ========================================================================= -->
+        <div id="contenedor-parte-2" class="slides-container part-section" style="display: none;">
+
+            <!-- Parte 2 - Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Gestión de Hotel</h3>
+                        <p>Un hotel maneja 100 habitaciones con `Nro, piso, tipo, precioXdia, confort, estado`. Realizar: a) Buscar disponibles, b) Imprimir estados ordenadas por tipo, c) Liquidar habitación (ingresando días ocupada).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_HAB 100
+
+// Estructura local sin variables globales
+struct Habitacion {
+    int nro;
+    int piso;
+    int tipo;      // 1: Simple, 2: Doble
+    float precioXdia;
+    int estado;    // 0: Disponible, 1: Ocupada
+};
+
+void buscarDisponibles(struct Habitacion hotel[], int n) {
+    printf("\n--- Habitaciones Disponibles ---\n");
+    for(int i = 0; i &lt; n; i++) {
+        if(hotel[i].estado == 0 &amp;&amp; hotel[i].nro != 0) {
+            printf("Hab %d | Piso %d | Tipo %d | $%.2f\n", 
+                   hotel[i].nro, hotel[i].piso, hotel[i].tipo, hotel[i].precioXdia);
+        }
+    }
+}
+
+void liquidarHabitacion(struct Habitacion hotel[], int n, int num_hab, int dias) {
+    for(int i = 0; i &lt; n; i++) {
+        if(hotel[i].nro == num_hab) {
+            if(hotel[i].estado == 1) {
+                float total = hotel[i].precioXdia * dias;
+                printf("\nLiquidacion Hab %d (%d dias): A pagar $%.2f\n", num_hab, dias, total);
+                hotel[i].estado = 0; // Pasa a disponible
+            } else {
+                printf("\nLa habitacion %d ya estaba libre.\n", num_hab);
+            }
+            return;
+        }
+    }
+    printf("\nHabitacion %d no encontrada en el sistema.\n", num_hab);
+}
+
+int main() {
+    struct Habitacion hotel[MAX_HAB] = {
+        {101, 1, 1, 1500.0, 0},
+        {102, 1, 2, 2500.0, 1},
+        {201, 2, 1, 1800.0, 0},
+        {202, 2, 2, 3000.0, 1}
+    };
+    
+    buscarDisponibles(hotel, MAX_HAB);
+    
+    liquidarHabitacion(hotel, MAX_HAB, 102, 4); // Ocupada, liquida y libera
+    liquidarHabitacion(hotel, MAX_HAB, 101, 2); // Ya esta libre, error logico
+    
+    // Verificamos que se haya liberado la 102
+    buscarDisponibles(hotel, MAX_HAB);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Transacciones Bancarias (Tarjeta de Crédito)</h3>
+                        <p>Arreglo con 5000 transacciones: `Nro Cuenta, Fecha, Monto, Comerciante`. Se pide: a) Ordenar por Nro Cuenta, Fecha y Comerciante, b) Cantidad de clientes, c) Listar totales de monto por cliente.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Paso a Paso:</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li>Se utiliza el concepto de <strong>Corte de Control</strong>, aprovechando que el arreglo ya se encuentra ordenado por el criterio principal (Número de Cuenta).</li>
+                            <li>Esto permite agrupar y acumular montos de un mismo cliente en un único bucle, detectando cuando el número de cuenta cambia para imprimir el total acumulado y reiniciar el contador para el siguiente cliente.</li>
+                        </ul>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_TRANS 6 
+
+struct Transaccion {
+    int nro_cuenta;
+    int fecha;      // Formato YYYYMMDD
+    float monto;
+    int comerciante;
+};
+
+// Burbuja con multiples criterios
+void ordenarTransacciones(struct Transaccion tx[], int n) {
+    struct Transaccion aux;
+    for (int i = 0; i &lt; n - 1; i++) {
+        for (int j = 0; j &lt; n - i - 1; j++) {
+            if (tx[j].nro_cuenta &gt; tx[j+1].nro_cuenta ||
+               (tx[j].nro_cuenta == tx[j+1].nro_cuenta &amp;&amp; tx[j].fecha &gt; tx[j+1].fecha) ||
+               (tx[j].nro_cuenta == tx[j+1].nro_cuenta &amp;&amp; tx[j].fecha == tx[j+1].fecha &amp;&amp; tx[j].comerciante &gt; tx[j+1].comerciante)) {
+                aux = tx[j];
+                tx[j] = tx[j+1];
+                tx[j+1] = aux;
+            }
+        }
+    }
+}
+
+// Corte de control para calcular totales
+void reporteClientes(struct Transaccion tx[], int n) {
+    if(n == 0) return;
+    
+    int cuenta_actual = tx[0].nro_cuenta;
+    float total_acumulado = 0.0;
+    int clientes_distintos = 1;
+
+    printf("\n--- TOTALES POR CLIENTE ---\n");
+    for(int i = 0; i &lt; n; i++) {
+        if(tx[i].nro_cuenta == cuenta_actual) {
+            total_acumulado += tx[i].monto;
+        } else {
+            // Cambio de cuenta (corte): se imprime total del anterior
+            printf("Cuenta: %d | Total Gastos: $%.2f\n", cuenta_actual, total_acumulado);
+            
+            // Se resetean acumuladores para la nueva cuenta
+            cuenta_actual = tx[i].nro_cuenta;
+            total_acumulado = tx[i].monto;
+            clientes_distintos++;
+        }
+    }
+    // Impresion de la ultima cuenta que quedo pendiente en el acumulador
+    printf("Cuenta: %d | Total Gastos: $%.2f\n", cuenta_actual, total_acumulado);
+    printf("\nCantidad total de clientes (Cuentas activas): %d\n", clientes_distintos);
+}
+
+int main() {
+    struct Transaccion historial[MAX_TRANS] = {
+        {1001, 20261012, 1500.50, 99},
+        {1002, 20261011, 2000.00, 15},
+        {1001, 20261010, 500.00,  99},
+        {1003, 20261012, 1000.00, 10},
+        {1001, 20261012, 100.00,  50},
+        {1003, 20261014, 5000.00, 10}
+    };
+    
+    ordenarTransacciones(historial, MAX_TRANS);
+    reporteClientes(historial, MAX_TRANS);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Inventario Base de Datos (Mantenimiento Ordenado)</h3>
+                        <p>Simular base de datos de productos con un arreglo. Mantenerlos SIEMPRE ordenados por Nro de Ítem. Permitir: a) Insertar, b) Borrar, c) Modificar, d) Buscar (Dicotómica).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>La clave de este ejercicio es la función de Inserción, la cual no debe agregar el elemento al final y reordenar todo desde cero (ineficiente), sino aplicar una lógica de desplazamiento tipo <em>Insertion Sort</em>: desplazar los elementos mayores hacia la derecha para hacer un "hueco" e insertar el nuevo elemento directamente en su posición ordenada.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_ITEMS 10000
+
+struct Producto {
+    int nro_item;
+    float costo;
+    int stock_act;
+};
+
+// Busqueda Binaria eficiente (el arreglo siempre esta ordenado)
+int buscarProducto(struct Producto inv[], int cantidad, int id_buscado) {
+    int inicio = 0, fin = cantidad - 1, medio;
+    while(inicio &lt;= fin) {
+        medio = (inicio + fin) / 2;
+        if(inv[medio].nro_item == id_buscado) {
+            return medio; // Retorna el indice exacto
+        } else if(inv[medio].nro_item &lt; id_buscado) {
+            inicio = medio + 1;
+        } else {
+            fin = medio - 1;
+        }
+    }
+    return -1; // No existe
+}
+
+// Insercion con desplazamiento (Insertion logic)
+void insertarProducto(struct Producto inv[], int *cantidad, struct Producto nuevo) {
+    if(*cantidad &gt;= MAX_ITEMS) {
+        printf("Error: Base de datos llena.\n");
+        return;
+    }
+    
+    // Si ya existe, no se inserta duplicado
+    if(buscarProducto(inv, *cantidad, nuevo.nro_item) != -1) {
+        printf("Error: El producto %d ya existe.\n", nuevo.nro_item);
+        return;
+    }
+    
+    int i = *cantidad - 1;
+    // Desplazar elementos mayores hacia la derecha
+    while(i &gt;= 0 &amp;&amp; inv[i].nro_item &gt; nuevo.nro_item) {
+        inv[i + 1] = inv[i];
+        i--;
+    }
+    // Insercion en la posicion correcta
+    inv[i + 1] = nuevo;
+    (*cantidad)++;
+    printf("Producto %d insertado con exito.\n", nuevo.nro_item);
+}
+
+void borrarProducto(struct Producto inv[], int *cantidad, int id_borrar) {
+    int pos = buscarProducto(inv, *cantidad, id_borrar);
+    if(pos == -1) {
+        printf("Error: Producto %d no existe.\n", id_borrar);
+        return;
+    }
+    
+    // Desplazar elementos hacia la izquierda pisando el borrado
+    for(int i = pos; i &lt; *cantidad - 1; i++) {
+        inv[i] = inv[i + 1];
+    }
+    (*cantidad)--;
+    printf("Producto %d eliminado con exito.\n", id_borrar);
+}
+
+int main() {
+    struct Producto inventario[MAX_ITEMS];
+    int cantidad = 0;
+    
+    struct Producto p1 = {105, 50.0, 100};
+    struct Producto p2 = {102, 25.5, 50};
+    struct Producto p3 = {108, 90.0, 10};
+    
+    printf("--- INSERCIONES ---\n");
+    insertarProducto(inventario, &amp;cantidad, p1);
+    insertarProducto(inventario, &amp;cantidad, p2); 
+    insertarProducto(inventario, &amp;cantidad, p3);
+    
+    printf("\n--- ESTADO DEL INVENTARIO (Siempre Ordenado) ---\n");
+    for(int i = 0; i &lt; cantidad; i++) {
+        printf("Item: %d | Costo: $%.2f\n", inventario[i].nro_item, inventario[i].costo);
+    }
+    
+    printf("\n--- BORRADO ---\n");
+    borrarProducto(inventario, &amp;cantidad, 105);
+    
+    printf("\n--- ESTADO DEL INVENTARIO FINAL ---\n");
+    for(int i = 0; i &lt; cantidad; i++) {
+        printf("Item: %d | Costo: $%.2f\n", inventario[i].nro_item, inventario[i].costo);
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Vector de Alumnos (Aprobados y Promedio con Recursión)</h3>
+                        <p>Dado un vector con los datos de los alumnos de un curso, determinar la cantidad de aprobados y calcular la nota promedio del curso usando recursión de forma estricta (sin bucles iterativos).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Se utilizan dos funciones recursivas independientes que van avanzando un índice <code>idx</code> y acumulando sus resultados hasta que el índice alcanza el tamaño total del arreglo (caso base).</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+struct Alumno {
+    char nombre[30];
+    float nota;
+};
+
+// Funcion recursiva para contar aprobados (nota >= 6)
+int contarAprobados(struct Alumno clase[], int n, int idx) {
+    if (idx &gt;= n) return 0; // Caso Base
+    
+    int es_aprobado = (clase[idx].nota &gt;= 6.0) ? 1 : 0;
+    return es_aprobado + contarAprobados(clase, n, idx + 1);
+}
+
+// Funcion recursiva para sumar notas (para el promedio)
+float sumarNotas(struct Alumno clase[], int n, int idx) {
+    if (idx &gt;= n) return 0.0; // Caso Base
+    
+    return clase[idx].nota + sumarNotas(clase, n, idx + 1);
+}
+
+int main() {
+    struct Alumno curso[4] = {
+        {"Perez", 7.5},
+        {"Gomez", 4.0},
+        {"Lopez", 9.0},
+        {"Diaz", 5.5}
+    };
+    int total_alumnos = 4;
+    
+    int aprobados = contarAprobados(curso, total_alumnos, 0);
+    float suma_total = sumarNotas(curso, total_alumnos, 0);
+    float promedio = suma_total / total_alumnos;
+    
+    printf("Total de alumnos aprobados: %d\n", aprobados);
+    printf("Nota promedio del curso: %.2f\n", promedio);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Búsqueda Recursiva de Stock Nulo y Marcas</h3>
+                        <p>Dado un vector de productos (cod, marca, nombre, stock) retornar la cantidad de productos de una marca dada e imprimir el nombre de todos los que tienen stock nulo. Usar recursión para la solución.</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Producto {
+    int cod;
+    char marca[30];
+    char nombre[30];
+    int stock;
+};
+
+// Funcion recursiva que hace ambas tareas solicitadas en la misma pasada
+int procesarProductosRecursivo(struct Producto inv[], int n, int idx, char marca_buscada[]) {
+    if (idx &gt;= n) return 0; // Caso Base: fin del arreglo
+    
+    // Accion 1: Imprimir si el stock es nulo
+    if (inv[idx].stock == 0) {
+        printf(" -&gt; ALERTA: El producto '%s' (Cod: %d) tiene STOCK NULO.\n", 
+               inv[idx].nombre, inv[idx].cod);
+    }
+    
+    // Accion 2: Contar si pertenece a la marca
+    int pertenece_marca = 0;
+    if (strcmp(inv[idx].marca, marca_buscada) == 0) {
+        pertenece_marca = 1;
+    }
+    
+    // Llamada recursiva avanzando al siguiente
+    return pertenece_marca + procesarProductosRecursivo(inv, n, idx + 1, marca_buscada);
+}
+
+int main() {
+    struct Producto inventario[5] = {
+        {101, "Logitech", "Mouse Inalambrico", 10},
+        {102, "Sony", "Auricular Extra Bass", 0},
+        {103, "Logitech", "Teclado Mecanico", 5},
+        {104, "Samsung", "Monitor 24 pulg", 0},
+        {105, "Logitech", "Webcam 1080p", 0}
+    };
+    
+    char marca_obj[] = "Logitech";
+    
+    printf("--- PROCESANDO INVENTARIO RECURSIVAMENTE ---\n");
+    int cant_marca = procesarProductosRecursivo(inventario, 5, 0, marca_obj);
+    
+    printf("\n--- RESULTADOS FINALES ---\n");
+    printf("Total de productos de la marca '%s': %d\n", marca_obj, cant_marca);
+
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Parte 2 - Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Control de Tránsito</h3>
+                        <p>20 inspectores con hasta 2000 actas cada uno. Registros: `nroActa, dominio, tipoInfraccion, idInspector`. Descargar a un soporte único, ordenar por tipoInfraccion e inspector, y mostrar subtotales y porcentajes (Corte de Control).</p>
+                    </div>
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define TOTAL_ACTAS 6 // Reducido para ejemplo
+
+struct Acta {
+    int nroActa;
+    int tipoInfraccion;
+    int idInspector;
+};
+
+// Ordenar por tipoInfraccion (1er criterio) y luego idInspector (2do criterio)
+void ordenarActas(struct Acta actas[], int n) {
+    struct Acta aux;
+    for(int i = 0; i &lt; n - 1; i++) {
+        for(int j = 0; j &lt; n - i - 1; j++) {
+            if(actas[j].tipoInfraccion &gt; actas[j+1].tipoInfraccion || 
+              (actas[j].tipoInfraccion == actas[j+1].tipoInfraccion &amp;&amp; actas[j].idInspector &gt; actas[j+1].idInspector)) {
+                aux = actas[j];
+                actas[j] = actas[j+1];
+                actas[j+1] = aux;
+            }
+        }
+    }
+}
+
+// Logica de Corte de Control
+void reporteInfracciones(struct Acta actas[], int n) {
+    if (n == 0) return;
+    
+    int i = 0;
+    int total_general = 0;
+    
+    while(i &lt; n) {
+        int tipo_actual = actas[i].tipoInfraccion;
+        int total_tipo = 0;
+        
+        printf("\nInfraccion tipo %d:\n", tipo_actual);
+        
+        while(i &lt; n &amp;&amp; actas[i].tipoInfraccion == tipo_actual) {
+            int inspector_actual = actas[i].idInspector;
+            int actas_inspector = 0;
+            
+            while(i &lt; n &amp;&amp; actas[i].tipoInfraccion == tipo_actual &amp;&amp; actas[i].idInspector == inspector_actual) {
+                actas_inspector++;
+                total_tipo++;
+                total_general++;
+                i++;
+            }
+            // En un caso real el porcentaje requiere 2 pasadas o calculo post-tipo,
+            // aqui se muestra la cantidad para no complicar el bucle
+            printf("  Inspector %d: %d actas\n", inspector_actual, actas_inspector);
+        }
+        printf("Total infracciones tipo %d: %d\n", tipo_actual, total_tipo);
+    }
+    printf("\nCantidad total de infracciones general: %d\n", total_general);
+}
+
+int main() {
+    struct Acta sistema[TOTAL_ACTAS] = {
+        {101, 2, 5},
+        {102, 1, 3},
+        {103, 2, 5},
+        {104, 1, 3},
+        {105, 1, 10},
+        {106, 2, 4}
+    };
+    
+    ordenarActas(sistema, TOTAL_ACTAS);
+    reporteInfracciones(sistema, TOTAL_ACTAS);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts de interactividad -->
+    <script src="../../assets/js/copy.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/side-menu.js"></script>
+    <script src="../../assets/js/syntax_c.js"></script>
+</body>
+</html>

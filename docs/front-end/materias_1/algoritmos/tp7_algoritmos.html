@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP7 - Recursividad</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../../assets/js/theme.js"></script>
+</head>
+
+<body class="algoritmos-page">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../algoritmos.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <!-- Selector de puntos (8 botones) -->
+    <div class="slide-controls">
+        <ul class="nav-points">
+            <li class="nav-point active" data-point="1">01</li>
+            <li class="nav-point" data-point="2">02</li>
+            <li class="nav-point" data-point="3">03</li>
+            <li class="nav-point" data-point="4">04</li>
+            <li class="nav-point" data-point="5">05</li>
+            <li class="nav-point" data-point="6">06</li>
+            <li class="nav-point" data-point="7">07</li>
+            <li class="nav-point" data-point="8">08</li>
+        </ul>
+    </div>
+
+    <main class="main-container">
+
+        <!-- Única Sección: Recursividad -->
+        <div id="contenedor-parte-1" class="slides-container part-section active">
+
+            <!-- Ejercicio 1 -->
+            <article class="slide active">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 1: Seguimiento de Función Recursiva</h3>
+                        <p>Dado un programa con una función recursiva <code>f(n)</code> donde para n=0 es 1, n=1 es 2, n=2 es 3, y en otro caso es <code>f(n-2) * f(n-4)</code>.<br>
+                        a) ¿Cuál es el valor final de temp = f(8)? Utilizar el método de las cajas.<br>
+                        b) ¿Existen valores que podrían causar que las llamadas recursivas no terminen?</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Análisis y Traza (Método de las cajas):</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>a) Cálculo de f(8):</strong>
+                                <br><code>f(8) = f(6) * f(4)</code>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;Calculamos <code>f(4)</code>: <code>f(4) = f(2) * f(0) = 3 * 1 = 3</code>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;Calculamos <code>f(6)</code>: <code>f(6) = f(4) * f(2) = 3 * 3 = 9</code>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;Finalmente: <code>f(8) = 9 * 3 = 27</code>. El valor de <code>temp</code> será 27.
+                            </li>
+                            <li><strong>b) Valores de bucle infinito:</strong> Sí, la función no terminará si se invoca con <strong>números impares</strong> mayores o iguales a 3, o con <strong>números negativos</strong>. Por ejemplo, <code>f(3)</code> llama a <code>f(1) * f(-1)</code>, y <code>f(-1)</code> llamará a <code>f(-3) * f(-5)</code> alejándose infinitamente de los casos base (0, 1, 2) generando un <em>Stack Overflow</em>.</li>
+                        </ul>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int f(int n) {
+    if (n == 0) {
+        return 1;
+    } else if (n == 1) {
+        return 2;
+    } else if (n == 2) {
+        return 3;
+    } else {
+        return f(n - 2) * f(n - 4);
+    }
+}
+
+int main() {
+    int temp;
+    temp = f(8);
+    printf("El valor de f(8) es: %d\n", temp);
+    
+    // Descomentar para probar recursión infinita (provocará cuelgue):
+    // printf("f(3) = %d\n", f(3)); 
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 2 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 2: Recursión con palabras y frases</h3>
+                        <p>Implementar una solución recursiva para: a) Imprimir en forma invertida una palabra. b) Retornar la cantidad de palabras de una frase terminada en '.' (las palabras vienen separadas por un espacio en blanco).</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// a) Invertir palabra recursivamente
+void imprimirInvertida(char str[], int idx) {
+    if (str[idx] == '\0') {
+        return; // Caso base: fin de la cadena
+    }
+    imprimirInvertida(str, idx + 1);
+    printf("%c", str[idx]);
+}
+
+// b) Contar palabras de una frase leida caracter a caracter hasta '.'
+int contarPalabrasRecursivo() {
+    char c = getchar();
+    
+    if (c == '.') {
+        return 1; // La ultima palabra antes del punto cuenta como 1
+    }
+    if (c == ' ') {
+        return 1 + contarPalabrasRecursivo(); // Hay un espacio, suma una palabra
+    }
+    
+    return contarPalabrasRecursivo(); // Sigue consumiendo letras
+}
+
+int main() {
+    char palabra[] = "RECURSION";
+    
+    printf("Palabra original: %s\n", palabra);
+    printf("Palabra invertida: ");
+    imprimirInvertida(palabra, 0);
+    printf("\n\n");
+    
+    printf("Ingrese una frase terminada en punto (.):\n");
+    int cant_palabras = contarPalabrasRecursivo();
+    printf("\nCantidad de palabras: %d\n", cant_palabras);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 3 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 3: Conteo de Vocales</h3>
+                        <p>Escribir una función recursiva para contar la cantidad de vocales que posee una cadena de caracteres S. Ejemplo: si S = 'Práctica de Algoritmos' la función retorna 8.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Función para verificar si un char es vocal (sin importar acentos en C estándar para simplificar)
+int esVocal(char c) {
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+        c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+        return 1;
+    }
+    return 0;
+}
+
+int contarVocales(char str[], int idx) {
+    if (str[idx] == '\0') {
+        return 0; // Caso base: no hay más caracteres
+    }
+    
+    if (esVocal(str[idx])) {
+        return 1 + contarVocales(str, idx + 1);
+    } else {
+        return contarVocales(str, idx + 1);
+    }
+}
+
+int main() {
+    char frase[] = "Practica de Algoritmos";
+    
+    int total_vocales = contarVocales(frase, 0);
+    
+    printf("La frase es: \"%s\"\n", frase);
+    printf("Cantidad total de vocales: %d\n", total_vocales);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 4 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 4: Serie de Fibonacci</h3>
+                        <p>La serie de Fibonacci se define de la siguiente manera: F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2) con n>1. Implementar una función recursiva para obtener los números de Fibonacci.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0; // Caso base 1
+    } else if (n == 1) {
+        return 1; // Caso base 2
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2); // Llamada recursiva doble
+    }
+}
+
+int main() {
+    int numero;
+    
+    printf("Ingrese que termino de la serie de Fibonacci desea calcular: ");
+    scanf("%d", &amp;numero);
+    
+    if (numero &gt;= 0) {
+        int resultado = fibonacci(numero);
+        printf("El termino F(%d) de la serie de Fibonacci es: %d\n", numero, resultado);
+    } else {
+        printf("Error: La serie esta definida para n >= 0.\n");
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 5 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 5: Detección de Palíndromos</h3>
+                        <p>Escribir una función recursiva para determinar si una palabra es un palíndromo. Ej: ananá es un palíndromo.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int esPalindromo(char str[], int inicio, int fin) {
+    // Si los punteros se cruzan o igualan, es porque todos los pares coincidieron
+    if (inicio &gt;= fin) {
+        return 1; // Verdadero
+    }
+    
+    // Si los extremos son distintos, no es palíndromo
+    if (str[inicio] != str[fin]) {
+        return 0; // Falso
+    }
+    
+    // Llamada recursiva acortando los extremos
+    return esPalindromo(str, inicio + 1, fin - 1);
+}
+
+int main() {
+    char palabra[50];
+    
+    printf("Ingrese una palabra: ");
+    scanf("%s", palabra);
+    
+    int longitud = strlen(palabra);
+    
+    if (esPalindromo(palabra, 0, longitud - 1)) {
+        printf("La palabra '%s' SI es un palindromo.\n", palabra);
+    } else {
+        printf("La palabra '%s' NO es un palindromo.\n", palabra);
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 6 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 6: Decimal a Binario Recursivo</h3>
+                        <p>Realizar un procedimiento recursivo que reciba un valor entero e imprima su equivalente en sistema binario. Recordar que hay que dividirlo por 2, y tomar el resultado entero de la división y obtener el resto para imprimir al revés.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p>Al hacer la impresión <strong>después</strong> de la llamada recursiva, el programa primero desciende hasta el último cociente y, a medida que la recursión vuelve hacia atrás, imprime los restos en orden invertido, logrando el número binario correctamente.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void imprimirBinario(int n) {
+    if (n &gt; 1) {
+        imprimirBinario(n / 2); // Llamada recursiva con la parte entera de la division
+    }
+    printf("%d", n % 2); // Se imprime a la vuelta de la recursion
+}
+
+int main() {
+    int numero;
+    
+    printf("Ingrese un numero decimal: ");
+    scanf("%d", &amp;numero);
+    
+    if (numero &gt;= 0) {
+        printf("El equivalente en binario de %d es: ", numero);
+        imprimirBinario(numero);
+        printf("\n");
+    } else {
+        printf("Error: Ingrese un numero positivo.\n");
+    }
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 7 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 7: Pasaje de Parámetros (Copia vs Referencia)</h3>
+                        <p>Se tiene el procedimiento Prueba(x, y). Si y>0, hace x=x+1 y y=y-1, imprime x,y, se llama a Prueba(x,y), y vuelve a imprimir x,y. Analizar traza suponiendo que se llama con x=5 e y=3: a) Parámetros pasados por copia, b) Parámetro x pasado por referencia.</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <h4>Traza (Método de las Cajas):</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                            <li><strong>a) Por copia (Valor):</strong> Cada llamada crea una copia local. Las impresiones se "desarman" (unwind) con los mismos valores locales.
+                                <br>Ida: Imprime <code>6 2</code>, luego <code>7 1</code>, luego <code>8 0</code>.
+                                <br>Vuelta: Imprime <code>8 0</code>, luego <code>7 1</code>, luego <code>6 2</code>.
+                            </li>
+                            <li><strong>b) Por Referencia (para 'x'):</strong> Todas las llamadas modifican el MISMO <code>x</code> en memoria, por lo que <code>x</code> terminará siendo 8. En la vuelta, las variables locales <code>y</code> mantienen su valor de cada entorno, pero el <code>x</code> único vale 8 en todas partes.
+                                <br>Ida: Imprime <code>6 2</code>, luego <code>7 1</code>, luego <code>8 0</code>.
+                                <br>Vuelta: Imprime <code>8 0</code>, luego <code>8 1</code>, luego <code>8 2</code>.
+                            </li>
+                        </ul>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// A) Pasaje por copia (valor)
+void PruebaCopia(int x, int y) {
+    if (y &gt; 0) {
+        x = x + 1;
+        y = y - 1;
+        printf("Ida copia: x=%d, y=%d\n", x, y);
+        PruebaCopia(x, y);
+        printf("Vuelta copia: x=%d, y=%d\n", x, y);
+    }
+}
+
+// B) Pasaje por referencia (Puntero para x)
+void PruebaRef(int *x, int y) {
+    if (y &gt; 0) {
+        *x = *x + 1;
+        y = y - 1;
+        printf("Ida ref: x=%d, y=%d\n", *x, y);
+        PruebaRef(x, y);
+        printf("Vuelta ref: x=%d, y=%d\n", *x, y);
+    }
+}
+
+int main() {
+    int val_x = 5, val_y = 3;
+    
+    printf("--- A) PRUEBA POR COPIA ---\n");
+    PruebaCopia(val_x, val_y);
+    
+    printf("\n--- B) PRUEBA POR REFERENCIA ---\n");
+    // Restablecemos variables
+    val_x = 5; val_y = 3;
+    PruebaRef(&amp;val_x, val_y);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Ejercicio 8 -->
+            <article class="slide">
+                <section class="punto-card">
+                    <div class="exercise-description">
+                        <h3>Ejercicio 8: Recursión con Arreglos</h3>
+                        <p>Aplicando recursión en estructura de arreglos de enteros:<br>
+                        a) Sumar los elementos de un vector.<br>
+                        b) Contar la cantidad de elementos múltiplos de 3.<br>
+                        c) Cuántos elementos pares ocupan posiciones impares (de izquierda a derecha).</p>
+                    </div>
+
+                    <div class="resolucion-container" style="padding: 1.5rem 0 0 0; margin-top: 1rem; border-top: 1px solid var(--table-border-color);">
+                        <p style="margin-bottom: 1rem;">Para el punto C, las posiciones "de izquierda a derecha" se consideran naturales, por lo que la posición del índice 0 es la 1 (impar), la posición del índice 1 es la 2 (par), y así sucesivamente.</p>
+                        <div class="code-box">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// A) Sumar elementos de un vector
+int sumarVector(int vec[], int n, int idx) {
+    if (idx &gt;= n) return 0; // Caso base
+    return vec[idx] + sumarVector(vec, n, idx + 1);
+}
+
+// B) Contar multiplos de 3
+int contarMultiplosDe3(int vec[], int n, int idx) {
+    if (idx &gt;= n) return 0;
+    
+    int cuenta = (vec[idx] % 3 == 0) ? 1 : 0;
+    return cuenta + contarMultiplosDe3(vec, n, idx + 1);
+}
+
+// C) Elementos pares en posiciones impares (Posicion 1 = indice 0)
+int paresEnPosImpar(int vec[], int n, int idx) {
+    if (idx &gt;= n) return 0;
+    
+    int posicion_real = idx + 1;
+    int cuenta = 0;
+    
+    // Si la posicion es impar y el contenido es par
+    if (posicion_real % 2 != 0 &amp;&amp; vec[idx] % 2 == 0) {
+        cuenta = 1;
+    }
+    
+    return cuenta + paresEnPosImpar(vec, n, idx + 1);
+}
+
+int main() {
+    int vector[6] = {4, 9, 2, 12, 5, 6};
+    int tam = 6;
+    
+    printf("Vector de prueba: [4, 9, 2, 12, 5, 6]\n\n");
+    
+    int suma = sumarVector(vector, tam, 0);
+    printf("a) Suma total de elementos: %d\n", suma);
+    
+    int multiplos = contarMultiplosDe3(vector, tam, 0);
+    printf("b) Cantidad de multiplos de 3: %d\n", multiplos);
+    
+    int pares_imp = paresEnPosImpar(vector, tam, 0);
+    printf("c) Pares en posiciones impares: %d\n", pares_imp);
+    
+    return 0;
+}</code></pre>
+                            <button class="btn-copy">
+                                <i class="fas fa-copy copy-icon"></i>
+                                <i class="fas fa-check check-icon" style="display: none;"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts de interactividad -->
+    <script src="../../assets/js/copy.js"></script>
+    <script src="../../assets/js/selector_puntos.js"></script>
+    <script src="../../assets/js/syntax_c.js"></script>
+</body>
+</html>
