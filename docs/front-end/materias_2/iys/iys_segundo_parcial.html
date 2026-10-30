@@ -1,1 +1,670 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensa Segundo Parcial - Nébolas NB | Ingeniería y Sociedad</title>
+
+    <!-- Estilos globales heredados -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    
+    <!-- Scripts de tema y motores gráficos -->
+    <script src="../../assets/js/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    
+    <!-- Módulos interactivos separados (3D y 2D) -->
+    <script src="../../assets/js/iys_2do_parcial_3d.js" defer></script>
+    <script src="../../assets/js/iys_2do_parcial_2d.js" defer></script>
+</head>
+<body class="sociedad-page">
+
+    <!-- HEADER GLOBAL -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="container">
+                <a href="../iys.html" class="btn-volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Volver
+                </a>
+                <h1 class="logo">INGENIERÍA Y SOCIEDAD — DEFENSA FINAL</h1>
+                <button class="theme-btn" aria-label="Cambiar tema">
+                    <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
+                    </svg>
+                    <svg class="theme-icon sun-icon" aria-hidden="true" style="display: none;" width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm14.2 14.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zm-14.2 0l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm14.2-14.2l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/>
+                    </svg>
+                </button>
+            </nav>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <main class="pm-main-container">
+
+        <!-- TARJETA INSTITUCIONAL -->
+        <div class="pm-card">
+            <div class="iys-hero-grid">
+                <!-- Logo Vectorial SVG de Nébolas NB -->
+                <div style="width: 115px; height: 115px; flex-shrink: 0;">
+                    <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="60" cy="60" r="56" fill="none" stroke="var(--color-sociedad)" stroke-width="3"/>
+                        <!-- Sol / Horizonte -->
+                        <circle cx="68" cy="36" r="13" fill="#e6b87d" opacity="0.85"/>
+                        <!-- Silueta Industrial Polígono Berisso -->
+                        <rect x="78" y="45" width="9" height="26" rx="1" fill="#64748b"/>
+                        <rect x="89" y="38" width="11" height="33" rx="1" fill="#475569"/>
+                        <rect x="68" y="54" width="8" height="17" rx="1" fill="#94a3b8"/>
+                        <!-- Hojas de Sustentabilidad / Orujo -->
+                        <path d="M52 70 C36 55, 38 34, 54 28 C58 44, 56 58, 52 70 Z" fill="#4d7c4f"/>
+                        <path d="M54 70 C68 58, 70 42, 58 36 C53 48, 53 60, 54 70 Z" fill="#689f6b"/>
+                        <!-- Olas Puerto de Berisso -->
+                        <path d="M18 76 Q42 64, 66 76 T102 74" fill="none" stroke="#5b8fb9" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M24 85 Q48 74, 72 85 T98 83" fill="none" stroke="var(--color-sociedad)" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Sigla Central -->
+                        <text x="60" y="106" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="15" fill="var(--text-color)">NÉBOLAS <tspan fill="var(--color-sociedad)">NB</tspan></text>
+                    </svg>
+                </div>
+
+                <div>
+                    <span class="plat-badge">SIMULACIÓN EMPRESARIAL — UTN FRLP (2026)</span>
+                    <h3 class="pm-title" style="margin-top: 0.4rem;">NÉBOLAS NB S.A.</h3>
+                    <p class="pm-subtitle">INDUSTRIA ALIMENTICIA SUSTENTABLE | POLÍGONO INDUSTRIAL DE BERISSO</p>
+                    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.95rem;">
+                        Industrialización de la tradicional <em>nébola</em> italiana combinando modelo productivo híbrido (predominio toyotista), trazabilidad digital, economía circular con harina de orujo y enfoque de Ciencia, Tecnología y Sociedad (CTS).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE NAVEGACIÓN DE LA PRESENTACIÓN -->
+        <div class="slide-controls" style="margin: 0.5rem auto;">
+            <ul class="nav-points" id="iys-nav-tabs">
+                <li class="nav-point active" data-target="slide-general">0. Estructura & Organigrama</li>
+                <li class="nav-point" data-target="slide-thiago">1. Comercial</li>
+                <li class="nav-point" data-target="slide-diego">2. Producción</li>
+                <li class="nav-point" data-target="slide-agustin">3. Tecnología & CTS</li>
+                <li class="nav-point" data-target="slide-pedro">4. Sustentabilidad & ODS</li>
+                <li class="nav-point" data-target="slide-simuladores">5. Visualización 3D / 2D</li>
+                <li class="nav-point" data-target="ALL" id="btn-show-all">Ver Todo Continuo</li>
+            </ul>
+        </div>
+
+        <!-- ===================================================================
+             PANEL 0: ESTRUCTURA GENERAL Y ORGANIGRAMA VECTORIAL
+             =================================================================== -->
+        <section id="slide-general" class="iys-slide-panel active-slide">
+            <div class="pm-card">
+                <h2 class="pm-section-title">Identidad Institucional y Gobierno Societario</h2>
+                <p>
+                    <strong>Nébolas NB</strong> nace por iniciativa de cuatro socios fundadores con aportes igualitarios de capital (25% c/u), articulando las tres dimensiones del Desarrollo Sostenible (económica, social y ambiental) bajo un esquema horizontal e interdisciplinario.
+                </p>
+
+                <div class="iys-kpi-grid">
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">4 Socios</div>
+                        <div class="iys-kpi-label">Capital igualitario y Comité Estratégico</div>
+                    </div>
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">330 m²</div>
+                        <div class="iys-kpi-label">Planta en Polígono Industrial Berisso</div>
+                    </div>
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">200 m</div>
+                        <div class="iys-kpi-label">Distancia estratégica al Puerto de Berisso</div>
+                    </div>
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">ODS 8 · 9 · 12</div>
+                        <div class="iys-kpi-label">Alineación verificable con Agenda 2030</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Organigrama Funcional e Interdisciplinario</h3>
+                <div class="uml-container">
+                    <!-- Nodo Superior -->
+                    <div class="uml-class" style="max-width: 440px; text-align: center;">
+                        <span class="trace-badge">ÓRGANO DE DECISIÓN ESTRATÉGICA</span>
+                        <h3>COMITÉ DE SOCIOS FUNDADORES</h3>
+                        <hr>
+                        <p>4 Integrantes — Aporte de Capital Igualitario</p>
+                        <p class="method">+ definirPoliticaCorporativa()</p>
+                        <p class="method">+ evaluarInversionesYExpansion()</p>
+                    </div>
+
+                    <div class="uml-arrow">▼ Articulación Horizontal en 4 Direcciones Operativas ▼</div>
+
+                    <!-- 4 Direcciones -->
+                    <div class="uml-branches" style="gap: 1.2rem;">
+                        <div class="uml-branch" style="flex: 1 1 210px;">
+                            <div class="uml-class">
+                                <h3>1. Dir. Comercial y Administrativa</h3>
+                                <p style="text-align: center; color: var(--color-sociedad); font-weight: bold;">Thiago Joel Miklavec (34367)</p>
+                                <hr>
+                                <p>• Ventas y canales de distribución</p>
+                                <p>• Estructura de costos y finanzas</p>
+                                <p>• Expansión gradual según demanda</p>
+                            </div>
+                        </div>
+
+                        <div class="uml-branch" style="flex: 1 1 210px;">
+                            <div class="uml-class">
+                                <h3>2. Dir. Producción, Calidad y Abastecimiento</h3>
+                                <p style="text-align: center; color: var(--color-sociedad); font-weight: bold;">Diego Castellani (31120)</p>
+                                <hr>
+                                <p>• Flujo híbrido con base toyotista</p>
+                                <p>• Estandarización e inocuidad</p>
+                                <p>• Proveedores e I+D (harina de orujo)</p>
+                            </div>
+                        </div>
+
+                        <div class="uml-branch" style="flex: 1 1 210px;">
+                            <div class="uml-class">
+                                <h3>3. Dir. Tecnología, Automatización y Datos</h3>
+                                <p style="text-align: center; color: var(--color-sociedad); font-weight: bold;">Agustín Giusso (34776)</p>
+                                <hr>
+                                <p>• Sistema ERP/MES propio integrado</p>
+                                <p>• Trazabilidad y telemetría (OEE)</p>
+                                <p>• Enfoque CTS y vínculo UTN FRLP</p>
+                            </div>
+                        </div>
+
+                        <div class="uml-branch" style="flex: 1 1 210px;">
+                            <div class="uml-class">
+                                <h3>4. Dir. Sustentabilidad, Personas y RR.II.</h3>
+                                <p style="text-align: center; color: var(--color-sociedad); font-weight: bold;">Pedro Martín Flores (34744)</p>
+                                <hr>
+                                <p>• Empleo local y polivalencia laboral</p>
+                                <p>• Articulación Municipal, PBA y Nación</p>
+                                <p>• Monitoreo de ODS 8, 9 y 12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 1: THIAGO JOEL MIKLAVEC — DIRECCIÓN COMERCIAL Y ADMINISTRATIVA
+             =================================================================== -->
+        <section id="slide-thiago" class="iys-slide-panel">
+            <div class="pm-card">
+                <div class="speaker-banner">
+                    <div class="speaker-meta">
+                        <span>INTERVENCIÓN 1 · DIRECCIÓN COMERCIAL Y ADMINISTRATIVA</span>
+                        <h4>Thiago Joel Miklavec — Legajo 34367</h4>
+                    </div>
+                    <span class="plat-badge">Eje: Identidad, Territorio y Mercado</span>
+                </div>
+
+                <h2 class="pm-section-title">1. Propuesta de Valor y Radicación Estratégica en Berisso</h2>
+                <div class="pm-props-grid">
+                    <div class="pm-prop-item">
+                        <h4>Identidad Cultural Italiana</h4>
+                        <p>Rescate industrial de la <strong>nébola</strong> (galletita fina, gofrada y crocante), arraigada en la memoria inmigrante de las familias de Berisso.</p>
+                    </div>
+                    <div class="pm-prop-item">
+                        <h4>Resignificación Histórica (Ex Swift)</h4>
+                        <p>Instalación en una nave de <strong>330 m²</strong> en el Polígono Industrial de Berisso, resignificando un predio emblemático del trabajo industrial argentino.</p>
+                    </div>
+                    <div class="pm-prop-item">
+                        <h4>Nodo Logístico Portuario</h4>
+                        <p>Ubicación a <strong>200 metros del Puerto de Berisso</strong> y conexión directa con el Gran La Plata, facilitando provisión de insumos y futura salida exportadora.</p>
+                    </div>
+                    <div class="pm-prop-item">
+                        <h4>Lógica Comercial Toyotista (Pull)</h4>
+                        <p>El aumento de producción responde exclusivamente a <strong>pedidos reales, rotación medida y stock mínimo</strong>, evitando inmovilizar capital sin mercado.</p>
+                    </div>
+                </div>
+
+                <!-- Esquema Vectorial SVG: Territorio y Escalamiento Comercial -->
+                <div class="svg-diagram-wrapper">
+                    <svg viewBox="0 0 850 210" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arrow-soc" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#9b59b6"/>
+                            </marker>
+                        </defs>
+                        <!-- Fase 1 -->
+                        <rect x="20" y="35" width="230" height="140" rx="10" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2.5"/>
+                        <text x="135" y="65" text-anchor="middle" font-weight="bold" font-size="14" fill="#9b59b6">FASE 1: VALIDACIÓN LOCAL</text>
+                        <text x="135" y="92" text-anchor="middle" font-size="12.5" fill="var(--text-color)">Berisso · La Plata · Ensenada</text>
+                        <text x="135" y="118" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Venta directa y comercios de cercanía</text>
+                        <text x="135" y="138" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Ajuste de costos y stock mínimo</text>
+                        <text x="135" y="158" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Posicionamiento de marca local</text>
+
+                        <line x1="250" y1="105" x2="305" y2="105" stroke="#9b59b6" stroke-width="3" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Fase 2 -->
+                        <rect x="310" y="35" width="230" height="140" rx="10" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2.5"/>
+                        <text x="425" y="65" text-anchor="middle" font-weight="bold" font-size="14" fill="#9b59b6">FASE 2: ESCALA REGIONAL</text>
+                        <text x="425" y="92" text-anchor="middle" font-size="12.5" fill="var(--text-color)">Distribuidores y Mayoristas PBA</text>
+                        <text x="425" y="118" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Red de revendedores y dietéticas</text>
+                        <text x="425" y="138" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Supermercados regionales</text>
+                        <text x="425" y="158" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Ampliación de turnos por demanda</text>
+
+                        <line x1="540" y1="105" x2="595" y2="105" stroke="#9b59b6" stroke-width="3" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Fase 3 -->
+                        <rect x="600" y="35" width="230" height="140" rx="10" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2.5"/>
+                        <text x="715" y="65" text-anchor="middle" font-weight="bold" font-size="14" fill="#9b59b6">FASE 3: PROYECCIÓN EXTERNA</text>
+                        <text x="715" y="92" text-anchor="middle" font-size="12.5" fill="var(--text-color)">Alcance Nacional / Exportación</text>
+                        <text x="715" y="118" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Ventaja a 200 m del Puerto de Berisso</text>
+                        <text x="715" y="138" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Diferenciación por branding y calidad</text>
+                        <text x="715" y="158" text-anchor="middle" font-size="11.5" fill="var(--text-muted)">• Línea sustentable con harina de orujo</text>
+                    </svg>
+                </div>
+
+                <div class="formula-highlight">
+                    <strong>Inserción en la Matriz Productiva Nacional (Diagnóstico Fundar):</strong> El bloque agroindustrial explica el <strong>28,6% del PIB industrial argentino</strong>, aporta el <strong>55% de las exportaciones manufactureras (USD 32.673 M)</strong> con alta integración nacional y genera <strong>3,6 puestos indirectos por cada empleo directo</strong>. Nébolas NB se alinea con la estrategia de industrializar materias primas locales mediante diferenciación por calidad, diseño y sustentabilidad.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 2: CASTELLANI DIEGO — DIRECCIÓN DE PRODUCCIÓN, CALIDAD Y ABASTECIMIENTO
+             =================================================================== -->
+        <section id="slide-diego" class="iys-slide-panel">
+            <div class="pm-card">
+                <div class="speaker-banner">
+                    <div class="speaker-meta">
+                        <span>INTERVENCIÓN 2 · DIRECCIÓN DE PRODUCCIÓN, CALIDAD Y ABASTECIMIENTO</span>
+                        <h4>Diego Castellani — Legajo 31120</h4>
+                    </div>
+                    <span class="plat-badge">Eje: Modelo Híbrido, Planta e Innovación Circular</span>
+                </div>
+
+                <h2 class="pm-section-title">2. Organización Productiva Híbrida y Estandarización Alimentaria</h2>
+                <blockquote class="explanation" style="border-left: 4px solid var(--color-sociedad); margin-bottom: 1.2rem;">
+                    "Ni el taylorismo ni el fordismo han muerto, sólo se reciclan, subsumen y combinan con otras formas de organización y gestión de la producción." — <strong>José Othón Quiroz Trejo</strong>
+                </blockquote>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Dimensión Operativa</th>
+                                <th>Componente Toyotista (Predominante)</th>
+                                <th>Componente Estandarizado (Taylorista / Fordista)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Disparador de Producción</strong></td>
+                                <td>Sistema <em>Pull</em>: órdenes de compra, ventas reales y reposición de stock mínimo por variedad.</td>
+                                <td>Lotes mínimos continuos para amortizar el precalentamiento térmico de los hornos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Control de Proceso</strong></td>
+                                <td>Cero sobreproducción, reducción de merma de masa y mejora continua en planta.</td>
+                                <td>Parámetros físico-químicos fijos: gramaje de dosificación, temperatura y tiempo de cocción.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Calidad y Producto</strong></td>
+                                <td>Flexibilidad para alternar variedades (tradicional y experimental con orujo).</td>
+                                <td>Uniformidad estricta en relieve NB, diámetro, color dorado, sabor y crocancia.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 1.5rem;">Flujo de Línea Automatizada en Planta (330 m²)</h3>
+                <!-- Diagrama Vectorial de Planta -->
+                <div class="svg-diagram-wrapper">
+                    <svg viewBox="0 0 860 150" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Etapa 1 -->
+                        <rect x="15" y="25" width="180" height="100" rx="8" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2"/>
+                        <text x="105" y="52" text-anchor="middle" font-weight="bold" font-size="13" fill="#9b59b6">1. DOSIFICACIÓN</text>
+                        <text x="105" y="75" text-anchor="middle" font-size="11.5" fill="var(--text-color)">Mezcla homogénea e inyección</text>
+                        <text x="105" y="95" text-anchor="middle" font-size="11" fill="var(--text-muted)">Control exacto de volumen/masa</text>
+
+                        <line x1="195" y1="75" x2="230" y2="75" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Etapa 2 -->
+                        <rect x="235" y="25" width="180" height="100" rx="8" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2"/>
+                        <text x="325" y="52" text-anchor="middle" font-weight="bold" font-size="13" fill="#9b59b6">2. COCCIÓN GOFRADA</text>
+                        <text x="325" y="75" text-anchor="middle" font-size="11.5" fill="var(--text-color)">Placas térmicas con sello NB</text>
+                        <text x="325" y="95" text-anchor="middle" font-size="11" fill="var(--text-muted)">Curva controlada Temp. / Tiempo</text>
+
+                        <line x1="415" y1="75" x2="450" y2="75" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Etapa 3 -->
+                        <rect x="455" y="25" width="180" height="100" rx="8" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2"/>
+                        <text x="545" y="52" text-anchor="middle" font-weight="bold" font-size="13" fill="#9b59b6">3. ENFRIAMIENTO</text>
+                        <text x="545" y="75" text-anchor="middle" font-size="11.5" fill="var(--text-color)">Túnel de estabilización</text>
+                        <text x="545" y="95" text-anchor="middle" font-size="11" fill="var(--text-muted)">Preserva crocancia sin humedad</text>
+
+                        <line x1="635" y1="75" x2="670" y2="75" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Etapa 4 -->
+                        <rect x="675" y="25" width="170" height="100" rx="8" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2"/>
+                        <text x="760" y="52" text-anchor="middle" font-weight="bold" font-size="13" fill="#9b59b6">4. ENVASADO</text>
+                        <text x="760" y="75" text-anchor="middle" font-size="11.5" fill="var(--text-color)">Termoformado + Flow-Pack</text>
+                        <text x="760" y="95" text-anchor="middle" font-size="11" fill="var(--text-muted)">Protección mecánica y cajas</text>
+                    </svg>
+                </div>
+
+                <div class="sim-top-dashboard" style="margin-top: 1.5rem; margin-bottom: 0;">
+                    <div class="platform-status-box">
+                        <div class="platform-status-header">
+                            <strong>Matriz de Abastecimiento y Proveedores</strong>
+                            <span class="plat-badge">Prioridad Regional</span>
+                        </div>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.6rem;">
+                            <strong>Insumos Base:</strong> Harina, azúcar, huevos, aceite de girasol, agua; bandejas termoformadas, film <em>flow-pack</em>, cajas y pallets.
+                        </p>
+                        <div class="platform-chips">
+                            <span class="plat-chip"><b>1.</b> Calidad e Inocuidad</span>
+                            <span class="plat-chip"><b>2.</b> Cercanía (Berisso / La Plata / PBA)</span>
+                            <span class="plat-chip"><b>3.</b> Precio Competitivo</span>
+                            <span class="plat-chip"><b>4.</b> Continuidad + Stock de Seguridad</span>
+                        </div>
+                    </div>
+
+                    <div class="platform-status-box">
+                        <div class="platform-status-header">
+                            <strong>Innovación en Economía Circular: Harina de Orujo</strong>
+                            <span class="plat-badge">I+D Alimentario</span>
+                        </div>
+                        <p style="font-size: 0.9rem;">
+                            Reemplazo parcial de harina convencional por <strong>harina de orujo de uva</strong> (subproducto de la industria vitivinícola). Su lanzamiento comercial está supeditado a la validación rigurosa de 5 criterios ingenieriles: <strong>formulación, inocuidad, vida útil, perfil sensorial (sabor/crocancia) y costo</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 3: AGUSTÍN GIUSSO — DIRECCIÓN DE TECNOLOGÍA, AUTOMATIZACIÓN Y DATOS
+             =================================================================== -->
+        <section id="slide-agustin" class="iys-slide-panel">
+            <div class="pm-card">
+                <div class="speaker-banner">
+                    <div class="speaker-meta">
+                        <span>INTERVENCIÓN 3 · DIRECCIÓN DE TECNOLOGÍA, AUTOMATIZACIÓN Y DATOS</span>
+                        <h4>Agustín Giusso — Legajo 34776</h4>
+                    </div>
+                    <span class="plat-badge">Eje: Sistema ERP/MES, Telemetría y Enfoque CTS</span>
+                </div>
+
+                <h2 class="pm-section-title">3. Arquitectura Digital de Trazabilidad y No Neutralidad Tecnológica</h2>
+                <p>
+                    La digitalización en <strong>Nébolas NB</strong> no persigue incorporar tecnología como fin en sí mismo, sino construir un <strong>sistema sociotécnico</strong> integrado que conecte el piso de planta con la toma de decisiones estratégicas.
+                </p>
+
+                <!-- Esquema Vectorial del Sistema de Gestión Propio -->
+                <div class="svg-diagram-wrapper">
+                    <svg viewBox="0 0 850 185" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Nodos de Entrada -->
+                        <rect x="20" y="20" width="185" height="60" rx="6" fill="var(--card-bg)" stroke="var(--table-border-color)" stroke-width="2"/>
+                        <text x="112" y="46" text-anchor="middle" font-weight="bold" font-size="12" fill="var(--text-color)">COMPRAS Y LOTES</text>
+                        <text x="112" y="65" text-anchor="middle" font-size="11" fill="var(--text-muted)">Insumos, recetas y vencimientos</text>
+
+                        <rect x="20" y="105" width="185" height="60" rx="6" fill="var(--card-bg)" stroke="var(--table-border-color)" stroke-width="2"/>
+                        <text x="112" y="131" text-anchor="middle" font-weight="bold" font-size="12" fill="var(--text-color)">SENSORES DE PLANTA</text>
+                        <text x="112" y="150" text-anchor="middle" font-size="11" fill="var(--text-muted)">Temp., tiempos, kWh y rechazos</text>
+
+                        <line x1="205" y1="50" x2="295" y2="80" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+                        <line x1="205" y1="135" x2="295" y2="105" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Core Central ERP/MES -->
+                        <rect x="300" y="35" width="250" height="115" rx="12" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="3"/>
+                        <text x="425" y="65" text-anchor="middle" font-weight="bold" font-size="14" fill="#9b59b6">SISTEMA DIGITAL NÉBOLAS NB</text>
+                        <text x="425" y="88" text-anchor="middle" font-size="12" fill="var(--text-color)">Motor de Trazabilidad y Gestión</text>
+                        <text x="425" y="112" text-anchor="middle" font-size="11" fill="var(--text-muted)">• Alertas de Stock Mínimo por variedad</text>
+                        <text x="425" y="130" text-anchor="middle" font-size="11" fill="var(--text-muted)">• Cálculo de OEE y costo unitario real</text>
+
+                        <line x1="550" y1="80" x2="640" y2="50" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+                        <line x1="550" y1="105" x2="640" y2="135" stroke="#9b59b6" stroke-width="2.5" marker-end="url(#arrow-soc)"/>
+
+                        <!-- Nodos de Salida -->
+                        <rect x="645" y="20" width="185" height="60" rx="6" fill="var(--card-bg)" stroke="var(--table-border-color)" stroke-width="2"/>
+                        <text x="737" y="46" text-anchor="middle" font-weight="bold" font-size="12" fill="var(--text-color)">ORDEN DE PRODUCCIÓN</text>
+                        <text x="737" y="65" text-anchor="middle" font-size="11" fill="var(--text-muted)">Programación Pull sin sobrestock</text>
+
+                        <rect x="645" y="105" width="185" height="60" rx="6" fill="var(--card-bg)" stroke="var(--table-border-color)" stroke-width="2"/>
+                        <text x="737" y="131" text-anchor="middle" font-weight="bold" font-size="12" fill="var(--text-color)">VENTAS Y LOGÍSTICA</text>
+                        <text x="737" y="150" text-anchor="middle" font-size="11" fill="var(--text-muted)">Rotación comercial y repartos</text>
+                    </svg>
+                </div>
+
+                <h3>Indicadores Técnicos Auditables en Planta (KPIs)</h3>
+                <div class="iys-kpi-grid">
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">Unid. / h</div>
+                        <div class="iys-kpi-label">Unidades buenas por hora y paradas de equipo</div>
+                    </div>
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">% Merma</div>
+                        <div class="iys-kpi-label">Kg de desperdicio por lote y tasa de defectos</div>
+                    </div>
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">kWh / Pack</div>
+                        <div class="iys-kpi-label">Consumo energético específico por paquete apto</div>
+                    </div>
+                    <div class="iys-kpi-card">
+                        <div class="iys-kpi-val">Stock Mín.</div>
+                        <div class="iys-kpi-label">Umbral crítico dinámico según rotación de ventas</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 1.5rem;">Fundamentación CTS: Política de los Artefactos y Red de Conocimiento</h3>
+                <div class="trace-grid">
+                    <div class="trace-step">
+                        <span class="trace-badge">Langdon Winner (1980)</span>
+                        <h4>No Neutralidad de los Artefactos</h4>
+                        <p>Los sistemas técnicos ordenan la actividad humana y distribuyen poder. Frente a la subordinación algorítmica de las plataformas austeras (donde el software actúa como capataz opaco), nuestra automatización libera al operario de tareas repetitivas o de riesgo térmico y le otorga control cognitivo del proceso.</p>
+                    </div>
+                    <div class="trace-step">
+                        <span class="trace-badge">Picabea y Thomas (2015)</span>
+                        <h4>Co-construcción Sociotécnica</h4>
+                        <p>La eficiencia de una planta no reside en comprar maquinaria "llave en mano", sino en desarrollar capacidades locales de mantenimiento, ajuste de recetas y documentación de procesos para evitar dependencia tecnológica de proveedores externos.</p>
+                    </div>
+                    <div class="trace-step">
+                        <span class="trace-badge">Articulación UTN FRLP</span>
+                        <h4>Aprendizaje por Interacción</h4>
+                        <p>Inspirados en las redes descentralizadas de innovación (caso japonés de Morris-Suzuki y vinculación I+D en Biosidus/INVAP), articulamos con la <strong>UTN La Plata</strong> para prácticas supervisadas en diseño de <em>layout</em>, estudio de tiempos y automatización.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 4: PEDRO MARTÍN FLORES — SUSTENTABILIDAD, PERSONAS Y RR.II.
+             =================================================================== -->
+        <section id="slide-pedro" class="iys-slide-panel">
+            <div class="pm-card">
+                <div class="speaker-banner">
+                    <div class="speaker-meta">
+                        <span>INTERVENCIÓN 4 · DIRECCIÓN DE SUSTENTABILIDAD, PERSONAS Y RELACIONES INSTITUCIONALES</span>
+                        <h4>Pedro Martín Flores — Legajo 34744</h4>
+                    </div>
+                    <span class="plat-badge">Eje: Estado, Trabajo Polivalente y Agenda 2030</span>
+                </div>
+
+                <h2 class="pm-section-title">4. Desarrollo Sostenible, Articulación Estatal y Agenda 2030</h2>
+                <blockquote class="explanation" style="border-left: 4px solid var(--color-sociedad); margin-bottom: 1.2rem;">
+                    "Satisfacer las necesidades del presente sin comprometer la capacidad de las generaciones futuras para satisfacer sus propias necesidades." — <strong>Informe Brundtland (Comisión Mundial sobre el Medio Ambiente y el Desarrollo, 1987)</strong>
+                </blockquote>
+
+                <h3>Vinculación Multi-Nivel con el Estado y la Comunidad (Enfoque Desarrollista)</h3>
+                <div class="trace-grid" style="margin-bottom: 1.5rem;">
+                    <div class="trace-step">
+                        <span class="trace-badge">Nivel Municipal (Berisso)</span>
+                        <h4>Polígono Industrial y Empleo Local</h4>
+                        <p>Articulación con la <strong>Bolsa de Trabajo Municipal</strong> (aprovechando programas donde el Municipio cubre parcialmente horas iniciales de nuevos trabajadores locales) y priorización de proveedores y vecinos de Berisso.</p>
+                    </div>
+                    <div class="trace-step">
+                        <span class="trace-badge">Nivel Provincial (PBA)</span>
+                        <h4>Ministerio de Producción, Ciencia e Innovación</h4>
+                        <p>Acceso a líneas de financiamiento PyME para modernización tecnológica, programas de eficiencia energética y capacitaciones en comercialización, costos y presentación de producto.</p>
+                    </div>
+                    <div class="trace-step">
+                        <span class="trace-badge">Nivel Nacional</span>
+                        <h4>Regulación Alimentaria y Comercio Exterior</h4>
+                        <p>Cumplimiento de registros bromatológicos e inocuidad (ANMAT / Código Alimentario) y utilización futura de herramientas de promoción exportadora, manteniendo la autonomía económica de la PyME.</p>
+                    </div>
+                </div>
+
+                <h3>Compromisos de Diseño con la Agenda 2030 (ODS Seleccionados)</h3>
+                <div class="ods-grid">
+                    <!-- ODS 8 -->
+                    <div class="ods-card" style="border-top: 4px solid #a21942;">
+                        <div class="ods-header">
+                            <svg width="42" height="42" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="48" height="48" rx="8" fill="#a21942"/>
+                                <text x="24" y="20" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11">ODS 8</text>
+                                <path d="M14 36 L14 26 L20 26 L20 36 M22 36 L22 22 L28 22 L28 36 M30 36 L30 18 L36 18 L36 36" stroke="#fff" stroke-width="2" fill="none"/>
+                            </svg>
+                            <div>
+                                <h4 style="margin: 0; color: var(--text-color);">ODS 8: Trabajo Decente y Crecimiento</h4>
+                                <small style="color: var(--text-muted);">Metas 8.5 y 8.8 (Empleo digno y entorno seguro)</small>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem;">
+                            • <strong>Organización Polivalente:</strong> Rotación formativa en abastecimiento, supervisión, calidad, embalaje y registro digital (evitando tanto la alienación repetitiva taylorista como el estrés laboral extremo).<br>
+                            • <strong>Métricas de Verificación:</strong> Cantidad de puestos formales, horas de capacitación/trabajador, tasa de incidentes y % de personal local.
+                        </p>
+                    </div>
+
+                    <!-- ODS 9 -->
+                    <div class="ods-card" style="border-top: 4px solid #fd6925;">
+                        <div class="ods-header">
+                            <svg width="42" height="42" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="48" height="48" rx="8" fill="#fd6925"/>
+                                <text x="24" y="20" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11">ODS 9</text>
+                                <polygon points="24,23 33,28 33,38 24,43 15,38 15,28" stroke="#fff" stroke-width="2" fill="none"/>
+                            </svg>
+                            <div>
+                                <h4 style="margin: 0; color: var(--text-color);">ODS 9: Industria, Innovación e Infraestructura</h4>
+                                <small style="color: var(--text-muted);">Metas 9.4 y 9.5 (Eficiencia e I+D)</small>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem;">
+                            • <strong>Modernización PyME:</strong> Industrialización de un alimento artesanal con control paramétrico, sistema digital propio y cooperación técnica con la <strong>UTN FRLP</strong>.<br>
+                            • <strong>Métricas de Verificación:</strong> Unidades buenas/hora, % de defectos, tiempo de paradas de máquina y mejoras de proceso implementadas.
+                        </p>
+                    </div>
+
+                    <!-- ODS 12 -->
+                    <div class="ods-card" style="border-top: 4px solid #bf8b2e;">
+                        <div class="ods-header">
+                            <svg width="42" height="42" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="48" height="48" rx="8" fill="#bf8b2e"/>
+                                <text x="24" y="20" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11">ODS 12</text>
+                                <path d="M17 33 C13 33, 13 25, 19 25 C22 25, 26 33, 29 33 C35 33, 35 25, 31 25 C28 25, 24 33, 17 33 Z" stroke="#fff" stroke-width="2.2" fill="none"/>
+                            </svg>
+                            <div>
+                                <h4 style="margin: 0; color: var(--text-color);">ODS 12: Producción y Consumo Responsables</h4>
+                                <small style="color: var(--text-muted);">Metas 12.2, 12.3 y 12.5 (Cero desperdicio)</small>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem;">
+                            • <strong>Eficiencia y Circularidad:</strong> Producción bajo demanda para evitar vencimientos, ensayo con <strong>harina de orujo</strong> y evaluación de <em>packaging</em> e instalación solar.<br>
+                            • <strong>Métricas de Verificación:</strong> Kg de desperdicio/lote, rendimiento de materia prima y kWh consumidos por paquete apto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="formula-highlight" style="margin-top: 1.5rem;">
+                    <strong>Síntesis CTS — Gestión de Tensiones entre ODS:</strong> Automatizar para elevar la productividad (ODS 9 y 12) sólo es socialmente sustentable si se acompaña de formación continua y estabilidad laboral (ODS 8). Asimismo, reducir el espesor del envase (ODS 12) sólo es válido si preserva la barrera mecánica y bromatológica, evitando que el alimento se rompa y se desperdicie.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 5: SIMULADORES INTERACTIVOS 3D (THREE.JS) Y 2D (CANVAS)
+             =================================================================== -->
+        <section id="slide-simuladores" class="iys-slide-panel">
+            <!-- SIMULADOR 3D -->
+            <div class="pm-card">
+                <h2 class="pm-section-title">Laboratorio Visual 3D: Producto Nébola NB y Línea Automatizada (330 m²)</h2>
+                <p>Interactúa en tiempo real con el modelo tridimensional de la galletita (borde festoneado, rejilla romboidal, sello central <strong>NB</strong> en relieve y variante violácea con harina de orujo) o inspecciona el flujo toyotista en la planta de Berisso.</p>
+
+                <div class="pm-simulador-layout">
+                    <div class="pm-controls-panel">
+                        <h3>Controles de Escena 3D</h3>
+
+                        <div class="control-group">
+                            <label for="select-3d-mode">Modo de Visualización:</label>
+                            <select id="select-3d-mode" class="sim-select" style="width: 100%; padding: 8px;">
+                                <option value="cookie">1. Geometría y Relieve: Nébola NB</option>
+                                <option value="plant">2. Layout Planta 330 m² (Flujo Toyotista)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="select-3d-recipe">Variedad de Receta (I+D):</label>
+                            <select id="select-3d-recipe" class="sim-select" style="width: 100%; padding: 8px;">
+                                <option value="tradicional">Receta Tradicional Italiana (Dorada)</option>
+                                <option value="orujo">Experimental: Harina de Orujo (Violácea)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group" id="group-3d-speed" style="display: none;">
+                            <label for="slider-3d-speed">
+                                Ritmo de Demanda en Planta (Pull): <span id="label-3d-speed">1.0x</span>
+                            </label>
+                            <input type="range" id="slider-3d-speed" min="0.2" max="2.5" step="0.1" value="1.0">
+                        </div>
+
+                        <button id="btn-3d-wireframe" class="pm-btn-action">Alternar Malla Técnica (CAD)</button>
+                        <div id="box-3d-telemetry" class="pm-result-box" style="font-size: 0.95rem;">
+                            T° Cocción: 185 °C | Espesor: 3.2 mm
+                        </div>
+                        <p class="pm-instruction"><small>🖱️ Arrastra para rotar en 3D | Rueda para zoom</small></p>
+                    </div>
+
+                    <div id="nebolas-3d-canvas-container" class="pm-canvas-wrapper" style="width: 100%; height: 420px; min-height: 420px;"></div>
+                </div>
+            </div>
+
+            <!-- SIMULADOR 2D -->
+            <div class="pm-card">
+                <h2 class="pm-section-title">Simulador Operativo 2D: Modelo Toyotista (Pull) e Indicadores ODS</h2>
+                <p>Ajusta los parámetros operativos para comparar la eficiencia de recursos de <strong>Nébolas NB</strong> frente a un esquema fordista tradicional de sobreproducción por oferta.</p>
+
+                <div class="pm-simulador-layout">
+                    <div class="pm-controls-panel">
+                        <h3>Parámetros del Sistema ERP</h3>
+
+                        <div class="control-group">
+                            <label for="sim2d-demanda">
+                                Demanda Mensual (Paquetes): <span id="val-sim2d-demanda">12000</span>
+                            </label>
+                            <input type="range" id="sim2d-demanda" min="4000" max="25000" step="500" value="12000">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="sim2d-orujo">
+                                Sustitución Harina de Orujo: <span id="val-sim2d-orujo">15%</span>
+                            </label>
+                            <input type="range" id="sim2d-orujo" min="0" max="30" step="5" value="15">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="sim2d-polivalencia">
+                                Capacitación Polivalente (UTN/Interna): <span id="val-sim2d-polivalencia">85%</span>
+                            </label>
+                            <input type="range" id="sim2d-polivalencia" min="40" max="100" step="5" value="85">
+                        </div>
+
+                        <div id="sim2d-summary-box" class="pm-result-box" style="font-size: 0.92rem; text-align: left; line-height: 1.5;">
+                            Cargando telemetría...
+                        </div>
+                    </div>
+
+                    <div class="pm-canvas-wrapper" style="height: 400px; min-height: 400px; padding: 12px;">
+                        <canvas id="nebolas-2d-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
