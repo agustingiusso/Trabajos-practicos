@@ -11,17 +11,17 @@ const platCountBadge = document.getElementById('plat-count-badge');
 const objNuevoP8 = document.getElementById('obj-nuevo-p8');
 
 const INITIAL_DATA = {
-    '1': { tit: 'Inception', calif: '9' },
-    '2': { tit: 'Toy Story', calif: '8.5' },
-    '3': { tit: 'Zoolander', calif: '6.5' },
-    '4': { tit: 'El Conjuro', calif: '7.5' },
-    '5': { tit: 'Gladiador', calif: '8.5' },
-    '6': { tit: 'Breaking Bad', calif: '9.5' },
-    '7': { tit: 'Stranger Things', calif: '8.5' },
-    '8': { tit: 'The Office', calif: '9' },
-    '9': { tit: 'Dark', calif: '8.5' },
-    '10': { tit: 'Los Simpson', calif: '8' },
-    '11': { tit: 'Interstellar', calif: '9.2' }
+    '1': { tit: 'Inception', calif: '9', type: 'peli', tam: '3500' },
+    '2': { tit: 'Toy Story', calif: '8.5', type: 'peli', tam: '1500' },
+    '3': { tit: 'Zoolander', calif: '6.5', type: 'peli', tam: '1200' },
+    '4': { tit: 'El Conjuro', calif: '7.5', type: 'peli', tam: '1800' },
+    '5': { tit: 'Gladiador', calif: '8.5', type: 'peli', tam: '4000' },
+    '6': { tit: 'Breaking Bad', calif: '9.5', type: 'serie', tam: '12000' },
+    '7': { tit: 'Stranger Things', calif: '8.5', type: 'serie', tam: '9500' },
+    '8': { tit: 'The Office', calif: '9', type: 'serie', tam: '15000' },
+    '9': { tit: 'Dark', calif: '8.5', type: 'serie', tam: '8000' },
+    '10': { tit: 'Los Simpson', calif: '8', type: 'serie', tam: '25000' },
+    '11': { tit: 'Interstellar', calif: '9.2', type: 'peli', tam: '4500' }
 };
 
 // Mueve el simulador de memoria exactamente debajo del punto activo
@@ -32,14 +32,14 @@ function mountBoardUnder(pointNumber) {
     }
 }
 
-// Cambia entre vista individual de cada punto (1..10) o "Ver Todos" (0)
+// Cambia entre vista individual de cada punto (1..13) o "Ver Todos" (0)
 function selectPoint(pointNumber) {
     const panels = document.querySelectorAll('.point-panel');
     const navItems = document.querySelectorAll('#sim-nav-points .nav-point');
 
     navItems.forEach((li, idx) => {
         if (pointNumber === 0) {
-            li.classList.toggle('active', idx === 10);
+            li.classList.toggle('active', idx === 13); // 'Ver Todos' es el 14° elemento
         } else {
             li.classList.toggle('active', idx === pointNumber - 1);
         }
@@ -65,9 +65,12 @@ function selectPoint(pointNumber) {
             5: runPunto5,
             6: runPunto6,
             7: runPunto7,
-            8: () => runPunto8(false),
+            8: () => runPunto8('valida'),
             9: runPunto9,
-            10: runPunto10
+            10: runPunto10,
+            11: runPunto11,
+            12: runPunto12,
+            13: runPunto13
         };
         if (autoRunners[pointNumber]) autoRunners[pointNumber]();
     }
@@ -92,36 +95,51 @@ function updatePlatformBar(usedMB, count) {
 
 function cleanVisualStates() {
     document.querySelectorAll('.mem-object').forEach(obj => {
-        const tipo = obj.classList.contains('peli') ? 'peli' : 'serie';
-        obj.className = 'mem-object ' + tipo;
+        const type = obj.getAttribute('data-type') || (obj.classList.contains('peli') ? 'peli' : 'serie');
+        obj.className = 'mem-object ' + type;
     });
 }
 
 function resetSim() {
-    if (objNuevoP8) objNuevoP8.style.display = 'none';
+    if (objNuevoP8) {
+        objNuevoP8.style.display = 'none';
+        objNuevoP8.setAttribute('data-cod', '11');
+        objNuevoP8.querySelector('.obj-header span').innerHTML = '#11 a Pelicula (Nuevo)';
+    }
 
     document.querySelectorAll('.mem-object').forEach(obj => {
-        const cod = obj.getAttribute('data-cod');
-        if (cod !== '11') {
-            obj.style.display = '';
-        }
-        if (INITIAL_DATA[cod]) {
-            obj.setAttribute('data-tit', INITIAL_DATA[cod].tit);
-            obj.setAttribute('data-calif', INITIAL_DATA[cod].calif);
+        const id = obj.id;
+        if (id === 'obj-nuevo-p8') return; // Ignorarlo en reseteo base
+
+        obj.style.display = '';
+        const codReal = obj.id.replace('mem-obj-', ''); // extraer de ID original
+        obj.setAttribute('data-cod', codReal);
+
+        if (INITIAL_DATA[codReal]) {
+            obj.setAttribute('data-tit', INITIAL_DATA[codReal].tit);
+            obj.setAttribute('data-calif', INITIAL_DATA[codReal].calif);
+            obj.setAttribute('data-tam', INITIAL_DATA[codReal].tam);
+            
+            // Restablecer estilos de clase base
+            obj.className = 'mem-object ' + INITIAL_DATA[codReal].type;
+
             const titEl = obj.querySelector('.val-tit');
             const califEl = obj.querySelector('.val-calif');
-            if (titEl) titEl.innerText = "'" + INITIAL_DATA[cod].tit + "'";
-            if (califEl) califEl.innerText = INITIAL_DATA[cod].calif;
+            const headerSpan = obj.querySelector('.obj-header span');
+            
+            if (titEl) titEl.innerText = "'" + INITIAL_DATA[codReal].tit + "'";
+            if (califEl) califEl.innerText = INITIAL_DATA[codReal].calif;
+            if (headerSpan) headerSpan.innerText = '#' + codReal + ' a ' + (INITIAL_DATA[codReal].type === 'peli' ? 'Pelicula' : 'Serie');
         }
     });
 
     cleanVisualStates();
     colName.innerText = 'contenidos (10 instancias)';
     activeOpBadge.innerText = 'Estado Inicial';
-    updatePlatformBar(81500, 10);
     transcriptOut.innerHTML =
-        "&gt; Plataforma 'StreamUTN' restaurada (81.500 / 100.000 MB).<br>" +
-        "&gt; 10 objetos activos en la OrderedCollection contenidos.";
+        `&gt; Plataforma 'StreamUTN' restaurada (81.500 / 100.000 MB).<br>` +
+        `&gt; 10 objetos activos en la OrderedCollection contenidos.`;
+    updatePlatformBar(81500, 10);
 }
 
 // PUNTO 1: Listado calificación >= 7
@@ -155,9 +173,12 @@ function runPunto2() {
     const gen = genSelect ? genSelect.value : 'Ficcion';
 
     colName.innerText = `colFil (select: [:c | c verGenero = '${gen}'])`;
-    activeOpBadge.innerText = 'Punto 2: Prompter + select:';
+    activeOpBadge.innerText = 'Punto 2: pedirTexto value: + select:';
 
-    let lines = [`--- GÉNERO: ${gen} ---`];
+    let lines = [
+        `&gt; Evaluando pedirTexto value:... (Retorna '${gen}')`,
+        `--- GÉNERO: ${gen} ---`
+    ];
     objs.forEach(obj => {
         const objGen = obj.getAttribute('data-gen');
         const tit = obj.getAttribute('data-tit');
@@ -271,7 +292,7 @@ function runPunto5() {
 
     const mejorTit = mejorObj.getAttribute('data-tit');
     transcriptOut.innerHTML =
-        '--- MEJOR CALIFICADO ---<br>' +
+        `--- MEJOR CALIFICADO ---<br>` +
         `${mejorTit} con ${maxCalif} puntos.`;
 }
 
@@ -303,9 +324,9 @@ function runPunto6() {
 
     updatePlatformBar(nuevoUsado, activosCount);
     transcriptOut.innerHTML =
-        '--- CONTENIDOS ELIMINADOS ---<br>' +
+        `--- CONTENIDOS ELIMINADOS ---<br>` +
         eliminados.join('<br>') +
-        '<br><span style="color:#60a5fa;">[MessageBox notify:] Se eliminaron los contenidos listados en el Transcript.</span>';
+        `<br><span style="color:#60a5fa;">[MessageBox notify:] Se eliminaron los contenidos listados en el Transcript.</span>`;
 }
 
 // PUNTO 7: Cantidad por género (Diccionario)
@@ -330,37 +351,63 @@ function runPunto7() {
     transcriptOut.innerHTML = lines.join('<br>');
 }
 
-// PUNTO 8: Agregar nuevo contenido
-function runPunto8(excederCapacidad) {
+// PUNTO 8: Agregar nuevo contenido (Con validaciones de código)
+function runPunto8(modo) {
     mountBoardUnder(8);
     resetSim();
-    activeOpBadge.innerText = 'Punto 8: agregarContenido: y Capacidad';
+    activeOpBadge.innerText = 'Punto 8: Sobrescritura y Capacidad';
 
-    if (!excederCapacidad) {
+    if (modo === 'valida') {
         if (objNuevoP8) {
             objNuevoP8.style.display = '';
             objNuevoP8.classList.add('highlighted-detect');
         }
         colName.innerText = 'contenidos (11 objetos tras add:)';
         updatePlatformBar(86000, 11);
+        
         transcriptOut.innerHTML =
-            '<span style="color:#60a5fa;">[MessageBox notify:] Espacio disponible en la plataforma: 18500 MB.</span><br>' +
-            "&gt; Pelicula crearPeli:11 tit:'Interstellar' ... tam:4500.<br>" +
-            '&gt; Evaluando (81500 + 4500 &lt;= 100000) -&gt; <strong>true</strong> (contenidos add: nuevoObj).<br>' +
-            '<span style="color:#2ecc71;">[MessageBox notify:] Operación finalizada.</span>';
-    } else {
+            `<span style="color:#60a5fa;">[MessageBox notify:] Espacio disponible en la plataforma: 18500 MB.</span><br>` +
+            `&gt; detect: [:c | c verCodigo = 11] ifNone: [nil] -&gt; <strong>nil</strong>.<br>` +
+            `&gt; Pelicula crearPeli:11 tit:'Interstellar' ... tam:4500.<br>` +
+            `&gt; Evaluando (81500 + 4500 &lt;= 100000) -&gt; <strong>true</strong>.<br>` +
+            `<span style="color:#2ecc71;">[MessageBox notify:] Operación finalizada. Contenido guardado exitosamente.</span>`;
+            
+    } else if (modo === 'overwrite') {
+        const objViejo = document.getElementById('mem-obj-3');
+        if (objViejo) objViejo.style.display = 'none'; 
+        
+        if (objNuevoP8) {
+            objNuevoP8.style.display = '';
+            objNuevoP8.setAttribute('data-cod', '3'); 
+            objNuevoP8.querySelector('.obj-header span').innerHTML = '#3 a Pelicula (Sobrescrito)';
+            objNuevoP8.classList.add('highlighted-detect');
+        }
+
+        colName.innerText = 'contenidos (10 objetos tras reject: y add:)';
+        updatePlatformBar(84800, 10);
+        
+        transcriptOut.innerHTML =
+            `<span style="color:#60a5fa;">[MessageBox notify:] Espacio disponible en la plataforma: 18500 MB.</span><br>` +
+            `&gt; detect: [:c | c verCodigo = 3] ifNone: [nil] -&gt; <strong>a Pelicula ('Zoolander')</strong>.<br>` +
+            `&gt; <span style="color:#f39c12;">[MessageBox confirm:] El código 3 YA EXISTE. ¿Sobrescribir? -&gt; true</span><br>` +
+            `&gt; netflix modContenidos: (... reject: [:c | c verCodigo = 3]).<br>` +
+            `&gt; netflix agregarContenido: nuevoObj.<br>` +
+            `<span style="color:#2ecc71;">[MessageBox notify:] Operación finalizada. Contenido guardado exitosamente.</span>`;
+            
+    } else if (modo === 'exceso') {
         colName.innerText = 'contenidos (Rechazado por capacidad)';
         platBar.style.width = '100%';
         platBar.style.background = '#e74c3c';
+        
         transcriptOut.innerHTML =
-            '<span style="color:#60a5fa;">[MessageBox notify:] Espacio disponible en la plataforma: 18500 MB.</span><br>' +
-            "&gt; Intentando agregar contenido de 25000 MB...<br>" +
-            '&gt; Evaluando (81500 + 25000 &lt;= 100000) -&gt; <strong>false</strong>.<br>' +
-            '<span style="color:#e74c3c; font-weight:bold;">[MessageBox errorMsg:] No hay suficiente capacidad en la plataforma.</span>';
+            `<span style="color:#60a5fa;">[MessageBox notify:] Espacio disponible en la plataforma: 18500 MB.</span><br>` +
+            `&gt; Intentando agregar contenido de 25000 MB...<br>` +
+            `&gt; Evaluando (81500 + 25000 &lt;= 100000) -&gt; <strong>false</strong>.<br>` +
+            `<span style="color:#e74c3c; font-weight:bold;">[MessageBox warning:] El tamaño supera el espacio disponible (18500 MB).</span>`;
     }
 }
 
-// PUNTO 9: Buscar y modificar por código
+// PUNTO 9: Buscar y modificar por código (Bucle whileTrue:)
 function runPunto9() {
     mountBoardUnder(9);
     cleanVisualStates();
@@ -368,40 +415,51 @@ function runPunto9() {
     const codBuscado = codSelect ? codSelect.value : '3';
     const objs = getVisibleObjects();
 
-    activeOpBadge.innerText = 'Punto 9: detect: ifNone: + Setters';
+    activeOpBadge.innerText = 'Punto 9: Bucle de Modificación';
     const encontrado = objs.find(obj => obj.getAttribute('data-cod') === codBuscado);
 
     if (!encontrado) {
         objs.forEach(obj => obj.classList.add('dimmed'));
         colName.innerText = 'encontrado := nil (Bloque ifNone:)';
+        
         transcriptOut.innerHTML =
             `&gt; Buscando código ${codBuscado} con detect: ...<br>` +
-            '<span style="color:#f1c40f; font-weight:bold;">[MessageBox warning:] No se encontró ningún contenido con ese código.</span>';
+            `<span style="color:#f1c40f; font-weight:bold;">[MessageBox warning:] No se encontró ningún contenido con ese código.</span>`;
     } else {
         const titActual = encontrado.getAttribute('data-tit');
         const nuevoTit = titActual.includes('(Ed. Especial)') ? titActual : titActual + ' (Ed. Especial)';
         const nuevaCal = '9.8';
+        const nuevoTam = '3000';
 
         objs.forEach(obj => {
             if (obj === encontrado) {
                 obj.classList.add('highlighted-detect');
                 obj.setAttribute('data-tit', nuevoTit);
                 obj.setAttribute('data-calif', nuevaCal);
+                obj.setAttribute('data-tam', nuevoTam);
+                
                 const titEl = obj.querySelector('.val-tit');
                 const califEl = obj.querySelector('.val-calif');
+                const tamEl = obj.querySelector('.tam-display');
+
                 if (titEl) titEl.innerText = "'" + nuevoTit + "'";
                 if (califEl) califEl.innerText = nuevaCal;
+                if (tamEl) tamEl.innerText = nuevoTam + ' MB';
             } else {
                 obj.classList.add('dimmed');
             }
         });
 
-        colName.innerText = `encontrado (Cód #${codBuscado} modificado en RAM)`;
+        colName.innerText = `encontrado (Cód #${codBuscado} alterado iterativamente)`;
+        
         transcriptOut.innerHTML =
             `&gt; detect: encontró el objeto #${codBuscado} ('${titActual}').<br>` +
+            `&gt; <span style="color:#94a3b8;">[seguirModificando] whileTrue: ... Iniciado</span><br>` +
             `&gt; Ejecutando encontrado modTitulo: '${nuevoTit}'.<br>` +
+            `&gt; <span style="color:#f39c12;">[MessageBox confirm:] ¿Desea modificar algo más? -&gt; true</span><br>` +
             `&gt; Ejecutando encontrado modCalificacion: ${nuevaCal}.<br>` +
-            '<span style="color:#2ecc71;">[MessageBox notify:] Contenido modificado con éxito.</span>';
+            `&gt; <span style="color:#f39c12;">[MessageBox confirm:] ¿Desea modificar algo más? -&gt; false</span><br>` +
+            `<span style="color:#2ecc71;">[MessageBox notify:] Contenido modificado con éxito.</span>`;
     }
 }
 
@@ -434,10 +492,114 @@ function runPunto10() {
     });
 
     updatePlatformBar(nuevoUsado, activosCount);
+    
     transcriptOut.innerHTML =
         `&gt; Evaluando reject: [:c | c verCodigo = ${codEliminar}]...<br>` +
         `&gt; Se excluye el objeto #${codEliminar} ('${titEliminado}') y se actualiza con modContenidos:.<br>` +
-        '<span style="color:#60a5fa;">[MessageBox notify:] Actualización finalizada (Si el código existía, fue eliminado).</span>';
+        `<span style="color:#60a5fa;">[MessageBox notify:] Actualización finalizada (Si el código existía, fue eliminado).</span>`;
+}
+
+// PUNTO 11: Mostrar Todo el Catálogo (isKindOf: + Formateo avanzado)
+function runPunto11() {
+    mountBoardUnder(11);
+    cleanVisualStates();
+    const objs = getVisibleObjects();
+    colName.innerText = 'netflix verContenidos (do: + isKindOf:)';
+    activeOpBadge.innerText = 'Punto 11: isKindOf: (Polimorfismo Visual)';
+
+    let lines = ['--- CATÁLOGO COMPLETO (ATRIBUTOS) ---'];
+    if (objs.length === 0) {
+        lines.push('La plataforma está vacía.');
+    } else {
+        objs.forEach(obj => {
+            obj.classList.add('highlighted');
+            const cod = obj.getAttribute('data-cod');
+            const tit = obj.getAttribute('data-tit');
+            const gen = obj.getAttribute('data-gen');
+            const anio = obj.getAttribute('data-anio');
+            const tam = obj.getAttribute('data-tam');
+            const calif = obj.getAttribute('data-calif');
+            
+            lines.push(`Cód: ${cod} | ${tit} (${gen})`);
+            lines.push(`   Año: ${anio} | ${tam} MB | Calif: ${calif}`);
+            
+            if (obj.classList.contains('peli')) {
+                const dur = obj.getAttribute('data-dur');
+                const cine = obj.getAttribute('data-cine') === 'true' ? 'Sí' : 'No';
+                lines.push(`   -&gt; PELÍCULA | Duración: ${dur} min | En Cine: ${cine}`);
+            } else if (obj.classList.contains('serie')) {
+                const temp = obj.getAttribute('data-temp');
+                const fin = obj.getAttribute('data-fin') === 'true' ? 'Sí' : 'No';
+                lines.push(`   -&gt; SERIE | Temporadas: ${temp} | Finalizada: ${fin}`);
+            }
+            lines.push(''); // Salto de línea
+        });
+    }
+    transcriptOut.innerHTML = lines.join('<br>');
+}
+
+// PUNTO 12: Mostrar SOLO Películas
+function runPunto12() {
+    mountBoardUnder(12);
+    cleanVisualStates();
+    const objs = getVisibleObjects();
+    colName.innerText = 'colFil (select: [:c | c isKindOf: Pelicula])';
+    activeOpBadge.innerText = 'Punto 12: select: + isKindOf: Pelicula';
+
+    let lines = ['--- TODAS LAS PELÍCULAS ---'];
+    objs.forEach(obj => {
+        if (obj.classList.contains('peli')) {
+            obj.classList.add('highlighted');
+            const cod = obj.getAttribute('data-cod');
+            const tit = obj.getAttribute('data-tit');
+            const gen = obj.getAttribute('data-gen');
+            const anio = obj.getAttribute('data-anio');
+            const tam = obj.getAttribute('data-tam');
+            const calif = obj.getAttribute('data-calif');
+            const dur = obj.getAttribute('data-dur');
+            const cine = obj.getAttribute('data-cine') === 'true' ? 'Sí' : 'No';
+
+            lines.push(`Cód: ${cod} | ${tit} (${gen})`);
+            lines.push(`   Año: ${anio} | ${tam} MB | Calif: ${calif}`);
+            lines.push(`   -&gt; PELÍCULA | Duración: ${dur} min | En Cine: ${cine}`);
+            lines.push('');
+        } else {
+            obj.classList.add('dimmed');
+        }
+    });
+    transcriptOut.innerHTML = lines.join('<br>');
+}
+
+// PUNTO 13: Mostrar SOLO Series
+function runPunto13() {
+    mountBoardUnder(13);
+    cleanVisualStates();
+    const objs = getVisibleObjects();
+    colName.innerText = 'colFil (select: [:c | c isKindOf: Serie])';
+    activeOpBadge.innerText = 'Punto 13: select: + isKindOf: Serie';
+
+    let lines = ['--- TODAS LAS SERIES ---'];
+    objs.forEach(obj => {
+        if (obj.classList.contains('serie')) {
+            obj.classList.add('highlighted');
+            const cod = obj.getAttribute('data-cod');
+            const tit = obj.getAttribute('data-tit');
+            const gen = obj.getAttribute('data-gen');
+            const anio = obj.getAttribute('data-anio');
+            const tam = obj.getAttribute('data-tam');
+            const calif = obj.getAttribute('data-calif');
+            const temp = obj.getAttribute('data-temp');
+            const fin = obj.getAttribute('data-fin') === 'true' ? 'Sí' : 'No';
+
+            lines.push(`Cód: ${cod} | ${tit} (${gen})`);
+            lines.push(`   Año: ${anio} | ${tam} MB | Calif: ${calif}`);
+            lines.push(`   -&gt; SERIE | Temporadas: ${temp} | Finalizada: ${fin}`);
+            lines.push('');
+        } else {
+            obj.classList.add('dimmed');
+        }
+    });
+    transcriptOut.innerHTML = lines.join('<br>');
 }
 
 // Al cargar la página, acopla el simulador debajo del Punto 1

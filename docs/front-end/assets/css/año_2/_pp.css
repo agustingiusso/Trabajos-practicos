@@ -264,7 +264,7 @@ body.paradigmas-page {
     font-family: monospace;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .platform-status-header {
@@ -321,6 +321,7 @@ body.paradigmas-page {
 
 .capacity-bar-wrapper {
     font-size: 0.8rem;
+    margin-top: auto;
 }
 
 .capacity-labels {

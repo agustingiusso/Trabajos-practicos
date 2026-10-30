@@ -104,3 +104,27 @@ code.language-c .hl-bracket-3 { color: #0550ae; } /* Nivel 3 (Azul intenso) */
 [data-theme="dark"] code.language-c .hl-bracket-1 { color: #ffd700; } /* Nivel 1 (Dorado) */
 [data-theme="dark"] code.language-c .hl-bracket-2 { color: #da70d6; } /* Nivel 2 (Orquídea/Rosa) */
 [data-theme="dark"] code.language-c .hl-bracket-3 { color: #179fff; } /* Nivel 3 (Azul) */
+
+/* SCROLLBAR PROFESIONAL PARA CÓDIGO */
+.code-block pre::-webkit-scrollbar,
+.code-box pre::-webkit-scrollbar {
+    height: 8px; 
+}
+
+.code-block pre::-webkit-scrollbar-track,
+.code-box pre::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+.code-block pre::-webkit-scrollbar-thumb,
+.code-box pre::-webkit-scrollbar-thumb {
+    background-color: var(--table-border-color); 
+    border-radius: 8px;
+    /* El borde transparente actúa como un margen interno invisible para que flote */
+    border: 2px solid var(--code-bg); 
+}
+
+.code-block pre::-webkit-scrollbar-thumb:hover,
+.code-box pre::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-muted); 
+}
