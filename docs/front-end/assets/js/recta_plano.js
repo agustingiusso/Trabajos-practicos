@@ -1,35 +1,28 @@
-/**
- * Archivo: recta_plano.js
- * Optimización: Rendimiento con requestAnimationFrame y MathJax asíncrono.
- */
-
 (function() {
-    // Variables locales
     let rpChart2D = null;
-    let rpColors = {}; // Caché de colores para no consultar el DOM a cada rato
-    let isUpdating = false; // Bandera para rendimiento (Throttle)
+    let rpColors = {};
+    let isUpdating = false;
+
+    const X_VALS = [0, 10, 20, 30, 40, 50];
+    const Y_VALS_3D = [0, 20, 40, 60, 80, 100];
 
     document.addEventListener('DOMContentLoaded', () => {
         const canvas2D = document.getElementById('grafico2D');
         const container3D = document.getElementById('grafico3D');
-
-        // Si no existen los contenedores, salimos (evita errores en otras páginas)
         if (!canvas2D || !container3D) return;
 
-        initRPApp();
+        initRPApp(canvas2D, container3D);
     });
 
-    function initRPApp() {
-        // Referencias UI
+    function initRPApp(canvas2D, container3D) {
         const ui = {
-            // 2D Controls
+            ctx2D: canvas2D.getContext('2d'),
+            container3D,
             sliderM: document.getElementById('slider-m'),
             sliderD: document.getElementById('slider-d'),
             valM: document.getElementById('val-m'),
             valD: document.getElementById('val-d'),
             calculoBox: document.getElementById('calculo-2d'),
-
-            // 3D Controls
             sliderA: document.getElementById('slider-A'),
             sliderB: document.getElementById('slider-B'),
             sliderDelta: document.getElementById('slider-delta'),
@@ -38,10 +31,8 @@
             valDelta: document.getElementById('val-delta')
         };
 
-        // 1. Cargar colores iniciales
         updateRPThemeColors();
 
-        // 2. Función maestra de actualización (Optimizada)
         const requestUpdate = () => {
             if (!isUpdating) {
                 isUpdating = true;
@@ -53,99 +44,72 @@
             }
         };
 
-        // 3. Listeners (Unificados)
-        const inputs = [
-            ui.sliderM, ui.sliderD, 
-            ui.sliderA, ui.sliderB, ui.sliderDelta
-        ];
-
-        inputs.forEach(input => {
-            if(input) input.addEventListener('input', requestUpdate);
+        [ui.sliderM, ui.sliderD, ui.sliderA, ui.sliderB, ui.sliderDelta].forEach(input => {
+            input?.addEventListener('input', requestUpdate);
         });
 
-        // 4. Render inicial
         requestUpdate();
 
-        // 5. Responsive y Tema
         window.addEventListener('resize', () => {
-            const container3D = document.getElementById('grafico3D');
-            if(container3D && window.Plotly) Plotly.Plots.resize(container3D);
+            if (window.Plotly) Plotly.Plots.resize(container3D);
         });
 
-        // Observador de cambio de tema (Claro/Oscuro)
         new MutationObserver(() => {
             updateRPThemeColors();
-            requestUpdate(); // Redibujar con nuevos colores
+            requestUpdate();
         }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     }
 
-    // --- GESTIÓN DE COLORES (Caché) ---
     function updateRPThemeColors() {
         const style = getComputedStyle(document.body);
+        const accent = style.getPropertyValue('--color-algebra').trim() || '#f1c40f';
         rpColors = {
-            accent: style.getPropertyValue('--color-algebra').trim() || '#f1c40f',
+            accent,
             text: style.getPropertyValue('--text-color').trim() || '#333',
             grid: style.getPropertyValue('--table-border-color').trim() || '#ccc',
-            // Versión transparente del color de acento
-            fill: (style.getPropertyValue('--color-algebra').trim() || '#f1c40f') + '33' 
+            fill: accent + '33'
         };
     }
 
-    // --- GRÁFICO 2D Y FÓRMULAS ---
     function updateRPChart2D(ui) {
         if (!ui.sliderM) return;
 
         const m = parseFloat(ui.sliderM.value);
         const d = parseFloat(ui.sliderD.value);
 
-        // Actualizar textos de valores
-        if(ui.valM) ui.valM.textContent = m.toFixed(1);
-        if(ui.valD) ui.valD.textContent = d.toFixed(0);
+        if (ui.valM) ui.valM.textContent = m.toFixed(1);
+        if (ui.valD) ui.valD.textContent = d.toFixed(0);
 
-        // --- MATHJAX (Fórmula Dinámica) ---
         if (ui.calculoBox) {
-            const T_limit = 10;
-            let res = (T_limit - d) / m;
-            let txtRes = (res < 0) ? "\\text{Imposible}" : (!isFinite(res) ? "\\infty" : `${res.toFixed(1)}`);
-            
-            // Construir LaTeX
+            const res = (10 - d) / m;
+            const txtRes = res < 0 ? "\\text{Imposible}" : (!isFinite(res) ? "\\infty" : res.toFixed(1));
             const latex = `$$ x = \\frac{10 - ${d}}{${m}} = \\mathbf{${txtRes}} $$`;
-            
-            // Renderizado seguro (Solo si el contenido cambió)
-            if (ui.calculoBox.getAttribute('data-last-latex') !== latex) {
+
+            if (ui.calculoBox.dataset.lastLatex !== latex) {
                 ui.calculoBox.innerHTML = latex;
-                ui.calculoBox.setAttribute('data-last-latex', latex);
-                
-                if (window.MathJax && MathJax.typesetPromise) {
-                    MathJax.typesetPromise([ui.calculoBox]).catch(() => {});
-                }
+                ui.calculoBox.dataset.lastLatex = latex;
+                window.MathJax?.typesetPromise?.([ui.calculoBox]).catch(() => {});
             }
         }
 
-        // --- CHART.JS (Gráfico) ---
-        const xVals = [0, 10, 20, 30, 40, 50];
-        const yVals = xVals.map(x => m * x + d);
-        const ctx = document.getElementById('grafico2D').getContext('2d');
+        const yVals = X_VALS.map(x => m * x + d);
 
         if (rpChart2D) {
-            // Actualización eficiente (sin recrear el gráfico)
-            rpChart2D.data.datasets[0].data = yVals;
-            rpChart2D.data.datasets[0].label = `T = ${m.toFixed(1)}x + ${d}`;
-            rpChart2D.data.datasets[0].borderColor = rpColors.accent;
-            rpChart2D.data.datasets[0].backgroundColor = rpColors.fill;
-            
-            // Actualizar colores de ejes si cambió el tema
-            rpChart2D.options.scales.x.ticks.color = rpColors.text;
-            rpChart2D.options.scales.y.ticks.color = rpColors.text;
-            rpChart2D.options.scales.x.grid.color = rpColors.grid;
-            rpChart2D.options.scales.y.grid.color = rpColors.grid;
-            rpChart2D.update('none'); // 'none' para animación fluida en sliders
+            const dataset = rpChart2D.data.datasets[0];
+            dataset.data = yVals;
+            dataset.label = `T = ${m.toFixed(1)}x + ${d}`;
+            dataset.borderColor = rpColors.accent;
+            dataset.backgroundColor = rpColors.fill;
+
+            const { x, y } = rpChart2D.options.scales;
+            x.ticks.color = y.ticks.color = rpColors.text;
+            x.grid.color = y.grid.color = rpColors.grid;
+            rpChart2D.update('none');
         } else {
-            // Creación inicial
-            rpChart2D = new Chart(ctx, {
+            rpChart2D = new Chart(ui.ctx2D, {
                 type: 'line',
                 data: {
-                    labels: xVals,
+                    labels: X_VALS,
                     datasets: [{
                         label: `T = ${m}x + ${d}`,
                         data: yVals,
@@ -158,7 +122,7 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    animation: { duration: 0 }, // Desactivar animación pesada al crear
+                    animation: { duration: 0 },
                     scales: {
                         x: { title: { display: true, text: 'Usuarios (x)', color: rpColors.text }, ticks: { color: rpColors.text }, grid: { color: rpColors.grid } },
                         y: { title: { display: true, text: 'Tiempo (T)', color: rpColors.text }, ticks: { color: rpColors.text }, grid: { color: rpColors.grid }, beginAtZero: true }
@@ -169,45 +133,41 @@
         }
     }
 
-    // --- GRÁFICO 3D (PLOTLY) ---
     function updateRPChart3D(ui) {
-        const container = document.getElementById('grafico3D');
-        if (!container || !ui.sliderA || !window.Plotly) return;
+        if (!ui.container3D || !ui.sliderA || !window.Plotly) return;
 
         const A = parseFloat(ui.sliderA.value);
         const B = parseFloat(ui.sliderB.value);
         const delta = parseFloat(ui.sliderDelta.value);
 
-        if(ui.valA) ui.valA.textContent = A.toFixed(1);
-        if(ui.valB) ui.valB.textContent = B.toFixed(1);
-        if(ui.valDelta) ui.valDelta.textContent = delta.toFixed(0);
+        if (ui.valA) ui.valA.textContent = A.toFixed(1);
+        if (ui.valB) ui.valB.textContent = B.toFixed(1);
+        if (ui.valDelta) ui.valDelta.textContent = delta.toFixed(0);
 
-        // Generar datos de superficie
-        const xVals = [0, 10, 20, 30, 40, 50];
-        const yVals = [0, 20, 40, 60, 80, 100];
-        const zVals = yVals.map(y => xVals.map(x => A * x + B * y + delta));
+        const zVals = Y_VALS_3D.map(y => X_VALS.map(x => A * x + B * y + delta));
 
         const data = [{
             type: 'surface',
-            x: xVals, y: yVals, z: zVals,
+            x: X_VALS, y: Y_VALS_3D, z: zVals,
             colorscale: 'Viridis', showscale: false, opacity: 0.9,
             contours: { z: { show: true, usecolormap: true, highlightcolor: "#42f462", project: { z: true } } }
         }];
+
+        const axisStyle = (title) => ({ title, color: rpColors.text, tickcolor: rpColors.text });
 
         const layout = {
             title: { text: `z = ${A}x + ${B}y + ${delta}`, font: { color: rpColors.text } },
             autosize: true,
             margin: { l: 0, r: 0, b: 0, t: 30 },
-            paper_bgcolor: 'transparent', 
+            paper_bgcolor: 'transparent',
             plot_bgcolor: 'transparent',
             scene: {
-                xaxis: { title: 'Usuarios', color: rpColors.text, tickcolor: rpColors.text },
-                yaxis: { title: 'Archivos', color: rpColors.text, tickcolor: rpColors.text },
-                zaxis: { title: 'Tiempo', color: rpColors.text, tickcolor: rpColors.text }
+                xaxis: axisStyle('Usuarios'),
+                yaxis: axisStyle('Archivos'),
+                zaxis: axisStyle('Tiempo')
             }
         };
 
-        Plotly.react(container, data, layout, { responsive: true, displayModeBar: false });
+        Plotly.react(ui.container3D, data, layout, { responsive: true, displayModeBar: false });
     }
-
 })();

@@ -2,7 +2,7 @@ window.MathJax = {
     tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true //
+        processEscapes: true
     },
     options: {
         skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
@@ -10,12 +10,12 @@ window.MathJax = {
     svg: { fontCache: 'global' }
 };
 
-(function() {
+(() => {
     if (document.getElementById('MathJax-script')) return;
-
-    var script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-    script.id = 'MathJax-script';
-    script.async = true;
+    const script = Object.assign(document.createElement('script'), {
+        id: 'MathJax-script',
+        src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        async: true
+    });
     document.head.appendChild(script);
 })();

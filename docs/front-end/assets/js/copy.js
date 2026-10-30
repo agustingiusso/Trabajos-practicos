@@ -1,43 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const copyButtons = document.querySelectorAll('.btn-copy');
+    const toggleUI = (btn, copyIcon, checkIcon, btnText, isCopied, text) => {
+        btn.classList.toggle('copied', isCopied);
+        if (copyIcon) copyIcon.style.display = isCopied ? 'none' : 'inline-block';
+        if (checkIcon) checkIcon.style.display = isCopied ? 'inline-block' : 'none';
+        if (btnText) btnText.innerText = text;
+    };
 
-    copyButtons.forEach(button => {
+    document.querySelectorAll('.btn-copy').forEach(button => {
         button.addEventListener('click', async () => {
-            // 1. Obtener el texto del código
-            const code = button.closest('.code-box').querySelector('code').innerText;
-            
-            // 2. Elementos internos para animar
+            const codeEl = button.closest('.code-box')?.querySelector('code');
+            if (!codeEl) return;
+
             const copyIcon = button.querySelector('.copy-icon');
             const checkIcon = button.querySelector('.check-icon');
             const btnText = button.querySelector('span');
-            const originalText = btnText ? btnText.innerText : 'Copiar';
+            const originalText = button.dataset.origText || (btnText ? btnText.innerText : 'Copiar');
+            button.dataset.origText = originalText;
+
+            clearTimeout(button._copyTimer);
 
             try {
-                // 3. Copiar al portapapeles
-                await navigator.clipboard.writeText(code);
+                await navigator.clipboard.writeText(codeEl.innerText);
+                toggleUI(button, copyIcon, checkIcon, btnText, true, 'Copiado!');
 
-                // --- ESTADO DE ÉXITO ---
-                button.classList.add('copied');
-                
-                // Intercambiar iconos y texto
-                if (copyIcon) copyIcon.style.display = 'none';
-                if (checkIcon) checkIcon.style.display = 'inline-block';
-                if (btnText) btnText.innerText = 'Copiado!';
-
-                // 4. Restaurar estado original después de 2 seg
-                setTimeout(() => {
-                    button.classList.remove('copied');
-                    if (copyIcon) copyIcon.style.display = 'inline-block';
-                    if (checkIcon) checkIcon.style.display = 'none';
-                    if (btnText) btnText.innerText = originalText;
+                button._copyTimer = setTimeout(() => {
+                    toggleUI(button, copyIcon, checkIcon, btnText, false, originalText);
                 }, 2000);
-
             } catch (err) {
                 console.error('Error al copiar:', err);
-                
-                // --- ESTADO DE ERROR ---
                 button.classList.add('error');
-                setTimeout(() => button.classList.remove('error'), 2000);
+                button._copyTimer = setTimeout(() => button.classList.remove('error'), 2000);
             }
         });
     });

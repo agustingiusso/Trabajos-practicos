@@ -1,80 +1,64 @@
-// Archivo: graficos_fourier.js
-// Desc: Funciones reutilizables para dibujar sumas parciales de Fourier en Canvas.
-
 const FourierPlots = {
-    // Colores para S1 (Azul), S2 (Verde), S3 (Rojo)
     colors: ['#3b82f6', '#10b981', '#ef4444'],
 
-    /**
-     * Dibuja una serie de Fourier en un canvas.
-     * @param {string} canvasId - El ID del elemento <canvas>
-     * @param {number} a0 - Coeficiente a0
-     * @param {function} anFunc - Función que retorna el coeficiente a_n dado n
-     * @param {function} bnFunc - Función que retorna el coeficiente b_n dado n
-     * @param {number[]} nTermsList - Array con la cantidad de términos para S1, S2, S3 (ej: [1, 3, 5])
-     * @param {number} xMin - Valor mínimo de X (matemático)
-     * @param {number} xMax - Valor máximo de X (matemático)
-     * @param {number} yMin - Valor mínimo de Y (para escalar el gráfico)
-     * @param {number} yMax - Valor máximo de Y (para escalar el gráfico)
-     * @param {number} L - Semiperíodo de la función (por defecto 1)
-     */
-    plotSeries: function(canvasId, a0, anFunc, bnFunc, nTermsList, xMin, xMax, yMin, yMax, L = 1) {
+    plotSeries(canvasId, a0, anFunc, bnFunc, nTermsList, xMin, xMax, yMin, yMax, L = 1) {
         const canvas = document.getElementById(canvasId);
-        if (!canvas) return; // Si no existe el canvas en la página actual, ignora.
+        if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
-        const width = canvas.width;
-        const height = canvas.height;
-        
-        // Limpiar fondo
+        const { width, height } = canvas;
+        const xRange = xMax - xMin;
+        const yRange = yMax - yMin;
+        const xScale = xRange / width;
+        const yScale = height / yRange;
+        const baseA0 = a0 / 2;
+        const w0 = Math.PI / L;
+
         ctx.clearRect(0, 0, width, height);
-        
+
         // Dibujar Ejes X e Y
-        ctx.strokeStyle = '#cbd5e1'; 
+        ctx.strokeStyle = '#cbd5e1';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        
-        // Mapeo del origen Y (0 matemático) al canvas
-        const originY = height - ((0 - yMin) / (yMax - yMin)) * height;
-        // Mapeo del origen X (0 matemático) al canvas
-        const originX = ((0 - xMin) / (xMax - xMin)) * width;
 
-        // Trazar Eje X
+        const originY = height + yMin * yScale;
+        const originX = (-xMin / xRange) * width;
+
         if (originY >= 0 && originY <= height) {
-            ctx.moveTo(0, originY); 
+            ctx.moveTo(0, originY);
             ctx.lineTo(width, originY);
         }
-        // Trazar Eje Y
         if (originX >= 0 && originX <= width) {
-            ctx.moveTo(originX, 0); 
+            ctx.moveTo(originX, 0);
             ctx.lineTo(originX, height);
         }
         ctx.stroke();
 
-        // Calcular la frecuencia base
-        const w0 = Math.PI / L;
+        // Precalcular coeficientes a_n y b_n una sola vez hasta el máximo N requerido
+        const maxTotalN = Math.max(...nTermsList);
+        const anCache = new Float64Array(maxTotalN + 1);
+        const bnCache = new Float64Array(maxTotalN + 1);
+        for (let n = 1; n <= maxTotalN; n++) {
+            anCache[n] = anFunc(n);
+            bnCache[n] = bnFunc(n);
+        }
 
-        // Graficar cada suma parcial especificada en nTermsList
+        // Graficar cada suma parcial
         nTermsList.forEach((maxN, index) => {
             ctx.beginPath();
             ctx.strokeStyle = this.colors[index % this.colors.length];
             ctx.lineWidth = 1.5;
-            
+
             for (let px = 0; px < width; px++) {
-                // Mapear píxel al valor X matemático
-                let x = xMin + (px / width) * (xMax - xMin); 
-                let y = a0 / 2;
-                
-                // Calcular la sumatoria
+                const wx = w0 * (xMin + px * xScale);
+                let y = baseA0;
+
                 for (let n = 1; n <= maxN; n++) {
-                    let an = anFunc(n);
-                    let bn = bnFunc(n);
-                    y += an * Math.cos(n * w0 * x) + bn * Math.sin(n * w0 * x);
+                    const angle = n * wx;
+                    y += anCache[n] * Math.cos(angle) + bnCache[n] * Math.sin(angle);
                 }
-                
-                // Mapear el valor Y matemático al píxel Y
-                let py = height - ((y - yMin) / (yMax - yMin)) * height;
-                
+
+                const py = height - (y - yMin) * yScale;
                 if (px === 0) ctx.moveTo(px, py);
                 else ctx.lineTo(px, py);
             }
@@ -82,34 +66,21 @@ const FourierPlots = {
         });
     },
 
-    // Inicializador específico para el TP1 de Análisis Numérico
-    initTP1: function() {
-        // a) Onda Cuadrada: términos impares (1, 3, 5)
-        this.plotSeries('canvas-f-a', 0, (n)=>0, (n)=> (2/(n*Math.PI))*(1 - Math.pow(-1, n)), [1, 3, 5], -2, 2, -2, 2);
-        
-        // b) Pulso: términos impares (1, 3, 5)
-        this.plotSeries('canvas-f-b', 1, (n)=> (2/(n*Math.PI))*Math.sin(n*Math.PI/2), (n)=>0, [1, 3, 5], -2, 2, -0.5, 1.5);
-        
-        // c) f(x)=x: términos (1, 2, 3)
-        this.plotSeries('canvas-f-c', 0, (n)=>0, (n)=> 2*Math.pow(-1, n+1)/(n*Math.PI), [1, 2, 3], -2, 2, -1.5, 1.5);
-        
-        // d) f(x)=x-1: términos (1, 2, 3)
-        this.plotSeries('canvas-f-d', -2, (n)=>0, (n)=> 2*Math.pow(-1, n+1)/(n*Math.PI), [1, 2, 3], -2, 2, -2.5, 0.5);
-        
-        // e) f(x)=|x|: términos impares (1, 3, 5)
-        this.plotSeries('canvas-f-e', 1, (n)=> (2/Math.pow(n*Math.PI, 2))*(Math.pow(-1, n) - 1), (n)=>0, [1, 3, 5], -2, 2, -0.2, 1.2);
-        
-        // f) f(x)=x^2: términos (1, 2, 3)
-        this.plotSeries('canvas-f-f', 2/3, (n)=> 4*Math.pow(-1, n)/Math.pow(n*Math.PI, 2), (n)=>0, [1, 2, 3], -2, 2, -0.2, 1.2);
-        
-        // g) f(x)=3x-2x^2: términos (1, 2, 3)
-        this.plotSeries('canvas-f-g', -4/3, (n)=> -8*Math.pow(-1, n)/Math.pow(n*Math.PI, 2), (n)=> 6*Math.pow(-1, n+1)/(n*Math.PI), [1, 2, 3], -2, 2, -5, 2);
+    initTP1() {
+        const alt = (n) => (n % 2 === 0 ? 1 : -1); // Equivalente rápido a (-1)^n
+        const zero = () => 0;
+
+        this.plotSeries('canvas-f-a', 0, zero, (n) => (2 / (n * Math.PI)) * (1 - alt(n)), [1, 3, 5], -2, 2, -2, 2);
+        this.plotSeries('canvas-f-b', 1, (n) => (2 / (n * Math.PI)) * Math.sin((n * Math.PI) / 2), zero, [1, 3, 5], -2, 2, -0.5, 1.5);
+        this.plotSeries('canvas-f-c', 0, zero, (n) => (2 * -alt(n)) / (n * Math.PI), [1, 2, 3], -2, 2, -1.5, 1.5);
+        this.plotSeries('canvas-f-d', -2, zero, (n) => (2 * -alt(n)) / (n * Math.PI), [1, 2, 3], -2, 2, -2.5, 0.5);
+        this.plotSeries('canvas-f-e', 1, (n) => (2 / (n * Math.PI) ** 2) * (alt(n) - 1), zero, [1, 3, 5], -2, 2, -0.2, 1.2);
+        this.plotSeries('canvas-f-f', 2 / 3, (n) => (4 * alt(n)) / (n * Math.PI) ** 2, zero, [1, 2, 3], -2, 2, -0.2, 1.2);
+        this.plotSeries('canvas-f-g', -4 / 3, (n) => (-8 * alt(n)) / (n * Math.PI) ** 2, (n) => (6 * -alt(n)) / (n * Math.PI), [1, 2, 3], -2, 2, -5, 2);
     }
 };
 
-// Se ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    // Si estamos en la página del TP1 (verifica que exista un canvas de ese TP)
     if (document.getElementById('canvas-f-a')) {
         FourierPlots.initTP1();
     }

@@ -1,9 +1,6 @@
-/**
- * Resaltador de sintaxis para lenguaje C (Estilo VS Code Dark)
- * Compatible con copy.js y navegación por slides/partes.
- */
 document.addEventListener('DOMContentLoaded', () => {
     const codeBlocks = document.querySelectorAll('pre code.language-c');
+    if (codeBlocks.length === 0) return;
 
     const KEYWORDS = new Set([
         'int', 'float', 'double', 'char', 'void', 'long', 'short',
@@ -12,52 +9,34 @@ document.addEventListener('DOMContentLoaded', () => {
         'do', 'return', 'break', 'continue', 'sizeof', 'static', 'NULL'
     ]);
 
-    const escapeHTML = (str) =>
-        str.replace(/&/g, '&amp;')
-           .replace(/</g, '&lt;')
-           .replace(/>/g, '&gt;');
+    const BRACKET_CLASSES = ['hl-bracket-1', 'hl-bracket-2', 'hl-bracket-3'];
+    const ESCAPE_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
+    const escapeHTML = (str) => str.replace(/[&<>]/g, ch => ESCAPE_MAP[ch]);
 
-    // Resalta especificadores (%d, %f, %.2f, %s, %c) y escapes (\n, \t) dentro de strings
-    const highlightStringContent = (rawStr) => {
-        const escaped = escapeHTML(rawStr);
-        return escaped.replace(
-            /(%(?:\.\d+)?[dfscuxXegp%]|\\[ntrvba'"\\0])/g,
-            '<span class="hl-format">$1</span>'
-        );
-    };
+    const FORMAT_REGEX = /(%(?:\.\d+)?[dfscuxXegp%]|\\[ntrvba'"\\0])/g;
+    const highlightStringContent = (rawStr) =>
+        escapeHTML(rawStr).replace(FORMAT_REGEX, '<span class="hl-format">$1</span>');
+
+    const TOKEN_REGEX = new RegExp([
+        '(\\/\\*[\\s\\S]*?\\*\\/|\\/\\/.*)',
+        '(^[ \\t]*#\\s*include\\b|[ \\t]*#\\s*define\\b)',
+        '(<[a-zA-Z0-9_\\.]+>)',
+        '("(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\')',
+        '\\b(\\d+(?:\\.\\d+)?f?)\\b',
+        '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*\\[)',
+        '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*\\()',
+        '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b',
+        '([{}()\\[\\]])',
+        '(&&|\\|\\||==|!=|<=|>=|\\+\\+|--|[&*+\\-\\/%<>=!])'
+    ].join('|'), 'gm');
 
     const highlightCCode = (rawCode) => {
         let bracketDepth = 0;
-        const bracketClasses = ['hl-bracket-1', 'hl-bracket-2', 'hl-bracket-3'];
-
-        // Expresión regular maestra de una sola pasada
-        const tokenRegex = new RegExp([
-            '(\\/\\*[\\s\\S]*?\\*\\/|\\/\\/.*)',                       // 1: Comentarios
-            '(^[ \\t]*#\\s*include\\b|[ \\t]*#\\s*define\\b)',         // 2: Directivas (#include, #define)
-            '(<[a-zA-Z0-9_\\.]+>)',                                    // 3: Librerías (<stdio.h>)
-            '("(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\')',        // 4: Strings y chars
-            '\\b(\\d+(?:\\.\\d+)?f?)\\b',                              // 5: Números
-            '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*\\[)',               // 6: Identificador de arreglo (ej: nombre[50])
-            '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*\\()',               // 7: Funciones (main, printf, scanf)
-            '\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b',                          // 8: Keywords o variables normales
-            '([{}()\\[\\]])',                                          // 9: Llaves, paréntesis y corchetes
-            '(&&|\\|\\||==|!=|<=|>=|\\+\\+|--|[&*+\\-\\/%<>=!])'       // 10: Operadores (&, =, +, etc.)
-        ].join('|'), 'gm');
-
         let lastTokenWasType = false;
 
-        return rawCode.replace(tokenRegex, (
-            match,
-            comment,
-            directive,
-            headerLib,
-            stringLit,
-            number,
-            arrayIdent,
-            funcIdent,
-            word,
-            bracket,
-            operator
+        return rawCode.replace(TOKEN_REGEX, (
+            match, comment, directive, headerLib, stringLit,
+            number, arrayIdent, funcIdent, word, bracket, operator
         ) => {
             if (comment) {
                 lastTokenWasType = false;
@@ -91,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     lastTokenWasType = false;
                     return `<span class="hl-keyword">${escapeHTML(funcIdent)}</span>`;
                 }
-                // Si viene precedido de un tipo (ej: int main) o es main, usa naranja (.hl-def)
                 const cls = (lastTokenWasType || funcIdent === 'main') ? 'hl-def' : 'hl-func';
                 lastTokenWasType = false;
                 return `<span class="${cls}">${escapeHTML(funcIdent)}</span>`;
@@ -107,14 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bracket) {
                 lastTokenWasType = false;
                 if (bracket === '(' || bracket === '{' || bracket === '[') {
-                    const cls = bracketClasses[bracketDepth % 3];
+                    const cls = BRACKET_CLASSES[bracketDepth % 3];
                     bracketDepth++;
                     return `<span class="${cls}">${escapeHTML(bracket)}</span>`;
-                } else {
-                    bracketDepth = Math.max(0, bracketDepth - 1);
-                    const cls = bracketClasses[bracketDepth % 3];
-                    return `<span class="${cls}">${escapeHTML(bracket)}</span>`;
                 }
+                bracketDepth = Math.max(0, bracketDepth - 1);
+                return `<span class="${BRACKET_CLASSES[bracketDepth % 3]}">${escapeHTML(bracket)}</span>`;
             }
             if (operator) {
                 lastTokenWasType = false;
@@ -124,8 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    codeBlocks.forEach((block) => {
-        const rawText = block.textContent;
-        block.innerHTML = highlightCCode(rawText);
+    codeBlocks.forEach(block => {
+        block.innerHTML = highlightCCode(block.textContent);
     });
 });
