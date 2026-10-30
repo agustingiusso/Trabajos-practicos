@@ -1,5 +1,5 @@
-/* ===== Grillas (Contenedores) ===== */
-.materias-grid, .trabajos-grid {
+.materias-grid,
+.trabajos-grid {
     display: flex; 
     flex-wrap: wrap; 
     justify-content: center;
@@ -9,8 +9,9 @@
     margin: 2rem auto;
 }
 
-/* ===== Tarjetas Base (Estilos Compartidos) ===== */
-.materia-card, .trabajo-card, .punto-card {
+.materia-card,
+.trabajo-card,
+.punto-card {
     background: var(--card-bg);
     border-radius: var(--border-radius);
     padding: 1.5rem;
@@ -20,19 +21,19 @@
     transition: all 0.3s ease;
 }
 
-/* Tarjetas Interactivas */
-.materia-card, .trabajo-card {
+.materia-card,
+.trabajo-card {
     text-align: center; 
     text-decoration: none; 
     color: inherit;
     overflow: hidden;
 }
-.materia-card:hover, .trabajo-card:hover {
+.materia-card:hover,
+.trabajo-card:hover {
     transform: translateY(-5px); 
     background: var(--card-hover);
 }
 
-/* --- Específicos: Materia / Año --- */
 .materia-card {
     flex: 1 1 300px; 
     max-width: 400px; 
@@ -44,15 +45,14 @@
     animation: fadeInUp 0.5s ease-out;
 }
 
-/* --- Específicos: Trabajo Práctico --- */
 .trabajo-card {
     flex: 0 1 350px; 
     border-left: 4px solid var(--theme-color, #ccc);
 }
 .trabajo-card:only-child { flex: 1 0 auto; max-width: 100%; }
 
-/* Línea Inferior Animada */
-.materia-card::after, .trabajo-card::after {
+.materia-card::after,
+.trabajo-card::after {
     content: ""; 
     position: absolute; 
     bottom: 0; 
@@ -63,13 +63,13 @@
     transform-origin: right; 
     transition: transform 0.3s ease;
 }
-.materia-card:hover::after, .trabajo-card:hover::after {
+.materia-card:hover::after,
+.trabajo-card:hover::after {
     transform: scaleX(1); 
     transform-origin: left;
 }
 .trabajo-card::after { background: var(--accent); }
 
-/* Iconos */
 .materia-card .materia-icon {
     width: 80px; 
     height: 80px; 
@@ -84,21 +84,32 @@
     transform: scale(1.05);
 }
 
-/* ===== CONFIGURACIÓN DE COLORES (Unificada) ===== */
+/* Mapeo de Colores */
 .card-anio-1 { --local-color: #3498db; }
-.card-anio-2 { --local-color: #2ecc71; }
-.card-anio-3 { --local-color: #f1c40f; }
+.card-anio-2,
+.card-fisica { --local-color: #2ecc71; }
+.card-anio-3,
+.card-algebra { --local-color: #f1c40f; }
 .card-anio-4 { --local-color: #e67e22; }
 .card-anio-5 { --local-color: #9b59b6; }
 .card-algoritmos { --local-color: #e74c3c; }
-.card-fisica { --local-color: #2ecc71; }
-.card-algebra { --local-color: #F1C40F; }
+.card-fisicaII { --local-color: var(--color-fisicaII); }
+.card-sociedad { --local-color: var(--color-sociedad); }
+.card-sintaxis { --local-color: var(--color-sintaxis); }
+.card-probabilidad { --local-color: var(--color-probabilidad); }
+.card-numerico { --local-color: var(--color-numerico); }
+.card-so { --local-color: var(--color-so); }
+.card-so:hover { --local-color: var(--color-so-dark); }
 
-/* Aplicación de colores */
+.card-so .materia-icon { 
+    stroke: var(--local-color); 
+    color: var(--local-color); 
+    transition: all 0.3s ease;
+}
+
 .materia-card[class*="card-"]::after { background: var(--local-color); }
 .materia-card[class*="card-"] .anio-number { color: var(--local-color); }
 
-/* Hover Effects con color dinámico */
 .materia-card[class*="card-"]:hover {
     box-shadow: 0 10px 20px color-mix(in srgb, var(--local-color), transparent 70%);
 }
@@ -106,7 +117,6 @@
     filter: drop-shadow(0 0 8px color-mix(in srgb, var(--local-color), transparent 60%));
 }
 
-/* Estilos de Número de Año */
 .anio-number {
     font-size: 4rem; 
     font-weight: 800; 
@@ -118,11 +128,9 @@
 }
 .materia-card:hover .anio-number { transform: scale(1.1); }
 
-/* Ajustes Modo Oscuro */
 [data-theme="dark"] .materia-card .materia-icon { stroke-width: 3.2; }
 [data-theme="dark"] .card-algoritmos .materia-icon { filter: brightness(1.3); }
 
-/* ===== Tarjetas de Descripción / Ejercicios ===== */
 .punto-card { max-width: var(--max-width); }
 
 .exercise-description {
@@ -139,55 +147,26 @@
 .exercise-description h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.3rem; }
 .exercise-description p { white-space: pre-line; margin: 0; }
 
-/* ========================================================= */
-/* ===== MAPEOS DE MATERIAS (Personalizados) =============== */
-/* ========================================================= */
-.card-fisicaII { --local-color: var(--color-fisicaII); }
-.card-sociedad { --local-color: var(--color-sociedad); }
-.card-sintaxis { --local-color: var(--color-sintaxis); }
-.card-probabilidad { --local-color: var(--color-probabilidad); }
-.card-numerico { --local-color: var(--color-numerico); }
-
-/* Mapeo Especial para Sistemas Operativos (Terminal Matrix) */
-.card-so { 
-    --local-color: var(--color-so); /* Tu verde oscuro */
-}
-.card-so:hover { 
-    --local-color: var(--color-so-dark); /* Tu verde neón */
-}
-
-/* CORRECCIÓN: Se agrega 'color' para que el 'currentColor' del SVG cambie */
-.card-so .materia-icon { 
-    stroke: var(--local-color); 
-    color: var(--local-color); 
-    transition: all 0.3s ease;
-}
-
-/* ===== HOVERS GLOBALES PARA TRABAJOS PRÁCTICOS ===== */
 body .trabajo-card:hover {
     box-shadow: 0 10px 20px color-mix(in srgb, var(--accent), transparent 70%); 
     border-color: var(--accent);
 }
 
-/* =========================================
-   TARJETAS DE DOCUMENTACIÓN (PDFs ACORDEÓN)
-   ========================================= */
-
-/* Estilos del contenedor principal (Acordeón) */
+/* Acordeón de PDFs */
 .doc-accordion {
     max-width: var(--max-width);
     margin: 0 auto 1.5rem;
     padding: 0 1rem;
-    background: var(--card-bg); /* Fondo de tarjeta para cada unidad */
+    background: var(--card-bg);
     border: var(--card-border);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
+.doc-accordion:first-of-type { margin-top: 2.5rem; }
 
-/* El título donde se hace clic */
 .doc-accordion summary {
-    list-style: none; /* Oculta la flechita nativa del navegador */
+    list-style: none;
     cursor: pointer;
     font-size: 1.5rem;
     color: var(--text-color);
@@ -198,43 +177,26 @@ body .trabajo-card:hover {
     align-items: center;
     transition: color 0.2s ease;
 }
+.doc-accordion summary::-webkit-details-marker { display: none; }
+.doc-accordion summary:hover { color: var(--accent); }
 
-/* Oculta la flecha nativa en WebKit (Chrome/Safari) */
-.doc-accordion summary::-webkit-details-marker {
-    display: none;
-}
-
-.doc-accordion summary:hover {
-    color: var(--accent);
-}
-
-/* Icono de la flecha que agregamos nosotros */
 .accordion-icon {
     font-size: 1.2rem;
     color: var(--accent);
     transition: transform 0.3s ease;
 }
-
-/* Rota la flecha cuando el acordeón está abierto */
-.doc-accordion[open] .accordion-icon {
-    transform: rotate(180deg);
-}
-
-/* Separador cuando está abierto */
+.doc-accordion[open] .accordion-icon { transform: rotate(180deg); }
 .doc-accordion[open] summary {
     border-bottom: 1px solid var(--table-border-color);
     margin-bottom: 1.5rem;
 }
 
-/* Grilla responsive para los PDFs */
 .pdf-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    padding: 1rem;
-    padding-bottom: 2rem;
-    /* Animación suave al abrir */
+    padding: 1rem 1rem 2rem;
     animation: fadeInAccordion 0.4s ease-out;
 }
 
@@ -243,7 +205,6 @@ body .trabajo-card:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Tarjeta individual del PDF */
 .pdf-card {
     width: 140px;
     display: flex;
@@ -253,13 +214,8 @@ body .trabajo-card:hover {
     color: var(--text-color);
     transition: transform 0.3s ease, color 0.3s ease;
 }
+.pdf-card:hover { transform: translateY(-5px); color: var(--accent); }
 
-.pdf-card:hover {
-    transform: translateY(-5px);
-    color: var(--accent);
-}
-
-/* El rectángulo estilo boceto */
 .pdf-icon {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -273,32 +229,16 @@ body .trabajo-card:hover {
     background-color: transparent;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .pdf-card:hover .pdf-icon {
     border-color: var(--accent);
     box-shadow: 0 10px 20px color-mix(in srgb, var(--accent), transparent 80%);
 }
+.pdf-icon i { font-size: 2rem; margin-bottom: 0.5rem; }
+.pdf-icon span { font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
 
-.pdf-icon i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.pdf-icon span {
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Texto del nombre del archivo */
 .pdf-name {
     text-align: center;
     font-size: 0.85rem;
     line-height: 1.3;
     word-break: break-word;
-}
-
-/* Separar el primer acordeón del borde superior del header */
-.doc-accordion:first-of-type {
-    margin-top: 2.5rem;
 }

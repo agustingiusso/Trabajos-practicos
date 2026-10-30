@@ -5,12 +5,7 @@
     overflow: hidden; 
 }
 
-.punto-card p, 
-.punto-card li,
-.exercise-description p,
-.exercise-description li,
-.resolucion-container p,
-.resolucion-container li {
+:is(.punto-card, .exercise-description, .resolucion-container) :is(p, li) {
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -37,30 +32,15 @@ mjx-container[display="true"],
     padding-bottom: 10px;
 }
 
-.formula-responsive::-webkit-scrollbar,
-mjx-container[display="true"]::-webkit-scrollbar,
-.MathJax_Display::-webkit-scrollbar,
-.katex-display::-webkit-scrollbar,
-.list-scroll::-webkit-scrollbar,
-.scroll-wrapper::-webkit-scrollbar {
+:is(.formula-responsive, mjx-container[display="true"], .MathJax_Display, .katex-display, .list-scroll, .scroll-wrapper)::-webkit-scrollbar {
     height: 6px;
 }
 
-.formula-responsive::-webkit-scrollbar-track,
-mjx-container[display="true"]::-webkit-scrollbar-track,
-.MathJax_Display::-webkit-scrollbar-track,
-.katex-display::-webkit-scrollbar-track,
-.list-scroll::-webkit-scrollbar-track,
-.scroll-wrapper::-webkit-scrollbar-track {
+:is(.formula-responsive, mjx-container[display="true"], .MathJax_Display, .katex-display, .list-scroll, .scroll-wrapper)::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.formula-responsive::-webkit-scrollbar-thumb,
-mjx-container[display="true"]::-webkit-scrollbar-thumb,
-.MathJax_Display::-webkit-scrollbar-thumb,
-.katex-display::-webkit-scrollbar-thumb,
-.list-scroll::-webkit-scrollbar-thumb,
-.scroll-wrapper::-webkit-scrollbar-thumb {
+:is(.formula-responsive, mjx-container[display="true"], .MathJax_Display, .katex-display, .list-scroll, .scroll-wrapper)::-webkit-scrollbar-thumb {
     background-color: var(--table-border-color);
     border-radius: 10px;
 }

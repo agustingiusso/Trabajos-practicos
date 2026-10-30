@@ -1,275 +1,332 @@
 .tp-container {
-    max-width: var(--max-width, 1200px); margin: 2rem auto; padding: 0 1rem;
-    display: flex; flex-direction: column; gap: 2rem;
-    
-    /* Variables Locales para dibujos */
     --wood-color: #8B4513;
     --metal-light: #ccc;
     --metal-dark: #555;
     --sensor-bg: #2c3e50;
 }
 
+.tp-container, 
+.lab-algebra-container,
+.pm-main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.tp-container .punto-card,
+.lab-algebra-container .punto-card,
+.pm-main-container .punto-card {
+    width: 100% !important;
+    max-width: none !important;
+}
+
 .tp-container .punto-card { text-align: left; }
 
 .tp-container .main-title {
-    color: var(--color-fisica, #2ecc71); font-size: 1.8rem; font-weight: 700; margin: 0;
+    color: var(--color-fisica, #2ecc71);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
 }
+
 .tp-container .main-subtitle {
-    font-size: 1.1rem; color: var(--color-fisica-dark); margin-top: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--color-fisica-dark);
+    margin-top: 0.5rem;
 }
+
 .tp-container .card-divider {
-    border: 0; height: 1px; background: var(--table-border-color); margin: 1.5rem 0;
+    border: 0;
+    height: 1px;
+    background: var(--table-border-color);
+    margin: 1.5rem 0;
 }
 
 .tp-container .componentes-list { list-style-position: inside; padding-left: 0; }
 .tp-container .componentes-list li { margin-bottom: 0.5rem; color: var(--text-color); }
 
 .tp-container .table-label {
-    margin: 2rem 0 0.5rem; color: var(--color-fisica); font-weight: 600;
+    margin: 2rem 0 0.5rem;
+    color: var(--color-fisica);
+    font-weight: 600;
 }
+
 .tp-container .table-summary td {
-    background-color: var(--formula-bg); font-weight: bold; color: var(--formula-text);
+    background-color: var(--formula-bg);
+    font-weight: bold;
+    color: var(--formula-text);
 }
 
 .tp-container .conclusiones-input, 
 .tp-container .conclusion-text {
-    width: 100%; margin-top: 1rem; padding: 1rem;
-    border-radius: 8px; border: 1px solid var(--table-border-color);
-    background: var(--card-hover); color: var(--text-color);
-    font-family: inherit; resize: vertical; text-align: justify; line-height: 1.6;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--table-border-color);
+    background: var(--card-hover);
+    color: var(--text-color);
+    font-family: inherit;
+    resize: vertical;
+    text-align: justify;
+    line-height: 1.6;
 }
 
 .tp-container .final-result-box {
-    text-align: center; font-size: 1.5rem; font-weight: bold; padding: 1.5rem;
-    border: 2px solid var(--color-fisica); border-radius: 10px;
-    background: var(--card-bg); margin-top: 1rem; color: var(--color-fisica-dark);
-}
-.tp-container .placeholder-val {
-    color: var(--text-muted); border-bottom: 1px dashed var(--text-muted); padding: 0 5px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1.5rem;
+    border: 2px solid var(--color-fisica);
+    border-radius: 10px;
+    background: var(--card-bg);
+    margin-top: 1rem;
+    color: var(--color-fisica-dark);
 }
 
-/* ============================================================
-   FÓRMULAS MATEMÁTICAS
-   ============================================================ */
+.tp-container .placeholder-val {
+    color: var(--text-muted);
+    border-bottom: 1px dashed var(--text-muted);
+    padding: 0 5px;
+}
+
+/* Fórmulas y Centrado Flex */
+.tp-container .formula-box,
+.tp-container .formula-bhaskara,
+.tp-container .elemento-carro,
+.tp-container .elemento-masa-1,
+.tp-container .elemento-masa-2,
+.tp-container .resorte-masa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tp-container .formula-box,
 .tp-container .formula-bhaskara {
-    background: var(--formula-bg); border: 1px solid var(--formula-border);
-    border-radius: 8px; margin: 1rem 0; color: var(--formula-text);
-    font-family: "Times New Roman", serif; display: flex; 
-    justify-content: center; align-items: center;
+    background: var(--formula-bg);
+    border: 1px solid var(--formula-border);
+    border-radius: 8px;
+    margin: 1rem 0;
+    color: var(--formula-text);
+    font-family: "Times New Roman", serif;
 }
 
 .tp-container .formula-box { padding: 1rem; font-size: 1.4rem; }
 .tp-container .formula-bhaskara { padding: 1.5rem; overflow-x: auto; }
 
-/* Estructura de Fracciones */
 .tp-container .fraction {
-    display: inline-flex; flex-direction: column; align-items: center; 
-    margin: 0 0.5rem; vertical-align: middle;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0 0.5rem;
+    vertical-align: middle;
 }
-.tp-container .fraction .num {
-    border-bottom: 2px solid var(--color-fisica); padding: 0 0.5rem;
-}
+
+.tp-container .fraction .num { border-bottom: 2px solid var(--color-fisica); padding: 0 0.5rem; }
+.tp-container .fraction .den { padding: 0 0.5rem; }
+
 .tp-container .formula-bhaskara .numerator {
     border-top: 1px solid var(--text-color) !important;
     border-bottom: 2px solid var(--color-fisica) !important;
     padding: 2px 5px;
 }
-.tp-container .fraction .den { padding: 0 0.5rem; }
 
-
-/* ============================================================
-   CLASES ÚTILES PARA DIBUJOS (CANVAS)
-   ============================================================ */
-/* Contenedor base para todos los esquemas (TP1, 3, 4, 5) */
+/* Contenedores de Esquemas */
 .tp-container .carril-container,
 .tp-container .resorte-container,
 .tp-container .pendulo-container,
 .tp-container .aro-container {
-    position: relative; margin: 2rem auto;
+    position: relative;
+    margin: 2rem auto;
     background-color: var(--card-bg);
     border: 1px solid var(--table-border-color);
-    border-radius: 8px; box-sizing: border-box; overflow: hidden;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* Títulos de gráficos */
-.tp-container .carril-title, .tp-container .resorte-title, 
-.tp-container .pendulo-title, .tp-container .aro-title {
-    text-align: center; color: var(--text-muted); margin-top: 10px;
-    font-style: italic; font-size: 0.9rem;
+.tp-container .carril-title,
+.tp-container .resorte-title, 
+.tp-container .pendulo-title,
+.tp-container .aro-title {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 0.9rem;
 }
 
-/* Regla Maestra: Todo elemento interno es absoluto */
+/* Posicionamiento Absoluto Unificado */
 .tp-container [class*="elemento-"], 
 .tp-container [class^="cable-"],
-.tp-container [class^="soporte-"] {
+.tp-container [class^="soporte-"],
+.tp-container .elemento-sensor-1 span,
+.tp-container .elemento-sensor-2 span,
+.tp-container .resorte-coil,
+.tp-container .resorte-coil::before,
+.tp-container .resorte-coil::after,
+.tp-container .resorte-masa,
+.tp-container .flecha-fuerza-abajo,
+.tp-container .flecha-fuerza-abajo::after,
+.tp-container .label-fuerza,
+.tp-container .soporte-brazo-pendulo::after,
+.tp-container .linea-referencia,
+.tp-container .pendulo-rotado,
+.tp-container .hilo,
+.tp-container .esfera,
+.tp-container .arco-angulo,
+.tp-container .texto-angulo,
+.tp-container .cota-largo,
+.tp-container .cota-largo::before,
+.tp-container .cota-largo::after,
+.tp-container .texto-largo,
+.tp-container .pivote,
+.tp-container .aro-metalico,
+.tp-container .centro-masa,
+.tp-container .label-cm,
+.tp-container .cota-d,
+.tp-container .cota-d::after,
+.tp-container .label-d {
     position: absolute;
 }
 
-
-/* ============================================================
-   ESQUEMA TP1 y TP2: Carril con Poleas
-   ============================================================ */
+/* Esquema TP1 y TP2: Carril con Poleas */
 .tp-container .carril-container { width: 100%; max-width: 750px; height: 350px; }
 
-/* Mesa y Soportes */
 .tp-container .elemento-mesa-tapa {
     top: 130px; left: 50px; right: 50px; height: 15px;
     background-color: var(--wood-color); border-radius: 3px; z-index: 1;
 }
-.tp-container .elemento-mesa-pata-izq, .tp-container .elemento-mesa-pata-der {
+
+.tp-container .elemento-mesa-pata-izq,
+.tp-container .elemento-mesa-pata-der {
     top: 145px; width: 15px; height: 180px; background-color: #A0522D;
 }
 .tp-container .elemento-mesa-pata-izq { left: 80px; }
 .tp-container .elemento-mesa-pata-der { right: 80px; }
 
-/* Riel y Poleas */
 .tp-container .elemento-riel {
     top: 120px; left: 50px; right: 50px; height: 10px;
     background: var(--metal-dark); z-index: 2;
 }
 
-.tp-container .elemento-polea-izq, .tp-container .elemento-polea-der {
-    width: 30px; height: 30px; border-radius: 50%;
-    background: var(--metal-light); border: 3px solid #333; z-index: 3; top: 100px;
+.tp-container .elemento-polea-izq,
+.tp-container .elemento-polea-der {
+    top: 100px; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--metal-light); border: 3px solid #333; z-index: 3;
 }
 .tp-container .elemento-polea-izq { left: 35px; }
 .tp-container .elemento-polea-der { right: 35px; }
 
-/* Carro y Masas */
 .tp-container .elemento-carro {
     top: 90px; left: 45%; width: 80px; height: 30px;
     background: var(--color-fisica); border: 2px solid var(--color-fisica-dark);
-    border-radius: 4px; display: flex; justify-content: center; align-items: center; z-index: 4;
+    border-radius: 4px; z-index: 4;
 }
 .tp-container .carro-texto { color: white; font-weight: bold; }
 
-.tp-container .elemento-masa-1, .tp-container .elemento-masa-2 {
+.tp-container .elemento-masa-1,
+.tp-container .elemento-masa-2 {
     width: 25px; height: 30px; background: #444; color: white;
-    font-size: 0.8em; display: flex; justify-content: center; align-items: center; z-index: 3;
+    font-size: 0.8em; z-index: 3;
 }
 .tp-container .elemento-masa-1 { top: 220px; left: 25px; }
 .tp-container .elemento-masa-2 { top: 200px; right: 25px; }
 
-/* Sensores */
-.tp-container .elemento-sensor-1, .tp-container .elemento-sensor-2 {
+.tp-container .elemento-sensor-1,
+.tp-container .elemento-sensor-2 {
     top: 90px; width: 15px; height: 35px; background: var(--sensor-bg);
     border: 1px solid #999; z-index: 5;
 }
 .tp-container .elemento-sensor-1 { left: 25%; }
 .tp-container .elemento-sensor-2 { left: 75%; }
-.tp-container .elemento-sensor-1 span, .tp-container .elemento-sensor-2 span {
-    position: absolute; top: -20px; left: -2px; font-size: 0.8em; color: #666;
+.tp-container .elemento-sensor-1 span,
+.tp-container .elemento-sensor-2 span {
+    top: -20px; left: -2px; font-size: 0.8em; color: #666;
 }
 
-/* Cables */
 .tp-container div[class^="cable-"] { background-color: black; z-index: 2; }
 .tp-container .cable-horiz-izq { top: 100px; left: 50px; height: 2px; width: calc(45% - 50px); }
 .tp-container .cable-horiz-der { top: 100px; right: 50px; height: 2px; width: calc(100% - (45% + 80px) - 50px); }
 .tp-container .cable-vert-izq { top: 115px; left: 35px; width: 2px; height: 105px; }
 .tp-container .cable-vert-der { top: 115px; right: 35px; width: 2px; height: 85px; }
 
-
-/* ============================================================
-   ESQUEMA TP3: Masa-Resorte
-   ============================================================ */
+/* Esquema TP3: Masa-Resorte */
 .tp-container .resorte-container { max-width: 300px; height: 400px; }
 
 .tp-container .soporte-base { bottom: 20px; left: 20px; width: 80px; height: 10px; background: var(--metal-dark); }
 .tp-container .soporte-barra { bottom: 30px; left: 50px; width: 8px; height: 320px; background: #777; }
 .tp-container .soporte-brazo { top: 50px; left: 54px; width: 100px; height: 8px; background: #777; }
 
-/* Efecto Zig-Zag CSS */
 .tp-container .resorte-coil {
-    position: absolute; top: 58px; left: 130px; width: 20px; height: 150px;
+    top: 58px; left: 130px; width: 20px; height: 150px;
     background: repeating-linear-gradient(45deg, transparent, transparent 5px, #333 5px, #333 7px);
     border-left: 2px solid rgba(0,0,0,0.1); border-right: 2px solid rgba(0,0,0,0.1);
 }
-.tp-container .resorte-coil::before, .tp-container .resorte-coil::after {
-    content: ''; position: absolute; left: 8px; width: 2px; height: 10px; background: #333;
+.tp-container .resorte-coil::before,
+.tp-container .resorte-coil::after {
+    content: ''; left: 8px; width: 2px; height: 10px; background: #333;
 }
 .tp-container .resorte-coil::before { top: -10px; }
 .tp-container .resorte-coil::after { bottom: -10px; }
 
 .tp-container .resorte-masa {
-    position: absolute; top: 218px; left: 115px; width: 50px; height: 50px;
+    top: 218px; left: 115px; width: 50px; height: 50px;
     background: var(--color-fisica); border: 2px solid var(--color-fisica-dark);
-    border-radius: 4px; display: flex; justify-content: center; align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 .tp-container .resorte-masa span { color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
-/* Flechas Fuerza */
-.tp-container .flecha-fuerza-abajo {
-    position: absolute; top: 270px; left: 139px; width: 2px; height: 40px; background: #e74c3c;
-}
+.tp-container .flecha-fuerza-abajo { top: 270px; left: 139px; width: 2px; height: 40px; background: #e74c3c; }
 .tp-container .flecha-fuerza-abajo::after {
-    content: ''; position: absolute; bottom: -5px; left: -4px;
+    content: ''; bottom: -5px; left: -4px;
     border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid #e74c3c;
 }
-.tp-container .label-fuerza { position: absolute; top: 280px; left: 150px; font-size: 0.8em; color: #e74c3c; font-weight: bold; }
+.tp-container .label-fuerza { top: 280px; left: 150px; font-size: 0.8em; color: #e74c3c; font-weight: bold; }
 
-
-/* ============================================================
-   ESQUEMA TP4: Péndulo Físico
-   ============================================================ */
+/* Esquema TP4: Péndulo Físico */
 .tp-container .pendulo-container { max-width: 400px; height: 450px; }
 
-/* Soportes con degradado */
-.tp-container .soporte-base-pendulo {
-    bottom: 30px; left: 50px; width: 100px; height: 15px; background: #5d4037; z-index: 1;
-}
-.tp-container .soporte-varilla-pendulo {
-    bottom: 45px; left: 90px; width: 12px; height: 360px;
-    background: linear-gradient(to right, #999, #eee, #777); z-index: 1;
-}
-.tp-container .soporte-brazo-pendulo {
-    top: 60px; left: 101px; width: 140px; height: 12px;
-    background: linear-gradient(to bottom, #888, #ccc, #666); z-index: 1;
-}
-.tp-container .soporte-brazo-pendulo::after {
-    content: ''; position: absolute; right: 10px; bottom: -6px; width: 6px; height: 8px; background: #333;
-}
+.tp-container .soporte-base-pendulo,
+.tp-container .soporte-varilla-pendulo,
+.tp-container .soporte-brazo-pendulo { z-index: 1; }
 
-/* Dibujo Péndulo */
-.tp-container .linea-referencia {
-    position: absolute; top: 72px; left: 228px; height: 280px; border-left: 1px dashed #bbb;
-}
+.tp-container .soporte-base-pendulo { bottom: 30px; left: 50px; width: 100px; height: 15px; background: #5d4037; }
+.tp-container .soporte-varilla-pendulo { bottom: 45px; left: 90px; width: 12px; height: 360px; background: linear-gradient(to right, #999, #eee, #777); }
+.tp-container .soporte-brazo-pendulo { top: 60px; left: 101px; width: 140px; height: 12px; background: linear-gradient(to bottom, #888, #ccc, #666); }
+.tp-container .soporte-brazo-pendulo::after { content: ''; right: 10px; bottom: -6px; width: 6px; height: 8px; background: #333; }
+
+.tp-container .linea-referencia { top: 72px; left: 228px; height: 280px; border-left: 1px dashed #bbb; }
 .tp-container .pendulo-rotado {
-    position: absolute; top: 72px; left: 228px; width: 0; height: 0;
+    top: 72px; left: 228px; width: 0; height: 0;
     transform: rotate(15deg); transform-origin: top center; z-index: 2;
 }
-.tp-container .hilo { position: absolute; top: 0; left: -1px; width: 2px; height: 250px; background: #000; }
+.tp-container .hilo { top: 0; left: -1px; width: 2px; height: 250px; background: #000; }
 .tp-container .esfera {
-    position: absolute; top: 250px; left: -15px; width: 30px; height: 30px; border-radius: 50%;
+    top: 250px; left: -15px; width: 30px; height: 30px; border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #f1c40f, #b7950b, #5e4503);
     box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
 }
 
-/* Anotaciones (Ángulos y Cotas) */
 .tp-container .arco-angulo {
-    position: absolute; top: 72px; left: 228px; width: 80px; height: 80px; border-radius: 50%;
-    border-bottom: 2px solid var(--color-fisica); border-color: transparent transparent var(--color-fisica) transparent;
+    top: 72px; left: 228px; width: 80px; height: 80px; border-radius: 50%;
+    border-bottom: 2px solid var(--color-fisica);
     transform: translateX(-50%) rotate(75deg); opacity: 0.7;
 }
-.tp-container .texto-angulo { position: absolute; top: 125px; left: 245px; color: var(--color-fisica); font-weight: bold; }
+.tp-container .texto-angulo { top: 125px; left: 245px; color: var(--color-fisica); font-weight: bold; }
 
-.tp-container .cota-largo {
-    position: absolute; top: 72px; left: 280px; height: 250px; width: 10px; border-left: 1px solid #777;
-}
-.tp-container .cota-largo::before, .tp-container .cota-largo::after {
-    content: ''; position: absolute; left: -4px; width: 8px; height: 1px; background: #777;
-}
+.tp-container .cota-largo { top: 72px; left: 280px; height: 250px; width: 10px; border-left: 1px solid #777; }
+.tp-container .cota-largo::before,
+.tp-container .cota-largo::after { content: ''; left: -4px; width: 8px; height: 1px; background: #777; }
 .tp-container .cota-largo::before { top: 0; }
 .tp-container .cota-largo::after { bottom: 0; }
-.tp-container .texto-largo {
-    position: absolute; top: 50%; left: 290px; transform: translateY(-50%); color: #666; font-style: italic; font-weight: bold;
-}
+.tp-container .texto-largo { top: 50%; left: 290px; transform: translateY(-50%); color: #666; font-style: italic; font-weight: bold; }
 
-
-/* ============================================================
-   ESQUEMA TP5: Aro (Péndulo Físico)
-   ============================================================ */
+/* Esquema TP5: Aro */
 .tp-container .aro-container { max-width: 350px; height: 350px; }
 
 .tp-container .soporte-techo {
@@ -281,47 +338,21 @@
     border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid #333; z-index: 3;
 }
 .tp-container .aro-metalico {
-    position: absolute; top: 55px; left: 50%; width: 200px; height: 200px; border-radius: 50%;
+    top: 55px; left: 50%; width: 200px; height: 200px; border-radius: 50%;
     border: 20px solid #95a5a6; box-shadow: 4px 4px 10px rgba(0,0,0,0.2); z-index: 1;
     transform: translateX(-50%) rotate(5deg); transform-origin: top center;
 }
 .tp-container .centro-masa {
-    position: absolute; top: 50%; left: 50%; width: 6px; height: 6px;
+    top: 50%; left: 50%; width: 6px; height: 6px;
     background-color: var(--color-fisica); border-radius: 50%; transform: translate(-50%, -50%);
 }
 .tp-container .label-cm {
-    position: absolute; top: 50%; left: 50%; transform: translate(10px, -50%);
+    top: 50%; left: 50%; transform: translate(10px, -50%);
     font-size: 0.8em; font-weight: bold; color: var(--color-fisica-dark);
 }
-
 .tp-container .cota-d {
-    position: absolute; left: 50%; top: 55px; height: 100px; width: 1px; background-color: #e74c3c;
+    left: 50%; top: 55px; height: 100px; width: 1px; background-color: #e74c3c;
     transform: translateX(-2px) rotate(5deg); transform-origin: top center; z-index: 4;
 }
-.tp-container .cota-d::after {
-    content: ''; position: absolute; bottom: 0; left: -3px; width: 7px; height: 1px; background: #e74c3c;
-}
-.tp-container .label-d {
-    position: absolute; top: 40%; left: 5px; color: #e74c3c; font-weight: bold; font-style: italic;
-}
-
-/* ===== CONTENEDOR DE INFORMES Y LABORATORIOS ===== */
-/* Aplica para tp-container (Física) y lab-algebra-container (Álgebra) */
-.tp-container, 
-.lab-algebra-container,
-.pm-main-container {
-    display: flex !important;
-    flex-direction: column !important; /* Fuerza a que se apilen verticalmente */
-    gap: 2rem;
-    max-width: 900px; /* Un ancho ideal para leer textos largos sin cansar la vista */
-    margin: 2rem auto; /* Centrado en la pantalla */
-    padding: 0 1rem;
-}
-
-/* Forzar que las tarjetas dentro del informe ocupen todo el ancho disponible */
-.tp-container .punto-card,
-.lab-algebra-container .punto-card,
-.pm-main-container .punto-card {
-    width: 100% !important;
-    max-width: none !important; /* Anula cualquier límite que tuvieran antes */
-}
+.tp-container .cota-d::after { content: ''; bottom: 0; left: -3px; width: 7px; height: 1px; background: #e74c3c; }
+.tp-container .label-d { top: 40%; left: 5px; color: #e74c3c; font-weight: bold; font-style: italic; }

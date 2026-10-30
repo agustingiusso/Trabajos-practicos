@@ -4,8 +4,7 @@ body.numerico-page {
     --header-line-color: var(--color-numerico);
     --theme-color: var(--color-numerico);
 }
-/* ===== AJUSTES ESPECÍFICOS PARA ANÁLISIS NUMÉRICO ===== */
-/* Sobreescribe la fuente tipo "código" por una fuente de texto normal */
+
 body.numerico-page .exercise-description {
     font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
     font-size: 1.05rem;

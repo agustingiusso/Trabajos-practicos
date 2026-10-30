@@ -1,87 +1,76 @@
-.scroll-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 1.5rem 0;
-    padding-bottom: 5px;
-}
-
-.scroll-wrapper::-webkit-scrollbar { height: 6px; }
-.scroll-wrapper::-webkit-scrollbar-thumb {
-    background-color: var(--table-border-color);
-    border-radius: 4px;
-}
-
-.data-table {
-    width: 100%; 
-    min-width: 500px;
-    border-collapse: collapse; 
-    margin: 0 auto; 
-    overflow: hidden;
-    color: var(--table-text-color, var(--text-color)); 
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius, 8px); 
-    box-shadow: var(--shadow);
-    font-size: 0.95rem;
-}
-
-.data-table th, .data-table td {
-    padding: 12px 15px; 
-    text-align: center;
-    border: 1px solid var(--table-border-color);
-}
-
-.data-table th {
-    background-color: var(--table-header-bg, var(--card-bg)); 
-    font-weight: 600; 
-    color: var(--accent);
-}
-
-.data-table tr:nth-child(even) { background-color: var(--table-row-even, rgba(0,0,0,0.02)); }
-.data-table tr:nth-child(odd) { background-color: var(--table-row-odd, transparent); }
-
-/* ===== TABLAS DE ITERACIONES (Análisis Numérico) ===== */
+.scroll-wrapper,
 .table-responsive {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin: 1.5rem 0;
+}
+
+.scroll-wrapper { padding-bottom: 5px; }
+.table-responsive {
     border-radius: 6px;
     border: 1px solid var(--table-border-color);
 }
 
+.scroll-wrapper::-webkit-scrollbar,
 .table-responsive::-webkit-scrollbar { height: 6px; }
+
+.scroll-wrapper::-webkit-scrollbar-thumb,
 .table-responsive::-webkit-scrollbar-thumb {
     background-color: var(--table-border-color);
     border-radius: 4px;
 }
 
+.data-table,
 .tabla-iteraciones {
     width: 100%;
     min-width: 500px;
     border-collapse: collapse;
-    font-size: 0.9em;
     color: var(--table-text-color, var(--text-color));
-    text-align: center;
     background-color: var(--card-bg);
+    text-align: center;
 }
 
-.tabla-iteraciones th, .tabla-iteraciones td {
+.data-table {
+    margin: 0 auto; 
+    overflow: hidden;
+    border-radius: var(--border-radius, 8px); 
+    box-shadow: var(--shadow);
+    font-size: 0.95rem;
+}
+
+.tabla-iteraciones { font-size: 0.9em; }
+
+.data-table th,
+.data-table td,
+.tabla-iteraciones th,
+.tabla-iteraciones td {
     border: 1px solid var(--table-border-color);
-    padding: 8px 12px;
-    white-space: nowrap; /* CRÍTICO: Evita que los números largos se dividan en dos renglones */
+    text-align: center;
 }
 
+.data-table th,
+.data-table td { padding: 12px 15px; }
+
+.tabla-iteraciones th,
+.tabla-iteraciones td {
+    padding: 8px 12px;
+    white-space: nowrap;
+}
+
+.data-table th,
 .tabla-iteraciones th {
-    background-color: var(--table-header-bg, var(--card-bg));
-    font-weight: 600;
+    background-color: var(--table-header-bg, var(--card-bg)); 
+    font-weight: 600; 
     color: var(--accent);
 }
 
-.tabla-iteraciones tr:nth-child(even) { 
-    background-color: var(--table-row-even, rgba(0,0,0,0.02)); 
+.data-table tr:nth-child(even),
+.tabla-iteraciones tr:nth-child(even) {
+    background-color: var(--table-row-even, rgba(0,0,0,0.02));
 }
 
-.tabla-iteraciones tr:nth-child(odd) { 
-    background-color: var(--table-row-odd, transparent); 
+.data-table tr:nth-child(odd),
+.tabla-iteraciones tr:nth-child(odd) {
+    background-color: var(--table-row-odd, transparent);
 }

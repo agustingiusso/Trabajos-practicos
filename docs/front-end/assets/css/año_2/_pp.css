@@ -7,16 +7,11 @@ body.paradigmas-page {
 
 .card-paradigmas { --local-color: var(--color-paradigmas); }
 
-/* Layout de la tarjeta en pp.html */
 .pp-tp-card-content {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
-
-/* =========================================
-   DIAGRAMA UML Y TRAZABILIDAD
-   ========================================= */
 
 .section-title {
     color: var(--color-paradigmas);
@@ -56,6 +51,7 @@ body.paradigmas-page {
 
 .abstract-class { border-style: dashed; }
 .uml-arrow { margin: 12px 0; font-weight: bold; color: var(--text-muted); text-align: center; font-size: 0.9rem; }
+
 .uml-branches {
     display: flex;
     flex-wrap: wrap;
@@ -64,6 +60,7 @@ body.paradigmas-page {
     margin-top: 1rem;
     width: 100%;
 }
+
 .uml-branch {
     display: flex;
     flex-direction: column;
@@ -71,6 +68,7 @@ body.paradigmas-page {
     flex: 1 1 260px;
     max-width: 360px;
 }
+
 .uml-arrow-up { font-size: 1rem; font-weight: bold; margin-bottom: 8px; color: var(--text-muted); }
 
 .trace-grid {
@@ -99,10 +97,6 @@ body.paradigmas-page {
     margin-bottom: 0.5rem;
 }
 
-/* =========================================
-   PANELES INDIVIDUALES DE PUNTOS (VERTICAL)
-   ========================================= */
-
 .vertical-points-wrapper {
     display: flex;
     flex-direction: column;
@@ -113,10 +107,7 @@ body.paradigmas-page {
     display: none;
     animation: fadeInUp 0.3s ease-out;
 }
-
-.point-panel.active-panel {
-    display: block;
-}
+.point-panel.active-panel { display: block; }
 
 .code-block {
     background: var(--code-bg);
@@ -138,10 +129,7 @@ body.paradigmas-page {
     font-size: 1rem;
     border-bottom: 1px solid var(--table-border-color);
 }
-
-[data-theme="dark"] .code-header {
-    background: rgba(0, 0, 0, 0.3);
-}
+[data-theme="dark"] .code-header { background: rgba(0, 0, 0, 0.3); }
 
 .header-actions {
     display: flex;
@@ -165,30 +153,20 @@ body.paradigmas-page {
     justify-content: center;
     gap: 6px;
 }
-
-.sim-btn:hover {
-    border-color: var(--color-paradigmas);
-}
+.sim-btn:hover { border-color: var(--color-paradigmas); }
 
 .sim-btn.action {
     background: var(--color-paradigmas);
     color: white;
     border: none;
 }
-
 .sim-btn.action:hover {
     background: var(--color-paradigmas-dark);
     transform: translateY(-1px);
 }
 
-.sim-btn.btn-danger-outline {
-    border-color: #e74c3c;
-    color: #e74c3c;
-}
-
-[data-theme="dark"] .sim-btn.btn-danger-outline {
-    color: #fc8181;
-}
+.sim-btn.btn-danger-outline { border-color: #e74c3c; color: #e74c3c; }
+[data-theme="dark"] .sim-btn.btn-danger-outline { color: #fc8181; }
 
 .sim-select {
     background: var(--card-bg);
@@ -210,13 +188,11 @@ body.paradigmas-page {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Contraste adaptado para Modo Claro y Modo Oscuro */
 .code-block .highlight,
 .code-box .highlight {
     color: #b45309;
     font-weight: bold;
 }
-
 [data-theme="dark"] .code-block .highlight,
 [data-theme="dark"] .code-box .highlight {
     color: #f1c40f;
@@ -230,21 +206,14 @@ body.paradigmas-page {
     border-top: 1px dashed var(--table-border-color);
     margin: 0;
 }
-
-[data-theme="dark"] .explanation {
-    background: rgba(0, 0, 0, 0.15);
-}
-
-/* =========================================
-   SIMULADOR DE MEMORIA (100% ANCHO DEBAJO DEL PUNTO)
-   ========================================= */
+[data-theme="dark"] .explanation { background: rgba(0, 0, 0, 0.15); }
 
 .memory-container {
     background: var(--card-bg);
     border: 2px dashed var(--color-paradigmas);
     border-radius: 8px;
     padding: 1.5rem;
-    margin: 1rem 18px 18px 18px;
+    margin: 1rem 18px 18px;
 }
 
 .sim-top-dashboard {
@@ -283,10 +252,7 @@ body.paradigmas-page {
     gap: 8px;
     font-size: 0.92rem;
 }
-
-.platform-title-group i {
-    color: var(--color-paradigmas);
-}
+.platform-title-group i { color: var(--color-paradigmas); }
 
 .plat-badge {
     background: var(--color-paradigmas);
@@ -313,16 +279,9 @@ body.paradigmas-page {
     font-size: 0.8rem;
     white-space: nowrap;
 }
+.plat-chip b { color: var(--text-muted); font-weight: normal; }
 
-.plat-chip b {
-    color: var(--text-muted);
-    font-weight: normal;
-}
-
-.capacity-bar-wrapper {
-    font-size: 0.8rem;
-    margin-top: auto;
-}
+.capacity-bar-wrapper { font-size: 0.8rem; margin-top: auto; }
 
 .capacity-labels {
     display: flex;
@@ -332,10 +291,7 @@ body.paradigmas-page {
     margin-bottom: 5px;
     color: var(--text-muted);
 }
-
-.capacity-labels strong {
-    color: var(--text-color);
-}
+.capacity-labels strong { color: var(--text-color); }
 
 .capacity-track {
     width: 100%;
@@ -352,7 +308,6 @@ body.paradigmas-page {
     transition: width 0.4s ease, background-color 0.3s ease;
 }
 
-/* Ventana System Transcript */
 .transcript-box {
     background: var(--code-bg);
     border: 1px solid var(--table-border-color);
@@ -374,16 +329,9 @@ body.paradigmas-page {
     border-bottom: 1px solid var(--table-border-color);
     font-weight: bold;
 }
+[data-theme="dark"] .transcript-header { background: rgba(0, 0, 0, 0.28); }
 
-[data-theme="dark"] .transcript-header {
-    background: rgba(0, 0, 0, 0.28);
-}
-
-.op-badge {
-    color: var(--color-paradigmas);
-    font-size: 0.78rem;
-    white-space: nowrap;
-}
+.op-badge { color: var(--color-paradigmas); font-size: 0.78rem; white-space: nowrap; }
 
 .transcript-body {
     padding: 12px 14px;
@@ -403,19 +351,14 @@ body.paradigmas-page {
     padding-bottom: 5px;
     overflow-wrap: break-word;
 }
+.collection-title span { color: var(--color-paradigmas); }
 
-.collection-title span {
-    color: var(--color-paradigmas);
-}
-
-/* GRILLA AMPLIA */
 .memory-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
     gap: 1rem;
 }
 
-/* OBJETOS EN MEMORIA (TARJETAS) */
 .mem-object {
     background: var(--bg-color);
     border-radius: 6px;
@@ -426,7 +369,6 @@ body.paradigmas-page {
     position: relative;
     overflow: hidden;
 }
-
 .mem-object.peli { border-color: #e74c3c; }
 .mem-object.serie { border-color: #3498db; }
 
@@ -448,28 +390,43 @@ body.paradigmas-page {
 .attr span { color: var(--text-muted); }
 
 .poly-tooltip {
-    position: absolute; bottom: -32px; left: 0; width: 100%;
-    background: var(--color-paradigmas); color: white;
-    text-align: center; font-size: 0.75rem; padding: 4px;
-    font-weight: bold; transition: bottom 0.3s ease;
+    position: absolute;
+    bottom: -32px;
+    left: 0;
+    width: 100%;
+    background: var(--color-paradigmas);
+    color: white;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 4px;
+    font-weight: bold;
+    transition: bottom 0.3s ease;
 }
 
-/* ESTADOS DE ANIMACIÓN */
 .mem-object.dimmed {
     opacity: 0.25;
     transform: scale(0.95);
     filter: grayscale(100%);
 }
 
-.mem-object.highlighted {
+.mem-object.highlighted,
+.mem-object.highlighted-danger,
+.mem-object.highlighted-detect {
     transform: translateY(-3px);
     border-left-width: 6px;
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.35);
 }
 
-.mem-object.highlighted .calif-target {
-    background: rgba(241, 196, 15, 0.2);
-    font-weight: bold;
+.mem-object.highlighted { box-shadow: 0 0 15px rgba(99, 102, 241, 0.35); }
+.mem-object.highlighted .calif-target { background: rgba(241, 196, 15, 0.2); font-weight: bold; }
+
+.mem-object.highlighted-danger {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
+}
+
+.mem-object.highlighted-detect {
+    border-color: #2ecc71 !important;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
 }
 
 .mem-object.collected {
@@ -479,44 +436,26 @@ body.paradigmas-page {
     padding: 1.2rem 0.5rem;
 }
 
-.mem-object.collected .obj-header { display: none; }
-.mem-object.collected .obj-body .attr:not(.genre-target) { display: none; }
-.mem-object.collected .genre-target span { display: none; }
+.mem-object.collected .obj-header,
+.mem-object.collected .obj-body .attr:not(.genre-target),
+.mem-object.collected .genre-target span {
+    display: none;
+}
+
 .mem-object.collected .genre-target {
     font-size: 1.15rem;
     color: var(--color-paradigmas);
     font-weight: bold;
 }
 
-.mem-object.poly-true, .mem-object.poly-false {
-    padding-bottom: 32px;
-}
+.mem-object.poly-true,
+.mem-object.poly-false { padding-bottom: 32px; }
 .mem-object.poly-true .poly-tooltip { bottom: 0; background: #2ecc71; }
 .mem-object.poly-false .poly-tooltip { bottom: 0; background: #e74c3c; }
 .mem-object.poly-false { opacity: 0.38; }
 
-.mem-object.highlighted-danger {
-    transform: translateY(-3px);
-    border-left-width: 6px;
-    border-color: #e74c3c !important;
-    box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
-}
-
-.mem-object.highlighted-detect {
-    transform: translateY(-3px);
-    border-left-width: 6px;
-    border-color: #2ecc71 !important;
-    box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
-}
-
-/* =========================================
-   REGLAS RESPONSIVE (TABLETS Y CELULARES)
-   ========================================= */
-
 @media (max-width: 900px) {
-    .sim-top-dashboard {
-        grid-template-columns: 1fr;
-    }
+    .sim-top-dashboard { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -525,43 +464,27 @@ body.paradigmas-page {
         text-align: center;
         gap: 1rem;
     }
-
-    .uml-container {
-        padding: 1.25rem 0.75rem;
-    }
-
+    .uml-container { padding: 1.25rem 0.75rem; }
     .uml-branches {
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
     }
-
-    .uml-branch {
-        width: 100%;
-    }
-
+    .uml-branch,
+    .header-actions { width: 100%; }
     .code-header {
         flex-direction: column;
         align-items: flex-start;
         padding: 12px;
         font-size: 0.95rem;
     }
-
-    .header-actions {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
+    .header-actions { justify-content: flex-start; }
     .header-actions .sim-btn,
-    .header-actions .sim-select {
-        flex: 1 1 auto;
-    }
-
+    .header-actions .sim-select { flex: 1 1 auto; }
     .memory-container {
-        margin: 0.75rem 8px 12px 8px;
+        margin: 0.75rem 8px 12px;
         padding: 1rem;
     }
-
     .code-block pre,
     .code-box pre {
         padding: 12px;
@@ -570,12 +493,7 @@ body.paradigmas-page {
 }
 
 @media (max-width: 480px) {
-    .memory-grid {
-        grid-template-columns: 1fr;
-    }
-
+    .memory-grid { grid-template-columns: 1fr; }
     .platform-status-box,
-    .transcript-box {
-        padding: 0.85rem;
-    }
+    .transcript-box { padding: 0.85rem; }
 }

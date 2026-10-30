@@ -1,9 +1,5 @@
-/* ======================================================
-   VARIABLES GLOBALES & TEMAS
-   ====================================================== */
-
 :root {
-    /* COLORES PRIMER AÑO */
+    /* Colores 1° Año */
     --color-white: #fff; 
     --color-black: #000;
     --color-algoritmos: #e74c3c; 
@@ -15,8 +11,7 @@
     --color-index: #4a5568; 
     --color-index-dark: #ffffff;
 
-    /* ===== COLORES SEGUNDO AÑO ===== */
-
+    /* Colores 2° Año */
     --color-fisicaII: #3498db;
     --color-fisicaII-dark: #2980b9;
     --color-sociedad: #9b59b6;
@@ -28,54 +23,43 @@
     --color-paradigmas: #6366f1;
     --color-paradigmas-dark: #4f46e5;
 
-    /* ===== COLORES TERCER AÑO ===== */
-
+    /* Colores 3° Año */
     --color-probabilidad: #8B4513;
     --color-probabilidad-dark: #5C2E0B;
     --color-numerico: #E83E8C;
     --color-numerico-dark: #B82E6B;
 
-
-    /* DIMENSIONES & CONFIGURACIÓN */
+    /* Dimensiones y Configuración */
     --max-width: 1200px;
     --header-height: 80px;
     --border-radius: 0.5rem;
     --spacing: 1rem;
     --header-line-width: 2px;
     
-    /* Líneas de Header por defecto (Index) */
     --header-line-color: #60a5fa; 
     --header-line-color-index: #4a5568; 
     --header-line-color-index-dark: #fff;
     --header-line-color-algoritmos: var(--color-algoritmos);
 
-    /* ==================================================
-        TEMA CLARO (Default / Soft UI)
-       ================================================== */
-    
-    /* Fondo y Textos */
-    --bg-color: #f2f6fa;          /* Gris azulado muy suave */
-    --text-color: #1e293b;        /* Gris oscuro profesional */
-    --text-muted: #475569;        /* Gris medio para subtítulos */
+    /* Tema Claro (Default) */
+    --bg-color: #f2f6fa;
+    --text-color: #1e293b;
+    --text-muted: #475569;
 
-    /* Header (Negro fijo por decisión de diseño) */
     --header-bg: #000000;
     --header-text: #ffffff;
     --header-border: none;
 
-    /* Tarjetas */
     --card-bg: #ffffff;
     --card-hover: #f1f5f9;
     --card-border: 1px solid #cbd5e1;
     --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 
-    /* Elementos Interactivos */
-    --accent: #2563eb;            /* Azul vibrante */
+    --accent: #2563eb;
     --button-hover-bg: #1e40af;
     --color-boton-editar: #2563eb;
     --color-boton-eliminar: #dc2626;
 
-    /* Tablas y Fórmulas */
     --table-border-color: #cbd5e1;
     --table-header-bg: #e2e8f0;
     --table-text-color: #1e293b;
@@ -87,43 +71,33 @@
     --formula-border: #1e293b;
     --formula-secondary-text: #475569;
 
-    /* Código */
     --code-bg: #e2e8f0;
     --code-text: #0f172a;
     --code-border: 1px solid #cbd5e1;
 }
 
-/* ======================================================
-   TEMA OSCURO (Overrides)
-   ====================================================== */
 [data-theme="dark"] {
-    /* Ajustes Materias (Más oscuros para contraste) */
     --color-fisica: #1e8449;
     --color-algebra: #F39C12;
     --color-index: var(--color-index-dark);
 
-    /* Fondo y Textos */
     --bg-color: #1a1a1a;
     --text-color: #e0e0e0;
     --text-muted: #94a3b8;
 
-    /* Header */
     --header-bg: #000000;
     --header-text: #e2e8f0;
 
-    /* Tarjetas */
     --card-bg: #1a202c;
     --card-hover: #2d3748;
-    --card-border: 1px solid #2d3748; /* Sutil */
+    --card-border: 1px solid #2d3748;
     --shadow: 0 4px 6px rgba(0,0,0,0.3);
 
-    /* Elementos Interactivos */
-    --accent: #60a5fa;            /* Azul claro */
+    --accent: #60a5fa;
     --button-hover-bg: #4f8fdf;
     --color-boton-editar: #63b3ed;
     --color-boton-eliminar: #fc8181;
 
-    /* Tablas y Fórmulas */
     --table-header-bg: #1e293b;
     --table-border-color: #2d3748;
     --table-text-color: #e0e0e0;
@@ -135,7 +109,6 @@
     --formula-border: #e0e0e0;
     --formula-secondary-text: #94a3b8;
 
-    /* Código */
     --code-bg: #1e1e1e;
     --code-text: #d4d4d4;
     --code-border: 1px solid #333;

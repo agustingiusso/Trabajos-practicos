@@ -16,8 +16,6 @@
     box-shadow: var(--shadow);
     padding: 1.5rem;
     width: max-content;
-    
-    /* Lógica de ocultamiento */
     position: absolute;
     left: 0;
     transform: translateX(-100%);
@@ -47,21 +45,13 @@
     transition: filter 0.2s ease;
     z-index: 1001;
 }
-
-.side-menu-btn:hover {
-    filter: brightness(1.15);
-}
-
-.side-menu-btn i {
-    transition: transform 0.4s ease;
-}
-.side-menu-container.open .side-menu-btn i {
-    transform: rotate(180deg);
-}
+.side-menu-btn:hover { filter: brightness(1.15); }
+.side-menu-btn i { transition: transform 0.4s ease; }
+.side-menu-container.open .side-menu-btn i { transform: rotate(180deg); }
 
 .side-menu-title {
     color: var(--text-color);
-    margin: 0 0 1rem 0;
+    margin: 0 0 1rem;
     font-size: 1.1rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
@@ -89,13 +79,10 @@
     text-align: center;
     font-weight: 500;
 }
-
 .side-menu-list li a:hover {
     border-color: var(--accent);
     background-color: rgba(128, 128, 128, 0.05);
 }
-
-/* Botón de la parte actual activa */
 .side-menu-list li a.active {
     background-color: var(--accent);
     color: #ffffff;
@@ -103,13 +90,8 @@
     box-shadow: var(--shadow);
 }
 
-.part-section {
-    width: 100%;
-}
-
-.part-section.active {
-    animation: fadeIn 0.5s ease;
-}
+.part-section { width: 100%; }
+.part-section.active { animation: fadeIn 0.5s ease; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

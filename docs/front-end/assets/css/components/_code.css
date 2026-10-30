@@ -1,4 +1,5 @@
-.code-box, .code-container {
+.code-box,
+.code-container {
     background: var(--code-bg);
     border: var(--code-border);
     border-radius: 8px;
@@ -7,27 +8,37 @@
     position: relative;
     overflow: hidden;
 }
+
 .code-header {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0.5rem 1rem;
-    background: rgba(0, 0, 0, 0.2); /* Fondo sutilmente más oscuro */
+    background: rgba(0, 0, 0, 0.2);
     color: var(--code-text);
 }
 
 pre {
-    padding: 2rem; overflow-x: auto; margin: 0;
+    padding: 2rem;
+    overflow-x: auto;
+    margin: 0;
     font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 0.95rem; line-height: 1.5; tab-size: 4;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    tab-size: 4;
 }
 
 .tp-container {
-    display: grid; grid-template-columns: 250px 1fr;
-    gap: 2rem; padding: 1rem;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    padding: 1rem;
 }
 
 .puntos-menu {
     background: var(--card-bg);
-    padding: 1rem; border-radius: 8px;
+    padding: 1rem;
+    border-radius: 8px;
     height: fit-content;
 }
 
@@ -35,18 +46,20 @@ pre {
 .puntos-list li { margin: 0.5rem 0; }
 
 .punto-link {
-    display: block; padding: 0.5rem; border-radius: 4px;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
     color: var(--text-color);
-    text-decoration: none; transition: all 0.2s ease;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.punto-link:hover,
+.punto-link.active {
+    background: var(--accent);
+    color: white;
 }
 
-.punto-link:hover, .punto-link.active {
-    background: var(--accent); color: white;
-}
-
-/* =========================================================
-   RESALTADO DE SINTAXIS C - MODO CLARO (VS CODE LIGHT+)
-   ========================================================= */
+/* Resaltado de Sintaxis C - Modo Claro */
 .code-box:has(code.language-c) {
     background-color: #f8fafc;
     border: 1px solid #cbd5e1;
@@ -59,68 +72,54 @@ pre {
     font-family: 'Consolas', 'Courier New', monospace;
 }
 
-code.language-c .hl-macro     { color: #8250df; } /* #include, #define (Violeta oscuro) */
-code.language-c .hl-header    { color: #0550ae; } /* <stdio.h> (Azul marino) */
-code.language-c .hl-keyword   { color: #cf222e; } /* int, float, char, if, return (Rojo carmesí) */
-code.language-c .hl-operator  { color: #cf222e; } /* &, =, +, -, *, / (Rojo carmesí) */
-code.language-c .hl-def       { color: #953800; } /* main, arreglos nombre[50] (Naranja tostado) */
-code.language-c .hl-func      { color: #6639ba; } /* printf, scanf (Púrpura intenso) */
-code.language-c .hl-string    { color: #0a3069; } /* "Texto..." (Azul profundo) */
-code.language-c .hl-format    { color: #cf222e; } /* %s, %f, %d, \n dentro de strings (Rojo carmesí) */
-code.language-c .hl-number    { color: #098658; } /* 50, 0, 180 (Verde esmeralda oscuro) */
-code.language-c .hl-comment   { color: #57606a; font-style: italic; } /* // Comentarios (Gris pizarra) */
-code.language-c .hl-var       { color: #1f2328; } /* Variables e identificadores (Carbón) */
+code.language-c .hl-macro     { color: #8250df; }
+code.language-c .hl-header,
+code.language-c .hl-bracket-3 { color: #0550ae; }
+code.language-c .hl-keyword,
+code.language-c .hl-operator,
+code.language-c .hl-format    { color: #cf222e; }
+code.language-c .hl-def       { color: #953800; }
+code.language-c .hl-func      { color: #6639ba; }
+code.language-c .hl-string    { color: #0a3069; }
+code.language-c .hl-number    { color: #098658; }
+code.language-c .hl-comment   { color: #57606a; font-style: italic; }
+code.language-c .hl-var       { color: #1f2328; }
+code.language-c .hl-bracket-1 { color: #9a6700; }
+code.language-c .hl-bracket-2 { color: #a40e26; }
 
-/* VS Code Bracket Pair Colorization (Modo Claro) */
-code.language-c .hl-bracket-1 { color: #9a6700; } /* Nivel 1 (Ámbar oscuro) */
-code.language-c .hl-bracket-2 { color: #a40e26; } /* Nivel 2 (Magenta/Rojo oscuro) */
-code.language-c .hl-bracket-3 { color: #0550ae; } /* Nivel 3 (Azul intenso) */
-
-/* =========================================================
-   RESALTADO DE SINTAXIS C - MODO OSCURO (VS CODE DARK+)
-   ========================================================= */
+/* Resaltado de Sintaxis C - Modo Oscuro */
 [data-theme="dark"] .code-box:has(code.language-c) {
     background-color: #0d0d0d;
     border: 1px solid #2d3748;
 }
 
-[data-theme="dark"] .code-box pre:has(code.language-c) {
-    color: #e6edf3;
-}
+[data-theme="dark"] .code-box pre:has(code.language-c),
+[data-theme="dark"] code.language-c .hl-var       { color: #e6edf3; }
+[data-theme="dark"] code.language-c .hl-macro     { color: #c586c0; }
+[data-theme="dark"] code.language-c .hl-header    { color: #79c0ff; }
+[data-theme="dark"] code.language-c .hl-keyword,
+[data-theme="dark"] code.language-c .hl-operator,
+[data-theme="dark"] code.language-c .hl-format    { color: #ff7b72; }
+[data-theme="dark"] code.language-c .hl-def       { color: #ffa657; }
+[data-theme="dark"] code.language-c .hl-func      { color: #d2a8ff; }
+[data-theme="dark"] code.language-c .hl-string    { color: #a5d6ff; }
+[data-theme="dark"] code.language-c .hl-number    { color: #b5cea8; }
+[data-theme="dark"] code.language-c .hl-comment   { color: #6e7681; font-style: italic; }
+[data-theme="dark"] code.language-c .hl-bracket-1 { color: #ffd700; }
+[data-theme="dark"] code.language-c .hl-bracket-2 { color: #da70d6; }
+[data-theme="dark"] code.language-c .hl-bracket-3 { color: #179fff; }
 
-[data-theme="dark"] code.language-c .hl-macro     { color: #c586c0; } /* #include, #define (Violeta) */
-[data-theme="dark"] code.language-c .hl-header    { color: #79c0ff; } /* <stdio.h> (Celeste) */
-[data-theme="dark"] code.language-c .hl-keyword   { color: #ff7b72; } /* int, float, char, if, return (Coral) */
-[data-theme="dark"] code.language-c .hl-operator  { color: #ff7b72; } /* &, =, +, -, *, / (Coral) */
-[data-theme="dark"] code.language-c .hl-def       { color: #ffa657; } /* main, arreglos nombre[50] (Naranja) */
-[data-theme="dark"] code.language-c .hl-func      { color: #d2a8ff; } /* printf, scanf (Lavanda) */
-[data-theme="dark"] code.language-c .hl-string    { color: #a5d6ff; } /* "Texto..." (Azul claro) */
-[data-theme="dark"] code.language-c .hl-format    { color: #ff7b72; } /* %s, %f, %d, \n dentro de strings (Coral) */
-[data-theme="dark"] code.language-c .hl-number    { color: #b5cea8; } /* 50, 0, 180 (Verde menta) */
-[data-theme="dark"] code.language-c .hl-comment   { color: #6e7681; font-style: italic; } /* // Comentarios */
-[data-theme="dark"] code.language-c .hl-var       { color: #e6edf3; } /* Variables (Blanco suave) */
-
-/* VS Code Bracket Pair Colorization (Modo Oscuro) */
-[data-theme="dark"] code.language-c .hl-bracket-1 { color: #ffd700; } /* Nivel 1 (Dorado) */
-[data-theme="dark"] code.language-c .hl-bracket-2 { color: #da70d6; } /* Nivel 2 (Orquídea/Rosa) */
-[data-theme="dark"] code.language-c .hl-bracket-3 { color: #179fff; } /* Nivel 3 (Azul) */
-
-/* SCROLLBAR PROFESIONAL PARA CÓDIGO */
+/* Scrollbar para Código */
 .code-block pre::-webkit-scrollbar,
-.code-box pre::-webkit-scrollbar {
-    height: 8px; 
-}
+.code-box pre::-webkit-scrollbar { height: 8px; }
 
 .code-block pre::-webkit-scrollbar-track,
-.code-box pre::-webkit-scrollbar-track {
-    background: transparent; 
-}
+.code-box pre::-webkit-scrollbar-track { background: transparent; }
 
 .code-block pre::-webkit-scrollbar-thumb,
 .code-box pre::-webkit-scrollbar-thumb {
     background-color: var(--table-border-color); 
     border-radius: 8px;
-    /* El borde transparente actúa como un margen interno invisible para que flote */
     border: 2px solid var(--code-bg); 
 }
 

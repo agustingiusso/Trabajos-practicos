@@ -4,8 +4,7 @@ body.probabilidad-page {
     --header-line-color: var(--color-probabilidad);
     --theme-color: var(--color-probabilidad);
 }
-/* ===== AJUSTES ESPECÍFICOS PARA PROBABILIDAD ===== */
-/* Sobreescribe la fuente tipo "código" por una fuente de texto normal */
+
 body.probabilidad-page .exercise-description {
     font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
     font-size: 1.05rem;

@@ -1,4 +1,3 @@
-/* ----- Controles de Navegación (La Pastilla) ----- */
 .slide-controls {
     position: relative;
     z-index: 10;
@@ -8,34 +7,24 @@
     border-radius: 50px;
     padding: 6px 16px;
     box-shadow: var(--shadow);
-    
-    /* NUEVO: sin scroll horizontal interno */
     overflow-x: visible;
-    
-    /* Layout centrado y adaptable */
     display: flex;
     justify-content: center;
-    width: fit-content;      /* Se ajusta al contenido */
-    max-width: 95vw;         /* No sobresale en móvil */
+    width: fit-content;
+    max-width: 95vw;
     margin: 30px auto;
 }
 
-/* Ya no se necesita ocultar scrollbar, eliminamos esos estilos */
-
-/* Lista de Puntos (La pista interior) */
 .nav-points {
     display: flex;
     gap: 8px;
     list-style: none;
     padding: 0;
     margin: 0;
-    
-    /* PERMITE que los puntos bajen de línea */
     flex-wrap: wrap;
     justify-content: center;
 }
 
-/* Botón Individual */
 .nav-point {
     flex: 0 0 auto;
     padding: 8px 14px;
@@ -45,9 +34,12 @@
     color: var(--text-muted);
     transition: all 0.2s ease;
     white-space: nowrap;
-    
-    /* Necesario para que el indicador (burbuja) se posicione relativo al botón */
     position: relative;
+    min-width: 90px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .nav-point:hover {
@@ -80,49 +72,14 @@
     to { opacity: 1; bottom: -10px; }
 }
 
-/* ----- Ajustes específicos para móvil (como en la captura) ----- */
 @media (max-width: 768px) {
     .slide-controls {
-        padding: 10px 16px;       /* Más espacio vertical */
-        border-radius: 30px;      /* Pastilla más suave */
+        padding: 10px 16px;
+        border-radius: 30px;
     }
-    
-    .nav-points {
-        gap: 10px;                /* Mayor separación para dedos */
-    }
-    
-    .nav-point {
-        padding: 10px 16px;       /* Área táctil más grande */
-        font-size: 0.85rem;
-    }
-    
-    /* Opcional: si los números son muchos, reducir padding extremo */
-    .nav-point {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+    .nav-points { gap: 10px; }
 }
 
-.nav-point {
-    flex: 0 0 auto;
-    padding: 8px 14px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    position: relative;
-    
-    /* MODIFICACIONES PARA EVITAR EL SALTO: */
-    min-width: 90px; /* Absorbe los píxeles extra cuando se pone en negrita */
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* NUEVA REGLA: Fuerza a "Ver Todos" a ocupar toda una fila abajo siempre */
 #sim-nav-points .nav-point:last-child {
     flex-basis: 100%;
     margin-top: 5px;
