@@ -44,6 +44,15 @@
 
     <main class="pm-main-container">
 
+        <!-- Definición global de SVG (siempre visible pero sin ocupar espacio) -->
+        <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <marker id="arrow-soc" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#9b59b6"/>
+                </marker>
+            </defs>
+        </svg>
+
         <!-- TARJETA INSTITUCIONAL -->
         <div class="pm-card">
             <div class="iys-hero-grid">
@@ -129,8 +138,8 @@
                         <h3>COMITÉ DE SOCIOS FUNDADORES</h3>
                         <hr>
                         <p>4 Integrantes — Aporte de Capital Igualitario</p>
-                        <p class="method">+ definirPoliticaCorporativa()</p>
-                        <p class="method">+ evaluarInversionesYExpansion()</p>
+                        <p>• Definición de la estrategia sociotécnica corporativa</p>
+                        <p>• Evaluación integral (Económica, Social y Ambiental)</p>
                     </div>
 
                     <div class="uml-arrow">▼ Articulación Horizontal en 4 Direcciones Operativas ▼</div>
@@ -221,11 +230,6 @@
                 <!-- Esquema Vectorial SVG: Territorio y Escalamiento Comercial -->
                 <div class="svg-diagram-wrapper">
                     <svg viewBox="0 0 850 210" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <marker id="arrow-soc" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#9b59b6"/>
-                            </marker>
-                        </defs>
                         <!-- Fase 1 -->
                         <rect x="20" y="35" width="230" height="140" rx="10" fill="var(--card-bg)" stroke="#9b59b6" stroke-width="2.5"/>
                         <text x="135" y="65" text-anchor="middle" font-weight="bold" font-size="14" fill="#9b59b6">FASE 1: VALIDACIÓN LOCAL</text>
@@ -580,7 +584,7 @@
             <!-- SIMULADOR 3D -->
             <div class="pm-card">
                 <h2 class="pm-section-title">Simulador 3D: Producto Nébola NB y Línea Automatizada (330 m²)</h2>
-                <p>Interactúa en tiempo real con el modelo tridimensional de la galletita (borde festoneado, rejilla romboidal, sello central <strong>NB</strong> en relieve y variante violácea con harina de orujo) o inspecciona el flujo toyotista en la planta de Berisso.</p>
+                <p><strong>Instrucciones:</strong> Seleccione el modo de visualización en el panel de control para alternar entre el análisis morfológico del producto y el flujo operativo de la planta. En el modo "Layout Planta", calibre el ritmo de demanda para evaluar la respuesta del sistema <em>Pull</em></p>
 
                 <div class="pm-simulador-layout">
                     <div class="pm-controls-panel">
@@ -623,8 +627,8 @@
             <!-- SIMULADOR 2D -->
             <div class="pm-card">
                 <h2 class="pm-section-title">Simulador Operativo 2D: Modelo Toyotista (Pull) e Indicadores ODS</h2>
-                <p>Ajusta los parámetros operativos para comparar la eficiencia de recursos de <strong>Nébolas NB</strong> frente a un esquema fordista tradicional de sobreproducción por oferta.</p>
-
+                <p><strong>Instrucciones:</strong> Ingrese los valores requeridos en los controles de parámetros del Sistema ERP. Al modificar las variables operativas (demanda, sustitución por orujo y polivalencia laboral), el motor gráfico proyectará una comparativa de desempeño en tiempo real, contrastando la eficiencia sociotécnica de <strong>Nébolas NB</strong> frente a un esquema fordista tradicional.</p>
+                
                 <div class="pm-simulador-layout">
                     <div class="pm-controls-panel">
                         <h3>Parámetros del Sistema ERP</h3>
