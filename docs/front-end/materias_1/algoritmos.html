@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmos y Estructuras de Datos</title>
     <link rel="stylesheet" href="../assets/css/main.css">
+    
+    <!-- Dependencias para el menú lateral y sus íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../assets/js/gral/side-menu.js"></script>
+    
     <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
     <script src="../assets/js/gral/theme.js"></script>
 </head>
 
 <body class="algoritmos-page">
+    
+    <!-- Menú lateral agregado -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Secciones</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="tp">Trabajos Prácticos</a></li>
+                <li><a href="#" class="part-link" data-part="doc">Documentación</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de secciones">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
     <header class="header">
         <div class="header-container">
             <nav class="container">
@@ -24,7 +44,7 @@
                 <!-- Título centrado -->
                 <h1 class="logo">Algoritmos</h1>
 
-                <!-- Botón de tema corregido (con moon-icon y sun-icon) -->
+                <!-- Botón de tema -->
                 <button class="theme-btn" id="theme-toggle" aria-label="Cambiar tema">
                     <svg class="theme-icon moon-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>
@@ -39,79 +59,131 @@
     </header>
 
     <main class="main-content">
-        <div class="trabajos-grid">
+        
+        <!-- Contenedor Trabajos Prácticos -->
+        <div id="contenedor-parte-tp" class="part-section active" style="display: block;">
+            <div class="trabajos-grid">
 
-            <a href="algoritmos/tp1_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP1 - 17 Puntos</h2>
-                    <p class="descripcion-tp">Variables y Control de Decisión</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp1_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP1 - 17 Puntos</h2>
+                        <p class="descripcion-tp">Variables y Control de Decisión</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp2_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP2 - 29 Puntos</h2>
-                    <p class="descripcion-tp">Estructuras de Repetición</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp2_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP2 - 29 Puntos</h2>
+                        <p class="descripcion-tp">Estructuras de Repetición</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp3_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP3 - 8 Puntos</h2>
-                    <p class="descripcion-tp">Funciones y Procedimientos</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp3_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP3 - 8 Puntos</h2>
+                        <p class="descripcion-tp">Funciones y Procedimientos</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp4_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP4 - 13 Puntos</h2>
-                    <p class="descripcion-tp">Arreglos y Registros</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp4_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP4 - 13 Puntos</h2>
+                        <p class="descripcion-tp">Arreglos y Registros</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp5_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP5 - 16 Puntos</h2>
-                    <p class="descripcion-tp">Búsqueda y Ordenación</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp5_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP5 - 16 Puntos</h2>
+                        <p class="descripcion-tp">Búsqueda y Ordenación</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp6_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP6 - 3 Puntos</h2>
-                    <p class="descripcion-tp">TAD (Tipo Abstracto de Datos)</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp6_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP6 - 3 Puntos</h2>
+                        <p class="descripcion-tp">TAD (Tipo Abstracto de Datos)</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp7_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP7 - 8 Puntos</h2>
-                    <p class="descripcion-tp">Recursividad</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp7_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP7 - 8 Puntos</h2>
+                        <p class="descripcion-tp">Recursividad</p>
+                    </div>
+                </a>
 
-            <a href="algoritmos/tp8_algoritmos.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP8 - 7 Puntos</h2>
-                    <p class="descripcion-tp">Estructuras Dinámicas: Listas</p>
-                </div>
-            </a>
+                <a href="algoritmos/tp8_algoritmos.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP8 - 7 Puntos</h2>
+                        <p class="descripcion-tp">Estructuras Dinámicas: Listas</p>
+                    </div>
+                </a>
 
-        </div>
-    </main>
+            </div>
 
-    <!-- Disclaimer / Aviso generado por IA -->
+             <!-- Disclaimer / Aviso generado por IA -->
     <footer style="max-width: 900px; margin: 2rem auto 4rem auto; padding: 0 1rem;">
         <div style="background-color: var(--card-bg); border: 1px solid var(--table-border-color); border-radius: var(--border-radius, 8px); padding: 1.5rem; text-align: center; box-shadow: var(--shadow); color: var(--text-muted);">
             <p style="margin: 0; line-height: 1.6; font-size: 0.95rem;">
                 ⚠️ <strong>Aviso:</strong> Las resoluciones en lenguaje C de los ejercicios de estos trabajos prácticos fueron generadas con ayuda de Inteligencia Artificial.<br><br>
-                Si encuentras algún error, tienes una sugerencia para mejorar el código, o has resuelto estos mismos ejercicios y te gustaría aportar tus soluciones, no dudes en contactarme a: <a href="mailto:agustingiusso@gmail.com" style="color: var(--accent); font-weight: 600; text-decoration: none;">agustingiusso@gmail.com</a>.
+                Si encontrás algún error, tenés una sugerencia para mejorar el código, o resolviste estos mismos ejercicios y te gustaría aportar tus soluciones, no dudes en contactarme a: <a href="mailto:agustingiusso@gmail.com" style="color: var(--accent); font-weight: 600; text-decoration: none;">agustingiusso@gmail.com</a>.
             </p>
             <p style="margin: 1rem 0 0 0; font-size: 0.85rem; font-style: italic; opacity: 0.8;">
                 (Si en algún momento tengo tiempo y reviso ejercicio por ejercicio, este mensaje cambiará).
             </p>
         </div>
     </footer>
+        </div>
+
+        <!-- Contenedor Documentación -->
+        <div id="contenedor-parte-doc" class="part-section" style="display: none;">
+            
+            <details class="doc-accordion">
+                <summary class="unidad-doc-title">
+                    Trabajos prácticos:
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </summary>
+                
+                <div class="pdf-grid">
+                    <a href="../assets/documentacion/1ro/AED/TP1_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP1</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP2_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP2</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP3_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP3</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP4_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP4</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP5_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP5</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP6_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP6</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP7_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP7</span>
+                    </a>
+                    <a href="../assets/documentacion/1ro/AED/TP8_2025.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP8</span>
+                    </a>
+                </div>
+            </details>
+
+        </div>
+
+    </main>
 
 </body>
 </html>

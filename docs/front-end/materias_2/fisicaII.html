@@ -6,11 +6,31 @@
     <title>Física II - Ingeniería en Sistemas</title>
 
     <link rel="stylesheet" href="../assets/css/main.css">
+    
+    <!-- Dependencias para el menú lateral y sus íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../assets/js/gral/side-menu.js"></script>
+    
     <script src="../assets/js/gral/theme.js"></script>
 
 </head>
 
 <body class="fisicaII-page">
+    
+    <!-- Menú lateral agregado -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Secciones</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="tp">Trabajos Prácticos</a></li>
+                <li><a href="#" class="part-link" data-part="doc">Documentación</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de secciones">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
     <header class="header">
         <nav class="container">
             <a href="../años/2.html" class="btn-volver">
@@ -32,110 +52,136 @@
     </header>
 
     <main class="main-content">
-        <div class="trabajos-grid">
+        
+        <!-- Contenedor Trabajos Prácticos -->
+        <div id="contenedor-parte-tp" class="part-section active" style="display: block;">
+            <div class="trabajos-grid">
+                
+                <a href="fisicaII/tp1_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 1</h2>
+                        <p class="descripcion-tp">Carga Eléctrica</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp2_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 2</h2>
+                        <p class="descripcion-tp">Ley de Coulomb</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp3_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 3</h2>
+                        <p class="descripcion-tp">Campo Electrostático</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp4_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 4</h2>
+                        <p class="descripcion-tp">Ley de Gauss</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp5_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 5</h2>
+                        <p class="descripcion-tp">Potencial Electrostático</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp6_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 6</h2>
+                        <p class="descripcion-tp">Capacidad y Capacitores</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp7_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 7</h2>
+                        <p class="descripcion-tp">Circuitos de Corriente Continua</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp8_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 8</h2>
+                        <p class="descripcion-tp">Fuerza Magnética y Cargas</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp9_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 9</h2>
+                        <p class="descripcion-tp">Ley de Biot-Savart y Ley de Ampère</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp10_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 10</h2>
+                        <p class="descripcion-tp">Inducción Magnética y Ley de Faraday</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp11_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 11</h2>
+                        <p class="descripcion-tp">Circuitos Transitorios RC y RL</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp12_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 12</h2>
+                        <p class="descripcion-tp">Corriente Alterna</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp13_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 13</h2>
+                        <p class="descripcion-tp">Maxwell y Ondas EM</p>
+                    </div>
+                </a>
+                
+                <a href="fisicaII/tp14_fisicaII.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 14</h2>
+                        <p class="descripcion-tp">Óptica Física</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <div id="contenedor-parte-doc" class="part-section" style="display: none;">
             
-            <a href="fisicaII/tp1_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 1</h2>
-                    <p class="descripcion-tp">Carga Eléctrica</p>
+            <details class="doc-accordion">
+                <summary class="unidad-doc-title">
+                    Teoría y Trabajos Prácticos:
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </summary>
+                
+                <div class="pdf-grid">
+                    <!-- Plantilla para agregar documentos -->
+                    <a href="../assets/documentacion/2do/F2/Fisica_II_libro.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Libro de Física</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/F2/Prácticas.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TPs</span>
+                    </a>
                 </div>
-            </a>
-            
-            <a href="fisicaII/tp2_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 2</h2>
-                    <p class="descripcion-tp">Ley de Coulomb</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp3_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 3</h2>
-                    <p class="descripcion-tp">Campo Electrostático</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp4_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 4</h2>
-                    <p class="descripcion-tp">Ley de Gauss</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp5_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 5</h2>
-                    <p class="descripcion-tp">Potencial Electrostático</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp6_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 6</h2>
-                    <p class="descripcion-tp">Capacidad y Capacitores</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp7_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 7</h2>
-                    <p class="descripcion-tp">Circuitos de Corriente Continua</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp8_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 8</h2>
-                    <p class="descripcion-tp">Fuerza Magnética y Cargas</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp9_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 9</h2>
-                    <p class="descripcion-tp">Ley de Biot-Savart y Ley de Ampère</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp10_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 10</h2>
-                    <p class="descripcion-tp">Inducción Magnética y Ley de Faraday</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp11_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 11</h2>
-                    <p class="descripcion-tp">Circuitos Transitorios RC y RL</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp12_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 12</h2>
-                    <p class="descripcion-tp">Corriente Alterna</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp13_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 13</h2>
-                    <p class="descripcion-tp">Maxwell y Ondas EM</p>
-                </div>
-            </a>
-            
-            <a href="fisicaII/tp14_fisicaII.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 14</h2>
-                    <p class="descripcion-tp">Óptica Física</p>
-                </div>
-            </a>
+            </details>
 
         </div>
+
     </main>
 
-     
-    
 </body>
 </html>

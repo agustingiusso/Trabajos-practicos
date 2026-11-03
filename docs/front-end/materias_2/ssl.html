@@ -6,11 +6,31 @@
     <title>Sintaxis y Semántica de los Lenguajes</title>
 
     <link rel="stylesheet" href="../assets/css/main.css">
+    
+    <!-- Dependencias para el menú lateral y sus íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../assets/js/gral/side-menu.js"></script>
+    
     <script src="../assets/js/gral/theme.js"></script> 
 
 </head>
 
 <body class="sintaxis-page">
+
+    <!-- Menú lateral agregado -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Secciones</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="tp">Trabajos Prácticos</a></li>
+                <li><a href="#" class="part-link" data-part="doc">Documentación</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de secciones">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
     <header class="header">
         <nav class="container">
             <a href="../años/2.html" class="btn-volver">
@@ -32,47 +52,85 @@
     </header>
 
     <main class="main-content">
-        <div class="trabajos-grid">
+        
+        <!-- Contenedor Trabajos Prácticos -->
+        <div id="contenedor-parte-tp" class="part-section active" style="display: block;">
+            <div class="trabajos-grid">
+                
+                <a href="ssl/tp1_ssl.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 1</h2>
+                        <p class="descripcion-tp">TAD Simple</p>
+                    </div>
+                </a>
+                
+                <a href="ssl/tp2_ssl.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 2</h2>
+                        <p class="descripcion-tp">TAD Compuesto</p>
+                    </div>
+                </a>
+
+                <a href="ssl/tp3_ssl.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 3</h2>
+                        <p class="descripcion-tp">AFD</p>
+                    </div>
+                </a>
+
+                <a href="ssl/tp4_ssl.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 4</h2>
+                        <p class="descripcion-tp">AFN/WIP</p>
+                    </div>
+                </a>
+
+                <a href="ssl/tp5_ssl.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>TP - 5</h2>
+                        <p class="descripcion-tp">Gramáticas Regulares/WIP</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Contenedor Documentación -->
+        <div id="contenedor-parte-doc" class="part-section" style="display: none;">
             
-            <a href="ssl/tp1_ssl.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 1</h2>
-                    <p class="descripcion-tp">TAD Simple</p>
+            <details class="doc-accordion">
+                <summary class="unidad-doc-title">
+                    Trabajos Prácticos:
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </summary>
+                
+                <div class="pdf-grid">
+                    <a href="../assets/documentacion/2do/SSL/TPs/TP1.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP1</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SSL/TPs/TP2.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP2</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SSL/TPs/TP3.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP3</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SSL/TPs/TP4.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP4</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SSL/TPs/TP5.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP5</span>
+                    </a>
                 </div>
-            </a>
-            
-            <a href="ssl/tp2_ssl.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 2</h2>
-                    <p class="descripcion-tp">TAD Compuesto</p>
-                </div>
-            </a>
-
-            <a href="ssl/tp3_ssl.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 3</h2>
-                    <p class="descripcion-tp">AFD</p>
-                </div>
-            </a>
-
-            <a href="ssl/tp4_ssl.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 4</h2>
-                    <p class="descripcion-tp">AFN</p>
-                </div>
-            </a>
-
-            <a href="ssl/tp5_ssl.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>TP - 5</h2>
-                    <p class="descripcion-tp">Gramáticas Regulares</p>
-                </div>
-            </a>
+            </details>
 
         </div>
+
     </main>
 
-     
-    
 </body>
 </html>

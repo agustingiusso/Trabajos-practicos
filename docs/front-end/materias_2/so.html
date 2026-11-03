@@ -6,11 +6,31 @@
     <title>Sistemas Operativos - Ingeniería en Sistemas</title>
 
     <link rel="stylesheet" href="../assets/css/main.css">
+    
+    <!-- Dependencias para el menú lateral y sus íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../assets/js/gral/side-menu.js"></script>
+    
     <script src="../assets/js/gral/theme.js"></script>
 
 </head>
 
 <body class="so-page">
+
+    <!-- Menú lateral agregado -->
+    <div id="side-parts-menu" class="side-menu-container">
+        <div class="side-menu-drawer">
+            <h3 class="side-menu-title">Secciones</h3>
+            <ul class="side-menu-list">
+                <li><a href="#" class="part-link active" data-part="tp">Trabajos Prácticos</a></li>
+                <li><a href="#" class="part-link" data-part="doc">Documentación</a></li>
+            </ul>
+        </div>
+        <button id="side-menu-toggle" class="side-menu-btn" aria-label="Abrir menú de secciones">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
     <header class="header">
         <nav class="container">
             <a href="../años/2.html" class="btn-volver">
@@ -32,68 +52,167 @@
     </header>
 
     <main class="main-content">
-        <div class="trabajos-grid">
+        
+        <!-- Contenedor Trabajos Prácticos -->
+        <div id="contenedor-parte-tp" class="part-section active" style="display: block;">
+            <div class="trabajos-grid">
+                
+                <a href="so/tp1.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 1</h2>
+                        <p class="descripcion-tp">Instalación e introducción al sistema operativo LINUX</p>
+                    </div>
+                </a>
+                
+                <a href="so/tp2.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 2</h2>
+                        <p class="descripcion-tp">Scripting</p>
+                    </div>
+                </a>
+
+                <a href="so/tp3.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 3</h2>
+                        <p class="descripcion-tp">Scripting</p>
+                    </div>
+                </a>
+
+                <a href="so/tp4.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 4</h2>
+                        <p class="descripcion-tp">Administración de CPU - Procesos</p>
+                    </div>
+                </a>
+
+                <a href="so/tp5.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 5</h2>
+                        <p class="descripcion-tp">Semáforos, hilos y administración de memoria</p>
+                    </div>
+                </a>
+
+                <a href="so/tp6.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 6</h2>
+                        <p class="descripcion-tp">Administración e instalación de servicios en LINUX</p>
+                    </div>
+                </a>
+
+                <a href="so/tp7.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 7</h2>
+                        <p class="descripcion-tp">File System</p>
+                    </div>
+                </a>
+
+                <a href="so/tp8.html" class="trabajo-card">
+                    <div class="card-content">
+                        <h2>Práctica 8</h2>
+                        <p class="descripcion-tp">Contenerización</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <div id="contenedor-parte-doc" class="part-section" style="display: none;">
             
-            <a href="so/tp1.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 1</h2>
-                    <p class="descripcion-tp">Instalación e introducción al sistema operativo LINUX</p>
+            <details class="doc-accordion">
+                <summary class="unidad-doc-title">
+                    Bibliografía:
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </summary>
+                
+                <div class="pdf-grid">
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Bash Avanzado.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Bash Avanzado</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Bash programing.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Bash Programing</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Comandos de Linux.xls" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-excel"></i><span>XLSX</span></div>
+                        <span class="pdf-name">Comandos de Linux</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Fundamentos-de-sistemas-operativos-7ma-edicion-Silberschatz-galvin-gagne.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Fundamentos de Sistemas Operativos</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/IPC Silberschatz 2.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">IPC Silberschatz 2</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Operating System Concepts, 9th Edition International Student Version by Abraham Silberschatz, Peter B. Galvin, Greg Gagne .pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Operating System Concepts</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Sistemas Operativos - Scripts Resueltos v0.1.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Scripts Resueltos</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Stallings 5º Edición en español.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Stallings 5º Edición</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Stallings 6º Edición en Ingles.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Stallings 6º Edición</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Tanenbaum-Sistemas_Operativos_Modernos-3ra_ed.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">Tanenbaum 3º Edición</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/Bibliografia/Tutorial de script.doc" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-word"></i><span>DOC</span></div>
+                        <span class="pdf-name">Tutorial de Script</span>
+                    </a>
                 </div>
-            </a>
+            </details>
             
-            <a href="so/tp2.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 2</h2>
-                    <p class="descripcion-tp">Scripting</p>
+            <details class="doc-accordion">
+                <summary class="unidad-doc-title">
+                    Trabajos Prácticos:
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </summary>
+                
+                <div class="pdf-grid">
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 1.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP1</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 2.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP2</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 3.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP3</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 4.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP4</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 5.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP5</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 6.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP6</span>
+                    </a>
+                    <a href="../assets/documentacion/2do/SO/TPs/Practica 7.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf"></i><span>PDF</span></div>
+                        <span class="pdf-name">TP7</span>
+                    </a>
                 </div>
-            </a>
-
-            <a href="so/tp3.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 3</h2>
-                    <p class="descripcion-tp">Scripting</p>
-                </div>
-            </a>
-
-            <a href="so/tp4.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 4</h2>
-                    <p class="descripcion-tp">Administración de CPU - Procesos</p>
-                </div>
-            </a>
-
-            <a href="so/tp5.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 5</h2>
-                    <p class="descripcion-tp">Semáforos, hilos y administración de memoria</p>
-                </div>
-            </a>
-
-            <a href="so/tp6.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 6</h2>
-                    <p class="descripcion-tp">Administración e instalación de servicios en LINUX</p>
-                </div>
-            </a>
-
-            <a href="so/tp7.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 7</h2>
-                    <p class="descripcion-tp">File System</p>
-                </div>
-            </a>
-
-            <a href="so/tp8.html" class="trabajo-card">
-                <div class="card-content">
-                    <h2>Práctica 8</h2>
-                    <p class="descripcion-tp">Contenerización</p>
-                </div>
-            </a>
+            </details>
 
         </div>
+
     </main>
 
-     
-    
 </body>
 </html>
