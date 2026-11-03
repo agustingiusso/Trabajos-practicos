@@ -1,0 +1,79 @@
+/* Contenedor del traductor */
+.lang-dropdown-container {
+    position: absolute;
+    right: 80px; /* Separación exacta para no pisar el theme-btn */
+    top: 20px;
+    z-index: 1000;
+}
+
+.lang-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    transform: scale(1.05);
+    background: var(--button-hover-bg);
+}
+
+/* Menú desplegable */
+.lang-menu {
+    display: none; 
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--table-border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    list-style: none;
+    padding: 0.5rem 0;
+    min-width: 120px;
+    overflow: hidden;
+}
+
+.lang-menu.show {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.lang-menu li button {
+    width: 100%;
+    padding: 0.7rem 1.2rem;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.lang-menu li button:hover {
+    background: var(--card-hover);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Regla de color específica para el modo oscuro del header en index */
+body.index-page .lang-btn {
+    background: #333;
+    color: #ffffff;
+    border: 1px solid transparent;
+}
+
+body.index-page .lang-btn:hover {
+    background: #555;
+    border-color: #666;
+    transform: translateY(-2px);
+}
